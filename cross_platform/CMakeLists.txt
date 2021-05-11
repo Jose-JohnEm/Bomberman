@@ -11,6 +11,7 @@ FIND_PACKAGE(raylib 3.7) # Let CMake search for a raylib-config.cmake
 # Generate a list of files
 FILE(GLOB_RECURSE BOMBERMAN_SRCS CONFIGURE_DEPENDS
     "src/*.cpp"
+    "src/*.hpp"
 )
 
 # This is the main part:

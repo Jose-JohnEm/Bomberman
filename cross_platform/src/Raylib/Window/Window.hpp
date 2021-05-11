@@ -1,0 +1,65 @@
+/*
+** EPITECH PROJECT, 2021
+** B-YEP-400-LYN-4-1-indiestudio-lucas.guichard
+** File description:
+** Window
+*/
+
+#ifndef WINDOW_HPP_
+#define WINDOW_HPP_
+
+#include <string>
+#include <iostream>
+
+namespace Raylib
+{
+    class Window {
+
+        public:
+
+        /**
+         * @brief Construct a new Window object
+         * @param width Width of the Window
+         * @param height Height of the Window
+         * @param title Title of the Window
+         * @param lateInit A boolean, True if window is already init, False otherwise
+         */
+        Window(const int &width = 1920, const int &height = 1080, const std::string &title = "Bomberman", bool lateInit = false);
+
+        /**
+         * @brief Destroy the Window object
+         */
+        ~Window();
+
+        Window() = delete;
+        Window(Window &&) = delete;
+        Window &operator=(Window &&) = delete;
+        Window &operator=(const Window &) = delete;
+
+        /**
+         * @brief Initialize window and OpenGL context
+         *
+         * @param width Width of the Window
+         * @param height Height of the Window
+         * @param title Title of the Window
+         */
+        void InitWindow(int width, int height, const char *title);
+
+        /**
+         * @brief Check if KEY_ESCAPE pressed or Close icon pressed
+         *
+         * @return A boolean (True OR False)
+         */
+        bool WindowShouldClose(void) const;
+
+        /**
+         * @brief Close window
+         */
+        void CloseWindow(void);
+
+    };
+};
+
+#include "Window.inl"
+
+#endif /* !WINDOW_HPP_ */
