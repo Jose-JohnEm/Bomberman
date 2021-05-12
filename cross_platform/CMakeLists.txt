@@ -13,9 +13,9 @@ FIND_PACKAGE(raylib 3.7) # Let CMake search for a raylib-config.cmake
 
 # Generate a list of files
 FILE(GLOB_RECURSE BOMBERMAN_SRCS CONFIGURE_DEPENDS
-    "src*/Raylib/Window.cpp"
     "src/*.cpp"
     "src/*.hpp"
+    "src/*.inl"
 )
 
 # Set Headers paths
