@@ -69,7 +69,7 @@ namespace Raylib
             bool _lateToInit;
     };
 
-    #include "Window/Window.inl"
+    #include "Window.inl"
 
 }
 

@@ -20,7 +20,7 @@ FILE(GLOB_RECURSE BOMBERMAN_SRCS CONFIGURE_DEPENDS
 
 # Set Headers paths
 SET(CORE_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/src/Core")
-SET(RAYLIB_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/src/Raylib")
+SET(LIB_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/src/Lib/")
 
 # This is the main part:
 ADD_EXECUTABLE(${PROJECT_NAME} ${BOMBERMAN_SRCS} ${HEADERS_FILES})
@@ -31,7 +31,7 @@ TARGET_LINK_LIBRARIES(${PROJECT_NAME} raylib) # Specify libraries or flags to us
 # PRIVATE keyword ensure a complete compilation beetwin dependencies
 TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PRIVATE
     ${CORE_HEADERS_PATH}
-    ${RAYLIB_HEADERS_PATH}
+    ${LIB_HEADERS_PATH}
 )
 
 # That's it! You should have an bomberman executable that you can run. Have fun!

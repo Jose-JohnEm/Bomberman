@@ -18,7 +18,7 @@
 #include <memory>
 #include <utility>
 #include "IGraphical.hpp"
-#include "Window/Window.hpp"
+#include "Raylib/Window/Window.hpp"
 
 namespace Raylib
 {
@@ -80,7 +80,7 @@ namespace Raylib
             Raylib::Window _window;
     };
 
-    #include "XRay/XRay.inl"
+    #include "XRay.inl"
 }
 
 #endif /* !XRAY_HPP_ */

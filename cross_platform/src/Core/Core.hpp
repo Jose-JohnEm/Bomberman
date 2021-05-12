@@ -17,7 +17,7 @@
 #include <fstream>
 #include <memory>
 #include <utility>
-#include "XRay/XRay.hpp"
+#include "Raylib/XRay/XRay.hpp"
 #include "IGraphical.hpp"
 
 class Core {

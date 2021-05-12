@@ -5,7 +5,7 @@
 ** XRay
 */
 
-#include "XRay/XRay.hpp"
+#include "XRay.hpp"
 
 Raylib::XRay::XRay()
     : _window(1920, 1080, "Bomberman")
