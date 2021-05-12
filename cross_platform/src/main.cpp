@@ -15,7 +15,7 @@ int main(void)
         core.run();
     } catch (...) {
         std::cerr << "Error !! I catch something !" << std::endl;
-        return (84);
+        return 84;
     }
-    return (EXIT_SUCCESS);
+    return EXIT_SUCCESS;
 }

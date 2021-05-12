@@ -16,14 +16,7 @@ namespace Raylib
 {
     class Window {
 
-        private:
-            int _width;
-            int _height;
-            std::string _name;
-            bool _lateToInit;
-
         public:
-
         /**
          * @brief Construct a new Window object
          * @param width Width of the Window
@@ -69,6 +62,11 @@ namespace Raylib
          */
         void drawText(const std::string &text, const int &posX = 0, const int &posY = 0, const int &fontSize = 50);
 
+        private:
+            int _width;
+            int _height;
+            std::string _name;
+            bool _lateToInit;
     };
 
     #include "Window/Window.inl"

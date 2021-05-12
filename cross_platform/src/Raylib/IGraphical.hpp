@@ -23,7 +23,7 @@ class IGraphical {
          * @param height Height of the Window
          * @param title Title of the Window
          */
-        virtual void initWindow(int width, int height, const char *title) = 0;
+        virtual void initWindow(const int &width, const int &height, const std::string &title) = 0;
 
         /**
          * @brief Check if the window should be close
@@ -55,10 +55,7 @@ class IGraphical {
          * @param posX Position on y
          * @param fontSize Size of your text you want to display
          */
-        virtual void drawText(const char *text, int posX, int posY, int fontSize) = 0;
-
-    protected:
-    private:
+        virtual void drawText(const std::string &text, const int &posX, const int &posY, const int &fontSize) = 0;
 };
 
 #endif /* !IGRAPHICAL_HPP_ */

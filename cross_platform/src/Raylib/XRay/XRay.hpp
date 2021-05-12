@@ -17,7 +17,6 @@
 #include <fstream>
 #include <memory>
 #include <utility>
-
 #include "IGraphical.hpp"
 #include "Window/Window.hpp"
 
@@ -43,7 +42,7 @@ namespace Raylib
          * @param height Height of the Window
          * @param title Title of the Window
          */
-        void initWindow(int width, int height, const char *title) override;
+        void initWindow(const int &width, const int &height, const std::string &title) override;
 
         /**
          * @brief Check if the window should be close
@@ -75,11 +74,13 @@ namespace Raylib
          * @param posX Position on y
          * @param fontSize Size of your text you want to display
          */
-        void drawText(const char *text, int posX, int posY, int fontSize) override;
+        void drawText(const std::string &text, const int &posX, const int &posY, const int &fontSize) override;
 
         private:
             Raylib::Window _window;
     };
+
+    #include "XRay/XRay.inl"
 }
 
 #endif /* !XRAY_HPP_ */
