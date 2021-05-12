@@ -8,8 +8,6 @@
 #ifndef CORE_HPP_
 #define CORE_HPP_
 
-#include "XRay/XRay.hpp"
-#include "IGraphical.hpp"
 #include <iostream>
 #include <functional>
 #include <string>
@@ -19,6 +17,8 @@
 #include <fstream>
 #include <memory>
 #include <utility>
+#include "XRay/XRay.hpp"
+#include "IGraphical.hpp"
 
 class Core {
     public:

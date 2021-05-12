@@ -31,17 +31,12 @@ namespace Raylib
          * @param title Title of the Window
          * @param lateInit A boolean, True if window is already init, False otherwise
          */
-        Window(const int &width = 1920, const int &height = 1080, const std::string &title = "Bomberman", bool lateInit = false);
+        Window(const int &width = 1920, const int &height = 1080, const std::string &title = "Bomberman", const bool &lateInit = false);
 
         /**
          * @brief Destroy the Window object
          */
         ~Window();
-
-        Window() = delete;
-        Window(Window &&) = delete;
-        Window &operator=(Window &&) = delete;
-        Window &operator=(const Window &) = delete;
 
         /**
          * @brief Initialize window and OpenGL context
@@ -50,7 +45,7 @@ namespace Raylib
          * @param height Height of the Window
          * @param title Title of the Window
          */
-        void initWindow(int width, int height, const char *title);
+        void initWindow(const int &width, const int &height, const std::string &title);
 
         /**
          * @brief Check if KEY_ESCAPE pressed or Close icon pressed
@@ -72,11 +67,12 @@ namespace Raylib
          * @param posX Position on y
          * @param fontSize Size of your text you want to display
          */
-        void drawText(const char *text, int posX = 0, int posY = 0, int fontSize = 50);
+        void drawText(const std::string &text, const int &posX = 0, const int &posY = 0, const int &fontSize = 50);
 
     };
-};
 
-#include "Window/Window.inl"
+    #include "Window/Window.inl"
+
+}
 
 #endif /* !WINDOW_HPP_ */
