@@ -6,9 +6,16 @@
 */
 
 #include <iostream>
+#include "Core.hpp"
 
 int main(void)
 {
-    std::cout << "Cross-platform main" << std::endl;
-    return EXIT_SUCCESS;
+    try {
+        Core core;
+        core.run();
+    } catch (...) {
+        std::cerr << "Error !! I catch something !" << std::endl;
+        return (84);
+    }
+    return (EXIT_SUCCESS);
 }
