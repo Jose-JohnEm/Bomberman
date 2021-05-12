@@ -15,25 +15,4 @@ Raylib::Window::Window(const int &width, const int &height, const std::string &t
 
 Raylib::Window::~Window()
 {
-
-}
-
-void Raylib::Window::initWindow(int width, int height, const char *title)
-{
-    InitWindow(width, height, title);
-}
-
-bool Raylib::Window::windowShouldClose(void)
-{
-    return (WindowShouldClose());
-}
-
-void Raylib::Window::closeWindow(void)
-{
-    CloseWindow();
-}
-
-void Raylib::Window::drawText(const char *text, int posX, int posY, int fontSize)
-{
-    DrawText(text, posX, posY, fontSize, GOLD);
 }

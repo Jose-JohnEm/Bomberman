@@ -5,49 +5,47 @@
 ** RayLib
 */
 
-#include "RayLib.hpp"
+#include "XRay.hpp"
 
-Raylib::RayLib::RayLib()
-: _window(1920, 1080, "Bomberman")
+Raylib::XRay::XRay()
+    : _window(1920, 1080, "Bomberman")
 {
     SetTargetFPS(60);
 }
 
-Raylib::RayLib::~RayLib()
+Raylib::XRay::~XRay()
 {
-
 }
 
-
-void Raylib::RayLib::initWindow(int width, int height, const char *title)
+void Raylib::XRay::initWindow(int width, int height, const char *title)
 {
 //    this->_window.initWindow(width)
 //  elle est initialisée à la création on verra son sort
     return;
 }
 
-bool Raylib::RayLib::shouldCloseWindow()
+bool Raylib::XRay::shouldCloseWindow()
 {
     return this->_window.windowShouldClose();
 }
 
-void Raylib::RayLib::closeWindow()
+void Raylib::XRay::closeWindow()
 {
     this->_window.closeWindow();
 }
 
-void Raylib::RayLib::drawText(const char *text, int posX, int posY, int fontSize)
+void Raylib::XRay::drawText(const char *text, int posX, int posY, int fontSize)
 {
     this->_window.drawText(text, posX, posY, fontSize);
 }
 
-void Raylib::RayLib::beginDrawing()
+void Raylib::XRay::beginDrawing()
 {
     BeginDrawing();
     ClearBackground(RAYWHITE);
 }
 
-void Raylib::RayLib::endDrawing()
+void Raylib::XRay::endDrawing()
 {
     EndDrawing();
 }

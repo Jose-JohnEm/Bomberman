@@ -37,12 +37,12 @@ namespace Raylib
          * @brief Destroy the Window object
          */
         ~Window();
-/*
+
         Window() = delete;
         Window(Window &&) = delete;
         Window &operator=(Window &&) = delete;
         Window &operator=(const Window &) = delete;
-*/
+
         /**
          * @brief Initialize window and OpenGL context
          *
@@ -77,6 +77,6 @@ namespace Raylib
     };
 };
 
-/* Qui est le COUPABLE ??? */ //#include "Window.inl"
+#include "Window/Window.inl"
 
 #endif /* !WINDOW_HPP_ */

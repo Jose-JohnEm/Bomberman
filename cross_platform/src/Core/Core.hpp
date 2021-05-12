@@ -8,7 +8,7 @@
 #ifndef CORE_HPP_
 #define CORE_HPP_
 
-#include "RayLib/RayLib.hpp"
+#include "XRay/XRay.hpp"
 #include "IGraphical.hpp"
 #include <iostream>
 #include <functional>

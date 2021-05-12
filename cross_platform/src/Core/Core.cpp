@@ -9,8 +9,9 @@
 
 Core::Core()
 {
-    std::shared_ptr<IGraphical> lib(new Raylib::RayLib());
-    _graphical.swap(lib);
+    std::shared_ptr<IGraphical> lib = std::make_shared<Raylib::XRay>();
+
+    _graphical = std::move(lib);
     _graphical->initWindow(1920, 1080, "Bonberman");
 }
 
@@ -26,6 +27,5 @@ int Core::run()
         _graphical->endDrawing();
     }
     _graphical->closeWindow();
-
-    return 0;
+    return EXIT_SUCCESS;
 }

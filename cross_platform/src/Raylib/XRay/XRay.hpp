@@ -2,11 +2,11 @@
 ** EPITECH PROJECT, 2021
 ** B-YEP-400-LYN-4-1-indiestudio-lucas.guichard
 ** File description:
-** RayLib
+** XRay
 */
 
-#ifndef RAYLIB_HPP_
-#define RAYLIB_HPP_
+#ifndef XRAY_HPP_
+#define XRAY_HPP_
 
 #include <iostream>
 #include <functional>
@@ -17,23 +17,24 @@
 #include <fstream>
 #include <memory>
 #include <utility>
+
 #include "IGraphical.hpp"
 #include "Window/Window.hpp"
 
 namespace Raylib
 {
-    class RayLib : public IGraphical {
+    class XRay : public IGraphical {
 
         public:
         /**
          * @brief Construct a new Ray Lib object
          */
-        RayLib();
+        XRay();
 
         /**
          * @brief Destroy the Ray Lib object
          */
-        ~RayLib() override;
+        ~XRay() override;
 
         /**
          * @brief Initialize window
@@ -81,4 +82,4 @@ namespace Raylib
     };
 }
 
-#endif /* !RAYLIB_HPP_ */
+#endif /* !XRAY_HPP_ */
