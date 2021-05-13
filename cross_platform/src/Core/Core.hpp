@@ -21,10 +21,23 @@
 #include "IGraphical.hpp"
 
 class Core {
+
     public:
+        /**
+         * @brief Construct a new Core object
+         */
         Core();
+
+        /**
+         * @brief Destroy the Core object
+         */
         ~Core();
 
+        /**
+         * @brief Run the core
+         *
+         * @return A int ( SUCCESS OR FAILED )
+         */
         int run();
 
     private:

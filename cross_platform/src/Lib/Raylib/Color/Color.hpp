@@ -8,13 +8,15 @@
 #ifndef COLOR_HPP_
 #define COLOR_HPP_
 
-#include <string>
 #include <iostream>
+#include <functional>
+#include <string>
 #include <map>
+#include <sstream>
+#include <vector>
+#include <fstream>
 #include <memory>
 #include <utility>
-#include <functional>
-#include <algorithm>
 #include "raylib.h"
 
 namespace Raylib
@@ -47,7 +49,7 @@ namespace Raylib
              * @param alpha A float
              * @return A Color
              */
-            Color fade(Color color, const float &alpha);
+            Color fade(Color color, const float &alpha) const;
 
             /**
              * @brief Returns hexadecimal value for a Color
@@ -55,7 +57,7 @@ namespace Raylib
              * @param color A Color Object
              * @return A size_t
              */
-            size_t colorToInt(Color color);
+            size_t colorToInt(Color color) const;
 
             /**
              * @brief Returns a Color from HSV values, hue [0..360], saturation/value [0..1]
@@ -65,7 +67,7 @@ namespace Raylib
              * @param value A float
              * @return A Color
              */
-            Color colorFromHSV(const float &hue, const float &saturation, const float &value);
+            Color colorFromHSV(const float &hue, const float &saturation, const float &value) const;
 
             /**
              * @brief Returns color with alpha applied, alpha goes from 0.0f to 1.0f
@@ -74,7 +76,7 @@ namespace Raylib
              * @param alpha A float
              * @return A Color
              */
-            Color colorAlpha(Color color, const float &alpha);
+            Color colorAlpha(Color color, const float &alpha) const;
 
             /**
              * @brief Returns src alpha-blended into dst color with tint
@@ -84,7 +86,7 @@ namespace Raylib
              * @param tint A Color
              * @return A Color
              */
-            Color colorAlphaBlend(Color dst, Color src, Color tint);
+            Color colorAlphaBlend(Color dst, Color src, Color tint) const;
 
             /**
              * @brief Get Color structure from hexadecimal value
@@ -92,7 +94,7 @@ namespace Raylib
              * @param hexValue A size_t
              * @return A Color
              */
-            Color getColor(const size_t &hexValue);
+            Color getColor(const size_t &hexValue) const;
 
             /**
              * @brief Get Color from a source pixel pointer of certain format
@@ -101,7 +103,7 @@ namespace Raylib
              * @param format A size_t
              * @return A Color
              */
-            Color getPixelColor(void *srcPtr, const size_t &format);
+            Color getPixelColor(void *srcPtr, const size_t &format) const;
 
             /**
              * @brief Set color formatted into destination pixel pointer
@@ -110,7 +112,7 @@ namespace Raylib
              * @param color A Color
              * @param format A size_t
              */
-            void setPixelColor(void *dstPtr, Color color, const size_t &format);
+            void setPixelColor(void *dstPtr, Color color, const size_t &format) const;
 
             /**
              * @brief Get pixel data size in bytes for certain format
@@ -120,7 +122,7 @@ namespace Raylib
              * @param format A size_t that represents format
              * @return A size_t
              */
-            size_t getPixelDataSize(const size_t &width, const size_t &height, const size_t &format);
+            size_t getPixelDataSize(const size_t &width, const size_t &height, const size_t &format) const;
 
             /**
              * @brief Return color
@@ -134,7 +136,7 @@ namespace Raylib
              *
              * @param color New background color
              */
-            void clearBackground(Color color);
+            void clearBackground(Color color) const;
 
             /**
              * @brief Overload of '=' operator
@@ -142,7 +144,7 @@ namespace Raylib
              * @param Color A const reference to a Color
              * @return A reference to Color (Color &)
              */
-            ::Color getCStruct();
+            ::Color getCStruct() const;
 
             /**
              * @brief Return the Color that represents the name of the function
@@ -315,12 +317,12 @@ namespace Raylib
              */
             void set(const Color &color);
 
-            unsigned char _r = 0;
-            unsigned char _g = 0;
-            unsigned char _b = 0;
+            unsigned char _r = 0; // Red saturation ( ? / 255)
+            unsigned char _g = 0; // Green saturation ( ? / 255)
+            unsigned char _b = 0; // Blue saturation ( ? / 255)
             unsigned char _a = 255;
 
-            //TODO: Color Factoring
+            std::map<std::string, Raylib::Color (*)()> _colorFactory;
     };
 
     #include "Color.inl"

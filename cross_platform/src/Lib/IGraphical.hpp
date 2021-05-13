@@ -56,6 +56,22 @@ class IGraphical {
          * @param fontSize Size of your text you want to display
          */
         virtual void drawText(const std::string &text, const int &posX, const int &posY, const int &fontSize) = 0;
+
+        /**
+         * @brief Draw any Text in parameters
+         *
+         * @param text Text you want to display
+         * @param posX Position on x
+         * @param posX Position on y
+         * @param fontSize Size of your text you want to display
+         * @param font Path to font
+         */
+        virtual void drawTextFont(const std::string &text, const int &posX, const int &posY, const int &fontSize, const std::string &font, const std::string &color) = 0;
+
+        /**
+         * @brief This function must display the current scene. It is used in the game loop
+         */
+        virtual void display() = 0;
 };
 
 #endif /* !IGRAPHICAL_HPP_ */

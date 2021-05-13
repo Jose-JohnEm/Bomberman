@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2021
-** cross_platform
+** B-YEP-400-LYN-4-1-indiestudio-lucas.guichard
 ** File description:
 ** Image
 */
@@ -37,17 +37,17 @@ inline void Raylib::Image::unloadImage(const Image &image)
     }
 }
 
-inline bool Raylib::Image::exportImage(const Image &image, const std::string &fileName)
+inline bool Raylib::Image::exportImage(const Image &image, const std::string &fileName) const
 {
     return ::ExportImage(_image, fileName.c_str());
 }
 
-inline bool Raylib::Image::exportImageAsCode(const Image &image, const std::string &fileName)
+inline bool Raylib::Image::exportImageAsCode(const Image &image, const std::string &fileName) const
 {
     return ::ExportImageAsCode(_image, fileName.c_str());
 }
 
-inline int Raylib::Image::getPixelDataSize()
+inline int Raylib::Image::getPixelDataSize() const
 {
     return ::GetPixelDataSize(_width, _height, _format);
 }

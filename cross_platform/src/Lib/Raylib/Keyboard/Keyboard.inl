@@ -5,37 +5,37 @@
 ** Keyboard
 */
 
-inline bool Raylib::Keyboard::isKeyPressed(size_t key)
+inline bool Raylib::Keyboard::isKeyPressed(const size_t &key) const
 {
     return ::IsKeyPressed(key);
 }
 
-inline bool Raylib::Keyboard::isKeyDown(size_t key)
+inline bool Raylib::Keyboard::isKeyDown(const size_t &key) const
 {
     return ::IsKeyDown(key);
 }
 
-inline bool Raylib::Keyboard::isKeyReleased(size_t key)
+inline bool Raylib::Keyboard::isKeyReleased(const size_t &key) const
 {
     return ::IsKeyReleased(key);
 }
 
-inline bool Raylib::Keyboard::isKeyUp(size_t key)
+inline bool Raylib::Keyboard::isKeyUp(const size_t &key) const
 {
     return ::IsKeyUp(key);
 }
 
-inline void Raylib::Keyboard::setExitKey(size_t key)
+inline void Raylib::Keyboard::setExitKey(const size_t &key) const
 {
     ::SetExitKey(key);
 }
 
-inline size_t Raylib::Keyboard::getKeyPressed(void)
+inline size_t Raylib::Keyboard::getKeyPressed(void) const
 {
     return ::GetKeyPressed();
 }
 
-inline size_t Raylib::Keyboard::getCharPressed(void)
+inline size_t Raylib::Keyboard::getCharPressed(void) const
 {
     return ::GetCharPressed();
 }

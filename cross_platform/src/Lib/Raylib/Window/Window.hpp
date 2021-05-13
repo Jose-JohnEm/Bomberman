@@ -38,19 +38,19 @@ namespace Raylib
          * @param height Height of the Window
          * @param title Title of the Window
          */
-        void initWindow(const int &width, const int &height, const std::string &title);
+        void initWindow(const int &width, const int &height, const std::string &title) const;
 
         /**
          * @brief Check if KEY_ESCAPE pressed or Close icon pressed
          *
          * @return A boolean (True OR False)
          */
-        bool windowShouldClose(void);
+        bool windowShouldClose(void) const;
 
         /**
          * @brief Close window
          */
-        void closeWindow(void);
+        void closeWindow(void) const;
 
         /**
          * @brief Draw any Text in parameters
@@ -60,7 +60,7 @@ namespace Raylib
          * @param posX Position on y
          * @param fontSize Size of your text you want to display
          */
-        void drawText(const std::string &text, const int &posX = 0, const int &posY = 0, const int &fontSize = 50);
+        void drawText(const std::string &text, const int &posX = 0, const int &posY = 0, const int &fontSize = 50) const;
 
         private:
             int _width;

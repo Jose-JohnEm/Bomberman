@@ -22,9 +22,7 @@ Core::~Core()
 int Core::run()
 {
     while (!_graphical->shouldCloseWindow()) {
-        _graphical->beginDrawing();
-        _graphical->drawText("Congrats ! Our first Window", 190, 200, 50);
-        _graphical->endDrawing();
+        _graphical->display();
     }
     _graphical->closeWindow();
     return EXIT_SUCCESS;

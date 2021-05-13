@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2021
-** cross_platform
+** B-YEP-400-LYN-4-1-indiestudio-lucas.guichard
 ** File description:
 ** Image
 */
@@ -113,7 +113,7 @@ namespace Raylib
              * @param fileName A const std::string
              * @return A boolean
              */
-            bool exportImage(const Image &image, const std::string &fileName);
+            bool exportImage(const Image &image, const std::string &fileName) const;
 
             /**
              * @brief Export image as code file defining an array of bytes, returns true on success
@@ -122,14 +122,14 @@ namespace Raylib
              * @param fileName A const std::string
              * @return true or false
              */
-            bool exportImageAsCode(const Image &image, const std::string &fileName);
+            bool exportImageAsCode(const Image &image, const std::string &fileName) const;
 
             /**
              * @brief Returns the pixel data size of the image.
              *
              * @return The pixel data size of the image.
              */
-            int getPixelDataSize();
+            int getPixelDataSize() const;
 
             /**
              * @brief Overload of '=' operator

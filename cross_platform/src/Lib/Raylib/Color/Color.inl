@@ -21,21 +21,12 @@ inline void Raylib::Color::set(const Color &color)
     _a = color._a;
 }
 
-inline Raylib::Color Raylib::Color::getColor(const std::string &color) //TODO: Color Factoring
+inline Raylib::Color Raylib::Color::getColor(const std::string &color)
 {
-    if ("BLACK")
-        return Color::Black();
-    if ("GREEN")
-        return Color::Green();
-    if ("BLUE")
-        return Color::Blue();
-    if ("WHITE")
-        return Color::White();
-    if ("MAGENTA")
-        return Color::Magenta();
+    return _colorFactory[color]();
 }
 
-inline Raylib::Color Raylib::Color::fade(Raylib::Color color, const float &alpha)
+inline Raylib::Color Raylib::Color::fade(Raylib::Color color, const float &alpha) const
 {
     Raylib::Color col;
 
@@ -43,12 +34,12 @@ inline Raylib::Color Raylib::Color::fade(Raylib::Color color, const float &alpha
     return col;
 }
 
-inline size_t Raylib::Color::colorToInt(Raylib::Color color)
+inline size_t Raylib::Color::colorToInt(Raylib::Color color) const
 {
     return ::ColorToInt(color.getCStruct());
 }
 
-inline Raylib::Color Raylib::Color::colorFromHSV(const float &hue, const float &saturation, const float &value)
+inline Raylib::Color Raylib::Color::colorFromHSV(const float &hue, const float &saturation, const float &value) const
 {
     Raylib::Color col;
 
@@ -56,7 +47,7 @@ inline Raylib::Color Raylib::Color::colorFromHSV(const float &hue, const float &
     return col;
 }
 
-inline Raylib::Color Raylib::Color::colorAlpha(Raylib::Color color, const float &alpha)
+inline Raylib::Color Raylib::Color::colorAlpha(Raylib::Color color, const float &alpha) const
 {
     Raylib::Color col;
 
@@ -64,7 +55,7 @@ inline Raylib::Color Raylib::Color::colorAlpha(Raylib::Color color, const float 
     return col;
 }
 
-inline Raylib::Color Raylib::Color::colorAlphaBlend(Color dst, Color src, Color tint)
+inline Raylib::Color Raylib::Color::colorAlphaBlend(Color dst, Color src, Color tint) const
 {
     Raylib::Color col;
 
@@ -72,7 +63,7 @@ inline Raylib::Color Raylib::Color::colorAlphaBlend(Color dst, Color src, Color 
     return col;
 }
 
-inline Raylib::Color Raylib::Color::getColor(const size_t &hexValue)
+inline Raylib::Color Raylib::Color::getColor(const size_t &hexValue) const
 {
     Raylib::Color col;
 
@@ -80,7 +71,7 @@ inline Raylib::Color Raylib::Color::getColor(const size_t &hexValue)
     return col;
 }
 
-inline Raylib::Color Raylib::Color::getPixelColor(void *srcPtr, const size_t &format)
+inline Raylib::Color Raylib::Color::getPixelColor(void *srcPtr, const size_t &format) const
 {
     Raylib::Color col;
 
@@ -88,19 +79,19 @@ inline Raylib::Color Raylib::Color::getPixelColor(void *srcPtr, const size_t &fo
     return col;
 }
 
-inline void Raylib::Color::setPixelColor(void *dstPtr, Raylib::Color color, const size_t &format)
+inline void Raylib::Color::setPixelColor(void *dstPtr, Raylib::Color color, const size_t &format) const
 {
     ::SetPixelColor(dstPtr, color.getCStruct(), format);
 }
 
-inline size_t Raylib::Color::getPixelDataSize(const size_t &width, const size_t &height, const size_t &format)
+inline size_t Raylib::Color::getPixelDataSize(const size_t &width, const size_t &height, const size_t &format) const
 {
     return ::GetPixelDataSize(width, height, format);
 }
 
-inline void Raylib::Color::clearBackground(Raylib::Color color) //TODO: move in another class -> Drawing ?
+inline void Raylib::Color::clearBackground(Raylib::Color color) const //TODO: move in another class -> Drawing ?
 {
-    ClearBackground(color.getCStruct());
+    ::ClearBackground(color.getCStruct());
 }
 
 inline Raylib::Color Raylib::Color::LightGray()
@@ -317,7 +308,7 @@ inline Raylib::Color &Raylib::Color::operator=(const ::Color &color)
     return *this;
 }
 
-inline ::Color Raylib::Color::getCStruct()
+inline ::Color Raylib::Color::getCStruct() const
 {
     ::Color col = {_r, _g, _b, _a};
     return col;
