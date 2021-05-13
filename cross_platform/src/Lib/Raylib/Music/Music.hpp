@@ -40,10 +40,10 @@ namespace Raylib
              * @brief Load music stream from memory
              *
              * @param fileType A string
-             * @param data A unsigned char *
+             * @param data A string
              * @param dataSize A int
              */
-            Music(const std::string &fileType, unsigned char* data, const int &dataSize); //TODO: remove unsigned char*
+            Music(const std::string &fileType, const std::string &data, const int &dataSize);
 
             /**
              * @brief Destroy the Music object
