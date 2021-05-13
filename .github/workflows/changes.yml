@@ -1,0 +1,2 @@
+- name: Has Changes
+  uses: UnicornGlobal/has-changes-action@v1.0.11
