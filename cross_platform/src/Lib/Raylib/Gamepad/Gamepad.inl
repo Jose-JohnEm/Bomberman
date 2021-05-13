@@ -55,4 +55,7 @@ inline float Raylib::Gamepad::getGamepadAxisMovement(const int &gamepad, const i
     return ::GetGamepadAxisMovement(gamepad, axis);
 }
 
-//TODO: int setGamepadMappings(const std::string &mappings) const;
+inline int Raylib::Gamepad::setGamepadMappings(const std::string &mappings) const
+{
+    return ::SetGamepadMappings(mappings.c_str());
+}
