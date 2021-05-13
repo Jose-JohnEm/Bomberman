@@ -24,6 +24,7 @@ SET(LIB_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cross_platform/src/Lib/")
 
 # This is the main part:
 ADD_EXECUTABLE(${PROJECT_NAME} ${BOMBERMAN_SRCS} ${HEADERS_FILES})
+
 # This part downloads raylib and builds it if it's not installed on your system
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} raylib) # Specify libraries or flags to use when linking a given target and/or its dependents
 
