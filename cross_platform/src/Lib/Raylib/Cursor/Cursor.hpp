@@ -58,7 +58,6 @@ namespace Raylib
              * @brief Check if cursor is on the current screen.
              *
              * @return true if cursor is on the current screen, false otherwise
-             * @return false
              */
             bool isCursorOnScreen(void) const;
 
