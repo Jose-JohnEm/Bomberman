@@ -18,7 +18,7 @@ A working game which is no fun to play is pointless!
 > :speaking_head: Let’s be honest. Implementing a video game is generally not fun (at least not all the time). But it can be, and having someone else enjoy a game you made is an amazing feeling. The result will be worth the effort, so do your best! And most importantly, have fun.
 
 You MUST use CMake as a cross-platform build system:
-    • Linux: it must generates a Makefile to be able to build the project
+    • Linux: it must generates a Makefile to be able to build the project.
     • Windows: it must generates a Visual Studio solution .sln (will be tested with Visual Studio 2019).
 
 You also must use the [raylib](!https://www.raylib.com/) library and use assets. We don’t want to see any fighting cubes! A CMake module for raylib is provided, you MUST use it to generate your project.
@@ -74,15 +74,11 @@ Here’s the required features :
     • Local multi-player with the possibility to play with a friend + AI’s controlled bots.
     • A main game menu (to start a new game or load an existing one).
     • Your game must feature 3D graphics but a 2D gameplay.
-    • Your game must feature procedurally generated maps (random obstacles, random bonus. . . ).
-    • Save/Load a game
-    • Animation and sounds to give life to the game (especially during various interactions)
-    • Think about bomb explosion, player walking, background music, . . .
-    • Some Power-ups
-    • Bomb Up
-    • Speed Up
-    • Fire Up
-    • Wall Pass
+    • Your game must feature procedurally generated maps (random obstacles, random bonus...).
+    • Save/Load a game.
+    • Animation and sounds to give life to the game (especially during various interactions).
+    • Think about bomb explosion, player walking, background music...
+    • Some Power-ups (Bomb Up, Speed Up, Fire Up, Wall Pass).
 
 The goal of this project is not only to code a video game, but it’s to code a fully finished video game. This means that the efforts you make to polish your game will count as much as the technical aspect.
 
