@@ -18,7 +18,7 @@ inline Raylib::Sound &Raylib::Sound::play()
 
 inline Raylib::Sound &Raylib::Sound::update(const void *data)
 {
-    ::UpdateSound(_sound, data, _sampleCount);
+    ::UpdateSound(_sound, data, _sound.sampleCount);
     return *this;
 }
 
@@ -59,14 +59,12 @@ inline Raylib::Sound &Raylib::Sound::setPitch(const float &pitch)
 
 inline void Raylib::Sound::set(const ::Sound &sound)
 {
-    _sampleCount = sound.sampleCount;
-    _stream = sound.stream;
+    _sound = sound;
 }
 
 inline void Raylib::Sound::set(const Sound &sound)
 {
-    _sampleCount = sound._sampleCount;
-    _stream = sound._stream;
+    _sound = sound._sound;
 }
 
 inline Raylib::Sound &Raylib::Sound::operator=(const Sound &sound)

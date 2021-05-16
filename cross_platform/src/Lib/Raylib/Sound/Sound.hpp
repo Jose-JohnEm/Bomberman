@@ -130,10 +130,7 @@ namespace Raylib
              */
             void set(const Sound &sound);
 
-            AudioStream _stream;             // Audio stream
-            unsigned int _sampleCount;       // Total number of samples
-
-            ::Sound _sound;
+            ::Sound _sound; // Sound C structure
     };
 
     #include "Sound.inl"
