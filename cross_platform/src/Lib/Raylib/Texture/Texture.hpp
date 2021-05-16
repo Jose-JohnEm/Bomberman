@@ -67,13 +67,7 @@ namespace Raylib
              */
             void set(const Texture &texture);
 
-            unsigned int _id;        // OpenGL texture id
-            int _width;              // Texture base width
-            int _height;             // Texture base height
-            int _mipmaps;            // Mipmap levels, 1 by default
-            int _format;             // Data format (PixelFormat type)
-
-            ::Texture _texture = {_id, _width, _height, _mipmaps, _format};
+            ::Texture _texture; // Texture C structure
     };
 
     #include "Texture.inl"

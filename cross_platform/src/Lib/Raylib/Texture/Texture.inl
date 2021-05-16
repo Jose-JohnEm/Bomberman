@@ -13,20 +13,12 @@ inline Raylib::Texture &Raylib::Texture::operator=(const Texture &texture)
 
 inline void Raylib::Texture::set(const ::Texture &texture)
 {
-    _id = texture.id;
-    _width = texture.width;
-    _height = texture.height;
-    _mipmaps = texture.mipmaps;
-    _format = texture.format;
+    _texture = texture;
 }
 
 inline void Raylib::Texture::set(const Texture &texture)
 {
-    _id = texture._id;
-    _width = texture._width;
-    _height = texture._height;
-    _mipmaps = texture._mipmaps;
-    _format = texture._format;
+    _texture = texture._texture;
 }
 
 inline Raylib::Texture &Raylib::Texture::drawTexture(const int &posX, const int &posY, const Raylib::Color &tint)
