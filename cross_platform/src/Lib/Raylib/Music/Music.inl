@@ -5,42 +5,42 @@
 ** Music
 */
 
-void Raylib::Music::unloadMusic() const
+void Raylib::Music::unloadMusic(void) const
 {
     ::UnloadMusicStream(_music);
 }
 
-Raylib::Music &Raylib::Music::playMusic()
+Raylib::Music &Raylib::Music::playMusic(void)
 {
     ::PlayMusicStream(_music);
     return *this;
 }
 
-Raylib::Music &Raylib::Music::update()
+Raylib::Music &Raylib::Music::update(void)
 {
     ::UpdateMusicStream(_music);
     return *this;
 }
 
-Raylib::Music &Raylib::Music::stop()
+Raylib::Music &Raylib::Music::stop(void)
 {
     ::StopMusicStream(_music);
     return *this;
 }
 
-Raylib::Music &Raylib::Music::pause()
+Raylib::Music &Raylib::Music::pause(void)
 {
     ::PauseMusicStream(_music);
     return *this;
 }
 
-Raylib::Music &Raylib::Music::resume()
+Raylib::Music &Raylib::Music::resume(void)
 {
     ::ResumeMusicStream(_music);
     return *this;
 }
 
-bool Raylib::Music::isPlaying() const
+bool Raylib::Music::isPlaying(void) const
 {
     return ::IsMusicPlaying(_music);
 }
@@ -51,38 +51,30 @@ Raylib::Music &Raylib::Music::setVolume(const float &volume)
     return *this;
 }
 
-Raylib::Music& Raylib::Music::setPitch(const float &pitch)
+Raylib::Music &Raylib::Music::setPitch(const float &pitch)
 {
     ::SetMusicPitch(_music, pitch);
     return *this;
 }
 
-float Raylib::Music::getTimeLength() const
+float Raylib::Music::getTimeLength(void) const
 {
     return ::GetMusicTimeLength(_music);
 }
 
-float Raylib::Music::getTimePlayed() const
+float Raylib::Music::getTimePlayed(void) const
 {
     return ::GetMusicTimePlayed(_music);
 }
 
 void Raylib::Music::set(const ::Music &music)
 {
-    _ctxType = music.ctxType;
-    _ctxData = music.ctxData;
-    _looping = music.looping;
-    _sampleCount = music.sampleCount;
-    _stream = music.stream;
+    _music = music;
 }
 
 void Raylib::Music::set(const Music &music)
 {
-    _ctxType = music._ctxType;
-    _ctxData = music._ctxData;
-    _looping = music._looping;
-    _sampleCount = music._sampleCount;
-    _stream = music._stream;
+    _music = music._music;
 }
 
 Raylib::Music &Raylib::Music::operator=(const Music &music)

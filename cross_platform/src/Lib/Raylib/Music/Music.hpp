@@ -27,7 +27,7 @@ namespace Raylib
              *
              * @param music A Music object
              */
-            Music(const Music& music);
+            Music(const Music &music);
 
             /**
              * @brief Load music stream from file
@@ -53,49 +53,49 @@ namespace Raylib
             /**
              * @brief Unload music stream
              */
-            void unloadMusic() const;
+            void unloadMusic(void) const;
 
             /**
              * @brief Start music playing
              *
              * @return A reference to a Music object
              */
-            Music &playMusic();
+            Music &playMusic(void);
 
             /**
              * @brief Updates buffers for music streaming
              *
              * @return A reference to a Music object
              */
-            Music &update();
+            Music &update(void);
 
             /**
              * @brief Stop music playing
              *
              * @return A reference to a Music object
              */
-            Music &stop();
+            Music &stop(void);
 
             /**
              * @brief Pause music playing
              *
              * @return A reference to a Music object
              */
-            Music &pause();
+            Music &pause(void);
 
             /**
              * @brief Resume music playing
              *
              * @return A reference to a Music object
              */
-            Music &resume();
+            Music &resume(void);
 
             /**
              * @brief Check if music is playing
              *
              * @return A reference to a Music object
              */
-            bool isPlaying() const;
+            bool isPlaying(void) const;
 
             /**
              * @brief Set volume for music
@@ -116,14 +116,14 @@ namespace Raylib
              *
              * @return A float
              */
-            float getTimeLength() const;
+            float getTimeLength(void) const;
 
             /**
              * @brief Get current music time played (in seconds)
              *
              * @return A float
              */
-            float getTimePlayed() const;
+            float getTimePlayed(void) const;
 
             /**
              * @brief Overload of '=' operator
@@ -131,7 +131,7 @@ namespace Raylib
              * @param music A const reference to a Music
              * @return A reference to Music (Music &)
              */
-            Music &operator=(const Music& music);
+            Music &operator=(const Music &music);
 
         private:
             /**
@@ -139,22 +139,16 @@ namespace Raylib
              *
              * @param music A Music C Structure
              */
-            void set(const ::Music& music);
+            void set(const ::Music &music);
 
             /**
              * @brief Set Music
              *
              * @param music A const reference to a Music object
              */
-            void set(const Music& music);
+            void set(const Music &music);
 
-            AudioStream _stream;             // Audio stream
-            unsigned int _sampleCount;       // Total number of samples
-            bool _looping;                   // Music looping enable
-            int _ctxType;                    // Type of music context (audio filetype)
-            void *_ctxData;                  // Audio context data, depends on type
-
-            ::Music _music;
+            ::Music _music; // Music C structure
     };
 
     #include "Music.inl"
