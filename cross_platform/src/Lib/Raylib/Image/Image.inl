@@ -29,11 +29,11 @@ inline Raylib::Image Raylib::Image::loadImageFromMemory(const std::string &fileT
     return *this;
 }
 
-inline void Raylib::Image::unloadImage(const Image &image)
+inline void Raylib::Image::unloadImage(void)
 {
-    if (_data != NULL) {
+    if (_image.data != NULL) {
         ::UnloadImage(_image);
-        _data = NULL;
+        _image.data = NULL;
     }
 }
 
@@ -47,32 +47,24 @@ inline bool Raylib::Image::exportImageAsCode(const Image &image, const std::stri
     return ::ExportImageAsCode(_image, fileName.c_str());
 }
 
-inline int Raylib::Image::getPixelDataSize() const
+inline int Raylib::Image::getPixelDataSize(void) const
 {
-    return ::GetPixelDataSize(_width, _height, _format);
+    return ::GetPixelDataSize(_image.width, _image.height, _image.format);
 }
 
-inline ::Image Raylib::Image::getCStruct() const
+inline ::Image Raylib::Image::getCStruct(void) const
 {
     return _image;
 }
 
 inline void Raylib::Image::set(const ::Image &image)
 {
-    _data = image.data;
-    _width = image.width;
-    _height = image.height;
-    _mipmaps = image.mipmaps;
-    _format = image.format;
+    _image = image;
 }
 
 inline void Raylib::Image::set(const Image &image)
 {
-    _data = image._data;
-    _width = image._width;
-    _height = image._height;
-    _mipmaps = image._mipmaps;
-    _format = image._format;
+    _image = image._image;
 }
 
 inline Raylib::Image &Raylib::Image::operator=(const Image &image)

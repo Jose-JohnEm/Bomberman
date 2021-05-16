@@ -139,10 +139,9 @@ namespace Raylib
             void clearBackground(Color color) const;
 
             /**
-             * @brief Overload of '=' operator
+             * @brief Getter of Color structure (private attribute)
              *
-             * @param Color A const reference to a Color
-             * @return A reference to Color (Color &)
+             * @return An Color C structure
              */
             ::Color getCStruct(void) const;
 

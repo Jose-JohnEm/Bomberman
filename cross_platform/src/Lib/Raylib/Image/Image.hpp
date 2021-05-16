@@ -37,14 +37,6 @@ namespace Raylib
             Image(const std::string &fileName);
 
             /**
-             * @brief Overload of '=' operator
-             *
-             * @param Image A const reference to a Image
-             * @return A Image
-             */
-            ::Image getCStruct() const;
-
-            /**
              * @brief Construct a new Image object
              *
              * @param fileName A string
@@ -104,7 +96,7 @@ namespace Raylib
              *
              * @param image A Image
              */
-            void unloadImage(const Image &image);
+            void unloadImage(void);
 
             /**
              * @brief Export image data to file, returns true on success
@@ -129,7 +121,7 @@ namespace Raylib
              *
              * @return The pixel data size of the image.
              */
-            int getPixelDataSize() const;
+            int getPixelDataSize(void) const;
 
             /**
              * @brief Overload of '=' operator
@@ -138,6 +130,13 @@ namespace Raylib
              * @return A reference to Image (Image &)
              */
             Image &operator=(const Image &image);
+
+            /**
+             * @brief Getter of Image structure (private attribute)
+             *
+             * @return An Image C structure
+             */
+            ::Image getCStruct(void) const;
 
         private:
             /**
@@ -154,13 +153,7 @@ namespace Raylib
              */
             void set(const Image &image);
 
-            void *_data;             // Image raw data
-            int _width;              // Image base width
-            int _height;             // Image base height
-            int _mipmaps;            // Mipmap levels, 1 by default
-            int _format;             // Data format (PixelFormat type)
-
-            ::Image _image = {_data, _width, _height, _mipmaps, _format};
+            ::Image _image; // Image C structure
     };
 
     #include "Image.inl"

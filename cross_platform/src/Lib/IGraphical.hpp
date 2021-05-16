@@ -42,7 +42,7 @@ class IGraphical {
         /**
          * @brief Destroy the IGraphical object
          */
-        virtual ~IGraphical() = default;
+        virtual ~IGraphical(void) = default;
 
         /**
          * @brief Initialize window and OpenGL context
@@ -58,14 +58,14 @@ class IGraphical {
          *
          * @return true if the window should close and false otherwise
          */
-        virtual bool shouldCloseWindow() = 0;
+        virtual bool shouldCloseWindow(void) = 0;
 
         /**
          * @brief Check if we are in the game scene
          *
          * @return true if we are in the game scene and false otherwise
          */
-        virtual bool isInGameScene() = 0;
+        virtual bool isInGameScene(void) = 0;
 
         /**
          * @brief This function sets the list of scores. First element of the pair is the username, the second is the score.
@@ -101,14 +101,14 @@ class IGraphical {
          *
          * @return A vector of all the users names as a const std::vector<std::string>&
          */
-        virtual const std::vector<std::string> &getUsersNames() = 0;
+        virtual const std::vector<std::string> &getUsersNames(void) = 0;
 
         /**
          * @brief Returns the current scene.
          *
          * @return The scene (MAIN_MENU, GAME, END_GAME...), the step where we are in the window
          */
-        virtual Scene getScene() const = 0;
+        virtual Scene getScene(void) const = 0;
 
         /**
          * @brief Set the current scene.
@@ -120,17 +120,17 @@ class IGraphical {
         /**
          * @brief Close window
          */
-        virtual void closeWindow() = 0;
+        virtual void closeWindow(void) = 0;
 
         /**
          * @brief Set buffer to Draw textures
          */
-        virtual void beginDrawing() = 0;
+        virtual void beginDrawing(void) = 0;
 
         /**
          * @brief Unset buffer to Draw textures
          */
-        virtual void endDrawing() = 0;
+        virtual void endDrawing(void) = 0;
 
         /**
          * @brief Draw any Text in parameters
@@ -156,7 +156,7 @@ class IGraphical {
         /**
          * @brief This function must display the current scene. It is used in the game loop
          */
-        virtual void display() = 0;
+        virtual void display(void) = 0;
 };
 
 #endif /* !IGRAPHICAL_HPP_ */
