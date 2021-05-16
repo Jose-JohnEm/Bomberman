@@ -7,18 +7,23 @@
 
 inline void Raylib::Color::set(const ::Color &color)
 {
-    _r = color.r;
-    _g = color.g;
-    _b = color.b;
-    _a = color.a;
+    _color = color;
 }
 
 inline void Raylib::Color::set(const Color &color)
 {
-    _r = color._r;
-    _g = color._g;
-    _b = color._b;
-    _a = color._a;
+    _color = color._color;
+}
+
+inline Raylib::Color &Raylib::Color::operator=(const ::Color &color)
+{
+    set(color);
+    return *this;
+}
+
+inline ::Color Raylib::Color::getCStruct() const
+{
+    return _color;
 }
 
 inline Raylib::Color Raylib::Color::getColor(const std::string &color)
@@ -299,17 +304,5 @@ inline Raylib::Color Raylib::Color::RayWhite()
     Raylib::Color col;
 
     col.set(::RAYWHITE);
-    return col;
-}
-
-inline Raylib::Color &Raylib::Color::operator=(const ::Color &color)
-{
-    set(color);
-    return *this;
-}
-
-inline ::Color Raylib::Color::getCStruct() const
-{
-    ::Color col = {_r, _g, _b, _a};
     return col;
 }

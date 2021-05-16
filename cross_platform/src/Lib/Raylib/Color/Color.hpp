@@ -317,12 +317,8 @@ namespace Raylib
              */
             void set(const Color &color);
 
-            unsigned char _r = 0; // Red saturation ( ? / 255)
-            unsigned char _g = 0; // Green saturation ( ? / 255)
-            unsigned char _b = 0; // Blue saturation ( ? / 255)
-            unsigned char _a = 255;
-
-            std::map<std::string, Raylib::Color (*)()> _colorFactory;
+            ::Color _color; // Color C structure
+            std::map<std::string, Raylib::Color (*)()> _colorFactory; // Color factory
     };
 
     #include "Color.inl"
