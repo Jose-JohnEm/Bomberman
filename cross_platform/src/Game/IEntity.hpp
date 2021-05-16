@@ -17,7 +17,7 @@ class IEntity {
          * @brief Destroy the IEntity object
          *
          */
-        virtual ~IEntity() = default;
+        virtual ~IEntity(void) = default;
 };
 
 #endif /* !IENTITY_HPP_ */

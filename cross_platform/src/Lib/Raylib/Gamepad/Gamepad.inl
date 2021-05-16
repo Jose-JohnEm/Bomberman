@@ -40,7 +40,7 @@ inline bool Raylib::Gamepad::isGamepadButtonUp(const int &gamepad, const int &bu
     return ::IsGamepadButtonUp(gamepad, button);
 }
 
-inline int Raylib::Gamepad::getGamepadButtonPressed() const
+inline int Raylib::Gamepad::getGamepadButtonPressed(void) const
 {
     return ::GetGamepadButtonPressed();
 }

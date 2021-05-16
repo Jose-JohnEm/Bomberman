@@ -66,7 +66,7 @@ namespace Raylib
             /**
              * @brief Unload Font
              */
-            void unload() const;
+            void unload(void) const;
 
             /**
              * @brief Overload of '=' operator

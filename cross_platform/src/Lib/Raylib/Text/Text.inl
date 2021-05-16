@@ -13,10 +13,10 @@ inline void Raylib::Text::drawText(const std::string &title, const size_t &posX,
 inline void Raylib::Text::drawTextEx(const std::string &font, const std::string &text, const std::pair<size_t, size_t> &position, const float &fontSize, const float &spacing, const Color &tint) const
 {
     Vector2 vec = {(float)position.first, (float)position.second};
-    ::Font tmpFont;
+    ::Font loadedFont = ::LoadFont(font.c_str());
 
-    ::LoadFont(font.c_str());
-    ::DrawTextEx(tmpFont, text.c_str(), vec, fontSize, spacing, tint.getCStruct());
+    ::SetTextureFilter(loadedFont.texture, TEXTURE_FILTER_BILINEAR);
+    ::DrawTextEx(loadedFont, text.c_str(), vec, fontSize, spacing, tint.getCStruct());
 }
 
 inline size_t Raylib::Text::measureText(const std::string &text, const size_t &fontSize) const

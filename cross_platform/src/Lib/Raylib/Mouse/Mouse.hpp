@@ -64,14 +64,14 @@ namespace Raylib
              *
              * @return A size_t that represents position of mouse on x-axis
              */
-            size_t getMouseX() const;
+            size_t getMouseX(void) const;
 
             /**
              * @brief Returns mouse position Y
              *
              * @return A size_t that represents position of mouse on y-axis
              */
-            size_t getMouseY() const;
+            size_t getMouseY(void) const;
 
             /**
              * @brief Set the Mouse Position XY
@@ -102,7 +102,7 @@ namespace Raylib
              *
              * @return float, that represents mouse wheel move
              */
-            float getMouseWheelMove() const;
+            float getMouseWheelMove(void) const;
 
             /**
              * @brief Set the Mouse Cursor
@@ -116,14 +116,14 @@ namespace Raylib
              *
              * @return A size_t
              */
-            size_t getTouchX() const;
+            size_t getTouchX(void) const;
 
             /**
              * @brief Returns touch position Y for touch point 0 (relative to screen size)
              *
              * @return A size_t
              */
-            size_t getTouchY() const;
+            size_t getTouchY(void) const;
     };
 
     #include "Mouse.inl"

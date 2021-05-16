@@ -10,7 +10,7 @@ inline void Raylib::Sound::unload() const
     ::UnloadSound(_sound);
 }
 
-inline Raylib::Sound &Raylib::Sound::play()
+inline Raylib::Sound &Raylib::Sound::play(void)
 {
     ::PlaySound(_sound);
     return *this;
@@ -22,25 +22,25 @@ inline Raylib::Sound &Raylib::Sound::update(const void *data)
     return *this;
 }
 
-inline Raylib::Sound &Raylib::Sound::stop()
+inline Raylib::Sound &Raylib::Sound::stop(void)
 {
     ::StopSound(_sound);
     return *this;
 }
 
-inline Raylib::Sound &Raylib::Sound::pause()
+inline Raylib::Sound &Raylib::Sound::pause(void)
 {
     ::PauseSound(_sound);
     return *this;
 }
 
-inline Raylib::Sound &Raylib::Sound::resume()
+inline Raylib::Sound &Raylib::Sound::resume(void)
 {
     ::ResumeSound(_sound);
     return *this;
 }
 
-inline bool Raylib::Sound::isPlaying() const
+inline bool Raylib::Sound::isPlaying(void) const
 {
     return ::IsSoundPlaying(_sound);
 }

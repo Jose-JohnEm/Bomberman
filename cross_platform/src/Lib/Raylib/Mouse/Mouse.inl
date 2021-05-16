@@ -25,12 +25,12 @@ inline bool Raylib::Mouse::isButtonUp(const size_t &button) const
     return ::IsMouseButtonUp(button);
 }
 
-inline size_t Raylib::Mouse::getMouseX() const
+inline size_t Raylib::Mouse::getMouseX(void) const
 {
     return ::GetMouseX();
 }
 
-inline size_t Raylib::Mouse::getMouseY() const
+inline size_t Raylib::Mouse::getMouseY(void) const
 {
     return ::GetMouseY();
 }
@@ -50,7 +50,7 @@ inline void Raylib::Mouse::setMouseScale(const float &scaleX, const float &scale
     ::SetMouseScale(scaleX, scaleY);
 }
 
-inline float Raylib::Mouse::getMouseWheelMove() const
+inline float Raylib::Mouse::getMouseWheelMove(void) const
 {
     return ::GetMouseWheelMove();
 }
@@ -60,12 +60,12 @@ inline void Raylib::Mouse::setMouseCursor(const size_t &cursor) const
     ::SetMouseCursor(cursor);
 }
 
-inline size_t Raylib::Mouse::getTouchX() const
+inline size_t Raylib::Mouse::getTouchX(void) const
 {
     return ::GetTouchX();
 }
 
-inline size_t Raylib::Mouse::getTouchY() const
+inline size_t Raylib::Mouse::getTouchY(void) const
 {
     return ::GetTouchY();
 }

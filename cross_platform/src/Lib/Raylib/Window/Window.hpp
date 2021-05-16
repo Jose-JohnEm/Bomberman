@@ -51,22 +51,6 @@ namespace Raylib
          * @brief Close window
          */
         void closeWindow(void) const;
-
-        /**
-         * @brief Draw any Text in parameters
-         *
-         * @param text Text you want to display
-         * @param posX Position on x
-         * @param posX Position on y
-         * @param fontSize Size of your text you want to display
-         */
-        void drawText(const std::string &text, const int &posX = 0, const int &posY = 0, const int &fontSize = 50) const;
-
-        private:
-            int _width;
-            int _height;
-            std::string _name;
-            bool _lateToInit;
     };
 
     #include "Window.inl"

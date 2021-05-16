@@ -54,42 +54,42 @@ namespace Raylib
              *
              * @return A reference to a Sound object
              */
-            void unload() const;
+            void unload(void) const;
 
             /**
              * @brief Play a sound
              *
              * @return A reference to a Sound object
              */
-            Sound &play();
+            Sound &play(void);
 
             /**
              * @brief Stop playing a sound
              *
              * @return A reference to a Sound object
              */
-            Sound &stop();
+            Sound &stop(void);
 
             /**
              * @brief Pause a sound
              *
              * @return A reference to a Sound object
              */
-            Sound &pause();
+            Sound &pause(void);
 
             /**
              * @brief Resume a paused sound
              *
              * @return A reference to a Sound object
              */
-            Sound &resume();
+            Sound &resume(void);
 
             /**
              * @brief Check if a sound is currently playing
              *
              * @return A boolean
              */
-            bool isPlaying() const;
+            bool isPlaying(void) const;
 
             /**
              * @brief Set volume for a sound (1.0 is max level)

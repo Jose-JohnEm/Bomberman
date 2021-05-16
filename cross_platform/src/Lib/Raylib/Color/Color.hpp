@@ -144,163 +144,163 @@ namespace Raylib
              * @param Color A const reference to a Color
              * @return A reference to Color (Color &)
              */
-            ::Color getCStruct() const;
+            ::Color getCStruct(void) const;
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color LightGray();
+            static Color LightGray(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color Gray();
+            static Color Gray(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color DarkGray();
+            static Color DarkGray(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color Yellow();
+            static Color Yellow(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color Gold();
+            static Color Gold(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color Orange();
+            static Color Orange(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color Pink();
+            static Color Pink(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color Red();
+            static Color Red(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color Maroon();
+            static Color Maroon(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color Green();
+            static Color Green(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color Lime();
+            static Color Lime(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color DarkGreen();
+            static Color DarkGreen(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color SkyBlue();
+            static Color SkyBlue(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color Blue();
+            static Color Blue(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color DarkBlue();
+            static Color DarkBlue(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color Purple();
+            static Color Purple(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color Violet();
+            static Color Violet(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color DarkPurple();
+            static Color DarkPurple(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color Beige();
+            static Color Beige(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color Brown();
+            static Color Brown(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color DarkBrown();
+            static Color DarkBrown(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color White();
+            static Color White(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color Black();
+            static Color Black(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color Blank();
+            static Color Blank(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color Magenta();
+            static Color Magenta(void);
 
             /**
              * @brief Return the Color that represents the name of the function
              * @return A Color
              */
-            static Color RayWhite();
+            static Color RayWhite(void);
 
         private:
             /**

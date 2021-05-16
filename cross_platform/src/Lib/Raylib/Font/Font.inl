@@ -5,7 +5,7 @@
 ** Font
 */
 
-void Raylib::Font::unload() const
+void Raylib::Font::unload(void) const
 {
     ::UnloadFont(_font);
 }

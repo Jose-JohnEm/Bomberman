@@ -21,7 +21,7 @@ inline Raylib::Color &Raylib::Color::operator=(const ::Color &color)
     return *this;
 }
 
-inline ::Color Raylib::Color::getCStruct() const
+inline ::Color Raylib::Color::getCStruct(void) const
 {
     return _color;
 }
@@ -99,7 +99,7 @@ inline void Raylib::Color::clearBackground(Raylib::Color color) const //TODO: mo
     ::ClearBackground(color.getCStruct());
 }
 
-inline Raylib::Color Raylib::Color::LightGray()
+inline Raylib::Color Raylib::Color::LightGray(void)
 {
     Raylib::Color col;
 
@@ -107,7 +107,7 @@ inline Raylib::Color Raylib::Color::LightGray()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::Gray()
+inline Raylib::Color Raylib::Color::Gray(void)
 {
     Raylib::Color col;
 
@@ -115,7 +115,7 @@ inline Raylib::Color Raylib::Color::Gray()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::DarkGray()
+inline Raylib::Color Raylib::Color::DarkGray(void)
 {
     Raylib::Color col;
 
@@ -123,7 +123,7 @@ inline Raylib::Color Raylib::Color::DarkGray()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::Yellow()
+inline Raylib::Color Raylib::Color::Yellow(void)
 {
     Raylib::Color col;
 
@@ -131,7 +131,7 @@ inline Raylib::Color Raylib::Color::Yellow()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::Gold()
+inline Raylib::Color Raylib::Color::Gold(void)
 {
     Raylib::Color col;
 
@@ -139,7 +139,7 @@ inline Raylib::Color Raylib::Color::Gold()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::Orange()
+inline Raylib::Color Raylib::Color::Orange(void)
 {
     Raylib::Color col;
 
@@ -147,7 +147,7 @@ inline Raylib::Color Raylib::Color::Orange()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::Pink()
+inline Raylib::Color Raylib::Color::Pink(void)
 {
     Raylib::Color col;
 
@@ -155,7 +155,7 @@ inline Raylib::Color Raylib::Color::Pink()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::Red()
+inline Raylib::Color Raylib::Color::Red(void)
 {
     Raylib::Color col;
 
@@ -163,7 +163,7 @@ inline Raylib::Color Raylib::Color::Red()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::Maroon()
+inline Raylib::Color Raylib::Color::Maroon(void)
 {
     Raylib::Color col;
 
@@ -171,7 +171,7 @@ inline Raylib::Color Raylib::Color::Maroon()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::Green()
+inline Raylib::Color Raylib::Color::Green(void)
 {
     Raylib::Color col;
 
@@ -179,7 +179,7 @@ inline Raylib::Color Raylib::Color::Green()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::Lime()
+inline Raylib::Color Raylib::Color::Lime(void)
 {
     Raylib::Color col;
 
@@ -187,7 +187,7 @@ inline Raylib::Color Raylib::Color::Lime()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::DarkGreen()
+inline Raylib::Color Raylib::Color::DarkGreen(void)
 {
     Raylib::Color col;
 
@@ -195,7 +195,7 @@ inline Raylib::Color Raylib::Color::DarkGreen()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::SkyBlue()
+inline Raylib::Color Raylib::Color::SkyBlue(void)
 {
     Raylib::Color col;
 
@@ -203,7 +203,7 @@ inline Raylib::Color Raylib::Color::SkyBlue()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::Blue()
+inline Raylib::Color Raylib::Color::Blue(void)
 {
     Raylib::Color col;
 
@@ -211,7 +211,7 @@ inline Raylib::Color Raylib::Color::Blue()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::DarkBlue()
+inline Raylib::Color Raylib::Color::DarkBlue(void)
 {
     Raylib::Color col;
 
@@ -219,7 +219,7 @@ inline Raylib::Color Raylib::Color::DarkBlue()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::Purple()
+inline Raylib::Color Raylib::Color::Purple(void)
 {
     Raylib::Color col;
 
@@ -227,7 +227,7 @@ inline Raylib::Color Raylib::Color::Purple()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::Violet()
+inline Raylib::Color Raylib::Color::Violet(void)
 {
     Raylib::Color col;
 
@@ -235,7 +235,7 @@ inline Raylib::Color Raylib::Color::Violet()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::DarkPurple()
+inline Raylib::Color Raylib::Color::DarkPurple(void)
 {
     Raylib::Color col;
 
@@ -243,7 +243,7 @@ inline Raylib::Color Raylib::Color::DarkPurple()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::Beige()
+inline Raylib::Color Raylib::Color::Beige(void)
 {
     Raylib::Color col;
 
@@ -251,7 +251,7 @@ inline Raylib::Color Raylib::Color::Beige()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::Brown()
+inline Raylib::Color Raylib::Color::Brown(void)
 {
     Raylib::Color col;
 
@@ -259,7 +259,7 @@ inline Raylib::Color Raylib::Color::Brown()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::DarkBrown()
+inline Raylib::Color Raylib::Color::DarkBrown(void)
 {
     Raylib::Color col;
 
@@ -267,7 +267,7 @@ inline Raylib::Color Raylib::Color::DarkBrown()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::White()
+inline Raylib::Color Raylib::Color::White(void)
 {
     Raylib::Color col;
 
@@ -275,7 +275,7 @@ inline Raylib::Color Raylib::Color::White()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::Black()
+inline Raylib::Color Raylib::Color::Black(void)
 {
     Raylib::Color col;
 
@@ -283,7 +283,7 @@ inline Raylib::Color Raylib::Color::Black()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::Blank()
+inline Raylib::Color Raylib::Color::Blank(void)
 {
     Raylib::Color col;
 
@@ -291,7 +291,7 @@ inline Raylib::Color Raylib::Color::Blank()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::Magenta()
+inline Raylib::Color Raylib::Color::Magenta(void)
 {
     Raylib::Color col;
 
@@ -299,7 +299,7 @@ inline Raylib::Color Raylib::Color::Magenta()
     return col;
 }
 
-inline Raylib::Color Raylib::Color::RayWhite()
+inline Raylib::Color Raylib::Color::RayWhite(void)
 {
     Raylib::Color col;
 
