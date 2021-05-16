@@ -8,8 +8,36 @@
 #ifndef IGRAPHICAL_HPP_
 #define IGRAPHICAL_HPP_
 
+#include <iostream>
+#include <functional>
+#include <string>
+#include <map>
+#include <sstream>
+#include <vector>
+#include <fstream>
+#include <memory>
+#include <utility>
+#include "../Game/IEntity.hpp"
+
 class IGraphical {
     public:
+
+        enum Scene {
+            /// This scene is the intro of our game
+            INTRO,
+            /// This scene is the main menu of our game
+            MAIN_MENU,
+            /// This is the game scene, it should display the game. It can display game information, buttons
+            /// (restart, go to main menu, pause game).
+            GAME,
+            PLAYMENU,
+            HOWTOMENU,
+            SETTINGSMENU,
+            DRAWMENU,
+            GAMEIN,
+            PAUSEIN,
+            END_GAME
+        };
 
         /**
          * @brief Destroy the IGraphical object
@@ -31,6 +59,63 @@ class IGraphical {
          * @return true if the window should close and false otherwise
          */
         virtual bool shouldCloseWindow() = 0;
+
+        /**
+         * @brief Check if we are in the game scene
+         *
+         * @return true if we are in the game scene and false otherwise
+         */
+        virtual bool isInGameScene() = 0;
+
+        /**
+         * @brief This function sets the list of scores. First element of the pair is the username, the second is the score.
+         *
+         * @param scores A vector of pair (username, score)
+         */
+        virtual void setScores(const std::vector<std::pair<std::string, std::string>> &scores) = 0;
+
+        /**
+         * @brief This function sets the list of bests scores. First element of the pair is the username, the second is the score.
+         *
+         * @param scores A vector of pair (username, score)
+         */
+        virtual void setBestsScores(const std::vector<std::pair<std::string, std::string>> &scores) = 0;
+
+        /**
+         * @brief This is called in a loop when the game is running. This vector contains entities that should be displayed in the game scene.
+         *
+         * @param gameInfos A vector of shared pointer that represent all the entities to display. Ex : Map, Score, UserInfo, Button
+         */
+        virtual void updateGameInfos(const std::vector<std::shared_ptr<IEntity>> &gameInfos) = 0;
+
+        /**
+         * @brief This is called in a loop when the game is running. Sets the current informations about players and their stats. The first element of the pair
+         *  is the category (e.g. Score), the second is the value (e.g. 200).
+         *
+         * @param info A map of all the stats [PlayerName -- (NameOfStat, Value)]...
+         */
+        virtual void setPlayersStats(const std::map<std::string, std::pair<std::string, std::string>> &info) = 0;
+
+        /**
+         * @brief Get the Users Names
+         *
+         * @return A vector of all the users names as a const std::vector<std::string>&
+         */
+        virtual const std::vector<std::string> &getUsersNames() = 0;
+
+        /**
+         * @brief Returns the current scene.
+         *
+         * @return The scene (MAIN_MENU, GAME, END_GAME...), the step where we are in the window
+         */
+        virtual Scene getScene() const = 0;
+
+        /**
+         * @brief Set the current scene.
+         *
+         * @param scene The scene (MAIN_MENU, GAME, END_GAME...), the step where we are in the window
+         */
+        virtual void setScene(Scene scene) = 0;
 
         /**
          * @brief Close window
