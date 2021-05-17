@@ -94,11 +94,6 @@ inline size_t Raylib::Color::getPixelDataSize(const size_t &width, const size_t 
     return ::GetPixelDataSize(width, height, format);
 }
 
-inline void Raylib::Color::clearBackground(Raylib::Color color) const //TODO: move in another class -> Drawing ?
-{
-    ::ClearBackground(color.getCStruct());
-}
-
 inline Raylib::Color Raylib::Color::LightGray(void)
 {
     Raylib::Color col;

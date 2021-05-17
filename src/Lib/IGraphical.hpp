@@ -51,21 +51,21 @@ class IGraphical {
          * @param height Height of the Window
          * @param title Title of the Window
          */
-        virtual void initWindow(const int &width, const int &height, const std::string &title) = 0;
+        virtual void initWindow(const int &width, const int &height, const std::string &title) const = 0;
 
         /**
          * @brief Check if the window should be close
          *
          * @return true if the window should close and false otherwise
          */
-        virtual bool shouldCloseWindow(void) = 0;
+        virtual bool shouldCloseWindow(void) const = 0;
 
         /**
          * @brief Check if we are in the game scene
          *
          * @return true if we are in the game scene and false otherwise
          */
-        virtual bool isInGameScene(void) = 0;
+        virtual bool isInGameScene(void) const = 0;
 
         /**
          * @brief This function sets the list of scores. First element of the pair is the username, the second is the score.
@@ -101,7 +101,7 @@ class IGraphical {
          *
          * @return A vector of all the users names as a const std::vector<std::string>&
          */
-        virtual const std::vector<std::string> &getUsersNames(void) = 0;
+        virtual const std::vector<std::string> &getUserNames(void) const = 0;
 
         /**
          * @brief Returns the current scene.
@@ -115,22 +115,22 @@ class IGraphical {
          *
          * @param scene The scene (MAIN_MENU, GAME, END_GAME...), the step where we are in the window
          */
-        virtual void setScene(Scene scene) = 0;
+        virtual void setScene(const Scene &scene) = 0;
 
         /**
          * @brief Close window
          */
-        virtual void closeWindow(void) = 0;
+        virtual void closeWindow(void) const = 0;
 
         /**
          * @brief Set buffer to Draw textures
          */
-        virtual void beginDrawing(void) = 0;
+        virtual void beginDrawing(void) const = 0;
 
         /**
          * @brief Unset buffer to Draw textures
          */
-        virtual void endDrawing(void) = 0;
+        virtual void endDrawing(void) const = 0;
 
         /**
          * @brief Draw any Text in parameters
@@ -140,7 +140,7 @@ class IGraphical {
          * @param posX Position on y
          * @param fontSize Size of your text you want to display
          */
-        virtual void drawText(const std::string &text, const int &posX, const int &posY, const int &fontSize) = 0;
+        virtual void drawText(const std::string &text, const int &posX, const int &posY, const int &fontSize) const = 0;
 
         /**
          * @brief Draw any Text in parameters
@@ -151,7 +151,7 @@ class IGraphical {
          * @param fontSize Size of your text you want to display
          * @param font Path to font
          */
-        virtual void drawTextFont(const std::string &text, const int &posX, const int &posY, const int &fontSize, const std::string &font, const std::string &color) = 0;
+        virtual void drawTextFont(const std::string &text, const int &posX, const int &posY, const int &fontSize, const std::string &font, const std::string &color) const = 0;
 
         /**
          * @brief This function must display the current scene. It is used in the game loop

@@ -132,13 +132,6 @@ namespace Raylib
             Color getColor(const std::string &color);
 
             /**
-             * @brief Set background color (framebuffer clear color)
-             *
-             * @param color New background color
-             */
-            void clearBackground(Color color) const;
-
-            /**
              * @brief Getter of Color structure (private attribute)
              *
              * @return An Color C structure
