@@ -47,10 +47,14 @@ cmake
 Clone the repository and go inside. Then,
 
 ```
-$ cd build
+$ mkdir build && cd build
 $ cmake .. && cmake --build .
 $ cp bomberman ../ && cd ../
 $ ./bomberman
+
+OR
+
+$ cd build && cmake .. && cmake --build . && cp bomberman ../ && cd ../; ./bomberman
 ```
 
 ## Usage
