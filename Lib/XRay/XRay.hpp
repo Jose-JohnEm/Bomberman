@@ -29,11 +29,9 @@
 #include "Raylib/Timing/Timing.hpp"
 #include "Raylib/Drawing/Drawing.hpp"
 
-namespace Raylib
-{
-    class XRay : public IGraphical {
+class XRay : public IGraphical {
 
-        public:
+    public:
         /**
          * @brief Construct a new Ray Lib object
          */
@@ -169,15 +167,14 @@ namespace Raylib
          */
         void display(void) override;
 
-        private:
-            Raylib::Window _window;                             // Game window
-            std::vector<std::string> _userNames;                // User names
-            std::pair<bool, void (Raylib::XRay::*)()> _intro;   // Intro pointer to function
-            Scene _scene = INTRO;                               // Current scene
-            std::vector<void (Raylib::XRay::*)()> _scenesFunc;  // Array of pointers to function (a scene, a function)
-    };
+    private:
+        Raylib::Window _window;                     // Game window
+        std::vector<std::string> _userNames;        // User names
+        std::pair<bool, void (XRay::*)()> _intro;   // Intro pointer to function
+        Scene _scene = INTRO;                       // Current scene
+        std::vector<void (XRay::*)()> _scenesFunc;  // Array of pointers to function (a scene, a function)
+};
 
-    #include "XRay.inl"
-}
+#include "XRay.inl"
 
 #endif /* !XRAY_HPP_ */

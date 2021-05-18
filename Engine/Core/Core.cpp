@@ -7,19 +7,19 @@
 
 #include "Core.hpp"
 
-Core::Core()
+Engine::Core::Core()
 {
-    std::shared_ptr<IGraphical> lib = std::make_shared<Raylib::XRay>();
+    std::shared_ptr<IGraphical> lib = std::make_shared<XRay>();
 
     _graphical = std::move(lib);
     _graphical->initWindow(1920, 1080, "Bomberman");
 }
 
-Core::~Core()
+Engine::Core::~Core()
 {
 }
 
-void Core::run(void)
+void Engine::Core::run(void)
 {
     while (!_graphical->shouldCloseWindow()) {
         _graphical->display();
@@ -39,7 +39,7 @@ void Core::run(void)
     _graphical->closeWindow();
 }
 
-void Core::saveBestsScores(void)
+void Engine::Core::saveBestsScores(void)
 {
     // Get all scores and sort them in ascending order
     std::vector<std::pair<std::string, std::string>> _scores =  _game->getScores();
@@ -66,7 +66,7 @@ void Core::saveBestsScores(void)
     fileScores.close();
 }
 
-bool Core::endGame(void)
+bool Engine::Core::endGame(void)
 {
     if (_graphical->getScene() != IGraphical::GAME || !_game->isGameOver())
         return false;

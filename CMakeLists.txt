@@ -13,14 +13,21 @@ FIND_PACKAGE(raylib 3.7) # Let CMake search for a raylib-config.cmake
 
 # Generate a list of files
 FILE(GLOB_RECURSE BOMBERMAN_SRCS CONFIGURE_DEPENDS
-    "src/*.cpp"
-    "src/*.hpp"
-    "src/*.inl"
+    "Engine/*.cpp"
+    "Engine/*.hpp"
+    "Engine/*.inl"
+    "Game/*.cpp"
+    "Game/*.hpp"
+    "Game/*.inl"
+    "Lib/*.cpp"
+    "Lib/*.hpp"
+    "Lib/*.inl"
 )
 
 # Set Headers paths
-SET(CORE_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/src/Core")
-SET(LIB_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/src/Lib/")
+SET(ENGINE_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Engine")
+SET(GAME_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Game")
+SET(LIB_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Lib/")
 
 # This is the main part:
 ADD_EXECUTABLE(${PROJECT_NAME} ${BOMBERMAN_SRCS} ${HEADERS_FILES})
@@ -30,7 +37,8 @@ TARGET_LINK_LIBRARIES(${PROJECT_NAME} raylib) # Specify libraries or flags to us
 # Specify include directories to use when compiling a given target
 # PRIVATE keyword ensure a complete compilation beetwin dependencies
 TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PRIVATE
-    ${CORE_HEADERS_PATH}
+    ${ENGINE_HEADERS_PATH}
+    ${GAME_HEADERS_PATH}
     ${LIB_HEADERS_PATH}
 )
 

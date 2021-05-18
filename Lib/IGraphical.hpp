@@ -20,8 +20,8 @@
 #include "../Game/IEntity.hpp"
 
 class IGraphical {
-    public:
 
+    public:
         enum Scene {
             /// This scene is the intro of our game
             INTRO,

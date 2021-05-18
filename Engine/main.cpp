@@ -6,12 +6,12 @@
 */
 
 #include <iostream>
-#include "Core.hpp"
+#include "Core/Core.hpp"
 
 int main(void)
 {
     try {
-        Core core;
+        Engine::Core core;
         core.run();
     } catch (...) {
         std::cerr << "Error !! I catch something !" << std::endl;
