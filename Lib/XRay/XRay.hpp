@@ -163,6 +163,11 @@ class XRay : public IGraphical {
         void displayIntro(void);
 
         /**
+         * @brief Display Opening Scene
+         */
+        void displayOpening(void);
+
+        /**
          * @brief This function must display the current scene. It is used in the game loop
          */
         void display(void) override;

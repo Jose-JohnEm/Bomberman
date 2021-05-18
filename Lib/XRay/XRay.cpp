@@ -43,6 +43,29 @@ void XRay::displayIntro(void) // TODO: To change ?
     _intro.first = false;
 }
 
+
+void XRay::displayOpening(void) // TODO: To change ?
+{
+    Raylib::Timing timing;
+    std::string path;
+    int i = 1;
+
+    for (std::string str = "001"; str != "321";) {
+        path = "resources/cinematic/png/ezgif-frame-" + str + ".png";
+        Raylib::Texture frame(Raylib::Image(path.c_str()));
+        beginDrawing();
+        frame.drawTexture(0, 0, Raylib::Color::White());
+        endDrawing();
+        i++;
+        if (i < 10)
+            str = "00" + std::to_string(i);
+        else if (i < 100)
+            str = "0" + std::to_string(i);
+        else
+            str = std::to_string(i);
+    }
+}
+
 void XRay::displayMenu(void) // TODO: To change ?
 {
     Raylib::Texture head(Raylib::Image("resources/assets/head.png"));

@@ -9,7 +9,8 @@
 
 Engine::Core::Core()
 {
-    std::shared_ptr<IGraphical> lib = std::make_shared<XRay>();
+    //    std::shared_ptr<IGraphical> lib = std::make_shared<Raylib::XRay>();
+    std::shared_ptr<IGraphical> lib = std::make_shared<Irrlicht>();
 
     _graphical = std::move(lib);
     _graphical->initWindow(1920, 1080, "Bomberman");

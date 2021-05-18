@@ -21,6 +21,7 @@
 #include <dirent.h>
 #include <utility>
 #include "../Lib/XRay/XRay.hpp"
+#include "../Lib/Irrlicht/Irrlicht.hpp"
 #include "IGraphical.hpp"
 #include "../Game/IGame.hpp"
 
