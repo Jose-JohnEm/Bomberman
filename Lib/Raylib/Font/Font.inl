@@ -5,23 +5,23 @@
 ** Font
 */
 
-void Raylib::Font::unload(void) const
+inline void Raylib::Font::unload(void) const
 {
     ::UnloadFont(_font);
 }
 
-Raylib::Font &Raylib::Font::operator=(const Font &font)
+inline Raylib::Font &Raylib::Font::operator=(const Font &font)
 {
     set(font);
     return *this;
 }
 
-void Raylib::Font::set(const ::Font &font)
+inline void Raylib::Font::set(const ::Font &font)
 {
     _font = font;
 }
 
-void Raylib::Font::set(const Font &font)
+inline void Raylib::Font::set(const Font &font)
 {
     _font = font._font;
 }
