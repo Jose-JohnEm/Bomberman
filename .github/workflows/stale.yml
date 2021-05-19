@@ -1,3 +1,8 @@
+# Checks for stale issues and pull requests
+#
+#
+#
+
 name: Mark stale issues and pull requests
 
 on:

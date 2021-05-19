@@ -1,3 +1,8 @@
+# linux cmake action
+# upon push and pull request on the develop branch
+# it will ltry to launch the cmake project in a suitable run environment
+# runs on the lastest version of ubuntu
+
 name: Linux CMake
 
 on:

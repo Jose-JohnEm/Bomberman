@@ -1,3 +1,8 @@
+#Greets users who are first time contributors to the repo
+#
+#
+#
+
 name: Greetings
 
 on: [pull_request, issues]
