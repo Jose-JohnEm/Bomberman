@@ -20,21 +20,6 @@ inline void XRay::closeWindow(void) const
     _window.closeWindow();
 }
 
-inline void XRay::drawText(const std::string &text, const int &posX, const int &posY, const int &fontSize) const
-{
-    Raylib::Text tmpText;
-
-    tmpText.drawText(text, posX, posY, fontSize, Raylib::Color::Black());
-}
-
-inline void XRay::drawTextFont(const std::string &text, const int &posX, const int &posY, const int &fontSize, const std::string &font, const std::string &color) const
-{
-    Raylib::Text tmpText;
-    Raylib::Color tmpColor;
-
-    tmpText.drawTextEx(font, text, std::make_pair(posX, posY), fontSize, 1, tmpColor.getColor(color));
-}
-
 inline void XRay::beginDrawing(void) const
 {
     Raylib::Drawing drawing;

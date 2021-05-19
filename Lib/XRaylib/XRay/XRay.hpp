@@ -131,26 +131,15 @@ class XRay : public IGraphical {
         void closeWindow(void) const override;
 
         /**
-         * @brief Draw any Text in parameters
+         * @brief Return true if the mouse is in the region and false otherwise
          *
-         * @param text Text you want to display
-         * @param posX Position on x
-         * @param posX Position on y
-         * @param fontSize Size of your text you want to display
+         * @param x Upper Left Corner
+         * @param y Upper Right Corner
+         * @param x_x Lower Left Corner
+         * @param y_y Lower Left Corner
+         * @return true or false
          */
-        void drawText(const std::string &text, const int &posX, const int &posY, const int &fontSize) const override;
-
-        /**
-         * @brief Draw any Text in parameters
-         *
-         * @param text Text you want to display
-         * @param posX Position on x
-         * @param posX Position on y
-         * @param fontSize Size of your text you want to display
-         * @param font Path to font
-         * @param color A Color
-         */
-        void drawTextFont(const std::string &text, const int &posX, const int &posY, const int &fontSize, const std::string &font, const std::string &color) const override;
+        bool mouseIsInBox(double x, double y, double x_x, double y_y);
 
         /**
          * @brief Display Menu
@@ -160,12 +149,12 @@ class XRay : public IGraphical {
         /**
          * @brief Display Intro Scene
          */
-        void displayIntro(void);
+        void displayTrace(void);
 
         /**
          * @brief Display Opening Scene
          */
-        void displayOpening(void);
+        void displayIntro(void);
 
         /**
          * @brief This function must display the current scene. It is used in the game loop

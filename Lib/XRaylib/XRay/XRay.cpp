@@ -14,14 +14,24 @@ XRay::XRay()
 
     timing.setTargetFPS(120);
     _scenesFunc.push_back(&XRay::displayMenu);
-    _intro = std::make_pair(true, &XRay::displayIntro);
+    _intro = std::make_pair(true, &XRay::displayTrace);
 }
 
 XRay::~XRay()
 {
 }
 
-void XRay::displayIntro(void) // TODO: To change ?
+bool XRay::mouseIsInBox(double x, double y, double x_x, double y_y)
+{
+    Raylib::Mouse mouse;
+
+    double m_x = mouse.getMouseX(), m_y = mouse.getMouseY();
+    if (x < m_x && m_x < x_x && y < m_y && m_y < y_y)
+        return true;
+    return false;
+}
+
+void XRay::displayTrace(void) // TODO: To change ?
 {
     Raylib::Text text;
     Raylib::Timing timing;
@@ -35,34 +45,38 @@ void XRay::displayIntro(void) // TODO: To change ?
         y = 1500 - f;
         beginDrawing();
         drawing.clearBackground(Raylib::Color::White());
-        studio.drawTexture(y, 1080 / 2 - 100, Raylib::Color::White());
         indie.drawTexture(x, 1080 / 2 - 100, Raylib::Color::White());
+        studio.drawTexture(y, 1080 / 2 - 100, Raylib::Color::White());
         endDrawing();
     }
     while (timing.getTime() < 7.5f);
     _intro.first = false;
+    displayIntro();
 }
 
-
-void XRay::displayOpening(void) // TODO: To change ?
+void XRay::displayIntro(void) // TODO: To change ?
 {
     Raylib::Timing timing;
+    Raylib::Mouse mouse;
     std::string path;
     int i = 1;
 
     for (std::string str = "001"; str != "321";) {
-        path = "resources/cinematic/png/ezgif-frame-" + str + ".png";
+        path = "resources/cinematic/Intro/ezgif-frame-" + str + ".png";
+        std::string skip = "resources/assets/";
+        skip += (mouseIsInBox(1760, 950, 1883, 1005) == true) ? "sskip.png" : "skiip.png";
         Raylib::Texture frame(Raylib::Image(path.c_str()));
+        Raylib::Texture skipButton(Raylib::Image(skip.c_str()));
+
         beginDrawing();
         frame.drawTexture(0, 0, Raylib::Color::White());
+        skipButton.drawTexture(1760, 950, Raylib::Color::White());
         endDrawing();
+
         i++;
-        if (i < 10)
-            str = "00" + std::to_string(i);
-        else if (i < 100)
-            str = "0" + std::to_string(i);
-        else
-            str = std::to_string(i);
+        str = (i < 100) ? ((i < 10) ? "00" + std::to_string(i) : "0" + std::to_string(i)) : std::to_string(i);
+        if (mouse.isButtonPressed(0))
+            break;
     }
 }
 
@@ -79,7 +93,7 @@ void XRay::displayMenu(void) // TODO: To change ?
     if (cursor.isCursorOnScreen())
         cursor.hideCursor();
     beginDrawing();
-    head.drawTexture(mouse.getMouseX() - 32, mouse.getMouseY() - 32, Raylib::Color::White());
     title.drawTexture(1920 / 4, 40, Raylib::Color::White());
+    head.drawTexture(mouse.getMouseX() - 32, mouse.getMouseY() - 32, Raylib::Color::White());
     endDrawing();
 }
