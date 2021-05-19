@@ -21,8 +21,8 @@
 #include <dirent.h>
 #include <utility>
 #include "XRay.hpp"
-#include "IGraphical.hpp"
-#include "IGame.hpp"
+#include "Interfaces/IGraphical.hpp"
+#include "Interfaces/IGame.hpp"
 
 namespace Engine 
 {

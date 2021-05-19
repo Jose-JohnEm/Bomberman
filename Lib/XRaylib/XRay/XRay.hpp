@@ -19,7 +19,7 @@
 #include <utility>
 #include <thread>
 #include <chrono>
-#include "IGraphical.hpp"
+#include "Interfaces/IGraphical.hpp"
 #include "Window/Window.hpp"
 #include "Mouse/Mouse.hpp"
 #include "Texture/Texture.hpp"
