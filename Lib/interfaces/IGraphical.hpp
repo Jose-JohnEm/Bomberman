@@ -17,7 +17,7 @@
 #include <fstream>
 #include <memory>
 #include <utility>
-#include "../Game/IEntity.hpp"
+#include "IEntity.hpp"
 
 class IGraphical {
 

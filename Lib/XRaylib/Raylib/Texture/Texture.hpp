@@ -11,8 +11,8 @@
 #include <string>
 #include <iostream>
 #include "raylib.h"
-#include "Raylib/Image/Image.hpp"
-#include "Raylib/Color/Color.hpp"
+#include "Image/Image.hpp"
+#include "Color/Color.hpp"
 
 namespace Raylib
 {

@@ -11,7 +11,7 @@
 #include <string>
 #include <iostream>
 #include "raylib.h"
-#include "Raylib/Color/Color.hpp"
+#include "Color/Color.hpp"
 
 namespace Raylib
 {

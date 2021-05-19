@@ -20,14 +20,14 @@
 #include <thread>
 #include <chrono>
 #include "IGraphical.hpp"
-#include "Raylib/Window/Window.hpp"
-#include "Raylib/Mouse/Mouse.hpp"
-#include "Raylib/Texture/Texture.hpp"
-#include "Raylib/Text/Text.hpp"
-#include "Raylib/Color/Color.hpp"
-#include "Raylib/Cursor/Cursor.hpp"
-#include "Raylib/Timing/Timing.hpp"
-#include "Raylib/Drawing/Drawing.hpp"
+#include "Window/Window.hpp"
+#include "Mouse/Mouse.hpp"
+#include "Texture/Texture.hpp"
+#include "Text/Text.hpp"
+#include "Color/Color.hpp"
+#include "Cursor/Cursor.hpp"
+#include "Timing/Timing.hpp"
+#include "Drawing/Drawing.hpp"
 
 class XRay : public IGraphical {
 
