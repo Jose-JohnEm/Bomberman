@@ -18,7 +18,6 @@
 #include <sstream>
 #include <istream>
 #include <algorithm>
-#include <dirent.h>
 #include <utility>
 #include "XRay.hpp"
 #include "Interfaces/IGraphical.hpp"
