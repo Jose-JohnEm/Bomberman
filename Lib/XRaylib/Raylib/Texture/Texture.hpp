@@ -13,6 +13,7 @@
 #include "raylib.h"
 #include "Image/Image.hpp"
 #include "Color/Color.hpp"
+#include "Rectangle/Rectangle.hpp"
 
 namespace Raylib
 {
@@ -52,6 +53,30 @@ namespace Raylib
              */
             Texture &drawTexture(const int &posX, const int &posY, const Color &tint = Color::Black());
 
+            /**
+             * @brief Set texture and rectangle to be used on shapes drawing
+             *
+             * @param texture A Texture Object
+             * @param source A Rectangle Object
+             */
+            void SetShapesTexture(Raylib::Texture const &texture, Rectangle const &source) const;
+
+            /**
+             * @brief Load texture from file into GPU memory (VRAM)
+             *
+             * @param texture A Texture Object
+             * @param source A Rectangle Object
+             * @return A reference to the texture - Texture&
+             */
+            Texture2D &LoadTexture(const char *fileName) const;
+
+            /**
+             * @brief Load texture from image data
+             *
+             * @param image A const reference to the Image Object
+             * @return A reference to the texture - Texture&
+             */
+            Texture2D &LoadTextureFromImage(Raylib::Image const &image);
         private:
             /**
              * @brief Set Texture
