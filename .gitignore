@@ -5,3 +5,4 @@ Dockerfile
 entrypoint.sh
 bomberman
 bomberman.exe
+.DS_Store
