@@ -52,6 +52,13 @@ namespace Raylib
              */
             ~Image();
 
+             /**
+             * @brief Get pixel data from screen buffer and return an Image (screenshot)
+             *
+             * @return A Image Class
+             */
+            Image getScreenData(void);
+
             /**
              * @brief Load image from file into CPU memory (RAM)
              *

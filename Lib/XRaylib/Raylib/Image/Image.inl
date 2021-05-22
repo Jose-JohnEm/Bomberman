@@ -5,6 +5,12 @@
 ** Image
 */
 
+inline Raylib::Image Raylib::Image::getScreenData(void)
+{
+    _image = ::GetScreenData();
+    return *this;
+}
+
 inline Raylib::Image Raylib::Image::loadImage(const std::string &fileName)
 {
     _image = ::LoadImage(fileName.c_str());
