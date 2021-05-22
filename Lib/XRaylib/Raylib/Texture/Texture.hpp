@@ -14,6 +14,7 @@
 #include "Image/Image.hpp"
 #include "Color/Color.hpp"
 #include "Rectangle/Rectangle.hpp"
+#include "RenderTexture/RenderTexture.hpp"
 
 namespace Raylib
 {
@@ -44,6 +45,13 @@ namespace Raylib
             Texture &operator=(const Texture &texture);
 
             /**
+             * @brief Getter of Texture structure (private attribute)
+             *
+             * @return An Texture C structure
+             */
+            ::Texture getCStruct(void) const;
+
+            /**
              * @brief Set texture and rectangle to be used on shapes drawing
              *
              * @param texture A Texture Object
@@ -58,7 +66,7 @@ namespace Raylib
              * @param source A Rectangle Object
              * @return A reference to the texture - Texture&
              */
-            Texture &loadTexture(const char *fileName) const;
+            Texture &loadTexture(const char *fileName);
 
             /**
              * @brief Load texture from image data
@@ -66,7 +74,7 @@ namespace Raylib
              * @param image A const reference to the Image Object
              * @return A reference to the texture - Texture&
              */
-            Texture &loadTextureFromImage(Image const &image) const;
+            Texture &loadTextureFromImage(Image const &image);
 
             /**
              * @brief Initializes render texture for drawing
@@ -81,15 +89,6 @@ namespace Raylib
             void endTextureMode(void) const;
 
             /**
-             * @brief Set shader uniform value for texture (sampler2d)
-             *
-             * @param shader A const reference to the Shader Object
-             * @param locIndex A const reference to a Int
-             * @param texture A const reference to the Texture Object
-             */
-            void setShaderValueTexture(Shader const &shader, int const &locIndex, Texture const &texture) const;
-
-            /**
              * @brief Load cubemap from image, multiple image cubemap layouts supported
              *
              * @param image A const reference to the Image Object
@@ -97,30 +96,14 @@ namespace Raylib
              * @param texture A const reference to the Texture Object
              * @return A TextureCubemap
              */
-            TextureCubemap loadTextureCubemap(Image const &image, int const &layout) const;
+            TextureCubemap loadTextureCubemap(Image const &image, int const &layout);
  
-             /**
-             * @brief Load texture for rendering (framebuffer)
-             *
-             * @param width A const reference to a Int
-             * @param height A const reference to a Int
-             * @return A RenderTexture
-             */
-            RenderTexture loadRenderTexture(int const &width, int const &height) const;
-
              /**
              * @brief Unload texture from GPU memory (VRAM)
              *
              * @param texture A const reference to a Texture
              */
             void unloadTexture(Texture const &texture) const;
-
-             /**
-             * @brief Unload render texture from GPU memory (VRAM)
-             *
-             * @param texture A const reference to a Texture
-             */
-            void unloadRenderTexture(RenderTexture const &target) const;
 
              /**
              * @brief Update GPU texture with new data
@@ -262,7 +245,7 @@ namespace Raylib
              * @param tint A const reference to a Color
              * @return A reference to the texture - Texture&
              */
-            void drawTextureNPatch(Texture const &texture, NPatchInfo const &nPatchInfo, Rectangle const &dest, Vector2 const &origin, float const &rotation, Color const &tint = Color::Black());
+            void drawTextureNPatch(Texture const &texture, NPatchInfo const &nPatchInfo, Rectangle const &dest, Vector2 const &origin, float const &rotation, Color const &tint = Color::Black()) const;
 
             /**
              * @brief Draw a textured polygon
@@ -274,7 +257,7 @@ namespace Raylib
              * @param tint A const reference to a Color
              * @return A reference to the texture - Texture&
              */
-            void drawTexturePoly(Texture texture, Vector2 center, Vector2 *points, Vector2 *texcoords, int pointsCount, Color tint);
+            void drawTexturePoly(Texture texture, Vector2 center, Vector2 *points, Vector2 *texcoords, int pointsCount, Color tint) const;
 
         private:
             /**
@@ -293,6 +276,8 @@ namespace Raylib
 
             ::Texture _texture; // Texture C structure
     };
+
+    typedef Texture TextureCubemap;
 
     #include "Texture.inl"
 }
