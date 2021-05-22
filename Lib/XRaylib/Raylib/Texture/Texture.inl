@@ -5,6 +5,16 @@
 ** Texture
 */
 
+inline void Raylib::Texture::set(const ::Texture &texture)
+{
+    _texture = texture;
+}
+
+inline void Raylib::Texture::set(const Texture &texture)
+{
+    _texture = texture._texture;
+}
+
 inline Raylib::Texture &Raylib::Texture::operator=(const Texture &texture)
 {
     set(texture);
@@ -62,36 +72,32 @@ inline Raylib::TextureCubemap Raylib::Texture::loadTextureCubemap(Image const &i
 
 inline void Raylib::Texture::updateTexture(Texture const &texture, const void *pixels) const
 {
-
+    ::UpdateTexture(texture._texture, pixels);
 }
 
 inline void Raylib::Texture::updateTextureRec(Texture const &texture, Rectangle const &rec, const void *pixels) const
 {
-
+    ::UpdateTextureRec(texture._texture, rec.getCStruct(), pixels);
 }
 
 inline Raylib::Image Raylib::Texture::getTextureData(Texture const &texture) const
 {
-
-}
-
-inline Raylib::Image Raylib::Texture::getScreenData(void) const
-{
-
+    ::GetTextureData(texture._texture);
 }
 
 inline void Raylib::Texture::genTextureMipmaps(Texture const *texture) const
 {
-    
+    ::GenTextureMipmaps(&texture->getCStruct());
 }
 
 inline void Raylib::Texture::setTextureFilter(Texture const &texture, int const &filter) const
 {
-
+    ::SetTextureFilter(texture._texture, filter);
 }
+
 inline void Raylib::Texture::setTextureWrap(Texture const &texture, int const &wrap) const
 {
-
+    ::SetTextureWrap(texture._texture, wrap);
 }
 
 inline Raylib::Texture Raylib::Texture::drawTexture(const int &posX, const int &posY, const Color &tint = Color::Black()) const
@@ -102,50 +108,40 @@ inline Raylib::Texture Raylib::Texture::drawTexture(const int &posX, const int &
 
 inline void Raylib::Texture::drawTextureV(Texture const &texture, Vector2 const &position, Color const &tint = Color::Black()) const
 {
-
+    ::DrawTextureV(texture._texture, position, tint.getCStruct());
 }
 
 inline void Raylib::Texture::drawTextureEx(Texture const &texture, Vector2 const &position, float const &rotation, float const &scale, Color const &tint = Color::Black()) const
 {
-
+    ::DrawTextureEx(texture._texture, position, rotation, scale, tint.getCStruct());
 }
 
 inline void Raylib::Texture::drawTextureRec(Texture const &texture, Rectangle const &source, Vector2 const &position, Color const &tint = Color::Black()) const
 {
-
+    ::DrawTextureRec(texture._texture, source.getCStruct(), position, tint.getCStruct());
 }
 
 inline void Raylib::Texture::drawTextureQuad(Texture const &texture, Vector2 const &tiling, Vector2 const &offset, Rectangle const &quad, Color const &tint = Color::Black()) const
 {
-
+    ::DrawTextureQuad(texture._texture, tiling, offset, quad.getCStruct(), tint.getCStruct());
 }
 
 inline void Raylib::Texture::drawTextureTiled(Texture const &texture, Rectangle const &source, Rectangle const &dest, Vector2 const &origin, float const &rotation, float const &scale, Color const &tint = Color::Black()) const
 {
-
+    ::DrawTextureTiled(texture._texture, source.getCStruct(), dest.getCStruct(), origin, rotation, scale, tint.getCStruct());
 }
 
 inline void Raylib::Texture::drawTexturePro(Texture const &texture, Rectangle const &source, Rectangle const &dest, Vector2 const &origin, float const &rotation, Color const &tint = Color::Black()) const
 {
-
+    ::DrawTexturePro(texture._texture, source.getCStruct(), dest.getCStruct(), origin, rotation, tint.getCStruct());
 }
 
 inline void Raylib::Texture::drawTextureNPatch(Texture const &texture, NPatchInfo const &nPatchInfo, Rectangle const &dest, Vector2 const &origin, float const &rotation, Color const &tint = Color::Black()) const
 {
-
+    ::DrawTextureNPatch(texture._texture, nPatchInfo, dest.getCStruct(), origin, rotation, tint.getCStruct());
 }
 
-inline void drawTexturePoly(Texture texture, Vector2 center, Vector2 *points, Vector2 *texcoords, int pointsCount, Color tint)
+inline void Raylib::Texture::drawTexturePoly(Texture texture, Vector2 center, Vector2 *points, Vector2 *texcoords, int pointsCount, Color tint) const
 {
-
-}
-
-inline void Raylib::Texture::set(const ::Texture &texture)
-{
-
-}
-
-inline void Raylib::Texture::set(const Texture &texture)
-{
-
+    ::DrawTexturePoly(texture._texture, center, points, texcoords, pointsCount, tint.getCStruct());
 }

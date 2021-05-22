@@ -7,6 +7,16 @@
 
 #include "RenderTexture.hpp"
 
+inline void Raylib::RenderTexture::set(const ::RenderTexture &rendertexture)
+{
+    _rendertexture = rendertexture;
+}
+
+inline void Raylib::RenderTexture::set(const RenderTexture &rendertexture)
+{
+    _rendertexture = rendertexture._rendertexture;
+}
+
 inline Raylib::RenderTexture &Raylib::RenderTexture::operator=(const RenderTexture &rendertexture)
 {
     set(rendertexture);
@@ -37,7 +47,6 @@ inline void Raylib::RenderTexture::EndTextureMode(void) const
 {
     ::EndTextureMode();
 }
-
 
 inline Raylib::RenderTexture Raylib::RenderTexture::loadRenderTexture(int const &width, int const &height)
 {

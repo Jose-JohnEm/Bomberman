@@ -130,13 +130,6 @@ namespace Raylib
             Image getTextureData(Texture const &texture) const;
 
              /**
-             * @brief Get pixel data from screen buffer and return an Image (screenshot)
-             *
-             * @return A Image Class
-             */
-            Image getScreenData(void) const;
-
-             /**
              * @brief Generate GPU mipmaps for a texture
              *
              * @param texture A const pointer to a Texture
