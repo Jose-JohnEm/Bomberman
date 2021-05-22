@@ -7,16 +7,6 @@
 
 #include "RenderTexture.hpp"
 
-inline void Raylib::RenderTexture::set(const ::RenderTexture &rendertexture)
-{
-    _rendertexture = rendertexture;
-}
-
-inline void Raylib::RenderTexture::set(const RenderTexture &rendertexture)
-{
-    _rendertexture = rendertexture._rendertexture;
-}
-
 inline Raylib::RenderTexture &Raylib::RenderTexture::operator=(const RenderTexture &rendertexture)
 {
     set(rendertexture);

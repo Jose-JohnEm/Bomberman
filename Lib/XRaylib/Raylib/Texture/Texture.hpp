@@ -94,9 +94,9 @@ namespace Raylib
              * @param image A const reference to the Image Object
              * @param layout A const reference to a Int
              * @param texture A const reference to the Texture Object
-             * @return A TextureCubemap
+             * @return A Texture
              */
-            TextureCubemap loadTextureCubemap(Image const &image, int const &layout);
+            Texture loadTextureCubemap(Image const &image, int const &layout);
  
              /**
              * @brief Unload texture from GPU memory (VRAM)
@@ -120,14 +120,6 @@ namespace Raylib
              * @param texture A const reference to a Texture
              */
             void updateTextureRec(Texture const &texture, Rectangle const &rec, const void *pixels) const;
-
-             /**
-             * @brief Get pixel data from GPU texture and return an Image
-             *
-             * @param texture A const reference to a Texture
-             * @return A Image Class
-             */
-            Image getTextureData(Texture const &texture) const;
 
              /**
              * @brief Generate GPU mipmaps for a texture
@@ -159,7 +151,7 @@ namespace Raylib
              * @param tint A Color
              * @return A reference to the texture - Texture&
              */
-            Texture drawTexture(const int &posX, const int &posY, const Color &tint = Color::Black()) const;
+            Texture drawTexture(const int &posX, const int &posY, const Color &tint) const;
 
             /**
              * @brief Draw a Texture with position defined as Vector2
@@ -168,7 +160,7 @@ namespace Raylib
              * @param position A const reference to a Vector2
              * @param tint A const reference to a Color
              */
-            void drawTextureV(Texture const &texture, Vector2 const &position, Color const &tint = Color::Black()) const;
+            void drawTextureV(Texture const &texture, Vector2 const &position, Color const &tint) const;
 
             /**
              * @brief Draw a Texture with extended parameters
@@ -179,7 +171,7 @@ namespace Raylib
              * @param scale A const reference to a float
              * @param tint A const reference to a Color
              */
-            void drawTextureEx(Texture const &texture, Vector2 const &position, float const &rotation, float const &scale, Color const &tint = Color::Black()) const;
+            void drawTextureEx(Texture const &texture, Vector2 const &position, float const &rotation, float const &scale, Color const &tint) const;
 
             /**
              * @brief Draw a part of a texture defined by a rectangle
@@ -190,7 +182,7 @@ namespace Raylib
              * @param scale A const reference to a float
              * @param tint A const reference to a Color
              */
-            void drawTextureRec(Texture const &texture, Rectangle const &source, Vector2 const &position, Color const &tint = Color::Black()) const;
+            void drawTextureRec(Texture const &texture, Rectangle const &source, Vector2 const &position, Color const &tint) const;
 
             /**
              * @brief Draw texture quad with tiling and offset parameters
@@ -201,7 +193,7 @@ namespace Raylib
              * @param quad A const reference to a Rectangle
              * @param tint A const reference to a Color
              */
-            void drawTextureQuad(Texture const &texture, Vector2 const &tiling, Vector2 const &offset, Rectangle const &quad, Color const &tint = Color::Black()) const;
+            void drawTextureQuad(Texture const &texture, Vector2 const &tiling, Vector2 const &offset, Rectangle const &quad, Color const &tint) const;
 
             /**
              * @brief Draw part of a texture (defined by a rectangle) with rotation and scale tiled into dest.
@@ -214,7 +206,7 @@ namespace Raylib
              * @param scale A const reference to a float
              * @param tint A const reference to a Color
              */
-            void drawTextureTiled(Texture const &texture, Rectangle const &source, Rectangle const &dest, Vector2 const &origin, float const &rotation, float const &scale, Color const &tint = Color::Black()) const;
+            void drawTextureTiled(Texture const &texture, Rectangle const &source, Rectangle const &dest, Vector2 const &origin, float const &rotation, float const &scale, Color const &tint) const;
 
             /**
              * @brief Draw a part of a texture defined by a rectangle with 'pro' parameters
@@ -226,7 +218,7 @@ namespace Raylib
              * @param tint A const reference to a Color
              * @return A reference to the texture - Texture&
              */
-            void drawTexturePro(Texture const &texture, Rectangle const &source, Rectangle const &dest, Vector2 const &origin, float const &rotation, Color const &tint = Color::Black()) const;
+            void drawTexturePro(Texture const &texture, Rectangle const &source, Rectangle const &dest, Vector2 const &origin, float const &rotation, Color const &tint) const;
 
             /**
              * @brief Draws a texture (or part of it) that stretches or shrinks nicely
@@ -238,7 +230,7 @@ namespace Raylib
              * @param tint A const reference to a Color
              * @return A reference to the texture - Texture&
              */
-            void drawTextureNPatch(Texture const &texture, NPatchInfo const &nPatchInfo, Rectangle const &dest, Vector2 const &origin, float const &rotation, Color const &tint = Color::Black()) const;
+            void drawTextureNPatch(Texture const &texture, NPatchInfo const &nPatchInfo, Rectangle const &dest, Vector2 const &origin, float const &rotation, Color const &tint) const;
 
             /**
              * @brief Draw a textured polygon
@@ -269,8 +261,6 @@ namespace Raylib
 
             ::Texture _texture; // Texture C structure
     };
-
-    typedef Texture TextureCubemap;
 
     #include "Texture.inl"
 }

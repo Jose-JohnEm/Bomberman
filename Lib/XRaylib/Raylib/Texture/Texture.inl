@@ -5,16 +5,6 @@
 ** Texture
 */
 
-inline void Raylib::Texture::set(const ::Texture &texture)
-{
-    _texture = texture;
-}
-
-inline void Raylib::Texture::set(const Texture &texture)
-{
-    _texture = texture._texture;
-}
-
 inline Raylib::Texture &Raylib::Texture::operator=(const Texture &texture)
 {
     set(texture);
@@ -63,7 +53,7 @@ inline void Raylib::Texture::endTextureMode(void) const
     ::EndTextureMode();
 }
 
-inline Raylib::TextureCubemap Raylib::Texture::loadTextureCubemap(Image const &image, int const &layout)
+inline Raylib::Texture Raylib::Texture::loadTextureCubemap(Image const &image, int const &layout)
 {
     _texture = ::LoadTextureCubemap(image.getCStruct(), layout);
     return *this;
@@ -80,14 +70,11 @@ inline void Raylib::Texture::updateTextureRec(Texture const &texture, Rectangle 
     ::UpdateTextureRec(texture._texture, rec.getCStruct(), pixels);
 }
 
-inline Raylib::Image Raylib::Texture::getTextureData(Texture const &texture) const
-{
-    ::GetTextureData(texture._texture);
-}
-
 inline void Raylib::Texture::genTextureMipmaps(Texture const *texture) const
 {
-    ::GenTextureMipmaps(&texture->getCStruct());
+    ::Texture c_texture = texture->getCStruct();
+
+    ::GenTextureMipmaps(&c_texture);
 }
 
 inline void Raylib::Texture::setTextureFilter(Texture const &texture, int const &filter) const

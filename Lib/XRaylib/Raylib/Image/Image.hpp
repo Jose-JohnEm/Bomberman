@@ -145,6 +145,14 @@ namespace Raylib
              */
             ::Image getCStruct(void) const;
 
+             /**
+             * @brief Get pixel data from GPU texture and return an Image
+             *
+             * @param texture A const reference to a Texture
+             * @return A Image Class
+             */
+            //Image getTextureData(Texture const &texture) const;
+
         private:
             /**
              * @brief Set Image

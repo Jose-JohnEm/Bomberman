@@ -5,6 +5,21 @@
 ** Image
 */
 
+inline ::Image Raylib::Image::getCStruct(void) const
+{
+    return _image;
+}
+
+inline void Raylib::Image::set(const ::Image &image)
+{
+    _image = image;
+}
+
+inline void Raylib::Image::set(const Image &image)
+{
+    _image = image._image;
+}
+
 inline Raylib::Image Raylib::Image::getScreenData(void)
 {
     _image = ::GetScreenData();
@@ -56,21 +71,6 @@ inline bool Raylib::Image::exportImageAsCode(const Image &image, const std::stri
 inline int Raylib::Image::getPixelDataSize(void) const
 {
     return ::GetPixelDataSize(_image.width, _image.height, _image.format);
-}
-
-inline ::Image Raylib::Image::getCStruct(void) const
-{
-    return _image;
-}
-
-inline void Raylib::Image::set(const ::Image &image)
-{
-    _image = image;
-}
-
-inline void Raylib::Image::set(const Image &image)
-{
-    _image = image._image;
 }
 
 inline Raylib::Image &Raylib::Image::operator=(const Image &image)

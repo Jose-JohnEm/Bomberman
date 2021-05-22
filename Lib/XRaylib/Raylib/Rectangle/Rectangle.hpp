@@ -13,8 +13,6 @@
 #include "raylib.h"
 #include "Color/Color.hpp"
 #include "Image/Image.hpp"
-#include "Texture/Texture.hpp"
-
 
 namespace Raylib
 {
@@ -39,22 +37,22 @@ namespace Raylib
              */
             ~Rectangle();
             ::Rectangle getCStruct(void) const;
-            void drawRectangle(int const &posX, int const &posY, int const &width, int const &height, Raylib::Color const &color) const;
-            void drawRectangleV(::Vector2 const &position, ::Vector2 const &size, Raylib::Color const &color) const;
-            void drawRectangleRec(Raylib::Rectangle const &rec, Raylib::Color const &color) const;
-            void drawRectanglePro(Raylib::Rectangle const &rec, ::Vector2 const &origin, float const &rotation, Raylib::Color const &color) const;
-            void drawRectangleGradientV(int const &posX, int const &posY, int const &width, int const &height, Raylib::Color const &color1, Raylib::Color const &color2) const;
-            void drawRectangleGradientH(int const &posX, int const &posY, int const &width, int const &height, Raylib::Color const &color1, Raylib::Color const &color2) const;
-            void drawRectangleGradientEx(Raylib::Rectangle const &rec, Raylib::Color const &col1, Raylib::Color const &col2, Raylib::Color const &col3, Raylib::Color const &col4) const;
-            void drawRectangleLines(int const &posX, int const &posY, int const &width, int const &height, Raylib::Color const &color) const;
-            void drawRectangleLinesEx(Raylib::Rectangle const &rec, int const &lineThick, Raylib::Color const &color) const;
-            void drawRectangleRounded(Raylib::Rectangle const &rec, float const &roundness, int const &segments, Raylib::Color const &color) const;
-            void drawRectangleRoundedLines(Raylib::Rectangle const &rec, float const &roundness, int const &segments, int const &lineThick, Raylib::Color const &color) const;
-            void imageDrawRectangle(Raylib::Image *dst, int const &posX, int const &posY, int const &width, int const &height, Raylib::Color const &color) const;
-            void imageDrawRectangleV(Raylib::Image *dst, ::Vector2 const &position, ::Vector2 const &size, Raylib::Color const &color) const;
-            void imageDrawRectangleRec(Raylib::Image *dst, Raylib::Rectangle const &rec, Raylib::Color const &color) const;
-            void imageDrawRectangleLines(Raylib::Image *dst, Raylib::Rectangle const &rec, int const &thick, Raylib::Color const &color) const;
-            ::Rectangle getImageAlphaBorder(Raylib::Image const &image, float const &threshold) const;
+            void drawRectangle(int const &posX, int const &posY, int const &width, int const &height, Color const &color) const;
+            void drawRectangleV(::Vector2 const &position, ::Vector2 const &size, Color const &color) const;
+            void drawRectangleRec(Rectangle const &rec, Color const &color) const;
+            void drawRectanglePro(Rectangle const &rec, ::Vector2 const &origin, float const &rotation, Color const &color) const;
+            void drawRectangleGradientV(int const &posX, int const &posY, int const &width, int const &height, Color const &color1, Color const &color2) const;
+            void drawRectangleGradientH(int const &posX, int const &posY, int const &width, int const &height, Color const &color1, Color const &color2) const;
+            void drawRectangleGradientEx(Rectangle const &rec, Color const &col1, Color const &col2, Color const &col3, Color const &col4) const;
+            void drawRectangleLines(int const &posX, int const &posY, int const &width, int const &height, Color const &color) const;
+            void drawRectangleLinesEx(Rectangle const &rec, int const &lineThick, Color const &color) const;
+            void drawRectangleRounded(Rectangle const &rec, float const &roundness, int const &segments, Color const &color) const;
+            void drawRectangleRoundedLines(Rectangle const &rec, float const &roundness, int const &segments, int const &lineThick, Color const &color) const;
+            void imageDrawRectangle(Image *dst, int const &posX, int const &posY, int const &width, int const &height, Color const &color) const;
+            void imageDrawRectangleV(Image *dst, ::Vector2 const &position, ::Vector2 const &size, Color const &color) const;
+            void imageDrawRectangleRec(Image *dst, Rectangle const &rec, Color const &color) const;
+            void imageDrawRectangleLines(Image *dst, Rectangle const &rec, int const &thick, Color const &color) const;
+            ::Rectangle getImageAlphaBorder(Image const &image, float const &threshold) const;
         private:
             /**
              * @brief Set Rectangle
