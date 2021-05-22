@@ -1,7 +1,7 @@
 # Windows cmake action
-# upon push and pull request on the develop branch
-# it will ltry to launch the cmake project in a suitable run environment
-# runs two instances on both windows 19 and windows 16
+# Upon push and pull request on the develop branch
+# It will ltry to launch the cmake project in a suitable run environment
+# Runs two instances on both windows 19 and windows 16
 
 name: Windows CMake
 
