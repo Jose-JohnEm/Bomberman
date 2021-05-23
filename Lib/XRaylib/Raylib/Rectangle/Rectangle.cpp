@@ -22,6 +22,11 @@ Raylib::Rectangle::Rectangle(::Vector2 size)
     ::Rectangle _rectangle = {0, 0, size.x, size.y};
 }
 
+Raylib::Rectangle::Rectangle(::Rectangle rec)
+: _rectangle(rec)
+{
+
+}
 
 Raylib::Rectangle::~Rectangle()
 {

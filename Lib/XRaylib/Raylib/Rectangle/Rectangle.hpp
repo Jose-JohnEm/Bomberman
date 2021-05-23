@@ -30,6 +30,7 @@ namespace Raylib
             Rectangle(float x = 0, float y = 0, float width = 0, float height = 0);
             Rectangle(::Vector2 position, ::Vector2 size);
             Rectangle(::Vector2 size);
+            Rectangle(::Rectangle rec);
             Rectangle &operator=(const Rectangle &rectangle);
 
             /**
