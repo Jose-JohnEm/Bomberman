@@ -15,6 +15,6 @@ if (NOT ressources_POPULATED)
     FetchContent_Populate(ressources)
 endif ()
 
-file(RENAME ${ressources_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/r-test)
+file(RENAME ${ressources_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/resources)
 
 message(VERBOSE "End")
