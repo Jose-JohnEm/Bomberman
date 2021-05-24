@@ -158,7 +158,7 @@ class XRay : public IGraphical {
         /**
          * @brief Display Main Menu
          */
-        void displayMenu(void);
+        void displayMenuScene(void);
 
         /**
          * @brief Display Play Scene
@@ -168,7 +168,7 @@ class XRay : public IGraphical {
         /**
          * @brief Display How to play Scene
          */
-        void howToMenu(void);
+        void displayHowToPlayScene(void);
 
         /**
          * @brief Display Settings Scene
@@ -178,7 +178,7 @@ class XRay : public IGraphical {
         /**
          * @brief Quit program
          */
-        void quit(void);
+        void quitGame(void);
 
         /**
          * @brief Display Settings Scene
@@ -193,7 +193,7 @@ class XRay : public IGraphical {
         /**
          * @brief Scene for Maps
          */
-        void mapScene(void);
+        void displayInGameScene(void);
 
         /**
          * @brief Display Intro Scene

@@ -33,7 +33,6 @@ class IGraphical {
             PLAYER_CHOICE,
             LOAD_GAME,
             IN_GAME,
-            PAUSE_PAUSE,
             END_GAME
         };
 

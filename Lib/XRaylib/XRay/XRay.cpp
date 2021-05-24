@@ -14,14 +14,14 @@ XRay::XRay()
     setResources();
 
     // Scenes
-    _scenesFunc.push_back(&XRay::displayMenu);
+    _scenesFunc.push_back(&XRay::displayMenuScene);
     _scenesFunc.push_back(&XRay::displayGameModeScene);
-    _scenesFunc.push_back(&XRay::howToMenu);
+    _scenesFunc.push_back(&XRay::displayHowToPlayScene);
     _scenesFunc.push_back(&XRay::displaySettingsScene);
     _scenesFunc.push_back(&XRay::displayPlayerChoiceScene);
-    _scenesFunc.push_back(&XRay::mapScene);
     _scenesFunc.push_back(&XRay::displayLoadGameScene);
-    _scenesFunc.push_back(&XRay::quit);
+    _scenesFunc.push_back(&XRay::displayInGameScene);
+    _scenesFunc.push_back(&XRay::quitGame);
 
     // Intro settings
     _intro = std::make_pair(true, &XRay::displayStudio);
@@ -77,7 +77,7 @@ std::vector<size_t> XRay::createBox(const size_t &upperLeftCorner, const size_t 
     return box;
 }
 
-void XRay::mapScene(void)
+void XRay::displayInGameScene(void)
 {
     _scene = IN_GAME;
     beginDrawing();
@@ -96,7 +96,7 @@ void XRay::setTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> &
     }
 }
 
-void XRay::updateTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> textBox)
+void XRay::updateTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> textBox) // Remmove good player
 {
     for (size_t i = 0; i < mouseOnText.size(); i++) {
         mouseOnText[i] = (::CheckCollisionPointRec({(float)_mouse.getMouseX(), (float)_mouse.getMouseY()}, textBox[i])) ? true : false;
@@ -212,25 +212,32 @@ void XRay::displayPlayerChoiceScene(void) // TODO: To change ?
 
     setAddBox(removePos, nextTab, prevTab, a);
 
-//    mapScene();
+//    displayInGameScene();
 }
 
-void XRay::displayLoadGameScene(void) // TODO: To change ?
+void XRay::displayLoadGameScene(void)
 {
-    Raylib::Text file;
-
+    // Set scene
     _scene = LOAD_GAME;
+
+    // Text object
+    Raylib::Text text;
+    // Vertical axis
+    size_t ordinate = 300;
+
+    // Draw scene
     beginDrawing();
     _resources.at(LOADSCENE)->drawTexture(0, 0, Raylib::Color::White());
-    file.drawText("BACKUPS", 230, 210, 65, Raylib::Color::Black());
-    for (size_t i = 0, y = 300; i < _backups.size(); i++, y += 100) {
-        _resources.at(BRANCH)->drawTexture(150, y, Raylib::Color::White());
-        file.drawText(_backups[i].substr(0, _backups[i].find('.')), 300, y + 20, 65, Raylib::Color::Black());
+    text.drawText("BACKUPS", 230, 210, 65, Raylib::Color::Black());
+    for (const std::string &backup : _backups) {
+        _resources.at(BRANCH)->drawTexture(150, ordinate, Raylib::Color::White());
+        text.drawText(backup.substr(0, backup.find('.')), 300, ordinate + 20, 65, Raylib::Color::Black());
+        ordinate += 100;
     }
     endDrawing();
 }
-//TODO: pointer to function between drawing method
-void XRay::displayGameModeScene(void) // TODO: To change ?
+
+void XRay::displayGameModeScene(void)
 {
     // Set scene
     _scene = GAME_MODE;
@@ -257,14 +264,14 @@ void XRay::displayGameModeScene(void) // TODO: To change ?
 
     // Go to another scene according to mouse position
     if (goBack && _mouse.isButtonPressed(0))
-        displayMenu();
+        displayMenuScene();
     else if (goNewGame && _mouse.isButtonPressed(0))
         displayPlayerChoiceScene();
     else if (goLoadGame && _mouse.isButtonPressed(0))
         displayLoadGameScene();
 }
 
-void XRay::howToMenu(void) // TODO: To change ?
+void XRay::displayHowToPlayScene(void) // TODO: To change ?
 {
     std::string howto = std::string("resources/assets/") + std::string((mouseIsInBox(700, 600, 815, 665)) ? "HOWTO.png" : "howto.png");
     std::string back = std::string("resources/assets/") + std::string((mouseIsInBox(20, 1000, 280, 1065)) ? "BACK.png" : "back.png");
@@ -281,7 +288,7 @@ void XRay::howToMenu(void) // TODO: To change ?
     endDrawing();
 
     if (back.at(17) < 90 && _mouse.isButtonPressed(0))
-        displayMenu();
+        displayMenuScene();
 }
 
 void XRay::displaySettingsScene(void) // TODO: To change ?
@@ -301,10 +308,10 @@ void XRay::displaySettingsScene(void) // TODO: To change ?
     endDrawing();
 
     if (back.at(17) < 90 && _mouse.isButtonPressed(0))
-        displayMenu();
+        displayMenuScene();
 }
 
-void XRay::quit(void) // TODO: To change ?
+void XRay::quitGame(void) // TODO: To change ?
 {
     _scene = END_GAME;
 }
@@ -346,7 +353,7 @@ void XRay::displayIntro(void) // TODO: To change ?
     }
 }
 
-void XRay::displayMenu(void) // TODO: To change ?
+void XRay::displayMenuScene(void) // TODO: To change ?
 {
     // TODO: Faire un vector de Texture et display dans une boucle plus clean (J'ai essayé ça a pas marché)
 
@@ -389,7 +396,7 @@ void XRay::displayMenu(void) // TODO: To change ?
 
     for (size_t i = 0; i < _menuButtons.size() - 1; i++) {
         if (_menuButtons[3].at(17) < 90 && _mouse.isButtonPressed(0))
-            quit();
+            quitGame();
         else if (_menuButtons[i].at(17) < 90 && _mouse.isButtonPressed(0))
             (this->*_scenesFunc[i + 1])();
     }
