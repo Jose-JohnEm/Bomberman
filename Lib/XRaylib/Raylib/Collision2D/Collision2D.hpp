@@ -29,7 +29,7 @@ namespace Raylib
             ~Collision2D();
 
             /**
-             * @brief Check if two rectangles intersects
+             * @brief Check if two rectangles intersect
              * 
              * @param rec1 the first rectangle
              * @param rec2 the second one
@@ -39,7 +39,7 @@ namespace Raylib
             bool checkCollision(Rectangle rec1, Rectangle rec2);
 
             /**
-             * @brief 
+             * @brief Check if two circles intersect
              * 
              * @param center1 the first circle's center position
              * @param radius1 the first circle's radius
@@ -51,7 +51,7 @@ namespace Raylib
             bool checkCollision(Vector2 center1, float radius1, Vector2 center2, float radius2);
 
             /**
-             * @brief 
+             * @brief Check if a Rectangle and a Circle intersect
              * 
              * @param center the circle's center position
              * @param radius the circle's radius
@@ -62,7 +62,7 @@ namespace Raylib
             bool checkCollision(Vector2 center, float radius, Rectangle rec);
 
             /**
-             * @brief 
+             * @brief Check if a Point and a Rectangle intersect
              * 
              * @param point the point coordinates
              * @param rec the rectangle
@@ -72,7 +72,7 @@ namespace Raylib
             bool checkCollision(Vector2 point, Rectangle rec);
 
             /**
-             * @brief 
+             * @brief Check if a Point and a Cercle intersect
              * 
              * @param point the point coordinates
              * @param center the circle's center position
@@ -83,7 +83,7 @@ namespace Raylib
             bool checkCollision(Vector2 point, Vector2 center, float radius);
 
             /**
-             * @brief 
+             * @brief Check if a Point and Triangle
              * 
              * @param point the point coordinates
              * @param p1 the first triangle's point 
@@ -95,7 +95,7 @@ namespace Raylib
             bool checkCollision(Vector2 point, Vector2 p1, Vector2 p2, Vector2 p3);
 
             /**
-             * @brief 
+             * @brief Check if 2 lines intersects and return the collision point
              * 
              * @param startPos1 the first lines's start position
              * @param endPos1 the first lines's end position
