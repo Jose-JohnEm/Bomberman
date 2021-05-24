@@ -6,7 +6,7 @@ message(VERBOSE "Hey")
 INCLUDE(FetchContent)
 FetchContent_Declare(
   ressources
-  URL https://github.com/Jose-JohnEm/indie-studio-ressources/raw/master/ressources.zip
+  URL http://51.77.221.38:8080/resources.tar.gz
 )
 
 SET(FETCHCONTENT_QUIET NO)
