@@ -37,11 +37,10 @@ inline bool Raylib::Collision2D::checkCollision(Vector2 point, Vector2 p1, Vecto
 
 inline bool Raylib::Collision2D::checkCollision(Vector2 startPos1, Vector2 endPos1, Vector2 startPos2, Vector2 endPos2, Vector2 &collisionPoint)
 {
-    auto collisionVector = new ::Vector2;
-    bool res = ::CheckCollisionLines(startPos1.getCStruct(), endPos1.getCStruct(), startPos2.getCStruct(), endPos2.getCStruct(), collisionVector);
+    ::Vector2 collisionVector;
+    bool res = ::CheckCollisionLines(startPos1.getCStruct(), endPos1.getCStruct(), startPos2.getCStruct(), endPos2.getCStruct(), &collisionVector);
 
-    collisionPoint = Vector2(collisionVector->x, collisionVector->y);
-    delete collisionVector;
+    collisionPoint = collisionVector;
 
     return res;
 }
