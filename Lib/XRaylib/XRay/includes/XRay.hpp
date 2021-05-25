@@ -226,7 +226,7 @@ class XRay : public IGraphical {
         void updateTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> textBox);
         void setAddBox(const std::vector<std::pair<int, int>> &removePos, const std::vector<std::pair<int, int>> &nextTab, const std::vector<std::pair<int, int>> &prevTab, const int &a);
         void displayCards(const std::vector<bool> &mouseOnText, const std::vector<::Rectangle> &textBox);
-        void displayMouse(void);
+        void displayMouse(void) const;
         void setResources(void);
         void displayCardsSettings(std::vector<std::pair<int, int>> &removePos, std::vector<std::pair<int, int>> &nextTab, std::vector<std::pair<int, int>> &prevTab, int *a);
 
