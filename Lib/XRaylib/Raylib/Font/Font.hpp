@@ -64,6 +64,13 @@ namespace Raylib
             Font(const std::string &fileType, const std::string &fileData, const int &dataSize, const int &fontSize, int *fontChars, const int &charsCount);
 
             /**
+             * @brief Getter of Font structure (private attribute)
+             *
+             * @return An Font C structure
+             */
+            ::Font getCStruct(void) const;
+
+            /**
              * @brief Unload Font
              */
             void unload(void) const;
