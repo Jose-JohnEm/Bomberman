@@ -350,7 +350,7 @@ namespace Raylib
              * @param image A const pointer to a Class Image
              * @param newFormat A const pointer to a int
              */
-            void ImageFormat(Image *image, int const &newFormat);
+            void ImageFormat(Image *image, int const &newFormat) const;
 
             /**
              * @brief Convert image to POT (power-of-two)
@@ -358,7 +358,7 @@ namespace Raylib
              * @param image A const pointer to a Class Image
              * @param fill A const pointer to a Class Color
              */
-            void ImageToPOT(Image *image, Color const &fill);
+            void ImageToPOT(Image *image, Color const &fill) const;
 
             /**
              * @brief Crop an image to a defined rectangle
@@ -366,7 +366,7 @@ namespace Raylib
              * @param image A const pointer to a Class Image
              * @param crop A const pointer to a Class Rectangle
              */
-            void ImageCrop(Image *image, Rectangle const &crop);
+            void ImageCrop(Image *image, Rectangle const &crop) const;
 
             /**
              * @brief Crop image depending on alpha value
@@ -374,7 +374,7 @@ namespace Raylib
              * @param image A const pointer to a Class Image
              * @param threshold A const pointer to a Class Rectangle
              */
-            void ImageAlphaCrop(Image *image, float const &threshold);
+            void ImageAlphaCrop(Image *image, float const &threshold) const;
 
             /**
              * @brief Clear alpha channel to desired color
@@ -383,7 +383,7 @@ namespace Raylib
              * @param color A const reference to a Class Color
              * @param threshold A const reference to a float
              */
-            void ImageAlphaClear(Image *image, Color const &color, float const &threshold);
+            void ImageAlphaClear(Image *image, Color const &color, float const &threshold) const;
 
             /**
              * @brief Apply alpha mask to image
@@ -391,41 +391,282 @@ namespace Raylib
              * @param image A const pointer to a Class Image
              * @param alphaMask A const reference to a Class Image
              */
-            void ImageAlphaMask(Image *image, Image const &alphaMask);
+            void ImageAlphaMask(Image *image, Image const &alphaMask) const;
 
-    void ImageAlphaPremultiply(Image *image);                                                          // Premultiply alpha channel
-    void ImageResize(Image *image, int newWidth, int newHeight);                                       // Resize image (Bicubic scaling algorithm)
-    void ImageResizeNN(Image *image, int newWidth,int newHeight);                                      // Resize image (Nearest-Neighbor scaling algorithm)
-    void ImageResizeCanvas(Image *image, int newWidth, int newHeight, int offsetX, int offsetY, Color fill);  // Resize canvas and fill with color
-    void ImageMipmaps(Image *image);                                                                   // Generate all mipmap levels for a provided image
-    void ImageDither(Image *image, int rBpp, int gBpp, int bBpp, int aBpp);                            // Dither image data to 16bpp or lower (Floyd-Steinberg dithering)
-    void ImageFlipVertical(Image *image);                                                              // Flip image vertically
-    void ImageFlipHorizontal(Image *image);                                                            // Flip image horizontally
-    void ImageRotateCW(Image *image);                                                                  // Rotate image clockwise 90deg
-    void ImageRotateCCW(Image *image);                                                                 // Rotate image counter-clockwise 90deg
-    void ImageColorTint(Image *image, Color color);                                                    // Modify image color: tint
-    void ImageColorInvert(Image *image);                                                               // Modify image color: invert
-    void ImageColorGrayscale(Image *image);                                                            // Modify image color: grayscale
-    void ImageColorContrast(Image *image, float contrast);                                             // Modify image color: contrast (-100 to 100)
-    void ImageColorBrightness(Image *image, int brightness);                                           // Modify image color: brightness (-255 to 255)
-    void ImageColorReplace(Image *image, Color color, Color replace);                                  // Modify image color: replace color
-    Color *LoadImageColors(Image image);                                                               // Load color data from image as a Color array (RGBA - 32bit)
-    Color *LoadImagePalette(Image image, int maxPaletteSize, int *colorsCount);                        // Load colors palette from image as a Color array (RGBA - 32bit)
-    void UnloadImageColors(Color *colors);                                                             // Unload color data loaded with LoadImageColors()
-    void UnloadImagePalette(Color *colors);                                                            // Unload colors palette loaded with LoadImagePalette()
-    Rectangle GetImageAlphaBorder(Image image, float threshold);                                       // Get image alpha border rectangle
+            /**
+             * @brief Premultiply alpha channel
+             * 
+             * @param image A const pointer to a Class Image
+             */
+            void ImageAlphaPremultiply(Image *image) const;
 
-    // Image drawing functions
-    // NOTE: Image software-rendering functions (CPU)
-    void ImageClearBackground(Image *dst, Color color);                                                // Clear image background with given color
-    void ImageDrawPixel(Image *dst, int posX, int posY, Color color);                                  // Draw pixel within an image
-    void ImageDrawPixelV(Image *dst, Vector2 position, Color color);                                   // Draw pixel within an image (Vector version)
-    void ImageDrawLine(Image *dst, int startPosX, int startPosY, int endPosX, int endPosY, Color color); // Draw line within an image
-    void ImageDrawLineV(Image *dst, Vector2 start, Vector2 end, Color color);                          // Draw line within an image (Vector version)
-    void ImageDrawCircle(Image *dst, int centerX, int centerY, int radius, Color color);               // Draw circle within an image
-    void ImageDrawCircleV(Image *dst, Vector2 center, int radius, Color color);                        // Draw circle within an image (Vector version)    void ImageDraw(Image *dst, Image src, Rectangle srcRec, Rectangle dstRec, Color tint);             // Draw a source image within a destination image (tint applied to source)
-    void ImageDrawText(Image *dst, const char *text, int posX, int posY, int fontSize, Color color);   // Draw text (using default font) within an image (destination)
-    void ImageDrawTextEx(Image *dst, Font font, const char *text, Vector2 position, float fontSize, float spacing, Color tint); // Draw text (custom sprite font) within an image (destination)
+            /**
+             * @brief Resize image (Bicubic scaling algorithm)
+             * 
+             * @param image A const pointer to a Class Image
+             * @param newWidth A const reference to a int
+             * @param newHeight A const reference to a int
+             */
+            void ImageResize(Image *image, int const &newWidth, int const &newHeight) const;
+
+            /**
+             * @brief Resize image (Nearest-Neighbor scaling algorithm)
+             * 
+             * @param image A const pointer to a Class Image
+             * @param newWidth A const reference to a int
+             * @param newHeight A const reference to a int
+             */
+            void ImageResizeNN(Image *image, int newWidth, int const &newHeight) const;
+
+            /**
+             * @brief Resize canvas and fill with color
+             * 
+             * @param image A const pointer to a Class Image
+             * @param newWidth A const reference to a int
+             * @param newHeight A const reference to a int
+             * @param offsetX A const reference to a int
+             * @param offsetY A const reference to a int
+             * @param color A const reference to a Class Color
+             */
+            void ImageResizeCanvas(Image *image, int const &newWidth, int const &newHeight, int const &offsetX, int const &offsetY, Color const &fill) const;
+            
+            /**
+             * @brief Generate all mipmap levels for a provided image
+             * 
+             * @param image A const pointer to a Class Image
+             */
+            void ImageMipmaps(Image *image) const;
+
+            /**
+             * @brief Dither image data to 16bpp or lower (Floyd-Steinberg dithering)
+             * 
+             * @param image A const pointer to a Class Image
+             * @param rBpp A const reference to a int
+             * @param gBpp A const reference to a int
+             * @param aBpp A const reference to a int
+             */
+            void ImageDither(Image *image, int rBpp, int gBpp, int bBpp, int aBpp) const;
+
+            /**
+             * @brief Flip image vertically
+             * 
+             * @param image A const pointer to a Class Image
+             */
+            void ImageFlipVertical(Image *image) const;
+
+            /**
+             * @brief Flip image horizontally
+             * 
+             * @param image A const pointer to a Class Image
+             */
+            void ImageFlipHorizontal(Image *image) const;
+
+            /**
+             * @brief Rotate image clockwise 90deg
+             * 
+             * @param image A const pointer to a Class Image
+             */
+            void ImageRotateCW(Image *image) const;
+
+            /**
+             * @brief Rotate image counter-clockwise 90deg
+             * 
+             * @param image A const pointer to a Class Image
+             */
+            void ImageRotateCCW(Image *image) const;
+
+            /**
+             * @brief Modify image color: tint
+             * 
+             * @param image A const pointer to a Class Image
+             * @param image A const reference to a Class Color
+             */
+            void ImageColorTint(Image *image, Color const &color) const;
+
+            /**
+             * @brief Modify image color: invert
+             * 
+             * @param image A const pointer to a Class Image
+             */
+            void ImageColorInvert(Image *image) const;
+
+            /**
+             * @brief Modify image color: grayscale
+             * 
+             * @param image A const pointer to a Class Image
+             */
+            void ImageColorGrayscale(Image *image) const;
+
+            /**
+             * @brief Modify image color: contrast (-100 to 100)
+             * 
+             * @param image A const pointer to a Class Image
+             * @param contrast A const pointer to a float
+             */
+            void ImageColorContrast(Image *image, float const &contrast) const;
+
+            /**
+             * @brief Modify image color: brightness (-255 to 255)
+             * 
+             * @param image A const pointer to a Class Image
+             * @param brightness A const pointer to a float
+             */
+            void ImageColorBrightness(Image *image, int const &brightness);
+
+            /**
+             * @brief Modify image color: replace color
+             * 
+             * @param image A const pointer to a Class Image
+             * @param color A const reference to a Class Color
+             * @param replace A const reference to a Class Color
+             */
+            void ImageColorReplace(Image *image, Color const &color, Color const &replace);
+
+            /**
+             * @brief Load color data from image as a Color array (RGBA - 32bit)
+             * 
+             * @param image A const reference to a Class Image
+             * @return A Class Color
+             */
+            Color *LoadImageColors(Image const &image);
+
+            /**
+             * @brief Load colors palette from image as a Color array (RGBA - 32bit)
+             * 
+             * @param image A const reference to a Class Image
+             * @param maxPaletteSize A const reference to a int
+             * @param colorCount A const pointer to a int
+             * @return A Class Color
+             */
+            Color *LoadImagePalette(Image const &image, int const &maxPaletteSize, int *colorsCount);
+
+            /**
+             * @brief Unload color data loaded with LoadImageColors()
+             * 
+             * @param colors A const pointer to a Class Color
+             */
+            void UnloadImageColors(Color *colors);
+
+            /**
+             * @brief Unload colors palette loaded with LoadImagePalette()
+             * 
+             * @param colors A const pointer to a Class Color
+             */
+            void UnloadImagePalette(Color *colors);
+
+            /**
+             * @brief Get image alpha border rectangle
+             * 
+             * @param image A const reference to a Class Image
+             * @param threshold A const reference to a float
+             */
+            Rectangle GetImageAlphaBorder(Image const &image, float const &threshold);
+
+            /**
+             * @brief Clear image background with given color
+             * 
+             * @param dst A const reference to a Class Image
+             * @param color A const reference to a Class color
+             */
+            void ImageClearBackground(Image *dst, Color const &color);
+
+            /**
+             * @brief Draw pixel within an image
+             * 
+             * @param dst A const pointer to a Class Image
+             * @param posX A const reference to a int
+             * @param posY A const reference to a int
+             * @param color A const reference to a Class Color
+             */
+            void ImageDrawPixel(Image *dst, int const &posX, int const &posY, Color const &color);
+
+            /**
+             * @brief Draw pixel within an image (Vector version)
+             * 
+             * @param dst A const pointer to a Class Image
+             * @param position A const reference to a Class Vector2
+             * @param color A const reference to a Class color
+             */
+            void ImageDrawPixelV(Image *dst, Vector2 const &position, Color const &color);
+
+            /**
+             * @brief Draw pixel within an image (Vector version)
+             * 
+             * @param dst A const pointer to a Class Image
+             * @param startPosX A const reference to a int
+             * @param startPosY A const reference to a int
+             * @param endPosX A const reference to a int
+             * @param endPosY A const reference to a int
+             * @param color A const reference to a Class color
+             */
+            void ImageDrawLine(Image *dst, int const &startPosX, int const &startPosY, int const &endPosX, int const &endPosY, Color const &olor);
+
+            /**
+             * @brief Draw line within an image (Vector version)
+             * 
+             * @param dst A const pointer to a Class Image
+             * @param start A const reference to a Class Vector2
+             * @param end A const reference to a Class Vector2
+             * @param color A const reference to a Class color
+             */
+            void ImageDrawLineV(Image *dst, Vector2 const &start, Vector2 const &end, Color const &color);
+
+            /**
+             * @brief Draw circle within an image
+             * 
+             * @param dst A const pointer to a Class Image
+             * @param centerX A const reference to a int
+             * @param centerY A const reference to a int
+             * @param radius A const reference to a int
+             * @param color A const reference to a Class color
+             */
+            void ImageDrawCircle(Image *dst, int const &centerX, int const &centerY, int const &radius, Color const &color);
+
+            /**
+             * @brief Draw circle within an image (Vector version)
+             * 
+             * @param dst A const pointer to a Class Image
+             * @param center A const reference to a Class Vector2
+             * @param radius A const reference to a int
+             * @param color A const reference to a Class color
+             */
+            void ImageDrawCircleV(Image *dst, Vector2 const &center, int const &radius, Color const &color);
+
+            /**
+             * @brief Draw a source image within a destination image (tint applied to source)
+             * 
+             * @param dst A const pointer to a Class Image
+             * @param src A const reference to a Class Image
+             * @param srcRec A const reference to a Class Image
+             * @param dstRec A const reference to a Class Image
+             * @param tint A const reference to a Class color
+             */
+            void ImageDraw(Image *dst, Image const &src, Rectangle const &srcRec, Rectangle const &dstRec, Color const &tint);
+
+            /**
+             * @brief Draw a source image within a destination image (tint applied to source)
+             * 
+             * @param dst A const pointer to a Class Image
+             * @param text A const pointer to a char
+             * @param posX A const reference to a int
+             * @param posX A const reference to a int
+             * @param fontSize A const reference to a int
+             * @param tint A const reference to a Class color
+             */
+            void ImageDrawText(Image *dst, const char *text, int const &posX, int const &posY, int const &fontSize, Color const &color) const;
+
+            /**
+             * @brief Draw text (custom sprite font) within an image (destination)
+             * 
+             * @param dst A const pointer to a Class Image
+             * @param font A const reference to a Class Font
+             * @param text A const pointer to a char
+             * @param position A const reference to a Class Vector2
+             * @param fontSize A const reference to a float
+             * @param spacing A const reference to a float
+             * @param tint A const reference to a Class color
+             */
+            void ImageDrawTextEx(Image *dst, Font const &font, const char *text, Vector2 const &position, float const &fontSize, float const &spacing, Color const &tint);
 
 
         private:
