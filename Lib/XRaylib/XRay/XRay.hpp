@@ -32,6 +32,7 @@
 #include "Cursor/Cursor.hpp"
 #include "Timing/Timing.hpp"
 #include "Drawing/Drawing.hpp"
+#include "Resources.hpp"
 
 typedef enum {
     UPPER_LEFT,
@@ -260,6 +261,10 @@ class XRay : public IGraphical {
 
         void setTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> &textBox);
         void updateTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> textBox);
+        void setAddBox(std::vector<std::pair<int, int>> &removePos, std::vector<std::pair<int, int>> &nextTab, std::vector<std::pair<int, int>> &prevTab, const int &a);
+        void displayCards(const std::vector<bool> &mouseOnText, const std::vector<::Rectangle> &textBox);
+        void displayMouse(void);
+        void setResources(void);
 
     private:
         Raylib::Window _window;                     // Game window
@@ -289,7 +294,13 @@ class XRay : public IGraphical {
         std::vector<std::pair<std::string, std::string>> _bestScores;             // A vector of pair (username, score), List of Bests Scores
         std::vector<std::shared_ptr<IEntity>> _gameInfos;                         // A vector of shared pointer that represent all the entities to display. Ex : Map, Score, UserInfo, Button
         std::vector<std::string> _backups;                                        // A vector of all the paths to backups files as a const std::vector<std::string>&
+<<<<<<< HEAD
 >>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
+=======
+        std::vector<Raylib::Texture> _textures;
+
+        std::map<Resources, std::shared_ptr<Raylib::Texture>> _resources;
+>>>>>>> f160caa (Added resources dictionary)
 };
 
 #include "XRay.inl"
