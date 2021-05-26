@@ -6,6 +6,9 @@ PROJECT(bomberman VERSION 1.0)
 # Set g++ standard version
 SET(CMAKE_CXX_STANDARD 17)
 
+# Call the fetch_ressources module
+include(cmake/fetchressources.cmake)
+
 # Make XRay CMakeList meta-compile XRay library that himself
 # will make Raylib-cpp meta compile
 # It will be linked with our Bomberman project

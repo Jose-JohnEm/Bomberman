@@ -92,4 +92,28 @@ Do your best to avoid clunky animations or graphical glitches, manage your camer
 
 To see more check into the folder ./doc.
 
+### XRay
+
+...
+
+### Resources
+
+This repository only contain the source code.
+
+All the resources useless during the CMake meta-compilation and the Makefile/MSVC compilation are placed on an another [Git Repository](https://github.com/Jose-JohnEm/indie-studio-ressources).
+
+It is when we call the CMakeLists.txt on the root that we fetch resources as compressed file and decompress it to obtain all our resources (see [cmake/fetchressources.cmake](https://github.com/EpitechIT2020/B-YEP-400-LYN-4-1-indiestudio-lucas.guichard/tree/feature_fetch/cmake)).
+
+We fetch the compressed ressource archive from a SFTP Server. During the CMake step we check for new updates on this server; if there is a new version then we fetch from else we continue without fetching.
+
+We wrote [Tarer.sh](https://github.com/EpitechIT2020/B-YEP-400-LYN-4-1-indiestudio-lucas.guichard/tree/script/tarer.sh) a bash script which compress the resources and send them to the SFTP Server.
+
+To add new resources you have to use it at [the root of the resources Git Repository](https://github.com/Jose-JohnEm/indie-studio-ressources).
+[ _sshpass is required_ ]
+`$ sudo apt install sshpass`
+
+**Note** : _Previously, we also put the resources on the source code repository but during the developpement they became too heavy (4 GB !!!) that we encouter a big (heavy_ :laughing:) _problem :_
+_When we had a problem and we needed to clone all the project then we had to spent a lot of time only to fetch resources._
+_That's why we didn't leave our resources here anymore_.
+
 > :speaking_head: We had to hit this project
