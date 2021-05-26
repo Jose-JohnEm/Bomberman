@@ -17,12 +17,11 @@ ADD_SUBDIRECTORY(Lib/XRaylib)
 # Generate a list of files
 FILE(GLOB_RECURSE SRCS CONFIGURE_DEPENDS
     "Engine/*.cpp"
-    "Engine/*.inl"
 )
 
 # Set Headers paths
 SET(ENGINE_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Engine/")
-SET(XRAY_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Lib/XRaylib/XRay/")
+SET(XRAY_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Lib/XRaylib/XRay/includes/")
 SET(RAYLIB_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Lib/XRaylib/Raylib/")
 
 # This is the main part:

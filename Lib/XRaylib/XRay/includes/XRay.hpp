@@ -30,6 +30,10 @@
 #include "Timing/Timing.hpp"
 #include "Drawing/Drawing.hpp"
 
+typedef enum {
+    INTRO
+} Cinematic;
+
 class XRay : public IGraphical {
 
     public:
@@ -201,9 +205,16 @@ class XRay : public IGraphical {
         void displayTrace(void);
 
         /**
+         * @brief Display specific cinematic
+         * 
+         * @param cinematic Cinematic enum type, representing specific cinematic
+         */
+        void displayCinematic(const Cinematic &cinematic);
+
+        /**
          * @brief Display Opening Scene
          */
-        void displayIntro(void);
+        void displayIntroCinematic(void);
 
         /**
          * @brief This function must display the current scene. It is used in the game loop

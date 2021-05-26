@@ -27,7 +27,13 @@ typedef enum {
     LOADSCENE,
     BRANCH,
     BACK,
-    BACK_HOVER
+    BACK_HOVER,
+    HOW_TO_PLAY,
+    HOW_TO_PLAY_HOVER,
+    SETTINGS,
+    SETTINGS_HOVER,
+    INDIE,
+    STUDIO
 } Resources;
 
 #endif /* !RESOURCES_HPP_ */

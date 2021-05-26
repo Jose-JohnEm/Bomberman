@@ -23,8 +23,9 @@ XRay::XRay()
     _scenesFunc.push_back(&XRay::displayInGameScene);
     _scenesFunc.push_back(&XRay::quitGame);
 
-    // Intro settings
+    // Display Intro (studio and introduction cinematic)
     _intro = std::make_pair(true, &XRay::displayStudio);
+    displayCinematic(Cinematic::INTRO);
 }
 
 XRay::~XRay()
@@ -33,26 +34,31 @@ XRay::~XRay()
 
 void XRay::setResources(void)
 {
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(ADD, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/add.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(REMOVE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/remove.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(PREVIOUS, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/previous.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(NEXT, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/next.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(CONTROLS, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/controls.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(GAMEPAD, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/gamepad.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(HUMAN, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/human.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(AI, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/ai.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(HEAD, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/head.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(LOADGAME, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/loadGame.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(LOADGAME_BG, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/loadGameBG.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(LOADGAME_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/loadGameHover.png"))));
-    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(NEWGAME, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/newGame.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(NEWGAME_BG, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/newGameBG.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(NEWGAME_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/newGameHover.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(LOADSCENE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/loadScene.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(BRANCH, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/branch.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(BACK, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/back.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(BACK_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/backHover.png"))));
-
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::ADD, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/add.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::REMOVE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/remove.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::PREVIOUS, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/previous.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::NEXT, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/next.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::CONTROLS, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/controls.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::GAMEPAD, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/gamepad.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::HUMAN, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/human.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::AI, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/ai.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::HEAD, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/head.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::LOADGAME, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/loadGame.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::LOADGAME_BG, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/loadGameBG.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::LOADGAME_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/loadGameHover.png"))));
+    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::NEWGAME, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/newGame.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::NEWGAME_BG, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/newGameBG.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::NEWGAME_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/newGameHover.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::LOADSCENE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/loadScene.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::BRANCH, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/branch.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::BACK, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/back.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::BACK_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/backHover.png"))));
+    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::HOW_TO_PLAY, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/howToPlay.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::HOW_TO_PLAY_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/howToPlayHover.png"))));
+    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SETTINGS, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/settings.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SETTINGS_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/settingsHover.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::INDIE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/indie.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::STUDIO, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/studio.png"))));
 }
 
 bool XRay::mouseIsInBox(const std::vector<size_t> &box) const
@@ -79,13 +85,16 @@ std::vector<size_t> XRay::createBox(const size_t &upperLeftCorner, const size_t 
 
 void XRay::displayInGameScene(void)
 {
+    // Set scene
     _scene = IN_GAME;
+
+    // Draw scene
     beginDrawing();
     // Some code
     endDrawing();
 }
 
-void XRay::setTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> &textBox)
+void XRay::setTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> &textBox) // TODO: To change ?
 {
     for (size_t p = 0, a = 200; p < 4; p++, a += 400) {
         _letterAndFrame.push_back(std::make_pair(0, 0));
@@ -96,7 +105,7 @@ void XRay::setTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> &
     }
 }
 
-void XRay::updateTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> textBox) // Remmove good player
+void XRay::updateTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> textBox) // TODO: To change ? // Remmove good player 
 {
     for (size_t i = 0; i < mouseOnText.size(); i++) {
         mouseOnText[i] = (::CheckCollisionPointRec({(float)_mouse.getMouseX(), (float)_mouse.getMouseY()}, textBox[i])) ? true : false;
@@ -124,7 +133,7 @@ void XRay::updateTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle
     }
 }
 
-void XRay::setAddBox(const std::vector<std::pair<int, int>> &removePos, const std::vector<std::pair<int, int>> &nextTab, const std::vector<std::pair<int, int>> &prevTab, const int &a)
+void XRay::setAddBox(const std::vector<std::pair<int, int>> &removePos, const std::vector<std::pair<int, int>> &nextTab, const std::vector<std::pair<int, int>> &prevTab, const int &a)// TODO: To change ?
 {
     _allIntegers[2] += (_allIntegers[2] != 4 && mouseIsInBox(createBox(_allIntegers[0]+a, _allIntegers[1], _allIntegers[0]+a+150, _allIntegers[1]+150)) && _mouse.isButtonPressed(0)) ? 1 : 0;
     if (_mouse.isButtonPressed(0))
@@ -139,7 +148,7 @@ void XRay::setAddBox(const std::vector<std::pair<int, int>> &removePos, const st
     }
 }
 
-void XRay::displayCards(const std::vector<bool> &mouseOnText, const std::vector<::Rectangle> &textBox)
+void XRay::displayCards(const std::vector<bool> &mouseOnText, const std::vector<::Rectangle> &textBox)// TODO: To change ?
 {
     Raylib::Text text;
     for (size_t p = 0; p < _allIntegers[2]; p++) {
@@ -160,7 +169,7 @@ void XRay::displayMouse(void)
     _resources.at(HEAD)->drawTexture(_mouse.getMouseX() - 32, _mouse.getMouseY() - 32, Raylib::Color::White());
 }
 
-void XRay::displayCardsSettings(std::vector<std::pair<int, int>> &removePos, std::vector<std::pair<int, int>> &nextTab, std::vector<std::pair<int, int>> &prevTab, int *a)
+void XRay::displayCardsSettings(std::vector<std::pair<int, int>> &removePos, std::vector<std::pair<int, int>> &nextTab, std::vector<std::pair<int, int>> &prevTab, int *a)// TODO: To change ?
 {
     int i, b;
     for (i = 0, (*a) = 200, b = 300; _allIntegers[2] < 5 && i < _allIntegers[2]; i++, (*a) += 400) {
@@ -220,18 +229,16 @@ void XRay::displayLoadGameScene(void)
     // Set scene
     _scene = LOAD_GAME;
 
-    // Text object
-    Raylib::Text text;
     // Vertical axis
     size_t ordinate = 300;
 
     // Draw scene
     beginDrawing();
     _resources.at(LOADSCENE)->drawTexture(0, 0, Raylib::Color::White());
-    text.drawText("BACKUPS", 230, 210, 65, Raylib::Color::Black());
+    Raylib::Text::drawText("BACKUPS", 230, 210, 65, Raylib::Color::Black());
     for (const std::string &backup : _backups) {
         _resources.at(BRANCH)->drawTexture(150, ordinate, Raylib::Color::White());
-        text.drawText(backup.substr(0, backup.find('.')), 300, ordinate + 20, 65, Raylib::Color::Black());
+        Raylib::Text::drawText(backup.substr(0, backup.find('.')), 300, ordinate + 20, 65, Raylib::Color::Black());
         ordinate += 100;
     }
     endDrawing();
@@ -271,86 +278,66 @@ void XRay::displayGameModeScene(void)
         displayLoadGameScene();
 }
 
-void XRay::displayHowToPlayScene(void) // TODO: To change ?
+void XRay::displayHowToPlayScene(void)
 {
-    std::string howto = std::string("resources/assets/") + std::string((mouseIsInBox(700, 600, 815, 665)) ? "HOWTO.png" : "howto.png");
-    std::string back = std::string("resources/assets/") + std::string((mouseIsInBox(20, 1000, 280, 1065)) ? "BACK.png" : "back.png");
-
-    Raylib::Texture button(Raylib::Image(howto.c_str()));
-    Raylib::Texture backButton(Raylib::Image(back.c_str()));
-    Raylib::Texture head(Raylib::Image("resources/assets/head.png"));
-
+    // Set scene
     _scene = HOW_TO_PLAY;
+
+    // Check if mouse is on button spot
+    bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
+
+    // Set specific texture according to mouse position
+    std::shared_ptr<Raylib::Texture> backButton = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK);
+
+    // Draw scene
     beginDrawing();
-    button.drawTexture(700, 600, Raylib::Color::White());
-    backButton.drawTexture(20, 1000, Raylib::Color::White());
-    head.drawTexture(_mouse.getMouseX() - 32, _mouse.getMouseY() - 32, Raylib::Color::White());
+    backButton->drawTexture(20, 1000, Raylib::Color::White());
+    displayMouse();
     endDrawing();
 
-    if (back.at(17) < 90 && _mouse.isButtonPressed(0))
+    // Go to another scene according to mouse position
+    if (goBack && _mouse.isButtonPressed(0))
         displayMenuScene();
 }
 
-void XRay::displaySettingsScene(void) // TODO: To change ?
+void XRay::displaySettingsScene(void)
 {
-    std::string settings = std::string("resources/assets/") + std::string((mouseIsInBox(700, 700, 620, 765)) ? "SETTINGS.png" : "settings.png");
-    std::string back = std::string("resources/assets/") + std::string((mouseIsInBox(20, 1000, 280, 1065)) ? "BACK.png" : "back.png");
-
-    Raylib::Texture settingsButton(Raylib::Image(settings.c_str()));
-    Raylib::Texture head(Raylib::Image("resources/assets/head.png"));
-    Raylib::Texture backButton(Raylib::Image(back.c_str()));
-
+    // Set scene
     _scene = SETTINGS;
+
+    // Check if mouse is on button spot
+    bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
+
+    // Set specific texture according to mouse position
+    std::shared_ptr<Raylib::Texture> backButton = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK);
+
+    // Draw scene
     beginDrawing();
-    settingsButton.drawTexture(700, 600, Raylib::Color::White());
-    backButton.drawTexture(20, 1000, Raylib::Color::White());
-    head.drawTexture(_mouse.getMouseX() - 32, _mouse.getMouseY() - 32, Raylib::Color::White());
+    backButton->drawTexture(20, 1000, Raylib::Color::White());
+    displayMouse();
     endDrawing();
 
-    if (back.at(17) < 90 && _mouse.isButtonPressed(0))
+    // Go to another scene according to mouse position
+    if (goBack && _mouse.isButtonPressed(0))
         displayMenuScene();
 }
 
-void XRay::quitGame(void) // TODO: To change ?
+void XRay::quitGame(void)
 {
+    // Set scene
     _scene = END_GAME;
 }
 
-void XRay::displayStudio(void) // TODO: To change ?
+void XRay::displayStudio(void)
 {
-    Raylib::Text text;
-    Raylib::Timing timing;
-    Raylib::Texture indie(Raylib::Image("resources/assets/indieTitle.png"));
-    Raylib::Texture studio(Raylib::Image("resources/assets/studioTitle.png"));
-
+    // Draw
     beginDrawing();
-    indie.drawTexture(500, 1080 / 2 - 100, Raylib::Color::White());
-    studio.drawTexture(900, 1080 / 2 - 100, Raylib::Color::White());
+    _resources.at(INDIE)->drawTexture(500, 1080 / 2 - 100, Raylib::Color::White());
+    _resources.at(STUDIO)->drawTexture(900, 1080 / 2 - 100, Raylib::Color::White());
     endDrawing();
-    for (double t = timing.getTime(); timing.getTime() - t < 2;);
+
+    // Intro is done, so update its status flag
     _intro.first = false;
-//    displayIntro();
-}
-
-void XRay::displayIntro(void) // TODO: To change ?
-{
-    std::string path, skip, str = "1";
-
-    for (int i = 1; str != "2326" && !(i < 2300 && _mouse.isButtonPressed(0) && mouseIsInBox(1760, 950, 1883, 1005));) {
-        path = "resources/cinematic/data/frame" + str + ".png";
-        skip = std::string("resources/assets/") + std::string((mouseIsInBox(1760, 950, 1883, 1005)) ? "sskip.png" : "skip.png");
-        Raylib::Texture frame(Raylib::Image(path.c_str()));
-        Raylib::Texture skipButton(Raylib::Image(skip.c_str()));
-
-        beginDrawing();
-        frame.drawTexture(0, 0, Raylib::Color::White());
-        if (i < 2300)
-            skipButton.drawTexture(1760, 950, Raylib::Color::White());
-        endDrawing();
-
-        i++;
-        str = std::to_string(i);
-    }
 }
 
 void XRay::displayMenuScene(void) // TODO: To change ?
@@ -366,7 +353,7 @@ void XRay::displayMenuScene(void) // TODO: To change ?
     std::vector<std::string> _menuButtons;
     _menuButtons.push_back(std::string("resources/assets/") + std::string((mouseIsInBox(100, 500, 360, 565)) ? "PLAY.png" : "play.png"));
     Raylib::Texture playButton(Raylib::Image(_menuButtons[0].c_str()));
-    _menuButtons.push_back(std::string("resources/assets/") + std::string((mouseIsInBox(100, 600, 815, 665)) ? "HOWTO.png" : "howto.png"));
+    _menuButtons.push_back(std::string("resources/assets/") + std::string((mouseIsInBox(createBox(100, 600, 815, 665))) ? "howToPlayHover.png" : "howToPlay.png"));
     Raylib::Texture howtoButton(Raylib::Image(_menuButtons[1].c_str()));
     _menuButtons.push_back(std::string("resources/assets/") + std::string((mouseIsInBox(100, 700, 620, 765)) ? "SETTINGS.png" : "settings.png"));
     Raylib::Texture settingsButton(Raylib::Image(_menuButtons[2].c_str()));
