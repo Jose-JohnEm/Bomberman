@@ -1,6 +1,4 @@
-# This CMakeLists.txt meta-compile our XRay lib
-# that bring raylib-cpp improvement to our interface
-# Export : libXRay.a
+# CMakeLists.txt
 
 # Always set the cmake min version.
 CMAKE_MINIMUM_REQUIRED(VERSION 3.17)

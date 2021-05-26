@@ -32,33 +32,33 @@ namespace Raylib
              * @brief Draw text (using default font)
              *
              * @param title A string
-             * @param posX A size_t
-             * @param posY A size_t
-             * @param fontSize A size_t
+             * @param posX A int
+             * @param posY A int
+             * @param fontSize A int
              * @param color A Color
              */
-            void drawText(const std::string &title, const size_t &posX, const size_t &posY, const size_t &fontSize, const Color &color) const;
+            void drawText(const std::string &title, const int &posX, const int &posY, const int &fontSize, const Color &color) const;
 
             /**
              * @brief Draw text using custom font
              *
              * @param font A string
              * @param text A string
-             * @param position A pair of size_t
+             * @param position A pair of int
              * @param fontSize A float
              * @param spacing A float
              * @param color A Color
              */
-            void drawTextEx(const std::string &font, const std::string &text, const std::pair<size_t, size_t> &position, const float &fontSize, const float &spacing, const Color &tint) const;
+            void drawTextEx(const std::string &font, const std::string &text, const std::pair<int, int> &position, const float &fontSize, const float &spacing, const Color &tint) const;
 
             /**
              * @brief Measure string width for default font
              *
              * @param text A string
-             * @param fontSize A size_t
-             * @return A size_t
+             * @param fontSize A int
+             * @return A int
              */
-            size_t measureText(const std::string &text, const size_t &fontSize) const;
+            int measureText(const std::string &text, const int &fontSize) const;
 
             /**
              * @brief Check if two text string are equal
@@ -73,9 +73,9 @@ namespace Raylib
              * @brief Check if two text string are equal
              *
              * @param text A string
-             * @return A size_t
+             * @return A int
              */
-            size_t textLength(const std::string &text) const;
+            int textLength(const std::string &text) const;
     };
 
     #include "Text.inl"

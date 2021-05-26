@@ -9,12 +9,16 @@
 
 Engine::Core::Core()
 {
+<<<<<<< HEAD
 <<<<<<< HEAD:Engine/Core/Core.cpp
     std::shared_ptr<IGraphical> lib = std::make_shared<XRay>();
 =======
 //    std::shared_ptr<IGraphical> lib = std::make_shared<Raylib::XRay>();
     std::shared_ptr<IGraphical> lib = std::make_shared<Irrlicht>();
 >>>>>>> 947524d (Push):src/Core/Core.cpp
+=======
+    std::shared_ptr<IGraphical> lib = std::make_shared<XRay>();
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
 
     _graphical = std::move(lib);
     _graphical->initWindow(1920, 1080, "Bomberman");
@@ -26,10 +30,18 @@ Engine::Core::~Core()
 
 void Engine::Core::run(void)
 {
+<<<<<<< HEAD
     while (!_graphical->shouldCloseWindow()) {
         _graphical->display();
         _scene = _graphical->getScene();
         if (_scene == IGraphical::GAME && _game) {
+=======
+    while (!_graphical->shouldCloseWindow() && _scene != IGraphical::END_GAME) {
+        getBackupsFiles();
+        _graphical->display();
+        _scene = _graphical->getScene();
+        if (_scene == IGraphical::GAMEIN && _game) {
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
             if (!_isPaused)
                 _game->updateGame();
             if (!_game->isGameOver() && !endGame()) {
@@ -40,10 +52,29 @@ void Engine::Core::run(void)
         }
         if (_graphical->getUserNames() != _userNames)
             _userNames = _graphical->getUserNames();
+<<<<<<< HEAD
+=======
+        if (_graphical->getBackups() != _backups)
+            _graphical->setBackups(_backups);
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
     }
     _graphical->closeWindow();
 }
 
+<<<<<<< HEAD
+=======
+void Engine::Core::getBackupsFiles()
+{
+    std::string dirBackups(".backups/");
+    std::filesystem::directory_iterator backupsDir(dirBackups);
+
+    _backups.clear();
+    for (auto &file: backupsDir)
+        if (file.path().filename().extension() == ".backup")
+                _backups.push_back(file.path().filename());
+}
+
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
 void Engine::Core::saveBestsScores(void)
 {
     // Get all scores and sort them in ascending order
@@ -73,7 +104,11 @@ void Engine::Core::saveBestsScores(void)
 
 bool Engine::Core::endGame(void)
 {
+<<<<<<< HEAD
     if (_graphical->getScene() != IGraphical::GAME || !_game->isGameOver())
+=======
+    if (_graphical->getScene() != IGraphical::GAMEIN || !_game->isGameOver())
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
         return false;
     _graphical->setScene(IGraphical::END_GAME);
     saveBestsScores();

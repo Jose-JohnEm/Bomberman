@@ -23,6 +23,7 @@ class IGraphical {
 
     public:
         enum Scene {
+<<<<<<< HEAD
             /// This scene is the intro of our game
             INTRO,
             /// This scene is the main menu of our game
@@ -33,6 +34,16 @@ class IGraphical {
             PLAYMENU,
             HOWTOMENU,
             SETTINGSMENU,
+=======
+            /// This scene is the main menu of our game
+            MAIN_MENU,
+            PLAYMENU,
+            HOWTOMENU,
+            SETTINGSMENU,
+            MODEMENU,
+            MAPMENU,
+            LOADMENU,
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
             DRAWMENU,
             GAMEIN,
             PAUSEIN,
@@ -61,6 +72,7 @@ class IGraphical {
         virtual bool shouldCloseWindow(void) const = 0;
 
         /**
+<<<<<<< HEAD
          * @brief Check if we are in the game scene
          *
          * @return true if we are in the game scene and false otherwise
@@ -68,6 +80,8 @@ class IGraphical {
         virtual bool isInGameScene(void) const = 0;
 
         /**
+=======
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
          * @brief This function sets the list of scores. First element of the pair is the username, the second is the score.
          *
          * @param scores A vector of pair (username, score)
@@ -104,6 +118,23 @@ class IGraphical {
         virtual const std::vector<std::string> &getUserNames(void) const = 0;
 
         /**
+<<<<<<< HEAD
+=======
+         * @brief Get the paths to all backups files
+         *
+         * @return A vector of all the paths to backups files as a const std::vector<std::string>&
+         */
+        virtual const std::vector<std::string> &getBackups(void) const = 0;
+
+        /**
+         * @brief Get the paths to all backups files
+         *
+         * @param backups A vector of all the paths to backups files as a const std::vector<std::string>&
+         */
+        virtual void setBackups(const std::vector<std::string> &backups) = 0;
+
+        /**
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
          * @brief Returns the current scene.
          *
          * @return The scene (MAIN_MENU, GAME, END_GAME...), the step where we are in the window

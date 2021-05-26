@@ -7,6 +7,7 @@ PROJECT(bomberman VERSION 1.0)
 SET(CMAKE_CXX_STANDARD 17)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Call the fetch_ressources module
 include(cmake/fetchressources.cmake)
 
@@ -28,6 +29,10 @@ FIND_PACKAGE(Irrlicht REQUIRED)
 INCLUDE_DIRECTORIES("${CMAKE_SOURCE_DIR}/include")
 INCLUDE_DIRECTORIES(${Irrlicht_INCLUDE_DIRS})
 >>>>>>> 947524d (Push)
+=======
+# TODO: doc
+ADD_SUBDIRECTORY(Lib/XRaylib)
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
 
 # Generate a list of files
 FILE(GLOB_RECURSE SRCS CONFIGURE_DEPENDS
@@ -44,11 +49,15 @@ SET(RAYLIB_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Lib/XRaylib/Raylib/")
 ADD_EXECUTABLE(${PROJECT_NAME} ${SRCS} ${HEADERS_FILES})
 # This part downloads raylib and builds it if it's not installed on your system
 <<<<<<< HEAD
+<<<<<<< HEAD
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} xray) # Specify libraries or flags to use when linking a given target and/or its dependents
 =======
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} raylib) # Specify libraries or flags to use when linking a given target and/or its dependents
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} Irrlicht) # Specify libraries or flags to use when linking a given target and/or its dependents
 >>>>>>> 947524d (Push)
+=======
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} xray) # Specify libraries or flags to use when linking a given target and/or its dependents
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
 
 # Specify include directories to use when compiling a given target
 # PRIVATE keyword ensure a complete compilation beetwin dependencies

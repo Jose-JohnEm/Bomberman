@@ -1,10 +1,18 @@
+<<<<<<< HEAD
 # This CMakeLists.txt meta-compile our raylib-c encapsulation
 # Export : libraylib-cpp.a
+=======
+# CMakeLists.txt
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
 
 # Always set the cmake min version.
 CMAKE_MINIMUM_REQUIRED(VERSION 3.17)
 
+<<<<<<< HEAD
 # Set the project version 1.0 for example
+=======
+# TODO: doc
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
 SET(PROJECT_VERSION "1.0")
 
 # Set the variable PROJ_NAME to whatever your library's name is, PROJECT_VERSION should be a version string like "0.1"

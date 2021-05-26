@@ -25,7 +25,16 @@ inline void XRay::beginDrawing(void) const
     Raylib::Drawing drawing;
 
     drawing.beginDrawing();
-    drawing.clearBackground(Raylib::Color::Black());
+    drawing.clearBackground(Raylib::Color::White());
+}
+
+inline void XRay::beginDrawing(bool clear) const
+{
+    Raylib::Drawing drawing;
+
+    drawing.beginDrawing();
+    if (clear == true)
+        drawing.clearBackground(Raylib::Color::White());
 }
 
 inline void XRay::endDrawing(void) const
@@ -37,47 +46,50 @@ inline void XRay::endDrawing(void) const
 
 inline void XRay::display(void)
 {
-    (this->*_scenesFunc[_scene])();
-}
-
-inline bool XRay::isInGameScene(void) const
-{
-    return false;
+    (this->*_scenesFunc[(int)_scene])();
 }
 
 inline void XRay::setPlayersStats(const std::map<std::string, std::pair<std::string, std::string>> &info)
 {
-    // TODO: Implement this function
+    _playersStats = info;
 }
 
 inline void XRay::setScores(const std::vector<std::pair<std::string, std::string>> &scores)
 {
-    // TODO: Implement this function
+    _scores = scores;
 }
 
 inline void XRay::setBestsScores(const std::vector<std::pair<std::string, std::string>> &scores)
 {
-    // TODO: Implement this function
+    _bestsScores = scores;
 }
 
 inline void XRay::updateGameInfos(const std::vector<std::shared_ptr<IEntity>> &gameInfos)
 {
-    // TODO: Implement this function
+    _gameInfos = gameInfos;
 }
 
 inline const std::vector<std::string> &XRay::getUserNames(void) const
 {
-    // TODO: Implement this function
     return _userNames;
 }
 
 inline IGraphical::Scene XRay::getScene(void) const
 {
-    // TODO: Implement this function
     return _scene;
 }
 
 inline void XRay::setScene(const Scene &scene)
 {
-    // TODO: Implement this function
+    _scene = scene;
+}
+
+inline const std::vector<std::string> &XRay::getBackups(void) const
+{
+    return _backups;
+}
+
+inline void XRay::setBackups(const std::vector<std::string> &backups)
+{
+    _backups = backups;
 }

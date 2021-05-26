@@ -3,7 +3,10 @@
 # [...]
 # TARGET_LINK_LIBRARIES(target_name raylib)
 
+<<<<<<< HEAD
 <<<<<<< HEAD:Lib/XRaylib/Raylib/cmake/Findraylib.cmake
+=======
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
 CMAKE_MINIMUM_REQUIRED(VERSION 3.17) # FetchContent is available in 3.11+
 
 if (NOT raylib_FOUND) # If there's none, fetch and build raylib
@@ -27,6 +30,7 @@ if (NOT raylib_FOUND) # If there's none, fetch and build raylib
 
     endif()
 
+<<<<<<< HEAD
 endif()
 =======
 CMAKE_MINIMUM_REQUIRED(VERSION 3.11)
@@ -45,3 +49,6 @@ if (NOT raylib_FOUND)
   endif()
 endif()
 >>>>>>> 947524d (Push):cmake/Findraylib.cmake
+=======
+endif()
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))

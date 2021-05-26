@@ -92,6 +92,7 @@ Do your best to avoid clunky animations or graphical glitches, manage your camer
 
 To see more check into the folder ./doc.
 
+<<<<<<< HEAD
 ### XRay
 
 ...
@@ -116,4 +117,6 @@ To add new resources you have to use it at [the root of the resources Git Reposi
 _When we had a problem and we needed to clone all the project then we had to spent a lot of time only to fetch resources._
 _That's why we didn't leave our resources here anymore_.
 
+=======
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
 > :speaking_head: We had to hit this project

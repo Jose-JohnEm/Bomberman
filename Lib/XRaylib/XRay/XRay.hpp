@@ -24,6 +24,10 @@
 #include "Mouse/Mouse.hpp"
 #include "Texture/Texture.hpp"
 #include "Text/Text.hpp"
+<<<<<<< HEAD
+=======
+#include "Keyboard/Keyboard.hpp"
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
 #include "Color/Color.hpp"
 #include "Cursor/Cursor.hpp"
 #include "Timing/Timing.hpp"
@@ -59,6 +63,7 @@ class XRay : public IGraphical {
         bool shouldCloseWindow(void) const override;
 
         /**
+<<<<<<< HEAD
          * @brief Check if we are in the game scene
          *
          * @return true if we are in the game scene and false otherwise
@@ -66,6 +71,8 @@ class XRay : public IGraphical {
         bool isInGameScene(void) const override;
 
         /**
+=======
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
          * @brief This function sets the list of scores. First element of the pair is the username, the second is the score.
          *
          * @param scores A vector of pair (username, score)
@@ -116,11 +123,37 @@ class XRay : public IGraphical {
         void setScene(const Scene &scene) override;
 
         /**
+<<<<<<< HEAD
+=======
+         * @brief Get the paths to all backups files
+         *
+         * @return A vector of all the paths to backups files as a const std::vector<std::string>&
+         */
+        const std::vector<std::string> &getBackups(void) const override;
+
+        /**
+         * @brief Get the paths to all backups files
+         *
+         * @param A vector of all the paths to backups files as a const std::vector<std::string>&
+         */
+        void setBackups(const std::vector<std::string> &) override;
+
+        /**
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
          * @brief Set buffer to Draw textures
          */
         void beginDrawing(void) const override;
 
         /**
+<<<<<<< HEAD
+=======
+         * @brief Set buffer to Draw textures
+         * clear A boolean to know if he should clear
+         */
+        void beginDrawing(bool clear) const;
+
+        /**
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
          * @brief Unset buffer to Draw textures
          */
         void endDrawing(void) const override;
@@ -142,11 +175,16 @@ class XRay : public IGraphical {
         bool mouseIsInBox(double x, double y, double x_x, double y_y);
 
         /**
+<<<<<<< HEAD
          * @brief Display Menu
+=======
+         * @brief Display Main Menu
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
          */
         void displayMenu(void);
 
         /**
+<<<<<<< HEAD
          * @brief Display Intro Scene
          */
         void displayTrace(void);
@@ -155,11 +193,55 @@ class XRay : public IGraphical {
          * @brief Display Opening Scene
          */
         void displayIntro(void);
+=======
+         * @brief Display Play Scene
+         */
+        void playMenu(void);
+
+        /**
+         * @brief Display How to play Scene
+         */
+        void howToMenu(void);
+
+        /**
+         * @brief Display Settings Scene
+         */
+        void settingsMenu(void);
+
+        /**
+         * @brief Quit program
+         */
+        void quit(void);
+
+        /**
+         * @brief Display Settings Scene
+         */
+        void loadGameScene(void);
+
+        /**
+         * @brief Scene for Modes
+         */
+        void modeScene(void);
+
+        /**
+         * @brief Scene for Maps
+         */
+        void mapScene(void);
+
+        /**
+         * @brief Display Intro Scene
+         */
+        void displayTrace(void);
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
 
         /**
          * @brief Display Opening Scene
          */
+<<<<<<< HEAD
         void displayOpening(void);
+=======
+        void displayIntro(void);
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
 
         /**
          * @brief This function must display the current scene. It is used in the game loop
@@ -168,10 +250,32 @@ class XRay : public IGraphical {
 
     private:
         Raylib::Window _window;                     // Game window
+<<<<<<< HEAD
         std::vector<std::string> _userNames;        // User names
         std::pair<bool, void (XRay::*)()> _intro;   // Intro pointer to function
         Scene _scene = INTRO;                       // Current scene
         std::vector<void (XRay::*)()> _scenesFunc;  // Array of pointers to function (a scene, a function)
+=======
+        Raylib::Mouse _mouse;                       // Game Mouse
+        Raylib::Cursor _cursor;                     // Game cursor
+        Raylib::Keyboard _keyboard;                   // Game keyboard
+
+        ::Music music;
+        std::vector<std::string> _userNames;        // A vector of all the users names
+        std::pair<bool, void (XRay::*)()> _intro;   // Intro pointer to function
+        Scene _scene = MAIN_MENU;                   // Current scene
+        std::vector<void (XRay::*)()> _scenesFunc;  // Array of pointers to function (a scene, a function)
+
+        std::array<bool, 4> playerTab = {true, true, true, true};
+        std::array<bool, 4> controlsTab = {true, true, true, true};
+        std::array<int, 3> allIntegers = {50, 400, 1};
+
+        std::map<std::string, std::pair<std::string, std::string>> _playersStats; // A map of all the stats [PlayerName -- (NameOfStat, Value)]...
+        std::vector<std::pair<std::string, std::string>> _scores;                 // A vector of pair (username, score)
+        std::vector<std::pair<std::string, std::string>> _bestsScores;            // A vector of pair (username, score), List of Bests Scores
+        std::vector<std::shared_ptr<IEntity>> _gameInfos;                         // A vector of shared pointer that represent all the entities to display. Ex : Map, Score, UserInfo, Button
+        std::vector<std::string> _backups;                                        // A vector of all the paths to backups files as a const std::vector<std::string>&
+>>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
 };
 
 #include "XRay.inl"
