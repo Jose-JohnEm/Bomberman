@@ -7,7 +7,7 @@ message("Searching for resources updates...")
 file(DOWNLOAD http://51.77.221.38:8080/last.log .last.log)
 
 # Check for new updates by comparing the local timestamp and the server timestamp
-execute_process( COMMAND ${CMAKE_COMMAND} -E compare_files 
+execute_process( COMMAND ${CMAKE_COMMAND} -E compare_files
   "${CMAKE_CURRENT_SOURCE_DIR}/resources/.last.log"
   "${CMAKE_CURRENT_SOURCE_DIR}/build/.last.log"
                  RESULT_VARIABLE compare_result
@@ -24,7 +24,7 @@ else()
 
     # Download the resources as a compressed tar.gz file
     file(DOWNLOAD http://51.77.221.38:8080/resources.tar.gz resources.tar.gz SHOW_PROGRESS)
-    
+
     # Uncompress the resource.tar.gz
     execute_process(
       COMMAND ${CMAKE_COMMAND} -E tar xzf resources.tar.gz
@@ -37,3 +37,5 @@ else()
     file(RENAME ${CMAKE_CURRENT_SOURCE_DIR}/build/.last.log ${CMAKE_CURRENT_SOURCE_DIR}/resources/.last.log)
 
 endif()
+
+#TODO: keyword in majuscule regarder les autres .cmake comme example
