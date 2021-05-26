@@ -11,6 +11,8 @@
 #include <string>
 #include <iostream>
 #include "raylib.h"
+#include "Texture/Texture.hpp"
+#include "Font/Font.hpp"
 
 namespace Raylib
 {
@@ -152,70 +154,6 @@ namespace Raylib
              * @return A Image Class
              */
             Image getTextureData(Texture const &texture) const;
-
-            /**
-             * @brief Load image from file into CPU memory (RAM)
-             * 
-             * @param fileName A const pointer to a char
-             * @return A Image Class
-             */
-            Image loadImage(const char *fileName);
-
-            /**
-             * @brief Load image from RAW file data
-             * 
-             * @param fileName A const pointer to a char
-             * @param width A const reference to a int
-             * @param height A const reference to a int
-             * @param format A const reference to a int
-             * @param headerSize A const reference to a int
-             * @return A Image Class
-             */
-            Image loadImageRaw(const char *fileName, int const &width, int const &height, int const &format, int const &headerSize);
-
-            /**
-             * @brief Load image sequence from file (frames appended to image.data)
-             * 
-             * @param fileName A const pointer to a char
-             * @param frames A const pointer to a int
-             * @return A Image Class
-             */
-            Image loadImageAnim(const char *fileName, int *frames);
-
-            /**
-             * @brief Load image from memory buffer
-             * 
-             * @param fileType A const pointer to a char
-             * @param fileData A const pointer to a unsigned char
-             * @param dataSize A const reference to a int
-             * @return A Image Class
-             */
-            Image loadImageFromMemory(const char *fileType, const unsigned char *fileData, int const &dataSize);
-
-            /**
-             * @brief Unload image from CPU memory (RAM)
-             * 
-             * @param image A const reference to a Class Image
-             */
-            void unloadImage(Image const &image) const;
-
-            /**
-             * @brief Export image data to file, returns true on success
-             * 
-             * @param image A const reference to a Class Image
-             * @param fileType A const pointer to a char
-             * @return A boolean
-             */
-            bool exportImage(Image const &image, const char *fileName) const;
-
-            /**
-             * @brief Export image as code file defining an array of bytes, returns true on success
-             * 
-             * @param image A const reference to a Class Image
-             * @param fileType A const pointer to a char
-             * @return A boolean
-             */
-            bool exportImageAsCode(Image const &image, const char *fileType) const;
 
             /**
              * @brief Generate image: plain color
