@@ -78,7 +78,8 @@ const std::string Raylib::File::getWorkingDirectory(void)
 }
 std::vector<std::string> Raylib::File::getDirectoryFiles(const std::string dirPath, int &count)
 {
-
+    char **p = ::GetDirectoryFiles(dirPath.c_str(), &count);
+    return std::vector<std::string> (p, p + count);
 }
 
 void Raylib::File::clearDirectoryFiles(void)
@@ -98,7 +99,8 @@ bool Raylib::File::isFileDropped(void)
 
 std::vector<std::string> Raylib::File::getDroppedFiles(int &count)
 {
-
+    char **p = ::GetDroppedFiles(&count);
+    return std::vector<std::string> (p, p + count);
 }
 
 void Raylib::File::clearDroppedFiles(void)
@@ -108,5 +110,5 @@ void Raylib::File::clearDroppedFiles(void)
 
 long Raylib::File::getFileModTime(const std::string fileName)
 {
-    return ::GetFileModTime(fileName.)
+    return ::GetFileModTime(fileName.c_str());
 }
