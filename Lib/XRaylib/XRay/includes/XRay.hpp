@@ -32,10 +32,34 @@
 #include "Box.hpp"
 #include "Cinematic.hpp"
 #include "Resources.hpp"
+#include "Input.hpp"
 
 class XRay : public IGraphical {
 
     public:
+
+    // TODO: Créer une classe pour le bail de gamepad dans xray là bon travail lucas
+        enum GamePadTouch {
+            UP,
+            RIGHT,
+            DOWN,
+            LEFT,
+            TRIANGLE,
+            ROND,
+            CROIX,
+            CARRE,
+            L1,
+            L2,
+            R1,
+            R2,
+            SHARE,
+            UNKNOWN,
+            OPTIONS,
+            L3,
+            R3
+        };
+
+
         /**
          * @brief Construct a new Ray Lib object
          */
@@ -223,7 +247,9 @@ class XRay : public IGraphical {
         // TODO: documentation
         void setTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> &textBox);
         void updateTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> textBox);
-        void setAddBox(const std::vector<std::pair<int, int>> &removePos, const std::vector<std::pair<int, int>> &nextTab, const std::vector<std::pair<int, int>> &prevTab, const int &a);
+        void setAddBox(std::vector<std::pair<int, int>> &removePos, std::vector<std::pair<int, int>> &nextTab, std::vector<std::pair<int, int>> &prevTab, const int &a);
+        void addPlayer(std::vector<std::pair<int, int>> &removePos, std::vector<std::pair<int, int>> &nextTab, std::vector<std::pair<int, int>> &prevTab, std::vector<bool> &mouseOnText, std::vector<::Rectangle> textBox);
+        void removePlayer(std::vector<std::pair<int, int>> &removePos, std::vector<std::pair<int, int>> &nextTab, std::vector<std::pair<int, int>> &prevTab, std::vector<bool> &mouseOnText, std::vector<::Rectangle> textBox);
         void displayCards(const std::vector<bool> &mouseOnText, const std::vector<::Rectangle> &textBox);
         void displayMouse(void) const;
         void setResources(void);
@@ -238,9 +264,10 @@ class XRay : public IGraphical {
         Scene _scene = MAIN_MENU;                   // Current scene
         std::vector<void (XRay::*)()> _scenesFunc;  // Array of pointers to function (a scene, a function)
 
-        std::array<bool, 4> playerTab = {true, true, true, true};
-        std::array<bool, 4> controlsTab = {true, true, true, true};
-        std::array<int, 3> allIntegers = {50, 400, 1};
+        std::vector<bool> _playerTab;
+        std::vector<bool> _controlsTab;
+        std::array<int, 3> _allIntegers = {50, 400, 1};
+        std::vector<std::pair<int, int>> _letterAndFrame;
 
         std::map<std::string, std::pair<std::string, std::string>> _playersStats; // A map of all the stats [PlayerName -- (NameOfStat, Value)]...
         std::vector<std::pair<std::string, std::string>> _scores;                 // A vector of pair (username, score)

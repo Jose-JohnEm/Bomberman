@@ -10,6 +10,7 @@
 Raylib::Window::Window(const int &width, const int &height, const std::string &title, const bool &lateInit)
 {
     if (!lateInit) {
+        ::SetConfigFlags(FLAG_MSAA_4X_HINT);
         ::InitWindow(width, height, title.c_str());
     }
 }

@@ -7,7 +7,6 @@
 
 #include "XRay.hpp"
 
-
 void XRay::setTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> &textBox) // TODO: To change ?
 {
     for (size_t p = 0, a = 200; p < 4; p++, a += 400) {
@@ -16,12 +15,14 @@ void XRay::setTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> &
         mouseOnText.push_back(false);
         if (p < _allIntegers[2])
             textBox.push_back({ (float)a, 180, 225, 50 });
+        _playerTab.push_back(true);
+        _controlsTab.push_back(true);
     }
 }
 
-void XRay::updateTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> textBox) // TODO: To change ? // Remmove good player 
+void XRay::updateTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> textBox) // TODO: To change ? // Remmove good player // Use Our Encapsulation
 {
-    for (size_t i = 0; i < mouseOnText.size(); i++) {
+    for (size_t i = 0; i < mouseOnText.size() && i < textBox.size(); i++) {
         mouseOnText[i] = (::CheckCollisionPointRec({(float)Raylib::Mouse::getMouseX(), (float)Raylib::Mouse::getMouseY()}, textBox[i])) ? true : false;
         if (mouseOnText[i]) {
             Raylib::Mouse::setMouseCursor(MOUSE_CURSOR_IBEAM);
@@ -47,9 +48,37 @@ void XRay::updateTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle
     }
 }
 
-void XRay::setAddBox(const std::vector<std::pair<int, int>> &removePos, const std::vector<std::pair<int, int>> &nextTab, const std::vector<std::pair<int, int>> &prevTab, const int &a)// TODO: To change ?
+void XRay::removePlayer(std::vector<std::pair<int, int>> &removePos, std::vector<std::pair<int, int>> &nextTab, std::vector<std::pair<int, int>> &prevTab, std::vector<bool> &mouseOnText, std::vector<::Rectangle> textBox)// TODO: To change ?
 {
-    _allIntegers[2] += (_allIntegers[2] != 4 && mouseIsInBox(createBox(_allIntegers[0]+a, _allIntegers[1], _allIntegers[0]+a+150, _allIntegers[1]+150)) && Raylib::Mouse::isButtonPressed(0)) ? 1 : 0;
+    for (size_t u = 0; u < removePos.size(); u++) {
+        if (mouseIsInBox(createBox(removePos[u].first, removePos[u].second, removePos[u].first+64, removePos[u].second+63)) && Raylib::Mouse::isButtonPressed(0)) {
+            _allIntegers[2] -= 1;
+            if (_playerTab[u+1]) {
+                _controlsTab.erase(_controlsTab.begin() + u + 1);
+                _letterAndFrame.erase(_letterAndFrame.begin() + u + 1);
+                _userNames.erase(_userNames.begin() + u + 1);
+            }
+            _playerTab.erase(_playerTab.begin() + u + 1);
+        }
+    }
+}
+
+void XRay::addPlayer(std::vector<std::pair<int, int>> &removePos, std::vector<std::pair<int, int>> &nextTab, std::vector<std::pair<int, int>> &prevTab, std::vector<bool> &mouseOnText, std::vector<::Rectangle> textBox)// TODO: To change ?
+{
+    float a = 200 + (textBox.size()*400);
+    if (_allIntegers[2] != 4 && mouseIsInBox(createBox(_allIntegers[0]+a, _allIntegers[1], _allIntegers[0]+a+150, _allIntegers[1]+150)) && Raylib::Mouse::isButtonPressed(0)) {
+        _allIntegers[2] += 1;
+        _letterAndFrame.push_back(std::make_pair(0, 0));
+        _userNames.push_back("");
+        mouseOnText.push_back(false);
+        textBox.push_back({ a, 180, 225, 50 });
+        _controlsTab.push_back(true);
+        _playerTab.push_back(true);
+    }
+}
+
+void XRay::setAddBox(std::vector<std::pair<int, int>> &removePos, std::vector<std::pair<int, int>> &nextTab, std::vector<std::pair<int, int>> &prevTab, const int &a)// TODO: To change ?
+{
     if (Raylib::Mouse::isButtonPressed(0))
         for (size_t u = 0; u < nextTab.size(); u++) {
             _playerTab[u] = (mouseIsInBox(createBox(nextTab[u].first, nextTab[u].second, nextTab[u].first+50, nextTab[u].second+49))) ? !_playerTab[u] : _playerTab[u];
@@ -57,9 +86,6 @@ void XRay::setAddBox(const std::vector<std::pair<int, int>> &removePos, const st
             _controlsTab[u] = (mouseIsInBox(createBox(nextTab[u].first + 20, nextTab[u].second + 340, nextTab[u].first+70, nextTab[u].second+389)) && _playerTab[u]) ? !_controlsTab[u] : _controlsTab[u];
             _controlsTab[u] = (mouseIsInBox(createBox(prevTab[u].first - 20, prevTab[u].second + 340, prevTab[u].first + 20, prevTab[u].second+389))  && _playerTab[u]) ? !_controlsTab[u] : _controlsTab[u];
         }
-    for (size_t u = 0; u < removePos.size(); u++) {
-        _allIntegers[2] -= mouseIsInBox(createBox(removePos[u].first, removePos[u].second, removePos[u].first+64, removePos[u].second+63)) && Raylib::Mouse::isButtonPressed(0) ? 1 : 0;
-    }
 }
 
 void XRay::displayCards(const std::vector<bool> &mouseOnText, const std::vector<::Rectangle> &textBox)// TODO: To change ?
@@ -77,7 +103,6 @@ void XRay::displayCards(const std::vector<bool> &mouseOnText, const std::vector<
         }
     }
 }
-
 
 void XRay::displayCardsSettings(std::vector<std::pair<int, int>> &removePos, std::vector<std::pair<int, int>> &nextTab, std::vector<std::pair<int, int>> &prevTab, int *a)// TODO: To change ?
 {
@@ -113,7 +138,6 @@ void XRay::displayPlayerChoiceScene(void) // TODO: To change ?
     std::vector<bool> mouseOnText;
     std::vector<::Rectangle> textBox;
 
-
     int a;
 
     setTextBox(mouseOnText, textBox);
@@ -125,5 +149,7 @@ void XRay::displayPlayerChoiceScene(void) // TODO: To change ?
     displayMouse();
     endDrawing();
 
+    addPlayer(removePos, nextTab, prevTab, mouseOnText, textBox);
     setAddBox(removePos, nextTab, prevTab, a);
+    removePlayer(removePos, nextTab, prevTab, mouseOnText, textBox);
 }
