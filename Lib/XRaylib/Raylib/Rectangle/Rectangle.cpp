@@ -12,21 +12,21 @@ Raylib::Rectangle::Rectangle(float x, float y, float width, float height)
     ::Rectangle _rectangle = {x, y, width, height};
 }
 
-Raylib::Rectangle::Rectangle(::Vector2 position, ::Vector2 size)
-{
-    ::Rectangle _rectangle = {position.x, position.y, size.x, size.y};
-}
-
-Raylib::Rectangle::Rectangle(::Vector2 size)
-{
-    ::Rectangle _rectangle = {0, 0, size.x, size.y};
-}
-
-Raylib::Rectangle::Rectangle(::Rectangle rec)
-: _rectangle(rec)
-{
-
-}
+//FIXME:Raylib::Rectangle::Rectangle(::Vector2 position, ::Vector2 size)
+//FIXME:{
+//FIXME:    ::Rectangle _rectangle = {position.x, position.y, size.x, size.y};
+//FIXME:}
+//FIXME:
+//FIXME:Raylib::Rectangle::Rectangle(::Vector2 size)
+//FIXME:{
+//FIXME:    ::Rectangle _rectangle = {0, 0, size.x, size.y};
+//FIXME:}
+//FIXME:
+//FIXME:Raylib::Rectangle::Rectangle(::Rectangle rec)
+//FIXME:: _rectangle(rec)
+//FIXME:{
+//FIXME:
+//FIXME:}
 
 Raylib::Rectangle::~Rectangle()
 {

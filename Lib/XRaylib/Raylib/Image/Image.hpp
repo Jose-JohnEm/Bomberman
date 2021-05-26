@@ -42,10 +42,10 @@ namespace Raylib
              * @brief Construct a new Image object
              *
              * @param fileName A string
-             * @param width A int
-             * @param height A int
-             * @param format A int
-             * @param headerSize A int
+             * @param width An int
+             * @param height An int
+             * @param format An int
+             * @param headerSize An int
              */
             Image(const std::string &fileName, const int &width, const int &height, const int &format, const int &headerSize);
 
@@ -73,10 +73,10 @@ namespace Raylib
              * @brief Load image from RAW file data
              *
              * @param fileName A const std::string
-             * @param width A int
-             * @param height A int
-             * @param format A int
-             * @param headerSize A int
+             * @param width An int
+             * @param height An int
+             * @param format An int
+             * @param headerSize An int
              * @return A Image
              */
             Image loadImageRaw(const std::string &fileName, const int &width, const int &height, const int &format, const int &headerSize);
@@ -85,7 +85,7 @@ namespace Raylib
              * @brief Load image sequence from file (frames appended to image.data)
              *
              * @param fileName A const std::string
-             * @param frames A int *
+             * @param frames An int *
              * @return A Image
              */
             Image loadImageAnim(const std::string &fileName, int *frames);
@@ -95,7 +95,7 @@ namespace Raylib
              *
              * @param fileType A const std::string
              * @param fileData A const unsigned std::string
-             * @param dataSize A int
+             * @param dataSize An int
              * @return A Image
              */
             Image loadImageFromMemory(const std::string &fileType, const std::string &fileData, const int &dataSize);
@@ -158,8 +158,8 @@ namespace Raylib
             /**
              * @brief Generate image: plain color
              * 
-             * @param width A const reference to a int
-             * @param height A const reference to a int
+             * @param width A const reference to an int
+             * @param height A const reference to an int
              * @param color A const pointer to a Class Color
              * @return A Image Class
              */
@@ -168,8 +168,8 @@ namespace Raylib
             /**
              * @brief Generate image: vertical gradient
              * 
-             * @param width A const reference to a int
-             * @param height A const reference to a int
+             * @param width A const reference to an int
+             * @param height A const reference to an int
              * @param top A const pointer to a Class Color
              * @param bottom A const pointer to a Class Color
              * @return A Image Class
@@ -179,8 +179,8 @@ namespace Raylib
             /**
              * @brief Generate image: horizontal gradient
              * 
-             * @param width A const reference to a int
-             * @param height A const reference to a int
+             * @param width A const reference to an int
+             * @param height A const reference to an int
              * @param left A const pointer to a Class Color
              * @param right A const pointer to a Class Color
              * @return A Image Class
@@ -190,8 +190,8 @@ namespace Raylib
             /**
              * @brief Generate image: radial gradient
              * 
-             * @param width A const reference to a int
-             * @param height A const reference to a int
+             * @param width A const reference to an int
+             * @param height A const reference to an int
              * @param inner A const pointer to a Class Color
              * @param outer A const pointer to a Class Color
              * @return A Image Class
@@ -201,10 +201,10 @@ namespace Raylib
             /**
              * @brief Generate image: checked
              * 
-             * @param width A const reference to a int
-             * @param height A const reference to a int
-             * @param checksX A const reference to a int
-             * @param checksY A const reference to a int
+             * @param width A const reference to an int
+             * @param height A const reference to an int
+             * @param checksX A const reference to an int
+             * @param checksY A const reference to an int
              * @param col1 A const pointer to a Class Color
              * @param col2 A const pointer to a Class Color
              * @return A Image Class
@@ -214,8 +214,8 @@ namespace Raylib
             /**
              * @brief Generate image: white noise
              * 
-             * @param width A const reference to a int
-             * @param height A const reference to a int
+             * @param width A const reference to an int
+             * @param height A const reference to an int
              * @param factor A const reference to a float
              * @return A Image Class
              */
@@ -224,10 +224,10 @@ namespace Raylib
             /**
              * @brief Generate image: perlin noise
              * 
-             * @param width A const reference to a int
-             * @param height A const reference to a int
-             * @param offsetX A const reference to a int
-             * @param offsetY A const reference to a int
+             * @param width A const reference to an int
+             * @param height A const reference to an int
+             * @param offsetX A const reference to an int
+             * @param offsetY A const reference to an int
              * @param scale A const reference to a float
              * @return A Image Class
              */
@@ -236,9 +236,9 @@ namespace Raylib
             /**
              * @brief Generate image: cellular algorithm. Bigger tileSize means bigger cells
              * 
-             * @param width A const reference to a int
-             * @param height A const reference to a int
-             * @param tileSize A const reference to a int
+             * @param width A const reference to an int
+             * @param height A const reference to an int
+             * @param tileSize A const reference to an int
              * @return A Image Class
              */
             Image genImageCellular(int const &width, int const &height, int const &tileSize);
@@ -264,7 +264,7 @@ namespace Raylib
              * @brief Create an image from text (default font)
              * 
              * @param text A const pointer to a char
-             * @param fontSize A const reference to a int
+             * @param fontSize A const reference to an int
              * @param color A const reference to a Class Color
              * @return A Image Class
              */
@@ -286,7 +286,7 @@ namespace Raylib
              * @brief Convert image data to desired format
              * 
              * @param image A const pointer to a Class Image
-             * @param newFormat A const pointer to a int
+             * @param newFormat A const pointer to an int
              */
             void imageFormat(Image *image, int const &newFormat) const;
 
@@ -342,8 +342,8 @@ namespace Raylib
              * @brief Resize image (Bicubic scaling algorithm)
              * 
              * @param image A const pointer to a Class Image
-             * @param newWidth A const reference to a int
-             * @param newHeight A const reference to a int
+             * @param newWidth A const reference to an int
+             * @param newHeight A const reference to an int
              */
             void imageResize(Image *image, int const &newWidth, int const &newHeight) const;
 
@@ -351,8 +351,8 @@ namespace Raylib
              * @brief Resize image (Nearest-Neighbor scaling algorithm)
              * 
              * @param image A const pointer to a Class Image
-             * @param newWidth A const reference to a int
-             * @param newHeight A const reference to a int
+             * @param newWidth A const reference to an int
+             * @param newHeight A const reference to an int
              */
             void imageResizeNN(Image *image, int newWidth, int const &newHeight) const;
 
@@ -360,10 +360,10 @@ namespace Raylib
              * @brief Resize canvas and fill with color
              * 
              * @param image A const pointer to a Class Image
-             * @param newWidth A const reference to a int
-             * @param newHeight A const reference to a int
-             * @param offsetX A const reference to a int
-             * @param offsetY A const reference to a int
+             * @param newWidth A const reference to an int
+             * @param newHeight A const reference to an int
+             * @param offsetX A const reference to an int
+             * @param offsetY A const reference to an int
              * @param color A const reference to a Class Color
              */
             void imageResizeCanvas(Image *image, int const &newWidth, int const &newHeight, int const &offsetX, int const &offsetY, Color const &fill) const;
@@ -379,9 +379,9 @@ namespace Raylib
              * @brief Dither image data to 16bpp or lower (Floyd-Steinberg dithering)
              * 
              * @param image A const pointer to a Class Image
-             * @param rBpp A const reference to a int
-             * @param gBpp A const reference to a int
-             * @param aBpp A const reference to a int
+             * @param rBpp A const reference to an int
+             * @param gBpp A const reference to an int
+             * @param aBpp A const reference to an int
              */
             void imageDither(Image *image, int rBpp, int gBpp, int bBpp, int aBpp) const;
 
@@ -472,8 +472,8 @@ namespace Raylib
              * @brief Load colors palette from image as a Color array (RGBA - 32bit)
              * 
              * @param image A const reference to a Class Image
-             * @param maxPaletteSize A const reference to a int
-             * @param colorCount A const pointer to a int
+             * @param maxPaletteSize A const reference to an int
+             * @param colorCount A const pointer to an int
              * @return A Class Color
              */
             Color *loadImagePalette(Image const &image, int const &maxPaletteSize, int *colorsCount);
@@ -512,8 +512,8 @@ namespace Raylib
              * @brief Draw pixel within an image
              * 
              * @param dst A const pointer to a Class Image
-             * @param posX A const reference to a int
-             * @param posY A const reference to a int
+             * @param posX A const reference to an int
+             * @param posY A const reference to an int
              * @param color A const reference to a Class Color
              */
             void imageDrawPixel(Image *dst, int const &posX, int const &posY, Color const &color);
@@ -531,10 +531,10 @@ namespace Raylib
              * @brief Draw pixel within an image (Vector version)
              * 
              * @param dst A const pointer to a Class Image
-             * @param startPosX A const reference to a int
-             * @param startPosY A const reference to a int
-             * @param endPosX A const reference to a int
-             * @param endPosY A const reference to a int
+             * @param startPosX A const reference to an int
+             * @param startPosY A const reference to an int
+             * @param endPosX A const reference to an int
+             * @param endPosY A const reference to an int
              * @param color A const reference to a Class color
              */
             void imageDrawLine(Image *dst, int const &startPosX, int const &startPosY, int const &endPosX, int const &endPosY, Color const &olor);
@@ -553,9 +553,9 @@ namespace Raylib
              * @brief Draw circle within an image
              * 
              * @param dst A const pointer to a Class Image
-             * @param centerX A const reference to a int
-             * @param centerY A const reference to a int
-             * @param radius A const reference to a int
+             * @param centerX A const reference to an int
+             * @param centerY A const reference to an int
+             * @param radius A const reference to an int
              * @param color A const reference to a Class color
              */
             void imageDrawCircle(Image *dst, int const &centerX, int const &centerY, int const &radius, Color const &color);
@@ -565,7 +565,7 @@ namespace Raylib
              * 
              * @param dst A const pointer to a Class Image
              * @param center A const reference to a Class Vector2
-             * @param radius A const reference to a int
+             * @param radius A const reference to an int
              * @param color A const reference to a Class color
              */
             void imageDrawCircleV(Image *dst, Vector2 const &center, int const &radius, Color const &color);
@@ -586,9 +586,9 @@ namespace Raylib
              * 
              * @param dst A const pointer to a Class Image
              * @param text A const pointer to a char
-             * @param posX A const reference to a int
-             * @param posX A const reference to a int
-             * @param fontSize A const reference to a int
+             * @param posX A const reference to an int
+             * @param posX A const reference to an int
+             * @param fontSize A const reference to an int
              * @param tint A const reference to a Class color
              */
             void imageDrawText(Image *dst, const char *text, int const &posX, int const &posY, int const &fontSize, Color const &color) const;

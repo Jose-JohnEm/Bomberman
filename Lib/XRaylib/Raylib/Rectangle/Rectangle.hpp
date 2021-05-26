@@ -67,10 +67,10 @@ namespace Raylib
             /**
              * @brief Draw a color-filled rectangle
              *
-             * @param posX A const reference to a int
-             * @param posY A const reference to a int
-             * @param width A const reference to a int
-             * @param height A const reference to a int
+             * @param posX A const reference to an int
+             * @param posY A const reference to an int
+             * @param width A const reference to an int
+             * @param height A const reference to an int
              * @param color A const reference to Class Color
              */
             void drawRectangle(int const &posX, int const &posY, int const &width, int const &height, Color const &color) const;
@@ -105,10 +105,10 @@ namespace Raylib
             /**
              * @brief Draw a vertical-gradient-filled rectangle
              *
-             * @param posX A const reference to a int
-             * @param posY A const reference to a int
-             * @param width A const reference to a int
-             * @param height A const reference to a int
+             * @param posX A const reference to an int
+             * @param posY A const reference to an int
+             * @param width A const reference to an int
+             * @param height A const reference to an int
              * @param col1 A const reference to Class Color
              * @param col2 A const reference to Class Color
              */
@@ -117,10 +117,10 @@ namespace Raylib
             /**
              * @brief Draw a horizontal-gradient-filled rectangle
              *
-             * @param posX A const reference to a int
-             * @param posY A const reference to a int
-             * @param width A const reference to a int
-             * @param height A const reference to a int
+             * @param posX A const reference to an int
+             * @param posY A const reference to an int
+             * @param width A const reference to an int
+             * @param height A const reference to an int
              * @param col1 A const reference to Class Color
              * @param col2 A const reference to Class Color
              */
@@ -140,10 +140,10 @@ namespace Raylib
             /**
              * @brief Draw rectangle outline
              *
-             * @param posX A const reference to a int
-             * @param posY A const reference to a int
-             * @param width A const reference to a int
-             * @param height A const reference to a int
+             * @param posX A const reference to an int
+             * @param posY A const reference to an int
+             * @param width A const reference to an int
+             * @param height A const reference to an int
              * @param color A const reference to Class Color
              */
             void drawRectangleLines(int const &posX, int const &posY, int const &width, int const &height, Color const &color) const;
@@ -152,7 +152,7 @@ namespace Raylib
              * @brief Draw rectangle outline with extended parameters
              *
              * @param rec A const reference to Class Rectangle
-             * @param lineThick A const reference to a int
+             * @param lineThick A const reference to an int
              * @param color A const reference to Class Color
              */
             void drawRectangleLinesEx(Rectangle const &rec, int const &lineThick, Color const &color) const;
@@ -162,7 +162,7 @@ namespace Raylib
              *
              * @param rec A const reference to Class Rectangle
              * @param roundness A const reference to a float
-             * @param segments A const reference to a int
+             * @param segments A const reference to an int
              * @param color A const reference to Class Color
              */
             void drawRectangleRounded(Rectangle const &rec, float const &roundness, int const &segments, Color const &color) const;
@@ -172,8 +172,8 @@ namespace Raylib
              *
              * @param rec A const reference to Class Rectangle
              * @param roundness A const reference to a float
-             * @param segments A const reference to a int
-             * @param lineThick A const reference to a int
+             * @param segments A const reference to an int
+             * @param lineThick A const reference to an int
              * @param color A const reference to Class Color
              */
             void drawRectangleRoundedLines(Rectangle const &rec, float const &roundness, int const &segments, int const &lineThick, Color const &color) const;

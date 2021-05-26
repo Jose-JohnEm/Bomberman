@@ -34,20 +34,20 @@ inline void Raylib::Rectangle::drawRectangle(int const &posX, int const &posY, i
 }
 
 
-inline void Raylib::Rectangle::drawRectangleV(::Vector2 const &position, ::Vector2 const &size, Color const &color) const
-{
-    return ::DrawRectangleV(position, size, color.getCStruct());
-}
+//FIXME:inline void Raylib::Rectangle::drawRectangleV(::Vector2 const &position, ::Vector2 const &size, Color const &color) const
+//FIXME:{
+//FIXME:    return ::DrawRectangleV(position, size, color.getCStruct());
+//FIXME:}
 
 inline void Raylib::Rectangle::drawRectangleRec(Rectangle const &rec, Color const &color) const
 {
     return ::DrawRectangleRec(rec.getCStruct(), color.getCStruct());
 }
 
-inline void Raylib::Rectangle::drawRectanglePro(Rectangle const &rec, ::Vector2 const &origin, float const &rotation, Color const &color) const
-{
-    return  ::DrawRectanglePro(rec.getCStruct(), origin, rotation, color.getCStruct());
-}
+//FIXME:inline void Raylib::Rectangle::drawRectanglePro(Rectangle const &rec, ::Vector2 const &origin, float const &rotation, Color const &color) const
+//FIXME:{
+//FIXME:    return  ::DrawRectanglePro(rec.getCStruct(), origin, rotation, color.getCStruct());
+//FIXME:}
 
 inline void Raylib::Rectangle::drawRectangleGradientV(int const &posX, int const &posY, int const &width, int const &height, Color const &color1, Color const &color2) const
 {

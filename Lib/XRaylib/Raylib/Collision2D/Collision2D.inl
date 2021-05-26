@@ -45,7 +45,7 @@ inline bool Raylib::Collision2D::checkCollision(Vector2 startPos1, Vector2 endPo
     return res;
 }
 
-inline Rectangle Raylib::Collision2D::getCollision(Rectangle rec1, Rectangle rec2)
-{
-    return Rectangle(::GetCollisionRec(rec1.getCStruct(), rec2.getCStruct()));
-}
+//FIXME:inline Rectangle Raylib::Collision2D::getCollision(Rectangle rec1, Rectangle rec2)
+//FIXME:{
+//FIXME:    return Rectangle(::GetCollisionRec(rec1.getCStruct(), rec2.getCStruct()));
+//FIXME:}

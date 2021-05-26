@@ -45,9 +45,9 @@ namespace Raylib
              * @brief Construct a new Font object
              *
              * @param fileName Name of file
-             * @param fontSize A int
-             * @param fontChars A int *
-             * @param charCount A int
+             * @param fontSize An int
+             * @param fontChars An int *
+             * @param charCount An int
              */
             Font(const std::string &fileName, const int &fontSize, int *fontChars, const int &charCount);
 
@@ -56,10 +56,10 @@ namespace Raylib
              *
              * @param fileType A string
              * @param fileData A string
-             * @param dataSize A int
-             * @param fontSize A int
-             * @param fontChars A int *
-             * @param charsCount A int
+             * @param dataSize An int
+             * @param fontSize An int
+             * @param fontChars An int *
+             * @param charsCount An int
              */
             Font(const std::string &fileType, const std::string &fileData, const int &dataSize, const int &fontSize, int *fontChars, const int &charsCount);
 

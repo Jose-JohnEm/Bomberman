@@ -103,9 +103,9 @@ namespace Raylib {
              * @brief Set shader uniform value
              *
              * @param shader A const reference to a Shader
-             * @param locIndex A const reference to a Int
+             * @param locIndex A const reference to an int
              * @param value A const Void *
-             * @param uniformType A const reference to a Int
+             * @param uniformType A const reference to an int
              */
             void setShaderValue(Shader const &shader, int const &locIndex, const void *value, int const &uniformType) const;
 
@@ -113,10 +113,10 @@ namespace Raylib {
              * @brief Set shader uniform value vector
              *
              * @param shader A const reference to a Shader
-             * @param locIndex A const reference to a Int
+             * @param locIndex A const reference to an int
              * @param value A const Void *
-             * @param uniformType A const reference to a Int
-             * @param count A const reference to a Int
+             * @param uniformType A const reference to an int
+             * @param count A const reference to an int
              */
             void setShaderValueV(Shader const &shader, int const &locIndex, const void *value, int const &uniformType, int const &count) const;
 
@@ -124,7 +124,7 @@ namespace Raylib {
              * @brief Set shader uniform value (matrix 4x4)
              *
              * @param shader A const reference to a Shader
-             * @param locIndex A const reference to a Int
+             * @param locIndex A const reference to an int
              * @param mat A const reference to a Matrix
              */
             void setShaderValueMatrix(Shader const &shader, int const &locIndex, Matrix const &mat) const;
@@ -133,7 +133,7 @@ namespace Raylib {
              * @brief Set shader uniform value for texture (sampler2d)
              *
              * @param shader A const reference to a Shader
-             * @param locIndex A const reference to a Int
+             * @param locIndex A const reference to an int
              * @param texture A const reference to a Texture
              */
             void setShaderValueTexture(Shader const &shader, int const &locIndex, Texture2D const &texture) const;

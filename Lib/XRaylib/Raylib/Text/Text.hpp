@@ -32,9 +32,9 @@ namespace Raylib
              * @brief Draw text (using default font)
              *
              * @param title A string
-             * @param posX A int
-             * @param posY A int
-             * @param fontSize A int
+             * @param posX An int
+             * @param posY An int
+             * @param fontSize An int
              * @param color A Color
              */
             static void drawText(const std::string &title, const int &posX, const int &posY, const int &fontSize, const Color &color);
@@ -55,8 +55,8 @@ namespace Raylib
              * @brief Measure string width for default font
              *
              * @param text A string
-             * @param fontSize A int
-             * @return A int
+             * @param fontSize An int
+             * @return An int
              */
             static int measureText(const std::string &text, const int &fontSize);
 
@@ -73,7 +73,7 @@ namespace Raylib
              * @brief Check if two text string are equal
              *
              * @param text A string
-             * @return A int
+             * @return An int
              */
             static int textLength(const std::string &text);
     };

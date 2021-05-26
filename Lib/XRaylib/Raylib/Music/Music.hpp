@@ -41,7 +41,7 @@ namespace Raylib
              *
              * @param fileType A string
              * @param data A string
-             * @param dataSize A int
+             * @param dataSize An int
              */
             Music(const std::string &fileType, const std::string &data, const int &dataSize);
 

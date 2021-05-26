@@ -92,7 +92,7 @@ namespace Raylib
              * @brief Load cubemap from image, multiple image cubemap layouts supported
              *
              * @param image A const reference to the Image Object
-             * @param layout A const reference to a Int
+             * @param layout A const reference to an int
              * @param texture A const reference to the Texture Object
              * @return A Texture
              */
@@ -139,15 +139,15 @@ namespace Raylib
              * @brief Set texture wrapping mode
              *
              * @param texture A const pointer to a Texture
-             * @param wrap A const reference to a int
+             * @param wrap A const reference to an int
              */
             void setTextureWrap(Texture const &texture, int const &wrap) const;
 
             /**
              * @brief Draw a Texture with position XY
              *
-             * @param posX A int
-             * @param posY A int
+             * @param posX An int
+             * @param posY An int
              * @param tint A Color
              * @return A reference to the texture - Texture&
              */

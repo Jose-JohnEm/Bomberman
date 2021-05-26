@@ -57,8 +57,8 @@ namespace Raylib {
              /**
              * @brief Load texture for rendering (framebuffer)
              *
-             * @param width A const reference to a Int
-             * @param height A const reference to a Int
+             * @param width A const reference to an int
+             * @param height A const reference to an int
              * @return A RenderTexture
              */
             RenderTexture loadRenderTexture(int const &width, int const &height);

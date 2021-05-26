@@ -28,7 +28,7 @@ namespace Raylib
 
             /**
              * @brief Construct a new Camera2D object (Copy Constructor)
-             * 
+             *
              * @param Camera2D A Camera2D C Structure
              */
             Camera2D(::Camera2D const &camera);
@@ -41,7 +41,7 @@ namespace Raylib
 
             /**
              * @brief Initialize 2D mode with custom camera (2D)
-             * 
+             *
              * @param Camera2D A Camera2D structure
              */
             void beginMode2D(Raylib::Camera2D const &camera) const;
@@ -53,7 +53,7 @@ namespace Raylib
 
             /**
              * @brief Returns camera 2d transform matrix
-             * 
+             *
              * @param Camera2D A Camera2D structure
              * @return A Matrix
              */
@@ -61,7 +61,7 @@ namespace Raylib
 
             /**
              * @brief Returns the screen space position for a 2d camera world space position
-             * 
+             *
              * @param Position A Vector2 structure
              * @param Camera2D A Camera2D structure
              * @return A Vector2
@@ -70,7 +70,7 @@ namespace Raylib
 
             /**
              * @brief Returns the world space position for a 2d camera screen space position
-             * 
+             *
              * @param Position A Vector2 structure
              * @param Camera2D A Camera2D structure
              * @return A Vector2
@@ -99,7 +99,8 @@ namespace Raylib
              * @param Camera2D A const reference to a Camera2D object
              */
             void set(const Camera2D &camera);
-            ::Camera2D _camera2D;
+
+            ::Camera2D _camera2D; //TODO: doc
     };
 
     #include "Camera2D.inl"
