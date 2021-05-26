@@ -290,8 +290,12 @@ void XRay::displayTrace(void) // TODO: To change ?
     endDrawing();
     for (double t = timing.getTime(); timing.getTime() - t < 2;);
     _intro.first = false;
+<<<<<<< HEAD
 //    displayIntro();
 >>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
+=======
+    displayIntro();
+>>>>>>> b2c1821 (Intro)
 }
 
 void XRay::displayIntro(void) // TODO: To change ?
