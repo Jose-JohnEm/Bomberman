@@ -29,10 +29,9 @@
 #include "Cursor/Cursor.hpp"
 #include "Timing/Timing.hpp"
 #include "Drawing/Drawing.hpp"
-
-typedef enum {
-    INTRO
-} Cinematic;
+#include "Box.hpp"
+#include "Cinematic.hpp"
+#include "Resources.hpp"
 
 class XRay : public IGraphical {
 
