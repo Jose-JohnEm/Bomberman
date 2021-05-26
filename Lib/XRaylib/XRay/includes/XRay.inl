@@ -17,26 +17,20 @@ inline void XRay::closeWindow(void) const
 
 inline void XRay::beginDrawing(void) const
 {
-    Raylib::Drawing drawing;
-
-    drawing.beginDrawing();
-    drawing.clearBackground(Raylib::Color::White());
+    Raylib::Drawing::beginDrawing();
+    Raylib::Drawing::clearBackground(Raylib::Color::White());
 }
 
 inline void XRay::beginDrawing(const bool &mustBeClear) const
 {
-    Raylib::Drawing drawing;
-
-    drawing.beginDrawing();
+    Raylib::Drawing::beginDrawing();
     if (mustBeClear)
-        drawing.clearBackground(Raylib::Color::White());
+        Raylib::Drawing::clearBackground(Raylib::Color::White());
 }
 
 inline void XRay::endDrawing(void) const
 {
-    Raylib::Drawing drawing;
-
-    drawing.endDrawing();
+    Raylib::Drawing::endDrawing();
 }
 
 inline void XRay::display(void)
@@ -87,4 +81,31 @@ inline const std::vector<std::string> &XRay::getBackups(void) const
 inline void XRay::setBackups(const std::vector<std::string> &backups)
 {
     _backups = backups;
+}
+
+inline bool XRay::mouseIsInBox(const std::vector<size_t> &box) const
+{
+    std::pair<size_t, size_t> mousePosition = std::make_pair(Raylib::Mouse::getMouseX(), Raylib::Mouse::getMouseY());
+
+    if (box[UPPER_LEFT] <= mousePosition.first && mousePosition.first <= box[LOW_RIGHT]
+    && box[LOW_LEFT] <= mousePosition.second && mousePosition.second <= box[UPPER_RIGHT])
+        return true;
+    return false;
+}
+
+inline std::vector<size_t> XRay::createBox(const size_t &upperLeftCorner, const size_t &upperRightCorner, const size_t &lowerLeftCorner, const size_t &lowerRightCorner) const
+{
+    std::vector<size_t> box;
+
+    box.reserve(4);
+    box.push_back(upperLeftCorner);
+    box.push_back(upperRightCorner);
+    box.push_back(lowerLeftCorner);
+    box.push_back(lowerRightCorner);
+    return box;
+}
+
+inline void XRay::displayMouse(void)
+{
+    _resources.at(HEAD)->drawTexture(Raylib::Mouse::getMouseX() - 32, Raylib::Mouse::getMouseY() - 32, Raylib::Color::White());
 }

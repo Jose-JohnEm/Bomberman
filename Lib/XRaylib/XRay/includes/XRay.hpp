@@ -206,7 +206,7 @@ class XRay : public IGraphical {
 
         /**
          * @brief Display specific cinematic
-         * 
+         *
          * @param cinematic Cinematic enum type, representing specific cinematic
          */
         void displayCinematic(const Cinematic &cinematic);
@@ -223,9 +223,6 @@ class XRay : public IGraphical {
 
     private:
         Raylib::Window _window;                     // Game window
-        Raylib::Mouse _mouse;                       // Game Mouse
-        Raylib::Cursor _cursor;                     // Game cursor
-        Raylib::Keyboard _keyboard;                   // Game keyboard
 
         ::Music music;
         std::vector<std::string> _userNames;        // A vector of all the users names
