@@ -66,7 +66,7 @@ namespace Engine
 
             std::string _currentGame = "bomberman";                             // Game name
 
-            IGraphical::Scene _scene;                                           // Current scene
+            IGraphical::Scene _scene = IGraphical::MENU;                        // Current scene
 
             std::vector<std::string> _userNames;                                // User names
             std::vector<std::pair<std::string, std::string>> _gameHighScores;   // Game's high scores

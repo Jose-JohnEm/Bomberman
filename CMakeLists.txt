@@ -37,4 +37,6 @@ TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PRIVATE
     ${RAYLIB_HEADERS_PATH}
 )
 
+TARGET_COMPILE_OPTIONS(bomberman PRIVATE -g3)
+
 # That's it! You should have an bomberman executable that you can run. Have fun!

@@ -7,7 +7,7 @@
 
 #include "XRay.hpp"
 
-void XRay::displayCinematic(const Cinematic &cinematic) const
+void XRay::displayCinematic(const Cinematic &cinematic)
 {
     switch (cinematic)
     {
@@ -19,7 +19,7 @@ void XRay::displayCinematic(const Cinematic &cinematic) const
     }
 }
 
-void XRay::displayIntroCinematic(void) const //TODO: To change ?
+void XRay::displayIntroCinematic(void) //TODO: To change ?
 {
     std::string path, skip, str = "1";
 

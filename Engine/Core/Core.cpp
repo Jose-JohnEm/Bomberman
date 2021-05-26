@@ -21,7 +21,8 @@ Engine::Core::~Core()
 
 void Engine::Core::run(void)
 {
-    while (!_graphical->shouldCloseWindow()) {
+    while (_scene != IGraphical::END_GAME && !_graphical->shouldCloseWindow()) {
+        getBackupFiles();
         _graphical->display();
         _scene = _graphical->getScene();
         if (_scene == IGraphical::GAME && _game) {
