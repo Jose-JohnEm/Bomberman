@@ -40,7 +40,9 @@ typedef enum {
     PLAY,
     PLAY_HOVER,
     QUIT,
-    QUIT_HOVER
+    QUIT_HOVER,
+    SKIP,
+    SKIP_HOVER
 } Resources;
 
 #endif /* !RESOURCES_HPP_ */

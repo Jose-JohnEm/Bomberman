@@ -25,7 +25,7 @@ void XRay::displayIntroCinematic(void) //TODO: To change ?
 
     for (int i = 1; str != "2326" && !(i < 2300 && Raylib::Mouse::isButtonPressed(0) && mouseIsInBox(createBox(1760, 950, 1883, 1005)));) {
         path = "resources/cinematic/intro/frame" + str + ".png";
-        skip = std::string("resources/assets/") + std::string((mouseIsInBox(createBox(1760, 950, 1883, 1005))) ? "sskip.png" : "skip.png");
+        skip = std::string("resources/assets/") + std::string((mouseIsInBox(createBox(1760, 950, 1883, 1005))) ? "skipHover.png" : "skip.png");
         Raylib::Texture frame(Raylib::Image(path.c_str()));
         Raylib::Texture skipButton(Raylib::Image(skip.c_str()));
 
