@@ -83,36 +83,3 @@ inline void Raylib::Rectangle::drawRectangleRoundedLines(Rectangle const &rec, f
 {
     return ::DrawRectangleRoundedLines(rec.getCStruct(), roundness, segments, lineThick, color.getCStruct());
 }
-
-inline void Raylib::Rectangle::imageDrawRectangle(Image *dst, int const &posX, int const &posY, int const &width, int const &height, Color const &color) const
-{
-    ::Image c_dst = dst->getCStruct();
-
-    return ::ImageDrawRectangle(&c_dst, posX, posY, width, height, color.getCStruct());
-}
-
-inline void Raylib::Rectangle::imageDrawRectangleV(Raylib::Image *dst, ::Vector2 const &position, ::Vector2 const &size, Color const &color) const
-{
-    ::Image c_dst = dst->getCStruct();
-
-    return ::ImageDrawRectangleV(&c_dst, position, size, color.getCStruct());
-}
-
-inline void Raylib::Rectangle::imageDrawRectangleRec(Raylib::Image *dst, Raylib::Rectangle const &rec, Color const &color) const
-{
-    ::Image c_dst = dst->getCStruct();
-
-    return ::ImageDrawRectangleRec(&c_dst, rec.getCStruct(), color.getCStruct());
-}
-
-inline void Raylib::Rectangle::imageDrawRectangleLines(Raylib::Image *dst, Raylib::Rectangle const &rec, int const &thick, Color const &color) const
-{
-    ::Image c_dst = dst->getCStruct();
-
-    return ::ImageDrawRectangleLines(&c_dst, rec.getCStruct(), thick, color.getCStruct());
-}
-
-inline ::Rectangle Raylib::Rectangle::getImageAlphaBorder(Raylib::Image const &image, float const &threshold) const
-{
-    return ::GetImageAlphaBorder(image.getCStruct(), threshold);
-}
