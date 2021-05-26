@@ -159,7 +159,7 @@ namespace Raylib
              * @param fileName A const pointer to a char
              * @return A Image Class
              */
-            Image LoadImage(const char *fileName);
+            Image loadImage(const char *fileName);
 
             /**
              * @brief Load image from RAW file data
@@ -171,7 +171,7 @@ namespace Raylib
              * @param headerSize A const reference to a int
              * @return A Image Class
              */
-            Image LoadImageRaw(const char *fileName, int const &width, int const &height, int const &format, int const &headerSize);
+            Image loadImageRaw(const char *fileName, int const &width, int const &height, int const &format, int const &headerSize);
 
             /**
              * @brief Load image sequence from file (frames appended to image.data)
@@ -180,7 +180,7 @@ namespace Raylib
              * @param frames A const pointer to a int
              * @return A Image Class
              */
-            Image LoadImageAnim(const char *fileName, int *frames);
+            Image loadImageAnim(const char *fileName, int *frames);
 
             /**
              * @brief Load image from memory buffer
@@ -190,14 +190,14 @@ namespace Raylib
              * @param dataSize A const reference to a int
              * @return A Image Class
              */
-            Image LoadImageFromMemory(const char *fileType, const unsigned char *fileData, int const &dataSize);
+            Image loadImageFromMemory(const char *fileType, const unsigned char *fileData, int const &dataSize);
 
             /**
              * @brief Unload image from CPU memory (RAM)
              * 
              * @param image A const reference to a Class Image
              */
-            void UnloadImage(Image const &image) const;
+            void unloadImage(Image const &image) const;
 
             /**
              * @brief Export image data to file, returns true on success
@@ -206,7 +206,7 @@ namespace Raylib
              * @param fileType A const pointer to a char
              * @return A boolean
              */
-            bool ExportImage(Image const &image, const char *fileName) const;
+            bool exportImage(Image const &image, const char *fileName) const;
 
             /**
              * @brief Export image as code file defining an array of bytes, returns true on success
@@ -215,7 +215,7 @@ namespace Raylib
              * @param fileType A const pointer to a char
              * @return A boolean
              */
-            bool ExportImageAsCode(Image const &image, const char *fileType) const;
+            bool exportImageAsCode(Image const &image, const char *fileType) const;
 
             /**
              * @brief Generate image: plain color
@@ -225,7 +225,7 @@ namespace Raylib
              * @param color A const pointer to a Class Color
              * @return A Image Class
              */
-            Image GenImageColor(int const &width, int const &height, Color const &color);
+            Image genImageColor(int const &width, int const &height, Color const &color);
 
             /**
              * @brief Generate image: vertical gradient
@@ -236,7 +236,7 @@ namespace Raylib
              * @param bottom A const pointer to a Class Color
              * @return A Image Class
              */
-            Image GenImageGradientV(int const &width, int const &height, Color const &top, Color const &bottom);
+            Image genImageGradientV(int const &width, int const &height, Color const &top, Color const &bottom);
 
             /**
              * @brief Generate image: horizontal gradient
@@ -247,7 +247,7 @@ namespace Raylib
              * @param right A const pointer to a Class Color
              * @return A Image Class
              */
-            Image GenImageGradientH(int const &width, int const &height, Color const &left, Color const &right);
+            Image genImageGradientH(int const &width, int const &height, Color const &left, Color const &right);
 
             /**
              * @brief Generate image: radial gradient
@@ -258,7 +258,7 @@ namespace Raylib
              * @param outer A const pointer to a Class Color
              * @return A Image Class
              */
-            Image GenImageGradientRadial(int const &width, int const &height, float density, Color inner, Color outer);
+            Image genImageGradientRadial(int const &width, int const &height, float density, Color inner, Color outer);
 
             /**
              * @brief Generate image: checked
@@ -271,7 +271,7 @@ namespace Raylib
              * @param col2 A const pointer to a Class Color
              * @return A Image Class
              */
-            Image GenImageChecked(int const &width, int const &height, int const &checksX, int const &checksY, Color col1, Color col2);
+            Image genImageChecked(int const &width, int const &height, int const &checksX, int const &checksY, Color col1, Color col2);
 
             /**
              * @brief Generate image: white noise
@@ -281,7 +281,7 @@ namespace Raylib
              * @param factor A const reference to a float
              * @return A Image Class
              */
-            Image GenImageWhiteNoise(int const &width, int const &height, float const &factor);
+            Image genImageWhiteNoise(int const &width, int const &height, float const &factor);
 
             /**
              * @brief Generate image: perlin noise
@@ -293,7 +293,7 @@ namespace Raylib
              * @param scale A const reference to a float
              * @return A Image Class
              */
-            Image GenImagePerlinNoise(int const &width, int const &height, int offsetX, int offsetY, float scale);
+            Image genImagePerlinNoise(int const &width, int const &height, int offsetX, int offsetY, float scale);
 
             /**
              * @brief Generate image: cellular algorithm. Bigger tileSize means bigger cells
@@ -303,7 +303,7 @@ namespace Raylib
              * @param tileSize A const reference to a int
              * @return A Image Class
              */
-            Image GenImageCellular(int const &width, int const &height, int const &tileSize);
+            Image genImageCellular(int const &width, int const &height, int const &tileSize);
 
             /**
              * @brief Create an image duplicate (useful for transformations)
@@ -311,7 +311,7 @@ namespace Raylib
              * @param image A const reference to a Class Image
              * @return A Image Class
              */
-            Image ImageCopy(Image const &image);
+            Image imageCopy(Image const &image);
 
             /**
              * @brief Create an image from another image piece
@@ -320,7 +320,7 @@ namespace Raylib
              * @param rec A const reference to a Class Rectangle
              * @return A Image Class
              */
-            Image ImageFromImage(Image const &image, Rectangle const &rec);
+            Image imageFromImage(Image const &image, Rectangle const &rec);
 
             /**
              * @brief Create an image from text (default font)
@@ -330,7 +330,7 @@ namespace Raylib
              * @param color A const reference to a Class Color
              * @return A Image Class
              */
-            Image ImageText(const char *text, int const &fontSize, Color const &color);
+            Image imageText(const char *text, int const &fontSize, Color const &color);
 
             /**
              * @brief Create an image from text (custom sprite font)
@@ -342,7 +342,7 @@ namespace Raylib
              * @param tint A const reference to a Class Color
              * @return A Image Class
              */
-            Image ImageTextEx(Font const &font, const char *text, float const &fontSize, float const &spacing, Color const &tint);
+            Image imageTextEx(Font const &font, const char *text, float const &fontSize, float const &spacing, Color const &tint);
 
             /**
              * @brief Convert image data to desired format
@@ -350,7 +350,7 @@ namespace Raylib
              * @param image A const pointer to a Class Image
              * @param newFormat A const pointer to a int
              */
-            void ImageFormat(Image *image, int const &newFormat) const;
+            void imageFormat(Image *image, int const &newFormat) const;
 
             /**
              * @brief Convert image to POT (power-of-two)
@@ -358,7 +358,7 @@ namespace Raylib
              * @param image A const pointer to a Class Image
              * @param fill A const pointer to a Class Color
              */
-            void ImageToPOT(Image *image, Color const &fill) const;
+            void imageToPOT(Image *image, Color const &fill) const;
 
             /**
              * @brief Crop an image to a defined rectangle
@@ -366,7 +366,7 @@ namespace Raylib
              * @param image A const pointer to a Class Image
              * @param crop A const pointer to a Class Rectangle
              */
-            void ImageCrop(Image *image, Rectangle const &crop) const;
+            void imageCrop(Image *image, Rectangle const &crop) const;
 
             /**
              * @brief Crop image depending on alpha value
@@ -374,7 +374,7 @@ namespace Raylib
              * @param image A const pointer to a Class Image
              * @param threshold A const pointer to a Class Rectangle
              */
-            void ImageAlphaCrop(Image *image, float const &threshold) const;
+            void imageAlphaCrop(Image *image, float const &threshold) const;
 
             /**
              * @brief Clear alpha channel to desired color
@@ -383,7 +383,7 @@ namespace Raylib
              * @param color A const reference to a Class Color
              * @param threshold A const reference to a float
              */
-            void ImageAlphaClear(Image *image, Color const &color, float const &threshold) const;
+            void imageAlphaClear(Image *image, Color const &color, float const &threshold) const;
 
             /**
              * @brief Apply alpha mask to image
@@ -391,14 +391,14 @@ namespace Raylib
              * @param image A const pointer to a Class Image
              * @param alphaMask A const reference to a Class Image
              */
-            void ImageAlphaMask(Image *image, Image const &alphaMask) const;
+            void imageAlphaMask(Image *image, Image const &alphaMask) const;
 
             /**
              * @brief Premultiply alpha channel
              * 
              * @param image A const pointer to a Class Image
              */
-            void ImageAlphaPremultiply(Image *image) const;
+            void imageAlphaPremultiply(Image *image) const;
 
             /**
              * @brief Resize image (Bicubic scaling algorithm)
@@ -407,7 +407,7 @@ namespace Raylib
              * @param newWidth A const reference to a int
              * @param newHeight A const reference to a int
              */
-            void ImageResize(Image *image, int const &newWidth, int const &newHeight) const;
+            void imageResize(Image *image, int const &newWidth, int const &newHeight) const;
 
             /**
              * @brief Resize image (Nearest-Neighbor scaling algorithm)
@@ -416,7 +416,7 @@ namespace Raylib
              * @param newWidth A const reference to a int
              * @param newHeight A const reference to a int
              */
-            void ImageResizeNN(Image *image, int newWidth, int const &newHeight) const;
+            void imageResizeNN(Image *image, int newWidth, int const &newHeight) const;
 
             /**
              * @brief Resize canvas and fill with color
@@ -428,14 +428,14 @@ namespace Raylib
              * @param offsetY A const reference to a int
              * @param color A const reference to a Class Color
              */
-            void ImageResizeCanvas(Image *image, int const &newWidth, int const &newHeight, int const &offsetX, int const &offsetY, Color const &fill) const;
+            void imageResizeCanvas(Image *image, int const &newWidth, int const &newHeight, int const &offsetX, int const &offsetY, Color const &fill) const;
             
             /**
              * @brief Generate all mipmap levels for a provided image
              * 
              * @param image A const pointer to a Class Image
              */
-            void ImageMipmaps(Image *image) const;
+            void imageMipmaps(Image *image) const;
 
             /**
              * @brief Dither image data to 16bpp or lower (Floyd-Steinberg dithering)
@@ -445,35 +445,35 @@ namespace Raylib
              * @param gBpp A const reference to a int
              * @param aBpp A const reference to a int
              */
-            void ImageDither(Image *image, int rBpp, int gBpp, int bBpp, int aBpp) const;
+            void imageDither(Image *image, int rBpp, int gBpp, int bBpp, int aBpp) const;
 
             /**
              * @brief Flip image vertically
              * 
              * @param image A const pointer to a Class Image
              */
-            void ImageFlipVertical(Image *image) const;
+            void imageFlipVertical(Image *image) const;
 
             /**
              * @brief Flip image horizontally
              * 
              * @param image A const pointer to a Class Image
              */
-            void ImageFlipHorizontal(Image *image) const;
+            void imageFlipHorizontal(Image *image) const;
 
             /**
              * @brief Rotate image clockwise 90deg
              * 
              * @param image A const pointer to a Class Image
              */
-            void ImageRotateCW(Image *image) const;
+            void imageRotateCW(Image *image) const;
 
             /**
              * @brief Rotate image counter-clockwise 90deg
              * 
              * @param image A const pointer to a Class Image
              */
-            void ImageRotateCCW(Image *image) const;
+            void imageRotateCCW(Image *image) const;
 
             /**
              * @brief Modify image color: tint
@@ -481,21 +481,21 @@ namespace Raylib
              * @param image A const pointer to a Class Image
              * @param image A const reference to a Class Color
              */
-            void ImageColorTint(Image *image, Color const &color) const;
+            void imageColorTint(Image *image, Color const &color) const;
 
             /**
              * @brief Modify image color: invert
              * 
              * @param image A const pointer to a Class Image
              */
-            void ImageColorInvert(Image *image) const;
+            void imageColorInvert(Image *image) const;
 
             /**
              * @brief Modify image color: grayscale
              * 
              * @param image A const pointer to a Class Image
              */
-            void ImageColorGrayscale(Image *image) const;
+            void imageColorGrayscale(Image *image) const;
 
             /**
              * @brief Modify image color: contrast (-100 to 100)
@@ -503,7 +503,7 @@ namespace Raylib
              * @param image A const pointer to a Class Image
              * @param contrast A const pointer to a float
              */
-            void ImageColorContrast(Image *image, float const &contrast) const;
+            void imageColorContrast(Image *image, float const &contrast) const;
 
             /**
              * @brief Modify image color: brightness (-255 to 255)
@@ -511,7 +511,7 @@ namespace Raylib
              * @param image A const pointer to a Class Image
              * @param brightness A const pointer to a float
              */
-            void ImageColorBrightness(Image *image, int const &brightness);
+            void imageColorBrightness(Image *image, int const &brightness);
 
             /**
              * @brief Modify image color: replace color
@@ -520,7 +520,7 @@ namespace Raylib
              * @param color A const reference to a Class Color
              * @param replace A const reference to a Class Color
              */
-            void ImageColorReplace(Image *image, Color const &color, Color const &replace);
+            void imageColorReplace(Image *image, Color const &color, Color const &replace);
 
             /**
              * @brief Load color data from image as a Color array (RGBA - 32bit)
@@ -528,7 +528,7 @@ namespace Raylib
              * @param image A const reference to a Class Image
              * @return A Class Color
              */
-            Color *LoadImageColors(Image const &image);
+            Color *loadImageColors(Image const &image);
 
             /**
              * @brief Load colors palette from image as a Color array (RGBA - 32bit)
@@ -538,21 +538,21 @@ namespace Raylib
              * @param colorCount A const pointer to a int
              * @return A Class Color
              */
-            Color *LoadImagePalette(Image const &image, int const &maxPaletteSize, int *colorsCount);
+            Color *loadImagePalette(Image const &image, int const &maxPaletteSize, int *colorsCount);
 
             /**
              * @brief Unload color data loaded with LoadImageColors()
              * 
              * @param colors A const pointer to a Class Color
              */
-            void UnloadImageColors(Color *colors);
+            void unloadImageColors(Color *colors);
 
             /**
              * @brief Unload colors palette loaded with LoadImagePalette()
              * 
              * @param colors A const pointer to a Class Color
              */
-            void UnloadImagePalette(Color *colors);
+            void unloadImagePalette(Color *colors);
 
             /**
              * @brief Get image alpha border rectangle
@@ -560,7 +560,7 @@ namespace Raylib
              * @param image A const reference to a Class Image
              * @param threshold A const reference to a float
              */
-            Rectangle GetImageAlphaBorder(Image const &image, float const &threshold);
+            Rectangle getImageAlphaBorder(Image const &image, float const &threshold);
 
             /**
              * @brief Clear image background with given color
@@ -568,7 +568,7 @@ namespace Raylib
              * @param dst A const reference to a Class Image
              * @param color A const reference to a Class color
              */
-            void ImageClearBackground(Image *dst, Color const &color);
+            void imageClearBackground(Image *dst, Color const &color);
 
             /**
              * @brief Draw pixel within an image
@@ -578,7 +578,7 @@ namespace Raylib
              * @param posY A const reference to a int
              * @param color A const reference to a Class Color
              */
-            void ImageDrawPixel(Image *dst, int const &posX, int const &posY, Color const &color);
+            void imageDrawPixel(Image *dst, int const &posX, int const &posY, Color const &color);
 
             /**
              * @brief Draw pixel within an image (Vector version)
@@ -587,7 +587,7 @@ namespace Raylib
              * @param position A const reference to a Class Vector2
              * @param color A const reference to a Class color
              */
-            void ImageDrawPixelV(Image *dst, Vector2 const &position, Color const &color);
+            void imageDrawPixelV(Image *dst, Vector2 const &position, Color const &color);
 
             /**
              * @brief Draw pixel within an image (Vector version)
@@ -599,7 +599,7 @@ namespace Raylib
              * @param endPosY A const reference to a int
              * @param color A const reference to a Class color
              */
-            void ImageDrawLine(Image *dst, int const &startPosX, int const &startPosY, int const &endPosX, int const &endPosY, Color const &olor);
+            void imageDrawLine(Image *dst, int const &startPosX, int const &startPosY, int const &endPosX, int const &endPosY, Color const &olor);
 
             /**
              * @brief Draw line within an image (Vector version)
@@ -609,7 +609,7 @@ namespace Raylib
              * @param end A const reference to a Class Vector2
              * @param color A const reference to a Class color
              */
-            void ImageDrawLineV(Image *dst, Vector2 const &start, Vector2 const &end, Color const &color);
+            void imageDrawLineV(Image *dst, Vector2 const &start, Vector2 const &end, Color const &color);
 
             /**
              * @brief Draw circle within an image
@@ -620,7 +620,7 @@ namespace Raylib
              * @param radius A const reference to a int
              * @param color A const reference to a Class color
              */
-            void ImageDrawCircle(Image *dst, int const &centerX, int const &centerY, int const &radius, Color const &color);
+            void imageDrawCircle(Image *dst, int const &centerX, int const &centerY, int const &radius, Color const &color);
 
             /**
              * @brief Draw circle within an image (Vector version)
@@ -630,7 +630,7 @@ namespace Raylib
              * @param radius A const reference to a int
              * @param color A const reference to a Class color
              */
-            void ImageDrawCircleV(Image *dst, Vector2 const &center, int const &radius, Color const &color);
+            void imageDrawCircleV(Image *dst, Vector2 const &center, int const &radius, Color const &color);
 
             /**
              * @brief Draw a source image within a destination image (tint applied to source)
@@ -641,7 +641,7 @@ namespace Raylib
              * @param dstRec A const reference to a Class Image
              * @param tint A const reference to a Class color
              */
-            void ImageDraw(Image *dst, Image const &src, Rectangle const &srcRec, Rectangle const &dstRec, Color const &tint);
+            void imageDraw(Image *dst, Image const &src, Rectangle const &srcRec, Rectangle const &dstRec, Color const &tint);
 
             /**
              * @brief Draw a source image within a destination image (tint applied to source)
@@ -653,7 +653,7 @@ namespace Raylib
              * @param fontSize A const reference to a int
              * @param tint A const reference to a Class color
              */
-            void ImageDrawText(Image *dst, const char *text, int const &posX, int const &posY, int const &fontSize, Color const &color) const;
+            void imageDrawText(Image *dst, const char *text, int const &posX, int const &posY, int const &fontSize, Color const &color) const;
 
             /**
              * @brief Draw text (custom sprite font) within an image (destination)
@@ -666,7 +666,7 @@ namespace Raylib
              * @param spacing A const reference to a float
              * @param tint A const reference to a Class color
              */
-            void ImageDrawTextEx(Image *dst, Font const &font, const char *text, Vector2 const &position, float const &fontSize, float const &spacing, Color const &tint);
+            void imageDrawTextEx(Image *dst, Font const &font, const char *text, Vector2 const &position, float const &fontSize, float const &spacing, Color const &tint);
 
 
         private:
