@@ -120,7 +120,7 @@ bool Engine::Core::endGame(void)
         return false;
     _graphical->setScene(IGraphical::END_GAME);
     saveBestScores();
-    _graphical->setBestsScores(_gameHighScores);
+    _graphical->setBestScores(_gameHighScores);
     _graphical->setPlayersStats(_game->getPlayersStats());
     return true;
 }

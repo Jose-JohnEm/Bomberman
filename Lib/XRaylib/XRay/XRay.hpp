@@ -33,6 +33,13 @@
 #include "Timing/Timing.hpp"
 #include "Drawing/Drawing.hpp"
 
+typedef enum {
+    UPPER_LEFT,
+    LOW_LEFT,
+    LOW_RIGHT,
+    UPPER_RIGHT
+} Box;
+
 class XRay : public IGraphical {
 
     public:
@@ -84,7 +91,7 @@ class XRay : public IGraphical {
          *
          * @param scores A vector of pair (username, score)
          */
-        void setBestsScores(const std::vector<std::pair<std::string, std::string>> &scores) override;
+        void setBestScores(const std::vector<std::pair<std::string, std::string>> &scores) override;
 
         /**
          * @brief This is called in a loop when the game is running. This vector contains entities that should be displayed in the game scene.
@@ -150,7 +157,7 @@ class XRay : public IGraphical {
          * @brief Set buffer to Draw textures
          * clear A boolean to know if he should clear
          */
-        void beginDrawing(bool clear) const;
+        void beginDrawing(const bool &mustBeClear) const;
 
         /**
 >>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
@@ -166,13 +173,21 @@ class XRay : public IGraphical {
         /**
          * @brief Return true if the mouse is in the region and false otherwise
          *
-         * @param x Upper Left Corner
-         * @param y Upper Right Corner
-         * @param x_x Lower Left Corner
-         * @param y_y Lower Left Corner
+         * @param box Vector contains Box positions
          * @return true or false
          */
-        bool mouseIsInBox(double x, double y, double x_x, double y_y);
+        bool mouseIsInBox(const std::vector<size_t> &box) const;
+
+        /**
+         * @brief Return a size_t vector contains the four corners values of a box
+         *
+         * @param box size_t represents upperLeftCorner
+         * @param box size_t represents upperRightCorner
+         * @param box size_t represents lowerLeftCorner
+         * @param box size_t represents lowerRightCorner
+         * @return size_t vector
+         */
+        std::vector<size_t> createBox(const size_t &upperLeftCorner, const size_t &upperRightCorner, const size_t &lowerLeftCorner, const size_t &lowerRightCorner) const;
 
         /**
 <<<<<<< HEAD
@@ -272,7 +287,7 @@ class XRay : public IGraphical {
 
         std::map<std::string, std::pair<std::string, std::string>> _playersStats; // A map of all the stats [PlayerName -- (NameOfStat, Value)]...
         std::vector<std::pair<std::string, std::string>> _scores;                 // A vector of pair (username, score)
-        std::vector<std::pair<std::string, std::string>> _bestsScores;            // A vector of pair (username, score), List of Bests Scores
+        std::vector<std::pair<std::string, std::string>> _bestScores;             // A vector of pair (username, score), List of Bests Scores
         std::vector<std::shared_ptr<IEntity>> _gameInfos;                         // A vector of shared pointer that represent all the entities to display. Ex : Map, Score, UserInfo, Button
         std::vector<std::string> _backups;                                        // A vector of all the paths to backups files as a const std::vector<std::string>&
 >>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))

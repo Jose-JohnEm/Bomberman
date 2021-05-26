@@ -28,12 +28,12 @@ inline void XRay::beginDrawing(void) const
     drawing.clearBackground(Raylib::Color::White());
 }
 
-inline void XRay::beginDrawing(bool clear) const
+inline void XRay::beginDrawing(const bool &mustBeClear) const
 {
     Raylib::Drawing drawing;
 
     drawing.beginDrawing();
-    if (clear == true)
+    if (mustBeClear)
         drawing.clearBackground(Raylib::Color::White());
 }
 
@@ -59,9 +59,9 @@ inline void XRay::setScores(const std::vector<std::pair<std::string, std::string
     _scores = scores;
 }
 
-inline void XRay::setBestsScores(const std::vector<std::pair<std::string, std::string>> &scores)
+inline void XRay::setBestScores(const std::vector<std::pair<std::string, std::string>> &scores)
 {
-    _bestsScores = scores;
+    _bestScores = scores;
 }
 
 inline void XRay::updateGameInfos(const std::vector<std::shared_ptr<IEntity>> &gameInfos)

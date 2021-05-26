@@ -23,7 +23,6 @@ class IGraphical {
 
     public:
         enum Scene {
-<<<<<<< HEAD
             /// This scene is the intro of our game
             INTRO,
             /// This scene is the main menu of our game
@@ -34,16 +33,10 @@ class IGraphical {
             PLAYMENU,
             HOWTOMENU,
             SETTINGSMENU,
-=======
             /// This scene is the main menu of our game
-            MAIN_MENU,
-            PLAYMENU,
-            HOWTOMENU,
-            SETTINGSMENU,
             MODEMENU,
             MAPMENU,
             LOADMENU,
->>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
             DRAWMENU,
             GAMEIN,
             PAUSEIN,
@@ -93,7 +86,7 @@ class IGraphical {
          *
          * @param scores A vector of pair (username, score)
          */
-        virtual void setBestsScores(const std::vector<std::pair<std::string, std::string>> &scores) = 0;
+        virtual void setBestScores(const std::vector<std::pair<std::string, std::string>> &scores) = 0;
 
         /**
          * @brief This is called in a loop when the game is running. This vector contains entities that should be displayed in the game scene.
