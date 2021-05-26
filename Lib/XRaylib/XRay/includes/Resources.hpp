@@ -33,7 +33,14 @@ typedef enum {
     SETTINGS,
     SETTINGS_HOVER,
     INDIE,
-    STUDIO
+    STUDIO,
+    MENU_TITLE,
+    BOMBER_TEAM,
+    BOMBER_THINKING,
+    PLAY,
+    PLAY_HOVER,
+    QUIT,
+    QUIT_HOVER
 } Resources;
 
 #endif /* !RESOURCES_HPP_ */
