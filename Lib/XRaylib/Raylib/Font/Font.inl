@@ -25,3 +25,8 @@ inline void Raylib::Font::set(const Font &font)
 {
     _font = font._font;
 }
+
+inline ::Font Raylib::Font::getCStruct(void) const
+{
+    return _font;
+}
