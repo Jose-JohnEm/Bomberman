@@ -6,7 +6,7 @@ PROJECT(bomberman VERSION 1.0)
 # Set g++ standard version
 SET(CMAKE_CXX_STANDARD 17)
 
-# Call the Fetchresources module
+# Call the Findresources module
 INCLUDE(cmake/Findresources.cmake)
 
 # Make XRay CMakeList meta-compile XRay library that himself
