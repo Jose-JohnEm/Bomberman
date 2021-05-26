@@ -59,12 +59,45 @@ void XRay::mapScene(void)
     endDrawing();
 }
 
+void XRay::setTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> &textBox)
+{
+    for (size_t p = 0, a = 200; p < 4; p++, a += 400) {
+        _letterAndFrame.push_back(std::make_pair(0, 0));
+        _userNames.push_back("");
+        mouseOnText.push_back(false);
+        if (p < _allIntegers[2])
+            textBox.push_back({ (float)a, 180, 225, 50 });
+    }
+}
+
+void XRay::updateTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> textBox)
+{
+    for (size_t i = 0; i < mouseOnText.size(); i++) {
+        mouseOnText[i] = (::CheckCollisionPointRec({(float)_mouse.getMouseX(), (float)_mouse.getMouseY()}, textBox[i])) ? true : false;
+        if (mouseOnText[i]) {
+            _mouse.setMouseCursor(MOUSE_CURSOR_IBEAM);
+
+            for (int key = _keyboard.getCharPressed(); key > 0; key = _keyboard.getCharPressed())
+                if ((key >= 32) && (key <= 125) && (_letterAndFrame[i].first < 9)) {
+                    _userNames[i][_letterAndFrame[i].first] = (char)key;
+                    _letterAndFrame[i].first++;
+                }
+
+            if (_keyboard.isKeyPressed(KEY_BACKSPACE)) {
+                _letterAndFrame[i].first--;
+                _letterAndFrame[i].first = (_letterAndFrame[i].first < 0) ? 0 : _letterAndFrame[i].first;
+                _userNames[i][_letterAndFrame[i].first] = '\0';
+            }
+        } else
+            _mouse.setMouseCursor(MOUSE_CURSOR_DEFAULT);
+
+        _letterAndFrame[i].second = (mouseOnText[i]) ? _letterAndFrame[i].second+1 : 0;
+    }
+}
+
 void XRay::modeScene(void) // TODO: To change ?
 {
     // TODO: Put our encapsulation and Try to split function (Already did, but x_x)
-    int i, a, b;
-    static std::vector<std::pair<int, int>> letterAndFrame;
-
     Raylib::Texture player(Raylib::Image("resources/assets/player.png"));
     Raylib::Texture ia(Raylib::Image("resources/assets/playerr.png"));
     Raylib::Texture add(Raylib::Image("resources/assets/add.png"));
@@ -80,69 +113,45 @@ void XRay::modeScene(void) // TODO: To change ?
     std::vector<std::pair<int, int>> nextTab;
     std::vector<std::pair<int, int>> prevTab;
 
-    std::vector<::Rectangle> textBox;
     std::vector<bool> mouseOnText;
+    std::vector<::Rectangle> textBox;
 
     _scene = MODEMENU;
 
-    for (size_t p = 0, a = 200; p < 4; p++, a += 400) {
-        letterAndFrame.push_back(std::make_pair(0, 0));
-        _userNames.push_back("");
-        mouseOnText.push_back(false);
-        if (p < allIntegers[2])
-            textBox.push_back({ (float)a, 180, 225, 50 });
-    }
+    int i, a, b;
 
-    for (size_t p = 0; p < 4; p++) {
-        mouseOnText[p] = (::CheckCollisionPointRec({(float)_mouse.getMouseX(), (float)_mouse.getMouseY()}, textBox[p])) ? true : false;
-        if (mouseOnText[p]) {
-            _mouse.setMouseCursor(MOUSE_CURSOR_IBEAM);
+    setTextBox(mouseOnText, textBox);
 
-            for (int key = _keyboard.getCharPressed(); key > 0; key = _keyboard.getCharPressed())
-                if ((key >= 32) && (key <= 125) && (letterAndFrame[p].first < 9)) {
-                    _userNames[p][letterAndFrame[p].first] = (char)key;
-                    letterAndFrame[p].first++;
-                }
-
-            if (_keyboard.isKeyPressed(KEY_BACKSPACE)) {
-                letterAndFrame[p].first--;
-                letterAndFrame[p].first = (letterAndFrame[p].first < 0) ? 0 : letterAndFrame[p].first;
-                _userNames[p][letterAndFrame[p].first] = '\0';
-            }
-        } else
-            _mouse.setMouseCursor(MOUSE_CURSOR_DEFAULT);
-
-        letterAndFrame[p].second = (mouseOnText[p]) ? letterAndFrame[p].second+1 : 0;
-    }
+    updateTextBox(mouseOnText, textBox);
 
     beginDrawing();
-    for (i = 0, a = 200, b = 300; allIntegers[2] < 5 && i < allIntegers[2]; i++, a += 400) {
-        prev.drawTexture(a-54, allIntegers[1], Raylib::Color::White());
-        if (playerTab[i]) {
-            (controlsTab[i]) ? controls.drawTexture(a - 30, allIntegers[1] + 300, Raylib::Color::White()) : gamepad.drawTexture(a - 30, allIntegers[1] + 300, Raylib::Color::White());
-            prev.drawTexture(a-84, allIntegers[1] + 340, Raylib::Color::White());
-            next.drawTexture(a+250, allIntegers[1] + 340, Raylib::Color::White());
+    for (i = 0, a = 200, b = 300; _allIntegers[2] < 5 && i < _allIntegers[2]; i++, a += 400) {
+        prev.drawTexture(a-54, _allIntegers[1], Raylib::Color::White());
+        if (_playerTab[i]) {
+            (_controlsTab[i]) ? controls.drawTexture(a - 30, _allIntegers[1] + 300, Raylib::Color::White()) : gamepad.drawTexture(a - 30, _allIntegers[1] + 300, Raylib::Color::White());
+            prev.drawTexture(a-84, _allIntegers[1] + 340, Raylib::Color::White());
+            next.drawTexture(a+250, _allIntegers[1] + 340, Raylib::Color::White());
         }
-        (playerTab[i]) ? player.drawTexture(a, b, Raylib::Color::White()) : ia.drawTexture(a, b, Raylib::Color::White());
-        next.drawTexture(a+230, allIntegers[1], Raylib::Color::White());
-        nextTab.push_back(std::make_pair(a+230, allIntegers[1]));
-        prevTab.push_back(std::make_pair(a-54, allIntegers[1]));
+        (_playerTab[i]) ? player.drawTexture(a, b, Raylib::Color::White()) : ia.drawTexture(a, b, Raylib::Color::White());
+        next.drawTexture(a+230, _allIntegers[1], Raylib::Color::White());
+        nextTab.push_back(std::make_pair(a+230, _allIntegers[1]));
+        prevTab.push_back(std::make_pair(a-54, _allIntegers[1]));
         if (i != 0) {
-            removePos.push_back(std::make_pair(a+240, allIntegers[1]-100));
-            remove.drawTexture(a + 240, allIntegers[1]-100, Raylib::Color::White());
+            removePos.push_back(std::make_pair(a+240, _allIntegers[1]-100));
+            remove.drawTexture(a + 240, _allIntegers[1]-100, Raylib::Color::White());
         }
     }
-    if (allIntegers[2] != 4)
-        add.drawTexture(allIntegers[0] + a, allIntegers[1], Raylib::Color::White());
+    if (_allIntegers[2] != 4)
+        add.drawTexture(_allIntegers[0] + a, _allIntegers[1], Raylib::Color::White());
 
-    for (size_t p = 0; p < allIntegers[2]; p++) {
-        if (playerTab[p]) {
+    for (size_t p = 0; p < _allIntegers[2]; p++) {
+        if (_playerTab[p]) {
             ::DrawRectangleRec(textBox[p], Raylib::Color::LightGray().getCStruct());
             (mouseOnText[p]) ? ::DrawRectangleLines(textBox[p].x, textBox[p].y, textBox[p].width, textBox[p].height, Raylib::Color::Red().getCStruct()) : ::DrawRectangleLines(textBox[p].x, textBox[p].y, textBox[p].width, textBox[p].height, Raylib::Color::DarkGray().getCStruct());
             ::DrawText(_userNames[p].c_str(), textBox[p].x + 5, textBox[p].y + 8, 40, Raylib::Color::Maroon().getCStruct());
 
-            if (mouseOnText[p] && letterAndFrame[p].first < 9)
-                if (((letterAndFrame[p].second/20)%2) == 0)
+            if (mouseOnText[p] && _letterAndFrame[p].first < 9)
+                if (((_letterAndFrame[p].second/20)%2) == 0)
                     text.drawText("_", textBox[p].x + 8 + text.measureText(_userNames[p].c_str(), 40), textBox[p].y + 12, 40, Raylib::Color::Maroon());
         }
     }
@@ -150,16 +159,16 @@ void XRay::modeScene(void) // TODO: To change ?
     head.drawTexture(_mouse.getMouseX() - 32, _mouse.getMouseY() - 32, Raylib::Color::White());
     endDrawing();
 
-    allIntegers[2] += (allIntegers[2] != 4 && mouseIsInBox(allIntegers[0]+a, allIntegers[1], allIntegers[0]+a+150, allIntegers[1]+150) && _mouse.isButtonPressed(0)) ? 1 : 0;
+    _allIntegers[2] += (_allIntegers[2] != 4 && mouseIsInBox(createBox(_allIntegers[0]+a, _allIntegers[1], _allIntegers[0]+a+150, _allIntegers[1]+150)) && _mouse.isButtonPressed(0)) ? 1 : 0;
     if (_mouse.isButtonPressed(0))
         for (size_t u = 0; u < nextTab.size(); u++) {
-            playerTab[u] = (mouseIsInBox(nextTab[u].first, nextTab[u].second, nextTab[u].first+50, nextTab[u].second+49)) ? !playerTab[u] : playerTab[u];
-            playerTab[u] = (mouseIsInBox(prevTab[u].first, prevTab[u].second, prevTab[u].first+50, prevTab[u].second+49)) ? !playerTab[u] : playerTab[u];
-            controlsTab[u] = (mouseIsInBox(nextTab[u].first + 20, nextTab[u].second + 340, nextTab[u].first+70, nextTab[u].second+389) && playerTab[u]) ? !controlsTab[u] : controlsTab[u];
-            controlsTab[u] = (mouseIsInBox(prevTab[u].first - 20, prevTab[u].second + 340, prevTab[u].first + 20, prevTab[u].second+389)  && playerTab[u]) ? !controlsTab[u] : controlsTab[u];
+            _playerTab[u] = (mouseIsInBox(createBox(nextTab[u].first, nextTab[u].second, nextTab[u].first+50, nextTab[u].second+49))) ? !_playerTab[u] : _playerTab[u];
+            _playerTab[u] = (mouseIsInBox(createBox(prevTab[u].first, prevTab[u].second, prevTab[u].first+50, prevTab[u].second+49))) ? !_playerTab[u] : _playerTab[u];
+            _controlsTab[u] = (mouseIsInBox(createBox(nextTab[u].first + 20, nextTab[u].second + 340, nextTab[u].first+70, nextTab[u].second+389)) && _playerTab[u]) ? !_controlsTab[u] : _controlsTab[u];
+            _controlsTab[u] = (mouseIsInBox(createBox(prevTab[u].first - 20, prevTab[u].second + 340, prevTab[u].first + 20, prevTab[u].second+389))  && _playerTab[u]) ? !_controlsTab[u] : _controlsTab[u];
         }
     for (size_t u = 0; u < removePos.size(); u++)
-        allIntegers[2] -= (mouseIsInBox(createBox(removePos[u].first, removePos[u].second, removePos[u].first+64, removePos[u].second+63)) && _mouse.isButtonPressed(0)) ? 1 : 0;
+        _allIntegers[2] -= (mouseIsInBox(createBox(removePos[u].first, removePos[u].second, removePos[u].first+64, removePos[u].second+63)) && _mouse.isButtonPressed(0)) ? 1 : 0;
 //    mapScene();
 }
 

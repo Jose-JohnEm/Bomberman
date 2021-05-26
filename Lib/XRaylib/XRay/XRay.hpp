@@ -258,6 +258,9 @@ class XRay : public IGraphical {
          */
         void display(void) override;
 
+        void setTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> &textBox);
+        void updateTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> textBox);
+
     private:
         Raylib::Window _window;                     // Game window
 <<<<<<< HEAD
@@ -276,9 +279,10 @@ class XRay : public IGraphical {
         Scene _scene = MAIN_MENU;                   // Current scene
         std::vector<void (XRay::*)()> _scenesFunc;  // Array of pointers to function (a scene, a function)
 
-        std::array<bool, 4> playerTab = {true, true, true, true};
-        std::array<bool, 4> controlsTab = {true, true, true, true};
-        std::array<int, 3> allIntegers = {50, 400, 1};
+        std::array<bool, 4> _playerTab = {true, true, true, true};
+        std::array<bool, 4> _controlsTab = {true, true, true, true};
+        std::array<int, 3> _allIntegers = {50, 400, 1};
+        std::vector<std::pair<int, int>> _letterAndFrame;
 
         std::map<std::string, std::pair<std::string, std::string>> _playersStats; // A map of all the stats [PlayerName -- (NameOfStat, Value)]...
         std::vector<std::pair<std::string, std::string>> _scores;                 // A vector of pair (username, score)
