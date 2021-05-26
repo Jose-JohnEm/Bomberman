@@ -15,9 +15,11 @@
 #include <map>
 #include <fstream>
 #include <iostream>
+#include <filesystem>
 #include <sstream>
 #include <istream>
 #include <algorithm>
+#include <dirent.h>
 #include <utility>
 #include "XRay.hpp"
 #include "Interfaces/IGraphical.hpp"
@@ -70,8 +72,7 @@ namespace Engine
 
             std::vector<std::string> _userNames;                                // User names
             std::vector<std::pair<std::string, std::string>> _gameHighScores;   // Game's high scores
-
-            std::vector<std::string> _backups;                                // Paths of Backups Files
+            std::vector<std::string> _backups;                                  // Paths of Backup Files
 
             bool _isPaused;                                                     // Pause flag
     };
