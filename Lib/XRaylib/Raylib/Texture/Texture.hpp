@@ -39,7 +39,7 @@ namespace Raylib
             /**
              * @brief Overload of '=' operator
              *
-             * @param music A const reference to a Texture
+             * @param texture A const reference to a Texture
              * @return A reference to Texture (Texture &)
              */
             Texture &operator=(const Texture &texture);
