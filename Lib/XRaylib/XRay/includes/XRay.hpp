@@ -188,7 +188,7 @@ class XRay : public IGraphical {
         void displayMenuScene(void);
 
         /**
-         * @brief Display Play Scene
+         * @brief Display Game Mode Scene
          */
         void playMenu(void);
 
@@ -208,12 +208,12 @@ class XRay : public IGraphical {
         void quitGame(void);
 
         /**
-         * @brief Display Settings Scene
+         * @brief Display Load Game Scene
          */
         void loadGameScene(void);
 
         /**
-         * @brief Scene for Modes
+         * @brief Display Player Choice Scene (choice between AI and controled player)
          */
         void modeScene(void);
 
@@ -223,7 +223,7 @@ class XRay : public IGraphical {
         void displayInGameScene(void);
 
         /**
-         * @brief Display Intro Scene
+         * @brief Display our studio brand (INDIE STUDIO)
          */
         void displayTrace(void);
 
@@ -232,12 +232,12 @@ class XRay : public IGraphical {
          *
          * @param cinematic Cinematic enum type, representing specific cinematic
          */
-        void displayCinematic(const Cinematic &cinematic);
+        void displayCinematic(const Cinematic &cinematic) const;
 
         /**
-         * @brief Display Opening Scene
+         * @brief Display opening cinematic
          */
-        void displayIntroCinematic(void);
+        void displayIntroCinematic(void) const;
 
         /**
          * @brief This function must display the current scene. It is used in the game loop
@@ -258,11 +258,10 @@ class XRay : public IGraphical {
     private:
         Raylib::Window _window;                     // Game window
 
-        ::Music music;
-        std::vector<std::string> _userNames;        // A vector of all the users names
-        std::pair<bool, void (XRay::*)()> _intro;   // Intro pointer to function
-        Scene _scene = MAIN_MENU;                   // Current scene
         std::vector<void (XRay::*)()> _scenesFunc;  // Array of pointers to function (a scene, a function)
+        Scene _scene = MENU;                        // Current scene
+        std::pair<bool, void (XRay::*)()> _intro;   // Intro pointer to function
+        std::vector<std::string> _userNames;        // A vector of all the users names
 
         std::vector<bool> _playerTab;
         std::vector<bool> _controlsTab;
@@ -274,6 +273,8 @@ class XRay : public IGraphical {
         std::vector<std::pair<std::string, std::string>> _bestsScores;            // A vector of pair (username, score), List of Bests Scores
         std::vector<std::shared_ptr<IEntity>> _gameInfos;                         // A vector of shared pointer that represent all the entities to display. Ex : Map, Score, UserInfo, Button
         std::vector<std::string> _backups;                                        // A vector of all the paths to backups files as a const std::vector<std::string>&
+
+        std::map<Resources, std::shared_ptr<Raylib::Texture>> _resources;
 };
 
 #include "XRay.inl"
