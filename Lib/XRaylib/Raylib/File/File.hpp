@@ -32,7 +32,7 @@ namespace Raylib {
          *
          * @param fileName const std::string
          * @param bytesRead unsigned int &
-         * @return
+         * @return data static std::string
          */
         static std::string loadFileData(const std::string fileName, unsigned int &bytesRead);
 
@@ -44,20 +44,20 @@ namespace Raylib {
         static void unloadFileData(std::string data);
 
         /**
-         * @brief Save data to file from byte array (write), returns true on success
+         * @brief Save data to file from byte array (write)
          *
          * @param fileName const std::string
          * @param data void *
          * @param bytesToWrite unsigned int
-         * @return
+         * @return returns true on success, false otherwise
          */
         static bool saveFileData(const std::string fileName, void *data, unsigned int bytesToWrite);
 
         /**
-         * @brief Load text data from file (read), returns a '\0' terminated string
+         * @brief Load text data from file (read)
          *
          * @param fileName const std::string
-         * @return
+         * @return returns a '\0' terminated string
          */
         static std::string loadFileText(const std::string fileName);
 
@@ -69,11 +69,11 @@ namespace Raylib {
         static void unloadFileText(std::string text);
 
         /**
-         * @brief Save text data to file (write), string must be '\0' terminated, returns true on success
+         * @brief Save text data to file (write), string must be '\0' terminated
          *
          * @param fileName
          * @param text
-         * @return
+         * @return returns true on success, false otherwise
          */
         static bool saveFileText(const std::string fileName, std::string text);
 
@@ -81,7 +81,7 @@ namespace Raylib {
          * @brief Check if file exists
          *
          * @param fileName
-         * @return
+         * @return returns true on success, false otherwise
          */
         static bool fileExists(const std::string fileName);
 
@@ -89,7 +89,7 @@ namespace Raylib {
          * @brief Check if a directory path exists
          *
          * @param dirPath
-         * @return
+         * @return returns true on success, false otherwise
          */
         static bool directoryExists(const std::string dirPath);
 
@@ -98,7 +98,7 @@ namespace Raylib {
          *
          * @param fileName
          * @param ext
-         * @return
+         * @return returns true on success, false otherwise
          */
         static bool isFileExtension(const std::string fileName, const std::string ext);
 
@@ -106,7 +106,7 @@ namespace Raylib {
          * @brief Get pointer to extension for a filename string (includes dot: ".png")
          *
          * @param fileName
-         * @return
+         * @return A pointer
          */
         static const std::string getFileExtension(const std::string fileName);
 
@@ -114,7 +114,7 @@ namespace Raylib {
          * @brief Get pointer to filename for a path string
          *
          * @param filePath
-         * @return
+         * @return A pointer
          */
         static const std::string getFileName(const std::string filePath);
 
@@ -122,7 +122,7 @@ namespace Raylib {
          * @brief Get filename string without extension (uses static string)
          *
          * @param filePath
-         * @return
+         * @return filename string without extension
          */
         static const std::string getFileNameWithoutExt(const std::string filePath);
 
@@ -130,7 +130,7 @@ namespace Raylib {
          * @brief Get full path for a given fileName with path (uses static string)
          *
          * @param filePath
-         * @return
+         * @return full path
          */
         static const std::string getDirectoryPath(const std::string filePath);
 
@@ -138,14 +138,14 @@ namespace Raylib {
          * @brief Get previous directory path for a given path (uses static string)
          *
          * @param dirPath
-         * @return
+         * @return previous directory
          */
         static const std::string getPrevDirectoryPath(const std::string dirPath);
 
         /**
          * @brief Get current working directory (uses static string)
          *
-         * @return
+         * @return Get current working directory
          */
         static const std::string getWorkingDirectory(void);
 
@@ -154,7 +154,7 @@ namespace Raylib {
          *
          * @param dirPath
          * @param count
-         * @return
+         * @return filenames
          */
         static std::vector<std::string> getDirectoryFiles(const std::string dirPath, int &count);
 
@@ -174,7 +174,7 @@ namespace Raylib {
         /**
          * @brief Check if a file has been dropped into window
          *
-         * @return
+         * @return return true on success and false on error
          */
         static bool isFileDropped(void);
 
@@ -182,7 +182,7 @@ namespace Raylib {
          * @brief Get dropped files names (memory should be freed)
          *
          * @param count
-         * @return
+         * @return Filesnames
          */
         static std::vector<std::string> getDroppedFiles(int &count);
 
@@ -195,7 +195,7 @@ namespace Raylib {
          * @brief Get file modification time (last write time)
          *
          * @param fileName
-         * @return
+         * @return file modification time (last write time)
          */
         static long getFileModTime(const std::string fileName);
     };
