@@ -9,6 +9,8 @@
 #define VECTOR_HPP_
 
 #include "raylib.h"
+//TODO: const &parameter
+//TODO: trailing spaces
 
 namespace Raylib
 {
@@ -69,12 +71,12 @@ namespace Raylib
              */
             ::Vector3 getCStruct();
             
-            float x;
-            float y;
-            float z;
+            float x;//TODO: doc
+            float y;//TODO: doc
+            float z;//TODO: doc
 
         private:
-            ::Vector3 _vector;
+            ::Vector3 _vector;//TODO: doc
 
     };
 

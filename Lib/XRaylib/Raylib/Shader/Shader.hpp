@@ -12,6 +12,10 @@
 #include <iostream>
 #include "raylib.h"
 
+//TODO: trailing spaces
+//TODO: tabulation of 4spaces!
+//TODO: manque return values dans la doc!!
+
 namespace Raylib {
     class Shader {
         public:
@@ -36,6 +40,8 @@ namespace Raylib {
              * @brief Construct a new Shader object (Copy Constructor)
              * 
              * @param Shader A Shader C Structure
+            * @param manquant //TODO: param manquant
+             * 
              */
             Shader(const std::string &vsFileName, const std::string &fsFileName);
 
@@ -160,7 +166,7 @@ namespace Raylib {
              */
             void set(const Shader &shader);
 
-            ::Shader _shader;
+            ::Shader _shader;  //TODO: doc
     };
 
     #include "Shader.inl"

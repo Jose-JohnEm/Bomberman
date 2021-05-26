@@ -5,6 +5,7 @@
 ** File
 */
 
+//TODO: inline keyword
 
 inline std::string Raylib::File::loadFileData(const std::string fileName, unsigned int &bytesRead)
 {

@@ -10,16 +10,13 @@
 Raylib::Vector2::Vector2(float x, float y)
 : _vector({x, y})
 {
-
 }
 
 Raylib::Vector2::Vector2(::Vector2 cVec)
 : _vector(cVec)
 {
-
 }
 
 Raylib::Vector2::~Vector2()
 {
-    
 }

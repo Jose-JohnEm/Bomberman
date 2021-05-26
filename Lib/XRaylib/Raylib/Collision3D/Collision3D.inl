@@ -30,8 +30,7 @@ inline bool Raylib::Collision3D::checkCollision(::Ray ray, Vector3 center, float
     ::Vector3 collisionVector;
     bool res = ::CheckCollisionRaySphereEx(ray, center.getCStruct(), radius, &collisionVector);
 
-    collisionPoint = collisionVector;
-
+    collisionPoint = collisionVector; //TODO: sure ??
     return res;
 }
 

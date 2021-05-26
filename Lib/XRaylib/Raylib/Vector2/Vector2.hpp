@@ -10,6 +10,9 @@
 
 #include "raylib.h"
 
+//TODO: const &parameter
+//TODO: trailing spaces
+
 namespace Raylib
 {
     class Vector2
@@ -70,11 +73,11 @@ namespace Raylib
              */
             ::Vector2 getCStruct();
             
-            float x;
-            float y;
+            float x; //TODO: doc
+            float y;//TODO: doc
 
         private:
-            ::Vector2 _vector;
+            ::Vector2 _vector;//TODO: doc
 
     };
 

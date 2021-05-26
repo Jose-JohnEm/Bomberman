@@ -21,7 +21,7 @@ inline bool Raylib::Collision2D::checkCollision(Vector2 center, float radius, Re
 }
 
 inline bool Raylib::Collision2D::checkCollision(Vector2 point, Rectangle rec)
-{    
+{
     return ::CheckCollisionPointRec(point.getCStruct(), rec.getCStruct());
 }
 
@@ -40,8 +40,7 @@ inline bool Raylib::Collision2D::checkCollision(Vector2 startPos1, Vector2 endPo
     ::Vector2 collisionVector;
     bool res = ::CheckCollisionLines(startPos1.getCStruct(), endPos1.getCStruct(), startPos2.getCStruct(), endPos2.getCStruct(), &collisionVector);
 
-    collisionPoint = collisionVector;
-
+    collisionPoint = collisionVector; //TODO: sure ??
     return res;
 }
 

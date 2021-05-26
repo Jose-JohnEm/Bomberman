@@ -14,6 +14,8 @@
 #include "Color/Color.hpp"
 #include "Image/Image.hpp"
 
+//TODO: trailing spaces
+
 namespace Raylib
 {
     class Rectangle {

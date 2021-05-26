@@ -14,6 +14,9 @@
 #include "Texture/Texture.hpp"
 #include "Font/Font.hpp"
 
+//TODO: const &parameter and method !
+//TODO: trailing spaces
+
 namespace Raylib
 {
     class Image {
@@ -27,7 +30,7 @@ namespace Raylib
             /**
              * @brief Construct a new Image object
              *
-             * @param image A image
+             * @param image An Image
              */
             Image(const Image &image);
 
@@ -57,7 +60,7 @@ namespace Raylib
              /**
              * @brief Get pixel data from screen buffer and return an Image (screenshot)
              *
-             * @return A Image Class
+             * @return An Image Class
              */
             Image getScreenData(void);
 
@@ -65,7 +68,7 @@ namespace Raylib
              * @brief Load image from file into CPU memory (RAM)
              *
              * @param fileName A const std::string
-             * @return A Image
+             * @return An Image
              */
             Image loadImage(const std::string &fileName);
 
@@ -77,7 +80,7 @@ namespace Raylib
              * @param height An int
              * @param format An int
              * @param headerSize An int
-             * @return A Image
+             * @return An Image
              */
             Image loadImageRaw(const std::string &fileName, const int &width, const int &height, const int &format, const int &headerSize);
 
@@ -86,7 +89,7 @@ namespace Raylib
              *
              * @param fileName A const std::string
              * @param frames An int *
-             * @return A Image
+             * @return An Image
              */
             Image loadImageAnim(const std::string &fileName, int *frames);
 
@@ -96,21 +99,21 @@ namespace Raylib
              * @param fileType A const std::string
              * @param fileData A const unsigned std::string
              * @param dataSize An int
-             * @return A Image
+             * @return An Image
              */
             Image loadImageFromMemory(const std::string &fileType, const std::string &fileData, const int &dataSize);
 
             /**
              * @brief Unload image from CPU memory (RAM)
              *
-             * @param image A Image
+             * @param image An Image
              */
             void unloadImage(void);
 
             /**
              * @brief Export image data to file, returns true on success
              *
-             * @param image A Image
+             * @param image An Image
              * @param fileName A const std::string
              * @return A boolean
              */
@@ -119,7 +122,7 @@ namespace Raylib
             /**
              * @brief Export image as code file defining an array of bytes, returns true on success
              *
-             * @param image A Image
+             * @param image An Image
              * @param fileName A const std::string
              * @return true or false
              */
@@ -135,7 +138,7 @@ namespace Raylib
             /**
              * @brief Overload of '=' operator
              *
-             * @param music A const reference to a Image
+             * @param music A const reference to An Image
              * @return A reference to Image (Image &)
              */
             Image &operator=(const Image &image);
@@ -151,7 +154,7 @@ namespace Raylib
              * @brief Get pixel data from GPU texture and return an Image
              *
              * @param texture A const reference to a Texture
-             * @return A Image Class
+             * @return An Image Class
              */
             Image getTextureData(Texture const &texture) const;
 
@@ -161,7 +164,7 @@ namespace Raylib
              * @param width A const reference to an int
              * @param height A const reference to an int
              * @param color A const pointer to a Class Color
-             * @return A Image Class
+             * @return An Image Class
              */
             Image genImageColor(int const &width, int const &height, Color const &color);
 
@@ -172,7 +175,7 @@ namespace Raylib
              * @param height A const reference to an int
              * @param top A const pointer to a Class Color
              * @param bottom A const pointer to a Class Color
-             * @return A Image Class
+             * @return An Image Class
              */
             Image genImageGradientV(int const &width, int const &height, Color const &top, Color const &bottom);
 
@@ -183,7 +186,7 @@ namespace Raylib
              * @param height A const reference to an int
              * @param left A const pointer to a Class Color
              * @param right A const pointer to a Class Color
-             * @return A Image Class
+             * @return An Image Class
              */
             Image genImageGradientH(int const &width, int const &height, Color const &left, Color const &right);
 
@@ -194,7 +197,7 @@ namespace Raylib
              * @param height A const reference to an int
              * @param inner A const pointer to a Class Color
              * @param outer A const pointer to a Class Color
-             * @return A Image Class
+             * @return An Image Class
              */
             Image genImageGradientRadial(int const &width, int const &height, float density, Color inner, Color outer);
 
@@ -207,7 +210,7 @@ namespace Raylib
              * @param checksY A const reference to an int
              * @param col1 A const pointer to a Class Color
              * @param col2 A const pointer to a Class Color
-             * @return A Image Class
+             * @return An Image Class
              */
             Image genImageChecked(int const &width, int const &height, int const &checksX, int const &checksY, Color col1, Color col2);
 
@@ -217,7 +220,7 @@ namespace Raylib
              * @param width A const reference to an int
              * @param height A const reference to an int
              * @param factor A const reference to a float
-             * @return A Image Class
+             * @return An Image Class
              */
             Image genImageWhiteNoise(int const &width, int const &height, float const &factor);
 
@@ -229,7 +232,7 @@ namespace Raylib
              * @param offsetX A const reference to an int
              * @param offsetY A const reference to an int
              * @param scale A const reference to a float
-             * @return A Image Class
+             * @return An Image Class
              */
             Image genImagePerlinNoise(int const &width, int const &height, int offsetX, int offsetY, float scale);
 
@@ -239,7 +242,7 @@ namespace Raylib
              * @param width A const reference to an int
              * @param height A const reference to an int
              * @param tileSize A const reference to an int
-             * @return A Image Class
+             * @return An Image Class
              */
             Image genImageCellular(int const &width, int const &height, int const &tileSize);
 
@@ -247,7 +250,7 @@ namespace Raylib
              * @brief Create an image duplicate (useful for transformations)
              * 
              * @param image A const reference to a Class Image
-             * @return A Image Class
+             * @return An Image Class
              */
             Image imageCopy(Image const &image);
 
@@ -256,7 +259,7 @@ namespace Raylib
              * 
              * @param image A const reference to a Class Image
              * @param rec A const reference to a Class Rectangle
-             * @return A Image Class
+             * @return An Image Class
              */
             Image imageFromImage(Image const &image, Rectangle const &rec);
 
@@ -266,7 +269,7 @@ namespace Raylib
              * @param text A const pointer to a char
              * @param fontSize A const reference to an int
              * @param color A const reference to a Class Color
-             * @return A Image Class
+             * @return An Image Class
              */
             Image imageText(const char *text, int const &fontSize, Color const &color);
 
@@ -278,7 +281,7 @@ namespace Raylib
              * @param fontSize A const pointer to a float
              * @param spacing A const pointer to a float
              * @param tint A const reference to a Class Color
-             * @return A Image Class
+             * @return An Image Class
              */
             Image imageTextEx(Font const &font, const char *text, float const &fontSize, float const &spacing, Color const &tint);
 
@@ -611,14 +614,14 @@ namespace Raylib
             /**
              * @brief Set Image
              *
-             * @param image A Image C Structure
+             * @param image An Image C Structure
              */
             void set(const ::Image &image);
 
             /**
              * @brief Set Image
              *
-             * @param image A const reference to a Image object
+             * @param image A const reference to An Image object
              */
             void set(const Image &image);
 

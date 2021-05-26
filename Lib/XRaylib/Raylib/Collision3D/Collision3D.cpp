@@ -9,10 +9,8 @@
 
 Raylib::Collision3D::Collision3D()
 {
-
 }
 
 Raylib::Collision3D::~Collision3D()
 {
-
 }

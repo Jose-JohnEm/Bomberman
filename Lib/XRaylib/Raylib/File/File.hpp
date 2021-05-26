@@ -13,10 +13,13 @@
 #include <vector>
 #include "raylib.h"
 
-namespace Raylib {
+//TODO: const &parameter
+
+namespace Raylib
+{
     class File {
 
-    public:
+        public:
         /**
          * @brief Construct a new File object
          */
@@ -71,8 +74,8 @@ namespace Raylib {
         /**
          * @brief Save text data to file (write), string must be '\0' terminated
          *
-         * @param fileName
-         * @param text
+         * @param fileName //TODO: doc
+         * @param text//TODO: doc
          * @return returns true on success, false otherwise
          */
         static bool saveFileText(const std::string fileName, std::string text);
@@ -80,7 +83,7 @@ namespace Raylib {
         /**
          * @brief Check if file exists
          *
-         * @param fileName
+         * @param fileName//TODO: doc
          * @return returns true on success, false otherwise
          */
         static bool fileExists(const std::string fileName);
@@ -88,7 +91,7 @@ namespace Raylib {
         /**
          * @brief Check if a directory path exists
          *
-         * @param dirPath
+         * @param dirPath//TODO: doc
          * @return returns true on success, false otherwise
          */
         static bool directoryExists(const std::string dirPath);
@@ -96,8 +99,8 @@ namespace Raylib {
         /**
          * @brief Check file extension (including point: .png, .wav)
          *
-         * @param fileName
-         * @param ext
+         * @param fileName//TODO: doc
+         * @param ext//TODO: doc
          * @return returns true on success, false otherwise
          */
         static bool isFileExtension(const std::string fileName, const std::string ext);
@@ -105,7 +108,7 @@ namespace Raylib {
         /**
          * @brief Get pointer to extension for a filename string (includes dot: ".png")
          *
-         * @param fileName
+         * @param fileName//TODO: doc
          * @return A pointer
          */
         static const std::string getFileExtension(const std::string fileName);
@@ -113,7 +116,7 @@ namespace Raylib {
         /**
          * @brief Get pointer to filename for a path string
          *
-         * @param filePath
+         * @param filePath//TODO: doc
          * @return A pointer
          */
         static const std::string getFileName(const std::string filePath);
@@ -121,7 +124,7 @@ namespace Raylib {
         /**
          * @brief Get filename string without extension (uses static string)
          *
-         * @param filePath
+         * @param filePath//TODO: doc
          * @return filename string without extension
          */
         static const std::string getFileNameWithoutExt(const std::string filePath);
@@ -129,7 +132,7 @@ namespace Raylib {
         /**
          * @brief Get full path for a given fileName with path (uses static string)
          *
-         * @param filePath
+         * @param filePath//TODO: doc
          * @return full path
          */
         static const std::string getDirectoryPath(const std::string filePath);
@@ -137,7 +140,7 @@ namespace Raylib {
         /**
          * @brief Get previous directory path for a given path (uses static string)
          *
-         * @param dirPath
+         * @param dirPath//TODO: doc
          * @return previous directory
          */
         static const std::string getPrevDirectoryPath(const std::string dirPath);
@@ -152,8 +155,8 @@ namespace Raylib {
         /**
          * @brief Get filenames in a directory path (memory should be freed)
          *
-         * @param dirPath
-         * @param count
+         * @param dirPath//TODO: doc
+         * @param count//TODO: doc
          * @return filenames
          */
         static std::vector<std::string> getDirectoryFiles(const std::string dirPath, int &count);
@@ -166,7 +169,7 @@ namespace Raylib {
         /**
          * @brief Change working directory
          *
-         * @param dir
+         * @param dir//TODO: doc
          * @return return true on success and false on error
          */
         static bool changeDirectory(const std::string dir);
@@ -181,7 +184,7 @@ namespace Raylib {
         /**
          * @brief Get dropped files names (memory should be freed)
          *
-         * @param count
+         * @param count//TODO: doc
          * @return Filesnames
          */
         static std::vector<std::string> getDroppedFiles(int &count);
@@ -194,7 +197,7 @@ namespace Raylib {
         /**
          * @brief Get file modification time (last write time)
          *
-         * @param fileName
+         * @param fileName//TODO: doc
          * @return file modification time (last write time)
          */
         static long getFileModTime(const std::string fileName);

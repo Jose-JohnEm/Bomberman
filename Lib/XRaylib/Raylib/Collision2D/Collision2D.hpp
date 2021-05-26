@@ -14,7 +14,8 @@
 #include "Rectangle/Rectangle.hpp"
 #include "raylib.h"
 
-//TODO: const parameter and method !
+//TODO: const &parameter and method !
+//TODO: static keyword
 
 namespace Raylib
 {

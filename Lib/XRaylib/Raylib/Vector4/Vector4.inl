@@ -5,6 +5,9 @@
 ** Vector4.inl
 */
 
+//TODO: PAS this!!!
+
+
 inline Vector4 Raylib::Vector4::operator=(const Vector4 &copy)
 {
     this->x = copy.x;
@@ -15,7 +18,6 @@ inline Vector4 Raylib::Vector4::operator=(const Vector4 &copy)
     _vector.y = this->y;
     _vector.z = this->z;
     _vector.w = this->w;
-    
     return Vector4(copy);
 }
 
@@ -29,7 +31,6 @@ inline Vector4 Raylib::Vector4::operator=(const ::Vector4 &cvec)
     _vector.y = this->y;
     _vector.z = this->z;
     _vector.w = this->w;
-
     return Vector4(cvec);
 }
 
@@ -39,6 +40,5 @@ inline ::Vector4 Raylib::Vector4::getCStruct()
     _vector.y = this->y;
     _vector.z = this->z;
     _vector.w = this->w;
-
     return _vector;
 }

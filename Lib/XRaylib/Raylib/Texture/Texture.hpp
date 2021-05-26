@@ -66,7 +66,7 @@ namespace Raylib
              * @param source A Rectangle Object
              * @return A reference to the texture - Texture&
              */
-            Texture &loadTexture(const char *fileName);
+            Texture &loadTexture(const char *fileName); //TODO: use a string
 
             /**
              * @brief Load texture from image data
@@ -97,7 +97,7 @@ namespace Raylib
              * @return A Texture
              */
             Texture loadTextureCubemap(Image const &image, int const &layout);
- 
+
              /**
              * @brief Unload texture from GPU memory (VRAM)
              *
@@ -131,7 +131,7 @@ namespace Raylib
              /**
              * @brief Set texture scaling filter mode
              *
-             * @return A Image Class
+             * @return An Image Class
              */
             void setTextureFilter(Texture const &texture, int const &filter) const;
 
@@ -241,7 +241,7 @@ namespace Raylib
              * @param quad A const reference to a Rectangle
              * @param tint A const reference to a Color
              * @return A reference to the texture - Texture&
-             */
+             */ //TODO: const &param
             void drawTexturePoly(Texture texture, Vector2 center, Vector2 *points, Vector2 *texcoords, int pointsCount, Color tint) const;
 
         private:
