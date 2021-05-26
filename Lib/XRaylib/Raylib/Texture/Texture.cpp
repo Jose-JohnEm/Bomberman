@@ -14,12 +14,11 @@ Raylib::Texture::Texture(const std::string &fileName)
 
 Raylib::Texture::Texture(const Raylib::Image &image)
 {
-    ::Image _image = image.getCStruct();
-
-    _texture = ::LoadTextureFromImage(_image);
+    _texture = ::LoadTextureFromImage(image.getCStruct());
 }
 
 Raylib::Texture::~Texture()
 {
-    ::UnloadTexture(_texture);
+    // FIXME: Find why shared_ptr in Xray segfault here
+//    ::UnloadTexture(_texture);
 }

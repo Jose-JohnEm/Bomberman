@@ -33,7 +33,7 @@ namespace Raylib
              * @param gamepad
              * @return true if a gamepad is available, otherwise false
              */
-            bool isGamepadAvailable(const int &gamepad) const;
+            static bool isGamepadAvailable(const int &gamepad);
 
             /**
              * @brief Check gamepad name (if available)
@@ -42,7 +42,7 @@ namespace Raylib
              * @param name A string
              * @return true or false
              */
-            bool isGamepadName(const int &gamepad, const std::string &name) const;
+            static bool isGamepadName(const int &gamepad, const std::string &name);
 
             /**
              * @brief Return gamepad internal name id
@@ -50,7 +50,7 @@ namespace Raylib
              * @param gamepad A int
              * @return const std::string
              */
-            std::string getGamepadName(const int &gamepad) const;
+            static std::string getGamepadName(const int &gamepad);
 
             /**
              * @brief Detect if a gamepad button has been pressed once
@@ -59,7 +59,7 @@ namespace Raylib
              * @param button A int
              * @return true or false
              */
-            bool isGamepadButtonPressed(const int &gamepad, const int &button) const;
+            static bool isGamepadButtonPressed(const int &gamepad, const int &button);
 
             /**
              * @brief Detect if a gamepad button is being pressed
@@ -68,7 +68,7 @@ namespace Raylib
              * @param button A int
              * @return true or false
              */
-            bool isGamepadButtonDown(const int &gamepad, const int &button) const;
+            static bool isGamepadButtonDown(const int &gamepad, const int &button);
 
             /**
              * @brief Detect if a gamepad button has been released once
@@ -77,7 +77,7 @@ namespace Raylib
              * @param button A int
              * @return true or false
              */
-            bool isGamepadButtonReleased(const int &gamepad, const int &button) const;
+            static bool isGamepadButtonReleased(const int &gamepad, const int &button);
 
             /**
              * @brief Detect if a gamepad button is NOT being pressed
@@ -86,14 +86,14 @@ namespace Raylib
              * @param button A int
              * @return true or false
              */
-            bool isGamepadButtonUp(const int &gamepad, const int &button) const;
+            static bool isGamepadButtonUp(const int &gamepad, const int &button);
 
             /**
              * @brief Get the last gamepad button pressed
              *
              * @return A int
              */
-            int getGamepadButtonPressed(void) const;
+            static int getGamepadButtonPressed(void);
 
             /**
              * @brief Return gamepad axis count for a gamepad
@@ -101,7 +101,7 @@ namespace Raylib
              * @param gamepad A int
              * @return A int
              */
-            int getGamepadAxisCount(const int &gamepad) const;
+            static int getGamepadAxisCount(const int &gamepad);
 
             /**
              * @brief Return axis movement value for a gamepad axis
@@ -110,7 +110,7 @@ namespace Raylib
              * @param axis A int
              * @return A float
              */
-            float getGamepadAxisMovement(const int &gamepad, const int &axis) const;
+            static float getGamepadAxisMovement(const int &gamepad, const int &axis);
 
             /**
              * @brief Set internal gamepad mappings (SDL_GameControllerDB)
@@ -118,7 +118,7 @@ namespace Raylib
              * @param mappings A string
              * @return A int
              */
-            int setGamepadMappings(const std::string &mappings) const;
+            static int setGamepadMappings(const std::string &mappings);
     };
 
     #include "Gamepad.inl"

@@ -1,6 +1,4 @@
-# This CMakeLists.txt meta-compile our XRay lib
-# that bring raylib-cpp improvement to our interface
-# Export : libXRay.a
+# CMakeLists.txt
 
 # Always set the cmake min version.
 CMAKE_MINIMUM_REQUIRED(VERSION 3.17)
@@ -16,8 +14,7 @@ SET(CMAKE_CXX_STANDARD 17)
 
 # Find globaly and recursively all source files required to compile the project
 FILE(GLOB XRAY_SRCS CONFIGURE_DEPENDS
-    "${PROJECT_SOURCE_DIR}/XRay/*.cpp"
-    "${PROJECT_SOURCE_DIR}/XRay/*.inl"
+    "${PROJECT_SOURCE_DIR}/XRay/sources/*.cpp"
 )
 
 # Make Raylib CMakeList meta-compile raylib-cpp library
@@ -27,6 +24,7 @@ ADD_SUBDIRECTORY(Raylib)
 # Set Headers paths
 SET(RAYLIB_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Raylib/")
 SET(ENGINE_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../Engine/")
+SET(XRAY_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/XRay/includes/")
 
 # Create our static library target
 ADD_LIBRARY(${PROJECT_NAME} STATIC ${XRAY_SRCS})
@@ -38,4 +36,8 @@ TARGET_LINK_LIBRARIES(${PROJECT_NAME} raylibCPP)
 TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PRIVATE
     ${RAYLIB_HEADERS_PATH}
     ${ENGINE_HEADERS_PATH}
+    ${XRAY_HEADERS_PATH}
 )
+
+# Active in debug environment or hidden in release
+#TARGET_COMPILE_OPTIONS(xray PRIVATE -g3)

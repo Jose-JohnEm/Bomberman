@@ -26,16 +26,13 @@ class IGraphical {
             /// This scene is the intro of our game
             INTRO,
             /// This scene is the main menu of our game
-            MAIN_MENU,
-            /// This is the game scene, it should display the game. It can display game information, buttons
-            /// (restart, go to main menu, pause game).
-            GAME,
-            PLAYMENU,
-            HOWTOMENU,
-            SETTINGSMENU,
-            DRAWMENU,
-            GAMEIN,
-            PAUSEIN,
+            MENU,
+            GAME_MODE,
+            HOW_TO_PLAY,
+            SETTINGS,
+            PLAYER_CHOICE,
+            LOAD_GAME,
+            IN_GAME,
             END_GAME
         };
 
@@ -45,27 +42,11 @@ class IGraphical {
         virtual ~IGraphical(void) = default;
 
         /**
-         * @brief Initialize window and OpenGL context
-         *
-         * @param width Width of the Window
-         * @param height Height of the Window
-         * @param title Title of the Window
-         */
-        virtual void initWindow(const int &width, const int &height, const std::string &title) const = 0;
-
-        /**
          * @brief Check if the window should be close
          *
          * @return true if the window should close and false otherwise
          */
         virtual bool shouldCloseWindow(void) const = 0;
-
-        /**
-         * @brief Check if we are in the game scene
-         *
-         * @return true if we are in the game scene and false otherwise
-         */
-        virtual bool isInGameScene(void) const = 0;
 
         /**
          * @brief This function sets the list of scores. First element of the pair is the username, the second is the score.
@@ -79,7 +60,7 @@ class IGraphical {
          *
          * @param scores A vector of pair (username, score)
          */
-        virtual void setBestsScores(const std::vector<std::pair<std::string, std::string>> &scores) = 0;
+        virtual void setBestScores(const std::vector<std::pair<std::string, std::string>> &scores) = 0;
 
         /**
          * @brief This is called in a loop when the game is running. This vector contains entities that should be displayed in the game scene.
@@ -102,6 +83,20 @@ class IGraphical {
          * @return A vector of all the users names as a const std::vector<std::string>&
          */
         virtual const std::vector<std::string> &getUserNames(void) const = 0;
+
+        /**
+         * @brief Get the paths to all backups files
+         *
+         * @return A vector of all the paths to backups files as a const std::vector<std::string>&
+         */
+        virtual const std::vector<std::string> &getBackups(void) const = 0;
+
+        /**
+         * @brief Get the paths to all backups files
+         *
+         * @param backups A vector of all the paths to backups files as a const std::vector<std::string>&
+         */
+        virtual void setBackups(const std::vector<std::string> &backups) = 0;
 
         /**
          * @brief Returns the current scene.

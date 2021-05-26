@@ -5,17 +5,17 @@
 ** Window
 */
 
-inline void Raylib::Window::initWindow(const int &width, const int &height, const std::string &title) const
+inline void Raylib::Window::initWindow(const int &width, const int &height, const std::string &title)
 {
     ::InitWindow(width, height, title.c_str());
 }
 
-inline bool Raylib::Window::windowShouldClose(void) const
+inline bool Raylib::Window::windowShouldClose(void)
 {
     return ::WindowShouldClose();
 }
 
-inline void Raylib::Window::closeWindow(void) const
+inline void Raylib::Window::closeWindow(void)
 {
     ::CloseWindow();
 }

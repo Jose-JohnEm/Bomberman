@@ -27,20 +27,20 @@ namespace Raylib
 
             /**
              * @brief Set background color (framebuffer clear color)
-             * 
+             *
              * @param color A Color Object
              */
-            void clearBackground(const Color &color) const;
+            static void clearBackground(const Color &color);
 
             /**
              * @brief Setup canvas (framebuffer) to start drawing
              */
-            void beginDrawing(void) const;
+            static void beginDrawing(void);
 
             /**
              * @brief End canvas drawing and swap buffers (double buffering)
              */
-            void endDrawing(void) const;
+            static void endDrawing(void);
     };
 
     #include "Drawing.inl"

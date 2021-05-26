@@ -30,36 +30,36 @@ namespace Raylib
             /**
              * @brief Shows cursor
              */
-            void showCursor(void) const;
+            static void showCursor(void);
 
             /**
              * @brief Hides cursor
              */
-            void hideCursor(void) const;
+            static void hideCursor(void);
 
             /**
              * @brief Check if cursor is not visible
              *
              * @return true or false
              */
-            bool isCursorHidden(void) const;
+            static bool isCursorHidden(void);
 
             /**
              * @brief Enables cursor (unlock cursor)
              */
-            void enableCursor(void) const;
+            static void enableCursor(void);
 
             /**
              * @brief Disables cursor (lock cursor)
              */
-            void disableCursor(void) const;
+            static void disableCursor(void);
 
             /**
              * @brief Check if cursor is on the current screen.
              *
              * @return true if cursor is on the current screen, false otherwise
              */
-            bool isCursorOnScreen(void) const;
+            static bool isCursorOnScreen(void);
 
     };
 

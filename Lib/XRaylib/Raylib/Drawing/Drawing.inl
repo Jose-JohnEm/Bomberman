@@ -5,17 +5,17 @@
 ** Drawing
 */
 
-inline void Raylib::Drawing::clearBackground(const Color &color) const
+inline void Raylib::Drawing::clearBackground(const Color &color)
 {
     ::ClearBackground(color.getCStruct());
 }
 
-inline void Raylib::Drawing::beginDrawing(void) const
+inline void Raylib::Drawing::beginDrawing(void)
 {
     ::BeginDrawing();
 }
 
-inline void Raylib::Drawing::endDrawing(void) const
+inline void Raylib::Drawing::endDrawing(void)
 {
     ::EndDrawing();
 }

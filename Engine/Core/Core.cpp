@@ -12,7 +12,6 @@ Engine::Core::Core()
     std::shared_ptr<IGraphical> lib = std::make_shared<XRay>();
 
     _graphical = std::move(lib);
-    _graphical->initWindow(1920, 1080, "Bomberman");
 }
 
 Engine::Core::~Core()
@@ -21,10 +20,11 @@ Engine::Core::~Core()
 
 void Engine::Core::run(void)
 {
-    while (!_graphical->shouldCloseWindow()) {
+    while (_scene != IGraphical::END_GAME && !_graphical->shouldCloseWindow()) {
+        getBackupFiles();
         _graphical->display();
         _scene = _graphical->getScene();
-        if (_scene == IGraphical::GAME && _game) {
+        if (_scene == IGraphical::IN_GAME && _game) {
             if (!_isPaused)
                 _game->updateGame();
             if (!_game->isGameOver() && !endGame()) {
@@ -35,11 +35,24 @@ void Engine::Core::run(void)
         }
         if (_graphical->getUserNames() != _userNames)
             _userNames = _graphical->getUserNames();
+        if (_graphical->getBackups() != _backups)
+            _graphical->setBackups(_backups);
     }
     _graphical->closeWindow();
 }
 
-void Engine::Core::saveBestsScores(void)
+void Engine::Core::getBackupFiles(void)
+{
+    std::string dirBackups(".backups/");
+    std::filesystem::directory_iterator itBackups(dirBackups);
+
+    _backups.clear();
+    for (const auto &file: itBackups)
+        if (file.path().filename().extension() == ".backup")
+                _backups.push_back(file.path().filename());
+}
+
+void Engine::Core::saveBestScores(void)
 {
     // Get all scores and sort them in ascending order
     std::vector<std::pair<std::string, std::string>> _scores =  _game->getScores();
@@ -68,11 +81,11 @@ void Engine::Core::saveBestsScores(void)
 
 bool Engine::Core::endGame(void)
 {
-    if (_graphical->getScene() != IGraphical::GAME || !_game->isGameOver())
+    if (_graphical->getScene() != IGraphical::IN_GAME || !_game->isGameOver())
         return false;
     _graphical->setScene(IGraphical::END_GAME);
-    saveBestsScores();
-    _graphical->setBestsScores(_gameHighScores);
+    saveBestScores();
+    _graphical->setBestScores(_gameHighScores);
     _graphical->setPlayersStats(_game->getPlayersStats());
     return true;
 }

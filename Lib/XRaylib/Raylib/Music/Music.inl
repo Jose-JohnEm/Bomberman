@@ -42,7 +42,8 @@ inline Raylib::Music &Raylib::Music::resume(void)
 
 inline bool Raylib::Music::isPlaying(void) const
 {
-    //return ::IsMusicPlaying(_music);
+    //FIXME: ??
+    return false;//::IsMusicPlaying(_music);
 }
 
 inline Raylib::Music &Raylib::Music::setVolume(const float &volume)

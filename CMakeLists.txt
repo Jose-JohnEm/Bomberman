@@ -6,6 +6,10 @@ PROJECT(bomberman VERSION 1.0)
 # Set g++ standard version
 SET(CMAKE_CXX_STANDARD 17)
 
+# Call the Findresources module
+# TODO: README in english
+INCLUDE(cmake/Findresources.cmake)
+
 # Make XRay CMakeList meta-compile XRay library that himself
 # will make Raylib-cpp meta compile
 # It will be linked with our Bomberman project
@@ -14,12 +18,11 @@ ADD_SUBDIRECTORY(Lib/XRaylib)
 # Generate a list of files
 FILE(GLOB_RECURSE SRCS CONFIGURE_DEPENDS
     "Engine/*.cpp"
-    "Engine/*.inl"
 )
 
 # Set Headers paths
 SET(ENGINE_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Engine/")
-SET(XRAY_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Lib/XRaylib/XRay/")
+SET(XRAY_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Lib/XRaylib/XRay/includes/")
 SET(RAYLIB_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Lib/XRaylib/Raylib/")
 
 # This is the main part:
@@ -34,5 +37,8 @@ TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PRIVATE
     ${XRAY_HEADERS_PATH}
     ${RAYLIB_HEADERS_PATH}
 )
+
+# Active in debug environment or hidden in release
+#TARGET_COMPILE_OPTIONS(bomberman PRIVATE -g3)
 
 # That's it! You should have an bomberman executable that you can run. Have fun!

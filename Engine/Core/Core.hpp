@@ -15,15 +15,17 @@
 #include <map>
 #include <fstream>
 #include <iostream>
+#include <filesystem>
 #include <sstream>
 #include <istream>
 #include <algorithm>
+#include <dirent.h>
 #include <utility>
 #include "XRay.hpp"
 #include "Interfaces/IGraphical.hpp"
 #include "Interfaces/IGame.hpp"
 
-namespace Engine 
+namespace Engine
 {
     class Core {
 
@@ -51,9 +53,14 @@ namespace Engine
             bool endGame(void);
 
             /**
-             * @brief Save the best(s) score(s) in a file
+             * @brief Save the best score(s) in a file
              */
-            void saveBestsScores(void);
+            void saveBestScores(void);
+
+            /**
+             * @brief Get Backup Files
+             */
+            void getBackupFiles(void);
 
         private:
             std::shared_ptr<IGraphical> _graphical;                             // Graphical instance
@@ -61,10 +68,11 @@ namespace Engine
 
             std::string _currentGame = "bomberman";                             // Game name
 
-            IGraphical::Scene _scene;                                           // Current scene
+            IGraphical::Scene _scene = IGraphical::MENU;                        // Current scene
 
             std::vector<std::string> _userNames;                                // User names
             std::vector<std::pair<std::string, std::string>> _gameHighScores;   // Game's high scores
+            std::vector<std::string> _backups;                                  // Paths of Backup Files
 
             bool _isPaused;                                                     // Pause flag
     };

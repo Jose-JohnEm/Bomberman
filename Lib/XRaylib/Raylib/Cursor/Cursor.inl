@@ -5,32 +5,32 @@
 ** Cursor
 */
 
-inline void Raylib::Cursor::showCursor(void) const
+inline void Raylib::Cursor::showCursor(void)
 {
     ::ShowCursor();
 }
 
-inline void Raylib::Cursor::hideCursor(void) const
+inline void Raylib::Cursor::hideCursor(void)
 {
     ::HideCursor();
 }
 
-inline bool Raylib::Cursor::isCursorHidden(void) const
+inline bool Raylib::Cursor::isCursorHidden(void)
 {
     return ::IsCursorHidden();
 }
 
-inline void Raylib::Cursor::enableCursor(void) const
+inline void Raylib::Cursor::enableCursor(void)
 {
     ::EnableCursor();
 }
 
-inline void Raylib::Cursor::disableCursor(void) const
+inline void Raylib::Cursor::disableCursor(void)
 {
     ::DisableCursor();
 }
 
-inline bool Raylib::Cursor::isCursorOnScreen(void) const
+inline bool Raylib::Cursor::isCursorOnScreen(void)
 {
     return ::IsCursorOnScreen();
 }

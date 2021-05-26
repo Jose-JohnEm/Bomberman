@@ -5,22 +5,22 @@
 ** Timing
 */
 
-inline void Raylib::Timing::setTargetFPS(const int &fps) const
+inline void Raylib::Timing::setTargetFPS(const int &fps)
 {
     ::SetTargetFPS(fps);
 }
 
-inline int Raylib::Timing::getFPS(void) const
+inline int Raylib::Timing::getFPS(void)
 {
     return ::GetFPS();
 }
 
-inline float Raylib::Timing::getFrameTime(void) const
+inline float Raylib::Timing::getFrameTime(void)
 {
     return ::GetFrameTime();
 }
 
-inline double Raylib::Timing::getTime(void) const
+inline double Raylib::Timing::getTime(void)
 {
     return ::GetTime();
 }
