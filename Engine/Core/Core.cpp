@@ -37,7 +37,7 @@ void Engine::Core::run(void)
         if (_scene == IGraphical::GAME && _game) {
 =======
     while (!_graphical->shouldCloseWindow() && _scene != IGraphical::END_GAME) {
-        getBackupsFiles();
+        getBackupFiles();
         _graphical->display();
         _scene = _graphical->getScene();
         if (_scene == IGraphical::GAMEIN && _game) {
@@ -62,20 +62,28 @@ void Engine::Core::run(void)
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 void Engine::Core::getBackupsFiles()
+=======
+void Engine::Core::getBackupFiles(void)
+>>>>>>> 12c4491 (Cleaned Core code)
 {
     std::string dirBackups(".backups/");
-    std::filesystem::directory_iterator backupsDir(dirBackups);
+    std::filesystem::directory_iterator itBackups(dirBackups);
 
     _backups.clear();
-    for (auto &file: backupsDir)
+    for (const auto &file: itBackups)
         if (file.path().filename().extension() == ".backup")
                 _backups.push_back(file.path().filename());
 }
 
+<<<<<<< HEAD
 >>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
 void Engine::Core::saveBestsScores(void)
+=======
+void Engine::Core::saveBestScores(void)
+>>>>>>> 12c4491 (Cleaned Core code)
 {
     // Get all scores and sort them in ascending order
     std::vector<std::pair<std::string, std::string>> _scores =  _game->getScores();
@@ -111,7 +119,7 @@ bool Engine::Core::endGame(void)
 >>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
         return false;
     _graphical->setScene(IGraphical::END_GAME);
-    saveBestsScores();
+    saveBestScores();
     _graphical->setBestsScores(_gameHighScores);
     _graphical->setPlayersStats(_game->getPlayersStats());
     return true;

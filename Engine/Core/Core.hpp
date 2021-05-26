@@ -15,27 +15,15 @@
 #include <map>
 #include <fstream>
 #include <iostream>
-<<<<<<< HEAD
 #include <sstream>
 #include <istream>
 #include <algorithm>
-=======
-#include <filesystem>
-#include <sstream>
-#include <istream>
-#include <algorithm>
-#include <dirent.h>
->>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
 #include <utility>
 #include "XRay.hpp"
 #include "Interfaces/IGraphical.hpp"
 #include "Interfaces/IGame.hpp"
 
-<<<<<<< HEAD
-namespace Engine 
-=======
 namespace Engine
->>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
 {
     class Core {
 
@@ -63,18 +51,15 @@ namespace Engine
             bool endGame(void);
 
             /**
-             * @brief Save the best(s) score(s) in a file
+             * @brief Save the best score(s) in a file
              */
-            void saveBestsScores(void);
+            void saveBestScores(void);
 
-<<<<<<< HEAD
-=======
             /**
-             * @brief Get the Backups Files
+             * @brief Get Backup Files
              */
-            void getBackupsFiles();
+            void getBackupFiles(void);
 
->>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
         private:
             std::shared_ptr<IGraphical> _graphical;                             // Graphical instance
             std::shared_ptr<IGame> _game;                                       // Game instance
@@ -85,10 +70,8 @@ namespace Engine
 
             std::vector<std::string> _userNames;                                // User names
             std::vector<std::pair<std::string, std::string>> _gameHighScores;   // Game's high scores
-<<<<<<< HEAD
-=======
+
             std::vector<std::string> _backups;                                // Paths of Backups Files
->>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
 
             bool _isPaused;                                                     // Pause flag
     };
