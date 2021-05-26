@@ -15,12 +15,12 @@ XRay::XRay()
 
     // Scenes
     _scenesFunc.push_back(&XRay::displayMenu);
-    _scenesFunc.push_back(&XRay::playMenu);
+    _scenesFunc.push_back(&XRay::displayGameModeScene);
     _scenesFunc.push_back(&XRay::howToMenu);
-    _scenesFunc.push_back(&XRay::settingsMenu);
-    _scenesFunc.push_back(&XRay::modeScene);
+    _scenesFunc.push_back(&XRay::displaySettingsScene);
+    _scenesFunc.push_back(&XRay::displayPlayerChoiceScene);
     _scenesFunc.push_back(&XRay::mapScene);
-    _scenesFunc.push_back(&XRay::loadGameScene);
+    _scenesFunc.push_back(&XRay::displayLoadGameScene);
     _scenesFunc.push_back(&XRay::quit);
 
     // Intro settings
@@ -42,6 +42,17 @@ void XRay::setResources(void)
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(HUMAN, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/human.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(AI, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/ai.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(HEAD, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/head.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(LOADGAME, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/loadGame.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(LOADGAME_BG, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/loadGameBG.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(LOADGAME_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/loadGameHover.png"))));
+    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(NEWGAME, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/newGame.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(NEWGAME_BG, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/newGameBG.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(NEWGAME_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/newGameHover.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(LOADSCENE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/loadScene.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(BRANCH, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/branch.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(BACK, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/back.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(BACK_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/backHover.png"))));
+
 }
 
 bool XRay::mouseIsInBox(const std::vector<size_t> &box) const
@@ -68,7 +79,7 @@ std::vector<size_t> XRay::createBox(const size_t &upperLeftCorner, const size_t 
 
 void XRay::mapScene(void)
 {
-    _scene = MAPMENU;
+    _scene = IN_GAME;
     beginDrawing();
     // Some code
     endDrawing();
@@ -99,12 +110,11 @@ void XRay::updateTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle
                 }
 
             if (_keyboard.isKeyPressed(KEY_BACKSPACE) && _userNames[i].size() > 0) {
-                if (_letterAndFrame[i].first < 0) {
-                    _letterAndFrame[i].first--;
-                    _userNames[i].pop_back();
+                _letterAndFrame[i].first--;
+                if (_letterAndFrame[i].first < 0)
                     _letterAndFrame[i].first = 0;
-                }
-//                _userNames[i][_letterAndFrame[i].first] = '\0';
+                else
+                    _userNames[i].pop_back();
             }
 
         } else
@@ -114,7 +124,7 @@ void XRay::updateTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle
     }
 }
 
-void XRay::setAddBox(std::vector<std::pair<int, int>> &removePos, std::vector<std::pair<int, int>> &nextTab, std::vector<std::pair<int, int>> &prevTab, const int &a)
+void XRay::setAddBox(const std::vector<std::pair<int, int>> &removePos, const std::vector<std::pair<int, int>> &nextTab, const std::vector<std::pair<int, int>> &prevTab, const int &a)
 {
     _allIntegers[2] += (_allIntegers[2] != 4 && mouseIsInBox(createBox(_allIntegers[0]+a, _allIntegers[1], _allIntegers[0]+a+150, _allIntegers[1]+150)) && _mouse.isButtonPressed(0)) ? 1 : 0;
     if (_mouse.isButtonPressed(0))
@@ -150,7 +160,30 @@ void XRay::displayMouse(void)
     _resources.at(HEAD)->drawTexture(_mouse.getMouseX() - 32, _mouse.getMouseY() - 32, Raylib::Color::White());
 }
 
-void XRay::modeScene(void) // TODO: To change ?
+void XRay::displayCardsSettings(std::vector<std::pair<int, int>> &removePos, std::vector<std::pair<int, int>> &nextTab, std::vector<std::pair<int, int>> &prevTab, int *a)
+{
+    int i, b;
+    for (i = 0, (*a) = 200, b = 300; _allIntegers[2] < 5 && i < _allIntegers[2]; i++, (*a) += 400) {
+        _resources.at(PREVIOUS)->drawTexture((*a)-54, _allIntegers[1], Raylib::Color::White());
+        if (_playerTab[i]) {
+            (_controlsTab[i]) ? _resources.at(CONTROLS)->drawTexture((*a) - 30, _allIntegers[1] + 300, Raylib::Color::White()) : _resources.at(GAMEPAD)->drawTexture((*a) - 30, _allIntegers[1] + 300, Raylib::Color::White());
+            _resources.at(PREVIOUS)->drawTexture((*a)-84, _allIntegers[1] + 340, Raylib::Color::White());
+            _resources.at(NEXT)->drawTexture((*a)+250, _allIntegers[1] + 340, Raylib::Color::White());
+        }
+        (_playerTab[i]) ? _resources.at(HUMAN)->drawTexture((*a), b, Raylib::Color::White()) : _resources.at(AI)->drawTexture((*a), b, Raylib::Color::White());
+        _resources.at(NEXT)->drawTexture((*a)+230, _allIntegers[1], Raylib::Color::White());
+        nextTab.push_back(std::make_pair((*a)+230, _allIntegers[1]));
+        prevTab.push_back(std::make_pair((*a)-54, _allIntegers[1]));
+        if (i != 0) {
+            removePos.push_back(std::make_pair((*a)+240, _allIntegers[1]-100));
+            _resources.at(REMOVE)->drawTexture((*a) + 240, _allIntegers[1]-100, Raylib::Color::White());
+        }
+    }
+    if (_allIntegers[2] != 4)
+        _resources.at(ADD)->drawTexture(_allIntegers[0] + (*a), _allIntegers[1], Raylib::Color::White());
+}
+
+void XRay::displayPlayerChoiceScene(void) // TODO: To change ?
 {
     // TODO: Put our encapsulation and Try to split function (Already did, but x_x)
     //Raylib::Texture head(Raylib::Image("resources/assets/head.png"));
@@ -162,33 +195,17 @@ void XRay::modeScene(void) // TODO: To change ?
     std::vector<bool> mouseOnText;
     std::vector<::Rectangle> textBox;
 
-    _scene = MODEMENU;
+    _scene = PLAYER_CHOICE;
 
-    int i, a, b;
+    int a;
 
     setTextBox(mouseOnText, textBox);
 
     updateTextBox(mouseOnText, textBox);
 
     beginDrawing();
-    for (i = 0, a = 200, b = 300; _allIntegers[2] < 5 && i < _allIntegers[2]; i++, a += 400) {
-        _resources.at(PREVIOUS)->drawTexture(a-54, _allIntegers[1], Raylib::Color::White());
-        if (_playerTab[i]) {
-            (_controlsTab[i]) ? _resources.at(CONTROLS)->drawTexture(a - 30, _allIntegers[1] + 300, Raylib::Color::White()) : _resources.at(GAMEPAD)->drawTexture(a - 30, _allIntegers[1] + 300, Raylib::Color::White());
-            _resources.at(PREVIOUS)->drawTexture(a-84, _allIntegers[1] + 340, Raylib::Color::White());
-            _resources.at(NEXT)->drawTexture(a+250, _allIntegers[1] + 340, Raylib::Color::White());
-        }
-        (_playerTab[i]) ? _resources.at(HUMAN)->drawTexture(a, b, Raylib::Color::White()) : _resources.at(AI)->drawTexture(a, b, Raylib::Color::White());
-        _resources.at(NEXT)->drawTexture(a+230, _allIntegers[1], Raylib::Color::White());
-        nextTab.push_back(std::make_pair(a+230, _allIntegers[1]));
-        prevTab.push_back(std::make_pair(a-54, _allIntegers[1]));
-        if (i != 0) {
-            removePos.push_back(std::make_pair(a+240, _allIntegers[1]-100));
-            _resources.at(REMOVE)->drawTexture(a + 240, _allIntegers[1]-100, Raylib::Color::White());
-        }
-    }
-    if (_allIntegers[2] != 4)
-        _resources.at(ADD)->drawTexture(_allIntegers[0] + a, _allIntegers[1], Raylib::Color::White());
+
+    displayCardsSettings(removePos, nextTab, prevTab, &a);
     displayCards(mouseOnText, textBox);
     displayMouse();
     endDrawing();
@@ -198,52 +215,53 @@ void XRay::modeScene(void) // TODO: To change ?
 //    mapScene();
 }
 
-void XRay::loadGameScene(void) // TODO: To change ?
+void XRay::displayLoadGameScene(void) // TODO: To change ?
 {
-    Raylib::Texture load(Raylib::Image("resources/assets/loadscene.png"));
-    Raylib::Texture branch(Raylib::Image("resources/assets/branch.png"));
     Raylib::Text file;
 
-    _scene = LOADMENU;
+    _scene = LOAD_GAME;
     beginDrawing();
-    load.drawTexture(0, 0, Raylib::Color::White());
+    _resources.at(LOADSCENE)->drawTexture(0, 0, Raylib::Color::White());
     file.drawText("BACKUPS", 230, 210, 65, Raylib::Color::Black());
     for (size_t i = 0, y = 300; i < _backups.size(); i++, y += 100) {
-        branch.drawTexture(150, y, Raylib::Color::White());
+        _resources.at(BRANCH)->drawTexture(150, y, Raylib::Color::White());
         file.drawText(_backups[i].substr(0, _backups[i].find('.')), 300, y + 20, 65, Raylib::Color::Black());
     }
     endDrawing();
 }
 //TODO: pointer to function between drawing method
-void XRay::playMenu(void) // TODO: To change ?
+void XRay::displayGameModeScene(void) // TODO: To change ?
 {
-    std::string back = std::string("resources/assets/") + std::string((mouseIsInBox(250, 900, 510, 965)) ? "BACK.png" : "back.png");
-    std::string newgame = std::string("resources/assets/") + std::string((mouseIsInBox(180, 500, 700, 565)) ? "NEWGAME.png" : "newgame.png");
-    std::string loadgame = std::string("resources/assets/") + std::string((mouseIsInBox(1140, 500, 1660, 565)) ? "LOADGAME.png" : "loadgame.png");
+    // Set scene
+    _scene = GAME_MODE;
 
-    Raylib::Texture ngame(Raylib::Image("resources/assets/nga.png"));
-    Raylib::Texture lgame(Raylib::Image("resources/assets/lga.png"));
-    Raylib::Texture backButton(Raylib::Image(back.c_str()));
-    Raylib::Texture newGameButton(Raylib::Image(newgame.c_str()));
-    Raylib::Texture loadGameButton(Raylib::Image(loadgame.c_str()));
-    Raylib::Texture head(Raylib::Image("resources/assets/head.png"));
+    // Check if mouse is on button spot
+    bool goBack = mouseIsInBox(createBox(250, 900, 510, 965)) ? true : false;
+    bool goNewGame = mouseIsInBox(createBox(180, 500, 700, 565)) ? true : false;
+    bool goLoadGame = mouseIsInBox(createBox(1140, 500, 1660, 565)) ? true : false;
 
-    _scene = PLAYMENU;
+    // Set specific texture according to mouse position
+    std::shared_ptr<Raylib::Texture> backButton = mouseIsInBox(createBox(250, 900, 510, 965)) ? _resources.at(BACK_HOVER) : _resources.at(BACK);
+    std::shared_ptr<Raylib::Texture> newGameButton = mouseIsInBox(createBox(180, 500, 700, 565)) ? _resources.at(NEWGAME_HOVER) : _resources.at(NEWGAME);
+    std::shared_ptr<Raylib::Texture> loadGameButton = mouseIsInBox(createBox(1140, 500, 1660, 565)) ? _resources.at(LOADGAME_HOVER) : _resources.at(LOADGAME);
+
+    // Draw scene
     beginDrawing();
-    ngame.drawTexture(0, 0, Raylib::Color::White());
-    lgame.drawTexture(960, 0, Raylib::Color::White());
-    backButton.drawTexture(250, 900, Raylib::Color::White());
-    newGameButton.drawTexture(180, 500, Raylib::Color::White());
-    loadGameButton.drawTexture(1140, 500, Raylib::Color::White());
-    head.drawTexture(_mouse.getMouseX() - 32, _mouse.getMouseY() - 32, Raylib::Color::White());
+    _resources.at(NEWGAME_BG)->drawTexture(0, 0, Raylib::Color::White());
+    _resources.at(LOADGAME_BG)->drawTexture(960, 0, Raylib::Color::White());
+    backButton->drawTexture(250, 900, Raylib::Color::White());
+    newGameButton->drawTexture(180, 500, Raylib::Color::White());
+    loadGameButton->drawTexture(1140, 500, Raylib::Color::White());
+    displayMouse();
     endDrawing();
 
-    if (back.at(17) < 90 && _mouse.isButtonPressed(0))
+    // Go to another scene according to mouse position
+    if (goBack && _mouse.isButtonPressed(0))
         displayMenu();
-    else if (newgame.at(17) < 90 && _mouse.isButtonPressed(0))
-        modeScene();
-    else if (loadgame.at(17) < 90 && _mouse.isButtonPressed(0))
-        loadGameScene();
+    else if (goNewGame && _mouse.isButtonPressed(0))
+        displayPlayerChoiceScene();
+    else if (goLoadGame && _mouse.isButtonPressed(0))
+        displayLoadGameScene();
 }
 
 void XRay::howToMenu(void) // TODO: To change ?
@@ -255,7 +273,7 @@ void XRay::howToMenu(void) // TODO: To change ?
     Raylib::Texture backButton(Raylib::Image(back.c_str()));
     Raylib::Texture head(Raylib::Image("resources/assets/head.png"));
 
-    _scene = HOWTOMENU;
+    _scene = HOW_TO_PLAY;
     beginDrawing();
     button.drawTexture(700, 600, Raylib::Color::White());
     backButton.drawTexture(20, 1000, Raylib::Color::White());
@@ -266,7 +284,7 @@ void XRay::howToMenu(void) // TODO: To change ?
         displayMenu();
 }
 
-void XRay::settingsMenu(void) // TODO: To change ?
+void XRay::displaySettingsScene(void) // TODO: To change ?
 {
     std::string settings = std::string("resources/assets/") + std::string((mouseIsInBox(700, 700, 620, 765)) ? "SETTINGS.png" : "settings.png");
     std::string back = std::string("resources/assets/") + std::string((mouseIsInBox(20, 1000, 280, 1065)) ? "BACK.png" : "back.png");
@@ -275,7 +293,7 @@ void XRay::settingsMenu(void) // TODO: To change ?
     Raylib::Texture head(Raylib::Image("resources/assets/head.png"));
     Raylib::Texture backButton(Raylib::Image(back.c_str()));
 
-    _scene = SETTINGSMENU;
+    _scene = SETTINGS;
     beginDrawing();
     settingsButton.drawTexture(700, 600, Raylib::Color::White());
     backButton.drawTexture(20, 1000, Raylib::Color::White());
@@ -352,7 +370,7 @@ void XRay::displayMenu(void) // TODO: To change ?
 //    PlayMusicStream(LoadMusicStream("resources/assets/aa.mp3"));
     if (_intro.first == true)
         (this->*_intro.second)();
-    _scene = MAIN_MENU;
+    _scene = MENU;
 //    ::UpdateMusicStream(music);
     if (_cursor.isCursorOnScreen())
         _cursor.hideCursor();

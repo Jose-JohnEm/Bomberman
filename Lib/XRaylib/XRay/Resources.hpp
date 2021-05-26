@@ -17,7 +17,17 @@ typedef enum {
     GAMEPAD,
     HUMAN,
     AI,
-    HEAD
+    HEAD,
+    LOADGAME_BG,
+    LOADGAME,
+    LOADGAME_HOVER,
+    NEWGAME_BG,
+    NEWGAME,
+    NEWGAME_HOVER,
+    LOADSCENE,
+    BRANCH,
+    BACK,
+    BACK_HOVER
 } Resources;
 
 #endif /* !RESOURCES_HPP_ */

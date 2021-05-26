@@ -1,0 +1,2114 @@
+INFO: Initializing raylib 3.8-dev
+INFO: DISPLAY: Device initialized successfully
+INFO:     > Display size: 1920 x 1080
+INFO:     > Render size:  1920 x 1080
+INFO:     > Screen size:  1920 x 1080
+INFO:     > Viewport offsets: 0, 0
+INFO: GLAD: OpenGL extensions loaded successfully
+INFO: GL: Supported extensions count: 223
+INFO: GL: OpenGL device information:
+INFO:     > Vendor:   Intel
+INFO:     > Renderer: Mesa Intel(R) UHD Graphics 620 (WHL GT2)
+INFO:     > Version:  4.6 (Core Profile) Mesa 21.0.3
+INFO:     > GLSL:     4.60
+INFO: GL: DXT compressed textures supported
+INFO: GL: ETC2/EAC compressed textures supported
+INFO: TEXTURE: [ID 1] Texture loaded successfully (1x1 - 1 mipmaps)
+INFO: TEXTURE: [ID 1] Default texture loaded successfully
+INFO: SHADER: [ID 1] Vertex shader compiled successfully
+INFO: SHADER: [ID 2] Fragment shader compiled successfully
+INFO: SHADER: [ID 3] Program shader loaded successfully
+INFO: SHADER: [ID 3] Default shader loaded successfully
+INFO: RLGL: Render batch vertex buffers loaded successfully in RAM (CPU)
+INFO: RLGL: Render batch vertex buffers loaded successfully in VRAM (GPU)
+INFO: RLGL: Default OpenGL state initialized successfully
+INFO: TEXTURE: [ID 2] Texture loaded successfully (128x128 - 1 mipmaps)
+INFO: FONT: Default font loaded successfully
+INFO: FILEIO: [resources/assets/add.png] File loaded successfully
+INFO: IMAGE: [resources/assets/add.png] Data loaded successfully (64x63)
+INFO: TEXTURE: [ID 3] Texture loaded successfully (64x63 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/remove.png] File loaded successfully
+INFO: IMAGE: [resources/assets/remove.png] Data loaded successfully (64x63)
+INFO: TEXTURE: [ID 4] Texture loaded successfully (64x63 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/previous.png] File loaded successfully
+INFO: IMAGE: [resources/assets/previous.png] Data loaded successfully (50x49)
+INFO: TEXTURE: [ID 5] Texture loaded successfully (50x49 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/next.png] File loaded successfully
+INFO: IMAGE: [resources/assets/next.png] Data loaded successfully (50x49)
+INFO: TEXTURE: [ID 6] Texture loaded successfully (50x49 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/controls.png] File loaded successfully
+INFO: IMAGE: [resources/assets/controls.png] Data loaded successfully (266x92)
+INFO: TEXTURE: [ID 7] Texture loaded successfully (266x92 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/gamepad.png] File loaded successfully
+INFO: IMAGE: [resources/assets/gamepad.png] Data loaded successfully (266x90)
+INFO: TEXTURE: [ID 8] Texture loaded successfully (266x90 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/human.png] File loaded successfully
+INFO: IMAGE: [resources/assets/human.png] Data loaded successfully (224x337)
+INFO: TEXTURE: [ID 9] Texture loaded successfully (224x337 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/ai.png] File loaded successfully
+INFO: IMAGE: [resources/assets/ai.png] Data loaded successfully (224x337)
+INFO: TEXTURE: [ID 10] Texture loaded successfully (224x337 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 11] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/loadGame.png] File loaded successfully
+INFO: IMAGE: [resources/assets/loadGame.png] Data loaded successfully (521x64)
+INFO: TEXTURE: [ID 12] Texture loaded successfully (521x64 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/loadGameBG.png] File loaded successfully
+INFO: IMAGE: [resources/assets/loadGameBG.png] Data loaded successfully (960x1080)
+INFO: TEXTURE: [ID 13] Texture loaded successfully (960x1080 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/loadGameHover.png] File loaded successfully
+INFO: IMAGE: [resources/assets/loadGameHover.png] Data loaded successfully (595x145)
+INFO: TEXTURE: [ID 14] Texture loaded successfully (595x145 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/newGame.png] File loaded successfully
+INFO: IMAGE: [resources/assets/newGame.png] Data loaded successfully (512x64)
+INFO: TEXTURE: [ID 15] Texture loaded successfully (512x64 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/newGameBG.png] File loaded successfully
+INFO: IMAGE: [resources/assets/newGameBG.png] Data loaded successfully (960x1080)
+INFO: TEXTURE: [ID 16] Texture loaded successfully (960x1080 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/newGameHover.png] File loaded successfully
+INFO: IMAGE: [resources/assets/newGameHover.png] Data loaded successfully (585x145)
+INFO: TEXTURE: [ID 17] Texture loaded successfully (585x145 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/loadScene.png] File loaded successfully
+INFO: IMAGE: [resources/assets/loadScene.png] Data loaded successfully (1920x1080)
+INFO: TEXTURE: [ID 18] Texture loaded successfully (1920x1080 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/branch.png] File loaded successfully
+INFO: IMAGE: [resources/assets/branch.png] Data loaded successfully (115x78)
+INFO: TEXTURE: [ID 19] Texture loaded successfully (115x78 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/back.png] File loaded successfully
+INFO: IMAGE: [resources/assets/back.png] Data loaded successfully (262x71)
+INFO: TEXTURE: [ID 20] Texture loaded successfully (262x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/backHover.png] File loaded successfully
+INFO: IMAGE: [resources/assets/backHover.png] Data loaded successfully (278x87)
+INFO: TEXTURE: [ID 21] Texture loaded successfully (278x87 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 22] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 23] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 24] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 25] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 26] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 27] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 28] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 29] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/indieTitle.png] File loaded successfully
+INFO: IMAGE: [resources/assets/indieTitle.png] Data loaded successfully (393x131)
+INFO: TEXTURE: [ID 30] Texture loaded successfully (393x131 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/studioTitle.png] File loaded successfully
+INFO: IMAGE: [resources/assets/studioTitle.png] Data loaded successfully (533x131)
+INFO: TEXTURE: [ID 31] Texture loaded successfully (533x131 - 1 mipmaps)
+INFO: FILEIO: [resources/cinematic/data/frame1.png] File loaded successfully
+INFO: IMAGE: [resources/cinematic/data/frame1.png] Data loaded successfully (1920x1080)
+INFO: TEXTURE: [ID 32] Texture loaded successfully (1920x1080 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/skip.png] File loaded successfully
+INFO: IMAGE: [resources/assets/skip.png] Data loaded successfully (123x65)
+INFO: TEXTURE: [ID 33] Texture loaded successfully (123x65 - 1 mipmaps)
+INFO: TEXTURE: [ID 33] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 32] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/cinematic/data/frame2.png] File loaded successfully
+INFO: IMAGE: [resources/cinematic/data/frame2.png] Data loaded successfully (1920x1080)
+INFO: TEXTURE: [ID 34] Texture loaded successfully (1920x1080 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/skip.png] File loaded successfully
+INFO: IMAGE: [resources/assets/skip.png] Data loaded successfully (123x65)
+INFO: TEXTURE: [ID 35] Texture loaded successfully (123x65 - 1 mipmaps)
+INFO: TEXTURE: [ID 35] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 34] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/cinematic/data/frame3.png] File loaded successfully
+INFO: IMAGE: [resources/cinematic/data/frame3.png] Data loaded successfully (1920x1080)
+INFO: TEXTURE: [ID 36] Texture loaded successfully (1920x1080 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/skip.png] File loaded successfully
+INFO: IMAGE: [resources/assets/skip.png] Data loaded successfully (123x65)
+INFO: TEXTURE: [ID 37] Texture loaded successfully (123x65 - 1 mipmaps)
+INFO: TEXTURE: [ID 37] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 36] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/cinematic/data/frame4.png] File loaded successfully
+INFO: IMAGE: [resources/cinematic/data/frame4.png] Data loaded successfully (1920x1080)
+INFO: TEXTURE: [ID 38] Texture loaded successfully (1920x1080 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/skip.png] File loaded successfully
+INFO: IMAGE: [resources/assets/skip.png] Data loaded successfully (123x65)
+INFO: TEXTURE: [ID 39] Texture loaded successfully (123x65 - 1 mipmaps)
+INFO: TEXTURE: [ID 39] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 38] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/cinematic/data/frame5.png] File loaded successfully
+INFO: IMAGE: [resources/cinematic/data/frame5.png] Data loaded successfully (1920x1080)
+INFO: TEXTURE: [ID 40] Texture loaded successfully (1920x1080 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/skip.png] File loaded successfully
+INFO: IMAGE: [resources/assets/skip.png] Data loaded successfully (123x65)
+INFO: TEXTURE: [ID 41] Texture loaded successfully (123x65 - 1 mipmaps)
+INFO: TEXTURE: [ID 41] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 40] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/cinematic/data/frame6.png] File loaded successfully
+INFO: IMAGE: [resources/cinematic/data/frame6.png] Data loaded successfully (1920x1080)
+INFO: TEXTURE: [ID 42] Texture loaded successfully (1920x1080 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/skip.png] File loaded successfully
+INFO: IMAGE: [resources/assets/skip.png] Data loaded successfully (123x65)
+INFO: TEXTURE: [ID 43] Texture loaded successfully (123x65 - 1 mipmaps)
+INFO: TEXTURE: [ID 43] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 42] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/cinematic/data/frame7.png] File loaded successfully
+INFO: IMAGE: [resources/cinematic/data/frame7.png] Data loaded successfully (1920x1080)
+INFO: TEXTURE: [ID 44] Texture loaded successfully (1920x1080 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/skip.png] File loaded successfully
+INFO: IMAGE: [resources/assets/skip.png] Data loaded successfully (123x65)
+INFO: TEXTURE: [ID 45] Texture loaded successfully (123x65 - 1 mipmaps)
+INFO: TEXTURE: [ID 45] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 44] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/cinematic/data/frame8.png] File loaded successfully
+INFO: IMAGE: [resources/cinematic/data/frame8.png] Data loaded successfully (1920x1080)
+INFO: TEXTURE: [ID 46] Texture loaded successfully (1920x1080 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/skip.png] File loaded successfully
+INFO: IMAGE: [resources/assets/skip.png] Data loaded successfully (123x65)
+INFO: TEXTURE: [ID 47] Texture loaded successfully (123x65 - 1 mipmaps)
+INFO: TEXTURE: [ID 47] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 46] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/cinematic/data/frame9.png] File loaded successfully
+INFO: IMAGE: [resources/cinematic/data/frame9.png] Data loaded successfully (1920x1080)
+INFO: TEXTURE: [ID 48] Texture loaded successfully (1920x1080 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/skip.png] File loaded successfully
+INFO: IMAGE: [resources/assets/skip.png] Data loaded successfully (123x65)
+INFO: TEXTURE: [ID 49] Texture loaded successfully (123x65 - 1 mipmaps)
+INFO: TEXTURE: [ID 49] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 48] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/cinematic/data/frame10.png] File loaded successfully
+INFO: IMAGE: [resources/cinematic/data/frame10.png] Data loaded successfully (1920x1080)
+INFO: TEXTURE: [ID 50] Texture loaded successfully (1920x1080 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/skip.png] File loaded successfully
+INFO: IMAGE: [resources/assets/skip.png] Data loaded successfully (123x65)
+INFO: TEXTURE: [ID 51] Texture loaded successfully (123x65 - 1 mipmaps)
+INFO: TEXTURE: [ID 51] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 50] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/cinematic/data/frame11.png] File loaded successfully
+INFO: IMAGE: [resources/cinematic/data/frame11.png] Data loaded successfully (1920x1080)
+INFO: TEXTURE: [ID 52] Texture loaded successfully (1920x1080 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/skip.png] File loaded successfully
+INFO: IMAGE: [resources/assets/skip.png] Data loaded successfully (123x65)
+INFO: TEXTURE: [ID 53] Texture loaded successfully (123x65 - 1 mipmaps)
+INFO: TEXTURE: [ID 53] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 52] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/cinematic/data/frame12.png] File loaded successfully
+INFO: IMAGE: [resources/cinematic/data/frame12.png] Data loaded successfully (1920x1080)
+INFO: TEXTURE: [ID 54] Texture loaded successfully (1920x1080 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/skip.png] File loaded successfully
+INFO: IMAGE: [resources/assets/skip.png] Data loaded successfully (123x65)
+INFO: TEXTURE: [ID 55] Texture loaded successfully (123x65 - 1 mipmaps)
+INFO: TEXTURE: [ID 55] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 54] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/cinematic/data/frame13.png] File loaded successfully
+INFO: IMAGE: [resources/cinematic/data/frame13.png] Data loaded successfully (1920x1080)
+INFO: TEXTURE: [ID 56] Texture loaded successfully (1920x1080 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/skip.png] File loaded successfully
+INFO: IMAGE: [resources/assets/skip.png] Data loaded successfully (123x65)
+INFO: TEXTURE: [ID 57] Texture loaded successfully (123x65 - 1 mipmaps)
+INFO: TEXTURE: [ID 57] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 56] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/cinematic/data/frame14.png] File loaded successfully
+INFO: IMAGE: [resources/cinematic/data/frame14.png] Data loaded successfully (1920x1080)
+INFO: TEXTURE: [ID 58] Texture loaded successfully (1920x1080 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/sskip.png] File loaded successfully
+INFO: IMAGE: [resources/assets/sskip.png] Data loaded successfully (146x87)
+INFO: TEXTURE: [ID 59] Texture loaded successfully (146x87 - 1 mipmaps)
+INFO: TEXTURE: [ID 59] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 58] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/cinematic/data/frame15.png] File loaded successfully
+INFO: IMAGE: [resources/cinematic/data/frame15.png] Data loaded successfully (1920x1080)
+INFO: TEXTURE: [ID 60] Texture loaded successfully (1920x1080 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/sskip.png] File loaded successfully
+INFO: IMAGE: [resources/assets/sskip.png] Data loaded successfully (146x87)
+INFO: TEXTURE: [ID 61] Texture loaded successfully (146x87 - 1 mipmaps)
+INFO: TEXTURE: [ID 61] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 60] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/cinematic/data/frame16.png] File loaded successfully
+INFO: IMAGE: [resources/cinematic/data/frame16.png] Data loaded successfully (1920x1080)
+INFO: TEXTURE: [ID 62] Texture loaded successfully (1920x1080 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/sskip.png] File loaded successfully
+INFO: IMAGE: [resources/assets/sskip.png] Data loaded successfully (146x87)
+INFO: TEXTURE: [ID 63] Texture loaded successfully (146x87 - 1 mipmaps)
+INFO: TEXTURE: [ID 63] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 62] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/cinematic/data/frame17.png] File loaded successfully
+INFO: IMAGE: [resources/cinematic/data/frame17.png] Data loaded successfully (1920x1080)
+INFO: TEXTURE: [ID 64] Texture loaded successfully (1920x1080 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/sskip.png] File loaded successfully
+INFO: IMAGE: [resources/assets/sskip.png] Data loaded successfully (146x87)
+INFO: TEXTURE: [ID 65] Texture loaded successfully (146x87 - 1 mipmaps)
+INFO: TEXTURE: [ID 65] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 64] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/cinematic/data/frame18.png] File loaded successfully
+INFO: IMAGE: [resources/cinematic/data/frame18.png] Data loaded successfully (1920x1080)
+INFO: TEXTURE: [ID 66] Texture loaded successfully (1920x1080 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/sskip.png] File loaded successfully
+INFO: IMAGE: [resources/assets/sskip.png] Data loaded successfully (146x87)
+INFO: TEXTURE: [ID 67] Texture loaded successfully (146x87 - 1 mipmaps)
+INFO: TEXTURE: [ID 67] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 66] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 31] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 30] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 29] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 28] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 27] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 26] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 25] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 24] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 23] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 22] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 68] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 69] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 70] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 71] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 72] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 73] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 74] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 75] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 75] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 74] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 73] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 72] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 71] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 70] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 69] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 68] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 76] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 77] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 78] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 79] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 80] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 81] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 82] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 83] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 83] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 82] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 81] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 80] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 79] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 78] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 77] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 76] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 84] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 85] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 86] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 87] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 88] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 89] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 90] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 91] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 91] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 90] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 89] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 88] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 87] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 86] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 85] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 84] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 92] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 93] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 94] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 95] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 96] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 97] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 98] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 99] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 99] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 98] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 97] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 96] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 95] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 94] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 93] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 92] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 100] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 101] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 102] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 103] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 104] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 105] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 106] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 107] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 107] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 106] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 105] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 104] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 103] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 102] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 101] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 100] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 108] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 109] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 110] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 111] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 112] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 113] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 114] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 115] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 115] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 114] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 113] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 112] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 111] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 110] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 109] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 108] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 116] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 117] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 118] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 119] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 120] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 121] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 122] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 123] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 123] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 122] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 121] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 120] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 119] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 118] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 117] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 116] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 124] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 125] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 126] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 127] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 128] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 129] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 130] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 131] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 131] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 130] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 129] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 128] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 127] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 126] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 125] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 124] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 132] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 133] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 134] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 135] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 136] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 137] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 138] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 139] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 139] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 138] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 137] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 136] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 135] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 134] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 133] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 132] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 140] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 141] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 142] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 143] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 144] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 145] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 146] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 147] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 147] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 146] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 145] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 144] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 143] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 142] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 141] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 140] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 148] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 149] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 150] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 151] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 152] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 153] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 154] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 155] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 155] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 154] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 153] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 152] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 151] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 150] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 149] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 148] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 156] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 157] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 158] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 159] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 160] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 161] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 162] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 163] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 163] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 162] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 161] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 160] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 159] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 158] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 157] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 156] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 164] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 165] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 166] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 167] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 168] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 169] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 170] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 171] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 171] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 170] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 169] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 168] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 167] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 166] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 165] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 164] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 172] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 173] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 174] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 175] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 176] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 177] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 178] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 179] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 179] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 178] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 177] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 176] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 175] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 174] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 173] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 172] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 180] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 181] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 182] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 183] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 184] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 185] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 186] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 187] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 187] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 186] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 185] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 184] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 183] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 182] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 181] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 180] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 188] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 189] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 190] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 191] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 192] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 193] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 194] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 195] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 195] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 194] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 193] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 192] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 191] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 190] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 189] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 188] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 196] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 197] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 198] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 199] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 200] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 201] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 202] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 203] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 203] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 202] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 201] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 200] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 199] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 198] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 197] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 196] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 204] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 205] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 206] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 207] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 208] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 209] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 210] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 211] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 211] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 210] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 209] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 208] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 207] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 206] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 205] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 204] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 212] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 213] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 214] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 215] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 216] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 217] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 218] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 219] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 219] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 218] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 217] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 216] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 215] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 214] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 213] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 212] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 220] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 221] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 222] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 223] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 224] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 225] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 226] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 227] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 227] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 226] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 225] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 224] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 223] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 222] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 221] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 220] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 228] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 229] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 230] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 231] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 232] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 233] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 234] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 235] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 235] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 234] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 233] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 232] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 231] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 230] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 229] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 228] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 236] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 237] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 238] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 239] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 240] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 241] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 242] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 243] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 243] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 242] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 241] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 240] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 239] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 238] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 237] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 236] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 244] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 245] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 246] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 247] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 248] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 249] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 250] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 251] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 251] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 250] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 249] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 248] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 247] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 246] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 245] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 244] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 252] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 253] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 254] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 255] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 256] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 257] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 258] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 259] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 259] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 258] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 257] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 256] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 255] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 254] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 253] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 252] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 260] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 261] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 262] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 263] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 264] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 265] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 266] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 267] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 267] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 266] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 265] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 264] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 263] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 262] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 261] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 260] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 268] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 269] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 270] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 271] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 272] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 273] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 274] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 275] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 275] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 274] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 273] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 272] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 271] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 270] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 269] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 268] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 276] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 277] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 278] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 279] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 280] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 281] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 282] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 283] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 283] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 282] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 281] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 280] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 279] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 278] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 277] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 276] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 284] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 285] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 286] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 287] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 288] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 289] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 290] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 291] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 291] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 290] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 289] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 288] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 287] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 286] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 285] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 284] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 292] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 293] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 294] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 295] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 296] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 297] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 298] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 299] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 299] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 298] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 297] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 296] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 295] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 294] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 293] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 292] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 300] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 301] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 302] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 303] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 304] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 305] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 306] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 307] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 307] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 306] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 305] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 304] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 303] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 302] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 301] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 300] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 308] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 309] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 310] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 311] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 312] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 313] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 314] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 315] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 315] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 314] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 313] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 312] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 311] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 310] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 309] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 308] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 316] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 317] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 318] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 319] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 320] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 321] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 322] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 323] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 323] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 322] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 321] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 320] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 319] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 318] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 317] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 316] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 324] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 325] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 326] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 327] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/PLAY.png] File loaded successfully
+INFO: IMAGE: [resources/assets/PLAY.png] Data loaded successfully (244x70)
+INFO: TEXTURE: [ID 328] Texture loaded successfully (244x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 329] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 330] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 331] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 331] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 330] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 329] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 328] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 327] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 326] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 325] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 324] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 332] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 333] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 334] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 335] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 336] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/HOWTO.png] File loaded successfully
+INFO: IMAGE: [resources/assets/HOWTO.png] Data loaded successfully (653x70)
+INFO: TEXTURE: [ID 337] Texture loaded successfully (653x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 338] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 339] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 339] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 338] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 337] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 336] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 335] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 334] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 333] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 332] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 340] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 341] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 342] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 343] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 344] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/HOWTO.png] File loaded successfully
+INFO: IMAGE: [resources/assets/HOWTO.png] Data loaded successfully (653x70)
+INFO: TEXTURE: [ID 345] Texture loaded successfully (653x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 346] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 347] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 347] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 346] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 345] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 344] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 343] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 342] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 341] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 340] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 348] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 349] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 350] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 351] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 352] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/HOWTO.png] File loaded successfully
+INFO: IMAGE: [resources/assets/HOWTO.png] Data loaded successfully (653x70)
+INFO: TEXTURE: [ID 353] Texture loaded successfully (653x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 354] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 355] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 355] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 354] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 353] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 352] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 351] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 350] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 349] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 348] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 356] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 357] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 358] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 359] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 360] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/HOWTO.png] File loaded successfully
+INFO: IMAGE: [resources/assets/HOWTO.png] Data loaded successfully (653x70)
+INFO: TEXTURE: [ID 361] Texture loaded successfully (653x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 362] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 363] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 363] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 362] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 361] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 360] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 359] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 358] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 357] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 356] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 364] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 365] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 366] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 367] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 368] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/HOWTO.png] File loaded successfully
+INFO: IMAGE: [resources/assets/HOWTO.png] Data loaded successfully (653x70)
+INFO: TEXTURE: [ID 369] Texture loaded successfully (653x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 370] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 371] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 371] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 370] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 369] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 368] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 367] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 366] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 365] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 364] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 372] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 373] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 374] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 375] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 376] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/HOWTO.png] File loaded successfully
+INFO: IMAGE: [resources/assets/HOWTO.png] Data loaded successfully (653x70)
+INFO: TEXTURE: [ID 377] Texture loaded successfully (653x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 378] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 379] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 379] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 378] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 377] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 376] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 375] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 374] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 373] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 372] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 380] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 381] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 382] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 383] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 384] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/HOWTO.png] File loaded successfully
+INFO: IMAGE: [resources/assets/HOWTO.png] Data loaded successfully (653x70)
+INFO: TEXTURE: [ID 385] Texture loaded successfully (653x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 386] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 387] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 387] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 386] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 385] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 384] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 383] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 382] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 381] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 380] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 388] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 389] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 390] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 391] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 392] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/HOWTO.png] File loaded successfully
+INFO: IMAGE: [resources/assets/HOWTO.png] Data loaded successfully (653x70)
+INFO: TEXTURE: [ID 393] Texture loaded successfully (653x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 394] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 395] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 395] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 394] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 393] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 392] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 391] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 390] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 389] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 388] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 396] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 397] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 398] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 399] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 400] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/HOWTO.png] File loaded successfully
+INFO: IMAGE: [resources/assets/HOWTO.png] Data loaded successfully (653x70)
+INFO: TEXTURE: [ID 401] Texture loaded successfully (653x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 402] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 403] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 403] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 402] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 401] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 400] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 399] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 398] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 397] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 396] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 404] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 405] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 406] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 407] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 408] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/HOWTO.png] File loaded successfully
+INFO: IMAGE: [resources/assets/HOWTO.png] Data loaded successfully (653x70)
+INFO: TEXTURE: [ID 409] Texture loaded successfully (653x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 410] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 411] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 411] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 410] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 409] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 408] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 407] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 406] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 405] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 404] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 412] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 413] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 414] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 415] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 416] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/HOWTO.png] File loaded successfully
+INFO: IMAGE: [resources/assets/HOWTO.png] Data loaded successfully (653x70)
+INFO: TEXTURE: [ID 417] Texture loaded successfully (653x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 418] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 419] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 419] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 418] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 417] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 416] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 415] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 414] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 413] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 412] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 420] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 421] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 422] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 423] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 424] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/HOWTO.png] File loaded successfully
+INFO: IMAGE: [resources/assets/HOWTO.png] Data loaded successfully (653x70)
+INFO: TEXTURE: [ID 425] Texture loaded successfully (653x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 426] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 427] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 427] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 426] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 425] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 424] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 423] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 422] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 421] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 420] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 428] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 429] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 430] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 431] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 432] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/HOWTO.png] File loaded successfully
+INFO: IMAGE: [resources/assets/HOWTO.png] Data loaded successfully (653x70)
+INFO: TEXTURE: [ID 433] Texture loaded successfully (653x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 434] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 435] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 435] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 434] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 433] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 432] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 431] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 430] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 429] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 428] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 436] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 437] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 438] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 439] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 440] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 441] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 442] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 443] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 443] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 442] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 441] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 440] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 439] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 438] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 437] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 436] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 444] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 445] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 446] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 447] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/play.png] File loaded successfully
+INFO: IMAGE: [resources/assets/play.png] Data loaded successfully (244x71)
+INFO: TEXTURE: [ID 448] Texture loaded successfully (244x71 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 449] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 450] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 451] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 451] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 450] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 449] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 448] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 447] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 446] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 445] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 444] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 452] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 453] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 454] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 455] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/PLAY.png] File loaded successfully
+INFO: IMAGE: [resources/assets/PLAY.png] Data loaded successfully (244x70)
+INFO: TEXTURE: [ID 456] Texture loaded successfully (244x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 457] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 458] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 459] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 459] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 458] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 457] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 456] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 455] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 454] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 453] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 452] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 460] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 461] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 462] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 463] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/PLAY.png] File loaded successfully
+INFO: IMAGE: [resources/assets/PLAY.png] Data loaded successfully (244x70)
+INFO: TEXTURE: [ID 464] Texture loaded successfully (244x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 465] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 466] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 467] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 467] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 466] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 465] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 464] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 463] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 462] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 461] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 460] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 468] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 469] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 470] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 471] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/PLAY.png] File loaded successfully
+INFO: IMAGE: [resources/assets/PLAY.png] Data loaded successfully (244x70)
+INFO: TEXTURE: [ID 472] Texture loaded successfully (244x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 473] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 474] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 475] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 475] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 474] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 473] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 472] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 471] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 470] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 469] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 468] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 476] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 477] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 478] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 479] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/PLAY.png] File loaded successfully
+INFO: IMAGE: [resources/assets/PLAY.png] Data loaded successfully (244x70)
+INFO: TEXTURE: [ID 480] Texture loaded successfully (244x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 481] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 482] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 483] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 483] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 482] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 481] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 480] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 479] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 478] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 477] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 476] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 484] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 485] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 486] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 487] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/PLAY.png] File loaded successfully
+INFO: IMAGE: [resources/assets/PLAY.png] Data loaded successfully (244x70)
+INFO: TEXTURE: [ID 488] Texture loaded successfully (244x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 489] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 490] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 491] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 491] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 490] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 489] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 488] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 487] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 486] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 485] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 484] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 492] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 493] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 494] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 495] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/PLAY.png] File loaded successfully
+INFO: IMAGE: [resources/assets/PLAY.png] Data loaded successfully (244x70)
+INFO: TEXTURE: [ID 496] Texture loaded successfully (244x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 497] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 498] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 499] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 499] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 498] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 497] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 496] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 495] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 494] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 493] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 492] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 500] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 501] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 502] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 503] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/PLAY.png] File loaded successfully
+INFO: IMAGE: [resources/assets/PLAY.png] Data loaded successfully (244x70)
+INFO: TEXTURE: [ID 504] Texture loaded successfully (244x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 505] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 506] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 507] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 507] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 506] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 505] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 504] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 503] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 502] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 501] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 500] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 508] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 509] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 510] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 511] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/PLAY.png] File loaded successfully
+INFO: IMAGE: [resources/assets/PLAY.png] Data loaded successfully (244x70)
+INFO: TEXTURE: [ID 512] Texture loaded successfully (244x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 513] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 514] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 515] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 515] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 514] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 513] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 512] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 511] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 510] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 509] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 508] Unloaded texture data from VRAM (GPU)
+INFO: FILEIO: [resources/assets/head.png] File loaded successfully
+INFO: IMAGE: [resources/assets/head.png] Data loaded successfully (30x30)
+INFO: TEXTURE: [ID 516] Texture loaded successfully (30x30 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/Title.png] File loaded successfully
+INFO: IMAGE: [resources/assets/Title.png] Data loaded successfully (731x162)
+INFO: TEXTURE: [ID 517] Texture loaded successfully (731x162 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/bomb.png] File loaded successfully
+INFO: IMAGE: [resources/assets/bomb.png] Data loaded successfully (200x196)
+INFO: TEXTURE: [ID 518] Texture loaded successfully (200x196 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/men.png] File loaded successfully
+INFO: IMAGE: [resources/assets/men.png] Data loaded successfully (500x500)
+INFO: TEXTURE: [ID 519] Texture loaded successfully (500x500 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/PLAY.png] File loaded successfully
+INFO: IMAGE: [resources/assets/PLAY.png] Data loaded successfully (244x70)
+INFO: TEXTURE: [ID 520] Texture loaded successfully (244x70 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/howto.png] File loaded successfully
+INFO: IMAGE: [resources/assets/howto.png] Data loaded successfully (655x73)
+INFO: TEXTURE: [ID 521] Texture loaded successfully (655x73 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/settings.png] File loaded successfully
+INFO: IMAGE: [resources/assets/settings.png] Data loaded successfully (516x72)
+INFO: TEXTURE: [ID 522] Texture loaded successfully (516x72 - 1 mipmaps)
+INFO: FILEIO: [resources/assets/quit.png] File loaded successfully
+INFO: IMAGE: [resources/assets/quit.png] Data loaded successfully (227x92)
+INFO: TEXTURE: [ID 523] Texture loaded successfully (227x92 - 1 mipmaps)
+INFO: TEXTURE: [ID 523] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 522] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 521] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 520] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 519] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 518] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 517] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 516] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 2] Unloaded texture data from VRAM (GPU)
+INFO: SHADER: [ID 3] Default shader unloaded successfully
+INFO: TEXTURE: [ID 1] Default texture unloaded successfully
+INFO: Window closed successfully
+INFO: TEXTURE: [ID 21] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 20] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 19] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 18] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 17] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 15] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 16] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 14] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 12] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 13] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 11] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 10] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 9] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 8] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 7] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 6] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 5] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 4] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 3] Unloaded texture data from VRAM (GPU)

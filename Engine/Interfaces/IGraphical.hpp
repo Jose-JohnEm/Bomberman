@@ -26,20 +26,14 @@ class IGraphical {
             /// This scene is the intro of our game
             INTRO,
             /// This scene is the main menu of our game
-            MAIN_MENU,
-            /// This is the game scene, it should display the game. It can display game information, buttons
-            /// (restart, go to main menu, pause game).
-            GAME,
-            PLAYMENU,
-            HOWTOMENU,
-            SETTINGSMENU,
-            /// This scene is the main menu of our game
-            MODEMENU,
-            MAPMENU,
-            LOADMENU,
-            DRAWMENU,
-            GAMEIN,
-            PAUSEIN,
+            MENU,
+            GAME_MODE,
+            HOW_TO_PLAY,
+            SETTINGS,
+            PLAYER_CHOICE,
+            LOAD_GAME,
+            IN_GAME,
+            PAUSE_PAUSE,
             END_GAME
         };
 
@@ -56,16 +50,6 @@ class IGraphical {
         virtual bool shouldCloseWindow(void) const = 0;
 
         /**
-<<<<<<< HEAD
-         * @brief Check if we are in the game scene
-         *
-         * @return true if we are in the game scene and false otherwise
-         */
-        virtual bool isInGameScene(void) const = 0;
-
-        /**
-=======
->>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
          * @brief This function sets the list of scores. First element of the pair is the username, the second is the score.
          *
          * @param scores A vector of pair (username, score)
@@ -102,8 +86,6 @@ class IGraphical {
         virtual const std::vector<std::string> &getUserNames(void) const = 0;
 
         /**
-<<<<<<< HEAD
-=======
          * @brief Get the paths to all backups files
          *
          * @return A vector of all the paths to backups files as a const std::vector<std::string>&
@@ -118,7 +100,6 @@ class IGraphical {
         virtual void setBackups(const std::vector<std::string> &backups) = 0;
 
         /**
->>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
          * @brief Returns the current scene.
          *
          * @return The scene (MAIN_MENU, GAME, END_GAME...), the step where we are in the window

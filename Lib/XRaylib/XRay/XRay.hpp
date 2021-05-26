@@ -24,22 +24,11 @@
 #include "Mouse/Mouse.hpp"
 #include "Texture/Texture.hpp"
 #include "Text/Text.hpp"
-<<<<<<< HEAD
-=======
 #include "Keyboard/Keyboard.hpp"
->>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
 #include "Color/Color.hpp"
 #include "Cursor/Cursor.hpp"
 #include "Timing/Timing.hpp"
 #include "Drawing/Drawing.hpp"
-#include "Resources.hpp"
-
-typedef enum {
-    UPPER_LEFT,
-    LOW_LEFT,
-    LOW_RIGHT,
-    UPPER_RIGHT
-} Box;
 
 class XRay : public IGraphical {
 
@@ -55,6 +44,15 @@ class XRay : public IGraphical {
         ~XRay() override;
 
         /**
+         * @brief Initialize window
+         *
+         * @param width Width of the Window
+         * @param height Height of the Window
+         * @param title Title of the Window
+         */
+        void initWindow(const int &width, const int &height, const std::string &title) const override;
+
+        /**
          * @brief Check if the window should be close
          *
          * @return true if the window should close and false otherwise
@@ -62,16 +60,6 @@ class XRay : public IGraphical {
         bool shouldCloseWindow(void) const override;
 
         /**
-<<<<<<< HEAD
-         * @brief Check if we are in the game scene
-         *
-         * @return true if we are in the game scene and false otherwise
-         */
-        bool isInGameScene(void) const override;
-
-        /**
-=======
->>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
          * @brief This function sets the list of scores. First element of the pair is the username, the second is the score.
          *
          * @param scores A vector of pair (username, score)
@@ -83,7 +71,7 @@ class XRay : public IGraphical {
          *
          * @param scores A vector of pair (username, score)
          */
-        void setBestScores(const std::vector<std::pair<std::string, std::string>> &scores) override;
+        void setBestsScores(const std::vector<std::pair<std::string, std::string>> &scores) override;
 
         /**
          * @brief This is called in a loop when the game is running. This vector contains entities that should be displayed in the game scene.
@@ -122,8 +110,6 @@ class XRay : public IGraphical {
         void setScene(const Scene &scene) override;
 
         /**
-<<<<<<< HEAD
-=======
          * @brief Get the paths to all backups files
          *
          * @return A vector of all the paths to backups files as a const std::vector<std::string>&
@@ -138,21 +124,17 @@ class XRay : public IGraphical {
         void setBackups(const std::vector<std::string> &) override;
 
         /**
->>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
          * @brief Set buffer to Draw textures
          */
         void beginDrawing(void) const override;
 
         /**
-<<<<<<< HEAD
-=======
          * @brief Set buffer to Draw textures
          * clear A boolean to know if he should clear
          */
-        void beginDrawing(const bool &mustBeClear) const;
+        void beginDrawing(bool clear) const;
 
         /**
->>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
          * @brief Unset buffer to Draw textures
          */
         void endDrawing(void) const override;
@@ -165,42 +147,20 @@ class XRay : public IGraphical {
         /**
          * @brief Return true if the mouse is in the region and false otherwise
          *
-         * @param box Vector contains Box positions
+         * @param x Upper Left Corner
+         * @param y Upper Right Corner
+         * @param x_x Lower Left Corner
+         * @param y_y Lower Left Corner
          * @return true or false
          */
-        bool mouseIsInBox(const std::vector<size_t> &box) const;
+        bool mouseIsInBox(double x, double y, double x_x, double y_y);
 
         /**
-         * @brief Return a size_t vector contains the four corners values of a box
-         *
-         * @param box size_t represents upperLeftCorner
-         * @param box size_t represents upperRightCorner
-         * @param box size_t represents lowerLeftCorner
-         * @param box size_t represents lowerRightCorner
-         * @return size_t vector
-         */
-        std::vector<size_t> createBox(const size_t &upperLeftCorner, const size_t &upperRightCorner, const size_t &lowerLeftCorner, const size_t &lowerRightCorner) const;
-
-        /**
-<<<<<<< HEAD
-         * @brief Display Menu
-=======
          * @brief Display Main Menu
->>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
          */
         void displayMenu(void);
 
         /**
-<<<<<<< HEAD
-         * @brief Display Intro Scene
-         */
-        void displayTrace(void);
-
-        /**
-         * @brief Display Opening Scene
-         */
-        void displayIntro(void);
-=======
          * @brief Display Play Scene
          */
         void playMenu(void);
@@ -238,42 +198,20 @@ class XRay : public IGraphical {
         /**
          * @brief Display Intro Scene
          */
-<<<<<<< HEAD
         void displayTrace(void);
->>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
-=======
-        void displayStudio(void);
->>>>>>> ad4eb87 (Added static keyword for all classes which can be used without instanciation)
 
         /**
          * @brief Display Opening Scene
          */
-<<<<<<< HEAD
-        void displayOpening(void);
-=======
         void displayIntro(void);
->>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
 
         /**
          * @brief This function must display the current scene. It is used in the game loop
          */
         void display(void) override;
 
-        void setTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> &textBox);
-        void updateTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> textBox);
-        void setAddBox(std::vector<std::pair<int, int>> &removePos, std::vector<std::pair<int, int>> &nextTab, std::vector<std::pair<int, int>> &prevTab, const int &a);
-        void displayCards(const std::vector<bool> &mouseOnText, const std::vector<::Rectangle> &textBox);
-        void displayMouse(void);
-        void setResources(void);
-
     private:
         Raylib::Window _window;                     // Game window
-<<<<<<< HEAD
-        std::vector<std::string> _userNames;        // User names
-        std::pair<bool, void (XRay::*)()> _intro;   // Intro pointer to function
-        Scene _scene = INTRO;                       // Current scene
-        std::vector<void (XRay::*)()> _scenesFunc;  // Array of pointers to function (a scene, a function)
-=======
         Raylib::Mouse _mouse;                       // Game Mouse
         Raylib::Cursor _cursor;                     // Game cursor
         Raylib::Keyboard _keyboard;                   // Game keyboard
@@ -284,23 +222,15 @@ class XRay : public IGraphical {
         Scene _scene = MAIN_MENU;                   // Current scene
         std::vector<void (XRay::*)()> _scenesFunc;  // Array of pointers to function (a scene, a function)
 
-        std::array<bool, 4> _playerTab = {true, true, true, true};
-        std::array<bool, 4> _controlsTab = {true, true, true, true};
-        std::array<int, 3> _allIntegers = {50, 400, 1};
-        std::vector<std::pair<int, int>> _letterAndFrame;
+        std::array<bool, 4> playerTab = {true, true, true, true};
+        std::array<bool, 4> controlsTab = {true, true, true, true};
+        std::array<int, 3> allIntegers = {50, 400, 1};
 
         std::map<std::string, std::pair<std::string, std::string>> _playersStats; // A map of all the stats [PlayerName -- (NameOfStat, Value)]...
         std::vector<std::pair<std::string, std::string>> _scores;                 // A vector of pair (username, score)
-        std::vector<std::pair<std::string, std::string>> _bestScores;             // A vector of pair (username, score), List of Bests Scores
+        std::vector<std::pair<std::string, std::string>> _bestsScores;            // A vector of pair (username, score), List of Bests Scores
         std::vector<std::shared_ptr<IEntity>> _gameInfos;                         // A vector of shared pointer that represent all the entities to display. Ex : Map, Score, UserInfo, Button
         std::vector<std::string> _backups;                                        // A vector of all the paths to backups files as a const std::vector<std::string>&
-<<<<<<< HEAD
->>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
-=======
-        std::vector<Raylib::Texture> _textures;
-
-        std::map<Resources, std::shared_ptr<Raylib::Texture>> _resources;
->>>>>>> f160caa (Added resources dictionary)
 };
 
 #include "XRay.inl"
