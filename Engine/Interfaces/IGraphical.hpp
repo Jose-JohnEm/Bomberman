@@ -49,15 +49,6 @@ class IGraphical {
         virtual ~IGraphical(void) = default;
 
         /**
-         * @brief Initialize window and OpenGL context
-         *
-         * @param width Width of the Window
-         * @param height Height of the Window
-         * @param title Title of the Window
-         */
-        virtual void initWindow(const int &width, const int &height, const std::string &title) const = 0;
-
-        /**
          * @brief Check if the window should be close
          *
          * @return true if the window should close and false otherwise

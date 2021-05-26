@@ -33,7 +33,7 @@ namespace Raylib
              * @param button A size_t
              * @return true if $button has been pressed once, false otherwise
              */
-            bool isButtonPressed(const size_t &button) const;
+            static bool isButtonPressed(const size_t &button);
 
             /**
              * @brief Detect if a mouse button is being pressed
@@ -41,7 +41,7 @@ namespace Raylib
              * @param button A size_t
              * @return true if $button is being pressed, false otherwise
              */
-            bool isButtonDown(const size_t &button) const;
+            static bool isButtonDown(const size_t &button);
 
             /**
              * @brief Detect if a mouse button has been released once
@@ -49,7 +49,7 @@ namespace Raylib
              * @param button A size_t
              * @return true if $button has been released once, false otherwise
              */
-            bool isButtonReleased(const size_t &button) const;
+            static bool isButtonReleased(const size_t &button);
 
             /**
              * @brief Detect if a mouse button is NOT being pressed
@@ -57,21 +57,21 @@ namespace Raylib
              * @param button A size_t
              * @return true if $button is NOT being pressed, false otherwise
              */
-            bool isButtonUp(const size_t &button) const;
+            static bool isButtonUp(const size_t &button);
 
             /**
              * @brief Returns mouse position X
              *
              * @return A size_t that represents position of mouse on x-axis
              */
-            size_t getMouseX(void) const;
+            static size_t getMouseX(void);
 
             /**
              * @brief Returns mouse position Y
              *
              * @return A size_t that represents position of mouse on y-axis
              */
-            size_t getMouseY(void) const;
+            static size_t getMouseY(void);
 
             /**
              * @brief Set the Mouse Position XY
@@ -79,7 +79,7 @@ namespace Raylib
              * @param x Position of Mouse on x-axis
              * @param y Position of Mouse on y-axis
              */
-            void setMousePosition(const size_t &x, const size_t &y) const;
+            static void setMousePosition(const size_t &x, const size_t &y);
 
             /**
              * @brief Set the Mouse Offset
@@ -87,7 +87,7 @@ namespace Raylib
              * @param offsetX A size_t
              * @param offsetY A size_t
              */
-            void setMouseOffset(const size_t &offsetX, const size_t &offsetY) const;
+            static void setMouseOffset(const size_t &offsetX, const size_t &offsetY);
 
             /**
              * @brief Set the Mouse Scale
@@ -95,35 +95,35 @@ namespace Raylib
              * @param scaleX A size_t
              * @param scaleY A size_t
              */
-            void setMouseScale(const float &scaleX, const float &scaleY) const;
+            static void setMouseScale(const float &scaleX, const float &scaleY);
 
             /**
              * @brief Get the Mouse Wheel Move
              *
              * @return float, that represents mouse wheel move
              */
-            float getMouseWheelMove(void) const;
+            static float getMouseWheelMove(void);
 
             /**
              * @brief Set the Mouse Cursor
              *
              * @param cursor A size_t
              */
-            void setMouseCursor(const size_t &cursor) const;
+            static void setMouseCursor(const size_t &cursor);
 
             /**
              * @brief Returns touch position X for touch point 0 (relative to screen size)
              *
              * @return A size_t
              */
-            size_t getTouchX(void) const;
+            static size_t getTouchX(void);
 
             /**
              * @brief Returns touch position Y for touch point 0 (relative to screen size)
              *
              * @return A size_t
              */
-            size_t getTouchY(void) const;
+            static size_t getTouchY(void);
     };
 
     #include "Mouse.inl"

@@ -38,19 +38,19 @@ namespace Raylib
          * @param height Height of the Window
          * @param title Title of the Window
          */
-        void initWindow(const int &width, const int &height, const std::string &title) const;
+        static void initWindow(const int &width, const int &height, const std::string &title);
 
         /**
          * @brief Check if KEY_ESCAPE pressed or Close icon pressed
          *
          * @return A boolean (True OR False)
          */
-        bool windowShouldClose(void) const;
+        static bool windowShouldClose(void);
 
         /**
          * @brief Close window
          */
-        void closeWindow(void) const;
+        static void closeWindow(void);
     };
 
     #include "Window.inl"

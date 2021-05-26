@@ -21,7 +21,6 @@ Engine::Core::Core()
 >>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
 
     _graphical = std::move(lib);
-    _graphical->initWindow(1920, 1080, "Bomberman");
 }
 
 Engine::Core::~Core()

@@ -37,7 +37,7 @@ namespace Raylib
              * @param fontSize A int
              * @param color A Color
              */
-            void drawText(const std::string &title, const int &posX, const int &posY, const int &fontSize, const Color &color) const;
+            static void drawText(const std::string &title, const int &posX, const int &posY, const int &fontSize, const Color &color);
 
             /**
              * @brief Draw text using custom font
@@ -49,7 +49,7 @@ namespace Raylib
              * @param spacing A float
              * @param color A Color
              */
-            void drawTextEx(const std::string &font, const std::string &text, const std::pair<int, int> &position, const float &fontSize, const float &spacing, const Color &tint) const;
+            static void drawTextEx(const std::string &font, const std::string &text, const std::pair<int, int> &position, const float &fontSize, const float &spacing, const Color &tint);
 
             /**
              * @brief Measure string width for default font
@@ -58,7 +58,7 @@ namespace Raylib
              * @param fontSize A int
              * @return A int
              */
-            int measureText(const std::string &text, const int &fontSize) const;
+            static int measureText(const std::string &text, const int &fontSize);
 
             /**
              * @brief Check if two text string are equal
@@ -67,7 +67,7 @@ namespace Raylib
              * @param text2 A string
              * @return A boolean
              */
-            bool textIsEqual(const std::string &text1, const std::string &text2) const;
+            static bool textIsEqual(const std::string &text1, const std::string &text2);
 
             /**
              * @brief Check if two text string are equal
@@ -75,7 +75,7 @@ namespace Raylib
              * @param text A string
              * @return A int
              */
-            int textLength(const std::string &text) const;
+            static int textLength(const std::string &text);
     };
 
     #include "Text.inl"

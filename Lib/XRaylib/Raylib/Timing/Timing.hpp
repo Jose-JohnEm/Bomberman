@@ -30,28 +30,28 @@ namespace Raylib
              *
              * @param fps An int
              */
-            void setTargetFPS(const int &fps) const;
+            static void setTargetFPS(const int &fps);
 
             /**
              * @brief Get Framerate Per Second
              *
              * @return The current FPS - int
              */
-            int getFPS(void) const;
+            static int getFPS(void);
 
             /**
              * @brief Get frame time
              *
              * @return The time in seconds for last frame drawn (delta time) - float
              */
-            float getFrameTime(void) const;
+            static float getFrameTime(void);
 
             /**
              * @brief Get time since window initialization
              *
              * @return The elapsed time in seconds since InitWindow() - double
              */
-            double getTime(void) const;
+            static double getTime(void);
     };
 
     #include "Timing.inl"

@@ -10,11 +10,6 @@
 XRay::XRay()
     : _window(1920, 1080, "Bomberman")
 {
-    Raylib::Timing timing;
-
-    timing.setTargetFPS(120);
-    _scenesFunc.push_back(&XRay::displayMenu);
-    _intro = std::make_pair(true, &XRay::displayTrace);
 //    ::InitAudioDevice();
 //    timing.setTargetFPS(60);
     _scenesFunc.push_back(&XRay::displayMenu);
@@ -25,9 +20,9 @@ XRay::XRay()
     _scenesFunc.push_back(&XRay::mapScene);
     _scenesFunc.push_back(&XRay::loadGameScene);
     _scenesFunc.push_back(&XRay::quit);
-    _intro = std::make_pair(true, &XRay::displayTrace);
-//    music = ::LoadMusicStream("resources/assets/aa.mp3");
-//    ::PlayMusicStream(music);
+
+    // Intro settings
+    _intro = std::make_pair(true, &XRay::displayStudio);
 }
 
 XRay::~XRay()
@@ -44,10 +39,23 @@ bool XRay::mouseIsInBox(double x, double y, double x_x, double y_y)
     return false;
 }
 
-void XRay::mapScene(void) // TODO: To change ?
+std::vector<size_t> XRay::createBox(const size_t &upperLeftCorner, const size_t &upperRightCorner, const size_t &lowerLeftCorner, const size_t &lowerRightCorner) const
 {
-    _scene = MODEMENU;
+    std::vector<size_t> box;
+
+    box.reserve(4);
+    box.push_back(upperLeftCorner);
+    box.push_back(upperRightCorner);
+    box.push_back(lowerLeftCorner);
+    box.push_back(lowerRightCorner);
+    return box;
+}
+
+void XRay::mapScene(void)
+{
+    _scene = MAPMENU;
     beginDrawing();
+    // Some code
     endDrawing();
 }
 
@@ -58,9 +66,9 @@ void XRay::modeScene(void) // TODO: To change ?
     static std::vector<std::pair<int, int>> letterAndFrame;
 
     Raylib::Texture player(Raylib::Image("resources/assets/player.png"));
-    Raylib::Texture playerr(Raylib::Image("resources/assets/playerr.png"));
+    Raylib::Texture ia(Raylib::Image("resources/assets/playerr.png"));
     Raylib::Texture add(Raylib::Image("resources/assets/add.png"));
-    Raylib::Texture minus(Raylib::Image("resources/assets/minus.png"));
+    Raylib::Texture remove(Raylib::Image("resources/assets/minus.png"));
     Raylib::Texture next(Raylib::Image("resources/assets/next.png"));
     Raylib::Texture prev(Raylib::Image("resources/assets/prev.png"));
     Raylib::Texture head(Raylib::Image("resources/assets/head.png"));
@@ -68,7 +76,7 @@ void XRay::modeScene(void) // TODO: To change ?
     Raylib::Texture gamepad(Raylib::Image("resources/assets/gamepad.png"));
     Raylib::Text text;
 
-    std::vector<std::pair<int, int>> minusPos;
+    std::vector<std::pair<int, int>> removePos;
     std::vector<std::pair<int, int>> nextTab;
     std::vector<std::pair<int, int>> prevTab;
 
@@ -115,13 +123,13 @@ void XRay::modeScene(void) // TODO: To change ?
             prev.drawTexture(a-84, allIntegers[1] + 340, Raylib::Color::White());
             next.drawTexture(a+250, allIntegers[1] + 340, Raylib::Color::White());
         }
-        (playerTab[i]) ? player.drawTexture(a, b, Raylib::Color::White()) : playerr.drawTexture(a, b, Raylib::Color::White());
+        (playerTab[i]) ? player.drawTexture(a, b, Raylib::Color::White()) : ia.drawTexture(a, b, Raylib::Color::White());
         next.drawTexture(a+230, allIntegers[1], Raylib::Color::White());
         nextTab.push_back(std::make_pair(a+230, allIntegers[1]));
         prevTab.push_back(std::make_pair(a-54, allIntegers[1]));
         if (i != 0) {
-            minusPos.push_back(std::make_pair(a+240, allIntegers[1]-100));
-            minus.drawTexture(a + 240, allIntegers[1]-100, Raylib::Color::White());
+            removePos.push_back(std::make_pair(a+240, allIntegers[1]-100));
+            remove.drawTexture(a + 240, allIntegers[1]-100, Raylib::Color::White());
         }
     }
     if (allIntegers[2] != 4)
@@ -150,8 +158,8 @@ void XRay::modeScene(void) // TODO: To change ?
             controlsTab[u] = (mouseIsInBox(nextTab[u].first + 20, nextTab[u].second + 340, nextTab[u].first+70, nextTab[u].second+389) && playerTab[u]) ? !controlsTab[u] : controlsTab[u];
             controlsTab[u] = (mouseIsInBox(prevTab[u].first - 20, prevTab[u].second + 340, prevTab[u].first + 20, prevTab[u].second+389)  && playerTab[u]) ? !controlsTab[u] : controlsTab[u];
         }
-    for (size_t u = 0; u < minusPos.size(); u++)
-        allIntegers[2] -= (mouseIsInBox(minusPos[u].first, minusPos[u].second, minusPos[u].first+64, minusPos[u].second+63) && _mouse.isButtonPressed(0)) ? 1 : 0;
+    for (size_t u = 0; u < removePos.size(); u++)
+        allIntegers[2] -= (mouseIsInBox(createBox(removePos[u].first, removePos[u].second, removePos[u].first+64, removePos[u].second+63)) && _mouse.isButtonPressed(0)) ? 1 : 0;
 //    mapScene();
 }
 
@@ -248,7 +256,7 @@ void XRay::quit(void) // TODO: To change ?
     _scene = END_GAME;
 }
 
-void XRay::displayTrace(void) // TODO: To change ?
+void XRay::displayStudio(void) // TODO: To change ?
 {
     Raylib::Text text;
     Raylib::Timing timing;

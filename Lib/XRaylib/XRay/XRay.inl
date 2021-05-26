@@ -5,11 +5,6 @@
 ** XRay
 */
 
-inline void XRay::initWindow(const int &width, const int &height, const std::string &title) const
-{
-    _window.initWindow(width, height, title);
-}
-
 inline bool XRay::shouldCloseWindow(void) const
 {
     return _window.windowShouldClose();

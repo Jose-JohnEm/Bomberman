@@ -33,7 +33,7 @@ namespace Raylib
              * @param key A size_t
              * @return true if key has been pressed once, false otherwise
              */
-            bool isKeyPressed(const size_t &key) const;
+            static bool isKeyPressed(const size_t &key);
 
             /**
              * @brief Detect if a key is being pressed
@@ -41,7 +41,7 @@ namespace Raylib
              * @param key A size_t
              * @return true if key is being pressed, false otherwise
              */
-            bool isKeyDown(const size_t &key) const;
+            static bool isKeyDown(const size_t &key);
 
             /**
              * @brief Detect if a key has been released once
@@ -49,7 +49,7 @@ namespace Raylib
              * @param key A size_t
              * @return true if key has been released once, false otherwise
              */
-            bool isKeyReleased(const size_t &key) const;
+            static bool isKeyReleased(const size_t &key);
 
             /**
              * @brief Detect if a key is NOT being pressed
@@ -57,28 +57,28 @@ namespace Raylib
              * @param key A size_t
              * @return true if key is NOT being pressed, false otherwise
              */
-            bool isKeyUp(const size_t &key) const;
+            static bool isKeyUp(const size_t &key);
 
             /**
              * @brief Set a custom key to exit program (default is ESC)
              *
              * @param key A size_t
              */
-            void setExitKey(const size_t &key) const;
+            static void setExitKey(const size_t &key);
 
             /**
              * @brief Get key pressed (keycode), call it multiple times for keys queued
              *
              * @return A size_t
              */
-            size_t getKeyPressed(void) const;
+            static size_t getKeyPressed(void);
 
             /**
              * @brief Get char pressed (unicode), call it multiple times for chars queued
              *
              * @return A size_t
              */
-            size_t getCharPressed(void) const;
+            static size_t getCharPressed(void);
     };
 
     #include "Keyboard.inl"

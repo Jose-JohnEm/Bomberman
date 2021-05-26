@@ -54,15 +54,6 @@ class XRay : public IGraphical {
         ~XRay() override;
 
         /**
-         * @brief Initialize window
-         *
-         * @param width Width of the Window
-         * @param height Height of the Window
-         * @param title Title of the Window
-         */
-        void initWindow(const int &width, const int &height, const std::string &title) const override;
-
-        /**
          * @brief Check if the window should be close
          *
          * @return true if the window should close and false otherwise
@@ -246,8 +237,12 @@ class XRay : public IGraphical {
         /**
          * @brief Display Intro Scene
          */
+<<<<<<< HEAD
         void displayTrace(void);
 >>>>>>> aea5ca9 (Add Backups, NewGame, LoadGame and Players Scenes (PrinceIsGod))
+=======
+        void displayStudio(void);
+>>>>>>> ad4eb87 (Added static keyword for all classes which can be used without instanciation)
 
         /**
          * @brief Display Opening Scene
