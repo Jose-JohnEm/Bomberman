@@ -19,12 +19,12 @@
 #include <utility>
 #include "IEntity.hpp"
 
+//TODO: Prince documentation Scene
+
 class IGraphical {
 
     public:
         enum Scene {
-            /// This scene is the intro of our game
-            INTRO,
             /// This scene is the main menu of our game
             MENU,
             GAME_MODE,

@@ -76,7 +76,7 @@ void XRay::quitGame(void)
     _scene = END_GAME;
 }
 
-void XRay::displayStudio(void) // TODO: timing to increase and animation (left and right)
+void XRay::displayStudio(void) // TODO: Prince timing to increase and animation (left and right)
 {
     // Draw
     beginDrawing();
