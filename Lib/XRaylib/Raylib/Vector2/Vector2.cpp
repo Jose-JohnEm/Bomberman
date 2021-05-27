@@ -8,13 +8,18 @@
 #include "Vector2.hpp"
 
 Raylib::Vector2::Vector2(float x, float y)
-        : x(x), y(y) {
+: x(x), y(y)
+{
+
 }
 
-Raylib::Vector2::Vector2(::Vector2 cVec)
-        : x(cVec.x), y(cVec.y) {
+Raylib::Vector2::Vector2(const ::Vector2 &cVec)
+: x(cVec.x), y(cVec.y)
+{
+
 }
 
-Raylib::Vector2::~Vector2() {
+Raylib::Vector2::~Vector2()
+{
 
 }

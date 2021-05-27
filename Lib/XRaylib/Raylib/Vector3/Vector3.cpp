@@ -8,13 +8,18 @@
 #include "Vector3.hpp"
 
 Raylib::Vector3::Vector3(float x, float y, float z)
-        : x(x), y(y), z(z) {
+: x(x), y(y), z(z)
+{
 
 }
 
-Raylib::Vector3::Vector3(::Vector3 copyVector)
-        : x(copyVector.x), y(copyVector.y), z(copyVector.z) {
+Raylib::Vector3::Vector3(const ::Vector3 &copyVector)
+: x(copyVector.x), y(copyVector.y), z(copyVector.z)
+{
+
 }
 
-Raylib::Vector3::~Vector3() {
+Raylib::Vector3::~Vector3()
+{
+
 }

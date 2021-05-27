@@ -9,7 +9,6 @@
 #define VECTOR_HPP_
 
 #include "raylib.h"
-//TODO: const &parameter
 
 namespace Raylib {
     class Vector3 {

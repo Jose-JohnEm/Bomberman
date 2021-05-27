@@ -13,7 +13,7 @@ Raylib::Vector4::Vector4(float x, float y, float z, float w)
 
 }
 
-Raylib::Vector4::Vector4(::Vector4 copyVector)
+Raylib::Vector4::Vector4(const ::Vector4 &copyVector)
 : x(copyVector.x), y(copyVector.y), z(copyVector.z), w(copyVector.w)
 {
 

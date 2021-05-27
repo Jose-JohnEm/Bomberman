@@ -12,9 +12,6 @@
 #include "Camera3D/Camera3D.hpp"
 #include "Camera2D/Camera2D.hpp"
 
-//TODO: const &parameter and method !
-
-
 namespace Raylib
 {
     class Matrix
@@ -55,28 +52,28 @@ namespace Raylib
             *
             * @param matrix A Camera3D Object
             */
-            Matrix(Camera3D cam);
+            Matrix(const Camera3D &cam);
 
             /**
             * @brief Construct the Matrix object
             *
             * @param matrix A Camera3D struct
             */
-            Matrix(::Camera3D cam);
+            Matrix(const ::Camera3D &cam);
 
             /**
             * @brief Construct a new Matrix object
             *
             * @param cam A Camera2D Object
             */
-            Matrix(Camera2D cam);
+            Matrix(const Camera2D &cam);
 
             /**
             * @brief Construct a new Matrix objectt
             *
             * @param cam A Camera2D struct
             */
-            Matrix(::Camera2D cam);
+            Matrix(const ::Camera2D &cam);
 
             /**
             * @brief Destroy the Matrix object

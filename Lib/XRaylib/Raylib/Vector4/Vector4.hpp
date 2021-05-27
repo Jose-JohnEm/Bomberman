@@ -10,8 +10,6 @@
 
 #include "raylib.h"
 
-//TODO: const &parameter
-
 namespace Raylib {
     class Vector4 {
     public:
@@ -38,7 +36,7 @@ namespace Raylib {
          *
          * @param vector Vector4 C Raylib strutcture instance
          */
-        Vector4(::Vector4 vector);
+        Vector4(const ::Vector4 &vector);
 
         /**
          * @brief Destroy the Vector 4 object
@@ -89,13 +87,6 @@ namespace Raylib {
         *
         */
         float w;
-
-    private:
-        /**
-        * @brief Declaration of a Vector4
-        *
-        */
-        ::Vector4 _vector;
 
     };
 
