@@ -5,23 +5,20 @@
 ** Vector3.inl
 */
 
-inline Vector3 Raylib::Vector3::operator=(const Vector3 &copy)
-{
+inline Vector3 Raylib::Vector3::operator=(const Vector3 &copy) {
     x = copy.x;
     y = copy.y;
     z = copy.z;
     return *this;
 }
 
-inline Vector3 Raylib::Vector3::operator=(const ::Vector3 &cvec)
-{
+inline Vector3 Raylib::Vector3::operator=(const ::Vector3 &cvec) {
     x = cvec.x;
     y = cvec.y;
     z = cvec.z;
     return *this;
 }
 
-inline ::Vector3 Raylib::Vector3::getCStruct() const
-{
-    return ::Vector2({x, y, z});
+inline ::Vector3 Raylib::Vector3::getCStruct() const {
+    return ::Vector3({x, y, z});
 }

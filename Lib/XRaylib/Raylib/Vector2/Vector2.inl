@@ -5,21 +5,18 @@
 ** Vector2.inl
 */
 
-inline Vector2 Raylib::Vector2::operator=(const Vector2 &copyVector)
-{
+inline Vector2 Raylib::Vector2::operator=(const Vector2 &copyVector) {
     this->x = copyVector.x;
     this->y = copyVector.y;
     return *this;
 }
 
-inline Vector2 Raylib::Vector2::operator=(const ::Vector2 &copyVector)
-{
+inline Vector2 Raylib::Vector2::operator=(const ::Vector2 &copyVector) {
     this->x = copyVector.x;
     this->y = copyVector.y;
     return *this;
 }
 
-inline ::Vector2 Raylib::Vector2::getCStruct() const
-{
+inline ::Vector2 Raylib::Vector2::getCStruct() const {
     return ::Vector2({this->x, this->y});
 }
