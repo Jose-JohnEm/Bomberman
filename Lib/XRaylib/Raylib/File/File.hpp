@@ -11,8 +11,8 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <type_traits>
 #include "raylib.h"
-
 
 namespace Raylib {
     class File {
