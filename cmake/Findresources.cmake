@@ -6,17 +6,6 @@ MESSAGE("Searching for resources updates...")
 # Download the last log from the resources' server
 FILE(DOWNLOAD http://51.77.221.38:8080/last.log .last.log)
 
-# Uncompress the resource.tar.gz
-EXECUTE_PROCESS(
-  COMMAND ${CMAKE_COMMAND} -E tar xzf resources.tar.gz
-  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build
-)
-
-# Remove the old resources, then replace by the new resources and set the new timestamp
-FILE(REMOVE_RECURSE ${CMAKE_CURRENT_SOURCE_DIR}/resources)
-FILE(RENAME ${CMAKE_CURRENT_SOURCE_DIR}/build/resources ${CMAKE_CURRENT_SOURCE_DIR}/resources)
-FILE(RENAME ${CMAKE_CURRENT_SOURCE_DIR}/build/.last.log ${CMAKE_CURRENT_SOURCE_DIR}/resources/.last.log)
-
 
 # Check for new updates by comparing the local timestamp and the server timestamp
 EXECUTE_PROCESS( COMMAND ${CMAKE_COMMAND} -E compare_files
@@ -39,7 +28,7 @@ ELSE()
 
     # Uncompress the resource.tar.gz
     EXECUTE_PROCESS(
-      COMMAND ${CMAKE_COMMAND} -E tar xzf resources.tar.gz
+      COMMAND ${CMAKE_COMMAND} -E tar xzvf resources.tar.gz
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build
     )
 
