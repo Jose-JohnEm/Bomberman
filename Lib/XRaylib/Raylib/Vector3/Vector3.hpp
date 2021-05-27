@@ -39,7 +39,7 @@ namespace Raylib
              * 
              * @param vector Vector3 C Raylib strutcture instance
              */
-            Vector3(::Vector3 vector);
+            Vector3(const ::Vector3 &vector);
             
             /**
              * @brief Destroy the Vector 3 object
@@ -53,7 +53,6 @@ namespace Raylib
              * @param copy Vector3 class instance
              * @return Vector3
              */
-            
             Vector3 operator=(const Vector3 &copy);
             
             /**
@@ -69,14 +68,23 @@ namespace Raylib
              * 
              * @return Vector3 C Raylib structure instance
              */
-            ::Vector3 getCStruct();
+            ::Vector3 getCStruct() const;
             
-            float x;//TODO: doc
-            float y;//TODO: doc
-            float z;//TODO: doc
-
-        private:
-            ::Vector3 _vector;//TODO: doc
+            /**
+            * @brief The x position
+            *
+            */
+            float x;
+            /**
+            * @brief The y position
+            *
+            */
+            float y;
+            /**
+            * @brief The z position
+            *
+            */
+            float z;
 
     };
 

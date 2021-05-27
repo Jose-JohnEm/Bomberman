@@ -5,29 +5,21 @@
 ** Vector2.inl
 */
 
-//TODO: PAS this!!!
-
-inline Vector2 Raylib::Vector2::operator=(const Vector2 &copy)//TODO: change name copyVector (hpp too et vector 3D et 4D)
+inline Vector2 Raylib::Vector2::operator=(const Vector2 &copyVector)
 {
-    this->x = copy.x;
-    this->y = copy.y;
-    _vector.x = this->x;
-    _vector.y = this->y;
-    return Vector2(copy);
+    this->x = copyVector.x;
+    this->y = copyVector.y;
+    return *this;
 }
 
-inline Vector2 Raylib::Vector2::operator=(const ::Vector2 &cvec)//TODO: change name copyVector(hpp too et vector 3D et 4D)
+inline Vector2 Raylib::Vector2::operator=(const ::Vector2 &copyVector)
 {
-    this->x = cvec.x;
-    this->y = cvec.y;
-    _vector.x = this->x;
-    _vector.y = this->y;
-    return Vector2(cvec);
+    this->x = copyVector.x;
+    this->y = copyVector.y;
+    return *this;
 }
 
-inline ::Vector2 Raylib::Vector2::getCStruct()
+inline ::Vector2 Raylib::Vector2::getCStruct() const
 {
-    _vector.x = this->x;
-    _vector.y = this->y;
-    return _vector;
+    return ::Vector2({this->x, this->y});
 }

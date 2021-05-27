@@ -70,15 +70,35 @@ namespace Raylib
              * 
              * @return Vector4 C Raylib structure instance
              */
-            ::Vector4 getCStruct();
+            ::Vector4 getCStruct() const;
             
-            float x;//TODO: doc
-            float y;//TODO: doc
-            float z;//TODO: doc
-            float w;//TODO: doc
+            /**
+            * @brief The x position
+            *
+            */
+            float x;
+            /**
+            * @brief The y position
+            *
+            */
+            float y;
+            /**
+            * @brief The z position
+            *
+            */
+            float z;
+            /**
+            * @brief The w position
+            *
+            */
+            float w;
 
         private:
-            ::Vector4 _vector;//TODO: doc
+            /**
+            * @brief Declaration of a Vector4
+            *
+            */
+            ::Vector4 _vector;
 
     };
 

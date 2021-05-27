@@ -32,6 +32,13 @@ namespace Raylib
             Rectangle(float x = 0, float y = 0, float width = 0, float height = 0);
 
             /**
+             * @brief Construct a new Rectangle object
+             * 
+             * @param rec C Rectangle structure
+             */
+            Rectangle(::Rectangle rec);
+
+            /**
              * @brief Construct a new Rectangle object with parameters
              * 
              * @param position An const reference to the Vector2

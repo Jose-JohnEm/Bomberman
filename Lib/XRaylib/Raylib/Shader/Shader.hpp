@@ -166,7 +166,12 @@ namespace Raylib {
              */
             void set(const Shader &shader);
 
-            ::Shader _shader;  //TODO: doc
+
+            /**
+             * @brief Declare a Shader
+             *
+             */
+            ::Shader _shader;
     };
 
     #include "Shader.inl"

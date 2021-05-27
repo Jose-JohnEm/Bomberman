@@ -5,56 +5,56 @@
 ** Collision3D
 */
 
-inline bool Raylib::Collision3D::checkCollision(Vector3 center1, float radius1, Vector3 center2, float radius2)
+inline bool Raylib::Collision3D::checkCollision(const Vector3 &center1, const float &radius1, const Vector3 &center2, const float &radius2)
 {
     return ::CheckCollisionSpheres(center1.getCStruct(), radius1, center2.getCStruct(), radius2);
 }
 
-inline bool Raylib::Collision3D::checkCollision(::BoundingBox box1, ::BoundingBox box2)
+inline bool Raylib::Collision3D::checkCollision(::BoundingBox const &box1, const ::BoundingBox &box2)
 {
     return ::CheckCollisionBoxes(box1, box2);
 }
 
-inline bool Raylib::Collision3D::checkCollision(::BoundingBox box1, Vector3 center, float radius)
+inline bool Raylib::Collision3D::checkCollision(const ::BoundingBox &box1, const Vector3 &center, const float &radius)
 {
     return ::CheckCollisionBoxSphere(box1, center.getCStruct(), radius);
 }
 
-inline bool Raylib::Collision3D::checkCollision(::Ray ray, Vector3 center, float radius)
+inline bool Raylib::Collision3D::checkCollision(const ::Ray &ray, const Vector3 &center, const float &radius)
 {
     return ::CheckCollisionRaySphere(ray, center.getCStruct(), radius);
 }
 
-inline bool Raylib::Collision3D::checkCollision(::Ray ray, Vector3 center, float radius, Vector3 &collisionPoint)
+inline bool Raylib::Collision3D::checkCollision(const ::Ray &ray, const Vector3 &center, const float &radius, Vector3 &collisionPoint)
 {
     ::Vector3 collisionVector;
     bool res = ::CheckCollisionRaySphereEx(ray, center.getCStruct(), radius, &collisionVector);
 
-    collisionPoint = collisionVector; //TODO: sure ??
+    collisionPoint = collisionVector;
     return res;
 }
 
-inline bool Raylib::Collision3D::checkCollision(::Ray ray, ::BoundingBox box)
+inline bool Raylib::Collision3D::checkCollision(const ::Ray &ray, const ::BoundingBox &box)
 {
     return ::CheckCollisionRayBox(ray, box);
 }
 
-inline ::RayHitInfo Raylib::Collision3D::getCollisionRay(::Ray ray, ::Mesh mesh, ::Matrix transform)
+inline ::RayHitInfo Raylib::Collision3D::getCollisionRay(const ::Ray &ray, const ::Mesh &mesh, const ::Matrix &transform)
 {
     return ::GetCollisionRayMesh(ray, mesh, transform);
 }
 
-inline ::RayHitInfo Raylib::Collision3D::getCollisionRay(::Ray ray, ::Model model)
+inline ::RayHitInfo Raylib::Collision3D::getCollisionRay(const ::Ray &ray, const ::Model &model)
 {
     return ::GetCollisionRayModel(ray, model);
 }
 
-inline ::RayHitInfo Raylib::Collision3D::getCollisionRay(::Ray ray, Vector3 p1, Vector3 p2, Vector3 p3)
+inline ::RayHitInfo Raylib::Collision3D::getCollisionRay(const ::Ray &ray, const Vector3 &p1, const Vector3 &p2, const Vector3 &p3)
 {
     return ::GetCollisionRayTriangle(ray, p1.getCStruct(), p2.getCStruct(), p3.getCStruct());
 }
 
-inline ::RayHitInfo Raylib::Collision3D::getCollisionRay(::Ray ray, float groundHeight)
+inline ::RayHitInfo Raylib::Collision3D::getCollisionRay(const ::Ray &ray, const float &groundHeight)
 {
     return ::GetCollisionRayGround(ray, groundHeight);
 }

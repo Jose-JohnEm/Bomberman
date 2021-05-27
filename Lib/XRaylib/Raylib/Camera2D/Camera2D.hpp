@@ -100,7 +100,11 @@ namespace Raylib
              */
             void set(const Camera2D &camera);
 
-            ::Camera2D _camera2D; //TODO: doc
+            /**
+             * @brief C Camera2D Structure instance
+             * 
+             */
+            ::Camera2D _camera2D;
     };
 
     #include "Camera2D.inl"

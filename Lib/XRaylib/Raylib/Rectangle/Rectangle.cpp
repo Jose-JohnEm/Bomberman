@@ -8,26 +8,30 @@
 #include "Rectangle.hpp"
 
 Raylib::Rectangle::Rectangle(float x, float y, float width, float height)
+: _rectangle({x, y, width, height})
 {
-    ::Rectangle _rectangle = {x, y, width, height};
+
 }
 
-//FIXME:Raylib::Rectangle::Rectangle(::Vector2 position, ::Vector2 size)
-//FIXME:{
-//FIXME:    ::Rectangle _rectangle = {position.x, position.y, size.x, size.y};
-//FIXME:}
-//FIXME:
-//FIXME:Raylib::Rectangle::Rectangle(::Vector2 size)
-//FIXME:{
-//FIXME:    ::Rectangle _rectangle = {0, 0, size.x, size.y};
-//FIXME:}
-//FIXME:
-//FIXME:Raylib::Rectangle::Rectangle(::Rectangle rec)
-//FIXME:: _rectangle(rec)
-//FIXME:{
-//FIXME:
-//FIXME:}
+Raylib::Rectangle::Rectangle(const Vector2 &position, const Vector2 &size)
+: _rectangle({position.x, position.y, size.x, size.y})
+{
+
+}
+
+Raylib::Rectangle::Rectangle(const Vector2 &size)
+: _rectangle({0, 0, size.x, size.y})
+{
+
+}
+
+Raylib::Rectangle::Rectangle(::Rectangle rec)
+: _rectangle(rec)
+{
+
+}
 
 Raylib::Rectangle::~Rectangle()
 {
+
 }

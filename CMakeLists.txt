@@ -7,7 +7,6 @@ PROJECT(bomberman VERSION 1.0)
 SET(CMAKE_CXX_STANDARD 17)
 
 # Call the Findresources module
-# TODO: README in english
 INCLUDE(cmake/Findresources.cmake)
 
 # Make XRay CMakeList meta-compile XRay library that himself

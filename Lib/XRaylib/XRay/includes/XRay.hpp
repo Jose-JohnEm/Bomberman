@@ -243,7 +243,7 @@ class XRay : public IGraphical {
          */
         void display(void) override;
 
-        // TODO: documentation
+        // TODO: documentation (Lucas)
         void setTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> &textBox);
         void updateTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> textBox);
         void setAddBox(std::vector<std::pair<int, int>> &removePos, std::vector<std::pair<int, int>> &nextTab, std::vector<std::pair<int, int>> &prevTab, const int &a);

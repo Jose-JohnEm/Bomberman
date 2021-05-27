@@ -19,7 +19,7 @@ void XRay::displayCinematic(const Cinematic &cinematic)
     }
 }
 
-void XRay::displayIntroCinematic(void) //TODO: To change ?
+void XRay::displayIntroCinematic(void) //TODO: To change ? (Lucas)
 {
     std::string path, skip, str = "1";
 

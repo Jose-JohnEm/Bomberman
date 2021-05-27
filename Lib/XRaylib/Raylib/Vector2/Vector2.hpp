@@ -71,13 +71,18 @@ namespace Raylib
              * 
              * @return Vector2 C Raylib structure instance
              */
-            ::Vector2 getCStruct();
+            ::Vector2 getCStruct() const;
             
-            float x; //TODO: doc
-            float y;//TODO: doc
-
-        private:
-            ::Vector2 _vector;//TODO: doc
+            /**
+            * @brief The x position
+            *
+            */
+            float x;
+            /**
+            * @brief The y position
+            *
+            */
+            float y;
 
     };
 
