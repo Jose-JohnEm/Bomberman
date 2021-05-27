@@ -38,7 +38,7 @@ ELSE()
 
     # Remove the old resources, then replace by the new resources and set the new timestamp
     FILE(REMOVE_RECURSE ${CMAKE_CURRENT_SOURCE_DIR}/resources)
-    FILE(RENAME ${CMAKE_CURRENT_SOURCE_DIR}/build/resources ${CMAKE_CURRENT_SOURCE_DIR}/resources)
-    FILE(RENAME ${CMAKE_CURRENT_SOURCE_DIR}/build/.last.log ${CMAKE_CURRENT_SOURCE_DIR}/resources/.last.log)
+    ##FILE(RENAME ${CMAKE_CURRENT_SOURCE_DIR}/build/resources ${CMAKE_CURRENT_SOURCE_DIR}/resources)
+    ##FILE(RENAME ${CMAKE_CURRENT_SOURCE_DIR}/build/.last.log ${CMAKE_CURRENT_SOURCE_DIR}/resources/.last.log)
 
 ENDIF()
