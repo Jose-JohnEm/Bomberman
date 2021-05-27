@@ -26,9 +26,11 @@ ELSE()
     # Download the resources as a compressed tar.gz file
     FILE(DOWNLOAD http://51.77.221.38:8080/resources.tar.gz resources.tar.gz SHOW_PROGRESS)
 
+    #create a build directory
+    file(MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build)
+
     # Uncompress the resource.tar.gz
     EXECUTE_PROCESS(
-      FILE(MAKE_DIRECTORY build)
       COMMAND ${CMAKE_COMMAND} -E tar xzvf resources.tar.gz
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build
     )
