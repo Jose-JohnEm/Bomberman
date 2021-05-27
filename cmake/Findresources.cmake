@@ -31,7 +31,7 @@ ELSE()
 
     # Uncompress the resource.tar.gz
     EXECUTE_PROCESS(
-      COMMAND ${CMAKE_COMMAND} -E tar xzvf resources.tar.gz
+      COMMAND ${CMAKE_COMMAND} -E tar xzvf resources.tar.gz && mkdir build && cd build
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build
     )
 
