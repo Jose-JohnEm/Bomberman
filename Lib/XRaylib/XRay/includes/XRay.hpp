@@ -302,19 +302,18 @@ class XRay : public IGraphical {
         Scene _scene = MENU;                   // Current scene
         std::vector<void (XRay::*)()> _scenesFunc;  // Array of pointers to function (a scene, a function)
 
-        std::vector<bool> _playerTab;
-        std::vector<bool> _controlsTab;
-        std::array<int, 3> _allIntegers = {50, 400, 1};
-        std::vector<std::pair<int, int>> _letterAndFrame;
+        std::vector<bool> _playerTab; // TODO doc
+        std::vector<bool> _controlsTab; // TODO doc
+        std::array<int, 3> _allIntegers = {50, 400, 1}; // TODO doc
+        std::vector<std::pair<int, int>> _letterAndFrame; // TODO doc
 
         std::map<std::string, std::pair<std::string, std::string>> _playersStats; // A map of all the stats [PlayerName -- (NameOfStat, Value)]...
         std::vector<std::pair<std::string, std::string>> _scores;                 // A vector of pair (username, score)
         std::vector<std::pair<std::string, std::string>> _bestScores;             // A vector of pair (username, score), List of Bests Scores
         std::vector<std::shared_ptr<IEntity>> _gameInfos;                         // A vector of shared pointer that represent all the entities to display. Ex : Map, Score, UserInfo, Button
         std::vector<std::string> _backups;                                        // A vector of all the paths to backups files as a const std::vector<std::string>&
-        std::vector<Raylib::Texture> _textures;
 
-        std::map<Resources, std::shared_ptr<Raylib::Texture>> _resources;
+        std::map<Resources, std::shared_ptr<Raylib::Texture>> _resources; // Texture dictionary
 };
 
 #include "XRay.inl"

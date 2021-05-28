@@ -126,7 +126,7 @@ void XRay::displayCardsSettings(std::vector<std::pair<int, int>> &removePos, std
         _resources.at(ADD)->drawTexture(_allIntegers[0] + (*a), _allIntegers[1], Raylib::Color::White());
 }
 
-void XRay::displayPlayerChoiceScene(void)
+void XRay::displayPlayerChoiceScene(void)// TODO doc
 {
     _scene = PLAYER_CHOICE;
 
