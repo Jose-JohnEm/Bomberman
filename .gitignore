@@ -1,1 +1,9 @@
 build/
+.vscode/
+cross_platform.zip
+Dockerfile
+entrypoint.sh
+bomberman
+bomberman.exe
+.DS_Store
+resources
