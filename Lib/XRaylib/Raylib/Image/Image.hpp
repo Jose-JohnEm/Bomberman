@@ -14,7 +14,7 @@
 #include "Texture/Texture.hpp"
 #include "Font/Font.hpp"
 
-//TODO: const &parameter and method !
+//TODO: const &parameter and method ! And use our encapsulation Raylib::Vector2 instead of ::Vector2 (C Struct) Good Luck :)
 
 namespace Raylib
 {
