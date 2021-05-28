@@ -107,5 +107,5 @@ inline std::vector<size_t> XRay::createBox(const size_t &upperLeftCorner, const 
 
 inline void XRay::displayMouse(void) const
 {
-    _resources.at(HEAD)->drawTexture(Raylib::Mouse::getMouseX() - 32, Raylib::Mouse::getMouseY() - 32, Raylib::Color::White());
+    _resources.at(HEAD)->drawTexture(Raylib::Mouse::getMouseX() - 30, Raylib::Mouse::getMouseY() - 30, Raylib::Color::White());
 }

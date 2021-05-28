@@ -42,7 +42,8 @@ typedef enum {
     QUIT,
     QUIT_HOVER,
     SKIP,
-    SKIP_HOVER
+    SKIP_HOVER,
+    PARALLAX
 } Resources;
 
 #endif /* !RESOURCES_HPP_ */

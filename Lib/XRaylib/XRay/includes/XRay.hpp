@@ -302,10 +302,11 @@ class XRay : public IGraphical {
         Scene _scene = MENU;                   // Current scene
         std::vector<void (XRay::*)()> _scenesFunc;  // Array of pointers to function (a scene, a function)
 
-        std::vector<bool> _playerTab; // TODO doc
-        std::vector<bool> _controlsTab; // TODO doc
-        std::array<int, 3> _allIntegers = {50, 400, 1}; // TODO doc
-        std::vector<std::pair<int, int>> _letterAndFrame; // TODO doc
+        std::vector<bool> _playerTab;                     // A vector of boolean that represents if the player is an AI or not
+        std::vector<bool> _controlsTab;                   // A vector of boolean that represents if the controls is Type1 or Type2
+        std::array<int, 3> _allIntegers = {50, 400, 1};   // An array of main positions on this scene
+        std::vector<std::pair<int, int>> _letterAndFrame; // A vector of infos about the boxes of pseudos
+        float _scrollingBack = 0.0f;                      // A variable for parallax
 
         std::map<std::string, std::pair<std::string, std::string>> _playersStats; // A map of all the stats [PlayerName -- (NameOfStat, Value)]...
         std::vector<std::pair<std::string, std::string>> _scores;                 // A vector of pair (username, score)

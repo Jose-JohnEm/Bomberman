@@ -126,28 +126,35 @@ void XRay::displayCardsSettings(std::vector<std::pair<int, int>> &removePos, std
         _resources.at(ADD)->drawTexture(_allIntegers[0] + (*a), _allIntegers[1], Raylib::Color::White());
 }
 
-void XRay::displayPlayerChoiceScene(void)// TODO doc
+void XRay::displayPlayerChoiceScene(void)
 {
+    // Set scene
     _scene = PLAYER_CHOICE;
 
-    std::vector<std::pair<int, int>> removePos;
-    std::vector<std::pair<int, int>> nextTab;
-    std::vector<std::pair<int, int>> prevTab;
+    // Create containers
+    std::vector<std::pair<int, int>> removePos;         // A vector of all remove buttons coordinates
+    std::vector<std::pair<int, int>> nextTab;           // A vector of all next buttons coordinates
+    std::vector<std::pair<int, int>> prevTab;           // A vector of all previous buttons coordinates
 
-    std::vector<bool> mouseOnText;
-    std::vector<Raylib::Rectangle> textBox;
+    // Create containers
+    std::vector<bool> mouseOnText;                      // A vector of boolean that represents if mouse is on box to position n with n < mouseOnText.size()
+    std::vector<Raylib::Rectangle> textBox;             // A vector of rectangle that represents the boxes of the pseudos
 
+    // A int that represents the x coordinate of the last displayed card
     int a;
 
+    // Initialize and Update all the containers that refer to the boxes of the pseudos
     setTextBox(mouseOnText, textBox);
     updateTextBox(mouseOnText, textBox);
 
+    // Draw scene
     beginDrawing();
     displayBoxes(mouseOnText, textBox);
     displayCardsSettings(removePos, nextTab, prevTab, &a);
     displayMouse();
     endDrawing();
 
+    // Check and Manage Click on buttons
     addPlayer(mouseOnText, textBox);
     manageNextOrPrev(nextTab, prevTab);
     removePlayer(removePos, mouseOnText, textBox);
