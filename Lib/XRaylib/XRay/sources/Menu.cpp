@@ -20,13 +20,16 @@ void XRay::displayMenuScene(void)
 
     // Set specific texture according to mouse position
     std::shared_ptr<Raylib::Texture> playButton = mouseIsInBox(createBox(100, 500, 360, 565)) ? _resources.at(PLAY_HOVER) : _resources.at(PLAY);
-    std::shared_ptr<Raylib::Texture> howToPlayButton = mouseIsInBox(createBox(100, 600, 815, 665)) ? _resources.at(HOW_TO_PLAY_HOVER) : _resources.at(Resources::HOW_TO_PLAY);
+    std::shared_ptr<Raylib::Texture> howToPlayButton = mouseIsInBox(createBox(100, 600, 815, 665)) ? _resources.at(HELP_HOVER) : _resources.at(Resources::HELP);
     std::shared_ptr<Raylib::Texture> settingsButton = mouseIsInBox(createBox(100, 700, 620, 765)) ? _resources.at(SETTINGS_HOVER) : _resources.at(Resources::SETTINGS);
     std::shared_ptr<Raylib::Texture> quitButton = mouseIsInBox(createBox(100, 800, 360, 865)) ? _resources.at(QUIT_HOVER) : _resources.at(QUIT);
 
     // Hide the cursor
     if (Raylib::Cursor::isCursorOnScreen())
         Raylib::Cursor::hideCursor();
+
+    if (_intro.first == true)
+        (this->*_intro.second)();
 
     // Draw scene
     beginDrawing();

@@ -31,9 +31,9 @@ inline void Raylib::Texture::set(const Texture &texture)
 //FIXME:    ::SetShapesTexture(texture._texture, source.getCStruct());
 //FIXME:}
 
-inline Raylib::Texture &Raylib::Texture::loadTexture(const char *fileName)
+inline Raylib::Texture &Raylib::Texture::loadTexture(const std::string fileName)
 {
-    _texture = ::LoadTexture(fileName);
+    _texture = ::LoadTexture(fileName.c_str());
     return *this;
 }
 

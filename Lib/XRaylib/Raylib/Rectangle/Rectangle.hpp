@@ -98,7 +98,7 @@ namespace Raylib {
          * @param rec A const reference to a Class Rectangle
          * @param color A const reference to Class Color
          */
-        void drawRectangleRec(Rectangle const &rec, Color const &color) const;
+        static void drawRectangleRec(Rectangle const &rec, Color const &color);
 
         /**
          * @brief Draw a color-filled rectangle with pro parameters
@@ -163,9 +163,8 @@ namespace Raylib {
          * @param height A const reference to an int
          * @param color A const reference to Class Color
          */
-        void
-        drawRectangleLines(int const &posX, int const &posY, int const &width,
-                           int const &height, Color const &color) const;
+        static void drawRectangleLines(int const &posX, int const &posY, int const &width,
+                           int const &height, Color const &color);
 
         /**
          * @brief Draw rectangle outline with extended parameters

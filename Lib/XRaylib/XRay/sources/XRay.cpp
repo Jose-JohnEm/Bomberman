@@ -25,7 +25,6 @@ XRay::XRay()
 
     // Display Intro (studio and introduction cinematic)
     _intro = std::make_pair(true, &XRay::displayStudio);
-    displayCinematic(Cinematic::INTRO);
 }
 
 XRay::~XRay()
@@ -53,8 +52,8 @@ void XRay::setResources(void)
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::BRANCH, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/branch.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::BACK, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/back.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::BACK_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/backHover.png"))));
-    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::HOW_TO_PLAY, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/howToPlay.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::HOW_TO_PLAY_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/howToPlayHover.png"))));
+    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::HELP, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/howToPlay.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::HELP_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/howToPlayHover.png"))));
     _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SETTINGS, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/settings.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SETTINGS_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/settingsHover.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::INDIE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/indie.png"))));
@@ -76,14 +75,22 @@ void XRay::quitGame(void)
     _scene = END_GAME;
 }
 
-void XRay::displayStudio(void) // TODO: Prince timing to increase and animation (left and right)
+void XRay::displayStudio(void)
 {
     // Draw
-    beginDrawing();
-    _resources.at(INDIE)->drawTexture(500, 1080 / 2 - 100, Raylib::Color::White());
-    _resources.at(STUDIO)->drawTexture(900, 1080 / 2 - 100, Raylib::Color::White());
-    endDrawing();
+    for (int f = 0, x = 0, y = 0; x < 500; f += 1) {
+        x = -100 + f;
+        y = 1500 - f;
+        beginDrawing();
+		_resources.at(INDIE)->drawTexture(x, 440, Raylib::Color::White());
+		_resources.at(STUDIO)->drawTexture(y, 440, Raylib::Color::White());
+        endDrawing();
+		std::this_thread::sleep_for(std::chrono::milliseconds(3));
+    }
+
+	std::this_thread::sleep_for(std::chrono::milliseconds(2000));
 
     // Intro is done, so update its status flag
     _intro.first = false;
+    displayCinematic(Cinematic::INTRO);
 }

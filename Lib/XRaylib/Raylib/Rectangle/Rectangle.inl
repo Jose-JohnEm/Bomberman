@@ -33,13 +33,12 @@ inline void Raylib::Rectangle::drawRectangle(int const &posX, int const &posY, i
     return ::DrawRectangle(posX, posY, width, height, color.getCStruct());
 }
 
-
 //FIXME:inline void Raylib::Rectangle::drawRectangleV(::Vector2 const &position, ::Vector2 const &size, Color const &color) const
 //FIXME:{
 //FIXME:    return ::DrawRectangleV(position, size, color.getCStruct());
 //FIXME:}
 
-inline void Raylib::Rectangle::drawRectangleRec(Rectangle const &rec, Color const &color) const
+inline void Raylib::Rectangle::drawRectangleRec(Rectangle const &rec, Color const &color)
 {
     return ::DrawRectangleRec(rec.getCStruct(), color.getCStruct());
 }
@@ -64,7 +63,7 @@ inline void Raylib::Rectangle::drawRectangleGradientEx(Rectangle const &rec, Col
     return ::DrawRectangleGradientEx(rec.getCStruct(), col1.getCStruct(), col2.getCStruct(), col3.getCStruct(), col4.getCStruct());
 }
 
-inline void Raylib::Rectangle::drawRectangleLines(int const &posX, int const &posY, int const &width, int const &height, Color const &color) const
+inline void Raylib::Rectangle::drawRectangleLines(int const &posX, int const &posY, int const &width, int const &height, Color const &color)
 {
     return ::DrawRectangleLines(posX, posY, width, height, color.getCStruct());
 }

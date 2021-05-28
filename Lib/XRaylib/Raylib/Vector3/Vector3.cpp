@@ -7,21 +7,16 @@
 
 #include "Vector3.hpp"
 
-//TODO: clean initialization constructor list
-
 Raylib::Vector3::Vector3(float x, float y, float z)
-: x(x), y(y), z(z)
+: x {x}, y {y}, z {z}
 {
-
 }
 
 Raylib::Vector3::Vector3(const ::Vector3 &copyVector)
-: x(copyVector.x), y(copyVector.y), z(copyVector.z)
+: x {copyVector.x}, y {copyVector.y}, z{copyVector.z}
 {
-
 }
 
 Raylib::Vector3::~Vector3()
 {
-
 }

@@ -19,20 +19,25 @@
 #include <utility>
 #include "IEntity.hpp"
 
-//TODO: Prince documentation Scene
-
 class IGraphical {
 
     public:
         enum Scene {
             /// This scene is the main menu of our game
             MENU,
+            /// This scene is the one used to choose the game mode
             GAME_MODE,
-            HOW_TO_PLAY,
+            /// This scene represents the HELP section, containing information such as how to play etc
+            HELP,
+            /// This scene represents the settings section
             SETTINGS,
+            /// This scene is the one used to choose the players and the different game parameters
             PLAYER_CHOICE,
+            /// This scene is the one used to load a game backup
             LOAD_GAME,
+            /// This is the scene where the game is in progress
             IN_GAME,
+            /// This scene represents the end of the game
             END_GAME
         };
 

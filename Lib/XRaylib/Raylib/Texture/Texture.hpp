@@ -62,11 +62,10 @@ namespace Raylib
             /**
              * @brief Load texture from file into GPU memory (VRAM)
              *
-             * @param texture A Texture Object
-             * @param source A Rectangle Object
+             * @param fileName A string that represents path to file
              * @return A reference to the texture - Texture&
              */
-            Texture &loadTexture(const char *fileName); //TODO: use a string
+            Texture &loadTexture(const std::string fileName);
 
             /**
              * @brief Load texture from image data
