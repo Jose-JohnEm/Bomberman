@@ -13,7 +13,7 @@ void XRay::displayMenuScene(void)
     _scene = MENU;
 
     // Check if mouse is on button spot
-    bool goPlay = mouseIsInBox(createBox(1160, 245, 360, 245+132)) ? true : false;
+    bool goPlay = mouseIsInBox(createBox(1160, 245, 1160+755, 245+132)) ? true : false;
     bool goHowToPlay = mouseIsInBox(createBox(1160, 455, 1160+755, 455+132)) ? true : false;
     bool goSettings = mouseIsInBox(createBox(1160, 665, 1160+755, 665+132)) ? true : false;
     bool quit = mouseIsInBox(createBox(1160, 875, 1160+755, 875+132)) ? true : false;

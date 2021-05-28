@@ -79,14 +79,14 @@ void XRay::quitGame(void)
 void XRay::displayStudio(void)
 {
     // Draw
-    for (int f = 0, x = 0, y = 0; x < 500; f += 1) {
+    for (int f = 0, x = 0, y = 0; x < 480; f += 1) {
         x = -100 + f;
         y = 1500 - f;
         beginDrawing();
+		std::this_thread::sleep_for(std::chrono::milliseconds(3));
 		_resources.at(INDIE)->drawTexture(x, 440, Raylib::Color::White());
 		_resources.at(STUDIO)->drawTexture(y, 440, Raylib::Color::White());
         endDrawing();
-		std::this_thread::sleep_for(std::chrono::milliseconds(3));
     }
 
 	std::this_thread::sleep_for(std::chrono::milliseconds(2000));
