@@ -13,6 +13,7 @@
 #include "raylib.h"
 #include "Color/Color.hpp"
 #include "Image/Image.hpp"
+#include "Vector2/Vector2.hpp"
 
 namespace Raylib {
     class Rectangle {
