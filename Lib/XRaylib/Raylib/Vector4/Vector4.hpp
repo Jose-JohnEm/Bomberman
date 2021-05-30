@@ -5,8 +5,8 @@
 ** Vector4.hpp
 */
 
-#ifndef VECTOR_HPP_
-#define VECTOR_HPP_
+#ifndef VECTOR4D_HPP_
+#define VECTOR4D_HPP_
 
 #include "raylib.h"
 
@@ -94,4 +94,4 @@ namespace Raylib {
 
 }
 
-#endif
+#endif /* !VECTOR4D_HPP_ */

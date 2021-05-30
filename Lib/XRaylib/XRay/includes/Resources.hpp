@@ -28,8 +28,8 @@ typedef enum {
     BRANCH,
     BACK,
     BACK_HOVER,
-    HOW_TO_PLAY,
-    HOW_TO_PLAY_HOVER,
+    HELP,
+    HELP_HOVER,
     SETTINGS,
     SETTINGS_HOVER,
     INDIE,
@@ -42,7 +42,8 @@ typedef enum {
     QUIT,
     QUIT_HOVER,
     SKIP,
-    SKIP_HOVER
+    SKIP_HOVER,
+    PARALLAX
 } Resources;
 
 #endif /* !RESOURCES_HPP_ */

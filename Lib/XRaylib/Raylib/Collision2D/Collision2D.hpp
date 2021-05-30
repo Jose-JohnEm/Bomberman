@@ -5,8 +5,8 @@
 ** Collision2D
 */
 
-#ifndef Collision2D_HPP_
-#define Collision2D_HPP_
+#ifndef COLLISION2D_HPP_
+#define COLLISION2D_HPP_
 
 #include <string>
 #include <iostream>
@@ -115,4 +115,4 @@ namespace Raylib
 
 }
 
-#endif /* !Collision2D_HPP_ */
+#endif /* !COLLISION2D_HPP_ */

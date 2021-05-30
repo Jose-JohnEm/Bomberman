@@ -10,7 +10,7 @@
 void XRay::displayHowToPlayScene(void)
 {
     // Set scene
-    _scene = HOW_TO_PLAY;
+    _scene = HELP;
 
     // Check if mouse is on button spot
     bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;

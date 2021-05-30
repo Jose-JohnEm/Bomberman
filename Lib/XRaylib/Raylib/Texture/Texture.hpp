@@ -15,6 +15,7 @@
 #include "Color/Color.hpp"
 #include "Rectangle/Rectangle.hpp"
 #include "RenderTexture/RenderTexture.hpp"
+#include "Vector2/Vector2.hpp"
 
 namespace Raylib
 {
@@ -62,11 +63,10 @@ namespace Raylib
             /**
              * @brief Load texture from file into GPU memory (VRAM)
              *
-             * @param texture A Texture Object
-             * @param source A Rectangle Object
+             * @param fileName A string that represents path to file
              * @return A reference to the texture - Texture&
              */
-            Texture &loadTexture(const char *fileName); //TODO: use a string
+            Texture &loadTexture(const std::string fileName);
 
             /**
              * @brief Load texture from image data
@@ -171,7 +171,7 @@ namespace Raylib
              * @param scale A const reference to a float
              * @param tint A const reference to a Color
              */
-            void drawTextureEx(Texture const &texture, Vector2 const &position, float const &rotation, float const &scale, Color const &tint) const;
+            void drawTextureEx(Texture const &texture, Raylib::Vector2 const &position, float const &rotation, float const &scale, Color const &tint) const;
 
             /**
              * @brief Draw a part of a texture defined by a rectangle

@@ -26,9 +26,12 @@
 #include "Text/Text.hpp"
 #include "Keyboard/Keyboard.hpp"
 #include "Color/Color.hpp"
+#include "Music/Music.hpp"
 #include "Cursor/Cursor.hpp"
 #include "Timing/Timing.hpp"
 #include "Drawing/Drawing.hpp"
+#include "Collision2D/Collision2D.hpp"
+#include "Vector2/Vector2.hpp"
 #include "Box.hpp"
 #include "Cinematic.hpp"
 #include "Resources.hpp"
@@ -37,28 +40,6 @@
 class XRay : public IGraphical {
 
     public:
-
-    // TODO: Créer une classe pour le bail de gamepad dans xray là bon travail lucas
-        enum GamePadTouch {
-            UP,
-            RIGHT,
-            DOWN,
-            LEFT,
-            TRIANGLE,
-            ROND,
-            CROIX,
-            CARRE,
-            L1,
-            L2,
-            R1,
-            R2,
-            SHARE,
-            UNKNOWN,
-            OPTIONS,
-            L3,
-            R3
-        };
-
 
         /**
          * @brief Construct a new Ray Lib object
@@ -243,39 +224,97 @@ class XRay : public IGraphical {
          */
         void display(void) override;
 
-        // TODO: documentation (Lucas)
-        void setTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> &textBox);
-        void updateTextBox(std::vector<bool> &mouseOnText, std::vector<::Rectangle> textBox);
-        void setAddBox(std::vector<std::pair<int, int>> &removePos, std::vector<std::pair<int, int>> &nextTab, std::vector<std::pair<int, int>> &prevTab, const int &a);
-        void addPlayer(std::vector<std::pair<int, int>> &removePos, std::vector<std::pair<int, int>> &nextTab, std::vector<std::pair<int, int>> &prevTab, std::vector<bool> &mouseOnText, std::vector<::Rectangle> textBox);
-        void removePlayer(std::vector<std::pair<int, int>> &removePos, std::vector<std::pair<int, int>> &nextTab, std::vector<std::pair<int, int>> &prevTab, std::vector<bool> &mouseOnText, std::vector<::Rectangle> textBox);
-        void displayCards(const std::vector<bool> &mouseOnText, const std::vector<::Rectangle> &textBox);
+        /**
+         * @brief Initialize all the containers that refer to the boxes of the pseudos
+         *
+         * @param mouseOnText A vector of boolean that represents if mouse is on box to position n with n < mouseOnText.size()
+         * @param textBox A vector of rectangle that represents the boxes of the pseudos
+         */
+        void setTextBox(std::vector<bool> &mouseOnText, std::vector<Raylib::Rectangle> &textBox);
+
+        /**
+         * @brief Update all the containers that refer to the boxes of the pseudos
+         *
+         * @param mouseOnText A vector of boolean that represents if mouse is on box to position n with n < mouseOnText.size()
+         * @param textBox A vector of rectangle that represents the boxes of the pseudos
+         */
+        void updateTextBox(std::vector<bool> &mouseOnText, std::vector<Raylib::Rectangle> textBox);
+
+        /**
+         * @brief This function manages the click on the different previous and next buttons
+         *
+         * @param nextTab A vector of all next buttons coordinates
+         * @param prevTab A vector of all previous buttons coordinates
+         */
+        void manageNextOrPrev(std::vector<std::pair<int, int>> &nextTab, std::vector<std::pair<int, int>> &prevTab);
+
+        /**
+         * @brief Adds a new player to the board, if the limit is not exceeded.
+         *
+         * @param mouseOnText A vector of boolean that represents if mouse is on box to position n with n < mouseOnText.size()
+         * @param textBox A vector of rectangle that represents the boxes of the pseudos
+         */
+        void addPlayer(std::vector<bool> &mouseOnText, std::vector<Raylib::Rectangle> textBox);
+
+        /**
+         * @brief Remove the player of the board.
+         *
+         * @param removePos A vector of all remove buttons coordinates
+         * @param mouseOnText A vector of boolean that represents if mouse is on box to position n with n < mouseOnText.size()
+         * @param textBox A vector of rectangle that represents the boxes of the pseudos
+         */
+        void removePlayer(std::vector<std::pair<int, int>> &removePos, std::vector<bool> &mouseOnText, std::vector<Raylib::Rectangle> textBox);
+
+        /**
+         * @brief This function displays the boxes of the pseudos.
+         *
+         * @param mouseOnText A vector of boolean that represents if mouse is on box to position n with n < mouseOnText.size()
+         * @param textBox A vector of rectangle that represents the boxes of the pseudos
+         */
+        void displayBoxes(const std::vector<bool> &mouseOnText, const std::vector<Raylib::Rectangle> &textBox);
+
+        /**
+         * @brief This function display the mouse
+         */
         void displayMouse(void) const;
+
+        /**
+         * @brief Set the Resources
+         */
         void setResources(void);
+
+        /**
+         * @brief This function displays all cards and their parameters
+         *
+         * @param removePos A vector of all remove buttons coordinates
+         * @param nextTab A vector of all next buttons coordinates
+         * @param prevTab A vector of all previous buttons coordinates
+         * @param a A pointer to a int that represents the x coordinate of the last displayed card
+         */
         void displayCardsSettings(std::vector<std::pair<int, int>> &removePos, std::vector<std::pair<int, int>> &nextTab, std::vector<std::pair<int, int>> &prevTab, int *a);
 
     private:
         Raylib::Window _window;                     // Game window
 
-        ::Music music;
+        Raylib::Music music;
         std::vector<std::string> _userNames;        // A vector of all the users names
         std::pair<bool, void (XRay::*)()> _intro;   // Intro pointer to function
         Scene _scene = MENU;                   // Current scene
         std::vector<void (XRay::*)()> _scenesFunc;  // Array of pointers to function (a scene, a function)
 
-        std::vector<bool> _playerTab;
-        std::vector<bool> _controlsTab;
-        std::array<int, 3> _allIntegers = {50, 400, 1};
-        std::vector<std::pair<int, int>> _letterAndFrame;
+        std::vector<bool> _playerTab;                     // A vector of boolean that represents if the player is an AI or not
+        std::vector<bool> _controlsTab;                   // A vector of boolean that represents if the controls is Type1 or Type2
+        std::array<int, 3> _allIntegers = {50, 400, 1};   // An array of main positions on this scene
+        std::vector<std::pair<int, int>> _letterAndFrame; // A vector of infos about the boxes of pseudos
+        float _scrollingBack = 0.0f;                      // A variable for parallax
 
         std::map<std::string, std::pair<std::string, std::string>> _playersStats; // A map of all the stats [PlayerName -- (NameOfStat, Value)]...
         std::vector<std::pair<std::string, std::string>> _scores;                 // A vector of pair (username, score)
         std::vector<std::pair<std::string, std::string>> _bestScores;             // A vector of pair (username, score), List of Bests Scores
         std::vector<std::shared_ptr<IEntity>> _gameInfos;                         // A vector of shared pointer that represent all the entities to display. Ex : Map, Score, UserInfo, Button
         std::vector<std::string> _backups;                                        // A vector of all the paths to backups files as a const std::vector<std::string>&
-        std::vector<Raylib::Texture> _textures;
 
-        std::map<Resources, std::shared_ptr<Raylib::Texture>> _resources;
+        std::map<Resources, std::shared_ptr<Raylib::Texture>> _resources; // Texture dictionary
 };
 
 #include "XRay.inl"

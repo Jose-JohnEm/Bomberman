@@ -14,8 +14,7 @@
 #include "Texture/Texture.hpp"
 #include "Font/Font.hpp"
 
-//TODO: const &parameter and method !
-//TODO: trailing spaces
+//TODO: const &parameter and method ! And use our encapsulation Raylib::Vector2 instead of ::Vector2 (C Struct) Good Luck :)
 
 namespace Raylib
 {
@@ -160,7 +159,7 @@ namespace Raylib
 
             /**
              * @brief Generate image: plain color
-             * 
+             *
              * @param width A const reference to an int
              * @param height A const reference to an int
              * @param color A const pointer to a Class Color
@@ -170,7 +169,7 @@ namespace Raylib
 
             /**
              * @brief Generate image: vertical gradient
-             * 
+             *
              * @param width A const reference to an int
              * @param height A const reference to an int
              * @param top A const pointer to a Class Color
@@ -181,7 +180,7 @@ namespace Raylib
 
             /**
              * @brief Generate image: horizontal gradient
-             * 
+             *
              * @param width A const reference to an int
              * @param height A const reference to an int
              * @param left A const pointer to a Class Color
@@ -192,7 +191,7 @@ namespace Raylib
 
             /**
              * @brief Generate image: radial gradient
-             * 
+             *
              * @param width A const reference to an int
              * @param height A const reference to an int
              * @param inner A const pointer to a Class Color
@@ -203,7 +202,7 @@ namespace Raylib
 
             /**
              * @brief Generate image: checked
-             * 
+             *
              * @param width A const reference to an int
              * @param height A const reference to an int
              * @param checksX A const reference to an int
@@ -216,7 +215,7 @@ namespace Raylib
 
             /**
              * @brief Generate image: white noise
-             * 
+             *
              * @param width A const reference to an int
              * @param height A const reference to an int
              * @param factor A const reference to a float
@@ -226,7 +225,7 @@ namespace Raylib
 
             /**
              * @brief Generate image: perlin noise
-             * 
+             *
              * @param width A const reference to an int
              * @param height A const reference to an int
              * @param offsetX A const reference to an int
@@ -238,7 +237,7 @@ namespace Raylib
 
             /**
              * @brief Generate image: cellular algorithm. Bigger tileSize means bigger cells
-             * 
+             *
              * @param width A const reference to an int
              * @param height A const reference to an int
              * @param tileSize A const reference to an int
@@ -248,7 +247,7 @@ namespace Raylib
 
             /**
              * @brief Create an image duplicate (useful for transformations)
-             * 
+             *
              * @param image A const reference to a Class Image
              * @return An Image Class
              */
@@ -256,7 +255,7 @@ namespace Raylib
 
             /**
              * @brief Create an image from another image piece
-             * 
+             *
              * @param image A const reference to a Class Image
              * @param rec A const reference to a Class Rectangle
              * @return An Image Class
@@ -265,7 +264,7 @@ namespace Raylib
 
             /**
              * @brief Create an image from text (default font)
-             * 
+             *
              * @param text A const pointer to a char
              * @param fontSize A const reference to an int
              * @param color A const reference to a Class Color
@@ -275,7 +274,7 @@ namespace Raylib
 
             /**
              * @brief Create an image from text (custom sprite font)
-             * 
+             *
              * @param font A const reference to a Class Font
              * @param text A const pointer to a char
              * @param fontSize A const pointer to a float
@@ -287,7 +286,7 @@ namespace Raylib
 
             /**
              * @brief Convert image data to desired format
-             * 
+             *
              * @param image A const pointer to a Class Image
              * @param newFormat A const pointer to an int
              */
@@ -295,7 +294,7 @@ namespace Raylib
 
             /**
              * @brief Convert image to POT (power-of-two)
-             * 
+             *
              * @param image A const pointer to a Class Image
              * @param fill A const pointer to a Class Color
              */
@@ -303,7 +302,7 @@ namespace Raylib
 
             /**
              * @brief Crop an image to a defined rectangle
-             * 
+             *
              * @param image A const pointer to a Class Image
              * @param crop A const pointer to a Class Rectangle
              */
@@ -311,7 +310,7 @@ namespace Raylib
 
             /**
              * @brief Crop image depending on alpha value
-             * 
+             *
              * @param image A const pointer to a Class Image
              * @param threshold A const pointer to a Class Rectangle
              */
@@ -319,7 +318,7 @@ namespace Raylib
 
             /**
              * @brief Clear alpha channel to desired color
-             * 
+             *
              * @param image A const pointer to a Class Image
              * @param color A const reference to a Class Color
              * @param threshold A const reference to a float
@@ -328,7 +327,7 @@ namespace Raylib
 
             /**
              * @brief Apply alpha mask to image
-             * 
+             *
              * @param image A const pointer to a Class Image
              * @param alphaMask A const reference to a Class Image
              */
@@ -336,14 +335,14 @@ namespace Raylib
 
             /**
              * @brief Premultiply alpha channel
-             * 
+             *
              * @param image A const pointer to a Class Image
              */
             void imageAlphaPremultiply(Image *image) const;
 
             /**
              * @brief Resize image (Bicubic scaling algorithm)
-             * 
+             *
              * @param image A const pointer to a Class Image
              * @param newWidth A const reference to an int
              * @param newHeight A const reference to an int
@@ -352,7 +351,7 @@ namespace Raylib
 
             /**
              * @brief Resize image (Nearest-Neighbor scaling algorithm)
-             * 
+             *
              * @param image A const pointer to a Class Image
              * @param newWidth A const reference to an int
              * @param newHeight A const reference to an int
@@ -361,7 +360,7 @@ namespace Raylib
 
             /**
              * @brief Resize canvas and fill with color
-             * 
+             *
              * @param image A const pointer to a Class Image
              * @param newWidth A const reference to an int
              * @param newHeight A const reference to an int
@@ -370,17 +369,17 @@ namespace Raylib
              * @param color A const reference to a Class Color
              */
             void imageResizeCanvas(Image *image, int const &newWidth, int const &newHeight, int const &offsetX, int const &offsetY, Color const &fill) const;
-            
+
             /**
              * @brief Generate all mipmap levels for a provided image
-             * 
+             *
              * @param image A const pointer to a Class Image
              */
             void imageMipmaps(Image *image) const;
 
             /**
              * @brief Dither image data to 16bpp or lower (Floyd-Steinberg dithering)
-             * 
+             *
              * @param image A const pointer to a Class Image
              * @param rBpp A const reference to an int
              * @param gBpp A const reference to an int
@@ -390,35 +389,35 @@ namespace Raylib
 
             /**
              * @brief Flip image vertically
-             * 
+             *
              * @param image A const pointer to a Class Image
              */
             void imageFlipVertical(Image *image) const;
 
             /**
              * @brief Flip image horizontally
-             * 
+             *
              * @param image A const pointer to a Class Image
              */
             void imageFlipHorizontal(Image *image) const;
 
             /**
              * @brief Rotate image clockwise 90deg
-             * 
+             *
              * @param image A const pointer to a Class Image
              */
             void imageRotateCW(Image *image) const;
 
             /**
              * @brief Rotate image counter-clockwise 90deg
-             * 
+             *
              * @param image A const pointer to a Class Image
              */
             void imageRotateCCW(Image *image) const;
 
             /**
              * @brief Modify image color: tint
-             * 
+             *
              * @param image A const pointer to a Class Image
              * @param image A const reference to a Class Color
              */
@@ -426,21 +425,21 @@ namespace Raylib
 
             /**
              * @brief Modify image color: invert
-             * 
+             *
              * @param image A const pointer to a Class Image
              */
             void imageColorInvert(Image *image) const;
 
             /**
              * @brief Modify image color: grayscale
-             * 
+             *
              * @param image A const pointer to a Class Image
              */
             void imageColorGrayscale(Image *image) const;
 
             /**
              * @brief Modify image color: contrast (-100 to 100)
-             * 
+             *
              * @param image A const pointer to a Class Image
              * @param contrast A const pointer to a float
              */
@@ -448,7 +447,7 @@ namespace Raylib
 
             /**
              * @brief Modify image color: brightness (-255 to 255)
-             * 
+             *
              * @param image A const pointer to a Class Image
              * @param brightness A const pointer to a float
              */
@@ -456,7 +455,7 @@ namespace Raylib
 
             /**
              * @brief Modify image color: replace color
-             * 
+             *
              * @param image A const pointer to a Class Image
              * @param color A const reference to a Class Color
              * @param replace A const reference to a Class Color
@@ -465,7 +464,7 @@ namespace Raylib
 
             /**
              * @brief Load color data from image as a Color array (RGBA - 32bit)
-             * 
+             *
              * @param image A const reference to a Class Image
              * @return A Class Color
              */
@@ -473,7 +472,7 @@ namespace Raylib
 
             /**
              * @brief Load colors palette from image as a Color array (RGBA - 32bit)
-             * 
+             *
              * @param image A const reference to a Class Image
              * @param maxPaletteSize A const reference to an int
              * @param colorCount A const pointer to an int
@@ -483,21 +482,21 @@ namespace Raylib
 
             /**
              * @brief Unload color data loaded with LoadImageColors()
-             * 
+             *
              * @param colors A const pointer to a Class Color
              */
             void unloadImageColors(Color *colors);
 
             /**
              * @brief Unload colors palette loaded with LoadImagePalette()
-             * 
+             *
              * @param colors A const pointer to a Class Color
              */
             void unloadImagePalette(Color *colors);
 
             /**
              * @brief Get image alpha border rectangle
-             * 
+             *
              * @param image A const reference to a Class Image
              * @param threshold A const reference to a float
              */
@@ -505,7 +504,7 @@ namespace Raylib
 
             /**
              * @brief Clear image background with given color
-             * 
+             *
              * @param dst A const reference to a Class Image
              * @param color A const reference to a Class color
              */
@@ -513,7 +512,7 @@ namespace Raylib
 
             /**
              * @brief Draw pixel within an image
-             * 
+             *
              * @param dst A const pointer to a Class Image
              * @param posX A const reference to an int
              * @param posY A const reference to an int
@@ -523,7 +522,7 @@ namespace Raylib
 
             /**
              * @brief Draw pixel within an image (Vector version)
-             * 
+             *
              * @param dst A const pointer to a Class Image
              * @param position A const reference to a Class Vector2
              * @param color A const reference to a Class color
@@ -532,7 +531,7 @@ namespace Raylib
 
             /**
              * @brief Draw pixel within an image (Vector version)
-             * 
+             *
              * @param dst A const pointer to a Class Image
              * @param startPosX A const reference to an int
              * @param startPosY A const reference to an int
@@ -544,7 +543,7 @@ namespace Raylib
 
             /**
              * @brief Draw line within an image (Vector version)
-             * 
+             *
              * @param dst A const pointer to a Class Image
              * @param start A const reference to a Class Vector2
              * @param end A const reference to a Class Vector2
@@ -554,7 +553,7 @@ namespace Raylib
 
             /**
              * @brief Draw circle within an image
-             * 
+             *
              * @param dst A const pointer to a Class Image
              * @param centerX A const reference to an int
              * @param centerY A const reference to an int
@@ -565,7 +564,7 @@ namespace Raylib
 
             /**
              * @brief Draw circle within an image (Vector version)
-             * 
+             *
              * @param dst A const pointer to a Class Image
              * @param center A const reference to a Class Vector2
              * @param radius A const reference to an int
@@ -575,7 +574,7 @@ namespace Raylib
 
             /**
              * @brief Draw a source image within a destination image (tint applied to source)
-             * 
+             *
              * @param dst A const pointer to a Class Image
              * @param src A const reference to a Class Image
              * @param srcRec A const reference to a Class Image
@@ -586,7 +585,7 @@ namespace Raylib
 
             /**
              * @brief Draw a source image within a destination image (tint applied to source)
-             * 
+             *
              * @param dst A const pointer to a Class Image
              * @param text A const pointer to a char
              * @param posX A const reference to an int
@@ -598,7 +597,7 @@ namespace Raylib
 
             /**
              * @brief Draw text (custom sprite font) within an image (destination)
-             * 
+             *
              * @param dst A const pointer to a Class Image
              * @param font A const reference to a Class Font
              * @param text A const pointer to a char

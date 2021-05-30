@@ -21,11 +21,9 @@ inline void Raylib::Rectangle::set(const Rectangle &rectangle)
     _rectangle = rectangle._rectangle;
 }
 
-
 inline ::Rectangle Raylib::Rectangle::getCStruct(void) const
 {
     return _rectangle;
-
 }
 
 inline void Raylib::Rectangle::drawRectangle(int const &posX, int const &posY, int const &width, int const &height, Color const &color) const
@@ -33,21 +31,20 @@ inline void Raylib::Rectangle::drawRectangle(int const &posX, int const &posY, i
     return ::DrawRectangle(posX, posY, width, height, color.getCStruct());
 }
 
-
-inline void Raylib::Rectangle::drawRectangleV(const Vector2 &position, const Vector2 &size, const Color &color) const
+inline void Raylib::Rectangle::drawRectangleV(Vector2 const &position, Vector2 const &size, Color const &color) const
 {
-    return ::DrawRectangleV(position.getCStruct(), size.getCStruct(), color.getCStruct());
+    ::DrawRectangleV(position.getCStruct(), size.getCStruct(), color.getCStruct());
 }
 
-inline void Raylib::Rectangle::drawRectangleRec(Rectangle const &rec, Color const &color) const
+inline void Raylib::Rectangle::drawRectangleRec(Rectangle const &rec, Color const &color)
 {
     return ::DrawRectangleRec(rec.getCStruct(), color.getCStruct());
 }
 
-//FIXME:inline void Raylib::Rectangle::drawRectanglePro(Rectangle const &rec, ::Vector2 const &origin, float const &rotation, Color const &color) const
-//FIXME:{
-//FIXME:    return  ::DrawRectanglePro(rec.getCStruct(), origin, rotation, color.getCStruct());
-//FIXME:}
+inline void Raylib::Rectangle::drawRectanglePro(Rectangle const &rec, Vector2 const &origin, float const &rotation, Color const &color) const
+{
+    return  ::DrawRectanglePro(rec.getCStruct(), origin.getCStruct(), rotation, color.getCStruct());
+}
 
 inline void Raylib::Rectangle::drawRectangleGradientV(int const &posX, int const &posY, int const &width, int const &height, Color const &color1, Color const &color2) const
 {
@@ -64,7 +61,7 @@ inline void Raylib::Rectangle::drawRectangleGradientEx(Rectangle const &rec, Col
     return ::DrawRectangleGradientEx(rec.getCStruct(), col1.getCStruct(), col2.getCStruct(), col3.getCStruct(), col4.getCStruct());
 }
 
-inline void Raylib::Rectangle::drawRectangleLines(int const &posX, int const &posY, int const &width, int const &height, Color const &color) const
+inline void Raylib::Rectangle::drawRectangleLines(int const &posX, int const &posY, int const &width, int const &height, Color const &color)
 {
     return ::DrawRectangleLines(posX, posY, width, height, color.getCStruct());
 }

@@ -5,12 +5,13 @@
 ** Vector2.hpp
 */
 
-#ifndef VECTOR_HPP_
-#define VECTOR_HPP_
+#ifndef VECTOR2D_HPP_
+#define VECTOR2D_HPP_
 
 #include "raylib.h"
 
-namespace Raylib {
+namespace Raylib
+{
     class Vector2 {
     public:
 
@@ -84,4 +85,4 @@ namespace Raylib {
 
 }
 
-#endif
+#endif /* !VECTOR2D_HPP_ */

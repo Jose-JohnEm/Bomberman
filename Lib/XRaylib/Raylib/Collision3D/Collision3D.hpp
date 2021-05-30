@@ -5,8 +5,8 @@
 ** Collision3D
 */
 
-#ifndef Collision3D_HPP_
-#define Collision3D_HPP_
+#ifndef COLLISION3D_HPP_
+#define COLLISION3D_HPP_
 
 #include <string>
 #include <iostream>
@@ -136,4 +136,4 @@ namespace Raylib
 
 }
 
-#endif /* !Collision3D_HPP_ */
+#endif /* !COLLISION3D_HPP_ */

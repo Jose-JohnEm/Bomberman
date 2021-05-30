@@ -5,8 +5,8 @@
 ** Vector3.hpp
 */
 
-#ifndef VECTOR_HPP_
-#define VECTOR_HPP_
+#ifndef VECTOR3D_HPP_
+#define VECTOR3D_HPP_
 
 #include "raylib.h"
 
@@ -89,4 +89,4 @@ namespace Raylib
 
 }
 
-#endif /* !VECTOR_HPP_ */
+#endif /* !VECTOR3D_HPP_ */

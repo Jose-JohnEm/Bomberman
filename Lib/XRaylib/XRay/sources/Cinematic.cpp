@@ -19,11 +19,15 @@ void XRay::displayCinematic(const Cinematic &cinematic)
     }
 }
 
-void XRay::displayIntroCinematic(void) //TODO: To change ? (Lucas)
+void XRay::displayIntroCinematic(void) //TODO: To change ? (Lucas (Prince) J'ai diminué la cinématique)
 {
     std::string path, skip, str = "1";
 
-    for (int i = 1; str != "2326" && !(i < 2300 && Raylib::Mouse::isButtonPressed(0) && mouseIsInBox(createBox(1760, 950, 1883, 1005)));) {
+    // Hide the cursor
+    if (Raylib::Cursor::isCursorOnScreen())
+        Raylib::Cursor::hideCursor();
+
+    for (int i = 1; str != "357" && !(i < 300 && Raylib::Mouse::isButtonPressed(0) && mouseIsInBox(createBox(1760, 950, 1883, 1005)));) {
         path = "resources/cinematic/intro/frame" + str + ".png";
         skip = std::string("resources/assets/") + std::string((mouseIsInBox(createBox(1760, 950, 1883, 1005))) ? "skipHover.png" : "skip.png");
         Raylib::Texture frame(Raylib::Image(path.c_str()));
@@ -31,8 +35,9 @@ void XRay::displayIntroCinematic(void) //TODO: To change ? (Lucas)
 
         beginDrawing();
         frame.drawTexture(0, 0, Raylib::Color::White());
-        if (i < 2300)
+        if (i < 300)
             skipButton.drawTexture(1760, 950, Raylib::Color::White());
+        displayMouse();
         endDrawing();
 
         i++;

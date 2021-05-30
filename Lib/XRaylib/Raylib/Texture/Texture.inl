@@ -31,9 +31,9 @@ inline void Raylib::Texture::set(const Texture &texture)
 //FIXME:    ::SetShapesTexture(texture._texture, source.getCStruct());
 //FIXME:}
 
-inline Raylib::Texture &Raylib::Texture::loadTexture(const char *fileName)
+inline Raylib::Texture &Raylib::Texture::loadTexture(const std::string fileName)
 {
-    _texture = ::LoadTexture(fileName);
+    _texture = ::LoadTexture(fileName.c_str());
     return *this;
 }
 
@@ -93,16 +93,16 @@ inline Raylib::Texture Raylib::Texture::drawTexture(const int &posX, const int &
     return *this;
 }
 
+inline void Raylib::Texture::drawTextureEx(Raylib::Texture const &texture, Raylib::Vector2 const &position, float const &rotation, float const &scale, Color const &tint) const
+{
+    ::DrawTextureEx(texture._texture, position.getCStruct(), rotation, scale, tint.getCStruct());
+}
+
 //FIXME:inline void Raylib::Texture::drawTextureV(Texture const &texture, Vector2 const &position, Color const &tint = Color::Black()) const
 //FIXME:{
 //FIXME:    ::DrawTextureV(texture._texture, position, tint.getCStruct());
 //FIXME:}
 //FIXME:
-//FIXME:inline void Raylib::Texture::drawTextureEx(Texture const &texture, Vector2 const &position, float const &rotation, float const &scale, Color const &tint = Color::Black()) const
-//FIXME:{
-//FIXME:    ::DrawTextureEx(texture._texture, position, rotation, scale, tint.getCStruct());
-//FIXME:}
-
 //FIXME:inline void Raylib::Texture::drawTextureRec(Texture const &texture, Rectangle const &source, Vector2 const &position, Color const &tint = Color::Black()) const
 //FIXME:{
 //FIXME:    ::DrawTextureRec(texture._texture, source.getCStruct(), position, tint.getCStruct());

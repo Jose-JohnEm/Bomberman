@@ -13,6 +13,7 @@
 #include "raylib.h"
 #include "Color/Color.hpp"
 #include "Rectangle/Rectangle.hpp"
+#include "Vector2/Vector2.hpp"
 
 namespace Raylib {
     class Camera3D {
