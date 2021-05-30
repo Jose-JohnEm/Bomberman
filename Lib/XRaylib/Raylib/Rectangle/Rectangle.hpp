@@ -13,6 +13,7 @@
 #include "raylib.h"
 #include "Color/Color.hpp"
 #include "Image/Image.hpp"
+#include "Vector2/Vector2.hpp"
 
 namespace Raylib {
     class Rectangle {
@@ -89,8 +90,8 @@ namespace Raylib {
          * @param size A const reference to a Class Vector2
          * @param color A const reference to Class Color
          */
-        void drawRectangleV(Vector2 const &position, Vector2 const &size,
-                            Color const &color) const;
+        void drawRectangleV(const Vector2 &position, const Vector2 &size,
+                            const Color &color) const;
 
         /**
          * @brief Draw a color-filled rectangle

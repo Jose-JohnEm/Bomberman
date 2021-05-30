@@ -34,10 +34,10 @@ inline void Raylib::Rectangle::drawRectangle(int const &posX, int const &posY, i
 }
 
 
-//FIXME:inline void Raylib::Rectangle::drawRectangleV(::Vector2 const &position, ::Vector2 const &size, Color const &color) const
-//FIXME:{
-//FIXME:    return ::DrawRectangleV(position, size, color.getCStruct());
-//FIXME:}
+inline void Raylib::Rectangle::drawRectangleV(const Vector2 &position, const Vector2 &size, const Color &color) const
+{
+    return ::DrawRectangleV(position.getCStruct(), size.getCStruct(), color.getCStruct());
+}
 
 inline void Raylib::Rectangle::drawRectangleRec(Rectangle const &rec, Color const &color) const
 {
