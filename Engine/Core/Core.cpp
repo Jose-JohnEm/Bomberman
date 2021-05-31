@@ -49,7 +49,7 @@ void Engine::Core::getBackupFiles(void)
     _backups.clear();
     for (const auto &file: itBackups)
         if (file.path().filename().extension() == ".backup")
-                _backups.push_back(file.path().filename());
+                _backups.push_back(file.path().filename().string());
 }
 
 void Engine::Core::saveBestScores(void)

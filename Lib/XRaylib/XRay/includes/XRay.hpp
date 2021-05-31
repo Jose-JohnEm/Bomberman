@@ -21,8 +21,11 @@
 #include <thread>
 #include <chrono>
 #include <iterator>
-#include <dirent.h>
 #include <filesystem>
+#ifdef __linux__ 
+    #include <dirent.h>
+#endif
+
 #include "Interfaces/IGraphical.hpp"
 #include "Window/Window.hpp"
 #include "Mouse/Mouse.hpp"

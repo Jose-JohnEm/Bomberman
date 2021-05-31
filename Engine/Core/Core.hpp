@@ -8,19 +8,9 @@
 #ifndef CORE_HPP_
 #define CORE_HPP_
 
-#include <string>
-#include <chrono>
-#include <thread>
 #include <vector>
-#include <map>
-#include <fstream>
-#include <iostream>
-#include <dirent.h>
-#include <filesystem>
-#include <sstream>
 #include <istream>
 #include <algorithm>
-#include <utility>
 #include "XRay.hpp"
 #include "Interfaces/IGraphical.hpp"
 #include "Interfaces/IGame.hpp"
