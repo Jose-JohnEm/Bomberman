@@ -30,7 +30,6 @@ inline void Raylib::Texture::unloadTexture(Texture const &texture) const
 {
     ::UnloadTexture(texture._texture);
 }
- 
 
 inline void Raylib::Texture::setShapesTexture(const Texture &texture, const Rectangle &source)
 {
@@ -64,7 +63,6 @@ inline Raylib::Texture Raylib::Texture::loadTextureCubemap(Image const &image, i
     _texture = ::LoadTextureCubemap(image.getCStruct(), layout);
     return *this;
 }
-
 
 inline void Raylib::Texture::updateTexture(Texture const &texture, const void *pixels) const
 {
@@ -134,14 +132,12 @@ inline void Raylib::Texture::drawTextureNPatch(Texture const &texture, NPatchInf
     ::DrawTextureNPatch(texture._texture, nPatchInfo, dest.getCStruct(), origin.getCStruct(), rotation, tint.getCStruct());
 }
 
-inline void Raylib::Texture::drawTexturePoly(Texture texture, Vector2 center, Vector2 &points, Vector2 &texcoords, int pointsCount, Color tint) const
+inline void Raylib::Texture::drawTexturePoly(const Texture &texture, const Vector2 &center, Vector2 &points, Vector2 &texcoords, const int &pointsCount, const Color &tint) const
 {
     ::Vector2 pts = points.getCStruct();
     ::Vector2 tex = texcoords.getCStruct();
 
-
     ::DrawTexturePoly(texture._texture, center.getCStruct(), &pts, &tex, pointsCount, tint.getCStruct());
-
     points = pts;
     texcoords = tex;
 }

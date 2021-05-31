@@ -609,7 +609,6 @@ namespace Raylib
              */
             void imageDrawTextEx(Image *dst, Font const &font, const char *text, Vector2 const &position, float const &fontSize, float const &spacing, Color const &tint);
 
-
         private:
             /**
              * @brief Set Image

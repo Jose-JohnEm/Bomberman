@@ -17,7 +17,6 @@
 #include "Rectangle/Rectangle.hpp"
 #include "Image/Image.hpp"
 
-
 namespace Raylib
 {
     class Texture {
@@ -118,7 +117,6 @@ namespace Raylib
              * @param pixels A const to a void *
              */
             void updateTexture(Texture const &texture, const void *pixels) const;
-
 
              /**
              * @brief Update GPU texture rectangle with new data
@@ -247,8 +245,8 @@ namespace Raylib
              * @param quad A const reference to a Rectangle
              * @param tint A const reference to a Color
              * @return A reference to the texture - Texture&
-             */ //TODO: const &param
-            void drawTexturePoly(Texture texture, Vector2 center, Vector2 &points, Vector2 &texcoords, int pointsCount, Color tint) const;
+             */
+            void drawTexturePoly(const Texture &texture, const Vector2 &center, Vector2 &points, Vector2 &texcoords, const int &pointsCount, const Color &tint) const;
 
         private:
             /**
