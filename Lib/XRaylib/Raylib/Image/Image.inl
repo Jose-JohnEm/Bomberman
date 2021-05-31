@@ -139,9 +139,9 @@ inline Raylib::Image Raylib::Image::imageCopy(Image const &image)
     return *this;
 }
 
-inline Raylib::Image Raylib::Image::imageFromImage(Image const &image, Rectangle const &rec)
+inline Raylib::Image Raylib::Image::imageFromImage(Image const &image, ::Rectangle const &rec)
 {
-    ::ImageFromImage(image.getCStruct(), rec.getCStruct());
+    ::ImageFromImage(image.getCStruct(), rec);
     return *this;
 }
 
