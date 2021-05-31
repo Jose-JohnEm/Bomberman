@@ -6,8 +6,16 @@ PROJECT(bomberman VERSION 1.0)
 # Set g++ standard version
 SET(CMAKE_CXX_STANDARD 17)
 
-# Call the Findresources module
-INCLUDE(cmake/Findresources.cmake)
+
+IF (NOT DEFINED ENV{SKIP_RESOURCES_FETCHING})
+    # Call the Findresources module
+    INCLUDE(cmake/Findresources.cmake)
+ELSE()
+    MESSAGE("######################")
+    MESSAGE("######################")
+    MESSAGE("######################")
+    MESSAGE("######################")
+ENDIF()
 
 # Make XRay CMakeList meta-compile XRay library that himself
 # will make Raylib-cpp meta compile
