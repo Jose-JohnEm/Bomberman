@@ -11,8 +11,9 @@
 #include <string>
 #include <iostream>
 #include "raylib.h"
-#include "Texture/Texture.hpp"
 #include "Font/Font.hpp"
+#include "Color/Color.hpp"
+#include "Rectangle/Rectangle.hpp"
 
 //TODO: const &parameter and method ! And use our encapsulation Raylib::Vector2 instead of ::Vector2 (C Struct) Good Luck :)
 
@@ -55,6 +56,13 @@ namespace Raylib
              * @brief Destroy the Image object
              */
             ~Image();
+
+            /**
+             * @brief Getter of Image structure (private attribute)
+             *
+             * @return An Image C structure
+             */
+            ::Image getCStruct(void) const;
 
              /**
              * @brief Get pixel data from screen buffer and return an Image (screenshot)
@@ -142,20 +150,13 @@ namespace Raylib
              */
             Image &operator=(const Image &image);
 
-            /**
-             * @brief Getter of Image structure (private attribute)
-             *
-             * @return An Image C structure
-             */
-            ::Image getCStruct(void) const;
-
              /**
              * @brief Get pixel data from GPU texture and return an Image
              *
              * @param texture A const reference to a Texture
              * @return An Image Class
              */
-            Image getTextureData(Texture const &texture) const;
+            Image getTextureData(::Texture const &texture) const;
 
             /**
              * @brief Generate image: plain color

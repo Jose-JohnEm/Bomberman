@@ -79,41 +79,41 @@ inline Raylib::Image &Raylib::Image::operator=(const Image &image)
     return *this;
 }
 
-//FIXME:inline Raylib::Image Raylib::Image::getTextureData(Texture const &texture) const
-//FIXME:{
-//FIXME:    ::GetTextureData(texture.getCStruct());
-//FIXME:    return *this;
-//FIXME:}
-//FIXME:
-//FIXME:inline Raylib::Image Raylib::Image::genImageColor(int const &width, int const &height, Color const &color)
-//FIXME:{
-//FIXME:    ::GenImageColor(width, height, color.getCStruct());
-//FIXME:    return *this;
-//FIXME:}
+inline Raylib::Image Raylib::Image::getTextureData(::Texture const &texture) const
+{
+    ::GetTextureData(texture);
+    return *this;
+}
 
-//FIXME:inline Raylib::Image Raylib::Image::genImageGradientV(int const &width, int const &height, Color const &top, Color const &bottom)
-//FIXME:{
-//FIXME:    ::GenImageGradientV(width, height, top.getCStruct(), bottom.getCStruct());
-//FIXME:    return *this;
-//FIXME:}
-//FIXME:
-//FIXME:inline Raylib::Image Raylib::Image::genImageGradientH(int const &width, int const &height, Color const &left, Color const &right)
-//FIXME:{
-//FIXME:    ::GenImageGradientH(width, height, left.getCStruct(), right.getCStruct());
-//FIXME:    return *this;
-//FIXME:}
-//FIXME:
-//FIXME:inline Raylib::Image Raylib::Image::genImageGradientRadial(int const &width, int const &height, float density, Color inner, Color outer)
-//FIXME:{
-//FIXME:    ::GenImageGradientRadial(width, height, density, inner.getCStruct(), outer.getCStruct());
-//FIXME:    return *this;
-//FIXME:}
-//FIXME:
-//FIXME:inline Raylib::Image Raylib::Image::genImageChecked(int const &width, int const &height, int const &checksX, int const &checksY, Color col1, Color col2)
-//FIXME:{
-//FIXME:    ::GenImageChecked(width, height, checksX, checksY, col1.getCStruct(), col2.getCStruct());
-//FIXME:    return *this;
-//FIXME:}
+inline Raylib::Image Raylib::Image::genImageColor(int const &width, int const &height, Color const &color)
+{
+    ::GenImageColor(width, height, color.getCStruct());
+    return *this;
+}
+
+inline Raylib::Image Raylib::Image::genImageGradientV(int const &width, int const &height, Color const &top, Color const &bottom)
+{
+    ::GenImageGradientV(width, height, top.getCStruct(), bottom.getCStruct());
+    return *this;
+}
+
+inline Raylib::Image Raylib::Image::genImageGradientH(int const &width, int const &height, Color const &left, Color const &right)
+{
+    ::GenImageGradientH(width, height, left.getCStruct(), right.getCStruct());
+    return *this;
+}
+
+inline Raylib::Image Raylib::Image::genImageGradientRadial(int const &width, int const &height, float density, Color inner, Color outer)
+{
+    ::GenImageGradientRadial(width, height, density, inner.getCStruct(), outer.getCStruct());
+    return *this;
+}
+
+inline Raylib::Image Raylib::Image::genImageChecked(int const &width, int const &height, int const &checksX, int const &checksY, Color col1, Color col2)
+{
+    ::GenImageChecked(width, height, checksX, checksY, col1.getCStruct(), col2.getCStruct());
+    return *this;
+}
 
 inline Raylib::Image Raylib::Image::genImageWhiteNoise(int const &width, int const &height, float const &factor)
 {
@@ -139,23 +139,24 @@ inline Raylib::Image Raylib::Image::imageCopy(Image const &image)
     return *this;
 }
 
-//FIXME:inline Raylib::Image Raylib::Image::imageFromImage(Image const &image, Rectangle const &rec)
-//FIXME:{
-//FIXME:    ::ImageFromImage(image.getCStruct(), rec.getCStruct());
-//FIXME:    return *this;
-//FIXME:}
-//FIXME:
-//FIXME:inline Raylib::Image Raylib::Image::imageText(const char *text, int const &fontSize, Color const &color)
-//FIXME:{
-//FIXME:    ::ImageText(text, fontSize, color.getCStruct());
-//FIXME:    return *this;
-//FIXME:}
-//FIXME:
-//FIXME:inline Raylib::Image Raylib::Image::imageTextEx(Font const &font, const char *text, float const &fontSize, float const &spacing, Color const &tint)
-//FIXME:{
-//FIXME:    ::ImageTextEx(font.getCStruct(), text, fontSize, spacing, tint.getCStruct());
-//FIXME:    return *this;
-//FIXME:}
+inline Raylib::Image Raylib::Image::imageFromImage(Image const &image, Rectangle const &rec)
+{
+    ::ImageFromImage(image.getCStruct(), rec.getCStruct());
+    return *this;
+}
+
+inline Raylib::Image Raylib::Image::imageText(const char *text, int const &fontSize, Color const &color)
+{
+    ::ImageText(text, fontSize, color.getCStruct());
+    return *this;
+}
+
+inline Raylib::Image Raylib::Image::imageTextEx(Font const &font, const char *text, float const &fontSize, float const &spacing, Color const &tint)
+{
+    ::ImageTextEx(font.getCStruct(), text, fontSize, spacing, tint.getCStruct());
+    return *this;
+}
+
 //FIXME:inline void Raylib::Image::imageFormat(Image *image, int const &newFormat) const
 //FIXME:{
 //FIXME:    ::ImageFormat(&image->getCStruct(), newFormat);
