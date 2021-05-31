@@ -26,19 +26,15 @@ ELSE()
     # Download the resources as a compressed tar.gz file
     FILE(DOWNLOAD http://51.77.221.38:8080/resources.tar.gz resources.tar.gz SHOW_PROGRESS)
 
-    #create a build directory
-    ##file(MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build)
-
     # Uncompress the resource.tar.gz
     EXECUTE_PROCESS(
-      COMMAND ${CMAKE_COMMAND} -E mkdir build && cd build
       COMMAND ${CMAKE_COMMAND} -E tar xzvf resources.tar.gz
-      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build
     )
 
     # Remove the old resources, then replace by the new resources and set the new timestamp
     FILE(REMOVE_RECURSE ${CMAKE_CURRENT_SOURCE_DIR}/resources)
-    ##FILE(RENAME ${CMAKE_CURRENT_SOURCE_DIR}/build/resources ${CMAKE_CURRENT_SOURCE_DIR}/resources)
-    ##FILE(RENAME ${CMAKE_CURRENT_SOURCE_DIR}/build/.last.log ${CMAKE_CURRENT_SOURCE_DIR}/resources/.last.log)
+    FILE(RENAME ${CMAKE_CURRENT_SOURCE_DIR}/build/resources ${CMAKE_CURRENT_SOURCE_DIR}/resources)
+    FILE(RENAME ${CMAKE_CURRENT_SOURCE_DIR}/build/.last.log ${CMAKE_CURRENT_SOURCE_DIR}/resources/.last.log)
 
 ENDIF()

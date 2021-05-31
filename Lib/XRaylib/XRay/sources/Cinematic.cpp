@@ -12,35 +12,34 @@ void XRay::displayCinematic(const Cinematic &cinematic)
     switch (cinematic)
     {
     case INTRO:
-        displayIntroCinematic();
+        displayCinematic("intro", 300);
         break;
     default:
         break;
     }
 }
 
-void XRay::displayIntroCinematic(void) //TODO: To change ? (Lucas (Prince) J'ai diminué la cinématique)
+void XRay::displayCinematic(const std::string &cinematicPathDirectory, const size_t &hideSkip) const
 {
-    std::string path, skip, str = "1";
+    size_t filesNumber = countFilesDirectory("resources/cinematic/" + cinematicPathDirectory);
 
     // Hide the cursor
     if (Raylib::Cursor::isCursorOnScreen())
         Raylib::Cursor::hideCursor();
 
-    for (int i = 1; str != "357" && !(i < 300 && Raylib::Mouse::isButtonPressed(0) && mouseIsInBox(createBox(1760, 950, 1883, 1005)));) {
-        path = "resources/cinematic/intro/frame" + str + ".png";
-        skip = std::string("resources/assets/") + std::string((mouseIsInBox(createBox(1760, 950, 1883, 1005))) ? "skipHover.png" : "skip.png");
-        Raylib::Texture frame(Raylib::Image(path.c_str()));
-        Raylib::Texture skipButton(Raylib::Image(skip.c_str()));
+    // Launch cinematic
+    for (size_t i = 0; i < filesNumber && !(i < hideSkip && Raylib::Mouse::isButtonPressed(0) && mouseIsInBox(createBox(1760, 950, 1883, 1005))); i++)
+    {
+        // Set Textures
+        std::shared_ptr<Raylib::Texture> skipButton = mouseIsInBox(createBox(1760, 950, 1883, 1005)) ? _resources.at(SKIP_HOVER) : _resources.at(SKIP);
+        Raylib::Texture frame(Raylib::Image("resources/cinematic/" + cinematicPathDirectory + "/frame" + std::to_string(i) + ".png"));
 
+        // Draw cinematic
         beginDrawing();
         frame.drawTexture(0, 0, Raylib::Color::White());
-        if (i < 300)
-            skipButton.drawTexture(1760, 950, Raylib::Color::White());
+        if (i < hideSkip)
+            skipButton->drawTexture(1760, 950, Raylib::Color::White());
         displayMouse();
         endDrawing();
-
-        i++;
-        str = std::to_string(i);
     }
 }
