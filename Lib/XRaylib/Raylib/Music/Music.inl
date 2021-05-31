@@ -42,7 +42,7 @@ inline Raylib::Music &Raylib::Music::resume(void)
 
 inline bool Raylib::Music::isPlaying(void) const
 {
-    return ::IsMusicStreamPlaying(_music);
+    return ::IsMusicPlaying(_music);
 }
 
 inline Raylib::Music &Raylib::Music::setVolume(const float &volume)
