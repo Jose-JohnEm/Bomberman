@@ -40,7 +40,7 @@ void Engine::Core::run(void)
     }
     _graphical->closeWindow();
 }
-    
+
 void Engine::Core::getBackupFiles(void)
 {
     std::string dirBackups(".backups/");
