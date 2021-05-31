@@ -261,7 +261,7 @@ namespace Raylib
              * @param rec A const reference to a Class Rectangle
              * @return An Image Class
              */
-            Image imageFromImage(Image const &image, Rectangle const &rec);
+            Image imageFromImage(Image const &image, ::Rectangle const &rec);
 
             /**
              * @brief Create an image from text (default font)
