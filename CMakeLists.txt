@@ -11,10 +11,7 @@ IF (NOT DEFINED ENV{SKIP_RESOURCES_FETCHING})
     # Call the Findresources module
     INCLUDE(cmake/Findresources.cmake)
 ELSE()
-    MESSAGE("######################")
-    MESSAGE("######################")
-    MESSAGE("######################")
-    MESSAGE("######################")
+    MESSAGE("Skipping ressource fetching...")
 ENDIF()
 
 # Make XRay CMakeList meta-compile XRay library that himself
