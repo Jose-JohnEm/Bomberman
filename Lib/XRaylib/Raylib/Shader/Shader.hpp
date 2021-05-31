@@ -32,7 +32,6 @@ namespace Raylib {
          */
         Shader(::Shader const &shader);
 
-
         /**
          * @brief Construct a new Shader object (Copy Constructor)
          *
@@ -171,7 +170,6 @@ namespace Raylib {
          * @param Shader A const reference to a Shader object
          */
         void set(const Shader &shader);
-
 
         /**
          * @brief Declare a Shader
