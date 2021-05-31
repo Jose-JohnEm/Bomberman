@@ -109,3 +109,8 @@ inline void XRay::displayMouse(void) const
 {
     _resources.at(HEAD)->drawTexture(Raylib::Mouse::getMouseX() - 30, Raylib::Mouse::getMouseY() - 30, Raylib::Color::White());
 }
+
+inline size_t XRay::countFilesDirectory(const std::filesystem::path &path) const
+{
+    return (std::size_t)std::distance(std::filesystem::directory_iterator{path}, std::filesystem::directory_iterator{});
+}

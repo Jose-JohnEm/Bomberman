@@ -12,14 +12,14 @@ void XRay::displayCinematic(const Cinematic &cinematic)
     switch (cinematic)
     {
     case INTRO:
-        displayIntroCinematic();
+        displayCinematic("intro", 300);
         break;
     default:
         break;
     }
 }
 
-void XRay::displayIntroCinematic(void) //TODO: To change ? (Lucas (Prince) J'ai diminué la cinématique)
+void XRay::displayCinematic(const std::string &cinematicPathDirectory, const size_t &hideSkip) const//TODO: To change ? (Lucas (Prince) J'ai diminué la cinématique)
 {
     std::string path, skip, str = "1";
 
