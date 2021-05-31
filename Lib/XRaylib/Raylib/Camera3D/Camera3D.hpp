@@ -14,6 +14,7 @@
 #include "Color/Color.hpp"
 #include "Rectangle/Rectangle.hpp"
 #include "Vector2/Vector2.hpp"
+#include "Vector3/Vector3.hpp"
 
 namespace Raylib {
     class Camera3D {
@@ -173,7 +174,7 @@ namespace Raylib {
          */
         void drawBillboardRec(Camera3D const &camera, Texture2D const &texture,
                               Rectangle const &source, Vector3 const &center,
-                              Vector2 const &size,
+                              float const &size,
                               Raylib::Color const &tint) const;
 
     private:

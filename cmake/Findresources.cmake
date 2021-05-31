@@ -6,7 +6,6 @@ MESSAGE("Searching for resources updates...")
 # Download the last log from the resources' server
 FILE(DOWNLOAD http://51.77.221.38:8080/last.log .last.log)
 
-
 # Check for new updates by comparing the local timestamp and the server timestamp
 EXECUTE_PROCESS( COMMAND ${CMAKE_COMMAND} -E compare_files
   "${CMAKE_CURRENT_SOURCE_DIR}/resources/.last.log"
@@ -25,6 +24,9 @@ ELSE()
 
     # Download the resources as a compressed tar.gz file
     FILE(DOWNLOAD http://51.77.221.38:8080/resources.tar.gz resources.tar.gz SHOW_PROGRESS)
+
+    # Create build directory
+    FILE(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/build)
 
     # Uncompress the resource.tar.gz
     EXECUTE_PROCESS(

@@ -19,6 +19,6 @@ Raylib::Texture::Texture(const Raylib::Image &image)
 
 Raylib::Texture::~Texture()
 {
-    // FIXME: Find why shared_ptr in Xray segfault here
-//    ::UnloadTexture(_texture);
+    //TODO: try it
+    //unloadTexture(*this);
 }

@@ -11,6 +11,7 @@
 #include <iostream>
 #include <functional>
 #include <string>
+#include <array>
 #include <map>
 #include <sstream>
 #include <vector>
@@ -19,6 +20,12 @@
 #include <utility>
 #include <thread>
 #include <chrono>
+#include <iterator>
+#include <filesystem>
+#ifdef __linux__ 
+    #include <dirent.h>
+#endif
+
 #include "Interfaces/IGraphical.hpp"
 #include "Window/Window.hpp"
 #include "Mouse/Mouse.hpp"
@@ -215,9 +222,12 @@ class XRay : public IGraphical {
         void displayCinematic(const Cinematic &cinematic);
 
         /**
-         * @brief Display Opening Scene
+         * @brief Display a specific cinematic
+         *
+         * @param cinematicPathDirectory A string related to the specific cinematic directory
+         * @param hideSkip A size_t corresponding to the cinematic frame when you must hide the skip button
          */
-        void displayIntroCinematic(void);
+        void displayCinematic(const std::string &cinematicPathDirectory, const size_t &hideSkip) const;
 
         /**
          * @brief This function must display the current scene. It is used in the game loop
@@ -238,15 +248,15 @@ class XRay : public IGraphical {
          * @param mouseOnText A vector of boolean that represents if mouse is on box to position n with n < mouseOnText.size()
          * @param textBox A vector of rectangle that represents the boxes of the pseudos
          */
-        void updateTextBox(std::vector<bool> &mouseOnText, std::vector<Raylib::Rectangle> textBox);
+        void updateTextBox(std::vector<bool> &mouseOnText, const std::vector<Raylib::Rectangle> &textBox);
 
         /**
          * @brief This function manages the click on the different previous and next buttons
          *
-         * @param nextTab A vector of all next buttons coordinates
-         * @param prevTab A vector of all previous buttons coordinates
+         * @param nextButtons A vector of all next buttons coordinates
+         * @param prevButtons A vector of all previous buttons coordinates
          */
-        void manageNextOrPrev(std::vector<std::pair<int, int>> &nextTab, std::vector<std::pair<int, int>> &prevTab);
+        void manageNextOrPrev(const std::vector<std::pair<int, int>> &nextButtons, const std::vector<std::pair<int, int>> &prevButtons);
 
         /**
          * @brief Adds a new player to the board, if the limit is not exceeded.
@@ -259,11 +269,9 @@ class XRay : public IGraphical {
         /**
          * @brief Remove the player of the board.
          *
-         * @param removePos A vector of all remove buttons coordinates
-         * @param mouseOnText A vector of boolean that represents if mouse is on box to position n with n < mouseOnText.size()
-         * @param textBox A vector of rectangle that represents the boxes of the pseudos
+         * @param removeButtons A vector of all remove buttons coordinates
          */
-        void removePlayer(std::vector<std::pair<int, int>> &removePos, std::vector<bool> &mouseOnText, std::vector<Raylib::Rectangle> textBox);
+        void removePlayer(const std::vector<std::pair<int, int>> &removeButtons);
 
         /**
          * @brief This function displays the boxes of the pseudos.
@@ -286,12 +294,20 @@ class XRay : public IGraphical {
         /**
          * @brief This function displays all cards and their parameters
          *
-         * @param removePos A vector of all remove buttons coordinates
-         * @param nextTab A vector of all next buttons coordinates
-         * @param prevTab A vector of all previous buttons coordinates
-         * @param a A pointer to a int that represents the x coordinate of the last displayed card
+         * @param removeButtons A vector of all remove buttons coordinates
+         * @param nextButtons A vector of all next buttons coordinates
+         * @param prevButtons A vector of all previous buttons coordinates
+         * @param x A pointer to an int that represents the x coordinate of the last displayed card
          */
-        void displayCardsSettings(std::vector<std::pair<int, int>> &removePos, std::vector<std::pair<int, int>> &nextTab, std::vector<std::pair<int, int>> &prevTab, int *a);
+        void displayCardsSettings(std::vector<std::pair<int, int>> &removeButtons, std::vector<std::pair<int, int>> &nextButtons, std::vector<std::pair<int, int>> &prevButtons, int *x);
+
+        /**
+         * @brief This function counts the number of files in a specific directory
+         *
+         * @param path A filesystem path related to a directory
+         * @return Number of files (size_t)
+         */
+        size_t countFilesDirectory(const std::filesystem::path &path) const;
 
     private:
         Raylib::Window _window;                     // Game window

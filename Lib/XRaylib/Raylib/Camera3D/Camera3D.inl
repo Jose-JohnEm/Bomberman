@@ -80,21 +80,21 @@ Matrix Raylib::Camera3D::getCameraMatrix(Camera3D const &camera) const
 
 ::Vector2 Raylib::Camera3D::getWorldToScreen(Vector3 const &position, Camera3D const &camera) const
 {
-    return ::GetWorldToScreen(position, camera.getCStruct());
+    return ::GetWorldToScreen(position.getCStruct(), camera.getCStruct());
 }
 
 ::Vector2 Raylib::Camera3D::getWorldToScreenEx(Vector3 const &position, Camera3D const &camera, int const &width, int const &height) const
 {
-    return ::GetWorldToScreenEx(position, camera.getCStruct(), width, height);
+    return ::GetWorldToScreenEx(position.getCStruct(), camera.getCStruct(), width, height);
 }
 
 void Raylib::Camera3D::drawBillboard(Camera3D const &camera, Texture2D const &texture, Vector3 const &center, float const &size, Raylib::Color const &tint) const
 {
-    return ::DrawBillboard(camera.getCStruct(), texture, center, size, tint.getCStruct());
+    return ::DrawBillboard(camera.getCStruct(), texture, center.getCStruct(), size, tint.getCStruct());
 }
 
 void Raylib::Camera3D::drawBillboardRec(Camera3D const &camera, Texture2D const &texture,
-Raylib::Rectangle const &source, Vector3 const &center, Vector2 const &size, Raylib::Color const &tint) const
+Raylib::Rectangle const &source, Vector3 const &center, const float &size, Raylib::Color const &tint) const
 {
-    return ::DrawBillboardRec(camera.getCStruct(), texture, source.getCStruct(), center, size.getCStruct(), tint.getCStruct());
+    return ::DrawBillboardRec(camera.getCStruct(), texture, source.getCStruct(), center.getCStruct(), size, tint.getCStruct());
 }
