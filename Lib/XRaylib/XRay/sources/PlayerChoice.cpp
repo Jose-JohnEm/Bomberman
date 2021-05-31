@@ -97,7 +97,7 @@ void XRay::displayBoxes(const std::vector<bool> &mouseOnText, const std::vector<
             Raylib::Text::drawText(_userNames[p].c_str(), textBox[p].getCStruct().x + 5, textBox[p].getCStruct().y + 8, 40, Raylib::Color::Maroon());
 
             if (mouseOnText[p] && _letterAndFrame[p].first < 9)
-                if (((_letterAndFrame[p].second/50)%10) == 0)
+                if (((_letterAndFrame[p].second/20)%10) == 0)
                     Raylib::Text::drawText("_", textBox[p].getCStruct().x + 8 + Raylib::Text::measureText(_userNames[p].c_str(), 40), textBox[p].getCStruct().y + 12, 40, Raylib::Color::Maroon());
         }
     }

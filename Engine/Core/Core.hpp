@@ -15,11 +15,11 @@
 #include <map>
 #include <fstream>
 #include <iostream>
+#include <dirent.h>
 #include <filesystem>
 #include <sstream>
 #include <istream>
 #include <algorithm>
-#include <dirent.h>
 #include <utility>
 #include "XRay.hpp"
 #include "Interfaces/IGraphical.hpp"
@@ -77,6 +77,5 @@ namespace Engine
             bool _isPaused;                                                     // Pause flag
     };
 }
-
 
 #endif /* !CORE_HPP_ */
