@@ -11,11 +11,12 @@
 #include <string>
 #include <iostream>
 #include "raylib.h"
-#include "Image/Image.hpp"
 #include "Color/Color.hpp"
-#include "Rectangle/Rectangle.hpp"
 #include "RenderTexture/RenderTexture.hpp"
 #include "Vector2/Vector2.hpp"
+#include "Rectangle/Rectangle.hpp"
+#include "Image/Image.hpp"
+
 
 namespace Raylib
 {
@@ -30,7 +31,12 @@ namespace Raylib
             /**
              * @brief Construct a new Texture object
              */
-            Texture(const Image &image);
+            Texture(const Texture &texture) = default;
+
+            /**
+             * @brief Construct a new Texture object
+             */
+            Texture(const Image &texture);
 
             /**
              * @brief Destroy the Texture object
@@ -58,7 +64,7 @@ namespace Raylib
              * @param texture A Texture Object
              * @param source A Rectangle Object
              */
-            void setShapesTexture(Texture const &texture, Rectangle const &source) const;
+            void setShapesTexture(const Texture &texture, const Rectangle &source);
 
             /**
              * @brief Load texture from file into GPU memory (VRAM)
@@ -242,7 +248,7 @@ namespace Raylib
              * @param tint A const reference to a Color
              * @return A reference to the texture - Texture&
              */ //TODO: const &param
-            void drawTexturePoly(Texture texture, Vector2 center, Vector2 *points, Vector2 *texcoords, int pointsCount, Color tint) const;
+            void drawTexturePoly(Texture texture, Vector2 center, Vector2 &points, Vector2 &texcoords, int pointsCount, Color tint) const;
 
         private:
             /**
