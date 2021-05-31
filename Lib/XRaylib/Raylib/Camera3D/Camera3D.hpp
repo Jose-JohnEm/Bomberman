@@ -174,7 +174,7 @@ namespace Raylib {
          */
         void drawBillboardRec(Camera3D const &camera, Texture2D const &texture,
                               Rectangle const &source, Vector3 const &center,
-                              Vector2 const &size,
+                              float const &size,
                               Raylib::Color const &tint) const;
 
     private:

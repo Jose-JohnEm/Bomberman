@@ -27,7 +27,7 @@ inline std::string Raylib::File::loadFileText(const std::string &fileName)
 
 inline void Raylib::File::unloadFileText(const std::string &text)
 {
-    return ::UnloadFileText(const_cast<char *>(text.c_str()));
+    return ::UnloadFileText((unsigned char *)text.c_str());
 }
 
 inline bool Raylib::File::saveFileText(const std::string &fileName, const std::string &text)

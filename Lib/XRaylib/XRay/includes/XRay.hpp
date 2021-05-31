@@ -20,8 +20,9 @@
 #include <utility>
 #include <thread>
 #include <chrono>
-#include <filesystem>
 #include <iterator>
+#include <dirent.h>
+#include <filesystem>
 #include "Interfaces/IGraphical.hpp"
 #include "Window/Window.hpp"
 #include "Mouse/Mouse.hpp"
