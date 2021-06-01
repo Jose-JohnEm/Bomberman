@@ -10,6 +10,9 @@
 XRay::XRay()
     : _window(1920, 1080, "Bomberman")
 {
+	// Set icon for window
+	Raylib::Window::setWindowIcon(Raylib::Image("resources/assets/head.png"));
+
     // Set resources
     setResources();
 

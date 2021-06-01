@@ -11,6 +11,7 @@
 #include <string>
 #include <iostream>
 #include "raylib.h"
+#include "Image/Image.hpp"
 
 namespace Raylib
 {
@@ -51,6 +52,13 @@ namespace Raylib
          * @brief Close window
          */
         static void closeWindow(void);
+
+        /**
+         * @brief Set the Window Icon
+         *
+         * @param image Image
+         */
+        static void setWindowIcon(Raylib::Image image);
     };
 
     #include "Window.inl"
