@@ -12,8 +12,14 @@ void XRay::displayLoadGameScene(void)
     // Set scene
     _scene = LOAD_GAME;
 
+    // Check if mouse is on button spot
+    bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
+
     // Vertical axis
     size_t ordinate = 300;
+
+    // Set specific texture according to mouse position
+    std::shared_ptr<Raylib::Texture> backButton = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK);
 
     // Draw scene
     beginDrawing();
@@ -24,5 +30,11 @@ void XRay::displayLoadGameScene(void)
         Raylib::Text::drawText(backup.substr(0, backup.find('.')), 300, ordinate + 20, 65, Raylib::Color::Black());
         ordinate += 100;
     }
+    backButton->drawTexture(20, 1000, Raylib::Color::White());
+    displayMouse();
     endDrawing();
+
+    // Go to another scene according to mouse position
+    if (goBack && Raylib::Mouse::isButtonPressed(0))
+        displayGameModeScene();
 }
