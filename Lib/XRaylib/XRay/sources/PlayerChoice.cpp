@@ -153,6 +153,8 @@ void XRay::displayPlayerChoiceScene(void)
     displayBoxes(mouseOnText, textBox);
     displayCardsSettings(removeButtons, nextButtons, prevButtons, &x);
     displayMouse();
+
+    _pSelector.draw();
     
     endDrawing();
 

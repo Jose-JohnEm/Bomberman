@@ -40,4 +40,4 @@ TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PRIVATE
 )
 
 # Active in debug environment or hidden in release
-TARGET_COMPILE_OPTIONS(xray PRIVATE -g3 -lstdc++fs)
+#TARGET_COMPILE_OPTIONS(xray PRIVATE -g3 -lstdc++fs)
