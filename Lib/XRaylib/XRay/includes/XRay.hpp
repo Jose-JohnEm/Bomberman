@@ -27,6 +27,8 @@
 #endif
 
 #include "Interfaces/IGraphical.hpp"
+#include "Camera3D/Camera3D.hpp"
+#include "Texture/Texture.hpp"
 #include "Window/Window.hpp"
 #include "Mouse/Mouse.hpp"
 #include "Texture/Texture.hpp"
