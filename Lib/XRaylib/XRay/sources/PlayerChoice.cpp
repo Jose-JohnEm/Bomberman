@@ -140,12 +140,6 @@ void XRay::displayPlayerChoiceScene(void)
     std::vector<bool> mouseOnText;                      // A vector of boolean that represents if mouse is on box to position n with n < mouseOnText.size()
     std::vector<Raylib::Rectangle> textBox;             // A vector of rectangle that represents the boxes of the pseudos
     
-    
-    Raylib::Camera3D camera;
-    Model perso = LoadModel("resources/players/3D/Spongebob/spongebobshape.obj");
-    Raylib::Texture texture("resources/players/3D/Spongebob/sbb.png");
-
-    SetMaterialTexture(&perso.materials[0], MAP_DIFFUSE, texture.getCStruct());
     // A int that represents the x coordinate of the last displayed card
     int x;
 
@@ -155,15 +149,10 @@ void XRay::displayPlayerChoiceScene(void)
 
     // Draw scene
     beginDrawing();
+
     displayBoxes(mouseOnText, textBox);
     displayCardsSettings(removeButtons, nextButtons, prevButtons, &x);
     displayMouse();
-
-    camera.beginMode3D();
-
-    DrawModelEx(perso, {0, 0, 0}, {1, 0, 0}, -90, {1, 1, 1}, WHITE);
-        ///////
-    camera.endMode3D();
     
     endDrawing();
 
