@@ -59,6 +59,11 @@ namespace Raylib
          * @param image Image
          */
         static void setWindowIcon(Raylib::Image image);
+
+        /**
+         * @brief Toggle window state: fullscreen/windowed (only PLATFORM_DESKTOP)
+         */
+        static void toggleFullscreen();
     };
 
     #include "Window.inl"
