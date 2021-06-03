@@ -20,5 +20,5 @@ Raylib::Texture::Texture(const Raylib::Image &image)
 Raylib::Texture::~Texture()
 {
     //TODO: try it
-    unloadTexture(*this);
+//    unloadTexture(*this);
 }
