@@ -13,8 +13,8 @@ void XRay::displaySettingsScene(void)
     _scene = SETTINGS;
 
     // Check if mouse is on button spot
-    bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065));
-    bool clickFullscreen = mouseIsInBox(createBox(1500, 200, 1725, 258));
+    bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
+    bool clickFullscreen = mouseIsInBox(createBox(1500, 200, 1725, 258)) ? true : false;
 
     // Set specific texture according to mouse position
     std::shared_ptr<Raylib::Texture> backButton = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK);
