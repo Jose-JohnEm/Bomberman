@@ -20,13 +20,16 @@ void XRay::displaySettingsScene(void)
 
     // On / off buton for fullscreen button
     std::shared_ptr<Raylib::Texture> fullscreenButton = _resources.at(Raylib::Window::isWindowFullscreen() ? ON : OFF);
-//    Raylib::Text::drawText();
+
 
     // Draw scene
     beginDrawing();
+    //Backgroung
     _resources.at(SETTING_BG)->drawTexture(0, 0, Raylib::Color::White());
     backButton->drawTexture(20, 1000, Raylib::Color::White());
+    // Fullscreen
     fullscreenButton->drawTexture(1500, 200, Raylib::Color::White());
+    Raylib::Text::drawText("Fullscreen :", 1200, 205, 48, Raylib::Color::Red());
     displayMouse();
     endDrawing();
 
