@@ -22,7 +22,7 @@
 #include <chrono>
 #include <iterator>
 #include <filesystem>
-#ifdef __linux__ 
+#ifdef __linux__
     #include <dirent.h>
 #endif
 
@@ -314,7 +314,7 @@ class XRay : public IGraphical {
     private:
         Raylib::Window _window;                     // Game window
 
-        Raylib::Music music;
+//        Raylib::Music music;
         std::vector<std::string> _userNames;        // A vector of all the users names
         std::pair<bool, void (XRay::*)()> _intro;   // Intro pointer to function
         Scene _scene = MENU;                   // Current scene

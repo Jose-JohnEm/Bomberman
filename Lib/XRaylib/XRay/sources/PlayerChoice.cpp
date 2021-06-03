@@ -143,9 +143,6 @@ void XRay::displayPlayerChoiceScene(void)
     std::vector<bool> mouseOnText;                      // A vector of boolean that represents if mouse is on box to position n with n < mouseOnText.size()
     std::vector<Raylib::Rectangle> textBox;             // A vector of rectangle that represents the boxes of the pseudos
 
-    // Set specific texture according to mouse position
-    std::shared_ptr<Raylib::Texture> backButton = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK);
-
     // A int that represents the x coordinate of the last displayed card
     int x;
 
@@ -157,7 +154,7 @@ void XRay::displayPlayerChoiceScene(void)
     beginDrawing();
     displayBoxes(mouseOnText, textBox);
     displayCardsSettings(removeButtons, nextButtons, prevButtons, &x);
-    backButton->drawTexture(20, 1000, Raylib::Color::White());
+    (mouseIsInBox(createBox(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000, Raylib::Color::White());
     displayMouse();
     endDrawing();
 
