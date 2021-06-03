@@ -29,3 +29,8 @@ inline void Raylib::Window::toggleFullscreen()
 {
     ::ToggleFullscreen();
 }
+
+inline bool Raylib::Window::isWindowFullscreen(void)
+{
+    return ::IsWindowFullscreen();
+}
