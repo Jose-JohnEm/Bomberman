@@ -16,6 +16,9 @@ XRay::XRay()
 	// Set in fullscreen mode
 	Raylib::Window::toggleFullscreen();
 
+	// Set FPS
+	Raylib::Timing::setTargetFPS(60);
+
     // Set resources
     setResources();
 
