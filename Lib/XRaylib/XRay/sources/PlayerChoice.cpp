@@ -131,6 +131,9 @@ void XRay::displayPlayerChoiceScene(void)
     // Set scene
     _scene = PLAYER_CHOICE;
 
+    // Check if mouse is on button spot
+    bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
+
     // Create containers
     std::vector<std::pair<int, int>> removeButtons;     // A vector of all remove buttons coordinates
     std::vector<std::pair<int, int>> nextButtons;       // A vector of all next buttons coordinates
@@ -139,7 +142,7 @@ void XRay::displayPlayerChoiceScene(void)
     // Create containers
     std::vector<bool> mouseOnText;                      // A vector of boolean that represents if mouse is on box to position n with n < mouseOnText.size()
     std::vector<Raylib::Rectangle> textBox;             // A vector of rectangle that represents the boxes of the pseudos
-    
+
     // A int that represents the x coordinate of the last displayed card
     int x;
 
@@ -149,15 +152,18 @@ void XRay::displayPlayerChoiceScene(void)
 
     // Draw scene
     beginDrawing();
-
     displayBoxes(mouseOnText, textBox);
     displayCardsSettings(removeButtons, nextButtons, prevButtons, &x);
+    (mouseIsInBox(createBox(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000, Raylib::Color::White());
     displayMouse();
-    
     endDrawing();
 
     // Check and Manage Click on buttons
     addPlayer(mouseOnText, textBox);
     manageNextOrPrev(nextButtons, prevButtons);
     removePlayer(removeButtons);
+
+    // Go to another scene according to mouse position
+    if (goBack && Raylib::Mouse::isButtonPressed(0))
+        displayGameModeScene();
 }
