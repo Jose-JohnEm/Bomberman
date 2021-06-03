@@ -35,7 +35,7 @@ void XRay::displayGameModeScene(void)
     // Go to another scene according to mouse position
     if (goBack && Raylib::Mouse::isButtonPressed(0))
     {
-        _pSelector.unload();
+        _pSelector.unloadAll();
         displayMenuScene();
     }
     else if (goNewGame && Raylib::Mouse::isButtonPressed(0))
@@ -45,7 +45,7 @@ void XRay::displayGameModeScene(void)
     }
     else if (goLoadGame && Raylib::Mouse::isButtonPressed(0))
     {
-        _pSelector.unload();
+        _pSelector.unloadAll();
         displayLoadGameScene();
     }
 }

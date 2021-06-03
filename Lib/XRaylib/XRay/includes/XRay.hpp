@@ -45,7 +45,8 @@
 #include "Cinematic.hpp"
 #include "Resources.hpp"
 #include "Input.hpp"
-#include "PlayerSelector.hpp"
+#include "PlayerSelector/Player.hpp"
+#include "PlayerSelector/Selector.hpp"
 
 class XRay : public IGraphical {
 
@@ -334,7 +335,7 @@ class XRay : public IGraphical {
         std::vector<std::string> _backups;                                        // A vector of all the paths to backups files as a const std::vector<std::string>&
 
         std::map<Resources, std::shared_ptr<Raylib::Texture>> _resources; // Texture dictionary
-        PlayerSelector _pSelector; // 3D Camera
+        PlayerSelector::Selector _pSelector; // 3D Camera
 };
 
 #include "XRay.inl"

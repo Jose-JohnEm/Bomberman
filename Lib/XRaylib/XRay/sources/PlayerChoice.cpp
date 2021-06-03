@@ -59,6 +59,8 @@ void XRay::removePlayer(const std::vector<std::pair<int, int>> &removeButtons)
                 _userNames.erase(_userNames.begin() + u + 1);
             }
             _playerTab.erase(_playerTab.begin() + u + 1);
+
+            _pSelector.unload();
         }
     }
 }
@@ -74,6 +76,8 @@ void XRay::addPlayer(std::vector<bool> &mouseOnText, std::vector<Raylib::Rectang
         textBox.push_back(*(new Raylib::Rectangle((float)a, 180, 225, 50)));
         _controlsTab.push_back(true);
         _playerTab.push_back(true);
+
+        _pSelector.load();
     }
 }
 
