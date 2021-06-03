@@ -13,8 +13,9 @@ void XRay::displaySettingsScene(void)
     _scene = SETTINGS;
 
     // Check if mouse is on button spot
-    bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
-    bool clickFullscreen = mouseIsInBox(createBox(1500, 200, 1725, 258)) ? true : false;
+    bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065));
+    bool clickFullscreen = mouseIsInBox(createBox(1500, 200, 1725, 258));
+
     // Set specific texture according to mouse position
     std::shared_ptr<Raylib::Texture> backButton = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK);
 
@@ -22,14 +23,18 @@ void XRay::displaySettingsScene(void)
     std::shared_ptr<Raylib::Texture> fullscreenButton = _resources.at(Raylib::Window::isWindowFullscreen() ? ON : OFF);
 
 
-    // Draw scene
+    /// Draw scene
     beginDrawing();
     //Backgroung
     _resources.at(SETTING_BG)->drawTexture(0, 0, Raylib::Color::White());
+
+    // Back button
     backButton->drawTexture(20, 1000, Raylib::Color::White());
+
     // Fullscreen
     fullscreenButton->drawTexture(1500, 200, Raylib::Color::White());
     Raylib::Text::drawText("Fullscreen :", 1200, 205, 48, Raylib::Color::Red());
+
     displayMouse();
     endDrawing();
 
