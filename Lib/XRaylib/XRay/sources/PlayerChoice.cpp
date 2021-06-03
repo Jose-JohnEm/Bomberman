@@ -60,7 +60,7 @@ void XRay::removePlayer(const std::vector<std::pair<int, int>> &removeButtons)
             }
             _playerTab.erase(_playerTab.begin() + u + 1);
 
-            _pSelector.unload();
+            _pSelector.unload(u + 1);
         }
     }
 }
@@ -81,14 +81,19 @@ void XRay::addPlayer(std::vector<bool> &mouseOnText, std::vector<Raylib::Rectang
     }
 }
 
-void XRay::manageNextOrPrev(const std::vector<std::pair<int, int>> &nextButtons, const std::vector<std::pair<int, int>> &prevButtons)
+void XRay::manageNextOrPrev(const std::vector<std::pair<int, int>> &nextDifficultyButtons, const std::vector<std::pair<int, int>> &prevDifficultyButtons, const std::vector<std::pair<int, int>> &nextCharacterButtons, const std::vector<std::pair<int, int>> &prevCharacterButtons)
 {
     if (Raylib::Mouse::isButtonPressed(0))
-        for (size_t u = 0; u < nextButtons.size(); u++) {
-            _playerTab[u] = (mouseIsInBox(createBox(nextButtons[u].first, nextButtons[u].second, nextButtons[u].first+50, nextButtons[u].second+49))) ? !_playerTab[u] : _playerTab[u];
-            _playerTab[u] = (mouseIsInBox(createBox(prevButtons[u].first, prevButtons[u].second, prevButtons[u].first+50, prevButtons[u].second+49))) ? !_playerTab[u] : _playerTab[u];
-            _controlsTab[u] = (mouseIsInBox(createBox(nextButtons[u].first + 20, nextButtons[u].second + 340, nextButtons[u].first+70, nextButtons[u].second+389)) && _playerTab[u]) ? !_controlsTab[u] : _controlsTab[u];
-            _controlsTab[u] = (mouseIsInBox(createBox(prevButtons[u].first - 20, prevButtons[u].second + 340, prevButtons[u].first + 20, prevButtons[u].second+389))  && _playerTab[u]) ? !_controlsTab[u] : _controlsTab[u];
+        for (size_t u = 0; u < nextDifficultyButtons.size(); u++) {
+            _playerTab[u] = (mouseIsInBox(createBox(nextDifficultyButtons[u].first, nextDifficultyButtons[u].second, nextDifficultyButtons[u].first+50, nextDifficultyButtons[u].second+49))) ? !_playerTab[u] : _playerTab[u];
+            _playerTab[u] = (mouseIsInBox(createBox(prevDifficultyButtons[u].first, prevDifficultyButtons[u].second, prevDifficultyButtons[u].first+50, prevDifficultyButtons[u].second+49))) ? !_playerTab[u] : _playerTab[u];
+            _controlsTab[u] = (mouseIsInBox(createBox(nextDifficultyButtons[u].first + 20, nextDifficultyButtons[u].second + 340, nextDifficultyButtons[u].first+70, nextDifficultyButtons[u].second+389)) && _playerTab[u]) ? !_controlsTab[u] : _controlsTab[u];
+            _controlsTab[u] = (mouseIsInBox(createBox(prevDifficultyButtons[u].first - 20, prevDifficultyButtons[u].second + 340, prevDifficultyButtons[u].first + 20, prevDifficultyButtons[u].second+389))  && _playerTab[u]) ? !_controlsTab[u] : _controlsTab[u];
+
+            if (mouseIsInBox(createBox(nextCharacterButtons[u].first, nextCharacterButtons[u].second, nextCharacterButtons[u].first+50, nextCharacterButtons[u].second+49)))
+                _pSelector.next(u);
+            if (mouseIsInBox(createBox(prevCharacterButtons[u].first, prevCharacterButtons[u].second, prevCharacterButtons[u].first+50, prevCharacterButtons[u].second+49)))
+                _pSelector.prev(u);
         }
 }
 
@@ -107,20 +112,24 @@ void XRay::displayBoxes(const std::vector<bool> &mouseOnText, const std::vector<
     }
 }
 
-void XRay::displayCardsSettings(std::vector<std::pair<int, int>> &removeButtons, std::vector<std::pair<int, int>> &nextButtons, std::vector<std::pair<int, int>> &prevButtons, int *x)
+void XRay::displayCardsSettings(std::vector<std::pair<int, int>> &removeButtons, std::vector<std::pair<int, int>> &nextDifficultyButtons, std::vector<std::pair<int, int>> &prevDifficultyButtons, std::vector<std::pair<int, int>> &nextCharacterButtons, std::vector<std::pair<int, int>> &prevCharacterButtons, int *x)
 {
     int i, b;
     for (i = 0, (*x) = 200, b = 300; _allIntegers[2] < 5 && i < _allIntegers[2]; i++, (*x) += 400) {
-        _resources.at(PREVIOUS)->drawTexture((*x)-54, _allIntegers[1], Raylib::Color::White());
+        _resources.at(PREVIOUS)->drawTexture((*x)-54, _allIntegers[1] + 180, Raylib::Color::White());
+        _resources.at(PREVIOUS)->drawTexture((*x)-84, _allIntegers[1], Raylib::Color::White());
         if (_playerTab[i]) {
             (_controlsTab[i]) ? _resources.at(CONTROLS)->drawTexture((*x) - 30, _allIntegers[1] + 300, Raylib::Color::White()) : _resources.at(GAMEPAD)->drawTexture((*x) - 30, _allIntegers[1] + 300, Raylib::Color::White());
             _resources.at(PREVIOUS)->drawTexture((*x)-84, _allIntegers[1] + 340, Raylib::Color::White());
             _resources.at(NEXT)->drawTexture((*x)+250, _allIntegers[1] + 340, Raylib::Color::White());
         }
         (_playerTab[i]) ? _resources.at(HUMAN)->drawTexture((*x), b, Raylib::Color::White()) : _resources.at(AI)->drawTexture((*x), b, Raylib::Color::White());
-        _resources.at(NEXT)->drawTexture((*x)+230, _allIntegers[1], Raylib::Color::White());
-        nextButtons.push_back(std::make_pair((*x)+230, _allIntegers[1]));
-        prevButtons.push_back(std::make_pair((*x)-54, _allIntegers[1]));
+        _resources.at(NEXT)->drawTexture((*x)+230, _allIntegers[1] + 180, Raylib::Color::White());
+        _resources.at(NEXT)->drawTexture((*x)+250, _allIntegers[1], Raylib::Color::White());
+        nextDifficultyButtons.push_back(std::make_pair((*x) + 230, _allIntegers[1] + 180));
+        prevDifficultyButtons.push_back(std::make_pair((*x) - 54, _allIntegers[1] + 180));
+        nextCharacterButtons.push_back(std::make_pair((*x) + 230, _allIntegers[1]));
+        prevCharacterButtons.push_back(std::make_pair((*x) - 54, _allIntegers[1]));
         if (i != 0) {
             removeButtons.push_back(std::make_pair((*x)+240, _allIntegers[1]-100));
             _resources.at(REMOVE)->drawTexture((*x) + 240, _allIntegers[1]-100, Raylib::Color::White());
@@ -137,8 +146,10 @@ void XRay::displayPlayerChoiceScene(void)
 
     // Create containers
     std::vector<std::pair<int, int>> removeButtons;     // A vector of all remove buttons coordinates
-    std::vector<std::pair<int, int>> nextButtons;       // A vector of all next buttons coordinates
-    std::vector<std::pair<int, int>> prevButtons;       // A vector of all previous buttons coordinates
+    std::vector<std::pair<int, int>> nextDifficultyButtons;       // A vector of all next difficulty buttons coordinates
+    std::vector<std::pair<int, int>> prevDifficultyButtons;       // A vector of all previous difficulty buttons coordinates
+    std::vector<std::pair<int, int>> nextCharacterButtons;       // A vector of all next Character buttons coordinates
+    std::vector<std::pair<int, int>> prevCharacterButtons;       // A vector of all previous Character buttons coordinates
 
     // Create containers
     std::vector<bool> mouseOnText;                      // A vector of boolean that represents if mouse is on box to position n with n < mouseOnText.size()
@@ -155,7 +166,7 @@ void XRay::displayPlayerChoiceScene(void)
     beginDrawing();
 
     displayBoxes(mouseOnText, textBox);
-    displayCardsSettings(removeButtons, nextButtons, prevButtons, &x);
+    displayCardsSettings(removeButtons, nextDifficultyButtons, prevDifficultyButtons, nextCharacterButtons, prevCharacterButtons, &x);
     displayMouse();
 
     _pSelector.draw();
@@ -164,6 +175,6 @@ void XRay::displayPlayerChoiceScene(void)
 
     // Check and Manage Click on buttons
     addPlayer(mouseOnText, textBox);
-    manageNextOrPrev(nextButtons, prevButtons);
+    manageNextOrPrev(nextDifficultyButtons, prevDifficultyButtons, nextCharacterButtons, prevCharacterButtons);
     removePlayer(removeButtons);
 }

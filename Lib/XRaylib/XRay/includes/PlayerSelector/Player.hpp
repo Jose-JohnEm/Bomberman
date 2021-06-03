@@ -18,13 +18,15 @@ namespace PlayerSelector
     {
         public:
 
-            Player(const std::string &obj, const std::string &texture);
+            Player(const std::string &obj, const std::string &texture, const int &idCharacter);
             ~Player();
 
             void draw(const float &rotation, const Raylib::Vector3 &pos);
+            int getId(void);
 
 
         private:
+            int _idCharacter;
             Model _persoModel;
             Raylib::Texture _persoTexture;
     };

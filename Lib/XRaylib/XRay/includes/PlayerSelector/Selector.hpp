@@ -12,6 +12,7 @@
 #include "Texture/Texture.hpp"
 #include "raylib.h"
 #include "PlayerSelector/Player.hpp"
+#include <filesystem>
 
 #define POS_1 Raylib::Vector3(-3.25, -0.15, 0)
 #define POS_2 Raylib::Vector3(-1.25, -0.15, 0)
@@ -27,9 +28,11 @@ namespace PlayerSelector
             ~Selector();
 
             void load();
-            void unload();
+            void unload(const int &id);
             void unloadAll();
             void draw();
+            void next(const int &player);
+            void prev(const int &player);
 
             std::vector<Raylib::Vector3> POS;
 
@@ -39,6 +42,8 @@ namespace PlayerSelector
 
             Raylib::Camera3D *camera;
             std::vector<PlayerSelector::Player> _players;
+            int _nbCharacters;
+            std::vector<std::pair<std::string, std::string>> _charaDictionary;  
 
             float _rotationAxis;
     };

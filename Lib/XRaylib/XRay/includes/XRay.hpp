@@ -260,7 +260,7 @@ class XRay : public IGraphical {
          * @param nextButtons A vector of all next buttons coordinates
          * @param prevButtons A vector of all previous buttons coordinates
          */
-        void manageNextOrPrev(const std::vector<std::pair<int, int>> &nextButtons, const std::vector<std::pair<int, int>> &prevButtons);
+        void manageNextOrPrev(const std::vector<std::pair<int, int>> &nextDifficultyButtons, const std::vector<std::pair<int, int>> &prevDifficultyButtons, const std::vector<std::pair<int, int>> &nextCharacterButtons, const std::vector<std::pair<int, int>> &prevCharacterButtons);
 
         /**
          * @brief Adds a new player to the board, if the limit is not exceeded.
@@ -303,7 +303,7 @@ class XRay : public IGraphical {
          * @param prevButtons A vector of all previous buttons coordinates
          * @param x A pointer to an int that represents the x coordinate of the last displayed card
          */
-        void displayCardsSettings(std::vector<std::pair<int, int>> &removeButtons, std::vector<std::pair<int, int>> &nextButtons, std::vector<std::pair<int, int>> &prevButtons, int *x);
+        void displayCardsSettings(std::vector<std::pair<int, int>> &removeButtons, std::vector<std::pair<int, int>> &nextButtons, std::vector<std::pair<int, int>> &prevButtons, std::vector<std::pair<int, int>> &nextCharacterButtons, std::vector<std::pair<int, int>> &prevCharacterButtons, int *x);
 
         /**
          * @brief This function counts the number of files in a specific directory
