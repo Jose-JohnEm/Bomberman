@@ -14,9 +14,22 @@ void XRay::displaySettingsScene(void)
 
     // Check if mouse is on button spot
     bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
+    bool clickFullscreen = mouseIsInBox(createBox(1500, 200, 1725, 258)) ? true : false;
 
-    // Draw scene
+    // On / off buton for fullscreen button
+    std::shared_ptr<Raylib::Texture> fullscreenButton = _resources.at(Raylib::Window::isWindowFullscreen() ? ON : OFF);
+
+    /// Draw scene
     beginDrawing();
+
+    //Backgroung
+    _resources.at(SETTING_BG)->drawTexture(0, 0, Raylib::Color::White());
+
+    // Fullscreen
+    fullscreenButton->drawTexture(1500, 200, Raylib::Color::White());
+    Raylib::Text::drawText("Fullscreen :", 1200, 205, 48, Raylib::Color::Red());
+
+    // Back button
     (mouseIsInBox(createBox(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000, Raylib::Color::White());
     displayMouse();
     endDrawing();
@@ -24,4 +37,7 @@ void XRay::displaySettingsScene(void)
     // Go to another scene according to mouse position
     if (goBack && Raylib::Mouse::isButtonPressed(0))
         displayMenuScene();
+    // Fullscreen bouton handling
+    if (clickFullscreen && Raylib::Mouse::isButtonPressed(0))
+        Raylib::Window::toggleFullscreen();
 }

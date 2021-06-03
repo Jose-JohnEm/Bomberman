@@ -64,6 +64,12 @@ namespace Raylib
          * @brief Toggle window state: fullscreen/windowed (only PLATFORM_DESKTOP)
          */
         static void toggleFullscreen();
+        /**
+         * @brief Check if window is currently fullscreen
+         *
+         * @return true is window in fullscreen otherwise false
+         */
+        static bool isWindowFullscreen(void);
     };
 
     #include "Window.inl"
