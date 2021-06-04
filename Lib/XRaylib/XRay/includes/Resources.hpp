@@ -43,7 +43,27 @@ typedef enum {
     QUIT_HOVER,
     SKIP,
     SKIP_HOVER,
-    PARALLAX
+    PARALLAX,
+    BG,
+    j1,
+    j2,
+    j3,
+    j4,
+    J1,
+    J2,
+    J3,
+    J4,
+    MOUSEYELLOW,
+    KEYBOARDYELLOW,
+    PLAYSTATIONYELLOW,
+    XBOXYELLOW,
+    MOUSEBLUE,
+    KEYBOARDBLUE,
+    PLAYSTATIONBLUE,
+    XBOXBLUE,
+    NEXTSCENE,
+    NEXT_HOVER,
+    UNKNOWN
 } Resources;
 
 #endif /* !RESOURCES_HPP_ */

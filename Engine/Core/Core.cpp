@@ -8,10 +8,8 @@
 #include "Core.hpp"
 
 Engine::Core::Core()
+: _graphical{std::make_shared<XRay>()}
 {
-    std::shared_ptr<IGraphical> lib = std::make_shared<XRay>();
-
-    _graphical = std::move(lib);
 }
 
 Engine::Core::~Core()
