@@ -31,13 +31,14 @@ void XRay::displayCinematic(const std::string &cinematicPathDirectory, const siz
     for (size_t i = 0; i < filesNumber && !(i < hideSkip && Raylib::Mouse::isButtonPressed(0) && mouseIsInBox(createBox(1760, 950, 1883, 1005))); i++)
     {
         // Set Textures
+        std::shared_ptr<Raylib::Texture> skipButton = mouseIsInBox(createBox(1760, 950, 1883, 1005)) ? _resources.at(SKIP_HOVER) : _resources.at(SKIP);
         Raylib::Texture frame(Raylib::Image("resources/cinematic/" + cinematicPathDirectory + "/frame" + std::to_string(i) + ".png"));
 
         // Draw cinematic
         beginDrawing();
         frame.drawTexture(0, 0, Raylib::Color::White());
         if (i < hideSkip)
-            (mouseIsInBox(createBox(1760, 950, 1883, 1005)) ? _resources.at(SKIP_HOVER) : _resources.at(SKIP))->drawTexture(1760, 950, Raylib::Color::White());
+            skipButton->drawTexture(1760, 950, Raylib::Color::White());
         displayMouse();
         endDrawing();
     }

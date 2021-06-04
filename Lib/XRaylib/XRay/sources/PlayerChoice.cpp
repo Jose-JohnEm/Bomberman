@@ -7,20 +7,45 @@
 
 #include "XRay.hpp"
 
-void XRay::detectPlayerInput()
+void XRay::setTextBox(std::vector<bool> &mouseOnText, std::vector<Raylib::Rectangle> &textBox)
 {
-    Resources tmp;
-    size_t t = 0;
+    for (size_t p = 0, a = 200; p < 4; p++, a += 400) {
+        _letterAndFrame.push_back(std::make_pair(0, 0));
+        _userNames.push_back("");
+        mouseOnText.push_back(false);
+        if (p < _allIntegers[2])
+            textBox.push_back(*(new Raylib::Rectangle((float)a, 180, 225, 50)));
+        _playerTab.push_back(true);
+        _controlsTab.push_back(true);
+    }
+}
 
-    for (; t < _allIntegers[2]-1 && _playerTab[t]; t++);
-    tmp = _controlsTab[t];
-    _controlsTab[t] = (Raylib::Gamepad::isGamepadAvailable(0) && Raylib::Gamepad::isGamepadButtonPressed(0, 15)) ? PLAYSTATIONYELLOW : _controlsTab[t];
-    _controlsTab[t] = (Raylib::Gamepad::isGamepadAvailable(1) && Raylib::Gamepad::isGamepadButtonPressed(1, 15)) ? XBOXYELLOW : _controlsTab[t];
-    _controlsTab[t] = (Raylib::Keyboard::getKeyPressed()) ? KEYBOARDYELLOW : _controlsTab[t];
-    _controlsTab[t] = (Raylib::Mouse::isButtonPressed(0)) ? MOUSEYELLOW : _controlsTab[t];
-    for (size_t k = 0; k < t; k++)
-        _controlsTab[t] = (_controlsTab[t] == _controlsTab[k]) ? tmp : _controlsTab[t];
-    _playerTab[t] = (tmp != _controlsTab[t]) ? true : _playerTab[t];
+void XRay::updateTextBox(std::vector<bool> &mouseOnText, const std::vector<Raylib::Rectangle> &textBox)
+{
+    for (size_t i = 0; i < mouseOnText.size() && i < textBox.size(); i++) {
+        mouseOnText[i] = (Raylib::Collision2D::checkCollision(Raylib::Vector2((float)Raylib::Mouse::getMouseX(), (float)Raylib::Mouse::getMouseY()), textBox[i])) ? true : false;
+        if (mouseOnText[i]) {
+            Raylib::Mouse::setMouseCursor(MOUSE_CURSOR_IBEAM);
+
+            for (int key = Raylib::Keyboard::getCharPressed(); key > 0; key = Raylib::Keyboard::getCharPressed())
+                if ((key >= 32) && (key <= 125) && (_letterAndFrame[i].first < 9)) {
+                    _userNames[i].push_back(key);
+                    _letterAndFrame[i].first++;
+                }
+
+            if (Raylib::Keyboard::isKeyPressed(KEY_BACKSPACE) && _userNames[i].size() > 0) {
+                _letterAndFrame[i].first--;
+                if (_letterAndFrame[i].first < 0)
+                    _letterAndFrame[i].first = 0;
+                else
+                    _userNames[i].pop_back();
+            }
+
+        } else
+            Raylib::Mouse::setMouseCursor(MOUSE_CURSOR_DEFAULT);
+
+        _letterAndFrame[i].second = (mouseOnText[i]) ? _letterAndFrame[i].second+1 : 0;
+    }
 }
 
 void XRay::removePlayer(const std::vector<std::pair<int, int>> &removeButtons)
@@ -28,8 +53,11 @@ void XRay::removePlayer(const std::vector<std::pair<int, int>> &removeButtons)
     for (size_t u = 0; u < removeButtons.size(); u++) {
         if (mouseIsInBox(createBox(removeButtons[u].first, removeButtons[u].second, removeButtons[u].first+64, removeButtons[u].second+63)) && Raylib::Mouse::isButtonPressed(0)) {
             _allIntegers[2] -= 1;
-            if (_playerTab[u+1])
+            if (_playerTab[u+1]) {
                 _controlsTab.erase(_controlsTab.begin() + u + 1);
+                _letterAndFrame.erase(_letterAndFrame.begin() + u + 1);
+                _userNames.erase(_userNames.begin() + u + 1);
+            }
             _playerTab.erase(_playerTab.begin() + u + 1);
 
             _pSelector.unload(u + 1);
@@ -37,53 +65,78 @@ void XRay::removePlayer(const std::vector<std::pair<int, int>> &removeButtons)
     }
 }
 
-void XRay::addPlayer()
+void XRay::addPlayer(std::vector<bool> &mouseOnText, std::vector<Raylib::Rectangle> textBox)
 {
-    float a = 100 + (_allIntegers[2]*450);
+    float a = 200 + (textBox.size()*400);
     if (_allIntegers[2] != 4 && mouseIsInBox(createBox(_allIntegers[0]+a, _allIntegers[1], _allIntegers[0]+a+150, _allIntegers[1]+150)) && Raylib::Mouse::isButtonPressed(0)) {
         _allIntegers[2] += 1;
-        _playerTab.push_back(false);
+        _letterAndFrame.push_back(std::make_pair(0, 0));
+        _userNames.push_back("");
+        mouseOnText.push_back(false);
+        textBox.push_back(*(new Raylib::Rectangle((float)a, 180, 225, 50)));
+        _controlsTab.push_back(true);
+        _playerTab.push_back(true);
+
+        _pSelector.load();
     }
 }
 
-void XRay::manageNextOrPrev()
+void XRay::manageNextOrPrev(const std::vector<std::pair<int, int>> &nextDifficultyButtons, const std::vector<std::pair<int, int>> &prevDifficultyButtons, const std::vector<std::pair<int, int>> &nextCharacterButtons, const std::vector<std::pair<int, int>> &prevCharacterButtons)
 {
-    auto glambda = [](size_t a) { return a == 40 ? 36 : 40; };
+    if (Raylib::Mouse::isButtonPressed(0))
+        for (size_t u = 0; u < nextDifficultyButtons.size(); u++) {
+            _playerTab[u] = (mouseIsInBox(createBox(nextDifficultyButtons[u].first, nextDifficultyButtons[u].second, nextDifficultyButtons[u].first+50, nextDifficultyButtons[u].second+49))) ? !_playerTab[u] : _playerTab[u];
+            _playerTab[u] = (mouseIsInBox(createBox(prevDifficultyButtons[u].first, prevDifficultyButtons[u].second, prevDifficultyButtons[u].first+50, prevDifficultyButtons[u].second+49))) ? !_playerTab[u] : _playerTab[u];
+            _controlsTab[u] = (mouseIsInBox(createBox(nextDifficultyButtons[u].first + 20, nextDifficultyButtons[u].second + 340, nextDifficultyButtons[u].first+70, nextDifficultyButtons[u].second+389)) && _playerTab[u]) ? !_controlsTab[u] : _controlsTab[u];
+            _controlsTab[u] = (mouseIsInBox(createBox(prevDifficultyButtons[u].first - 20, prevDifficultyButtons[u].second + 340, prevDifficultyButtons[u].first + 20, prevDifficultyButtons[u].second+389))  && _playerTab[u]) ? !_controlsTab[u] : _controlsTab[u];
 
-    for (size_t u = 0; u < _allIntegers[2]; u++) {
-        if (_controlsTab[u] == Resources::PLAYSTATIONYELLOW)
-            _card[u] = Raylib::Gamepad::isGamepadButtonPressed(0, 7) ? glambda(_card[u]) : _card[u];
-        if (_controlsTab[u] == Resources::XBOXYELLOW)
-            _card[u] = Raylib::Gamepad::isGamepadButtonPressed(1, 7) ? glambda(_card[u]) : _card[u];
-        if (_controlsTab[u] == Resources::MOUSEYELLOW)
-            _card[u] = Raylib::Mouse::isButtonPressed(1) ? glambda(_card[u]) : _card[u];
-        if (_controlsTab[u] == Resources::KEYBOARDYELLOW)
-            _card[u] = (Raylib::Keyboard::getKeyPressed() == 32) ? glambda(_card[u]) : _card[u];
+            if (mouseIsInBox(createBox(nextCharacterButtons[u].first, nextCharacterButtons[u].second, nextCharacterButtons[u].first+50, nextCharacterButtons[u].second+49)))
+                _pSelector.next(u);
+            if (mouseIsInBox(createBox(prevCharacterButtons[u].first, prevCharacterButtons[u].second, prevCharacterButtons[u].first+50, prevCharacterButtons[u].second+49)))
+                _pSelector.prev(u);
+        }
+}
+
+void XRay::displayBoxes(const std::vector<bool> &mouseOnText, const std::vector<Raylib::Rectangle> &textBox)
+{
+    for (size_t p = 0; p < _allIntegers[2]; p++) {
+        if (_playerTab[p]) {
+            Raylib::Rectangle::drawRectangleRec(textBox[p], Raylib::Color::LightGray());
+            (mouseOnText[p]) ? Raylib::Rectangle::drawRectangleLines(textBox[p].getCStruct().x, textBox[p].getCStruct().y, textBox[p].getCStruct().width, textBox[p].getCStruct().height, Raylib::Color::Red()) : ::DrawRectangleLines(textBox[p].getCStruct().x, textBox[p].getCStruct().y, textBox[p].getCStruct().width, textBox[p].getCStruct().height, Raylib::Color::DarkGray().getCStruct());
+            Raylib::Text::drawText(_userNames[p].c_str(), textBox[p].getCStruct().x + 5, textBox[p].getCStruct().y + 8, 40, Raylib::Color::Maroon());
+
+            if (mouseOnText[p] && _letterAndFrame[p].first < 9)
+                if (((_letterAndFrame[p].second/20)%10) == 0)
+                    Raylib::Text::drawText("_", textBox[p].getCStruct().x + 8 + Raylib::Text::measureText(_userNames[p].c_str(), 40), textBox[p].getCStruct().y + 12, 40, Raylib::Color::Maroon());
+        }
     }
 }
 
-void XRay::displayCardsSettings(std::vector<std::pair<int, int>> &removeButtons, int *x)
+void XRay::displayCardsSettings(std::vector<std::pair<int, int>> &removeButtons, std::vector<std::pair<int, int>> &nextDifficultyButtons, std::vector<std::pair<int, int>> &prevDifficultyButtons, std::vector<std::pair<int, int>> &nextCharacterButtons, std::vector<std::pair<int, int>> &prevCharacterButtons, int *x)
 {
     int i, b;
-    for (i = 0, (*x) = 100, b = 200; _allIntegers[2] < 5 && i < _allIntegers[2]; i++, (*x) += 450) {
-        (_playerTab[i]) ? _resources.at((Resources)(_card[i]+i))->drawTexture((*x), b, Raylib::Color::White()) : _resources.at(AI)->drawTexture((*x), b, Raylib::Color::White());
-        if (_playerTab[i])
-            _resources.at((Resources)(size_t)((_controlsTab[i])+_card[i]-36))->drawTexture((*x)+109, b+9, Raylib::Color::White());
-        if (i != 0)
-            removeButtons.push_back(std::make_pair((*x)+307, b+9));
+    for (i = 0, (*x) = 200, b = 300; _allIntegers[2] < 5 && i < _allIntegers[2]; i++, (*x) += 400) {
+        _resources.at(PREVIOUS)->drawTexture((*x)-54, _allIntegers[1] + 180, Raylib::Color::White());
+        _resources.at(PREVIOUS)->drawTexture((*x)-84, _allIntegers[1], Raylib::Color::White());
+        if (_playerTab[i]) {
+            (_controlsTab[i]) ? _resources.at(CONTROLS)->drawTexture((*x) - 30, _allIntegers[1] + 300, Raylib::Color::White()) : _resources.at(GAMEPAD)->drawTexture((*x) - 30, _allIntegers[1] + 300, Raylib::Color::White());
+            _resources.at(PREVIOUS)->drawTexture((*x)-84, _allIntegers[1] + 340, Raylib::Color::White());
+            _resources.at(NEXT)->drawTexture((*x)+250, _allIntegers[1] + 340, Raylib::Color::White());
+        }
+        (_playerTab[i]) ? _resources.at(HUMAN)->drawTexture((*x), b, Raylib::Color::White()) : _resources.at(AI)->drawTexture((*x), b, Raylib::Color::White());
+        _resources.at(NEXT)->drawTexture((*x)+230, _allIntegers[1] + 180, Raylib::Color::White());
+        _resources.at(NEXT)->drawTexture((*x)+250, _allIntegers[1], Raylib::Color::White());
+        nextDifficultyButtons.push_back(std::make_pair((*x) + 230, _allIntegers[1] + 180));
+        prevDifficultyButtons.push_back(std::make_pair((*x) - 54, _allIntegers[1] + 180));
+        nextCharacterButtons.push_back(std::make_pair((*x) + 230, _allIntegers[1]));
+        prevCharacterButtons.push_back(std::make_pair((*x) - 54, _allIntegers[1]));
+        if (i != 0) {
+            removeButtons.push_back(std::make_pair((*x)+240, _allIntegers[1]-100));
+            _resources.at(REMOVE)->drawTexture((*x) + 240, _allIntegers[1]-100, Raylib::Color::White());
+        }
     }
     if (_allIntegers[2] != 4)
         _resources.at(ADD)->drawTexture(_allIntegers[0] + (*x), _allIntegers[1], Raylib::Color::White());
-}
-
-void XRay::displayBack()
-{
-    // Parallax update
-    _scrollingBack -= 0.1f;
-    if (_scrollingBack <= (-_resources.at(BG)->getCStruct().width/3 * 2)) _scrollingBack = 0;
-
-    _resources.at(BG)->drawTextureEx(*_resources.at(BG).get(), *(new Raylib::Vector2(_scrollingBack, 0)), 0.0f, 1.0f, Raylib::Color::White());
-    _resources.at(BG)->drawTextureEx(*_resources.at(BG).get(), *(new Raylib::Vector2(_resources.at(BG)->getCStruct().width + _scrollingBack, 0)), 0.0f, 1.0f, Raylib::Color::White());
 }
 
 void XRay::displayPlayerChoiceScene(void)
@@ -91,40 +144,37 @@ void XRay::displayPlayerChoiceScene(void)
     // Set scene
     _scene = PLAYER_CHOICE;
 
-    // Check if mouse is on button spot
-    bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
-    bool goNext = mouseIsInBox(createBox(1700, 1000, 1918, 1061)) ? true : false;
-
     // Create containers
     std::vector<std::pair<int, int>> removeButtons;     // A vector of all remove buttons coordinates
+    std::vector<std::pair<int, int>> nextDifficultyButtons;       // A vector of all next difficulty buttons coordinates
+    std::vector<std::pair<int, int>> prevDifficultyButtons;       // A vector of all previous difficulty buttons coordinates
+    std::vector<std::pair<int, int>> nextCharacterButtons;       // A vector of all next Character buttons coordinates
+    std::vector<std::pair<int, int>> prevCharacterButtons;       // A vector of all previous Character buttons coordinates
+
+    // Create containers
     std::vector<bool> mouseOnText;                      // A vector of boolean that represents if mouse is on box to position n with n < mouseOnText.size()
     std::vector<Raylib::Rectangle> textBox;             // A vector of rectangle that represents the boxes of the pseudos
-
+    
     // A int that represents the x coordinate of the last displayed card
     int x;
 
     // Initialize and Update all the containers that refer to the boxes of the pseudos
-    detectPlayerInput();
+    setTextBox(mouseOnText, textBox);
+    updateTextBox(mouseOnText, textBox);
 
     // Draw scene
     beginDrawing();
-    displayBack();
 
-    displayCardsSettings(removeButtons, &x);
-    (mouseIsInBox(createBox(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000, Raylib::Color::White());
-    (mouseIsInBox(createBox(1700, 1000, 1918, 1061)) ? _resources.at(NEXT_HOVER) : _resources.at(NEXTSCENE))->drawTexture(1700, 1000, Raylib::Color::White());
+    displayBoxes(mouseOnText, textBox);
+    displayCardsSettings(removeButtons, nextDifficultyButtons, prevDifficultyButtons, nextCharacterButtons, prevCharacterButtons, &x);
     displayMouse();
+
+    _pSelector.draw();
+    
     endDrawing();
 
     // Check and Manage Click on buttons
-    addPlayer();
+    addPlayer(mouseOnText, textBox);
+    manageNextOrPrev(nextDifficultyButtons, prevDifficultyButtons, nextCharacterButtons, prevCharacterButtons);
     removePlayer(removeButtons);
-
-    manageNextOrPrev();
-
-    // Go to another scene according to mouse position
-    if (goBack && Raylib::Mouse::isButtonPressed(0))
-        displayGameModeScene();
-    if (goNext && Raylib::Mouse::isButtonPressed(0))
-        displayMapChoiceScene();
 }

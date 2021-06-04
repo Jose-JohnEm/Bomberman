@@ -15,9 +15,12 @@ void XRay::displaySettingsScene(void)
     // Check if mouse is on button spot
     bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
 
+    // Set specific texture according to mouse position
+    std::shared_ptr<Raylib::Texture> backButton = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK);
+
     // Draw scene
     beginDrawing();
-    (mouseIsInBox(createBox(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000, Raylib::Color::White());
+    backButton->drawTexture(20, 1000, Raylib::Color::White());
     displayMouse();
     endDrawing();
 
