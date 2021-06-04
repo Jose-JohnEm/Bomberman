@@ -9,5 +9,5 @@
 
 #include "XRay.hpp"
 
-void XRay::displayInGameScene(void)
+void XRay::displayMapChoiceScene(void)
 {}
