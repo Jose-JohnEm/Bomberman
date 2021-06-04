@@ -63,6 +63,13 @@ typedef enum {
     XBOXBLUE,
     NEXTSCENE,
     NEXT_HOVER,
+    MAPCHOICEBG,
+    SIZE_HOVER,
+    SETS_HOVER,
+    DURATION_HOVER,
+    SIZE,
+    SETS,
+    DURATION,
     UNKNOWN
 } Resources;
 
