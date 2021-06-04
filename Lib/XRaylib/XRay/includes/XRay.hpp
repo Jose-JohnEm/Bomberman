@@ -207,9 +207,14 @@ class XRay : public IGraphical {
         void displayPlayerChoiceScene(void);
 
         /**
-         * @brief Scene for Maps
+         * @brief Scene for Game
          */
         void displayInGameScene(void);
+
+        /**
+         * @brief Scene for Maps
+         */
+        void displayMapChoiceScene(void);
 
         /**
          * @brief Display Intro Scene
@@ -254,19 +259,13 @@ class XRay : public IGraphical {
 
         /**
          * @brief This function manages the click on the different previous and next buttons
-         *
-         * @param nextButtons A vector of all next buttons coordinates
-         * @param prevButtons A vector of all previous buttons coordinates
          */
-        void manageNextOrPrev(const std::vector<std::pair<int, int>> &nextButtons, const std::vector<std::pair<int, int>> &prevButtons);
+        void manageNextOrPrev();
 
         /**
          * @brief Adds a new player to the board, if the limit is not exceeded.
-         *
-         * @param mouseOnText A vector of boolean that represents if mouse is on box to position n with n < mouseOnText.size()
-         * @param textBox A vector of rectangle that represents the boxes of the pseudos
          */
-        void addPlayer(std::vector<bool> &mouseOnText, std::vector<Raylib::Rectangle> textBox);
+        void addPlayer();
 
         /**
          * @brief Remove the player of the board.
@@ -274,14 +273,6 @@ class XRay : public IGraphical {
          * @param removeButtons A vector of all remove buttons coordinates
          */
         void removePlayer(const std::vector<std::pair<int, int>> &removeButtons);
-
-        /**
-         * @brief This function displays the boxes of the pseudos.
-         *
-         * @param mouseOnText A vector of boolean that represents if mouse is on box to position n with n < mouseOnText.size()
-         * @param textBox A vector of rectangle that represents the boxes of the pseudos
-         */
-        void displayBoxes(const std::vector<bool> &mouseOnText, const std::vector<Raylib::Rectangle> &textBox);
 
         /**
          * @brief This function display the mouse
@@ -301,7 +292,7 @@ class XRay : public IGraphical {
          * @param prevButtons A vector of all previous buttons coordinates
          * @param x A pointer to an int that represents the x coordinate of the last displayed card
          */
-        void displayCardsSettings(std::vector<std::pair<int, int>> &removeButtons, std::vector<std::pair<int, int>> &nextButtons, std::vector<std::pair<int, int>> &prevButtons, int *x);
+        void displayCardsSettings(std::vector<std::pair<int, int>> &removeButtons, int *x);
 
         /**
          * @brief This function counts the number of files in a specific directory
@@ -310,6 +301,16 @@ class XRay : public IGraphical {
          * @return Number of files (size_t)
          */
         size_t countFilesDirectory(const std::filesystem::path &path) const;
+
+        /**
+         * @brief Detect New Input
+         */
+        void detectPlayerInput();
+
+        /**
+         * @brief Diplay Background Parallax
+         */
+        void displayBack();
 
     private:
         Raylib::Window _window;                     // Game window
@@ -320,11 +321,12 @@ class XRay : public IGraphical {
         Scene _scene = MENU;                   // Current scene
         std::vector<void (XRay::*)()> _scenesFunc;  // Array of pointers to function (a scene, a function)
 
-        std::vector<bool> _playerTab;                     // A vector of boolean that represents if the player is an AI or not
-        std::vector<bool> _controlsTab;                   // A vector of boolean that represents if the controls is Type1 or Type2
+        std::vector<bool> _playerTab{true, false, false, false};                     // A vector of boolean that represents if the player is an AI or not
+        std::vector<Resources> _controlsTab{UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN};                   // A vector of resources (See in Resources.hpp) that represents if the controls
         std::array<int, 3> _allIntegers = {50, 400, 1};   // An array of main positions on this scene
         std::vector<std::pair<int, int>> _letterAndFrame; // A vector of infos about the boxes of pseudos
         float _scrollingBack = 0.0f;                      // A variable for parallax
+        std::vector<size_t> _card{36, 36, 36, 36};        // Cards (Blue or Yellow)
 
         std::map<std::string, std::pair<std::string, std::string>> _playersStats; // A map of all the stats [PlayerName -- (NameOfStat, Value)]...
         std::vector<std::pair<std::string, std::string>> _scores;                 // A vector of pair (username, score)
