@@ -19,17 +19,8 @@
 #define POS_3 Raylib::Vector3(0.80, -0.15, 0)
 #define POS_4 Raylib::Vector3(2.80, -0.15, 0)
 
-
-
 namespace PlayerSelector
 {
-    struct CharDictionary
-    {
-        std::string obj;
-        std::string texture;
-        float scalable;
-    };
-
     class Selector
     {
         public:
@@ -52,7 +43,7 @@ namespace PlayerSelector
             Raylib::Camera3D *camera;
             std::vector<PlayerSelector::Player> _players;
             int _nbCharacters;
-            std::vector<CharDictionary> _charaDictionary;  
+            std::vector<std::pair<std::string, std::string>> _charaDictionary;  
 
             float _rotationAxis;
     };

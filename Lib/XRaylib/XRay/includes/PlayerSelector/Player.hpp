@@ -18,7 +18,7 @@ namespace PlayerSelector
     {
         public:
 
-            Player(const std::string &obj, const std::string &texture, const float &scalable, const int &idCharacter);
+            Player(const std::string &obj, const std::string &texture, const int &idCharacter);
             ~Player();
 
             void draw(const float &rotation, const Raylib::Vector3 &pos);
@@ -27,7 +27,6 @@ namespace PlayerSelector
 
         private:
             int _idCharacter;
-            float _scalable;
             Model _persoModel;
             Raylib::Texture _persoTexture;
     };

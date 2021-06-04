@@ -7,19 +7,14 @@
 
 #include "PlayerSelector/Selector.hpp"
 
-std::vector<PlayerSelector::CharDictionary> findCharactersAvailable(int &nb_Characters)
+std::vector<std::pair<std::string, std::string>> findCharactersAvailable(int &nb_Characters)
 {
-    std::vector<PlayerSelector::CharDictionary> res;
+    std::vector<std::pair<std::string, std::string>> res;
     std::string obj;
     std::string texture;
-    float scalable;
 
     for (const auto & file : std::filesystem::directory_iterator("resources/players/3D"))
     {
-        obj = "null";
-        texture = "null";
-        scalable = 0.6;
-
         if (file.is_directory())
         {
             for (const auto &f : std::filesystem::directory_iterator(file.path()))
@@ -32,23 +27,13 @@ std::vector<PlayerSelector::CharDictionary> findCharactersAvailable(int &nb_Char
             }
             for (const auto &f : std::filesystem::directory_iterator(file.path()))
             {
-                if (f.path().filename() == "texture.png")
+                if (f.path().extension() == ".png")
                 {
                     texture = f.path().string();
                     break;
                 }
             }
-            for (const auto &f : std::filesystem::directory_iterator(file.path()))
-            {
-                if (f.path().filename() == ".scalable")
-                {
-                    std::ifstream(f.path().string()) >> scalable;
-
-                    std::cout << "################ ||||| Scalable trouve !!! : " << scalable << std::endl;
-                }
-            }
-            if (obj != "null" && texture != "null")
-                res.push_back({obj, texture, scalable});
+            res.push_back({obj, texture});
         }
     }
     nb_Characters = res.size();
@@ -58,6 +43,7 @@ std::vector<PlayerSelector::CharDictionary> findCharactersAvailable(int &nb_Char
 PlayerSelector::Selector::Selector()
 : camera(nullptr), _rotationAxis(0), _players({}), _nbCharacters(0), _charaDictionary(findCharactersAvailable(_nbCharacters))
 {
+    findCharactersAvailable(_nbCharacters);
     POS.push_back(POS_1);
     POS.push_back(POS_2);
     POS.push_back(POS_3);
@@ -68,8 +54,7 @@ PlayerSelector::Selector::Selector()
 
 PlayerSelector::Selector::~Selector()
 {
-    if (camera)
-        delete camera;
+
 }
 
 void PlayerSelector::Selector::load()
@@ -94,7 +79,7 @@ void PlayerSelector::Selector::load()
 
     std::cout << std::endl << "######## Init Player Selector ########" << std::endl << std::endl;
 
-    _players.push_back(Player(_charaDictionary[0].obj, _charaDictionary[0].texture, _charaDictionary[0].scalable, 0));
+    _players.push_back(Player(_charaDictionary[0].first, _charaDictionary[0].second, 0));
 
 
 }
@@ -144,12 +129,13 @@ void PlayerSelector::Selector::next(const int &id)
 {
     int next_id = (_players[id].getId() + 1 == _nbCharacters) ? 0 : _players[id].getId() + 1;
 
-    _players[id] = Player(_charaDictionary[next_id].obj, _charaDictionary[next_id].texture, _charaDictionary[next_id].scalable, next_id);
+    _players[id] = Player(_charaDictionary[next_id].first, _charaDictionary[next_id].second, next_id);
+
 }
 
 void PlayerSelector::Selector::prev(const int &id)
 {
-    int next_id = (_players[id].getId() - 1 < 0) ? _nbCharacters - 1 : _players[id].getId() - 1;
+    int next_id = (_players[id].getId() - 1 < 0) ? _nbCharacters : _players[id].getId() - 1;
 
-    _players[id] = Player(_charaDictionary[next_id].obj, _charaDictionary[next_id].texture, _charaDictionary[next_id].scalable, next_id);
+    _players[id] = Player(_charaDictionary[next_id].first, _charaDictionary[next_id].second, next_id);
 }
