@@ -244,22 +244,6 @@ class XRay : public IGraphical {
         void display(void) override;
 
         /**
-         * @brief Initialize all the containers that refer to the boxes of the pseudos
-         *
-         * @param mouseOnText A vector of boolean that represents if mouse is on box to position n with n < mouseOnText.size()
-         * @param textBox A vector of rectangle that represents the boxes of the pseudos
-         */
-        void setTextBox(std::vector<bool> &mouseOnText, std::vector<Raylib::Rectangle> &textBox);
-
-        /**
-         * @brief Update all the containers that refer to the boxes of the pseudos
-         *
-         * @param mouseOnText A vector of boolean that represents if mouse is on box to position n with n < mouseOnText.size()
-         * @param textBox A vector of rectangle that represents the boxes of the pseudos
-         */
-        void updateTextBox(std::vector<bool> &mouseOnText, const std::vector<Raylib::Rectangle> &textBox);
-
-        /**
          * @brief This function manages the click on the different previous and next buttons
          */
         void manageNextOrPrev();
@@ -287,6 +271,21 @@ class XRay : public IGraphical {
         void setResources(void);
 
         /**
+         * @brief Display Game Settings
+         */
+        void displayGameSettings(void);
+
+        /**
+         * @brief Detect New Input
+         */
+        void detectPlayerInput();
+
+        /**
+         * @brief Diplay Background Parallax
+         */
+        void displayBack();
+
+        /**
          * @brief This function displays all cards and their parameters
          *
          * @param removeButtons A vector of all remove buttons coordinates
@@ -305,19 +304,24 @@ class XRay : public IGraphical {
         size_t countFilesDirectory(const std::filesystem::path &path) const;
 
         /**
-         * @brief Detect New Input
+         * @brief Initialize all the containers that refer to the boxes of the pseudos
+         *
+         * @param mouseOnText A vector of boolean that represents if mouse is on box to position n with n < mouseOnText.size()
+         * @param textBox A vector of rectangle that represents the boxes of the pseudos
          */
-        void detectPlayerInput();
+        void setTextBox(std::vector<bool> &mouseOnText, std::vector<Raylib::Rectangle> &textBox);
 
         /**
-         * @brief Diplay Background Parallax
+         * @brief Update all the containers that refer to the boxes of the pseudos
+         *
+         * @param mouseOnText A vector of boolean that represents if mouse is on box to position n with n < mouseOnText.size()
+         * @param textBox A vector of rectangle that represents the boxes of the pseudos
          */
-        void displayBack();
+        void updateTextBox(std::vector<bool> &mouseOnText, const std::vector<Raylib::Rectangle> &textBox);
 
     private:
         Raylib::Window _window;                     // Game window
 
-//        Raylib::Music music;
         std::vector<std::string> _userNames;        // A vector of all the users names
         std::pair<bool, void (XRay::*)()> _intro;   // Intro pointer to function
         Scene _scene = MENU;                   // Current scene

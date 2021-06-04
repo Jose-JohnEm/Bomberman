@@ -33,6 +33,8 @@ class IGraphical {
             SETTINGS,
             /// This scene is the one used to choose the players and the different game parameters
             PLAYER_CHOICE,
+            /// This scene is the one used to choose map, sets and time
+            MAP_CHOICE,
             /// This scene is the one used to load a game backup
             LOAD_GAME,
             /// This is the scene where the game is in progress
