@@ -91,10 +91,9 @@ inline void Raylib::Texture::setTextureWrap(Texture const &texture, int const &w
     ::SetTextureWrap(texture._texture, wrap);
 }
 
-inline Raylib::Texture Raylib::Texture::drawTexture(const int &posX, const int &posY, const Color &tint = Color::Black()) const
+inline void Raylib::Texture::drawTexture(const int &posX, const int &posY, const Color &tint = Color::Black()) const
 {
     ::DrawTexture(_texture, posX, posY, tint.getCStruct());
-    return *this;
 }
 
 inline void Raylib::Texture::drawTextureEx(Raylib::Texture const &texture, Raylib::Vector2 const &position, float const &rotation, float const &scale, Color const &tint) const

@@ -7,12 +7,12 @@ PROJECT(bomberman VERSION 1.0)
 SET(CMAKE_CXX_STANDARD 17)
 
 # We add this to ensure the CI/CDs don't fetch resources
-IF (NOT DEFINED ENV{SKIP_RESOURCES_FETCHING})
+# IF (NOT DEFINED ENV{SKIP_RESOURCES_FETCHING})
     # Call the Findresources module
-    INCLUDE(cmake/Findresources.cmake)
-ELSE()
-    MESSAGE("Skipping resources fetching...")
-ENDIF()
+#    INCLUDE(cmake/Findresources.cmake)
+# ELSE()
+#    MESSAGE("Skipping resources fetching...")
+# ENDIF()
 
 # Make XRay CMakeList meta-compile XRay library that himself
 # will make Raylib-cpp meta compile

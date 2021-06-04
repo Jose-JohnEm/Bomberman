@@ -155,7 +155,7 @@ namespace Raylib
              * @param tint A Color
              * @return A reference to the texture - Texture&
              */
-            Texture drawTexture(const int &posX, const int &posY, const Color &tint) const;
+            void drawTexture(const int &posX, const int &posY, const Color &tint) const;
 
             /**
              * @brief Draw a Texture with position defined as Vector2
