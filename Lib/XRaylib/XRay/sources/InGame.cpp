@@ -76,7 +76,9 @@ void XRay::displayInGameScene(void)
         displayInGameScene();
     }
     if (save && Raylib::Mouse::isButtonPressed(0));
-    if (home && Raylib::Mouse::isButtonPressed(0))
+    if (home && Raylib::Mouse::isButtonPressed(0)) {
+        _isPaused = false;
         displayMenuScene();
+    }
     m_isPaused = _isPaused;
 }
