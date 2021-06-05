@@ -48,6 +48,7 @@ void XRay::manageNextOrPrev()
 {
     auto glambda = [](size_t a) { return a == 40 ? 36 : 40; };
 
+    _nextOrNot = 0;
     for (size_t u = 0; u < _allIntegers[2]; u++) {
         if (_controlsTab[u] == Resources::PLAYSTATIONYELLOW)
             _card[u] = Raylib::Gamepad::isGamepadButtonPressed(0, 7) ? glambda(_card[u]) : _card[u];
@@ -57,6 +58,7 @@ void XRay::manageNextOrPrev()
             _card[u] = Raylib::Mouse::isButtonPressed(1) ? glambda(_card[u]) : _card[u];
         if (_controlsTab[u] == Resources::KEYBOARDYELLOW)
             _card[u] = (Raylib::Keyboard::getKeyPressed() == 32) ? glambda(_card[u]) : _card[u];
+        _nextOrNot += _card[u];
     }
 }
 
@@ -123,6 +125,6 @@ void XRay::displayPlayerChoiceScene(void)
     // Go to another scene according to mouse position
     if (goBack && Raylib::Mouse::isButtonPressed(0))
         displayGameModeScene();
-    if (goNext && Raylib::Mouse::isButtonPressed(0))
+    if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _allIntegers[2] * 40)
         displayMapChoiceScene();
 }

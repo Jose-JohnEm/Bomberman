@@ -331,6 +331,7 @@ class XRay : public IGraphical {
         std::vector<std::pair<int, int>> _letterAndFrame; // A vector of infos about the boxes of pseudos
         float _scrollingBack = 0.0f;                      // A variable for parallax
         std::vector<size_t> _card{36, 36, 36, 36};        // Cards (Blue or Yellow)
+        size_t _nextOrNot;                                // A size_t to know if can go to next scene or not
 
         std::map<std::string, std::pair<std::string, std::string>> _playersStats; // A map of all the stats [PlayerName -- (NameOfStat, Value)]...
         std::vector<std::pair<std::string, std::string>> _scores;                 // A vector of pair (username, score)
