@@ -21,10 +21,22 @@ void XRay::displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &panelPos
     }
 }
 
+void XRay::displayPauseScene(void)
+{
+    if (_isPaused) {
+        _resources.at(DEPAUSE)->drawTexture(10, 5, Raylib::Color::White());
+        _resources.at(PAUSEBACK)->drawTexture(0, 0, Raylib::Color::White());
+    } else
+        _resources.at(PAUSE)->drawTexture(10, 5, Raylib::Color::White());
+}
+
 void XRay::displayInGameScene(void)
 {
     // Set scene
     _scene = IN_GAME;
+
+    // Check if mouse is on button spot
+    bool pauseButton = mouseIsInBox(createBox(10, 5, 122, 127)) ? true : false;
 
     // Lambda for panel pos
     auto panelLambda = [](size_t a) { return (a <= 2) ? std::vector<std::pair<size_t, size_t>>{{20, 500}, {1500, 500}}
@@ -33,11 +45,20 @@ void XRay::displayInGameScene(void)
     // Position of all Panels in a vector of pair (x, y)
     static std::vector<std::pair<size_t, size_t>> panelPos = panelLambda(_allIntegers[2]);
 
+    // Display Cinematic ready, 3, 2, 1, go
+    if (m_isPaused == 2)
+        displayCinematic("readygo", 0, 1000);
+
     // Draw scene
     beginDrawing();
 
     displayPlayersPanels(panelPos);
-    // Some code
-
+    displayPauseScene();
+    displayMouse();
     endDrawing();
+
+
+    if (pauseButton && Raylib::Mouse::isButtonPressed(0))
+        _isPaused = true;
+    m_isPaused = _isPaused;
 }
