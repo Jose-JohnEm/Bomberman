@@ -110,7 +110,14 @@ void XRay::setResources(void)
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::PAUSE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/pause.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::DEPAUSE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/depause.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::PAUSEBACK, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/pauseBg.png"))));
-
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::RESUME, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/resume.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::RESTART, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/restart.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SAVE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/save.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::HOME, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/home.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::RESUMEHOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/resumeHover.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::RESTARTHOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/restartHover.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SAVEHOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/saveHover.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::HOMEHOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/homeHover.png"))));
 }
 
 void XRay::quitGame(void)
