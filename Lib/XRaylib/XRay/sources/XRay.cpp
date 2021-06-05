@@ -103,6 +103,10 @@ void XRay::setResources(void)
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SETS, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/sets.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::DURATION, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/duration.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::IA, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/ia.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::MOUSEPANEL, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/mousePanel.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::KEYBOARDPANEL, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/keyboardPanel.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::PLAYSTATIONPANEL, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/playstationPanel.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::XBOXPANEL, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/xboxPanel.png"))));
 }
 
 void XRay::quitGame(void)
