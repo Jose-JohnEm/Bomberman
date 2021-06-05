@@ -80,10 +80,10 @@ void XRay::setResources(void)
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::p2, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/j2.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::p3, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/j3.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::p4, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/j4.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::P1, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/J1.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::P2, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/J2.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::P3, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/J3.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::P4, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/J4.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::P1, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/p1.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::P2, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/p2.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::P3, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/p3.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::P4, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/p4.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::MOUSEYELLOW, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/mouseYellow.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::KEYBOARDYELLOW, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/keyboardYellow.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::PLAYSTATIONYELLOW, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/playstationYellow.png"))));
