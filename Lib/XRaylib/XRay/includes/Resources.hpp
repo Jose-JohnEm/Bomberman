@@ -79,6 +79,14 @@ typedef enum {
     PAUSE,
     DEPAUSE,
     PAUSEBACK,
+    RESUME,
+    RESTART,
+    SAVE,
+    HOME,
+    RESUMEHOVER,
+    RESTARTHOVER,
+    SAVEHOVER,
+    HOMEHOVER,
     UNKNOWN
 } Resources;
 
