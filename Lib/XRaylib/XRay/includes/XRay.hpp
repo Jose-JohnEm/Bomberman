@@ -285,8 +285,10 @@ class XRay : public IGraphical {
 
         /**
          * @brief Display Players Panels in the scene InGame
+         *
+         * @param panelPos Position of all Panels in a vector of pair (x, y)
          */
-        void displayPlayersPanels(void);
+        void displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &panelPos);
 
         /**
          * @brief This function displays all cards and their parameters
