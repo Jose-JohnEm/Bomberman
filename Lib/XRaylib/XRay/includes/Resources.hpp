@@ -67,9 +67,11 @@ typedef enum {
     SIZE_HOVER,
     SETS_HOVER,
     DURATION_HOVER,
+    AI_HOVER,
     SIZE,
     SETS,
     DURATION,
+    IA,
     UNKNOWN
 } Resources;
 

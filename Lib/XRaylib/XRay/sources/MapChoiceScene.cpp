@@ -17,6 +17,7 @@ void XRay::displayGameSettings(void)
     (mouseIsInBox(createBox(1160, 245, 1160+755, 245+132)) ? _resources.at(SIZE_HOVER) : _resources.at(SIZE))->drawTexture(1160, 245, Raylib::Color::White());
     (mouseIsInBox(createBox(1160, 455, 1160+755, 455+132)) ? _resources.at(SETS_HOVER) : _resources.at(Resources::SETS))->drawTexture(1160, 455, Raylib::Color::White());
     (mouseIsInBox(createBox(1160, 665, 1160+755, 665+132)) ? _resources.at(DURATION_HOVER) : _resources.at(Resources::DURATION))->drawTexture(1160, 665, Raylib::Color::White());
+    (mouseIsInBox(createBox(1160, 875, 1160+755, 875+132)) ? _resources.at(AI_HOVER) : _resources.at(Resources::IA))->drawTexture(1160, 875, Raylib::Color::White());
 }
 
 void XRay::displayMapChoiceScene(void)
