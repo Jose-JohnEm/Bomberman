@@ -72,6 +72,10 @@ typedef enum {
     SETS,
     DURATION,
     IA,
+    MOUSEPANEL,
+	KEYBOARDPANEL,
+	PLAYSTATIONPANEL,
+	XBOXPANEL,
     UNKNOWN
 } Resources;
 
