@@ -60,12 +60,12 @@ void XRay::displayInGameScene(void)
 
     // Draw scene
     beginDrawing();
-
     displayPlayersPanels(panelPos);
     displayPauseScene();
     displayMouse();
     endDrawing();
 
+    // Go to another scene according to mouse position
     if (pauseButton && Raylib::Mouse::isButtonPressed(0))
         _isPaused = true;
     if (resume && Raylib::Mouse::isButtonPressed(0))
