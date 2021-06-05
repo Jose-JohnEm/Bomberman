@@ -35,6 +35,9 @@ inline void XRay::endDrawing(void) const
 
 inline void XRay::display(void)
 {
+    // Hide the cursor
+    Raylib::Cursor::hideCursor();
+
     (this->*_scenesFunc[(int)_scene])();
 }
 

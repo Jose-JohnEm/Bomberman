@@ -7,7 +7,7 @@
 
 #include "XRay.hpp"
 
-void XRay::detectPlayerInput()
+void XRay::detectPlayerInput(void)
 {
     Resources tmp;
     size_t t = 0;
@@ -35,7 +35,7 @@ void XRay::removePlayer(const std::vector<std::pair<int, int>> &removeButtons)
     }
 }
 
-void XRay::addPlayer()
+void XRay::addPlayer(void)
 {
     float a = 100 + (_allIntegers[2]*450);
     if (_allIntegers[2] != 4 && mouseIsInBox(createBox(_allIntegers[0]+a, _allIntegers[1], _allIntegers[0]+a+150, _allIntegers[1]+150)) && Raylib::Mouse::isButtonPressed(0)) {
@@ -44,7 +44,7 @@ void XRay::addPlayer()
     }
 }
 
-void XRay::manageNextOrPrev()
+void XRay::manageNextOrPrev(void)
 {
     auto glambda = [](size_t a) { return a == 40 ? 36 : 40; };
 
@@ -76,7 +76,7 @@ void XRay::displayCardsSettings(std::vector<std::pair<int, int>> &removeButtons,
         _resources.at(ADD)->drawTexture(_allIntegers[0] + (*x), _allIntegers[1], Raylib::Color::White());
 }
 
-void XRay::displayBack()
+void XRay::displayBack(void)
 {
     // Parallax update
     _scrollingBack -= 0.1f;

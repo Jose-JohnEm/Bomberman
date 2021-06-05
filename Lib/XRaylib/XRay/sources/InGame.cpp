@@ -7,6 +7,11 @@
 
 #include "XRay.hpp"
 
+void XRay::displayPlayersPanels(void)
+{
+    ;
+}
+
 void XRay::displayInGameScene(void)
 {
     // Set scene
@@ -14,6 +19,9 @@ void XRay::displayInGameScene(void)
 
     // Draw scene
     beginDrawing();
+
+    displayPlayersPanels();
     // Some code
+
     endDrawing();
 }

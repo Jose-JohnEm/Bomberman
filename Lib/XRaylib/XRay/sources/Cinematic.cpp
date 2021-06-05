@@ -23,10 +23,6 @@ void XRay::displayCinematic(const std::string &cinematicPathDirectory, const siz
 {
     size_t filesNumber = countFilesDirectory("resources/cinematic/" + cinematicPathDirectory);
 
-    // Hide the cursor
-    if (Raylib::Cursor::isCursorOnScreen())
-        Raylib::Cursor::hideCursor();
-
     // Launch cinematic
     for (size_t i = 0; i < filesNumber && !(i < hideSkip && Raylib::Mouse::isButtonPressed(0) && mouseIsInBox(createBox(1760, 950, 1883, 1005))); i++)
     {

@@ -53,7 +53,7 @@ class XRay : public IGraphical {
         /**
          * @brief Construct a new Ray Lib object
          */
-        XRay();
+        XRay(void);
 
         /**
          * @brief Destroy the Ray Lib object
@@ -244,12 +244,12 @@ class XRay : public IGraphical {
         /**
          * @brief This function manages the click on the different previous and next buttons
          */
-        void manageNextOrPrev();
+        void manageNextOrPrev(void);
 
         /**
          * @brief Adds a new player to the board, if the limit is not exceeded.
          */
-        void addPlayer();
+        void addPlayer(void);
 
         /**
          * @brief Remove the player of the board.
@@ -276,12 +276,17 @@ class XRay : public IGraphical {
         /**
          * @brief Detect New Input
          */
-        void detectPlayerInput();
+        void detectPlayerInput(void);
 
         /**
          * @brief Diplay Background Parallax
          */
-        void displayBack();
+        void displayBack(void);
+
+        /**
+         * @brief Display Players Panels in the scene InGame
+         */
+        void displayPlayersPanels(void);
 
         /**
          * @brief This function displays all cards and their parameters
