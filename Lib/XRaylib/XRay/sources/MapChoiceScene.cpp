@@ -29,9 +29,6 @@ void XRay::displayMapChoiceScene(void)
     bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
     bool goNext = mouseIsInBox(createBox(1700, 1000, 1918, 1061)) ? true : false;
 
-    // Initialize and Update all the containers that refer to the boxes of the pseudos
-    detectPlayerInput();
-
     // Draw scene
     beginDrawing();
     displayBack();

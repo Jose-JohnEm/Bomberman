@@ -103,7 +103,7 @@ void XRay::displayPlayerChoiceScene(void)
     // A int that represents the x coordinate of the last displayed card
     int x;
 
-    // Initialize and Update all the containers that refer to the boxes of the pseudos
+    // Detect Keyboard, Mouse, and Gamepad
     detectPlayerInput();
 
     // Draw scene
