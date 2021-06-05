@@ -76,6 +76,9 @@ typedef enum {
 	KEYBOARDPANEL,
 	PLAYSTATIONPANEL,
 	XBOXPANEL,
+    PAUSE,
+    DEPAUSE,
+    PAUSEBACK,
     UNKNOWN
 } Resources;
 
