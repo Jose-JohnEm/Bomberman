@@ -32,8 +32,8 @@ void XRay::displayMenuScene(void)
 
     // Draw scene
     beginDrawing();
-    _resources.at(PARALLAX)->drawTextureEx(*_resources.at(PARALLAX).get(), *(new Raylib::Vector2(_scrollingBack, 0)), 0.0f, 1.0f, Raylib::Color::White());
-    _resources.at(PARALLAX)->drawTextureEx(*_resources.at(PARALLAX).get(), *(new Raylib::Vector2(_resources.at(PARALLAX)->getCStruct().width + _scrollingBack, 0)), 0.0f, 1.0f, Raylib::Color::White());
+    _resources.at(PARALLAX)->drawTexture(_scrollingBack, 0, 0.0f, 1.0f, Raylib::Color::White());
+    _resources.at(PARALLAX)->drawTexture(_resources.at(PARALLAX)->getCStruct().width + _scrollingBack, 0, 0.0f, 1.0f, Raylib::Color::White());
 
     (mouseIsInBox(createBox(1160, 245, 1160+755, 245+132)) ? _resources.at(PLAY_HOVER) : _resources.at(PLAY))->drawTexture(1160, 245, Raylib::Color::White());
     (mouseIsInBox(createBox(1160, 455, 1160+755, 455+132)) ? _resources.at(HELP_HOVER) : _resources.at(Resources::HELP))->drawTexture(1160, 455, Raylib::Color::White());

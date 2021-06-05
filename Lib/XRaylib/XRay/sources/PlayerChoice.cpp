@@ -31,7 +31,6 @@ void XRay::removePlayer(const std::vector<std::pair<int, int>> &removeButtons)
             if (_playerTab[u+1])
                 _controlsTab.erase(_controlsTab.begin() + u + 1);
             _playerTab.erase(_playerTab.begin() + u + 1);
-
             _pSelector.unload(u + 1);
         }
     }
@@ -43,6 +42,7 @@ void XRay::addPlayer()
     if (_allIntegers[2] != 4 && mouseIsInBox(createBox(_allIntegers[0]+a, _allIntegers[1], _allIntegers[0]+a+150, _allIntegers[1]+150)) && Raylib::Mouse::isButtonPressed(0)) {
         _allIntegers[2] += 1;
         _playerTab.push_back(false);
+        _pSelector.load();
     }
 }
 
@@ -59,6 +59,14 @@ void XRay::manageNextOrPrev()
             _card[u] = Raylib::Mouse::isButtonPressed(1) ? glambda(_card[u]) : _card[u];
         if (_controlsTab[u] == Resources::KEYBOARDYELLOW)
             _card[u] = (Raylib::Keyboard::getKeyPressed() == 32) ? glambda(_card[u]) : _card[u];
+
+        if (Raylib::Mouse::isButtonPressed(0))
+        {
+            if (mouseIsInBox(createBox(100 + 450 * u, 580, 180 + 450 * u, 630)))
+                _pSelector.prev(u);
+            if (mouseIsInBox(createBox(400 + 450 * u, 580, 480 + 450 * u, 630)))
+                _pSelector.next(u);
+        }
     }
 }
 
@@ -71,6 +79,7 @@ void XRay::displayCardsSettings(std::vector<std::pair<int, int>> &removeButtons,
             _resources.at((Resources)(size_t)((_controlsTab[i])+_card[i]-36))->drawTexture((*x)+109, b+9, Raylib::Color::White());
         if (i != 0)
             removeButtons.push_back(std::make_pair((*x)+307, b+9));
+        Raylib::Text::drawText(_pSelector[i].getName(), 200 + 450 * i + ((180 - Raylib::Text::measureText(_pSelector[i].getName(), 50)) / 2), 595, 50, Raylib::Color::Black());
     }
     if (_allIntegers[2] != 4)
         _resources.at(ADD)->drawTexture(_allIntegers[0] + (*x), _allIntegers[1], Raylib::Color::White());
@@ -82,8 +91,8 @@ void XRay::displayBack()
     _scrollingBack -= 0.1f;
     if (_scrollingBack <= (-_resources.at(BG)->getCStruct().width/3 * 2)) _scrollingBack = 0;
 
-    _resources.at(BG)->drawTextureEx(*_resources.at(BG).get(), *(new Raylib::Vector2(_scrollingBack, 0)), 0.0f, 1.0f, Raylib::Color::White());
-    _resources.at(BG)->drawTextureEx(*_resources.at(BG).get(), *(new Raylib::Vector2(_resources.at(BG)->getCStruct().width + _scrollingBack, 0)), 0.0f, 1.0f, Raylib::Color::White());
+    _resources.at(BG)->drawTexture(_scrollingBack, 0, 0.0f, 1.0f, Raylib::Color::White());
+    _resources.at(BG)->drawTexture(_resources.at(BG)->getCStruct().width + _scrollingBack, 0, 0.0f, 1.0f, Raylib::Color::White());
 }
 
 void XRay::displayPlayerChoiceScene(void)
@@ -114,6 +123,8 @@ void XRay::displayPlayerChoiceScene(void)
     (mouseIsInBox(createBox(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000, Raylib::Color::White());
     (mouseIsInBox(createBox(1700, 1000, 1918, 1061)) ? _resources.at(NEXT_HOVER) : _resources.at(NEXTSCENE))->drawTexture(1700, 1000, Raylib::Color::White());
     displayMouse();
+
+    _pSelector.draw();
     endDrawing();
 
     // Check and Manage Click on buttons

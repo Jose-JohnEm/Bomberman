@@ -96,9 +96,9 @@ inline void Raylib::Texture::drawTexture(const int &posX, const int &posY, const
     ::DrawTexture(_texture, posX, posY, tint.getCStruct());
 }
 
-inline void Raylib::Texture::drawTextureEx(Raylib::Texture const &texture, Raylib::Vector2 const &position, float const &rotation, float const &scale, Color const &tint) const
+inline void Raylib::Texture::drawTexture(const float &posX, const float &posY, float const &rotation, float const &scale, Color const &tint) const
 {
-    ::DrawTextureEx(texture._texture, position.getCStruct(), rotation, scale, tint.getCStruct());
+    ::DrawTextureEx(_texture, {posX, posY}, rotation, scale, tint.getCStruct());
 }
 
 inline void Raylib::Texture::drawTextureV(Texture const &texture, Vector2 const &position, Color const &tint = Color::Black()) const
