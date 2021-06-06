@@ -95,6 +95,13 @@ namespace Game
              */
             void dump(void) const;
 
+            /**
+             * @brief Place the players in the map
+             *
+             * @param playersNumber A const reference to a size_t (number of players)
+             */
+            void placePlayers(const size_t &playersNumber);
+
         private:
             size_t _width; // Width of the map
             size_t _height; // Height of the map
@@ -121,11 +128,6 @@ namespace Game
              * @brief Place the borders of the map
              */
             void placeBorders(void);
-
-            /**
-             * @brief Place the players of the map
-             */
-            void placePlayers(void);
 
             /**
              * @brief Place solid walls

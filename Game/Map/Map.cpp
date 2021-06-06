@@ -23,7 +23,6 @@ Game::Map::Map(const size_t &width, const size_t &height)
     fill(BREAK_WALL);
     maze();
     placeBorders();
-    placePlayers();
     placeSolidWalls();
 }
 

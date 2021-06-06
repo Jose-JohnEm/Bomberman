@@ -101,7 +101,7 @@ inline void Game::Map::placeBorders(void)
     }
 }
 
-inline void Game::Map::placePlayers(void)
+inline void Game::Map::placePlayers(const size_t &playersNumber)
 {
     _map[1][1] = PLAYER_ONE;
     _map[_height - BORDER][1] = PLAYER_TWO;
