@@ -121,6 +121,11 @@ namespace Game
              * @brief Place the borders of the map
              */
             void placeBorders(void);
+
+            /**
+             * @brief Place the players of the map
+             */
+            void placePlayers(void);
     };
 
     #include "Map.inl"

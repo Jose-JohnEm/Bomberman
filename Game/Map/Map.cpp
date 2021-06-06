@@ -14,11 +14,16 @@ Game::Map::Map()
 Game::Map::Map(const size_t &width, const size_t &height)
     : _width{width + BORDER}, _height{height + BORDER}
 {
+    if (width % 2 == 0 || width <= 3 || height < 3)
+    {
+        throw std::length_error("ERROR: Invalid map dimensions");
+    }
     srand(time(NULL));
     create();
     fill(BREAK_WALL);
     maze();
     placeBorders();
+    placePlayers();
 }
 
 Game::Map::~Map()

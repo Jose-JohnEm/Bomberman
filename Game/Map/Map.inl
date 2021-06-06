@@ -100,3 +100,11 @@ inline void Game::Map::placeBorders(void)
         }
     }
 }
+
+inline void Game::Map::placePlayers(void)
+{
+    _map[1][1] = PLAYER_ONE;
+    _map[_height - BORDER][1] = PLAYER_TWO;
+    _map[_height - BORDER][_width - BORDER] = PLAYER_THREE;
+    _map[1][_width - BORDER] = PLAYER_FOUR;
+}
