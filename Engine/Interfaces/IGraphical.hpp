@@ -39,6 +39,10 @@ class IGraphical {
             LOAD_GAME,
             /// This is the scene where the game is in progress
             IN_GAME,
+            /// This is the scene where the display winner options
+            VICTORY,
+            /// This is the scene where the display loser options
+            DEFEAT,
             /// This scene represents the end of the game
             END_GAME
         };
