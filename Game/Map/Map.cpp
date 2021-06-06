@@ -24,6 +24,7 @@ Game::Map::Map(const size_t &width, const size_t &height)
     maze();
     placeBorders();
     placePlayers();
+    placeSolidWalls();
 }
 
 Game::Map::~Map()

@@ -108,3 +108,14 @@ inline void Game::Map::placePlayers(void)
     _map[_height - BORDER][_width - BORDER] = PLAYER_THREE;
     _map[1][_width - BORDER] = PLAYER_FOUR;
 }
+
+inline void Game::Map::placeSolidWalls(void)
+{
+    for (size_t y = 2; y < _height - 1; y += 2)
+    {
+        for (size_t x = 2; x < _width - BORDER; x += 2)
+        {
+            _map[y][x] = SOLID_WALL;
+        }
+    }
+}

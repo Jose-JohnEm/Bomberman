@@ -126,6 +126,11 @@ namespace Game
              * @brief Place the players of the map
              */
             void placePlayers(void);
+
+            /**
+             * @brief Place solid walls
+             */
+            void placeSolidWalls(void);
     };
 
     #include "Map.inl"
