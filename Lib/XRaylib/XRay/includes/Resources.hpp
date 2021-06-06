@@ -91,6 +91,11 @@ typedef enum {
     HOMEHOVER,
     SAVED,
     BACKUPBAR,
+    VICTORYBG,
+    DEFEATBG,
+    NEXTLEVEL,
+    NEXTLEVELHOVER,
+    RANKING,
     UNKNOWN
 } Resources;
 
