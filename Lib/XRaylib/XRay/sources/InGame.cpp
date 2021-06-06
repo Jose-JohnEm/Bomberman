@@ -11,28 +11,28 @@ void XRay::displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &panelPos
 {
     for (size_t u = 0; u < _allIntegers[2]; u++) {
         if (_controlsTab[u] == Resources::PLAYSTATIONYELLOW)
-            _resources.at(PLAYSTATIONPANEL)->drawTexture(panelPos[u].first, panelPos[u].second, Raylib::Color::White());
+            _resources.at(PLAYSTATIONPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
         if (_controlsTab[u] == Resources::XBOXYELLOW)
-            _resources.at(XBOXPANEL)->drawTexture(panelPos[u].first, panelPos[u].second, Raylib::Color::White());
+            _resources.at(XBOXPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
         if (_controlsTab[u] == Resources::MOUSEYELLOW)
-            _resources.at(MOUSEPANEL)->drawTexture(panelPos[u].first, panelPos[u].second, Raylib::Color::White());
+            _resources.at(MOUSEPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
         if (_controlsTab[u] == Resources::KEYBOARDYELLOW)
-            _resources.at(KEYBOARDPANEL)->drawTexture(panelPos[u].first, panelPos[u].second, Raylib::Color::White());
+            _resources.at(KEYBOARDPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
     }
 }
 
 void XRay::displayPauseScene(void)
 {
     if (_isPaused) {
-        _resources.at(DEPAUSE)->drawTexture(10, 5, Raylib::Color::White());
-        _resources.at(PAUSEBACK)->drawTexture(0, 0, Raylib::Color::White());
-        (mouseIsInBox(createBox(460, 445, 460+375, 445+65)) ? _resources.at(RESUMEHOVER) : _resources.at(RESUME))->drawTexture(460, 445, Raylib::Color::White());
-        (mouseIsInBox(createBox(460, 555, 460+375, 555+65)) ? _resources.at(RESTARTHOVER) : _resources.at(Resources::RESTART))->drawTexture(460, 555, Raylib::Color::White());
-        (mouseIsInBox(createBox(460, 665, 460+375, 665+65)) ? _resources.at(SAVEHOVER) : _resources.at(Resources::SAVE))->drawTexture(460, 665, Raylib::Color::White());
-        (mouseIsInBox(createBox(460, 775, 460+375, 775+65)) ? _resources.at(SETTINGSHOVER) : _resources.at(Resources::SETTING))->drawTexture(460, 775, Raylib::Color::White());
-        (mouseIsInBox(createBox(460, 885, 460+375, 885+65)) ? _resources.at(HOMEHOVER) : _resources.at(Resources::HOME))->drawTexture(460, 885, Raylib::Color::White());
+        _resources.at(DEPAUSE)->drawTexture(10, 5);
+        _resources.at(PAUSEBACK)->drawTexture(0, 0);
+        (mouseIsInBox(createBox(460, 445, 460+375, 445+65)) ? _resources.at(RESUMEHOVER) : _resources.at(RESUME))->drawTexture(460, 445);
+        (mouseIsInBox(createBox(460, 555, 460+375, 555+65)) ? _resources.at(RESTARTHOVER) : _resources.at(Resources::RESTART))->drawTexture(460, 555);
+        (mouseIsInBox(createBox(460, 665, 460+375, 665+65)) ? _resources.at(SAVEHOVER) : _resources.at(Resources::SAVE))->drawTexture(460, 665);
+        (mouseIsInBox(createBox(460, 775, 460+375, 775+65)) ? _resources.at(SETTINGSHOVER) : _resources.at(Resources::SETTING))->drawTexture(460, 775);
+        (mouseIsInBox(createBox(460, 885, 460+375, 885+65)) ? _resources.at(HOMEHOVER) : _resources.at(Resources::HOME))->drawTexture(460, 885);
     } else
-        _resources.at(PAUSE)->drawTexture(10, 5, Raylib::Color::White());
+        _resources.at(PAUSE)->drawTexture(10, 5);
 }
 
 void XRay::goToAnotherScene()
@@ -57,7 +57,7 @@ void XRay::goToAnotherScene()
     }
     if (save && Raylib::Mouse::isButtonPressed(0)) {
         beginDrawing(false);
-        _resources.at(SAVED)->drawTexture(650, 20, Raylib::Color::White());
+        _resources.at(SAVED)->drawTexture(650, 20);
         endDrawing();
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
