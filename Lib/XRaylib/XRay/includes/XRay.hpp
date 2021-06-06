@@ -295,6 +295,13 @@ class XRay : public IGraphical {
         void displayPauseScene(void);
 
         /**
+         * @brief Load a game
+         *
+         * @param _pathToBackupFile A string that represents path to backup fiel
+         */
+        void loadThisBackup(const std::string &_pathToBackupFile);
+
+        /**
          * @brief Display Players Panels in the scene InGame
          *
          * @param panelPos Position of all Panels in a vector of pair (x, y)
