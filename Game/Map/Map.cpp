@@ -11,6 +11,11 @@ Game::Map::Map()
 {
 }
 
+Game::Map::Map(const size_t &width, const size_t &height)
+    : _width{width}, _height{height}
+{
+}
+
 Game::Map::~Map()
 {
 }
