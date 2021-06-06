@@ -82,11 +82,14 @@ typedef enum {
     RESUME,
     RESTART,
     SAVE,
+    SETTING,
     HOME,
     RESUMEHOVER,
     RESTARTHOVER,
     SAVEHOVER,
+    SETTINGSHOVER,
     HOMEHOVER,
+    SAVED,
     UNKNOWN
 } Resources;
 
