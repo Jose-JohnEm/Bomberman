@@ -222,6 +222,11 @@ class XRay : public IGraphical {
         void displayStudio(void);
 
         /**
+         * @brief Go to Another Scene
+         */
+        void goToAnotherScene();
+
+        /**
          * @brief Display specific cinematic
          *
          * @param cinematic Cinematic enum type, representing specific cinematic
@@ -342,11 +347,13 @@ class XRay : public IGraphical {
         std::vector<Resources> _controlsTab{UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN};                   // A vector of resources (See in Resources.hpp) that represents if the controls
         std::array<int, 3> _allIntegers = {50, 400, 1};   // An array of main positions on this scene
         std::vector<std::pair<int, int>> _letterAndFrame; // A vector of infos about the boxes of pseudos
-        float _scrollingBack = 0.0f;                      // A variable for parallax
         std::vector<size_t> _card{36, 36, 36, 36};        // Cards (Blue or Yellow)
         size_t _nextOrNot;                                // A size_t to know if can go to next scene or not
+        std::map<Scene, void (XRay::*)()> _scenesBack;         // Map of pointers to function and Scene (a scene, a pointer to function)
+        std::map<Scene, void (XRay::*)()> _scenesBackBackup;   // Map of pointers to function and Scene (a scene, a pointer to function)
         bool _isPaused = false;                            // Boolean to know if game is on pause or not
         int m_isPaused = 2;                                // Int to know if game is on pause or not
+        float _scrollingBack = 0.0f;                      // A variable for parallax
 
         std::map<std::string, std::pair<std::string, std::string>> _playersStats; // A map of all the stats [PlayerName -- (NameOfStat, Value)]...
         std::vector<std::pair<std::string, std::string>> _scores;                 // A vector of pair (username, score)
