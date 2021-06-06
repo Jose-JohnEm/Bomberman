@@ -227,6 +227,16 @@ class XRay : public IGraphical {
         void goToAnotherScene();
 
         /**
+         * @brief Go to Another Scene
+         */
+        void goToAnotherSceneFromVictory();
+
+        /**
+         * @brief Go to Another Scene
+         */
+        void goToAnotherSceneFromDefeat();
+
+        /**
          * @brief Display specific cinematic
          *
          * @param cinematic Cinematic enum type, representing specific cinematic
@@ -300,6 +310,16 @@ class XRay : public IGraphical {
          * @param _pathToBackupFile A string that represents path to backup fiel
          */
         void loadThisBackup(const std::string &_pathToBackupFile);
+
+        /**
+         * @brief Display Victory Scene
+         */
+        void displayVictoryScene();
+
+        /**
+         * @brief Display Defeat Scene
+         */
+        void displayDefeatScene();
 
         /**
          * @brief Display Players Panels in the scene InGame
