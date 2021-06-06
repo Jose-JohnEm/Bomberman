@@ -60,7 +60,6 @@ void XRay::goToAnotherScene()
         _resources.at(SAVED)->drawTexture(650, 20, Raylib::Color::White());
         endDrawing();
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
-//        for (double x = Raylib::Timing::getTime(); Raylib::Timing::getTime() - x < 1;);
     }
     if (settings && Raylib::Mouse::isButtonPressed(0)) {
         _scenesBack[Scene::SETTINGS] = &XRay::displayInGameScene;
