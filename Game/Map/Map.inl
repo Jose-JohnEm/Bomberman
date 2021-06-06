@@ -73,15 +73,11 @@ inline void Game::Map::maze(void)
     {
         for (size_t x = 0; x < _width; x += 2)
         {
-            _map[y][x] = '*';
-            if (y == 0 || x == 0)
-            {
-                _map[y][x] = 'W';
-            }
-            else
+            _map[y][x] = EMPTY_SPACE;
+            if (y != 0 && x != 0)
             {
                 choice = rand() % 2;
-                _map[(choice) ? y : y - 1][(choice) ? x - 1 : x] = '*';
+                _map[(choice) ? y : y - 1][(choice) ? x - 1 : x] = EMPTY_SPACE;
             }
         }
     }

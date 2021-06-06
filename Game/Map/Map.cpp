@@ -16,7 +16,7 @@ Game::Map::Map(const size_t &width, const size_t &height)
 {
     srand(time(NULL));
     create();
-    fill('W');
+    fill(BREAK_WALL);
     maze();
 }
 

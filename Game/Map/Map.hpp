@@ -11,7 +11,26 @@
 #include <vector>
 #include <iostream>
 
+// Borders
 #define BORDER 2
+#define EDGE 'E'
+
+// Walls
+#define SOLID_WALL 'W'
+#define BREAK_WALL 'M'
+#define EMPTY_SPACE '*'
+
+// Players
+#define PLAYER_ONE '1'
+#define PLAYER_TWO '2'
+#define PLAYER_THREE '3'
+#define PLAYER_FOUR '4'
+
+// Power-ups
+#define WALL_PASS 'P'
+#define FIRE 'F'
+#define SKATE 'S'
+#define BOMB_UP 'B'
 
 namespace Game
 {
@@ -97,6 +116,11 @@ namespace Game
              * @brief Maze the map
              */
             void maze(void);
+
+            /**
+             * @brief Place the borders of the map
+             */
+            void placeBorders(void);
     };
 
     #include "Map.inl"
