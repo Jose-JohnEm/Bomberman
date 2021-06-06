@@ -23,9 +23,9 @@ void XRay::displayGameModeScene(void)
         _resources.at(NEWGAME_BG)->drawTexture(0, 0);
     else
         _resources.at(LOADGAME_BG)->drawTexture(0, 0);
-    (mouseIsInBox(createBox(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000);
-    (mouseIsInBox(createBox(180, 500, 738+180, 500+109)) ? _resources.at(NEWGAME_HOVER) : _resources.at(NEWGAME))->drawTexture(180, 500);
-    (mouseIsInBox(createBox(1140, 500, 1140+738, 500+109)) ? _resources.at(LOADGAME_HOVER) : _resources.at(LOADGAME))->drawTexture(1140, 500);
+    (goBack ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000);
+    (goNewGame ? _resources.at(NEWGAME_HOVER) : _resources.at(NEWGAME))->drawTexture(180, 500);
+    (goLoadGame ? _resources.at(LOADGAME_HOVER) : _resources.at(LOADGAME))->drawTexture(1140, 500);
     displayMouse();
     endDrawing();
 
