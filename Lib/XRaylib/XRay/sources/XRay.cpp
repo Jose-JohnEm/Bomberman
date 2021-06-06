@@ -137,6 +137,7 @@ void XRay::setResources(void)
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SETTINGSHOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/settingHover.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::HOMEHOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/homeHover.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SAVED, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/saved.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::BACKUPBAR, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/backup.png"))));
 }
 
 void XRay::quitGame(void)
