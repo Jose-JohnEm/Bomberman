@@ -18,6 +18,7 @@ Game::Map::Map(const size_t &width, const size_t &height)
     create();
     fill(BREAK_WALL);
     maze();
+    placeBorders();
 }
 
 Game::Map::~Map()

@@ -7,22 +7,22 @@
 
 inline size_t Game::Map::getWidth(void) const
 {
-    return _width;
+    return _width - BORDER;
 }
 
 inline size_t Game::Map::getHeight(void) const
 {
-    return _height;
+    return _height - BORDER;
 }
 
 inline void Game::Map::setWidth(const size_t width)
 {
-    _width = width;
+    _width = width + BORDER;
 }
 
 inline void Game::Map::setHeight(const size_t height)
 {
-    _height = height;
+    _height = height + BORDER;
 }
 
 inline void Game::Map::create(void)
@@ -50,9 +50,9 @@ inline void Game::Map::fill(const char &character)
 
 inline void Game::Map::dump(void) const
 {
-    for (const std::vector<char> &_row : _map)
+    for (const std::vector<char> &row : _map)
     {
-        for (const char &character : _row)
+        for (const char &character : row)
         {
             std::cout << character;
         }
@@ -78,6 +78,24 @@ inline void Game::Map::maze(void)
             {
                 choice = rand() % 2;
                 _map[(choice) ? y : y - 1][(choice) ? x - 1 : x] = EMPTY_SPACE;
+            }
+        }
+    }
+}
+
+inline void Game::Map::placeBorders(void)
+{
+    // Place upper and lower borders
+    std::fill(_map[0].begin(), _map[0].end(), EDGE);
+    std::fill(_map[_height - 1].begin(), _map[_height - 1].end(), EDGE);
+    // Place left and right borders
+    for (size_t y = 0; y < _height; y++)
+    {
+        for (size_t x = 0; x < _width; x++)
+        {
+            if (x == 0 || x == _width - 1)
+            {
+                _map[y][x] = EDGE;
             }
         }
     }
