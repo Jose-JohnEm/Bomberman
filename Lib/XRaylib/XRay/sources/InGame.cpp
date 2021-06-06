@@ -98,4 +98,9 @@ void XRay::displayInGameScene(void)
     goToAnotherScene();
 
     m_isPaused = _isPaused;
+
+    if (Raylib::Keyboard::isKeyPressed(68))
+        displayDefeatScene();
+    if (Raylib::Keyboard::isKeyPressed(86))
+        displayVictoryScene();
 }
