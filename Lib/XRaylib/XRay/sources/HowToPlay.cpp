@@ -22,6 +22,8 @@ void XRay::displayHowToPlayScene(void)
     endDrawing();
 
     // Go to another scene according to mouse position
-    if (goBack && Raylib::Mouse::isButtonPressed(0))
-        displayMenuScene();
+    if (goBack && Raylib::Mouse::isButtonPressed(0)) {
+        (this->*_scenesBack[_scene])();
+        _scenesBack[HELP] = _scenesBackBackup[HELP];
+    }
 }
