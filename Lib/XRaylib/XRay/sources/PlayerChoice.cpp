@@ -123,8 +123,10 @@ void XRay::displayPlayerChoiceScene(void)
     manageNextOrPrev();
 
     // Go to another scene according to mouse position
-    if (goBack && Raylib::Mouse::isButtonPressed(0))
-        displayGameModeScene();
+    if (goBack && Raylib::Mouse::isButtonPressed(0)) {
+        (this->*_scenesBack[_scene])();
+        _scenesBack[PLAYER_CHOICE] = _scenesBackBackup[PLAYER_CHOICE];
+    }
     if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _allIntegers[2] * 40)
         displayMapChoiceScene();
 }
