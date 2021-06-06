@@ -41,25 +41,25 @@ namespace Game
             size_t getWidth(void) const;
 
             /**
-             * @brief Getter for map heigth
+             * @brief Getter for map height
              *
-             * @return Heigth of the map (size_t)
+             * @return Height of the map (size_t)
              */
-            size_t getHeitgh(void) const;
+            size_t getHeight(void) const;
 
             /**
              * @brief Setter for map width
              *
              * @param width A const reference to an size_t
              */
-            void setWidth(const size_t width) const;
+            void setWidth(const size_t width);
 
             /**
-             * @brief Setter for map heigth
+             * @brief Setter for map height
              *
-             * @param heigth A const reference to an size_t
+             * @param height A const reference to an size_t
              */
-            void setHeitgh(const size_t heigth) const;
+            void setHeight(const size_t height);
 
         private:
             size_t _width; // Width of the map
