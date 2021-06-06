@@ -153,8 +153,8 @@ void XRay::displayStudio(void)
         y = 1500 - f;
         beginDrawing();
 		std::this_thread::sleep_for(std::chrono::milliseconds(3));
-		_resources.at(INDIE)->drawTexture(x, 440, Raylib::Color::White());
-		_resources.at(STUDIO)->drawTexture(y, 440, Raylib::Color::White());
+		_resources.at(INDIE)->drawTexture(x, 440);
+		_resources.at(STUDIO)->drawTexture(y, 440);
         endDrawing();
     }
 
