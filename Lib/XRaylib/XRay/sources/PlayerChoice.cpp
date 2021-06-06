@@ -111,8 +111,8 @@ void XRay::displayPlayerChoiceScene(void)
     displayBack();
 
     displayCardsSettings(removeButtons, &x);
-    (mouseIsInBox(createBox(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000);
-    (mouseIsInBox(createBox(1700, 1000, 1918, 1061)) ? _resources.at(NEXT_HOVER) : _resources.at(NEXTSCENE))->drawTexture(1700, 1000);
+    (goBack ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000);
+    (goNext ? _resources.at(NEXT_HOVER) : _resources.at(NEXTSCENE))->drawTexture(1700, 1000);
     displayMouse();
     endDrawing();
 
