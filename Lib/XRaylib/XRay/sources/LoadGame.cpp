@@ -32,6 +32,8 @@ void XRay::displayLoadGameScene(void)
     endDrawing();
 
     // Go to another scene according to mouse position
-    if (goBack && Raylib::Mouse::isButtonPressed(0))
-        displayGameModeScene();
+    if (goBack && Raylib::Mouse::isButtonPressed(0)) {
+        (this->*_scenesBack[_scene])();
+        _scenesBack[LOAD_GAME] = _scenesBackBackup[LOAD_GAME];
+    }
 }
