@@ -20,14 +20,14 @@ void XRay::displayLoadGameScene(void)
 
     // Draw scene
     beginDrawing();
-    _resources.at(LOADSCENE)->drawTexture(0, 0, Raylib::Color::White());
+    _resources.at(LOADSCENE)->drawTexture(0, 0);
     Raylib::Text::drawText("BACKUPS", 230, 210, 65, Raylib::Color::Black());
     for (const std::string &backup : _backups) {
-        _resources.at(BRANCH)->drawTexture(150, ordinate, Raylib::Color::White());
+        _resources.at(BRANCH)->drawTexture(150, ordinate);
         Raylib::Text::drawText(backup.substr(0, backup.find('.')), 300, ordinate + 20, 65, Raylib::Color::Black());
         ordinate += 100;
     }
-    (mouseIsInBox(createBox(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000, Raylib::Color::White());
+    (mouseIsInBox(createBox(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000);
     displayMouse();
     endDrawing();
 
