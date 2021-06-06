@@ -9,6 +9,9 @@
 #define MAP_HPP_
 
 #include <vector>
+#include <iostream>
+
+#define BORDER 2
 
 namespace Game
 {
@@ -61,10 +64,39 @@ namespace Game
              */
             void setHeight(const size_t height);
 
+            /**
+             * @brief Getter for map
+             *
+             * @return The map (a vector of vectors of chars)
+             */
+            std::vector<std::vector<char>> getMap(void) const;
+
+            /**
+             * @brief Dump the map
+             */
+            void dump(void) const;
+
         private:
             size_t _width; // Width of the map
             size_t _height; // Height of the map
             std::vector<std::vector<char>> _map; // Map
+
+            /**
+             * @brief Create the map
+             */
+            void create(void);
+
+            /**
+             * @brief Fill the map with a specific character
+             *
+             * @param character A const reference to a character
+             */
+            void fill(const char &character);
+
+            /**
+             * @brief Maze the map
+             */
+            void maze(void);
     };
 
     #include "Map.inl"
