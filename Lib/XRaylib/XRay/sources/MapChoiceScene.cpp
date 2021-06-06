@@ -40,8 +40,10 @@ void XRay::displayMapChoiceScene(void)
     endDrawing();
 
     // Go to another scene according to mouse position
-    if (goBack && Raylib::Mouse::isButtonPressed(0))
-        displayPlayerChoiceScene();
+    if (goBack && Raylib::Mouse::isButtonPressed(0)) {
+        (this->*_scenesBack[_scene])();
+        _scenesBack[MAP_CHOICE] = _scenesBackBackup[MAP_CHOICE];
+    }
     if (goNext && Raylib::Mouse::isButtonPressed(0)) {
         displayCinematic("loading", 0, 0);
         displayInGameScene();
