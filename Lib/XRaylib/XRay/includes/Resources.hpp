@@ -90,6 +90,7 @@ typedef enum {
     SETTINGSHOVER,
     HOMEHOVER,
     SAVED,
+    BACKUPBAR,
     UNKNOWN
 } Resources;
 
