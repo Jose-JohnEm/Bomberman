@@ -28,6 +28,8 @@ XRay::XRay()
     _scenesFunc.push_back(&XRay::displayMapChoiceScene);
     _scenesFunc.push_back(&XRay::displayLoadGameScene);
     _scenesFunc.push_back(&XRay::displayInGameScene);
+    _scenesFunc.push_back(&XRay::displayVictoryScene);
+    _scenesFunc.push_back(&XRay::displayDefeatScene);
     _scenesFunc.push_back(&XRay::quitGame);
 
     // Scenes Back
@@ -138,6 +140,11 @@ void XRay::setResources(void)
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::HOMEHOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/homeHover.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SAVED, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/saved.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::BACKUPBAR, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/backup.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::VICTORYBG, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/victoryBg.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::DEFEATBG, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/defeatBg.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::NEXTLEVEL, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/nextlevel.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::NEXTLEVELHOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/nextlevelHover.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::RANKING, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/ranking.png"))));
 }
 
 void XRay::quitGame(void)
