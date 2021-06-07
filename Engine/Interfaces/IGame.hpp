@@ -9,6 +9,8 @@
 #define IGAME_HPP_
 
 #include "IEntity.hpp"
+#include <memory>
+#include <map>
 
 class IGame {
 
