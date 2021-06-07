@@ -5,7 +5,7 @@
 ** Sound
 */
 
-inline void Raylib::Sound::unload() const
+inline void Raylib::Sound::unload(void) const
 {
     ::UnloadSound(_sound);
 }
