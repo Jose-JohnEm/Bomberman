@@ -96,7 +96,12 @@ typedef enum {
     NEXTLEVEL,
     NEXTLEVELHOVER,
     RANKING,
-    UNKNOWN
+    UNKNOWN,
+    ON,
+    OFF,
+    SETTING_BG,
+    VOLUME_UP,
+    VOLUME_DOWN
 } Resources;
 
 #endif /* !RESOURCES_HPP_ */
