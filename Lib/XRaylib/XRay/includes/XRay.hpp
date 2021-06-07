@@ -61,7 +61,7 @@ class XRay : public IGraphical {
         /**
          * @brief Destroy the Ray Lib object
          */
-        ~XRay() override;
+        ~XRay(void) override;
 
         /**
          * @brief Check if the window should be close
