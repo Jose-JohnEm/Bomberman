@@ -68,7 +68,7 @@ void PlayerSelector::Map::next()
 
 void PlayerSelector::Map::prev()
 {
-    current = (current == 0) ? _textures.size() : current - 1;
+    current = (current == 0) ? _textures.size() - 1 : current - 1;
 }
 
 void PlayerSelector::Map::draw()

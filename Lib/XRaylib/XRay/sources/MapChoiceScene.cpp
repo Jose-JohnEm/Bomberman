@@ -18,6 +18,14 @@ void XRay::displayGameSettings(void)
     (mouseIsInBox(createBox(1160, 455, 1160+755, 455+83)) ? _resources.at(SETS_HOVER) : _resources.at(Resources::SETS))->drawTexture(1160, 455);
     (mouseIsInBox(createBox(1160, 665, 1160+755, 665+83)) ? _resources.at(DURATION_HOVER) : _resources.at(Resources::DURATION))->drawTexture(1160, 665);
     (mouseIsInBox(createBox(1160, 875, 1160+755, 875+83)) ? _resources.at(AI_HOVER) : _resources.at(Resources::IA))->drawTexture(1160, 875);
+
+    if (Raylib::Mouse::isButtonPressed(0))
+    {
+        if (mouseIsInBox(createBox(10, 400, 160, 550)))
+            _pSelector.prevMap();
+        if (mouseIsInBox(createBox(900, 400, 1050, 550)))
+            _pSelector.nextMap();
+    }
 }
 
 void XRay::displayMapChoiceScene(void)

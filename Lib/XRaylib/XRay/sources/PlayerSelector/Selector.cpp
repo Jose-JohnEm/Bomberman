@@ -185,12 +185,12 @@ void PlayerSelector::Selector::endMaps()
 
 void PlayerSelector::Selector::nextMap()
 {
-    
+    _map->next();
 }
 
 void PlayerSelector::Selector::prevMap()
 {
-    
+    _map->prev();
 }
 
 void PlayerSelector::Selector::next(const int &id)
