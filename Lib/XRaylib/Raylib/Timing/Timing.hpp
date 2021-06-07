@@ -23,7 +23,7 @@ namespace Raylib
             /**
              * @brief Destroy the Timing object
              */
-            ~Timing();
+            ~Timing(void);
 
             /**
              * @brief Set Framerate Per Second
@@ -49,7 +49,7 @@ namespace Raylib
             /**
              * @brief Get time since window initialization
              *
-             * @return The elapsed time in seconds since InitWindow() - double
+             * @return The elapsed time in seconds since InitWindow(void) - double
              */
             static double getTime(void);
     };
