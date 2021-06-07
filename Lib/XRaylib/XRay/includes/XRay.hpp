@@ -45,6 +45,7 @@
 #include "Cinematic.hpp"
 #include "Resources.hpp"
 #include "Input.hpp"
+#include "Audio/Audio.hpp"
 
 class XRay : public IGraphical {
 
@@ -313,7 +314,7 @@ class XRay : public IGraphical {
 
     private:
         Raylib::Window _window;                     // Game window
-
+        float masterVolume;
 //        Raylib::Music music;
         std::vector<std::string> _userNames;        // A vector of all the users names
         std::pair<bool, void (XRay::*)()> _intro;   // Intro pointer to function

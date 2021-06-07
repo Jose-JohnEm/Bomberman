@@ -46,7 +46,9 @@ typedef enum {
     PARALLAX,
     ON,
     OFF,
-    SETTING_BG
+    SETTING_BG,
+    VOLUME_UP,
+    VOLUME_DOWN
 } Resources;
 
 #endif /* !RESOURCES_HPP_ */
