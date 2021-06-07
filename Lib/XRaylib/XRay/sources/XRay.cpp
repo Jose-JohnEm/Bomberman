@@ -7,7 +7,7 @@
 
 #include "XRay.hpp"
 
-XRay::XRay()
+XRay::XRay(void)
     : _window(1920, 1080, "Bomberman")
 {
 	// Set icon for window
@@ -57,7 +57,7 @@ XRay::XRay()
 //    Raylib::Audio::setMasterVolume(masterVolume);
 }
 
-XRay::~XRay()
+XRay::~XRay(void)
 {
 }
 
