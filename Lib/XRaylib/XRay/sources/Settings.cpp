@@ -24,7 +24,7 @@ void XRay::displaySettingsScene(void)
     /// Draw scene
     beginDrawing();
 
-    //Background
+    // Background
     _resources.at(SETTING_BG)->drawTexture(0, 0, Raylib::Color::White());
 
     // Fullscreen
@@ -55,12 +55,12 @@ void XRay::displaySettingsScene(void)
         masterVolume -= 10;
         if (masterVolume < 0)
             masterVolume = 0;
-        Raylib::Audio::setMasterVolume(masterVolume);
+//FIXME:        Raylib::Audio::setMasterVolume(masterVolume);
     }
     if (onVolumeUp && Raylib::Mouse::isButtonPressed(0) && masterVolume <= 90) {
         masterVolume += 10;
         if (masterVolume > 100)
             masterVolume = 100;
-        Raylib::Audio::setMasterVolume(masterVolume);
+//FIXME:        Raylib::Audio::setMasterVolume(masterVolume);
     }
 }
