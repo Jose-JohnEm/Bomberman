@@ -25,6 +25,10 @@ inline void Raylib::Window::setWindowIcon(Raylib::Image image)
     ::SetWindowIcon(image.getCStruct());
 }
 
+inline bool Raylib::Window::isWindowFullscreen(void)
+{
+    return ::IsWindowFullscreen();
+}
 inline void Raylib::Window::toggleFullscreen()
 {
     ::ToggleFullscreen();
