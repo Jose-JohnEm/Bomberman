@@ -5,7 +5,7 @@
 ** Camera3D
 */
 
-inline ::Camera3D Raylib::Camera3D::getCStruct() const
+inline ::Camera3D Raylib::Camera3D::getCStruct(void) const
 {
     return _camera3D;
 }

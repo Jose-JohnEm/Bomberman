@@ -22,19 +22,19 @@ namespace Raylib {
 
         /**
          * @brief Construct a new Camera 3D object
-         * 
-         * @param position 
-         * @param target 
-         * @param up 
-         * @param fovy 
-         * @param projection 
+         *
+         * @param position A Vector3
+         * @param target A Vector3
+         * @param up A Vector3
+         * @param fovy A float
+         * @param projection A int
          */
         Camera3D(const Vector3 &position = Vector3(10, 10, 10), const Vector3 &target = Vector3(0, 0, 0), const Vector3 &up = Vector3(0, 1, 0), const float &fovy = 45, const int &projection = ::CAMERA_PERSPECTIVE);
 
         /**
          * @brief Destroy the Camera3D object
          */
-        ~Camera3D();
+        ~Camera3D(void);
 
         /**
          * @brief Construct a new Camera object (Copy Constructor)
@@ -47,7 +47,7 @@ namespace Raylib {
          * @brief Get C Structure for Camera3D Class
          * @return A Camera3D C Structure
          */
-        ::Camera3D getCStruct() const;
+        ::Camera3D getCStruct(void) const;
 
         /**
           * @brief Overload of '=' operator
@@ -131,7 +131,7 @@ namespace Raylib {
          * @param camera Camera3D Class
          * @return Matrix
          */
-        Matrix getCameraMatrix() const;
+        Matrix getCameraMatrix(void) const;
 
         /**
           * @brief Returns the screen space position for a 3d world space position
@@ -195,10 +195,7 @@ namespace Raylib {
          */
         void set(const Camera3D &camera);
 
-        /**
-         * @brief C Camera3D structure instance
-         * 
-         */
+        // C Camera3D structure instance
         ::Camera3D _camera3D;
     };
 
