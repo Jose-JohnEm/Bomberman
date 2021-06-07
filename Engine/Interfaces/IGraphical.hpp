@@ -84,9 +84,9 @@ class IGraphical {
          * @brief This is called in a loop when the game is running. Sets the current informations about players and their stats. The first element of the pair
          *  is the category (e.g. Score), the second is the value (e.g. 200).
          *
-         * @param info A map of all the stats [PlayerName -- (NameOfStat, Value)]...
+         * @param info A vector of a vector all the stats by player [Player -- (NameOfStat, Value)]...
          */
-        virtual void setPlayersStats(const std::map<std::string, std::pair<std::string, std::string>> &info) = 0;
+        virtual void setPlayersStats(const std::vector<std::vector<std::pair<std::string, std::string>>> &info) = 0;
 
         /**
          * @brief Get the Users Names
