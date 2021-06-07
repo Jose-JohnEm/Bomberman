@@ -36,7 +36,7 @@ void XRay::displayGameModeScene(void)
     }
     else if (goNewGame && Raylib::Mouse::isButtonPressed(0))
     {
-        _pSelector.load();
+        _pSelector.firstLoad();
         displayPlayerChoiceScene();
     }
     else if (goLoadGame && Raylib::Mouse::isButtonPressed(0))

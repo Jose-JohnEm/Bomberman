@@ -37,6 +37,7 @@ namespace PlayerSelector
             Selector();
             ~Selector();
 
+            void firstLoad();
             void load();
             void unload(const int &id);
             void unloadAll();

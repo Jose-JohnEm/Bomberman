@@ -86,6 +86,12 @@ const PlayerSelector::Player &PlayerSelector::Selector::operator[](const int &in
     return _players[index];
 }
 
+void PlayerSelector::Selector::firstLoad()
+{
+    if (_players.size() == 0)
+        load();
+}
+
 void PlayerSelector::Selector::load()
 {
     std::cout << std::endl << "######## Load Player Selector ########" << std::endl << std::endl;

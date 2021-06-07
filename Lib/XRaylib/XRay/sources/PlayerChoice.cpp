@@ -139,7 +139,6 @@ void XRay::displayPlayerChoiceScene(void)
     if (goBack && Raylib::Mouse::isButtonPressed(0)) {
         (this->*_scenesBack[_scene])();
         _scenesBack[PLAYER_CHOICE] = _scenesBackBackup[PLAYER_CHOICE];
-        _pSelector.unloadAll();
     }
     if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _allIntegers[2] * 40)
         displayMapChoiceScene();
