@@ -10,6 +10,7 @@
 
 #include <vector>
 #include <iostream>
+#include <time.h>
 
 // Borders
 #define BORDER 2
