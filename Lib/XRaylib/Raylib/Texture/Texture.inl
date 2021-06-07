@@ -101,7 +101,7 @@ inline void Raylib::Texture::drawTexture(const float &posX, const float &posY, f
     ::DrawTextureEx(_texture, {posX, posY}, rotation, scale, tint.getCStruct());
 }
 
-inline void Raylib::Texture::drawTextureV(Texture const &texture, Vector2 const &position, Color const &tint = Color::White()) const
+inline void Raylib::Texture::drawTextureV(Texture const &texture, Vector2 const &position, Color const &tint) const
 {
     ::DrawTextureV(texture._texture, position.getCStruct(), tint.getCStruct());
 }

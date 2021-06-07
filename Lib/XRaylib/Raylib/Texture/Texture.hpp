@@ -164,7 +164,7 @@ namespace Raylib
              * @param position A const reference to a Vector2
              * @param tint A const reference to a Color
              */
-            void drawTextureV(Texture const &texture, Vector2 const &position, Color const &tint) const;
+            void drawTextureV(Texture const &texture, Vector2 const &position, Color const &tint = Color::White()) const;
 
             /**
              * @brief Draw a Texture with extended parameters
@@ -175,7 +175,7 @@ namespace Raylib
              * @param scale A const reference to a float
              * @param tint A const reference to a Color
              */
-            void drawTexture(const float &posX, const float &posY, float const &rotation, float const &scale, Color const &tint) const;
+            void drawTexture(const float &posX, const float &posY, float const &rotation, float const &scale, Color const &tint = Color::White()) const;
 
             /**
              * @brief Draw a part of a texture defined by a rectangle
