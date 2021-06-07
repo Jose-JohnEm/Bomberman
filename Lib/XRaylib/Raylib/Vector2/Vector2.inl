@@ -17,6 +17,6 @@ inline Vector2 Raylib::Vector2::operator=(const ::Vector2 &copyVector) {
     return *this;
 }
 
-inline ::Vector2 Raylib::Vector2::getCStruct() const {
+inline ::Vector2 Raylib::Vector2::getCStruct(void) const {
     return ::Vector2({this->x, this->y});
 }
