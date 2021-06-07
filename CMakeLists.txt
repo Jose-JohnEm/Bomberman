@@ -22,10 +22,12 @@ ADD_SUBDIRECTORY(Lib/XRaylib)
 # Generate a list of files
 FILE(GLOB_RECURSE SRCS CONFIGURE_DEPENDS
     "Engine/*.cpp"
+    "Game/*.cpp"
 )
 
 # Set Headers paths
 SET(ENGINE_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Engine/")
+SET(GAME_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Game/")
 SET(XRAY_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Lib/XRaylib/XRay/includes/")
 SET(RAYLIB_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Lib/XRaylib/Raylib/")
 
@@ -38,6 +40,7 @@ TARGET_LINK_LIBRARIES(${PROJECT_NAME} xray) # Specify libraries or flags to use 
 # PRIVATE keyword ensure a complete compilation beetwin dependencies
 TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PRIVATE
     ${ENGINE_HEADERS_PATH}
+    ${GAME_HEADERS_PATH}
     ${XRAY_HEADERS_PATH}
     ${RAYLIB_HEADERS_PATH}
 )

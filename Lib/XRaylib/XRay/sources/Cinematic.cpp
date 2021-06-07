@@ -31,9 +31,9 @@ void XRay::displayCinematic(const std::string &cinematicPathDirectory, const siz
 
         // Draw cinematic
         beginDrawing();
-        frame.drawTexture(0, 0, Raylib::Color::White());
+        frame.drawTexture(0, 0);
         if (i < hideSkip) {
-            (mouseIsInBox(createBox(1760, 950, 1883, 1005)) ? _resources.at(SKIP_HOVER) : _resources.at(SKIP))->drawTexture(1760, 950, Raylib::Color::White());
+            (mouseIsInBox(createBox(1760, 950, 1883, 1005)) ? _resources.at(SKIP_HOVER) : _resources.at(SKIP))->drawTexture(1760, 950);
             displayMouse();
         }
         if (gap > 0)

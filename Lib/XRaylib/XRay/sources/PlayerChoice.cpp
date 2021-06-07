@@ -76,15 +76,15 @@ void XRay::displayCardsSettings(std::vector<std::pair<int, int>> &removeButtons,
 {
     int i, b;
     for (i = 0, (*x) = 100, b = 200; _allIntegers[2] < 5 && i < _allIntegers[2]; i++, (*x) += 450) {
-        (_playerTab[i]) ? _resources.at((Resources)(_card[i]+i))->drawTexture((*x), b, Raylib::Color::White()) : _resources.at(AI)->drawTexture((*x), b, Raylib::Color::White());
+        (_playerTab[i]) ? _resources.at((Resources)(_card[i]+i))->drawTexture((*x), b) : _resources.at(AI)->drawTexture((*x), b);
         if (_playerTab[i])
-            _resources.at((Resources)(size_t)((_controlsTab[i])+_card[i]-36))->drawTexture((*x)+109, b+9, Raylib::Color::White());
+            _resources.at((Resources)(size_t)((_controlsTab[i])+_card[i]-36))->drawTexture((*x)+109, b+9);
         if (i != 0)
             removeButtons.push_back(std::make_pair((*x)+307, b+9));
         Raylib::Text::drawText(_pSelector[i].getName(), 200 + 450 * i + ((180 - Raylib::Text::measureText(_pSelector[i].getName(), 50)) / 2), 595, 50, Raylib::Color::Black());
     }
     if (_allIntegers[2] != 4)
-        _resources.at(ADD)->drawTexture(_allIntegers[0] + (*x), _allIntegers[1], Raylib::Color::White());
+        _resources.at(ADD)->drawTexture(_allIntegers[0] + (*x), _allIntegers[1]);
 }
 
 void XRay::displayBack(void)
@@ -93,8 +93,8 @@ void XRay::displayBack(void)
     _scrollingBack -= 0.1f;
     if (_scrollingBack <= (-_resources.at(BG)->getCStruct().width/3 * 2)) _scrollingBack = 0;
 
-    _resources.at(BG)->drawTexture(_scrollingBack, 0, 0.0f, 1.0f, Raylib::Color::White());
-    _resources.at(BG)->drawTexture(_resources.at(BG)->getCStruct().width + _scrollingBack, 0, 0.0f, 1.0f, Raylib::Color::White());
+    _resources.at(BG)->drawTexture(_scrollingBack, 0, 0.0f, 1.0f);
+    _resources.at(BG)->drawTexture(_resources.at(BG)->getCStruct().width + _scrollingBack, 0, 0.0f, 1.0f);
 }
 
 void XRay::displayPlayerChoiceScene(void)
@@ -122,8 +122,8 @@ void XRay::displayPlayerChoiceScene(void)
     displayBack();
 
     displayCardsSettings(removeButtons, &x);
-    (mouseIsInBox(createBox(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000, Raylib::Color::White());
-    (mouseIsInBox(createBox(1700, 1000, 1918, 1061)) ? _resources.at(NEXT_HOVER) : _resources.at(NEXTSCENE))->drawTexture(1700, 1000, Raylib::Color::White());
+    (goBack ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000);
+    (goNext ? _resources.at(NEXT_HOVER) : _resources.at(NEXTSCENE))->drawTexture(1700, 1000);
     displayMouse();
 
     _pSelector.draw();
@@ -136,10 +136,10 @@ void XRay::displayPlayerChoiceScene(void)
     manageNextOrPrev();
 
     // Go to another scene according to mouse position
-    if (goBack && Raylib::Mouse::isButtonPressed(0))
-    {
+    if (goBack && Raylib::Mouse::isButtonPressed(0)) {
+        (this->*_scenesBack[_scene])();
+        _scenesBack[PLAYER_CHOICE] = _scenesBackBackup[PLAYER_CHOICE];
         _pSelector.unloadAll();
-        displayGameModeScene();
     }
     if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _allIntegers[2] * 40)
         displayMapChoiceScene();
