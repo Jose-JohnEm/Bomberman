@@ -11,10 +11,11 @@
 #include <vector>
 #include <istream>
 #include <algorithm>
+#include "Interfaces/IGame.hpp"
 
 namespace Game
 {
-    class Bomberman {
+    class Bomberman : public IGame {
         public:
             Bomberman();
             ~Bomberman();
@@ -22,5 +23,7 @@ namespace Game
         private:
     };
 }
+
+#include "Bomberman.inl"
 
 #endif /* !BOMBERMAN_HPP_ */
