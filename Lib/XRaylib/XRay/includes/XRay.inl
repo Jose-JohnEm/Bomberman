@@ -41,7 +41,7 @@ inline void XRay::display(void)
     (this->*_scenesFunc[(int)_scene])();
 }
 
-inline void XRay::setPlayersStats(const std::map<std::string, std::pair<std::string, std::string>> &info)
+inline void XRay::setPlayersStats(const std::vector<std::vector<std::pair<std::string, std::string>>> &info)
 {
     _playersStats = info;
 }

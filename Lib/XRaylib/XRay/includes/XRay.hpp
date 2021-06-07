@@ -95,9 +95,9 @@ class XRay : public IGraphical {
          * @brief This is called in a loop when the game is running. Sets the current informations about players and their stats. The first element of the pair
          *  is the category (e.g. Score), the second is the value (e.g. 200).
          *
-         * @param info A map of all the stats [PlayerName -- (NameOfStat, Value)]...
+         * @param info A vector of vector of all the stats [Player -- (NameOfStat, Value)]...
          */
-        void setPlayersStats(const std::map<std::string, std::pair<std::string, std::string>> &info) override;
+        void setPlayersStats(const std::vector<std::vector<std::pair<std::string, std::string>>> &info) override;
 
         /**
          * @brief Get the Users Names
@@ -386,7 +386,7 @@ class XRay : public IGraphical {
         int m_isPaused = 2;                                // Int to know if game is on pause or not
         float _scrollingBack = 0.0f;                      // A variable for parallax
 
-        std::map<std::string, std::pair<std::string, std::string>> _playersStats; // A map of all the stats [PlayerName -- (NameOfStat, Value)]...
+        std::vector<std::vector<std::pair<std::string, std::string>>> _playersStats; // A vector of a vector all the stats by player [Player -- (NameOfStat, Value)]...
         std::vector<std::pair<std::string, std::string>> _scores;                 // A vector of pair (username, score)
         std::vector<std::pair<std::string, std::string>> _bestScores;             // A vector of pair (username, score), List of Bests Scores
         std::vector<std::shared_ptr<IEntity>> _gameInfos;                         // A vector of shared pointer that represent all the entities to display. Ex : Map, Score, UserInfo, Button
