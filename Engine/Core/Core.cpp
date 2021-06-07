@@ -31,8 +31,10 @@ void Engine::Core::run(void)
                 _graphical->setPlayersStats(_game->getPlayersStats());
             }
         }
-        if (_graphical->getUserNames() != _userNames)
+        if (_graphical->getUserNames() != _userNames) {
             _userNames = _graphical->getUserNames();
+            _game->setUserNames(_userNames);
+        }
         if (_graphical->getBackups() != _backups)
             _graphical->setBackups(_backups);
     }
