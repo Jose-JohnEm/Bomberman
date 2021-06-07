@@ -48,10 +48,13 @@ void XRay::goToAnotherScene()
     // Go to another scene according to mouse position
     if (pauseButton && Raylib::Mouse::isButtonPressed(0))
         _isPaused = true;
-    if (resume && Raylib::Mouse::isButtonPressed(0))
+    if (resume && Raylib::Mouse::isButtonPressed(0)) {
         _isPaused = false;
+        m_isPaused = 2;
+    }
     if (restart && Raylib::Mouse::isButtonPressed(0)) {
         _isPaused = false;
+        m_isPaused = 2;
         displayCinematic("loading", 0, 0);
         displayInGameScene();
     }
@@ -67,6 +70,7 @@ void XRay::goToAnotherScene()
     }
     if (home && Raylib::Mouse::isButtonPressed(0)) {
         _isPaused = false;
+        m_isPaused = 2;
         displayMenuScene();
     }
 }
@@ -94,10 +98,10 @@ void XRay::displayInGameScene(void)
     displayMouse();
     endDrawing();
 
+    m_isPaused = _isPaused;
+
     // Call function that check click on button
     goToAnotherScene();
-
-    m_isPaused = _isPaused;
 
     if (Raylib::Keyboard::isKeyPressed(68))
         displayDefeatScene();
