@@ -89,7 +89,7 @@ const PlayerSelector::Player &PlayerSelector::Selector::operator[](const int &in
 void PlayerSelector::Selector::load()
 {
     std::cout << std::endl << "######## Load Player Selector ########" << std::endl << std::endl;
-    
+
     if (_players.size() == 4)
         return;
     if (!camera)
@@ -114,7 +114,7 @@ void PlayerSelector::Selector::load()
 }
 
 void PlayerSelector::Selector::unload(const int &id)
-{   
+{
     std::cout << std::endl << "######## End Player Selector ########" << std::endl << std::endl;
 
     _players.erase(_players.begin() + id);
@@ -142,7 +142,7 @@ void PlayerSelector::Selector::updateRotationAxis()
 void PlayerSelector::Selector::draw()
 {
     char i = 0;
-    
+
     camera->beginMode3D();
 
     for (PlayerSelector::Player &player : _players)
@@ -150,7 +150,7 @@ void PlayerSelector::Selector::draw()
         player.draw(_rotationAxis, POS[i]);
         i++;
     }
-    
+
     updateRotationAxis();
     camera->endMode3D();
 }
