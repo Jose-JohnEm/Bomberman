@@ -61,6 +61,13 @@ namespace Raylib
         static void setWindowIcon(Raylib::Image image);
 
         /**
+         * @brief Check if window is currently fullscreen
+         *
+         * @return
+         */
+        static bool isWindowFullscreen(void);
+
+        /**
          * @brief Toggle window state: fullscreen/windowed (only PLATFORM_DESKTOP)
          */
         static void toggleFullscreen();

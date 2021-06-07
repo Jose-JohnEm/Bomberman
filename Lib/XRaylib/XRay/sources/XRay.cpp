@@ -50,6 +50,11 @@ XRay::XRay()
 
     // Display Intro (studio and introduction cinematic)
     _intro = std::make_pair(true, &XRay::displayStudio);
+
+    // Audio
+    Raylib::Audio::initAudioDevice();
+    masterVolume = 50;
+    Raylib::Audio::setMasterVolume(masterVolume);
 }
 
 XRay::~XRay()
@@ -145,6 +150,11 @@ void XRay::setResources(void)
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::NEXTLEVEL, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/nextlevel.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::NEXTLEVELHOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/nextlevelHover.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::RANKING, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/ranking.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::ON, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/ON.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::OFF, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/OFF.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SETTING_BG, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/backSetting.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::VOLUME_UP, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/volumeUp.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::VOLUME_DOWN, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/volumeDown.png"))));
 }
 
 void XRay::quitGame(void)
