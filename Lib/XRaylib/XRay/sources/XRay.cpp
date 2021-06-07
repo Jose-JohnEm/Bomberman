@@ -51,10 +51,10 @@ XRay::XRay()
     // Display Intro (studio and introduction cinematic)
     _intro = std::make_pair(true, &XRay::displayStudio);
 
-    // Audio
-    Raylib::Audio::initAudioDevice();
+    // Audio TODO: Aïe
+//    Raylib::Audio::initAudioDevice();
     masterVolume = 50;
-    Raylib::Audio::setMasterVolume(masterVolume);
+//    Raylib::Audio::setMasterVolume(masterVolume);
 }
 
 XRay::~XRay()
