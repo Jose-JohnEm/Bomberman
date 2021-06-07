@@ -5,7 +5,7 @@
 ** Camera2D
 */
 
-inline ::Camera2D Raylib::Camera2D::getCStruct() const
+inline ::Camera2D Raylib::Camera2D::getCStruct(void) const
 {
     return _camera2D;
 }
