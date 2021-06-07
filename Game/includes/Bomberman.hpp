@@ -11,16 +11,112 @@
 #include <vector>
 #include <istream>
 #include <algorithm>
+#include <map>
 #include "Interfaces/IGame.hpp"
 
 namespace Game
 {
     class Bomberman : public IGame {
+
         public:
+
+            /**
+             * @brief Construct a new Bomberman object
+             */
             Bomberman();
+
+            /**
+             * @brief Destroy the Bomberman object
+             */
             ~Bomberman();
 
+            /**
+             * @brief Call this function to restart the entire game. The game must reset himself.
+             */
+            void restart(void) override;
+
+            /**
+             * @brief Set the Users Names
+             *
+             * @param userNames A vector of all the users names as a const std::vector<std::string>&
+             */
+            void setUserNames(const std::vector<std::string> &userNames) override;
+
+            /**
+             * @brief Getter for the score
+             *
+             * @return A array of pair (Player, Score) of the current game
+             */
+            const std::vector<std::pair<std::string, std::string>> &getScores(void) const override;
+
+            /**
+             * @brief Get the Entities
+             *
+             * @return Return all the game's entities to display in a const std::vector<std::shared_ptr<Thing>>&
+             */
+            const std::vector<std::shared_ptr<IEntity>> &getEntities(void) const override;
+
+            /**
+             * @brief Get the Players Stats
+             *
+             * @return All the stats [PlayerName -- (NameOfStat, Value)] in a vector of vector
+             */
+            const std::vector<std::vector<std::pair<std::string, std::string>>> &getPlayersStats(void) const override;
+
+            /**
+             * @brief updateGame function should be called in a loop. It's used to advance the game and update all logic.
+             * The game must manage time on it's own.
+             */
+            void updateGame(void) override;
+
+            /**
+             * @brief Check if the game is over
+             * @return bool which indicate if the game is over
+             */
+            bool isGameOver(void) const override;
+
+            /**
+             * @brief Get the name of the game
+             * @return Name of the game
+             */
+            const std::string &getGameName(void) const override;
+
+            /**
+             * @brief This function is to init all entities (_entites)
+             */
+            void initEntities();
+
+            /**
+             * @brief This function is to init all player(s) stats
+             */
+            void initPlayersStats();
+
+            /**
+             * @brief This function is to update state of all entities (_entites)
+             */
+            void updateEntities();
+
+            /**
+             * @brief This function is to update score(s) of player(s)
+             */
+            void updateScores();
+
+            /**
+             * @brief This function is to update player(s) stats
+             */
+            void updatePlayersStats();
+
         private:
+
+            std::vector<std::vector<std::pair<std::string, std::string>>> _playersStats; // A map of all the stats [PlayerName -- (NameOfStat, Value)]...
+            std::vector<std::pair<std::string, std::string>> _scores;                 // A vector of pair (username, score)
+            std::vector<std::shared_ptr<IEntity>> _entities;                         // A vector of shared pointer that represent all the entities to display. Ex : Map, Score, UserInfo, Button
+
+            bool _gameOver;                     // A boolean to know if the game is over or not
+            bool _isPaused;                     // A boolean to know if the game is in pause or not
+            std::string _gameName;        // A string that represents the game name
+            std::vector<std::string> _userNames;        // A vector of all the users names
+
     };
 }
 
