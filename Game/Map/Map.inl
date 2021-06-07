@@ -103,10 +103,29 @@ inline void Game::Map::placeBorders(void)
 
 inline void Game::Map::placePlayers(const size_t &playersNumber)
 {
-    _map[1][1] = PLAYER_ONE;
-    _map[_height - BORDER][1] = PLAYER_TWO;
-    _map[_height - BORDER][_width - BORDER] = PLAYER_THREE;
-    _map[1][_width - BORDER] = PLAYER_FOUR;
+    if (!(1 <= playersNumber && playersNumber <= 4))
+    {
+        throw std::invalid_argument("ERROR: Invalid number of players");
+    }
+    for (size_t i = 1; i <= playersNumber; i++)
+    {
+        if (i == 1)
+        {
+            _map[1][1] = PLAYER_ONE;
+        }
+        else if (i == 2)
+        {
+            _map[_height - BORDER][1] = PLAYER_TWO;
+        }
+        else if (i == 3)
+        {
+            _map[_height - BORDER][_width - BORDER] = PLAYER_THREE;
+        }
+        else
+        {
+            _map[1][_width - BORDER] = PLAYER_FOUR;
+        }
+    }
 }
 
 inline void Game::Map::placeSolidWalls(void)
