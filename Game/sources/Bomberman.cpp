@@ -7,10 +7,33 @@
 
 #include "../includes/Bomberman.hpp"
 
-Game::Bomberman::Bomberman()
+Game::Bomberman::Bomberman(void)
+: _gameName{"Bomberman"}, _gameOver{false}
+{
+    initEntities();
+    initPlayersStats();
+}
+
+Game::Bomberman::~Bomberman(void)
 {
 }
 
-Game::Bomberman::~Bomberman()
+void Game::Bomberman::initEntities()
+{
+}
+
+void Game::Bomberman::initPlayersStats()
+{
+}
+
+void Game::Bomberman::updateEntities()
+{
+}
+
+void Game::Bomberman::updateScores()
+{
+}
+
+void Game::Bomberman::updatePlayersStats()
 {
 }
