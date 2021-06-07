@@ -35,6 +35,9 @@ inline void XRay::endDrawing(void) const
 
 inline void XRay::display(void)
 {
+    // Hide the cursor
+    Raylib::Cursor::hideCursor();
+
     (this->*_scenesFunc[(int)_scene])();
 }
 
@@ -107,7 +110,7 @@ inline std::vector<size_t> XRay::createBox(const size_t &upperLeftCorner, const 
 
 inline void XRay::displayMouse(void) const
 {
-    _resources.at(HEAD)->drawTexture(Raylib::Mouse::getMouseX() - 30, Raylib::Mouse::getMouseY() - 30, Raylib::Color::White());
+    _resources.at(HEAD)->drawTexture(Raylib::Mouse::getMouseX() - 15, Raylib::Mouse::getMouseY() - 15, Raylib::Color::White());
 }
 
 inline size_t XRay::countFilesDirectory(const std::filesystem::path &path) const

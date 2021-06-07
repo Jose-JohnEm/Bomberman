@@ -12,20 +12,16 @@ void XRay::displayCinematic(const Cinematic &cinematic)
     switch (cinematic)
     {
     case INTRO:
-        displayCinematic("intro", 300);
+        displayCinematic("intro", 300, 0);
         break;
     default:
         break;
     }
 }
 
-void XRay::displayCinematic(const std::string &cinematicPathDirectory, const size_t &hideSkip) const
+void XRay::displayCinematic(const std::string &cinematicPathDirectory, const size_t &hideSkip, const size_t &gap) const
 {
     size_t filesNumber = countFilesDirectory("resources/cinematic/" + cinematicPathDirectory);
-
-    // Hide the cursor
-    if (Raylib::Cursor::isCursorOnScreen())
-        Raylib::Cursor::hideCursor();
 
     // Launch cinematic
     for (size_t i = 0; i < filesNumber && !(i < hideSkip && Raylib::Mouse::isButtonPressed(0) && mouseIsInBox(createBox(1760, 950, 1883, 1005))); i++)
@@ -36,9 +32,12 @@ void XRay::displayCinematic(const std::string &cinematicPathDirectory, const siz
         // Draw cinematic
         beginDrawing();
         frame.drawTexture(0, 0, Raylib::Color::White());
-        if (i < hideSkip)
+        if (i < hideSkip) {
             (mouseIsInBox(createBox(1760, 950, 1883, 1005)) ? _resources.at(SKIP_HOVER) : _resources.at(SKIP))->drawTexture(1760, 950, Raylib::Color::White());
-        displayMouse();
+            displayMouse();
+        }
+        if (gap > 0)
+        	std::this_thread::sleep_for(std::chrono::milliseconds(gap));
         endDrawing();
     }
 }

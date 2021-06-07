@@ -18,10 +18,6 @@ void XRay::displayMenuScene(void)
     bool goSettings = mouseIsInBox(createBox(1160, 665, 1160+755, 665+132)) ? true : false;
     bool quit = mouseIsInBox(createBox(1160, 875, 1160+755, 875+132)) ? true : false;
 
-    // Hide the cursor
-    if (Raylib::Cursor::isCursorOnScreen())
-        Raylib::Cursor::hideCursor();
-
     // Display INDIE STUDIO
     if (_intro.first == true)
         (this->*_intro.second)();

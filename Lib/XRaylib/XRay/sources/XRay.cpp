@@ -80,10 +80,10 @@ void XRay::setResources(void)
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::p2, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/j2.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::p3, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/j3.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::p4, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/j4.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::P1, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/J1.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::P2, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/J2.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::P3, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/J3.png"))));
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::P4, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/J4.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::P1, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/p1.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::P2, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/p2.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::P3, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/p3.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::P4, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/p4.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::MOUSEYELLOW, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/mouseYellow.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::KEYBOARDYELLOW, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/keyboardYellow.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::PLAYSTATIONYELLOW, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/playstationYellow.png"))));
@@ -98,9 +98,26 @@ void XRay::setResources(void)
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SIZE_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/sizeHover.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SETS_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/setHover.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::DURATION_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/durationHover.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::AI_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/iaHover.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SIZE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/size.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SETS, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/sets.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::DURATION, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/duration.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::IA, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/ia.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::MOUSEPANEL, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/mousePanel.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::KEYBOARDPANEL, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/keyboardPanel.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::PLAYSTATIONPANEL, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/playstationPanel.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::XBOXPANEL, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/xboxPanel.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::PAUSE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/pause.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::DEPAUSE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/depause.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::PAUSEBACK, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/pauseBg.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::RESUME, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/resume.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::RESTART, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/restart.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SAVE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/save.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::HOME, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/home.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::RESUMEHOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/resumeHover.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::RESTARTHOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/restartHover.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SAVEHOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/saveHover.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::HOMEHOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/homeHover.png"))));
 }
 
 void XRay::quitGame(void)

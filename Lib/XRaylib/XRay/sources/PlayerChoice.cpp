@@ -7,7 +7,7 @@
 
 #include "XRay.hpp"
 
-void XRay::detectPlayerInput()
+void XRay::detectPlayerInput(void)
 {
     Resources tmp;
     size_t t = 0;
@@ -36,7 +36,7 @@ void XRay::removePlayer(const std::vector<std::pair<int, int>> &removeButtons)
     }
 }
 
-void XRay::addPlayer()
+void XRay::addPlayer(void)
 {
     float a = 100 + (_allIntegers[2]*450);
     if (_allIntegers[2] != 4 && mouseIsInBox(createBox(_allIntegers[0]+a, _allIntegers[1], _allIntegers[0]+a+150, _allIntegers[1]+150)) && Raylib::Mouse::isButtonPressed(0)) {
@@ -46,10 +46,11 @@ void XRay::addPlayer()
     }
 }
 
-void XRay::manageNextOrPrev()
+void XRay::manageNextOrPrev(void)
 {
     auto glambda = [](size_t a) { return a == 40 ? 36 : 40; };
 
+    _nextOrNot = 0;
     for (size_t u = 0; u < _allIntegers[2]; u++) {
         if (_controlsTab[u] == Resources::PLAYSTATIONYELLOW)
             _card[u] = Raylib::Gamepad::isGamepadButtonPressed(0, 7) ? glambda(_card[u]) : _card[u];
@@ -67,6 +68,7 @@ void XRay::manageNextOrPrev()
             if (mouseIsInBox(createBox(400 + 450 * u, 580, 480 + 450 * u, 630)))
                 _pSelector.next(u);
         }
+        _nextOrNot += _card[u];
     }
 }
 
@@ -85,7 +87,7 @@ void XRay::displayCardsSettings(std::vector<std::pair<int, int>> &removeButtons,
         _resources.at(ADD)->drawTexture(_allIntegers[0] + (*x), _allIntegers[1], Raylib::Color::White());
 }
 
-void XRay::displayBack()
+void XRay::displayBack(void)
 {
     // Parallax update
     _scrollingBack -= 0.1f;
@@ -112,7 +114,7 @@ void XRay::displayPlayerChoiceScene(void)
     // A int that represents the x coordinate of the last displayed card
     int x;
 
-    // Initialize and Update all the containers that refer to the boxes of the pseudos
+    // Detect Keyboard, Mouse, and Gamepad
     detectPlayerInput();
 
     // Draw scene
@@ -136,6 +138,6 @@ void XRay::displayPlayerChoiceScene(void)
     // Go to another scene according to mouse position
     if (goBack && Raylib::Mouse::isButtonPressed(0))
         displayGameModeScene();
-    if (goNext && Raylib::Mouse::isButtonPressed(0))
+    if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _allIntegers[2] * 40)
         displayMapChoiceScene();
 }

@@ -55,7 +55,7 @@ class XRay : public IGraphical {
         /**
          * @brief Construct a new Ray Lib object
          */
-        XRay();
+        XRay(void);
 
         /**
          * @brief Destroy the Ray Lib object
@@ -235,8 +235,9 @@ class XRay : public IGraphical {
          *
          * @param cinematicPathDirectory A string related to the specific cinematic directory
          * @param hideSkip A size_t corresponding to the cinematic frame when you must hide the skip button
+         * @param gap Duration between each frame
          */
-        void displayCinematic(const std::string &cinematicPathDirectory, const size_t &hideSkip) const;
+        void displayCinematic(const std::string &cinematicPathDirectory, const size_t &hideSkip, const size_t &gap) const;
 
         /**
          * @brief This function must display the current scene. It is used in the game loop
@@ -246,12 +247,12 @@ class XRay : public IGraphical {
         /**
          * @brief This function manages the click on the different previous and next buttons
          */
-        void manageNextOrPrev();
+        void manageNextOrPrev(void);
 
         /**
          * @brief Adds a new player to the board, if the limit is not exceeded.
          */
-        void addPlayer();
+        void addPlayer(void);
 
         /**
          * @brief Remove the player of the board.
@@ -278,12 +279,24 @@ class XRay : public IGraphical {
         /**
          * @brief Detect New Input
          */
-        void detectPlayerInput();
+        void detectPlayerInput(void);
 
         /**
          * @brief Diplay Background Parallax
          */
-        void displayBack();
+        void displayBack(void);
+
+        /**
+         * @brief Display Pause Button and pause panel
+         */
+        void displayPauseScene(void);
+
+        /**
+         * @brief Display Players Panels in the scene InGame
+         *
+         * @param panelPos Position of all Panels in a vector of pair (x, y)
+         */
+        void displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &panelPos);
 
         /**
          * @brief This function displays all cards and their parameters
@@ -333,6 +346,9 @@ class XRay : public IGraphical {
         std::vector<std::pair<int, int>> _letterAndFrame; // A vector of infos about the boxes of pseudos
         float _scrollingBack = 0.0f;                      // A variable for parallax
         std::vector<size_t> _card{36, 36, 36, 36};        // Cards (Blue or Yellow)
+        size_t _nextOrNot;                                // A size_t to know if can go to next scene or not
+        bool _isPaused = false;                            // Boolean to know if game is on pause or not
+        int m_isPaused = 2;                                // Int to know if game is on pause or not
 
         std::map<std::string, std::pair<std::string, std::string>> _playersStats; // A map of all the stats [PlayerName -- (NameOfStat, Value)]...
         std::vector<std::pair<std::string, std::string>> _scores;                 // A vector of pair (username, score)
