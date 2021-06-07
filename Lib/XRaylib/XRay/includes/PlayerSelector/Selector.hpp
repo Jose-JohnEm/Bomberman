@@ -56,7 +56,7 @@ namespace PlayerSelector
             Raylib::Camera3D *camera;
             std::vector<PlayerSelector::Player> _players;
             int _nbCharacters;
-            std::vector<CharDictionary> _charaDictionary;  
+            std::vector<CharDictionary> _charaDictionary;
 
             float _rotationAxis;
     };
