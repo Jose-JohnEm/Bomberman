@@ -44,7 +44,7 @@ namespace Raylib {
          * @brief Get C Structure for Shader Class
          * @return A Shader C Structure
          */
-        ::Shader getCStruct() const;
+        ::Shader getCStruct(void) const;
 
         /**
           * @brief Overload of '=' operator

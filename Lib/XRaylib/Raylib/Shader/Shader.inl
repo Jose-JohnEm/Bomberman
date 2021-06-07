@@ -7,7 +7,7 @@
 
 #include "Shader.hpp"
 
-inline ::Shader Raylib::Shader::getCStruct() const
+inline ::Shader Raylib::Shader::getCStruct(void) const
 {
     return _shader;
 }
