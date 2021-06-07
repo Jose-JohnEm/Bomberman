@@ -10,7 +10,7 @@
 
 #include "IEntity.hpp"
 #include <memory>
-#include <map>
+#include <vector>
 
 class IGame {
 
@@ -21,15 +21,16 @@ class IGame {
         virtual ~IGame(void) = default;
 
         /**
-         * @brief Getter for the score
-         * @return Score of the current game in string
-         */
-        virtual const std::string &getScore(void) const = 0;
-
-        /**
          * @brief Call this function to restart the entire game. The game must reset himself.
          */
         virtual void restart(void) = 0;
+
+        /**
+         * @brief Set the Users Names
+         *
+         * @param userNames A vector of all the users names as a const std::vector<std::string>&
+         */
+        virtual void setUserNames(const std::vector<std::string> &userNames) = 0;
 
         /**
          * @brief Getter for the score
@@ -48,9 +49,9 @@ class IGame {
         /**
          * @brief Get the Players Stats
          *
-         * @return All the stats [PlayerName -- (NameOfStat, Value)] in a map
+         * @return A vector of a vector all the stats by player [Player -- (NameOfStat, Value)]...
          */
-        virtual const std::map<std::string, std::pair<std::string, std::string>> &getPlayersStats(void) const = 0;
+        virtual const std::vector<std::vector<std::pair<std::string, std::string>>> &getPlayersStats(void) const = 0;
 
         /**
          * @brief updateGame function should be called in a loop. It's used to advance the game and update all logic.
