@@ -5,7 +5,7 @@
 ** Bomberman
 */
 
-#include "Bomberman.hpp"
+#include "../includes/Bomberman.hpp"
 
 Game::Bomberman::Bomberman()
 {
