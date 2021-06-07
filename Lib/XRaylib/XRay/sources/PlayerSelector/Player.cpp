@@ -28,7 +28,7 @@ int PlayerSelector::Player::getId(void) const
     return _idCharacter;
 }
 
-const std::string PlayerSelector::Player::getName() const
+const std::string PlayerSelector::Player::getName(void) const
 {
     return _name;
 }
