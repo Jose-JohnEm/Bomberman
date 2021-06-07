@@ -7,8 +7,10 @@
 
 #include "Audio.hpp"
 
-Raylib::Audio::Audio() {
+Raylib::Audio::Audio(void)
+{
 }
 
-Raylib::Audio::~Audio() {
+Raylib::Audio::~Audio(void)
+{
 }
