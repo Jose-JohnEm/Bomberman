@@ -127,7 +127,8 @@ void PlayerSelector::Selector::unloadAll()
         _players.pop_back();
     }
 
-    delete camera;
+    if (camera)
+        delete camera;
 }
 
 void PlayerSelector::Selector::updateRotationAxis()
