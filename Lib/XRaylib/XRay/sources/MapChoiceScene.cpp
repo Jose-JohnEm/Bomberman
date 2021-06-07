@@ -36,16 +36,21 @@ void XRay::displayMapChoiceScene(void)
     displayGameSettings();
     (goBack ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000);
     (goNext ? _resources.at(NEXT_HOVER) : _resources.at(NEXTSCENE))->drawTexture(1700, 1000);
+
+    _pSelector.drawMaps();
     displayMouse();
+
     endDrawing();
 
     // Go to another scene according to mouse position
     if (goBack && Raylib::Mouse::isButtonPressed(0)) {
         (this->*_scenesBack[_scene])();
         _scenesBack[MAP_CHOICE] = _scenesBackBackup[MAP_CHOICE];
+        _pSelector.endMaps();
     }
     if (goNext && Raylib::Mouse::isButtonPressed(0)) {
         displayCinematic("loading", 0, 0);
         displayInGameScene();
+        _pSelector.endMaps();
     }
 }

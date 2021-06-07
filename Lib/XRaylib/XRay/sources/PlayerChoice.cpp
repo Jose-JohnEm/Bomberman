@@ -124,9 +124,10 @@ void XRay::displayPlayerChoiceScene(void)
     displayCardsSettings(removeButtons, &x);
     (goBack ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000);
     (goNext ? _resources.at(NEXT_HOVER) : _resources.at(NEXTSCENE))->drawTexture(1700, 1000);
+    
+    _pSelector.drawPlayers();
     displayMouse();
 
-    _pSelector.draw();
     endDrawing();
 
     // Check and Manage Click on buttons
@@ -141,5 +142,8 @@ void XRay::displayPlayerChoiceScene(void)
         _scenesBack[PLAYER_CHOICE] = _scenesBackBackup[PLAYER_CHOICE];
     }
     if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _allIntegers[2] * 40)
+    {
+        _pSelector.initMaps();
         displayMapChoiceScene();
+    }
 }

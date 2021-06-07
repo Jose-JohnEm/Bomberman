@@ -59,7 +59,7 @@ std::vector<PlayerSelector::CharDictionary> findCharactersAvailable(int &nb_Char
 }
 
 PlayerSelector::Selector::Selector()
-: camera(nullptr), _rotationAxis(0), _players({}), _nbCharacters(0), _charaDictionary(findCharactersAvailable(_nbCharacters))
+: camera(nullptr), _rotationAxis(0), _players({}), _nbCharacters(0), _charaDictionary(findCharactersAvailable(_nbCharacters)), _map(nullptr)
 {
     POS.push_back(POS_1);
     POS.push_back(POS_2);
@@ -71,7 +71,7 @@ PlayerSelector::Selector::Selector()
 
 PlayerSelector::Selector::~Selector()
 {
-    if (camera)
+    if (camera != nullptr)
         delete camera;
 }
 
@@ -133,7 +133,7 @@ void PlayerSelector::Selector::unloadAll()
         _players.pop_back();
     }
 
-    if (camera)
+    if (camera != nullptr)
         delete camera;
 }
 
@@ -145,7 +145,7 @@ void PlayerSelector::Selector::updateRotationAxis()
         _rotationAxis -= 360;
 }
 
-void PlayerSelector::Selector::draw()
+void PlayerSelector::Selector::drawPlayers()
 {
     char i = 0;
     
@@ -159,6 +159,38 @@ void PlayerSelector::Selector::draw()
     
     updateRotationAxis();
     camera->endMode3D();
+}
+
+void PlayerSelector::Selector::initMaps()
+{
+    camera->setPosition({-0.02, -3, 6});
+    _map = new Map();
+}
+
+void PlayerSelector::Selector::drawMaps()
+{
+    camera->beginMode3D();
+
+    _map->draw();
+
+    camera->endMode3D();
+}
+
+void PlayerSelector::Selector::endMaps()
+{
+    camera->setPosition({0, 0, 10});
+    if (_map != nullptr)
+        delete _map;
+}
+
+void PlayerSelector::Selector::nextMap()
+{
+    
+}
+
+void PlayerSelector::Selector::prevMap()
+{
+    
 }
 
 void PlayerSelector::Selector::next(const int &id)
