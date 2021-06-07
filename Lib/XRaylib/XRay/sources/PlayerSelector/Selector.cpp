@@ -71,8 +71,9 @@ PlayerSelector::Selector::Selector()
 
 PlayerSelector::Selector::~Selector()
 {
-    if (camera)
-        delete camera;
+    // FIXME: Aie double free
+//    if (camera)
+//        delete camera;
 }
 
 PlayerSelector::Player &PlayerSelector::Selector::operator[](const int &index)
