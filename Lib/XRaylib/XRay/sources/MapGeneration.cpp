@@ -138,18 +138,26 @@ void MapGeneration::placePlayers(const size_t &playersNumber)
         if (i == 1)
         {
             _map[1][1] = PLAYER_ONE;
+            _map[1][2] = EMPTY_SPACE;
+            _map[2][1] = EMPTY_SPACE;
         }
         else if (i == 2)
         {
             _map[_height - BORDER][1] = PLAYER_TWO;
+            _map[_height - BORDER][2] = EMPTY_SPACE;
+            _map[_height - BORDER - 1][1] = EMPTY_SPACE;
         }
         else if (i == 3)
         {
             _map[_height - BORDER][_width - BORDER] = PLAYER_THREE;
+            _map[_height - BORDER - 1][_width - BORDER] = EMPTY_SPACE;
+            _map[_height - BORDER][_width - BORDER - 1] = EMPTY_SPACE;
         }
         else
         {
             _map[1][_width - BORDER] = PLAYER_FOUR;
+            _map[1][_width - BORDER] = EMPTY_SPACE;
+            _map[2][_width - BORDER - 1] = EMPTY_SPACE;
         }
     }
 }
