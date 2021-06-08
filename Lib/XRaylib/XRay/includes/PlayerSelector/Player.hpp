@@ -24,6 +24,7 @@ namespace PlayerSelector
             void draw(const float &rotation, const Raylib::Vector3 &pos) const;
             int getId(void) const;
             const std::string getName() const;
+            std::pair<Model, float> getModel() const;
 
 
         private:

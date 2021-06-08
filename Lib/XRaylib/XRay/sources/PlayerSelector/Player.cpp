@@ -32,3 +32,8 @@ const std::string PlayerSelector::Player::getName(void) const
 {
     return _name;
 }
+
+std::pair<Model, float> PlayerSelector::Player::getModel() const
+{
+    return {_persoModel, _scalable};
+}
