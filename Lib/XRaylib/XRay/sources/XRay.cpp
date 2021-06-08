@@ -19,6 +19,10 @@ XRay::XRay(void)
     // Set resources
     setResources();
 
+    // Set Audio
+    Raylib::Audio::initAudioDevice();
+    setAudioResources();
+
     // Scenes
     _scenesFunc.push_back(&XRay::displayMenuScene);
     _scenesFunc.push_back(&XRay::displayGameModeScene);
@@ -52,9 +56,10 @@ XRay::XRay(void)
     _intro = std::make_pair(true, &XRay::displayStudio);
 
     // Audio TODO: Aïe
-//    Raylib::Audio::initAudioDevice();
-    masterVolume = 50;
-//    Raylib::Audio::setMasterVolume(masterVolume);
+
+    _musics.at(BOMBERMAN)->playMusic();
+    masterVolume = 100;
+    Raylib::Audio::setMasterVolume(masterVolume / 100);
 }
 
 XRay::~XRay(void)
@@ -155,6 +160,11 @@ void XRay::setResources(void)
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SETTING_BG, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/backSetting.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::VOLUME_UP, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/volumeUp.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::VOLUME_DOWN, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/volumeDown.png"))));
+}
+
+void XRay::setAudioResources(void)
+{
+    _musics.insert(std::pair<MusicResources, std::shared_ptr<Raylib::Music>>(MusicResources::BOMBERMAN, std::make_shared<Raylib::Music>(*(new Raylib::Music("resources/music/Bomberman.mp3")))));
 }
 
 void XRay::quitGame(void)

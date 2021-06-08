@@ -48,6 +48,7 @@
 #include "PlayerSelector/Player.hpp"
 #include "PlayerSelector/Selector.hpp"
 #include "Audio/Audio.hpp"
+#include "Sound/Sound.hpp"
 #include "GameParty.hpp"
 
 class XRay : public IGraphical {
@@ -394,6 +395,8 @@ class XRay : public IGraphical {
         std::vector<std::string> _backups;                                        // A vector of all the paths to backups files as a const std::vector<std::string>&
 
         std::map<Resources, std::shared_ptr<Raylib::Texture>> _resources; // Texture dictionary
+        std::map<MusicResources, std::shared_ptr<Raylib::Music>> _musics; // Music dictionary
+        std::map<SfxResources, std::shared_ptr<Raylib::Sound>> _sfx; // SFX dictionary
         PlayerSelector::Selector _pSelector; // 3D Camera
         GameParty *_gameParty;
 };
