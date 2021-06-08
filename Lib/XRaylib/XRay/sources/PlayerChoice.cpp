@@ -81,7 +81,8 @@ void XRay::displayCardsSettings(std::vector<std::pair<int, int>> &removeButtons,
             _resources.at((Resources)(size_t)((_controlsTab[i])+_card[i]-36))->drawTexture((*x)+109, b+9);
         if (i != 0)
             removeButtons.push_back(std::make_pair((*x)+307, b+9));
-        Raylib::Text::drawText(_pSelector[i].getName(), 200 + 450 * i + ((180 - Raylib::Text::measureText(_pSelector[i].getName(), 50)) / 2), 595, 50, Raylib::Color::Black());
+        if (_nextOrNot != _allIntegers[2] * 40)
+            Raylib::Text::drawText(_pSelector[i].getName(), 200 + 450 * i + ((180 - Raylib::Text::measureText(_pSelector[i].getName(), 50)) / 2), 595, 50, Raylib::Color::Black());
     }
     if (_allIntegers[2] != 4)
         _resources.at(ADD)->drawTexture(_allIntegers[0] + (*x), _allIntegers[1]);
