@@ -119,6 +119,22 @@ void PlayerSelector::Selector::load()
 
 }
 
+std::vector<std::pair<Model, float>> PlayerSelector::Selector::getModels() const
+{
+    std::vector<std::pair<Model, float>> persos;
+
+    for (auto &p : _players)
+    {
+        persos.push_back(p.getModel());
+    }
+    return persos;
+}
+
+std::vector<Texture2D> PlayerSelector::Selector::getBlocTextures() const
+{
+    return _map->getTextures();
+}
+
 void PlayerSelector::Selector::unload(const int &id)
 {
     std::cout << std::endl << "######## End Player Selector ########" << std::endl << std::endl;
@@ -180,6 +196,11 @@ void PlayerSelector::Selector::drawMaps()
     _map->draw();
 
     camera->endMode3D();
+}
+
+std::vector<std::string> PlayerSelector::Selector::getMap() const
+{
+    return _map->getMap();
 }
 
 void PlayerSelector::Selector::endMaps()

@@ -48,6 +48,7 @@
 #include "PlayerSelector/Player.hpp"
 #include "PlayerSelector/Selector.hpp"
 #include "Audio/Audio.hpp"
+#include "GameParty.hpp"
 
 class XRay : public IGraphical {
 
@@ -394,6 +395,7 @@ class XRay : public IGraphical {
 
         std::map<Resources, std::shared_ptr<Raylib::Texture>> _resources; // Texture dictionary
         PlayerSelector::Selector _pSelector; // 3D Camera
+        GameParty *_gameParty;
 };
 
 #include "XRay.inl"

@@ -57,6 +57,7 @@ void XRay::displayMapChoiceScene(void)
         _pSelector.endMaps();
     }
     if (goNext && Raylib::Mouse::isButtonPressed(0)) {
+        _gameParty = new GameParty(_pSelector.getModels(), _pSelector.getBlocTextures());
         displayCinematic("loading", 0, 0);
         displayInGameScene();
         _pSelector.endMaps();

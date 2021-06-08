@@ -63,6 +63,16 @@ PlayerSelector::Map::~Map()
     
 }
 
+std::vector<std::string> PlayerSelector::Map::getMap() const
+{
+    return _charMap;
+}
+
+std::vector<Texture2D> PlayerSelector::Map::getTextures() const
+{
+    return _textures[current];
+}
+
 void PlayerSelector::Map::next()
 {
     current = (current + 1 == _textures.size()) ? 0 : current + 1;

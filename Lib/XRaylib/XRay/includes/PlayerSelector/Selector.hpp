@@ -41,11 +41,14 @@ namespace PlayerSelector
             void firstLoad();
             void load();
             void unload(const int &id);
+            std::vector<std::pair<Model, float>> getModels() const;
+            std::vector<Texture2D> getBlocTextures() const;
             void unloadAll();
             void drawPlayers();
 
             void initMaps();
             void drawMaps();
+            std::vector<std::string> getMap() const;
             void endMaps();
 
             void nextMap();

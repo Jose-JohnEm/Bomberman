@@ -25,12 +25,15 @@ namespace PlayerSelector
             void prev();
             void draw();
 
+
             enum ModelMode
             {
                 FLOOR,
                 WALL,
                 BOX
             };
+            std::vector<std::string> getMap() const;
+            std::vector<Texture2D> getTextures() const;
 
         private:
             std::vector<std::vector<Texture2D>> _textures;
