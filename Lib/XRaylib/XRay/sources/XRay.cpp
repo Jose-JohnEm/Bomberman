@@ -55,8 +55,7 @@ XRay::XRay(void)
     // Display Intro (studio and introduction cinematic)
     _intro = std::make_pair(true, &XRay::displayStudio);
 
-    // Audio TODO: Aïe
-
+    // Play bomberman music
     _musics.at(BOMBERMAN)->playMusic();
     masterVolume = 100;
     Raylib::Audio::setMasterVolume(masterVolume / 100);
