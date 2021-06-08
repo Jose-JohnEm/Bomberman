@@ -290,6 +290,11 @@ class XRay : public IGraphical {
         void setResources(void);
 
         /**
+         * @brief Set the Audio
+         */
+        void setAudioResources(void);
+
+        /**
          * @brief Display Game Settings
          */
         void displayGameSettings(void);
