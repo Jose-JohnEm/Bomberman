@@ -21,6 +21,9 @@ void XRay::displayLoadGameScene(void)
     // Set scene
     _scene = LOAD_GAME;
 
+    // Audio
+    _musics.at(BOMBERMAN)->update();
+
     // Check if mouse is on button spot
     bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
 
