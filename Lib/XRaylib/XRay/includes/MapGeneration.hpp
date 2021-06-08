@@ -14,12 +14,12 @@
 
 // Borders
 #define BORDER 2
-#define EDGE 'E'
+#define EDGE 'X'
 
 // Walls
-#define SOLID_WALL 'W'
-#define BREAK_WALL 'M'
-#define EMPTY_SPACE '*'
+#define SOLID_WALL 'X'
+#define BREAK_WALL 'C'
+#define EMPTY_SPACE ' '
 
 // Players
 #define PLAYER_ONE '1'
@@ -33,13 +33,13 @@
 #define SKATE 'S'
 #define BOMB_UP 'B'
 
-class Map
+class MapGeneration
 {
     public:
         /**
         * @brief Construct the Map object
         */
-        Map();
+        MapGeneration();
 
         /**
         * @brief Construct the Map object (Copy Constructor)
@@ -47,12 +47,12 @@ class Map
         * @param width Width of the map
         * @param height Height of the map
         */
-        Map(const size_t &width, const size_t &height);
+        MapGeneration(const size_t &width, const size_t &height);
 
         /**
         * @brief Destroy the Map object
         */
-        ~Map();
+        ~MapGeneration();
 
         /**
          * @brief Getter for map width

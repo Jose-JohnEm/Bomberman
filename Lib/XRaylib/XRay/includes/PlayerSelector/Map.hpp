@@ -9,6 +9,7 @@
 #include <string>
 #include "Color/Color.hpp"
 #include "Texture/Texture.hpp"
+#include "MapGeneration.hpp"
 #include <filesystem>
 
 namespace PlayerSelector

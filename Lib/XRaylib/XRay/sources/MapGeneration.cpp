@@ -7,11 +7,12 @@
 
 #include "MapGeneration.hpp"
 
-Map::Map()
+MapGeneration::MapGeneration()
 {
+    
 }
 
-Map::Map(const size_t &width, const size_t &height)
+MapGeneration::MapGeneration(const size_t &width, const size_t &height)
     : _width{width + BORDER}, _height{height + BORDER}
 {
     if (width % 2 == 0 || width <= 3 || height < 3)
@@ -26,31 +27,31 @@ Map::Map(const size_t &width, const size_t &height)
     placeSolidWalls();
 }
 
-Map::~Map()
+MapGeneration::~MapGeneration()
 {
 }
 
-size_t Map::getWidth(void) const
+size_t MapGeneration::getWidth(void) const
 {
     return _width - BORDER;
 }
 
-size_t Map::getHeight(void) const
+size_t MapGeneration::getHeight(void) const
 {
     return _height - BORDER;
 }
 
-void Map::setWidth(const size_t width)
+void MapGeneration::setWidth(const size_t width)
 {
     _width = width + BORDER;
 }
 
-void Map::setHeight(const size_t height)
+void MapGeneration::setHeight(const size_t height)
 {
     _height = height + BORDER;
 }
 
-void Map::create(void)
+void MapGeneration::create(void)
 {
     _map.reserve(_height);
     for (size_t y = 0; y < _height; y++)
@@ -65,7 +66,7 @@ void Map::create(void)
     }
 }
 
-void Map::fill(const char &character)
+void MapGeneration::fill(const char &character)
 {
     for (std::string &row : _map)
     {
@@ -73,7 +74,7 @@ void Map::fill(const char &character)
     }
 }
 
-void Map::dump(void) const
+void MapGeneration::dump(void) const
 {
     for (const std::string &row : _map)
     {
@@ -85,12 +86,12 @@ void Map::dump(void) const
     }
 }
 
-std::vector<std::string> Map::getMap(void) const
+std::vector<std::string> MapGeneration::getMap(void) const
 {
     return _map;
 }
 
-void Map::maze(void)
+void MapGeneration::maze(void)
 {
     int choice = 0;
 
@@ -108,7 +109,7 @@ void Map::maze(void)
     }
 }
 
-void Map::placeBorders(void)
+void MapGeneration::placeBorders(void)
 {
     // Place upper and lower borders
     std::fill(_map[0].begin(), _map[0].end(), EDGE);
@@ -126,7 +127,7 @@ void Map::placeBorders(void)
     }
 }
 
-void Map::placePlayers(const size_t &playersNumber)
+void MapGeneration::placePlayers(const size_t &playersNumber)
 {
     if (!(1 <= playersNumber && playersNumber <= 4))
     {
@@ -153,7 +154,7 @@ void Map::placePlayers(const size_t &playersNumber)
     }
 }
 
-void Map::placeSolidWalls(void)
+void MapGeneration::placeSolidWalls(void)
 {
     for (size_t y = 2; y < _height - 1; y += 2)
     {

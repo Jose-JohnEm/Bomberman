@@ -43,17 +43,15 @@ std::vector<std::vector<Texture>> findTexturesAvailable(int &nb_textures)
 PlayerSelector::Map::Map()
 : _textures(findTexturesAvailable(_nbTextures)),
 current(0),
-_COEF(0.4),
-_charMap(
-{
-    {"XXXXX"},
-    {"X CCX"},
-    {"X X X"},
-    {"XCCCX"},
-    {"XXXXX"}
-})
+_COEF(0.3),
+_charMap(MapGeneration(5, 5).getMap())
 {
     
+    std::cout << "------------ Generated Map ------------" << std::endl;
+    for (auto &line : _charMap)
+    {
+        std::cout << line << std::endl;
+    }
 }
 
 PlayerSelector::Map::~Map()
@@ -83,13 +81,13 @@ void PlayerSelector::Map::draw()
         {
             if (c == 'X')
             {
-                DrawCubeTexture(_textures[current][WALL], {x * _COEF - (float)2.2, y * _COEF - (float)0.5, 0}, _COEF, _COEF, _COEF, Raylib::Color::White().getCStruct());
+                DrawCubeTexture(_textures[current][WALL], {x * _COEF - (float)2.4, y * _COEF - (float)0.5, 0}, _COEF, _COEF, _COEF, Raylib::Color::White().getCStruct());
             }
             if (c == 'C')
             {
-                DrawCubeTexture(_textures[current][BOX], {x * _COEF - (float)2.2, y * _COEF - (float)0.5, 0}, _COEF, _COEF, _COEF, Raylib::Color::White().getCStruct());
+                DrawCubeTexture(_textures[current][BOX], {x * _COEF - (float)2.4, y * _COEF - (float)0.5, 0}, _COEF, _COEF, _COEF, Raylib::Color::White().getCStruct());
             }
-            DrawCubeTexture(_textures[current][FLOOR], {x * _COEF - (float)2.2, y * _COEF - (float)0.5, -_COEF}, _COEF, _COEF, _COEF, Raylib::Color::Gray().getCStruct());
+            DrawCubeTexture(_textures[current][FLOOR], {x * _COEF - (float)2.4, y * _COEF - (float)0.5, -_COEF}, _COEF, _COEF, _COEF, Raylib::Color::Gray().getCStruct());
             x++;
         }
         y++;
