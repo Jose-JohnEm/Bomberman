@@ -46,7 +46,7 @@ current(0),
 _COEF(0.3),
 _characters(models)
 {
-    MapGeneration newMap(5,5);
+    Game::MapGeneration newMap(5,5);
     
     newMap.placePlayers(_characters.size());
     _charMap = newMap.getMap();

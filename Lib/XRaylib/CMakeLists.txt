@@ -15,6 +15,7 @@ SET(CMAKE_CXX_STANDARD 17)
 # Find globaly and recursively all source files required to compile the project
 FILE(GLOB_RECURSE XRAY_SRCS CONFIGURE_DEPENDS
     "${PROJECT_SOURCE_DIR}/XRay/sources/*.cpp"
+    "${PROJECT_SOURCE_DIR}/../../Game/Map/*.cpp"
 )
 
 # Make Raylib CMakeList meta-compile raylib-cpp library
@@ -25,6 +26,7 @@ ADD_SUBDIRECTORY(Raylib)
 SET(RAYLIB_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Raylib/")
 SET(ENGINE_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../Engine/")
 SET(XRAY_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/XRay/includes/")
+SET(GAME_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../Game/Map/")
 
 # Create our static library target
 ADD_LIBRARY(${PROJECT_NAME} STATIC ${XRAY_SRCS})
@@ -37,6 +39,7 @@ TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PRIVATE
     ${RAYLIB_HEADERS_PATH}
     ${ENGINE_HEADERS_PATH}
     ${XRAY_HEADERS_PATH}
+    ${GAME_HEADERS_PATH}
 )
 
 # Active in debug environment or hidden in release

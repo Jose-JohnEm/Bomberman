@@ -11,7 +11,7 @@ GameParty::GameParty(PModelsCharacter models, LTextures textures)
 :_models(models),
 _textures(textures)
 {
-    MapGeneration mp(15, 15);
+    Game::MapGeneration mp(15, 15);
     mp.placePlayers(models.size());
     _map = mp.getMap();
 
