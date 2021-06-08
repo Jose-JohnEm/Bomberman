@@ -103,6 +103,9 @@ void XRay::displayPlayerChoiceScene(void)
     // Set scene
     _scene = PLAYER_CHOICE;
 
+    // Audio
+    _musics.at(BOMBERMAN)->update();
+
     // Check if mouse is on button spot
     bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
     bool goNext = mouseIsInBox(createBox(1700, 1000, 1918, 1061)) ? true : false;
