@@ -14,12 +14,12 @@
 
 // Borders
 #define BORDER 2
-#define EDGE 'X'
+#define EDGE 'E'
 
 // Walls
-#define SOLID_WALL 'X'
-#define BREAK_WALL 'C'
-#define EMPTY_SPACE ' '
+#define SOLID_WALL 'W'
+#define BREAK_WALL 'M'
+#define EMPTY_SPACE '*'
 
 // Players
 #define PLAYER_ONE '1'

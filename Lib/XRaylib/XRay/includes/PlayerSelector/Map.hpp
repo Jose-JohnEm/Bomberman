@@ -18,7 +18,7 @@ namespace PlayerSelector
     {
 
         public:
-            Map();
+            Map(std::vector<std::pair<Model, float>> models);
             ~Map();
 
             void next();
@@ -35,6 +35,7 @@ namespace PlayerSelector
         private:
             std::vector<std::vector<Texture2D>> _textures;
             std::vector<std::string> _charMap;
+            std::vector<std::pair<Model, float>> _characters;
 
             int _nbTextures;
             int current;

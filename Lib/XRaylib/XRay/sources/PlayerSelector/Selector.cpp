@@ -163,8 +163,14 @@ void PlayerSelector::Selector::drawPlayers()
 
 void PlayerSelector::Selector::initMaps()
 {
+    std::vector<std::pair<Model, float>> persos;
+
+    for (auto &p : _players)
+    {
+        persos.push_back(p.getModel());
+    }
     camera->setPosition({-0.02, -3, 6});
-    _map = new Map();
+    _map = new Map(persos);
 }
 
 void PlayerSelector::Selector::drawMaps()
