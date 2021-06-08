@@ -5,32 +5,57 @@
 ** Map
 */
 
-inline size_t Game::Map::getWidth(void) const
+#include "MapGeneration.hpp"
+
+Map::Map()
+{
+}
+
+Map::Map(const size_t &width, const size_t &height)
+    : _width{width + BORDER}, _height{height + BORDER}
+{
+    if (width % 2 == 0 || width <= 3 || height < 3)
+    {
+        throw std::length_error("ERROR: Invalid map dimensions");
+    }
+    srand(time(NULL));
+    create();
+    fill(BREAK_WALL);
+    maze();
+    placeBorders();
+    placeSolidWalls();
+}
+
+Map::~Map()
+{
+}
+
+size_t Map::getWidth(void) const
 {
     return _width - BORDER;
 }
 
-inline size_t Game::Map::getHeight(void) const
+size_t Map::getHeight(void) const
 {
     return _height - BORDER;
 }
 
-inline void Game::Map::setWidth(const size_t width)
+void Map::setWidth(const size_t width)
 {
     _width = width + BORDER;
 }
 
-inline void Game::Map::setHeight(const size_t height)
+void Map::setHeight(const size_t height)
 {
     _height = height + BORDER;
 }
 
-inline void Game::Map::create(void)
+void Map::create(void)
 {
     _map.reserve(_height);
     for (size_t y = 0; y < _height; y++)
     {
-        std::vector<char> row;
+        std::string row;
         row.reserve(_width);
         for (size_t x = 0; x < _width; x++)
         {
@@ -40,17 +65,17 @@ inline void Game::Map::create(void)
     }
 }
 
-inline void Game::Map::fill(const char &character)
+void Map::fill(const char &character)
 {
-    for (std::vector<char> &row : _map)
+    for (std::string &row : _map)
     {
         std::fill(row.begin(), row.end(), character);
     }
 }
 
-inline void Game::Map::dump(void) const
+void Map::dump(void) const
 {
-    for (const std::vector<char> &row : _map)
+    for (const std::string &row : _map)
     {
         for (const char &character : row)
         {
@@ -60,12 +85,12 @@ inline void Game::Map::dump(void) const
     }
 }
 
-inline std::vector<std::vector<char>> Game::Map::getMap(void) const
+std::vector<std::string> Map::getMap(void) const
 {
     return _map;
 }
 
-inline void Game::Map::maze(void)
+void Map::maze(void)
 {
     int choice = 0;
 
@@ -83,7 +108,7 @@ inline void Game::Map::maze(void)
     }
 }
 
-inline void Game::Map::placeBorders(void)
+void Map::placeBorders(void)
 {
     // Place upper and lower borders
     std::fill(_map[0].begin(), _map[0].end(), EDGE);
@@ -101,7 +126,7 @@ inline void Game::Map::placeBorders(void)
     }
 }
 
-inline void Game::Map::placePlayers(const size_t &playersNumber)
+void Map::placePlayers(const size_t &playersNumber)
 {
     if (!(1 <= playersNumber && playersNumber <= 4))
     {
@@ -128,7 +153,7 @@ inline void Game::Map::placePlayers(const size_t &playersNumber)
     }
 }
 
-inline void Game::Map::placeSolidWalls(void)
+void Map::placeSolidWalls(void)
 {
     for (size_t y = 2; y < _height - 1; y += 2)
     {
