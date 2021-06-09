@@ -109,7 +109,7 @@ typedef enum {
 } MusicResources;
 
 typedef enum {
-    NOTHING
+    CLICK
 } SfxResources;
 
 #endif /* !RESOURCES_HPP_ */

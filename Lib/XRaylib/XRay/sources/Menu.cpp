@@ -22,8 +22,8 @@ void XRay::displayMenuScene(void)
     bool quit = mouseIsInBox(createBox(1160, 875, 1160+755, 875+132)) ? true : false;
 
     // Display INDIE STUDIO
-//    if (_intro.first == true)
-//        (this->*_intro.second)();
+    if (_intro.first == true)
+        (this->*_intro.second)();
 
     // Parallax update
     _scrollingBack -= 0.1f;
@@ -43,12 +43,17 @@ void XRay::displayMenuScene(void)
     endDrawing();
 
     // Go to another scene according to mouse position
-    if (goPlay && Raylib::Mouse::isButtonPressed(0))
+    if (goPlay && Raylib::Mouse::isButtonPressed(0)) {
+        _sfx.at(CLICK)->play();
         displayGameModeScene();
-    else if (goHowToPlay && Raylib::Mouse::isButtonPressed(0))
+    } else if (goHowToPlay && Raylib::Mouse::isButtonPressed(0)) {
+        _sfx.at(CLICK)->play();
         displayHowToPlayScene();
-    else if (goSettings && Raylib::Mouse::isButtonPressed(0))
+    } else if (goSettings && Raylib::Mouse::isButtonPressed(0)) {
+        _sfx.at(CLICK)->play();
         displaySettingsScene();
-    else if (quit && Raylib::Mouse::isButtonPressed(0))
+    } else if (quit && Raylib::Mouse::isButtonPressed(0)) {
+        _sfx.at(CLICK)->play();
         quitGame();
+    }
 }
