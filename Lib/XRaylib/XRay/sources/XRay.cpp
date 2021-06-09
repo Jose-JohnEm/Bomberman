@@ -56,7 +56,7 @@ XRay::XRay(void)
     _intro = std::make_pair(true, &XRay::displayStudio);
 
     // Play bomberman music
-//    _musics.at(BOMBERMAN)->playMusic();
+    _musics.at(MSC_BOMBERMAN)->playMusic();
     masterVolume = 100;
     Raylib::Audio::setMasterVolume(masterVolume / 100);
 }
@@ -163,8 +163,13 @@ void XRay::setResources(void)
 
 void XRay::setAudioResources(void)
 {
-    _musics.insert(std::pair<MusicResources, std::shared_ptr<Raylib::Music>>(MusicResources::BOMBERMAN, std::make_shared<Raylib::Music>(*(new Raylib::Music("resources/music/Bomberman.mp3")))));
-    _sfx.insert(std::pair<SfxResources , std::shared_ptr<Raylib::Sound>>(SfxResources::CLICK, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Klick.wav")))));
+    // Music
+    _musics.insert(std::pair<MusicResources, std::shared_ptr<Raylib::Music>>(MusicResources::MSC_BOMBERMAN, std::make_shared<Raylib::Music>(*(new Raylib::Music("resources/music/Bomberman.mp3")))));
+
+    // Sound
+    _sfx.insert(std::pair<SfxResources , std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_KLICK, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Klick.wav")))));
+    _sfx.insert(std::pair<SfxResources , std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_ENTER, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Enter.wav")))));
+    _sfx.insert(std::pair<SfxResources , std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_SETTING, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Settings.wav")))));
 }
 
 void XRay::quitGame(void)

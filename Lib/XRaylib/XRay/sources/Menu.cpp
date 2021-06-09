@@ -13,7 +13,7 @@ void XRay::displayMenuScene(void)
     _scene = MENU;
 
     // Audio
-    _musics.at(BOMBERMAN)->update();
+    _musics.at(MSC_BOMBERMAN)->update();
 
     // Check if mouse is on button spot
     bool goPlay = mouseIsInBox(createBox(1160, 245, 1160+755, 245+132)) ? true : false;
@@ -44,16 +44,16 @@ void XRay::displayMenuScene(void)
 
     // Go to another scene according to mouse position
     if (goPlay && Raylib::Mouse::isButtonPressed(0)) {
-        _sfx.at(CLICK)->play();
+        _sfx.at(SFX_ENTER)->play();
         displayGameModeScene();
     } else if (goHowToPlay && Raylib::Mouse::isButtonPressed(0)) {
-        _sfx.at(CLICK)->play();
+        _sfx.at(SFX_ENTER)->play();
         displayHowToPlayScene();
     } else if (goSettings && Raylib::Mouse::isButtonPressed(0)) {
-        _sfx.at(CLICK)->play();
+        _sfx.at(SFX_SETTING)->play();
         displaySettingsScene();
     } else if (quit && Raylib::Mouse::isButtonPressed(0)) {
-        _sfx.at(CLICK)->play();
+        _sfx.at(SFX_ENTER)->play();
         quitGame();
     }
 }

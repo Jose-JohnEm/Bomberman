@@ -34,7 +34,7 @@ void XRay::displayMapChoiceScene(void)
     _scene = MAP_CHOICE;
 
     // Audio
-    _musics.at(BOMBERMAN)->update();
+    _musics.at(MSC_BOMBERMAN)->update();
 
     // Check if mouse is on button spot
     bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
