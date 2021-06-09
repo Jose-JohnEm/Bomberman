@@ -25,7 +25,7 @@ inline size_t Player::getKills() const
     return _kills;
 }
 
-inline std::array<size_t, 7> getPowerUps() const
+inline std::array<size_t, 5> Player::getPowerUps() const
 {
     return _powerUps;
 }
@@ -42,7 +42,7 @@ inline void Player::setPositions(const std::pair<float, float> &positions)
 
 inline void Player::setBrokenWalls(const size_t &brokenWalls)
 {
-    _brokenWalls = brokenWalls
+    _brokenWalls = brokenWalls;
 }
 
 inline void Player::setKills(const size_t &kills)
@@ -50,7 +50,7 @@ inline void Player::setKills(const size_t &kills)
     _kills = kills;
 }
 
-inline void setPowerUps(const std::array<size_t, 5> &powerUps)
+inline void Player::setPowerUps(const std::array<size_t, 5> &powerUps)
 {
     _powerUps = powerUps;
 }

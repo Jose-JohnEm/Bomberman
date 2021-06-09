@@ -5,3 +5,12 @@
 ** Score
 */
 
+inline size_t Score::getScore() const
+{
+    return _score;
+}
+
+inline void Score::setScore(size_t const &score)
+{
+    _score = score;
+}

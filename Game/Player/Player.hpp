@@ -68,7 +68,7 @@ namespace Game
              *
              * @return A const a Array
              */
-            std::array<size_t, 7> getPowerUps(void) const;
+            std::array<size_t, 5> getPowerUps(void) const;
 
             /**
              * @brief Set the Name object

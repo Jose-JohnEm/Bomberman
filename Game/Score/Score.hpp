@@ -8,6 +8,8 @@
 #ifndef SCORE_HPP_
 #define SCORE_HPP_
 
+#include <string>
+
 namespace Game
 {
     class Score
@@ -22,6 +24,12 @@ namespace Game
             * @brief Destroy the Score object
             */
             ~Score();
+            size_t getScore() const;
+            void setScore(size_t const &score);
+        private:
+            size_t _score;
     };
+
+    #include "Score.inl"
 }
 #endif /* !SCORE_HPP_ */
