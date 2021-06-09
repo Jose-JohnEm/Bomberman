@@ -38,6 +38,13 @@ namespace Game
              * @param score A const reference to a size_t
              */
             void setScore(size_t const &score);
+
+            /**
+             * @brief Get the mulitiplicator of Player's score
+             *
+             * @return A size_t
+             */
+            float getScoreMultiplicator(size_t const &score) const;
         private:
             size_t _score;
     };
