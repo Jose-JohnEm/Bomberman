@@ -45,33 +45,33 @@ namespace Game
             /**
              * @brief Get the Positions of the Player
              *
-             * @return A pair
+             * @return A pair of floats
              */
             std::pair<float, float> getPositions(void) const;
 
             /**
-             * @brief Get Broken Wall by the Player
+             * @brief Get Broken Walls by the Player
              *
-             * @return A const a Pair
+             * @return A size_t
              */
             size_t getBrokenWalls(void) const;
 
             /**
-             * @brief Get Broken Wall by the Player
+             * @brief Get Kills by the Player
              *
-             * @return A const a size_t
+             * @return A size_t
              */
             size_t getKills(void) const;
 
             /**
              * @brief Get PowerUps gotten by the Player
              *
-             * @return A const a Array
+             * @return An Array of 5 (size_t)
              */
             std::array<size_t, 5> getPowerUps(void) const;
 
             /**
-             * @brief Set the Name object
+             * @brief Set the name of the player
              *
              * @param name A const reference to a string
              */
@@ -99,9 +99,9 @@ namespace Game
             void setKills(const size_t &kills);
 
             /**
-             * @brief Set the power ups object
+             * @brief Set the powerUps of the player
              *
-             * @param powerUps A const reference to an array
+             * @param powerUps A const reference to an array of 5 size_t
              */
             void setPowerUps(const std::array<size_t, 5> &powerUps);
 
@@ -110,9 +110,10 @@ namespace Game
             std::pair<float, float> _positions; // A pair of float for player positions (x, y)
             size_t _brokenWalls; // Amount of broken walls
             size_t _kills; // Amount of kills
-            std::array<size_t, 5> _powerUps; // Amount of powerups
+            std::array<size_t, 5> _powerUps; // Amount of powerUps
     };
 
     #include "Player.inl"
 }
+
 #endif /* !PLAYER_HPP_ */

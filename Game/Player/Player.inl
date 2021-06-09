@@ -5,52 +5,52 @@
 ** Player
 */
 
-inline std::string Player::getName() const
+inline std::string Game::Player::getName(void) const
 {
     return _name;
 }
 
-inline std::pair<float, float> Player::getPositions() const
+inline std::pair<float, float> Game::Player::getPositions(void) const
 {
     return _positions;
 }
 
-inline size_t Player::getBrokenWalls() const
+inline size_t Game::Player::getBrokenWalls(void) const
 {
     return _brokenWalls;
 }
 
-inline size_t Player::getKills() const
+inline size_t Game::Player::getKills(void) const
 {
     return _kills;
 }
 
-inline std::array<size_t, 5> Player::getPowerUps() const
+inline std::array<size_t, 5> Game::Player::getPowerUps(void) const
 {
     return _powerUps;
 }
 
-inline void Player::setName(const std::string &name)
+inline void Game::Player::setName(const std::string &name)
 {
     _name = name;
 }
 
-inline void Player::setPositions(const std::pair<float, float> &positions)
+inline void Game::Player::setPositions(const std::pair<float, float> &positions)
 {
     _positions = positions;
 }
 
-inline void Player::setBrokenWalls(const size_t &brokenWalls)
+inline void Game::Player::setBrokenWalls(const size_t &brokenWalls)
 {
     _brokenWalls = brokenWalls;
 }
 
-inline void Player::setKills(const size_t &kills)
+inline void Game::Player::setKills(const size_t &kills)
 {
     _kills = kills;
 }
 
-inline void Player::setPowerUps(const std::array<size_t, 5> &powerUps)
+inline void Game::Player::setPowerUps(const std::array<size_t, 5> &powerUps)
 {
     _powerUps = powerUps;
 }

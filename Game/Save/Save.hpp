@@ -26,7 +26,7 @@ namespace Game
             ~Save();
 
         private:
-            std::array<std::size_t, 7> _settings;
+            std::array<std::size_t, 7> _settings; // An array of 7 size_t
     };
 
     #include "Save.inl"

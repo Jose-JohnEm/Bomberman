@@ -13,6 +13,7 @@
 #include <string>
 #include <functional>
 #include "../Player/Player.hpp"
+#include "../includes/Settings.hpp"
 
 namespace Game
 {
@@ -20,11 +21,12 @@ namespace Game
     {
         public:
             /**
-            * @brief Construct the Score object
-            * 
+            * @brief Construct the Score object (Copy Constructor)
+            *
+            * @param settings A const reference to an array of 7 size_t
             * @param player A const reference to Class Player
             */
-            Score(Player const &player);
+            Score(const std::array<std::size_t, 7> &settings, Game::Player const &player);
 
             /**
             * @brief Destroy the Score object
@@ -45,15 +47,17 @@ namespace Game
              */
             void setScore(size_t const &score);
 
+        private:
+            std::array<std::size_t, 7> _settings; // An array of 7 size_t
+            Player _player; // Player object
+            size_t _score; // Player score (size_t)
+
             /**
              * @brief Get the mulitiplicator of Player's score
              *
-             * @return A size_t
+             * @return A float
              */
-            float getScoreMultiplicator(size_t const &score) const;
-        private:
-            size_t _score;
-            Player _player;
+            float getCoefficient(void) const;
     };
 
     #include "Score.inl"
