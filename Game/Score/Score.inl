@@ -12,11 +12,14 @@ inline size_t Score::getScore() const
 
 inline void Score::setScore(size_t const &score)
 {
-    _score = score * getScoreMultiplicator();
+    size_t scorepowerups = std::accumulate(_player.getPowerUps().begin(), _player.getPowerUps().end(), 0);
+    _score = (_player.getKills() * 200) + scorepowerups + (_player.getBrokenWalls() * 10);
 }
 
-inline float Score::getScoreMultiplicator() const
+inline float Score::getScoreMultiplicator(size_t const &score) const
 {
+    //TODO: Create Game::Settings Class
+    //TODO: We must agree this method (Lucas & Mehdi) !
     // size_t score = getScore();
     // size_t percentage = (time * 100) / remaining_time;
 
@@ -26,5 +29,5 @@ inline float Score::getScoreMultiplicator() const
     //     return 1.3;
     // else if (percentage < time * 0.3)
     //     return 1;
-
+    return 0;
 }

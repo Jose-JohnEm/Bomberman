@@ -8,7 +8,11 @@
 #ifndef SCORE_HPP_
 #define SCORE_HPP_
 
+#include <vector>
+#include <numeric>
 #include <string>
+#include <functional>
+#include "../Player/Player.hpp"
 
 namespace Game
 {
@@ -17,8 +21,10 @@ namespace Game
         public:
             /**
             * @brief Construct the Score object
+            * 
+            * @param player A const reference to Class Player
             */
-            Score();
+            Score(Player const &player);
 
             /**
             * @brief Destroy the Score object
@@ -47,6 +53,7 @@ namespace Game
             float getScoreMultiplicator(size_t const &score) const;
         private:
             size_t _score;
+            Player _player;
     };
 
     #include "Score.inl"

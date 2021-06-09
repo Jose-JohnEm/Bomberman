@@ -7,7 +7,8 @@
 
 #include "Score.hpp"
 
-Game::Score::Score()
+Game::Score::Score(Player const &player)
+: _player(player)
 {
 }
 
