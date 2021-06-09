@@ -142,6 +142,13 @@ class IGraphical {
          * @brief This function must display the current scene. It is used in the game loop
          */
         virtual void display(void) = 0;
+
+        /**
+         * @brief Get the Map
+         *
+         * @return A const std::vector<std::string>&
+         */
+        virtual const std::vector<std::string> &getMap() = 0;
 };
 
 #endif /* !IGRAPHICAL_HPP_ */

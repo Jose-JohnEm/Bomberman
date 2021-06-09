@@ -12,7 +12,6 @@
 #include "Texture/Texture.hpp"
 #include "raylib.h"
 #include "PlayerSelector/Player.hpp"
-#include "PlayerSelector/Map.hpp"
 #include <filesystem>
 
 #define POS_1 Raylib::Vector3(-3.25, -0.15, 0)
@@ -38,22 +37,10 @@ namespace PlayerSelector
             Selector();
             ~Selector();
 
-            void firstLoad();
             void load();
             void unload(const int &id);
-            std::vector<std::pair<Model, float>> getModels() const;
-            std::vector<Texture2D> getBlocTextures() const;
             void unloadAll();
-            void drawPlayers();
-
-            void initMaps();
-            void drawMaps();
-            std::vector<std::string> getMap() const;
-            void endMaps();
-
-            void nextMap();
-            void prevMap();
-            
+            void draw();
             void next(const int &player);
             void prev(const int &player);
 
@@ -70,7 +57,6 @@ namespace PlayerSelector
             std::vector<PlayerSelector::Player> _players;
             int _nbCharacters;
             std::vector<CharDictionary> _charaDictionary;
-            Map *_map;
 
             float _rotationAxis;
     };

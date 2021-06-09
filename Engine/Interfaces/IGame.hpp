@@ -70,6 +70,11 @@ class IGame {
          * @return Name of the game
          */
         virtual const std::string &getGameName(void) const = 0;
+
+        /**
+         * @brief Set the Map
+         */
+        virtual void setMap(std::vector<std::string> map) = 0;
 };
 
 #endif /* !IGAME_HPP_ */

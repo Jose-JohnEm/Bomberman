@@ -74,13 +74,6 @@ namespace Raylib {
          * @param mode An int for the mode
          */
         void setCameraMode(int const &mode) const;
-        
-        /**
-         * @brief Set the Position object
-         * 
-         * @param position 
-         */
-        void setPosition(const Vector3 &position);
 
         /**
          * @brief Update camera position for selected mode

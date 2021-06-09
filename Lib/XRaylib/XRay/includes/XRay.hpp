@@ -48,7 +48,6 @@
 #include "PlayerSelector/Player.hpp"
 #include "PlayerSelector/Selector.hpp"
 #include "Audio/Audio.hpp"
-#include "GameParty.hpp"
 
 class XRay : public IGraphical {
 
@@ -155,6 +154,13 @@ class XRay : public IGraphical {
          * @brief Close window
          */
         void closeWindow(void) const override;
+
+        /**
+         * @brief Get the Map
+         *
+         * @return A const std::vector<std::string>&
+         */
+        const std::vector<std::string> &getMap() override;
 
         /**
          * @brief Return true if the mouse is in the region and false otherwise
@@ -369,6 +375,7 @@ class XRay : public IGraphical {
     private:
         Raylib::Window _window;                     // Game window
 
+        std::vector<std::string> _map;              // Map
         float masterVolume;                         // Master volume
         std::vector<std::string> _userNames;        // A vector of all the users names
         std::pair<bool, void (XRay::*)()> _intro;   // Intro pointer to function
@@ -395,7 +402,6 @@ class XRay : public IGraphical {
 
         std::map<Resources, std::shared_ptr<Raylib::Texture>> _resources; // Texture dictionary
         PlayerSelector::Selector _pSelector; // 3D Camera
-        GameParty *_gameParty;
 };
 
 #include "XRay.inl"

@@ -8,7 +8,7 @@
 #include "Core.hpp"
 
 Engine::Core::Core()
-: _graphical{std::make_shared<XRay>()}
+: _graphical{std::make_shared<XRay>()}, _game{std::make_shared<Game::Bomberman>()}
 {
 }
 
@@ -23,17 +23,20 @@ void Engine::Core::run(void)
         _graphical->display();
         _scene = _graphical->getScene();
         if (_scene == IGraphical::IN_GAME && _game) {
+            if (_graphical->getUserNames() != _userNames) {
+                _userNames = _graphical->getUserNames();
+                _game->setUserNames(_userNames);
+                std::cout << " Prince " << _graphical->getMap().size() << std::endl;
+                _game->setMap(_graphical->getMap());
+            }
             if (!_isPaused)
                 _game->updateGame();
             if (!_game->isGameOver() && !endGame()) {
+                std::cout << " oo " << _game->getEntities().size() << std::endl;
                 _graphical->setScores(_game->getScores());
                 _graphical->updateGameInfos(_game->getEntities());
                 _graphical->setPlayersStats(_game->getPlayersStats());
             }
-        }
-        if (_graphical->getUserNames() != _userNames) {
-            _userNames = _graphical->getUserNames();
-            _game->setUserNames(_userNames);
         }
         if (_graphical->getBackups() != _backups)
             _graphical->setBackups(_backups);

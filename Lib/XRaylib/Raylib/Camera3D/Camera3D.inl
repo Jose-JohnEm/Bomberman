@@ -46,11 +46,6 @@ inline void Raylib::Camera3D::updateCamera(void)
     return ::UpdateCamera(&_camera3D);
 }
 
-inline void Raylib::Camera3D::setPosition(const Vector3 &position)
-{
-    _camera3D.position = position.getCStruct();
-}
-
 inline void Raylib::Camera3D::setCameraPanControl(int const &keyPan) const
 {
     return ::SetCameraPanControl(keyPan);

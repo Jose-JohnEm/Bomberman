@@ -81,8 +81,7 @@ void XRay::displayCardsSettings(std::vector<std::pair<int, int>> &removeButtons,
             _resources.at((Resources)(size_t)((_controlsTab[i])+_card[i]-36))->drawTexture((*x)+109, b+9);
         if (i != 0)
             removeButtons.push_back(std::make_pair((*x)+307, b+9));
-        if (_nextOrNot != _allIntegers[2] * 40)
-            Raylib::Text::drawText(_pSelector[i].getName(), 200 + 450 * i + ((180 - Raylib::Text::measureText(_pSelector[i].getName(), 50)) / 2), 595, 50, Raylib::Color::Black());
+        Raylib::Text::drawText(_pSelector[i].getName(), 200 + 450 * i + ((180 - Raylib::Text::measureText(_pSelector[i].getName(), 50)) / 2), 595, 50, Raylib::Color::Black());
     }
     if (_allIntegers[2] != 4)
         _resources.at(ADD)->drawTexture(_allIntegers[0] + (*x), _allIntegers[1]);
@@ -125,10 +124,10 @@ void XRay::displayPlayerChoiceScene(void)
     displayCardsSettings(removeButtons, &x);
     (goBack ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000);
     (goNext ? _resources.at(NEXT_HOVER) : _resources.at(NEXTSCENE))->drawTexture(1700, 1000);
-    
-    _pSelector.drawPlayers();
-    displayMouse();
 
+    _pSelector.draw();
+
+    displayMouse();
     endDrawing();
 
     // Check and Manage Click on buttons
@@ -141,10 +140,11 @@ void XRay::displayPlayerChoiceScene(void)
     if (goBack && Raylib::Mouse::isButtonPressed(0)) {
         (this->*_scenesBack[_scene])();
         _scenesBack[PLAYER_CHOICE] = _scenesBackBackup[PLAYER_CHOICE];
+        _pSelector.unloadAll();
     }
-    if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _allIntegers[2] * 40)
-    {
-        _pSelector.initMaps();
+    if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _allIntegers[2] * 40) {
         displayMapChoiceScene();
+        // TODO: USERNAMES UPDATE
+        _userNames = {"Prince", "Is", "God"};
     }
 }

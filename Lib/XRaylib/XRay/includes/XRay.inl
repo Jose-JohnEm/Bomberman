@@ -15,6 +15,11 @@ inline void XRay::closeWindow(void) const
     _window.closeWindow();
 }
 
+inline const std::vector<std::string> &XRay::getMap()
+{
+    return _map;
+}
+
 inline void XRay::beginDrawing(void) const
 {
     Raylib::Drawing::beginDrawing();

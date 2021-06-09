@@ -9,15 +9,56 @@
 #define IENTITY_HPP_
 
 #include <iostream>
+#include "../Lib/XRaylib/Raylib/Texture/Texture.hpp"
+#include "../Lib/XRaylib/Raylib/Vector3/Vector3.hpp"
 
 class IEntity {
 
     public:
+
         /**
          * @brief Destroy the IEntity object
          *
          */
-        virtual ~IEntity(void) = default;
+        virtual ~IEntity() {};
+
+        /**
+         * @brief Get the Positions object
+         *
+         * @return A Raylib::Vector3
+         */
+        virtual Raylib::Vector3 getPositions() const = 0;
+
+        /**
+         * @brief Set the Positions
+         *
+         * @param vector A vector3
+         */
+        virtual void setPositions(Raylib::Vector3 &vector) = 0;
+
+        /**
+         * @brief Get Path To Obj
+         */
+        virtual std::string getPathToObj() const = 0;
+
+        /**
+         * @brief Get Path To Png
+         */
+        virtual std::vector<std::string> getPathToPngs() const = 0;
+
+        /**
+         * @brief Set a boolean to know if this entity should be displayed
+         *
+         * @param shouldDisplay A boolean to know if this entity should be displayed
+         */
+        virtual void setShouldDisplay(bool shouldDisplay) = 0;
+
+        /**
+         * @brief Get a boolean to know if this entity should be displayed
+         *
+         * @return true or false
+         */
+        virtual bool getShouldDisplay() const = 0;
 };
 
 #endif /* !IENTITY_HPP_ */

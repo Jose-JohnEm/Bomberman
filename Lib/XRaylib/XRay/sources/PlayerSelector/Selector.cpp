@@ -59,7 +59,7 @@ std::vector<PlayerSelector::CharDictionary> findCharactersAvailable(int &nb_Char
 }
 
 PlayerSelector::Selector::Selector()
-: camera(nullptr), _rotationAxis(0), _players({}), _nbCharacters(0), _charaDictionary(findCharactersAvailable(_nbCharacters)), _map(nullptr)
+: camera(nullptr), _rotationAxis(0), _players({}), _nbCharacters(0), _charaDictionary(findCharactersAvailable(_nbCharacters))
 {
     POS.push_back(POS_1);
     POS.push_back(POS_2);
@@ -71,8 +71,9 @@ PlayerSelector::Selector::Selector()
 
 PlayerSelector::Selector::~Selector()
 {
-    if (camera != nullptr)
-        delete camera;
+    // FIXME: Aie double free
+//    if (camera)
+//        delete camera;
 }
 
 PlayerSelector::Player &PlayerSelector::Selector::operator[](const int &index)
@@ -84,12 +85,6 @@ PlayerSelector::Player &PlayerSelector::Selector::operator[](const int &index)
 const PlayerSelector::Player &PlayerSelector::Selector::operator[](const int &index) const
 {
     return _players[index];
-}
-
-void PlayerSelector::Selector::firstLoad()
-{
-    if (_players.size() == 0)
-        load();
 }
 
 void PlayerSelector::Selector::load()
@@ -119,22 +114,6 @@ void PlayerSelector::Selector::load()
 
 }
 
-std::vector<std::pair<Model, float>> PlayerSelector::Selector::getModels() const
-{
-    std::vector<std::pair<Model, float>> persos;
-
-    for (auto &p : _players)
-    {
-        persos.push_back(p.getModel());
-    }
-    return persos;
-}
-
-std::vector<Texture2D> PlayerSelector::Selector::getBlocTextures() const
-{
-    return _map->getTextures();
-}
-
 void PlayerSelector::Selector::unload(const int &id)
 {
     std::cout << std::endl << "######## End Player Selector ########" << std::endl << std::endl;
@@ -149,7 +128,7 @@ void PlayerSelector::Selector::unloadAll()
         _players.pop_back();
     }
 
-    if (camera != nullptr)
+    if (camera)
         delete camera;
 }
 
@@ -161,7 +140,7 @@ void PlayerSelector::Selector::updateRotationAxis()
         _rotationAxis -= 360;
 }
 
-void PlayerSelector::Selector::drawPlayers()
+void PlayerSelector::Selector::draw()
 {
     char i = 0;
 
@@ -175,49 +154,6 @@ void PlayerSelector::Selector::drawPlayers()
 
     updateRotationAxis();
     camera->endMode3D();
-}
-
-void PlayerSelector::Selector::initMaps()
-{
-    std::vector<std::pair<Model, float>> persos;
-
-    for (auto &p : _players)
-    {
-        persos.push_back(p.getModel());
-    }
-    camera->setPosition({-0.02, -3, 6});
-    _map = new Map(persos);
-}
-
-void PlayerSelector::Selector::drawMaps()
-{
-    camera->beginMode3D();
-
-    _map->draw();
-
-    camera->endMode3D();
-}
-
-std::vector<std::string> PlayerSelector::Selector::getMap() const
-{
-    return _map->getMap();
-}
-
-void PlayerSelector::Selector::endMaps()
-{
-    camera->setPosition({0, 0, 10});
-    if (_map != nullptr)
-        delete _map;
-}
-
-void PlayerSelector::Selector::nextMap()
-{
-    _map->next();
-}
-
-void PlayerSelector::Selector::prevMap()
-{
-    _map->prev();
 }
 
 void PlayerSelector::Selector::next(const int &id)

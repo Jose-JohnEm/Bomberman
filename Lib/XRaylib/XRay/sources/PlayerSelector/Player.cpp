@@ -15,7 +15,7 @@ PlayerSelector::Player::Player(const std::string &obj, const std::string &textur
 
 PlayerSelector::Player::~Player()
 {
-    
+    ;
 }
 
 void PlayerSelector::Player::draw(const float &rotation, const Raylib::Vector3 &pos) const
@@ -31,9 +31,4 @@ int PlayerSelector::Player::getId(void) const
 const std::string PlayerSelector::Player::getName(void) const
 {
     return _name;
-}
-
-std::pair<Model, float> PlayerSelector::Player::getModel() const
-{
-    return {_persoModel, _scalable};
 }

@@ -13,6 +13,7 @@
 #include <algorithm>
 #include "XRay.hpp"
 #include "Interfaces/IGraphical.hpp"
+#include "../../Game/includes/Bomberman.hpp"
 #include "Interfaces/IGame.hpp"
 
 namespace Engine
@@ -51,6 +52,7 @@ namespace Engine
              * @brief Get Backup Files
              */
             void getBackupFiles(void);
+
 
         private:
             std::shared_ptr<IGraphical> _graphical;                             // Graphical instance

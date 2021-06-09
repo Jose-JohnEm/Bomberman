@@ -93,7 +93,6 @@ void XRay::displayInGameScene(void)
 
     // Draw scene
     beginDrawing();
-    _gameParty->draw();
     displayPlayersPanels(panelPos);
     displayPauseScene();
     displayMouse();
