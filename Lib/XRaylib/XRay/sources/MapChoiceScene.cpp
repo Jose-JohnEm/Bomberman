@@ -55,6 +55,7 @@ void XRay::displayMapChoiceScene(void)
 
     // Go to another scene according to mouse position
     if (goBack && Raylib::Mouse::isButtonPressed(0)) {
+        _sfx.at(SFX_HOME)->play();
         (this->*_scenesBack[_scene])();
         _scenesBack[MAP_CHOICE] = _scenesBackBackup[MAP_CHOICE];
         _pSelector.endMaps();

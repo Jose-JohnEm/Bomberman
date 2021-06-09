@@ -167,9 +167,10 @@ void XRay::setAudioResources(void)
     _musics.insert(std::pair<MusicResources, std::shared_ptr<Raylib::Music>>(MusicResources::MSC_BOMBERMAN, std::make_shared<Raylib::Music>(*(new Raylib::Music("resources/music/Bomberman.mp3")))));
 
     // Sound
-    _sfx.insert(std::pair<SfxResources , std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_KLICK, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Klick.wav")))));
-    _sfx.insert(std::pair<SfxResources , std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_ENTER, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Enter.wav")))));
-    _sfx.insert(std::pair<SfxResources , std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_SETTING, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Settings.wav")))));
+    _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_KLICK, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Klick.wav")))));
+    _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_ENTER, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Enter.wav")))));
+    _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_SETTING, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Settings.wav")))));
+    _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_HOME, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Home.wav")))));
 }
 
 void XRay::quitGame(void)
