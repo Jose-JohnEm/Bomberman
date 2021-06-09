@@ -24,7 +24,19 @@ namespace Game
             * @brief Destroy the Score object
             */
             ~Score();
+
+            /**
+             * @brief Get the Score of the Player
+             *
+             * @return A size_t
+             */
             size_t getScore() const;
+
+            /**
+             * @brief Set the Score of the Player
+             *
+             * @param score A const reference to a size_t
+             */
             void setScore(size_t const &score);
         private:
             size_t _score;
