@@ -26,7 +26,6 @@ void Engine::Core::run(void)
             if (_graphical->getUserNames() != _userNames) {
                 _userNames = _graphical->getUserNames();
                 _game->setUserNames(_userNames);
-                std::cout << " Prince " << _graphical->getMap().size() << std::endl;
                 _game->setMap(_graphical->getMap());
             }
             if (!_isPaused)
