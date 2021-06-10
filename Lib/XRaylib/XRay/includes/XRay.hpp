@@ -49,11 +49,7 @@
 #include "PlayerSelector/Player.hpp"
 #include "PlayerSelector/Selector.hpp"
 #include "Audio/Audio.hpp"
-<<<<<<< HEAD
-=======
 #include "Sound/Sound.hpp"
-#include "GameParty.hpp"
->>>>>>> feature/music
 
 class XRay : public IGraphical {
 
