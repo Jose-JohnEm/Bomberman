@@ -9,6 +9,9 @@
 #define SAVE_HPP_
 
 #include <array>
+#include "../includes/Settings.hpp"
+#include "../Player/Player.hpp"
+#include "../Map/MapGeneration.hpp"
 
 namespace Game
 {
@@ -16,9 +19,14 @@ namespace Game
     {
         public:
             /**
-            * @brief Construct the Save object
+            * @brief Construct the Save object to load a backup file (Copy Constructor)
             */
-            Save();
+            Save(const std::array<std::size_t, 7> &settings, const std::vector<Game::Player> &player, const Game::MapGeneration &map);
+
+            /**
+            * @brief Construct the Save object to unload a backup file (Copy Constructor)
+            */
+            Save(const std::string &filename);
 
             /**
             * @brief Destroy the Save object
@@ -27,6 +35,8 @@ namespace Game
 
         private:
             std::array<std::size_t, 7> _settings; // An array of 7 size_t
+            std::vector<Game::Player> _players; // A vector of players
+            Game::MapGeneration _map; // The map
     };
 
     #include "Save.inl"
