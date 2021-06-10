@@ -53,7 +53,6 @@ namespace Engine
              */
             void getBackupFiles(void);
 
-
         private:
             std::shared_ptr<IGraphical> _graphical;                             // Graphical instance
             std::shared_ptr<IGame> _game;                                       // Game instance
