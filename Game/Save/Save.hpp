@@ -9,6 +9,9 @@
 #define SAVE_HPP_
 
 #include <array>
+#include <fstream>
+#include <ctime>
+#include <algorithm>
 #include "../includes/Settings.hpp"
 #include "../Player/Player.hpp"
 #include "../Map/MapGeneration.hpp"
@@ -37,6 +40,9 @@ namespace Game
             std::array<std::size_t, 7> _settings; // An array of 7 size_t
             std::vector<Game::Player> _players; // A vector of players
             Game::MapGeneration _map; // The map
+
+            // TODO: doc
+            std::string getCurrentDateTime(void) const;
     };
 
     #include "Save.inl"

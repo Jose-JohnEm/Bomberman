@@ -13,11 +13,11 @@
 #include <string>
 
 typedef enum {
-    SKATE,
-    BOMB,
-    PASS,
-    FIRE,
-    LIFE
+    P_SKATE,
+    P_BOMB,
+    P_PASS,
+    P_FIRE,
+    P_LIFE
 } Powerups;
 
 namespace Game
