@@ -22,18 +22,12 @@ ADD_SUBDIRECTORY(Lib/XRaylib)
 # Generate a list of files
 FILE(GLOB_RECURSE SRCS CONFIGURE_DEPENDS
     "Engine/*.cpp"
-<<<<<<< HEAD
-=======
     "Game/*.cpp"
->>>>>>> release/v0.3
 )
 
 # Set Headers paths
 SET(ENGINE_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Engine/")
-<<<<<<< HEAD
-=======
 SET(GAME_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Game/")
->>>>>>> release/v0.3
 SET(XRAY_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Lib/XRaylib/XRay/includes/")
 SET(RAYLIB_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Lib/XRaylib/Raylib/")
 
@@ -46,10 +40,7 @@ TARGET_LINK_LIBRARIES(${PROJECT_NAME} xray) # Specify libraries or flags to use 
 # PRIVATE keyword ensure a complete compilation beetwin dependencies
 TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PRIVATE
     ${ENGINE_HEADERS_PATH}
-<<<<<<< HEAD
-=======
     ${GAME_HEADERS_PATH}
->>>>>>> release/v0.3
     ${XRAY_HEADERS_PATH}
     ${RAYLIB_HEADERS_PATH}
 )
@@ -57,8 +48,4 @@ TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PRIVATE
 # Active in debug environment or hidden in release
 #TARGET_COMPILE_OPTIONS(bomberman PRIVATE -g3)
 
-<<<<<<< HEAD
 # That's it! You should have an bomberman executable that you can run. Have fun!
-=======
-# That's it! You should have an bomberman executable that you can run. Have fun!
->>>>>>> release/v0.3

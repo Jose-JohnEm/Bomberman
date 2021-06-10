@@ -7,14 +7,6 @@
 
 #include "XRay.hpp"
 
-<<<<<<< HEAD
-XRay::XRay()
-    : _window(1920, 1080, "Bomberman")
-{
-    // Set resources
-    setResources();
-
-=======
 XRay::XRay(void)
     : _window(1920, 1080, "Bomberman")
 {
@@ -31,24 +23,12 @@ XRay::XRay(void)
     Raylib::Audio::initAudioDevice();
     setAudioResources();
 
->>>>>>> release/v0.3
     // Scenes
     _scenesFunc.push_back(&XRay::displayMenuScene);
     _scenesFunc.push_back(&XRay::displayGameModeScene);
     _scenesFunc.push_back(&XRay::displayHowToPlayScene);
     _scenesFunc.push_back(&XRay::displaySettingsScene);
     _scenesFunc.push_back(&XRay::displayPlayerChoiceScene);
-<<<<<<< HEAD
-    _scenesFunc.push_back(&XRay::displayLoadGameScene);
-    _scenesFunc.push_back(&XRay::displayInGameScene);
-    _scenesFunc.push_back(&XRay::quitGame);
-
-    // Display Intro (studio and introduction cinematic)
-    _intro = std::make_pair(true, &XRay::displayStudio);
-}
-
-XRay::~XRay()
-=======
     _scenesFunc.push_back(&XRay::displayMapChoiceScene);
     _scenesFunc.push_back(&XRay::displayLoadGameScene);
     _scenesFunc.push_back(&XRay::displayInGameScene);
@@ -82,7 +62,6 @@ XRay::~XRay()
 }
 
 XRay::~XRay(void)
->>>>>>> release/v0.3
 {
 }
 
@@ -114,11 +93,7 @@ void XRay::setResources(void)
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::INDIE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/indie.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::STUDIO, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/studio.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::BOMBER_TEAM, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/bomberTeam.png"))));
-<<<<<<< HEAD
-	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::MENU_TITLE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/menuTitle.png"))));
-=======
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::MENU_TITLE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/title.png"))));
->>>>>>> release/v0.3
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::BOMBER_THINKING, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/bomberThinking.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::PLAY, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/play.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::PLAY_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/playHover.png"))));
@@ -127,8 +102,6 @@ void XRay::setResources(void)
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SKIP, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/skip.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SKIP_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/skipHover.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::PARALLAX, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/parallax.png"))));
-<<<<<<< HEAD
-=======
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::BG, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/bg.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::p1, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/j1.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::p2, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/j2.png"))));
@@ -202,7 +175,6 @@ void XRay::setAudioResources(void)
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_NOCK, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Nock.wav")))));
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_TURN_OFF, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/TurnOff.wav")))));
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_TURN_ON, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/TurnOn.wav")))));
->>>>>>> release/v0.3
 }
 
 void XRay::quitGame(void)
@@ -219,13 +191,8 @@ void XRay::displayStudio(void)
         y = 1500 - f;
         beginDrawing();
 		std::this_thread::sleep_for(std::chrono::milliseconds(3));
-<<<<<<< HEAD
-		_resources.at(INDIE)->drawTexture(x, 440, Raylib::Color::White());
-		_resources.at(STUDIO)->drawTexture(y, 440, Raylib::Color::White());
-=======
 		_resources.at(INDIE)->drawTexture(x, 440);
 		_resources.at(STUDIO)->drawTexture(y, 440);
->>>>>>> release/v0.3
         endDrawing();
     }
 

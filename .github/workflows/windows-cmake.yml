@@ -7,11 +7,7 @@ name: Windows CMake
 
 on:
   push:
-<<<<<<< HEAD
     branches: [ master, develop ]
-=======
-    branches: [ master, develop, feature/Settings ]
->>>>>>> release/v0.3
   pull_request:
     branches: [ develop ]
 

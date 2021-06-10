@@ -9,26 +9,16 @@
 #define IENTITY_HPP_
 
 #include <iostream>
-<<<<<<< HEAD
-=======
 #include "../Lib/XRaylib/Raylib/Texture/Texture.hpp"
 #include "../Lib/XRaylib/Raylib/Vector3/Vector3.hpp"
->>>>>>> release/v0.3
 
 class IEntity {
 
     public:
-<<<<<<< HEAD
-=======
-
->>>>>>> release/v0.3
         /**
          * @brief Destroy the IEntity object
          *
          */
-<<<<<<< HEAD
-        virtual ~IEntity(void) = default;
-=======
         virtual ~IEntity() {};
 
         /**
@@ -64,7 +54,6 @@ class IEntity {
          * @return true or false
          */
         virtual bool getShouldDisplay() const = 0;
->>>>>>> release/v0.3
 };
 
 #endif /* !IENTITY_HPP_ */

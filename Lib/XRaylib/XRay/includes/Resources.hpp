@@ -43,11 +43,6 @@ typedef enum {
     QUIT_HOVER,
     SKIP,
     SKIP_HOVER,
-<<<<<<< HEAD
-    PARALLAX
-} Resources;
-
-=======
     PARALLAX,
     BG,
     p1,
@@ -124,5 +119,4 @@ typedef enum {
     SFX_TURN_ON
 } SfxResources;
 
->>>>>>> release/v0.3
 #endif /* !RESOURCES_HPP_ */
