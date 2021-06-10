@@ -11,7 +11,7 @@
 #include "raylib.h"
 #include "Texture/Texture.hpp"
 #include "Vector3/Vector3.hpp"
-#include <ctime>
+#include "Clock.hpp"
 
 namespace PlayerSelector
 {
@@ -37,9 +37,7 @@ namespace PlayerSelector
             Raylib::Color _color;
             std::vector<ModelAnimation> _animations;
 
-            clock_t _clock;
-            float start;
-            float end;
+            Clock clock;
             int counter;
     };
     

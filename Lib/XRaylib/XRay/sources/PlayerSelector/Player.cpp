@@ -14,8 +14,7 @@ _persoTexture(Raylib::Texture(texture)),
 _idCharacter(idCharacter),
 _scalable(scalable),
 _name(name),
-_color(color),
-start(clock())
+_color(color)
 {
     if (animations.size() == 3)
     {
@@ -37,13 +36,8 @@ void PlayerSelector::Player::draw(const float &rotation, const Raylib::Vector3 &
 {
     if (_animations.size() == 3)
     {
-        end = (float)clock();
-        if ((float)(end - start) / CLOCKS_PER_SEC > 0.03)
-        {
+        if (clock.doesTimeElapsed(0.01))
             counter++;
-            start = clock();
-
-        }
         UpdateModelAnimation(_persoModel, _animations[0], counter);
         if (counter >= _animations[0].frameCount)
             counter = 0;
