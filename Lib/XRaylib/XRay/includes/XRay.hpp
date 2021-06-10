@@ -22,6 +22,7 @@
 #include <chrono>
 #include <iterator>
 #include <filesystem>
+#include <thread>
 #ifdef __linux__
     #include <dirent.h>
 #endif
@@ -48,7 +49,6 @@
 #include "PlayerSelector/Player.hpp"
 #include "PlayerSelector/Selector.hpp"
 #include "Audio/Audio.hpp"
-#include "GameParty.hpp"
 
 class XRay : public IGraphical {
 
@@ -157,6 +157,20 @@ class XRay : public IGraphical {
         void closeWindow(void) const override;
 
         /**
+         * @brief Set the Map
+         *
+         * @param map A const std::vector<std::string>&
+         */
+        void setMap(std::vector<std::string> &map) override;
+
+        /**
+         * @brief Get Map Size and Type
+
+         * @return A pair of size_t
+         */
+        std::pair<size_t, size_t> getMapSizeAndType() override;
+
+        /**
          * @brief Return true if the mouse is in the region and false otherwise
          *
          * @param box Vector contains Box positions
@@ -254,7 +268,7 @@ class XRay : public IGraphical {
          * @param hideSkip A size_t corresponding to the cinematic frame when you must hide the skip button
          * @param gap Duration between each frame
          */
-        void displayCinematic(const std::string &cinematicPathDirectory, const size_t &hideSkip, const size_t &gap) const;
+        void displayCinematic(const std::string &cinematicPathDirectory, const size_t &hideSkip = 0, const size_t &gap = 0) const;
 
         /**
          * @brief This function must display the current scene. It is used in the game loop
@@ -369,6 +383,9 @@ class XRay : public IGraphical {
     private:
         Raylib::Window _window;                     // Game window
 
+        size_t _mapType = 0;                        // Type of Map
+        size_t _sizeMap = 19;                            // Size of Map
+        std::vector<std::string> _map;              // Map
         float masterVolume;                         // Master volume
         std::vector<std::string> _userNames;        // A vector of all the users names
         std::pair<bool, void (XRay::*)()> _intro;   // Intro pointer to function
@@ -395,7 +412,6 @@ class XRay : public IGraphical {
 
         std::map<Resources, std::shared_ptr<Raylib::Texture>> _resources; // Texture dictionary
         PlayerSelector::Selector _pSelector; // 3D Camera
-        GameParty *_gameParty;
 };
 
 #include "XRay.inl"

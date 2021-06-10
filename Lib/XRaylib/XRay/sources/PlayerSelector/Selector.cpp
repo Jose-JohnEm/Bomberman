@@ -115,8 +115,6 @@ void PlayerSelector::Selector::load()
     std::cout << std::endl << "######## Init Player Selector ########" << std::endl << std::endl;
 
     _players.push_back(Player(_charaDictionary[0].obj, _charaDictionary[0].texture, _charaDictionary[0].scalable, 0, _charaDictionary[0].name));
-
-
 }
 
 std::vector<std::pair<Model, float>> PlayerSelector::Selector::getModels() const
@@ -177,20 +175,24 @@ void PlayerSelector::Selector::drawPlayers()
     camera->endMode3D();
 }
 
-void PlayerSelector::Selector::initMaps()
+void PlayerSelector::Selector::initMaps(std::vector<std::string> &asciiMap)
 {
-    std::vector<std::pair<Model, float>> persos;
-
-    for (auto &p : _players)
-    {
-        persos.push_back(p.getModel());
-    }
     camera->setPosition({-0.02, -3, 6});
-    _map = new Map(persos);
+    if (asciiMap.size() != _asciiMap.size()) {
+        std::vector<std::pair<Model, float>> persos;
+
+        for (auto &p : _players)
+            persos.push_back(p.getModel());
+        _map = new Map(persos, asciiMap);
+        _asciiMap = asciiMap;
+    }
 }
 
-void PlayerSelector::Selector::drawMaps()
+void PlayerSelector::Selector::drawMaps(std::vector<std::string> &asciiMap)
 {
+    if (_asciiMap != asciiMap)
+        _asciiMap = asciiMap;
+
     camera->beginMode3D();
 
     _map->draw();
@@ -206,8 +208,10 @@ std::vector<std::string> PlayerSelector::Selector::getMap() const
 void PlayerSelector::Selector::endMaps()
 {
     camera->setPosition({0, 0, 10});
-    if (_map != nullptr)
-        delete _map;
+
+// FIXME: In constructor _map don't init when delete (byPRINCE)
+/*    if (_map != nullptr)
+        delete _map;*/
 }
 
 void PlayerSelector::Selector::nextMap()
@@ -218,6 +222,11 @@ void PlayerSelector::Selector::nextMap()
 void PlayerSelector::Selector::prevMap()
 {
     _map->prev();
+}
+
+size_t PlayerSelector::Selector::getMapType() const
+{
+    return _map->getMapType();
 }
 
 void PlayerSelector::Selector::next(const int &id)

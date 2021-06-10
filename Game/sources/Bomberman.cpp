@@ -10,8 +10,6 @@
 Game::Bomberman::Bomberman(void)
 : _gameName{"Bomberman"}, _gameOver{false}
 {
-    initEntities();
-    initPlayersStats();
 }
 
 Game::Bomberman::~Bomberman(void)
@@ -20,10 +18,43 @@ Game::Bomberman::~Bomberman(void)
 
 void Game::Bomberman::initEntities()
 {
+    float x;
+    float y = 0;
+    float scale;
+
+    for (const std::string &line : _map) {
+        x = 0;
+        for (const char &c : line) {
+            if (c == 'W' || c == 'E')
+                _entities.push_back(std::shared_ptr<IEntity>(new Game::SolidWall(Raylib::Vector3(x, y, 0), _mapType)));
+            if (c == 'M')
+                _entities.push_back(std::shared_ptr<IEntity>(new Game::BreakableWall(Raylib::Vector3(x, y, 0), _mapType)));
+            _entities.push_back(std::shared_ptr<IEntity>(new Game::Floor(Raylib::Vector3(x, y, -0.4f), _mapType)));
+            x++;
+        }
+        y++;
+    }
+}
+
+std::vector<std::string> &Game::Bomberman::getMap(size_t size)
+{
+    if (_map.size() != size+2) {
+        Game::Map newMap(size, size);
+
+        std::cout << " YAOI " << _userNames.size() << std::endl;
+        newMap.placePlayers(_userNames.size());
+        _map = newMap.getMap();
+    }
+    return _map;
 }
 
 void Game::Bomberman::initPlayersStats()
 {
+    _playersStats.clear();
+    _scores.clear();
+    for (size_t i = 0; i < _userNames.size(); i++) {
+        _scores.push_back(std::make_pair(_userNames[i], "0"));
+    }
 }
 
 void Game::Bomberman::updateEntities()

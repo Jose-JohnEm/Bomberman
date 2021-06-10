@@ -51,10 +51,7 @@ XRay::XRay(void)
     // Display Intro (studio and introduction cinematic)
     _intro = std::make_pair(true, &XRay::displayStudio);
 
-    // Audio TODO: Aïe
-//    Raylib::Audio::initAudioDevice();
     masterVolume = 50;
-//    Raylib::Audio::setMasterVolume(masterVolume);
 }
 
 XRay::~XRay(void)
@@ -155,6 +152,7 @@ void XRay::setResources(void)
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SETTING_BG, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/backSetting.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::VOLUME_UP, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/volumeUp.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::VOLUME_DOWN, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/volumeDown.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::LOADINGFRAMEO, std::make_shared<Raylib::Texture>(Raylib::Image("resources/cinematic/loading/frame0.png"))));
 }
 
 void XRay::quitGame(void)

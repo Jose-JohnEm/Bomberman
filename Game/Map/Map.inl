@@ -5,27 +5,27 @@
 ** Map
 */
 
-inline size_t Game::MapGeneration::getWidth(void) const
+inline size_t Game::Map::getWidth(void) const
 {
     return _width - BORDER;
 }
 
-inline size_t Game::MapGeneration::getHeight(void) const
+inline size_t Game::Map::getHeight(void) const
 {
     return _height - BORDER;
 }
 
-inline void Game::MapGeneration::setWidth(const size_t width)
+inline void Game::Map::setWidth(const size_t width)
 {
     _width = width + BORDER;
 }
 
-inline void Game::MapGeneration::setHeight(const size_t height)
+inline void Game::Map::setHeight(const size_t height)
 {
     _height = height + BORDER;
 }
 
-inline void Game::MapGeneration::create(void)
+inline void Game::Map::create(void)
 {
     _map.reserve(_height);
     for (size_t y = 0; y < _height; y++)
@@ -40,7 +40,7 @@ inline void Game::MapGeneration::create(void)
     }
 }
 
-inline void Game::MapGeneration::fill(const char &character)
+inline void Game::Map::fill(const char &character)
 {
     for (std::string &row : _map)
     {
@@ -48,7 +48,7 @@ inline void Game::MapGeneration::fill(const char &character)
     }
 }
 
-inline void Game::MapGeneration::dump(void) const
+inline void Game::Map::dump(void) const
 {
     for (const std::string &row : _map)
     {
@@ -60,12 +60,12 @@ inline void Game::MapGeneration::dump(void) const
     }
 }
 
-inline std::vector<std::string> Game::MapGeneration::getMap(void) const
+inline std::vector<std::string> Game::Map::getMap(void) const
 {
     return _map;
 }
 
-inline void Game::MapGeneration::maze(void)
+inline void Game::Map::maze(void)
 {
     int choice = 0;
 
@@ -83,7 +83,7 @@ inline void Game::MapGeneration::maze(void)
     }
 }
 
-inline void Game::MapGeneration::placeBorders(void)
+inline void Game::Map::placeBorders(void)
 {
     // Place upper and lower borders
     std::fill(_map[0].begin(), _map[0].end(), EDGE);
@@ -101,7 +101,7 @@ inline void Game::MapGeneration::placeBorders(void)
     }
 }
 
-inline void Game::MapGeneration::placePlayers(const size_t &playersNumber)
+inline void Game::Map::placePlayers(const size_t &playersNumber)
 {
     if (!(1 <= playersNumber && playersNumber <= 4))
     {
@@ -112,31 +112,23 @@ inline void Game::MapGeneration::placePlayers(const size_t &playersNumber)
         if (i == 1)
         {
             _map[1][1] = PLAYER_ONE;
-            _map[1][2] = EMPTY_SPACE;
-            _map[2][1] = EMPTY_SPACE;
         }
         else if (i == 2)
         {
             _map[_height - BORDER][1] = PLAYER_TWO;
-            _map[_height - BORDER][2] = EMPTY_SPACE;
-            _map[_height - BORDER - 1][1] = EMPTY_SPACE;
         }
         else if (i == 3)
         {
             _map[_height - BORDER][_width - BORDER] = PLAYER_THREE;
-            _map[_height - BORDER - 1][_width - BORDER] = EMPTY_SPACE;
-            _map[_height - BORDER][_width - BORDER - 1] = EMPTY_SPACE;
         }
         else
         {
             _map[1][_width - BORDER] = PLAYER_FOUR;
-            _map[1][_width - BORDER] = EMPTY_SPACE;
-            _map[2][_width - BORDER - 1] = EMPTY_SPACE;
         }
     }
 }
 
-inline void Game::MapGeneration::placeSolidWalls(void)
+inline void Game::Map::placeSolidWalls(void)
 {
     for (size_t y = 2; y < _height - 1; y += 2)
     {

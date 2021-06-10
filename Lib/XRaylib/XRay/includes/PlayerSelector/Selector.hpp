@@ -46,16 +46,17 @@ namespace PlayerSelector
             void unloadAll();
             void drawPlayers();
 
-            void initMaps();
-            void drawMaps();
+            void initMaps(std::vector<std::string> &asciiMap);
+            void drawMaps(std::vector<std::string> &asciiMap);
             std::vector<std::string> getMap() const;
             void endMaps();
 
             void nextMap();
             void prevMap();
-            
+
             void next(const int &player);
             void prev(const int &player);
+            size_t getMapType() const;
 
             std::vector<Raylib::Vector3> POS;
 
@@ -71,6 +72,7 @@ namespace PlayerSelector
             int _nbCharacters;
             std::vector<CharDictionary> _charaDictionary;
             Map *_map;
+            std::vector<std::string> _asciiMap = {""};
 
             float _rotationAxis;
     };

@@ -70,6 +70,18 @@ class IGame {
          * @return Name of the game
          */
         virtual const std::string &getGameName(void) const = 0;
+
+        /**
+         * @brief Get the Map
+         */
+        virtual std::vector<std::string> &getMap(size_t size) = 0;
+
+        /**
+         * @brief Set the Map Type
+         *
+         * @param mapType A size_t
+         */
+        virtual void setMapType(std::size_t mapType) = 0;
 };
 
 #endif /* !IGAME_HPP_ */

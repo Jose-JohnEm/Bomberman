@@ -35,13 +35,13 @@
 
 namespace Game
 {
-    class MapGeneration
+    class Map
     {
         public:
             /**
             * @brief Construct the Map object
             */
-            MapGeneration();
+            Map();
 
             /**
             * @brief Construct the Map object (Copy Constructor)
@@ -49,12 +49,12 @@ namespace Game
             * @param width Width of the map
             * @param height Height of the map
             */
-            MapGeneration(const size_t &width, const size_t &height);
+            Map(const size_t &width, const size_t &height);
 
             /**
             * @brief Destroy the Map object
             */
-            ~MapGeneration();
+            ~Map();
 
             /**
              * @brief Getter for map width
@@ -136,7 +136,7 @@ namespace Game
             void placeSolidWalls(void);
     };
 
-    #include "MapGeneration.inl"
+    #include "Map.inl"
 }
 
 #endif /* !MAP_HPP_ */

@@ -40,27 +40,22 @@ std::vector<std::vector<Texture>> findTexturesAvailable(int &nb_textures)
     return res;
 }
 
-PlayerSelector::Map::Map(std::vector<std::pair<Model, float>> models)
+PlayerSelector::Map::Map(std::vector<std::pair<Model, float>> models, std::vector<std::string> &asciiMap)
 : _textures(findTexturesAvailable(_nbTextures)),
 current(0),
 _COEF(0.3),
 _characters(models)
 {
-    Game::MapGeneration newMap(5,5);
-    
-    newMap.placePlayers(_characters.size());
-    _charMap = newMap.getMap();
-    
     std::cout << "------------ Generated Map ------------" << std::endl;
-    for (auto &line : _charMap)
+    for (auto &line : asciiMap)
     {
         std::cout << line << std::endl;
     }
+    _charMap = asciiMap;
 }
 
 PlayerSelector::Map::~Map()
 {
-    
 }
 
 std::vector<std::string> PlayerSelector::Map::getMap() const
@@ -83,11 +78,18 @@ void PlayerSelector::Map::prev()
     current = (current == 0) ? _textures.size() - 1 : current - 1;
 }
 
+size_t PlayerSelector::Map::getMapType() const
+{
+    return current;
+}
+
 void PlayerSelector::Map::draw()
 {
     float x;
     float y = 0;
     float scale;
+
+    std::cout << "LINE " << _charMap.size() << std::endl;
 
     for (const std::string &line : _charMap)
     {
@@ -96,7 +98,6 @@ void PlayerSelector::Map::draw()
         {
             if (c == '1' || c == '2' || c == '3' || c == '4')
             {
-
                 scale = _characters[c - '1'].second * 0.35;
                 DrawModelEx(_characters[c - '1'].first, {x * _COEF - (float)2.4, y * _COEF - (float)0.5, 0}, {1, 0, 0}, 90, {scale, scale, scale}, Raylib::Color::White().getCStruct());
             }

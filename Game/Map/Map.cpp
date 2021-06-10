@@ -5,13 +5,13 @@
 ** Map
 */
 
-#include "MapGeneration.hpp"
+#include "Map.hpp"
 
-Game::MapGeneration::MapGeneration()
+Game::Map::Map()
 {
 }
 
-Game::MapGeneration::MapGeneration(const size_t &width, const size_t &height)
+Game::Map::Map(const size_t &width, const size_t &height)
     : _width{width + BORDER}, _height{height + BORDER}
 {
     if (width % 2 == 0 || width <= 3 || height < 3)
@@ -26,6 +26,6 @@ Game::MapGeneration::MapGeneration(const size_t &width, const size_t &height)
     placeSolidWalls();
 }
 
-Game::MapGeneration::~MapGeneration()
+Game::Map::~Map()
 {
 }

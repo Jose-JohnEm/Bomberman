@@ -9,7 +9,6 @@
 #include <string>
 #include "Color/Color.hpp"
 #include "Texture/Texture.hpp"
-#include "MapGeneration.hpp"
 #include <filesystem>
 
 namespace PlayerSelector
@@ -18,12 +17,13 @@ namespace PlayerSelector
     {
 
         public:
-            Map(std::vector<std::pair<Model, float>> models);
+            Map(std::vector<std::pair<Model, float>> models, std::vector<std::string> &asciiMap);
             ~Map();
 
             void next();
             void prev();
             void draw();
+            size_t getMapType() const;
 
 
             enum ModelMode

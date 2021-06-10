@@ -18,14 +18,6 @@ void XRay::displayGameSettings(void)
     (mouseIsInBox(createBox(1160, 455, 1160+755, 455+83)) ? _resources.at(SETS_HOVER) : _resources.at(Resources::SETS))->drawTexture(1160, 455);
     (mouseIsInBox(createBox(1160, 665, 1160+755, 665+83)) ? _resources.at(DURATION_HOVER) : _resources.at(Resources::DURATION))->drawTexture(1160, 665);
     (mouseIsInBox(createBox(1160, 875, 1160+755, 875+83)) ? _resources.at(AI_HOVER) : _resources.at(Resources::IA))->drawTexture(1160, 875);
-
-    if (Raylib::Mouse::isButtonPressed(0))
-    {
-        if (mouseIsInBox(createBox(10, 400, 160, 550)))
-            _pSelector.prevMap();
-        if (mouseIsInBox(createBox(900, 400, 1050, 550)))
-            _pSelector.nextMap();
-    }
 }
 
 void XRay::displayMapChoiceScene(void)
@@ -37,17 +29,16 @@ void XRay::displayMapChoiceScene(void)
     bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
     bool goNext = mouseIsInBox(createBox(1700, 1000, 1918, 1061)) ? true : false;
 
+    _pSelector.initMaps(_map);
+
     // Draw scene
     beginDrawing();
     displayBack();
-
     displayGameSettings();
     (goBack ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000);
     (goNext ? _resources.at(NEXT_HOVER) : _resources.at(NEXTSCENE))->drawTexture(1700, 1000);
-
-    _pSelector.drawMaps();
+    _pSelector.drawMaps(_map);
     displayMouse();
-
     endDrawing();
 
     // Go to another scene according to mouse position
@@ -57,9 +48,18 @@ void XRay::displayMapChoiceScene(void)
         _pSelector.endMaps();
     }
     if (goNext && Raylib::Mouse::isButtonPressed(0)) {
-        _gameParty = new GameParty(_pSelector.getModels(), _pSelector.getBlocTextures());
-        displayCinematic("loading", 0, 0);
-        displayInGameScene();
+        _mapType = _pSelector.getMapType();
         _pSelector.endMaps();
+        _scene = IN_GAME;
+        beginDrawing(false);
+        _resources.at(LOADINGFRAMEO)->drawTexture(0, 0);
+        endDrawing();
+    }
+    // Click on Next and Prev buttons
+    if (Raylib::Mouse::isButtonPressed(0)) {
+        if (mouseIsInBox(createBox(10, 400, 160, 550)))
+            _pSelector.prevMap();
+        if (mouseIsInBox(createBox(900, 400, 1050, 550)))
+            _pSelector.nextMap();
     }
 }
