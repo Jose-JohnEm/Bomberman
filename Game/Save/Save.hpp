@@ -37,52 +37,30 @@ namespace Game
             ~Save();
 
             /**
-            * @brief Get save's filename
-            * 
-            * @param settings A const reference to a std::array
-            */
-           std::string getSaveFilename(void) const;
-
-            /**
-            * @brief Set save's filename
-            * 
-            * @param filename A const reference to a std::string
-            */
-           void setSaveFilename(const std::string &filename);
-
-            /**
-            * @brief Create save's file
-            * 
-            * @return A std::string representing the save's filename
-            */
-           std::string createSaveFile();
-
-            /**
             * @brief Write the save of game's settings
             * 
             * @param settings A const reference to a std::array
             */
-           void setSaveGameSettings(const std::array<std::size_t, 7> &settings);
+           void setSaveGameSettings(std::ofstream &backupFile, const std::array<std::size_t, 7> &settings);
 
-        //     /**
-        //     * @brief Write the save of game's players
-        //     * 
-        //     * @param players A const reference to a std::vector of Player
-        //     */
-        //    void setSavePlayer(const std::vector<Game::Player> &players);
+            /**
+            * @brief Write the save of game's players
+            * 
+            * @param players A const reference to a std::vector of Player
+            */
+           void setSavePlayer(std::ofstream &backupFile, const std::vector<Game::Player> &players);
 
-        //     /**
-        //     * @brief Write the save of game's map
-        //     * 
-        //     * @param map A const reference to a std::array
-        //     */
-        //    void setSaveMap(const Game::MapGeneration &map);
+            /**
+            * @brief Write the save of game's map
+            * 
+            * @param map A const reference to a std::array
+            */
+           void setSaveMap(std::ofstream &backupFile, const Game::MapGeneration &map);
 
         private:
             std::array<std::size_t, 7> _settings; // An array of 7 size_t
             std::vector<Game::Player> _players; // A vector of players
             Game::MapGeneration _map; // The map
-            std::string _filename; // The save's filename
 
             /**
             * @brief Get the current date and time (for save's filename)
