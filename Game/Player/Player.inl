@@ -1,0 +1,56 @@
+/*
+** EPITECH PROJECT, 2021
+** B-YEP-400-LYN-4-1-indiestudio-lucas.guichard
+** File description:
+** Player
+*/
+
+inline std::string Game::Player::getName(void) const
+{
+    return _name;
+}
+
+inline std::pair<float, float> Game::Player::getPositions(void) const
+{
+    return _positions;
+}
+
+inline size_t Game::Player::getBrokenWalls(void) const
+{
+    return _brokenWalls;
+}
+
+inline size_t Game::Player::getKills(void) const
+{
+    return _kills;
+}
+
+inline std::array<size_t, 5> Game::Player::getPowerUps(void) const
+{
+    return _powerUps;
+}
+
+inline void Game::Player::setName(const std::string &name)
+{
+    _name = name;
+}
+
+inline void Game::Player::setPositions(const std::pair<float, float> &positions)
+{
+    _positions = positions;
+}
+
+inline void Game::Player::setBrokenWalls(const size_t &brokenWalls)
+{
+    _brokenWalls = brokenWalls;
+}
+
+inline void Game::Player::setKills(const size_t &kills)
+{
+    _kills = kills;
+}
+
+inline void Game::Player::setPowerUps(const std::array<size_t, 5> &powerUps)
+{
+    _powerUps = powerUps;
+}
