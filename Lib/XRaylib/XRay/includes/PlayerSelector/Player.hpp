@@ -19,12 +19,52 @@ namespace PlayerSelector
     {
         public:
 
+            /**
+             * @brief Construct a new Player object
+             * 
+             * @param obj model path
+             * @param texture texture path
+             * @param scalable scalable value
+             * @param idCharacter id of the character
+             * @param name name of the character
+             * @param color main color of the character
+             * @param animations strings vector of animations'path
+             */
             Player(const std::string &obj, const std::string &texture, const float &scalable, const int &idCharacter, const std::string &name, const Raylib::Color &color = Raylib::Color::White(), const std::vector<std::string> &animations = {});
+            
+            /**
+             * @brief Destroy the Player object
+             * 
+             */
             ~Player();
-
+            
+            /**
+             * @brief Display the character
+             * 
+             * @param rotation rotation value (if there's not animations)
+             * @param pos position to display the character
+             */
             void draw(const float &rotation, const Raylib::Vector3 &pos);
+            
+            /**
+             * @brief Get the character's Id 
+             * 
+             * @return the id
+             */
             int getId(void) const;
+
+            /**
+             * @brief Get the Name 
+             * 
+             * @return the character's name
+             */
             const std::string getName() const;
+
+            /**
+             * @brief Get the Model
+             * 
+             * @return a pair of the Model and its scalable value
+             */
             std::pair<Model, float> getModel() const;
 
 
