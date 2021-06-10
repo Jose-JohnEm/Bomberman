@@ -17,6 +17,8 @@ int main(void)
     std::vector<Game::Player> players;
     Game::MapGeneration map(15, 15);
     Game::Save save(settings, players, map);
+
+    save.setSaveGameSettings(settings);
     try {
         Engine::Core core;
         core.run();
