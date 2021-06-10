@@ -5,6 +5,9 @@
 ** Clock.hpp
 */
 
+#ifndef CLOCK_HPP
+#define CLOCK_HPP
+
 #include <chrono>
 
 class Clock
@@ -20,3 +23,4 @@ class Clock
         float _start;
 };
 
+#endif
