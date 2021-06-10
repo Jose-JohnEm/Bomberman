@@ -38,13 +38,12 @@ void XRay::displayGameModeScene(void)
         (this->*_scenesBack[_scene])();
         _scenesBack[GAME_MODE] = _scenesBackBackup[GAME_MODE];
     }
-    else if (goNewGame && Raylib::Mouse::isButtonPressed(0))
-    {
+    else if (goNewGame && Raylib::Mouse::isButtonPressed(0)) {
+        _sfx.at(SFX_NOCK)->play();
         _pSelector.firstLoad();
         displayPlayerChoiceScene();
-    }
-    else if (goLoadGame && Raylib::Mouse::isButtonPressed(0))
-    {
+    } else if (goLoadGame && Raylib::Mouse::isButtonPressed(0)) {
+        _sfx.at(SFX_NOCK)->play();
         displayLoadGameScene();
     }
 }

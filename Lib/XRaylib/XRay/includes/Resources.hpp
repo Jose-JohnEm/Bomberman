@@ -112,7 +112,8 @@ typedef enum {
     SFX_KLICK,
     SFX_ENTER,
     SFX_SETTING,
-    SFX_HOME
+    SFX_HOME,
+    SFX_NOCK
 } SfxResources;
 
 #endif /* !RESOURCES_HPP_ */
