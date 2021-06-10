@@ -46,14 +46,10 @@ namespace Game
             void setPositions(Raylib::Vector3 &vector);
 
             /**
-             * @brief Get Path To Obj
+             * @brief Draw Entity
+             *
              */
-            std::string getPathToObj() const;
-
-            /**
-             * @brief Get Path To Png
-             */
-            std::vector<std::string> getPathToPngs() const;
+            virtual void drawEntity() = 0;
 
             /**
              * @brief Set a boolean to know if this entity should be displayed
@@ -73,37 +69,73 @@ namespace Game
 
             MotionlessEntity() = default;
 
+            // TODO: USE ENCAPSULATION
+            Model _model;
             Raylib::Vector3 _positions{0, 0, 0};     // A vector3 that represents positions
-            std::vector<std::string> _pathToPngs = {};              // Path To Pngs
-            std::string _pathToObj = "";              // Path To Png
+            std::vector<Raylib::Texture> _textures;     // A vector of texture
             bool _shouldDisplay = true;            // A boolean to know if this entity should be displayed
     };
 
      class SolidWall : public virtual MotionlessEntity {
 
         public:
-        /**
-         * @brief Construct a new Solid Wall
-         *
-         * @param positions A vector3, {0, 0, 0} as default value
-         */
-        SolidWall(Raylib::Vector3 positions = {0, 0, 0});
 
-        std::string getType() override;
+            /**
+             * @brief Construct a new Solid Wall
+             *
+             * @param positions A vector3, {0, 0, 0} as default value
+             * @param mapType A size_t, 0 as default value
+             */
+            SolidWall(Raylib::Vector3 positions = {0, 0, 0}, size_t mapType = 0);
+
+            std::string getType() override;
+
+            void drawEntity() override;
+
+        private:
+            size_t _mapType;        // A size_t
     };
 
     class BreakableWall : public virtual MotionlessEntity {
 
         public:
-        /**
-         * @brief Construct a new Solid Wall
-         *
-         * @param positions A vector3, {0, 0, 0} as default value
-         */
-        BreakableWall(Raylib::Vector3 positions = {0, 0, 0});
 
-        std::string getType() override;
+            /**
+             * @brief Construct a new Breakable Wall
+             *
+             * @param positions A vector3, {0, 0, 0} as default value
+             * @param mapType A size_t, 0 as default value
+             */
+            BreakableWall(Raylib::Vector3 positions = {0, 0, 0}, size_t mapType = 0);
+
+            std::string getType() override;
+
+            void drawEntity() override;
+
+        private:
+            size_t _mapType;        // A size_t
     };
+
+    class Floor : public virtual MotionlessEntity {
+
+        public:
+
+            /**
+             * @brief Construct a new Floor
+             *
+             * @param positions A vector3, {0, 0, 0} as default value
+             * @param mapType A size_t, 0 as default value
+             */
+            Floor(Raylib::Vector3 positions = {0, 0, 0}, size_t mapType = 0);
+
+            std::string getType() override;
+
+            void drawEntity() override;
+
+        private:
+            size_t _mapType;        // A size_t
+    };
+
 }
 
 #endif /* !MOTIONLESSENTITY_HPP_ */

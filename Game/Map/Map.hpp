@@ -89,7 +89,7 @@ namespace Game
              *
              * @return The map (a vector of vectors of chars)
              */
-            std::vector<std::vector<char>> getMap(void) const;
+            std::vector<std::string> getMap(void) const;
 
             /**
              * @brief Dump the map
@@ -106,7 +106,7 @@ namespace Game
         private:
             size_t _width; // Width of the map
             size_t _height; // Height of the map
-            std::vector<std::vector<char>> _map; // Map
+            std::vector<std::string> _map; // Map
 
             /**
              * @brief Create the map

@@ -12,6 +12,7 @@
 #include <istream>
 #include <algorithm>
 #include <map>
+#include "../Map/Map.hpp"
 #include "Interfaces/IGame.hpp"
 #include "MotionlessEntity.hpp"
 
@@ -108,18 +109,26 @@ namespace Game
             void updatePlayersStats();
 
             /**
-             * @brief Set the Map
+             * @brief Get the Map
              */
-            void setMap(std::vector<std::string> map);
+            std::vector<std::string> &getMap(size_t size) override;
+
+            /**
+             * @brief Set the Map Type
+             *
+             * @param mapType A size_t
+             */
+            void setMapType(std::size_t mapType) override;
 
         private:
 
+            std::size_t _mapType;                             // A size_t that represents map type
             std::vector<std::string> _map;                                              // Map Game
             std::vector<std::vector<std::pair<std::string, std::string>>> _playersStats; // A vector of vector all the stats [Player -- (NameOfStat, Value)]...
             std::vector<std::pair<std::string, std::string>> _scores;                 // A vector of pair (username, score)
             std::vector<std::shared_ptr<IEntity>> _entities;                         // A vector of shared pointer that represent all the entities to display. Ex : Map, Score, UserInfo, Button
 
-            bool _gameOver;                             // A boolean to know if the game is over or not
+            bool _gameOver = false;                             // A boolean to know if the game is over or not
             bool _isPaused;                             // A boolean to know if the game is in pause or not
             std::string _gameName;                      // A string that represents the game name
             std::vector<std::string> _userNames;        // A vector of all the users names

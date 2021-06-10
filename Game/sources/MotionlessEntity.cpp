@@ -27,27 +27,36 @@ bool Game::MotionlessEntity::getShouldDisplay(void) const
     return _shouldDisplay;
 }
 
+void Game::SolidWall::drawEntity()
+{
+    // TODO: USE ENCAPSULATION
+    DrawCubeTexture(_textures[_mapType].getCStruct(), _positions.getCStruct(), 1.0f, 1.0f, 1.0f, WHITE);
+}
+
+void Game::BreakableWall::drawEntity()
+{
+    // TODO: USE ENCAPSULATION
+    DrawCubeTexture(_textures[_mapType].getCStruct(), _positions.getCStruct(), 1.0f, 1.0f, 1.0f, WHITE);
+}
+
+void Game::Floor::drawEntity()
+{
+    // TODO: USE ENCAPSULATION
+    DrawCubeTexture(_textures[0].getCStruct(), _positions.getCStruct(), 1.0f, 1.0f, 1.0f, WHITE);
+}
+
 std::string Game::SolidWall::getType()
 {
     return ("Wall");
 }
 
-std::string Game::MotionlessEntity::getPathToObj() const
+Game::SolidWall::SolidWall(Raylib::Vector3 positions, size_t mapType)
 {
-    return _pathToObj;
-}
-
-std::vector<std::string> Game::MotionlessEntity::getPathToPngs() const
-{
-    return _pathToPngs;
-}
-
-Game::SolidWall::SolidWall(Raylib::Vector3 positions)
-{
-    _pathToObj = "resources/assets/3D/WoodBlock/UsefulStepWoodBlock1x1x1M.obj";
-    _pathToPngs.push_back("resources/map/Wood/wall.png");
-    _pathToPngs.push_back("resources/map/Snow/wall.png");
-    _pathToPngs.push_back("resources/map/Iron/wall.png");
+    _positions = positions;
+    _mapType = mapType;
+    _textures.push_back(*(new Raylib::Texture("resources/map/Wood/wall.png")));
+    _textures.push_back(*(new Raylib::Texture("resources/map/Snow/wall.png")));
+    _textures.push_back(*(new Raylib::Texture("resources/map/Iron/wall.png")));
 }
 
 std::string Game::BreakableWall::getType()
@@ -55,10 +64,23 @@ std::string Game::BreakableWall::getType()
     return ("Wall");
 }
 
-Game::BreakableWall::BreakableWall(Raylib::Vector3 positions)
+Game::BreakableWall::BreakableWall(Raylib::Vector3 positions, size_t mapType)
 {
-    _pathToObj = "resources/assets/3D/WoodBlock/UsefulStepWoodBlock1x1x1M.obj";
-    _pathToPngs.push_back("resources/map/Wood/box.png");
-    _pathToPngs.push_back("resources/map/Snow/box.png");
-    _pathToPngs.push_back("resources/map/Iron/box.png");
+    _positions = positions;
+    _mapType = mapType;
+    _textures.push_back(*(new Raylib::Texture("resources/map/Wood/box.png")));
+    _textures.push_back(*(new Raylib::Texture("resources/map/Snow/box.png")));
+    _textures.push_back(*(new Raylib::Texture("resources/map/Iron/box.png")));
+}
+
+std::string Game::Floor::getType()
+{
+    return ("Floor");
+}
+
+Game::Floor::Floor(Raylib::Vector3 positions, size_t mapType)
+{
+    _positions = positions;
+    _mapType = mapType;
+    _textures.push_back(*(new Raylib::Texture("resources/map/Wood/floor.png")));
 }

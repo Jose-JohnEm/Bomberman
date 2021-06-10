@@ -30,7 +30,7 @@ inline void Game::Map::create(void)
     _map.reserve(_height);
     for (size_t y = 0; y < _height; y++)
     {
-        std::vector<char> row;
+        std::string row;
         row.reserve(_width);
         for (size_t x = 0; x < _width; x++)
         {
@@ -42,7 +42,7 @@ inline void Game::Map::create(void)
 
 inline void Game::Map::fill(const char &character)
 {
-    for (std::vector<char> &row : _map)
+    for (std::string &row : _map)
     {
         std::fill(row.begin(), row.end(), character);
     }
@@ -50,7 +50,7 @@ inline void Game::Map::fill(const char &character)
 
 inline void Game::Map::dump(void) const
 {
-    for (const std::vector<char> &row : _map)
+    for (const std::string &row : _map)
     {
         for (const char &character : row)
         {
@@ -60,7 +60,7 @@ inline void Game::Map::dump(void) const
     }
 }
 
-inline std::vector<std::vector<char>> Game::Map::getMap(void) const
+inline std::vector<std::string> Game::Map::getMap(void) const
 {
     return _map;
 }

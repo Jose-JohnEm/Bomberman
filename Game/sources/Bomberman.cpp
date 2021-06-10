@@ -26,19 +26,26 @@ void Game::Bomberman::initEntities()
         x = 0;
         for (const char &c : line) {
             if (c == 'W' || c == 'E')
-                _entities.push_back(std::shared_ptr<IEntity>(new Game::SolidWall(Raylib::Vector3(x, y, 0))));
+                _entities.push_back(std::shared_ptr<IEntity>(new Game::SolidWall(Raylib::Vector3(x, y, 0), _mapType)));
             if (c == 'M')
-                _entities.push_back(std::shared_ptr<IEntity>(new Game::BreakableWall(Raylib::Vector3(x, y, 0))));
-            _entities.push_back(std::shared_ptr<IEntity>(new Game::SolidWall(Raylib::Vector3(x, y, -0.4f))));
+                _entities.push_back(std::shared_ptr<IEntity>(new Game::BreakableWall(Raylib::Vector3(x, y, 0), _mapType)));
+            _entities.push_back(std::shared_ptr<IEntity>(new Game::Floor(Raylib::Vector3(x, y, -0.4f), _mapType)));
             x++;
         }
         y++;
     }
 }
 
-void Game::Bomberman::setMap(std::vector<std::string> map)
+std::vector<std::string> &Game::Bomberman::getMap(size_t size)
 {
-    _map = map;
+    if (_map.size() != size+2) {
+        Game::Map newMap(size, size);
+
+        std::cout << " YAOI " << _userNames.size() << std::endl;
+        newMap.placePlayers(_userNames.size());
+        _map = newMap.getMap();
+    }
+    return _map;
 }
 
 void Game::Bomberman::initPlayersStats()

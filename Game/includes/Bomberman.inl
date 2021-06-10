@@ -20,7 +20,6 @@ inline void Game::Bomberman::restart(void)
 inline void Game::Bomberman::updateGame(void)
 {
     static int i = 0;
-
     if (i == 0) {
         initEntities();
         initPlayersStats();
@@ -31,6 +30,11 @@ inline void Game::Bomberman::updateGame(void)
         updatePlayersStats();
     }
     i++;
+}
+
+inline void Game::Bomberman::setMapType(std::size_t mapType)
+{
+    _mapType = mapType;
 }
 
 inline const std::vector<std::pair<std::string, std::string>> &Game::Bomberman::getScores(void) const
