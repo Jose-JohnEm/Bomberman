@@ -30,6 +30,8 @@ namespace PlayerSelector
         std::string texture;
         float scalable;
         std::string name;
+        Raylib::Color color;
+        std::vector<std::string> animations;
     };
 
     class Selector

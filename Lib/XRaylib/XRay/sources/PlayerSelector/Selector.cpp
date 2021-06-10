@@ -7,6 +7,61 @@
 
 #include "PlayerSelector/Selector.hpp"
 
+void preloadBasicsCharacters(std::vector<PlayerSelector::CharDictionary> &res)
+{
+    res.push_back({
+        "resources/players/3D/Bombermans/white_tpose.glb",
+        "resources/players/3D/Bombermans/texture.png",
+        0.6,
+        "Red",
+        Raylib::Color::Red(),
+        {
+            "resources/players/3D/Bombermans/animations/white_emote.glb", 
+            "resources/players/3D/Bombermans/animations/white_walking.glb",
+            "resources/players/3D/Bombermans/animations/white_bomb.glb"
+        }
+    });
+    
+    res.push_back({
+        "resources/players/3D/Bombermans/white_tpose.glb",
+        "resources/players/3D/Bombermans/texture.png",
+        0.6,
+        "Blue",
+        Raylib::Color::Blue(),
+        {
+            "resources/players/3D/Bombermans/animations/white_emote.glb", 
+            "resources/players/3D/Bombermans/animations/white_walking.glb",
+            "resources/players/3D/Bombermans/animations/white_bomb.glb"
+        }
+    });
+    
+    res.push_back({
+        "resources/players/3D/Bombermans/white_tpose.glb",
+        "resources/players/3D/Bombermans/texture.png",
+        0.6,
+        "Yellow",
+        Raylib::Color::Yellow(),
+        {
+            "resources/players/3D/Bombermans/animations/white_emote.glb", 
+            "resources/players/3D/Bombermans/animations/white_walking.glb",
+            "resources/players/3D/Bombermans/animations/white_bomb.glb"
+        }
+    });
+
+    res.push_back({
+        "resources/players/3D/Bombermans/white_tpose.glb",
+        "resources/players/3D/Bombermans/texture.png",
+        0.6,
+        "Green",
+        Raylib::Color::Green(),
+        {
+            "resources/players/3D/Bombermans/animations/white_emote.glb", 
+            "resources/players/3D/Bombermans/animations/white_walking.glb",
+            "resources/players/3D/Bombermans/animations/white_bomb.glb"
+        }
+    });
+}
+
 std::vector<PlayerSelector::CharDictionary> findCharactersAvailable(int &nb_Characters)
 {
     std::vector<PlayerSelector::CharDictionary> res;
@@ -14,6 +69,8 @@ std::vector<PlayerSelector::CharDictionary> findCharactersAvailable(int &nb_Char
     std::string texture;
     std::string name;
     float scalable;
+
+    preloadBasicsCharacters(res);
 
     for (const auto & file : std::filesystem::directory_iterator("resources/players/3D"))
     {
@@ -114,7 +171,7 @@ void PlayerSelector::Selector::load()
 
     std::cout << std::endl << "######## Init Player Selector ########" << std::endl << std::endl;
 
-    _players.push_back(Player(_charaDictionary[0].obj, _charaDictionary[0].texture, _charaDictionary[0].scalable, 0, _charaDictionary[0].name));
+    _players.push_back(Player(_charaDictionary[0].obj, _charaDictionary[0].texture, _charaDictionary[0].scalable, 0, _charaDictionary[0].name, _charaDictionary[0].color, _charaDictionary[0].animations));
 }
 
 std::vector<std::pair<Model, float>> PlayerSelector::Selector::getModels() const
@@ -233,12 +290,12 @@ void PlayerSelector::Selector::next(const int &id)
 {
     int next_id = (_players[id].getId() + 1 == _nbCharacters) ? 0 : _players[id].getId() + 1;
 
-    _players[id] = Player(_charaDictionary[next_id].obj, _charaDictionary[next_id].texture, _charaDictionary[next_id].scalable, next_id, _charaDictionary[next_id].name);
+    _players[id] = Player(_charaDictionary[next_id].obj, _charaDictionary[next_id].texture, _charaDictionary[next_id].scalable, next_id, _charaDictionary[next_id].name, _charaDictionary[next_id].color, _charaDictionary[next_id].animations);
 }
 
 void PlayerSelector::Selector::prev(const int &id)
 {
     int next_id = (_players[id].getId() - 1 < 0) ? _nbCharacters - 1 : _players[id].getId() - 1;
 
-    _players[id] = Player(_charaDictionary[next_id].obj, _charaDictionary[next_id].texture, _charaDictionary[next_id].scalable, next_id, _charaDictionary[next_id].name);
+    _players[id] = Player(_charaDictionary[next_id].obj, _charaDictionary[next_id].texture, _charaDictionary[next_id].scalable, next_id, _charaDictionary[next_id].name, _charaDictionary[next_id].color, _charaDictionary[next_id].animations);
 }
