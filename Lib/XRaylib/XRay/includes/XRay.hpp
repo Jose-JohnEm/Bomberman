@@ -390,7 +390,7 @@ class XRay : public IGraphical {
         Raylib::Window _window;                     // Game window
 
         size_t _mapType = 0;                        // Type of Map
-        size_t _sizeMap = 19;                            // Size of Map
+        size_t _sizeMap = 5;                            // Size of Map
         std::vector<std::string> _map;              // Map
         float masterVolume;                         // Master volume
         std::vector<std::string> _userNames;        // A vector of all the users names

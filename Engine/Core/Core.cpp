@@ -22,7 +22,7 @@ void Engine::Core::run(void)
         getBackupFiles();
         _graphical->display();
         _scene = _graphical->getScene();
-        if (_scene == IGraphical::MAP_CHOICE) {
+        if (_scene == IGraphical::MAP_CHOICE || (_graphical->getMapSizeAndType().first > 5 && _scene < IGraphical::MAP_CHOICE)) {
             _game->setUserNames(_graphical->getUserNames());
             _graphical->setMap(_game->getMap(5));
         }

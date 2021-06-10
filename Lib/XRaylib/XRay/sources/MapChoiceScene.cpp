@@ -58,6 +58,7 @@ void XRay::displayMapChoiceScene(void)
         beginDrawing(false);
         _resources.at(LOADINGFRAMEO)->drawTexture(0, 0);
         endDrawing();
+        _sizeMap = 19;
     }
     // Click on Next and Prev buttons
     if (Raylib::Mouse::isButtonPressed(0)) {
