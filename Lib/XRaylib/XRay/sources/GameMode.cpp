@@ -12,6 +12,9 @@ void XRay::displayGameModeScene(void)
     // Set scene
     _scene = GAME_MODE;
 
+    // Audio
+    _musics.at(MSC_BOMBERMAN)->update();
+
     // Check if mouse is on button spot
     bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
     bool goNewGame = mouseIsInBox(createBox(180, 500, 738+180, 500+109)) ? true : false;
@@ -31,16 +34,16 @@ void XRay::displayGameModeScene(void)
 
     // Go to another scene according to mouse position
     if (goBack && Raylib::Mouse::isButtonPressed(0)) {
+        _sfx.at(SFX_HOME)->play();
         (this->*_scenesBack[_scene])();
         _scenesBack[GAME_MODE] = _scenesBackBackup[GAME_MODE];
     }
-    else if (goNewGame && Raylib::Mouse::isButtonPressed(0))
-    {
+    else if (goNewGame && Raylib::Mouse::isButtonPressed(0)) {
+        _sfx.at(SFX_NOCK)->play();
         _pSelector.firstLoad();
         displayPlayerChoiceScene();
-    }
-    else if (goLoadGame && Raylib::Mouse::isButtonPressed(0))
-    {
+    } else if (goLoadGame && Raylib::Mouse::isButtonPressed(0)) {
+        _sfx.at(SFX_NOCK)->play();
         displayLoadGameScene();
     }
 }

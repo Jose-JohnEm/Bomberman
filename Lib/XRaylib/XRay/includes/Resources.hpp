@@ -73,9 +73,9 @@ typedef enum {
     DURATION,
     IA,
     MOUSEPANEL,
-	KEYBOARDPANEL,
-	PLAYSTATIONPANEL,
-	XBOXPANEL,
+    KEYBOARDPANEL,
+    PLAYSTATIONPANEL,
+    XBOXPANEL,
     PAUSE,
     DEPAUSE,
     PAUSEBACK,
@@ -104,5 +104,19 @@ typedef enum {
     VOLUME_DOWN,
     LOADINGFRAMEO
 } Resources;
+
+typedef enum {
+    MSC_BOMBERMAN
+} MusicResources;
+
+typedef enum {
+    SFX_KLICK,
+    SFX_ENTER,
+    SFX_SETTING,
+    SFX_HOME,
+    SFX_NOCK,
+    SFX_TURN_OFF,
+    SFX_TURN_ON
+} SfxResources;
 
 #endif /* !RESOURCES_HPP_ */

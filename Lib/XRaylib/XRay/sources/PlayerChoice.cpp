@@ -104,6 +104,9 @@ void XRay::displayPlayerChoiceScene(void)
     // Set scene
     _scene = PLAYER_CHOICE;
 
+    // Audio
+    _musics.at(MSC_BOMBERMAN)->update();
+
     // Check if mouse is on button spot
     bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
     bool goNext = mouseIsInBox(createBox(1700, 1000, 1918, 1061)) ? true : false;
@@ -140,6 +143,7 @@ void XRay::displayPlayerChoiceScene(void)
 
     // Go to another scene according to mouse position
     if (goBack && Raylib::Mouse::isButtonPressed(0)) {
+        _sfx.at(SFX_HOME)->play();
         (this->*_scenesBack[_scene])();
         _scenesBack[PLAYER_CHOICE] = _scenesBackBackup[PLAYER_CHOICE];
     }
