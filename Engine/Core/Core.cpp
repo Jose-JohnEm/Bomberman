@@ -8,15 +8,8 @@
 #include "Core.hpp"
 
 Engine::Core::Core()
-<<<<<<< HEAD
-{
-    std::shared_ptr<IGraphical> lib = std::make_shared<XRay>();
-
-    _graphical = std::move(lib);
-=======
 : _graphical{std::make_shared<XRay>()}, _game{std::make_shared<Game::Bomberman>()}, _userNames{{""}}
 {
->>>>>>> release/v0.3
 }
 
 Engine::Core::~Core()
@@ -29,9 +22,6 @@ void Engine::Core::run(void)
         getBackupFiles();
         _graphical->display();
         _scene = _graphical->getScene();
-<<<<<<< HEAD
-        if (_scene == IGraphical::IN_GAME && _game) {
-=======
         if (_scene == IGraphical::MAP_CHOICE || (_graphical->getMapSizeAndType().first > 5 && _scene < IGraphical::MAP_CHOICE)) {
             _game->setUserNames(_graphical->getUserNames());
             _graphical->setMap(_game->getMap(5));
@@ -42,7 +32,6 @@ void Engine::Core::run(void)
                 _game->setMapType(_graphical->getMapSizeAndType().second);
                 _graphical->setMap(_game->getMap(_graphical->getMapSizeAndType().first));
             }
->>>>>>> release/v0.3
             if (!_isPaused)
                 _game->updateGame();
             if (!_game->isGameOver() && !endGame()) {
@@ -51,11 +40,6 @@ void Engine::Core::run(void)
                 _graphical->setPlayersStats(_game->getPlayersStats());
             }
         }
-<<<<<<< HEAD
-        if (_graphical->getUserNames() != _userNames)
-            _userNames = _graphical->getUserNames();
-=======
->>>>>>> release/v0.3
         if (_graphical->getBackups() != _backups)
             _graphical->setBackups(_backups);
     }

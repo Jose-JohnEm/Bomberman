@@ -18,9 +18,6 @@ inline bool Raylib::Window::windowShouldClose(void)
 inline void Raylib::Window::closeWindow(void)
 {
     ::CloseWindow();
-<<<<<<< HEAD
-}
-=======
 }
 
 inline void Raylib::Window::setWindowIcon(Raylib::Image image)
@@ -36,4 +33,3 @@ inline void Raylib::Window::toggleFullscreen()
 {
     ::ToggleFullscreen();
 }
->>>>>>> release/v0.3

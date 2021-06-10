@@ -19,10 +19,6 @@ inline Vector3 Raylib::Vector3::operator=(const ::Vector3 &cvec) {
     return *this;
 }
 
-<<<<<<< HEAD
-inline ::Vector3 Raylib::Vector3::getCStruct() const {
-=======
 inline ::Vector3 Raylib::Vector3::getCStruct(void) const {
->>>>>>> release/v0.3
     return ::Vector3({x, y, z});
 }
