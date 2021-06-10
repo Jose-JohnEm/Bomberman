@@ -51,17 +51,21 @@ void XRay::displaySettingsScene(void)
         _scenesBack[SETTINGS] = _scenesBackBackup[SETTINGS];
     }
     // Fullscreen bouton handling
-    if (onFullscreen && Raylib::Mouse::isButtonPressed(0))
+    if (onFullscreen && Raylib::Mouse::isButtonPressed(0)) {
+        _sfx.at(SFX_TURN_OFF)->play();
         Raylib::Window::toggleFullscreen();
+    }
 
     // Volume click action
     if (onVolumeDown && Raylib::Mouse::isButtonPressed(0)) {
+        _sfx.at(SFX_NOCK)->play();
         masterVolume -= 10;
         if (masterVolume < 0)
             masterVolume = 0;
         Raylib::Audio::setMasterVolume(masterVolume / 100);
     }
     if (onVolumeUp && Raylib::Mouse::isButtonPressed(0)) {
+        _sfx.at(SFX_NOCK)->play();
         masterVolume += 10;
         if (masterVolume > 100)
             masterVolume = 100;

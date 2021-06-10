@@ -172,6 +172,8 @@ void XRay::setAudioResources(void)
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_SETTING, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Settings.wav")))));
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_HOME, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Home.wav")))));
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_NOCK, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Nock.wav")))));
+    _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_TURN_OFF, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/TurnOff.wav")))));
+    _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_TURN_ON, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/TurnOn.wav")))));
 }
 
 void XRay::quitGame(void)
