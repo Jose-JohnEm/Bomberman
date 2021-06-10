@@ -7,7 +7,7 @@
 
 #include "Save.hpp"
 
-Game::Save::Save(const std::array<std::size_t, 8> &settings, const std::vector<Game::Player> &players, const Game::MapGeneration &map)
+Game::Save::Save(const std::array<std::size_t, 8> &settings, const std::vector<Game::Player> &players, const Game::Map &map)
     : _settings(settings), _players(players), _map(map)
 {
     std::string fileName = createBackupName();

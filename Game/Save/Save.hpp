@@ -14,7 +14,7 @@
 #include <algorithm>
 #include "../includes/Settings.hpp"
 #include "../Player/Player.hpp"
-#include "../Map/MapGeneration.hpp"
+#include "../Map/Map.hpp"
 
 namespace Game
 {
@@ -24,7 +24,7 @@ namespace Game
             /**
             * @brief Construct the Save object to load a backup file (Copy Constructor)
             */
-            Save(const std::array<std::size_t, 8> &settings, const std::vector<Game::Player> &player, const Game::MapGeneration &map);
+            Save(const std::array<std::size_t, 8> &settings, const std::vector<Game::Player> &player, const Game::Map &map);
 
             /**
             * @brief Construct the Save object to unload a backup file (Copy Constructor)
@@ -39,7 +39,7 @@ namespace Game
         private:
             std::array<std::size_t, 8> _settings; // An array of 7 size_t
             std::vector<Game::Player> _players; // A vector of players
-            Game::MapGeneration _map; // The map
+            Game::Map _map; // The map
 
             /**
             * @brief Get the current date and time (for save's filename)
