@@ -22,9 +22,14 @@ Game::Save::Save(const std::array<std::size_t, 8> &settings, const std::vector<G
     }
 }
 
-Game::Save::Save(const std::string &filename)
+Game::Save::Save(const std::string &fileName)
 {
+    std::ifstream backupFile(fileName);
 
+    if (backupFile.is_open())
+    {
+        backupFile.close();
+    }
 }
 
 Game::Save::~Save()

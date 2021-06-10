@@ -29,33 +29,12 @@ namespace Game
             /**
             * @brief Construct the Save object to unload a backup file (Copy Constructor)
             */
-            Save(const std::string &filename);
+            Save(const std::string &fileName);
 
             /**
             * @brief Destroy the Save object
             */
             ~Save();
-
-            /**
-            * @brief Write game settings
-            *
-            * @param settings A reference to a stream
-            */
-           void writeSettings(std::ofstream &os) const;
-
-            /**
-            * @brief Write game players infos
-            *
-            * @param players A reference to a stream
-            */
-           void writePlayersInfos(std::ofstream &os) const;
-
-            /**
-            * @brief Write the map
-            *
-            * @param map A reference to a stream
-            */
-           void writeMap(std::ofstream &os) const;
 
         private:
             std::array<std::size_t, 8> _settings; // An array of 7 size_t
@@ -75,6 +54,27 @@ namespace Game
             * @return A std::string
             */
             std::string createBackupName(void) const;
+
+            /**
+            * @brief Write game settings
+            *
+            * @param settings A reference to a stream
+            */
+            void writeSettings(std::ofstream &os) const;
+
+            /**
+            * @brief Write game players infos
+            *
+            * @param players A reference to a stream
+            */
+            void writePlayersInfos(std::ofstream &os) const;
+
+            /**
+            * @brief Write the map
+            *
+            * @param map A reference to a stream
+            */
+            void writeMap(std::ofstream &os) const;
     };
 
     #include "Save.inl"
