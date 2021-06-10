@@ -40,9 +40,14 @@ namespace Raylib {
 
         /**
          * @brief Destroy the Vector 4 object
+<<<<<<< HEAD
          *
          */
         ~Vector4();
+=======
+         */
+        ~Vector4(void);
+>>>>>>> release/v0.3
 
         /**
          * @brief Assign to a Vector4 from a Vector4 class instance
@@ -65,6 +70,7 @@ namespace Raylib {
          *
          * @return Vector4 C Raylib structure instance
          */
+<<<<<<< HEAD
         ::Vector4 getCStruct() const;
 
         /**
@@ -86,6 +92,20 @@ namespace Raylib {
         * @brief The w position
         *
         */
+=======
+        ::Vector4 getCStruct(void) const;
+
+        // The x position
+        float x;
+
+        // The y position
+        float y;
+
+        // The z position
+        float z;
+
+        // The w position
+>>>>>>> release/v0.3
         float w;
 
     };

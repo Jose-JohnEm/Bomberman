@@ -66,7 +66,11 @@ namespace Raylib
          *
          * @return Vector2 C Raylib structure instance
          */
+<<<<<<< HEAD
         ::Vector2 getCStruct() const;
+=======
+        ::Vector2 getCStruct(void) const;
+>>>>>>> release/v0.3
 
         /**
         * @brief The x position

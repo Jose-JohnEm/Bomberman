@@ -7,18 +7,38 @@
 
 #include "XRay.hpp"
 
+<<<<<<< HEAD
 XRay::XRay()
     : _window(1920, 1080, "Bomberman")
 {
     // Set resources
     setResources();
 
+=======
+XRay::XRay(void)
+    : _window(1920, 1080, "Bomberman")
+{
+	// Set icon for window
+	Raylib::Window::setWindowIcon(Raylib::Image("resources/assets/head.png"));
+
+	// Set in fullscreen mode
+	Raylib::Window::toggleFullscreen();
+
+    // Set resources
+    setResources();
+
+    // Set Audio
+    Raylib::Audio::initAudioDevice();
+    setAudioResources();
+
+>>>>>>> release/v0.3
     // Scenes
     _scenesFunc.push_back(&XRay::displayMenuScene);
     _scenesFunc.push_back(&XRay::displayGameModeScene);
     _scenesFunc.push_back(&XRay::displayHowToPlayScene);
     _scenesFunc.push_back(&XRay::displaySettingsScene);
     _scenesFunc.push_back(&XRay::displayPlayerChoiceScene);
+<<<<<<< HEAD
     _scenesFunc.push_back(&XRay::displayLoadGameScene);
     _scenesFunc.push_back(&XRay::displayInGameScene);
     _scenesFunc.push_back(&XRay::quitGame);
@@ -28,6 +48,41 @@ XRay::XRay()
 }
 
 XRay::~XRay()
+=======
+    _scenesFunc.push_back(&XRay::displayMapChoiceScene);
+    _scenesFunc.push_back(&XRay::displayLoadGameScene);
+    _scenesFunc.push_back(&XRay::displayInGameScene);
+    _scenesFunc.push_back(&XRay::displayVictoryScene);
+    _scenesFunc.push_back(&XRay::displayDefeatScene);
+    _scenesFunc.push_back(&XRay::quitGame);
+
+    // Scenes Back
+	_scenesBack.insert(std::pair<Scene, void (XRay::*)()>(Scene::HELP, &XRay::displayMenuScene));
+	_scenesBack.insert(std::pair<Scene, void (XRay::*)()>(Scene::SETTINGS, &XRay::displayMenuScene));
+	_scenesBack.insert(std::pair<Scene, void (XRay::*)()>(Scene::GAME_MODE, &XRay::displayMenuScene));
+	_scenesBack.insert(std::pair<Scene, void (XRay::*)()>(Scene::PLAYER_CHOICE, &XRay::displayGameModeScene));
+	_scenesBack.insert(std::pair<Scene, void (XRay::*)()>(Scene::LOAD_GAME, &XRay::displayGameModeScene));
+	_scenesBack.insert(std::pair<Scene, void (XRay::*)()>(Scene::MAP_CHOICE, &XRay::displayPlayerChoiceScene));
+
+    // Scenes Back Backup
+	_scenesBackBackup.insert(std::pair<Scene, void (XRay::*)()>(Scene::HELP, &XRay::displayMenuScene));
+	_scenesBackBackup.insert(std::pair<Scene, void (XRay::*)()>(Scene::SETTINGS, &XRay::displayMenuScene));
+	_scenesBackBackup.insert(std::pair<Scene, void (XRay::*)()>(Scene::GAME_MODE, &XRay::displayMenuScene));
+	_scenesBackBackup.insert(std::pair<Scene, void (XRay::*)()>(Scene::PLAYER_CHOICE, &XRay::displayGameModeScene));
+	_scenesBackBackup.insert(std::pair<Scene, void (XRay::*)()>(Scene::LOAD_GAME, &XRay::displayGameModeScene));
+	_scenesBackBackup.insert(std::pair<Scene, void (XRay::*)()>(Scene::MAP_CHOICE, &XRay::displayPlayerChoiceScene));
+
+    // Display Intro (studio and introduction cinematic)
+    _intro = std::make_pair(true, &XRay::displayStudio);
+
+    // Play bomberman music
+    _musics.at(MSC_BOMBERMAN)->playMusic();
+    masterVolume = 100;
+    Raylib::Audio::setMasterVolume(masterVolume / 100);
+}
+
+XRay::~XRay(void)
+>>>>>>> release/v0.3
 {
 }
 
@@ -59,7 +114,11 @@ void XRay::setResources(void)
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::INDIE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/indie.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::STUDIO, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/studio.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::BOMBER_TEAM, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/bomberTeam.png"))));
+<<<<<<< HEAD
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::MENU_TITLE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/menuTitle.png"))));
+=======
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::MENU_TITLE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/title.png"))));
+>>>>>>> release/v0.3
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::BOMBER_THINKING, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/bomberThinking.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::PLAY, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/play.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::PLAY_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/playHover.png"))));
@@ -68,6 +127,82 @@ void XRay::setResources(void)
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SKIP, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/skip.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SKIP_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/skipHover.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::PARALLAX, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/parallax.png"))));
+<<<<<<< HEAD
+=======
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::BG, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/bg.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::p1, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/j1.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::p2, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/j2.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::p3, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/j3.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::p4, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/j4.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::P1, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/p1.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::P2, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/p2.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::P3, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/p3.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::P4, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/p4.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::MOUSEYELLOW, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/mouseYellow.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::KEYBOARDYELLOW, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/keyboardYellow.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::PLAYSTATIONYELLOW, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/playstationYellow.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::XBOXYELLOW, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/xboxYellow.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::MOUSEBLUE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/mouseBlue.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::KEYBOARDBLUE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/keyboardBlue.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::PLAYSTATIONBLUE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/playstationBlue.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::XBOXBLUE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/xboxBlue.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::NEXTSCENE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/nextScene.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::NEXT_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/nextHover.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::MAPCHOICEBG, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/mapChoiceBack.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SIZE_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/sizeHover.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SETS_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/setHover.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::DURATION_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/durationHover.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::AI_HOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/iaHover.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SIZE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/size.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SETS, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/sets.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::DURATION, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/duration.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::IA, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/ia.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::MOUSEPANEL, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/mousePanel.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::KEYBOARDPANEL, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/keyboardPanel.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::PLAYSTATIONPANEL, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/playstationPanel.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::XBOXPANEL, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/xboxPanel.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::PAUSE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/pause.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::DEPAUSE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/depause.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::PAUSEBACK, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/pauseBg.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::RESUME, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/resume.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::RESTART, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/restart.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SAVE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/save.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SETTING, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/setting.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::HOME, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/home.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::RESUMEHOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/resumeHover.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::RESTARTHOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/restartHover.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SAVEHOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/saveHover.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SETTINGSHOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/settingHover.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::HOMEHOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/homeHover.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SAVED, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/saved.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::BACKUPBAR, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/backup.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::VICTORYBG, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/victoryBg.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::DEFEATBG, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/defeatBg.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::NEXTLEVEL, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/nextlevel.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::NEXTLEVELHOVER, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/nextlevelHover.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::RANKING, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/ranking.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::ON, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/ON.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::OFF, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/OFF.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SETTING_BG, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/backSetting.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::VOLUME_UP, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/volumeUp.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::VOLUME_DOWN, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/volumeDown.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::LOADINGFRAMEO, std::make_shared<Raylib::Texture>(Raylib::Image("resources/cinematic/loading/frame0.png"))));
+}
+
+void XRay::setAudioResources(void)
+{
+    // Music
+    _musics.insert(std::pair<MusicResources, std::shared_ptr<Raylib::Music>>(MusicResources::MSC_BOMBERMAN, std::make_shared<Raylib::Music>(*(new Raylib::Music("resources/music/Bomberman.mp3")))));
+
+    // Sound
+    _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_KLICK, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Klick.wav")))));
+    _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_ENTER, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Enter.wav")))));
+    _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_SETTING, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Settings.wav")))));
+    _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_HOME, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Home.wav")))));
+    _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_NOCK, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Nock.wav")))));
+    _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_TURN_OFF, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/TurnOff.wav")))));
+    _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_TURN_ON, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/TurnOn.wav")))));
+>>>>>>> release/v0.3
 }
 
 void XRay::quitGame(void)
@@ -84,8 +219,13 @@ void XRay::displayStudio(void)
         y = 1500 - f;
         beginDrawing();
 		std::this_thread::sleep_for(std::chrono::milliseconds(3));
+<<<<<<< HEAD
 		_resources.at(INDIE)->drawTexture(x, 440, Raylib::Color::White());
 		_resources.at(STUDIO)->drawTexture(y, 440, Raylib::Color::White());
+=======
+		_resources.at(INDIE)->drawTexture(x, 440);
+		_resources.at(STUDIO)->drawTexture(y, 440);
+>>>>>>> release/v0.3
         endDrawing();
     }
 

@@ -13,6 +13,10 @@
 #include <algorithm>
 #include "XRay.hpp"
 #include "Interfaces/IGraphical.hpp"
+<<<<<<< HEAD
+=======
+#include "../../Game/includes/Bomberman.hpp"
+>>>>>>> release/v0.3
 #include "Interfaces/IGame.hpp"
 
 namespace Engine
@@ -52,6 +56,10 @@ namespace Engine
              */
             void getBackupFiles(void);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> release/v0.3
         private:
             std::shared_ptr<IGraphical> _graphical;                             // Graphical instance
             std::shared_ptr<IGame> _game;                                       // Game instance
@@ -64,7 +72,11 @@ namespace Engine
             std::vector<std::pair<std::string, std::string>> _gameHighScores;   // Game's high scores
             std::vector<std::string> _backups;                                  // Paths of Backup Files
 
+<<<<<<< HEAD
             bool _isPaused;                                                     // Pause flag
+=======
+            bool _isPaused = false;                                                     // Pause flag
+>>>>>>> release/v0.3
     };
 }
 

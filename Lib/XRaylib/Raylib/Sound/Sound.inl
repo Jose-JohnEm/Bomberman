@@ -5,7 +5,11 @@
 ** Sound
 */
 
+<<<<<<< HEAD
 inline void Raylib::Sound::unload() const
+=======
+inline void Raylib::Sound::unload(void) const
+>>>>>>> release/v0.3
 {
     ::UnloadSound(_sound);
 }

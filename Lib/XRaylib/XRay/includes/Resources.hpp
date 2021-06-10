@@ -43,7 +43,86 @@ typedef enum {
     QUIT_HOVER,
     SKIP,
     SKIP_HOVER,
+<<<<<<< HEAD
     PARALLAX
 } Resources;
 
+=======
+    PARALLAX,
+    BG,
+    p1,
+    p2,
+    p3,
+    p4,
+    P1,
+    P2,
+    P3,
+    P4,
+    MOUSEYELLOW,
+    KEYBOARDYELLOW,
+    PLAYSTATIONYELLOW,
+    XBOXYELLOW,
+    MOUSEBLUE,
+    KEYBOARDBLUE,
+    PLAYSTATIONBLUE,
+    XBOXBLUE,
+    NEXTSCENE,
+    NEXT_HOVER,
+    MAPCHOICEBG,
+    SIZE_HOVER,
+    SETS_HOVER,
+    DURATION_HOVER,
+    AI_HOVER,
+    SIZE,
+    SETS,
+    DURATION,
+    IA,
+    MOUSEPANEL,
+    KEYBOARDPANEL,
+    PLAYSTATIONPANEL,
+    XBOXPANEL,
+    PAUSE,
+    DEPAUSE,
+    PAUSEBACK,
+    RESUME,
+    RESTART,
+    SAVE,
+    SETTING,
+    HOME,
+    RESUMEHOVER,
+    RESTARTHOVER,
+    SAVEHOVER,
+    SETTINGSHOVER,
+    HOMEHOVER,
+    SAVED,
+    BACKUPBAR,
+    VICTORYBG,
+    DEFEATBG,
+    NEXTLEVEL,
+    NEXTLEVELHOVER,
+    RANKING,
+    UNKNOWN,
+    ON,
+    OFF,
+    SETTING_BG,
+    VOLUME_UP,
+    VOLUME_DOWN,
+    LOADINGFRAMEO
+} Resources;
+
+typedef enum {
+    MSC_BOMBERMAN
+} MusicResources;
+
+typedef enum {
+    SFX_KLICK,
+    SFX_ENTER,
+    SFX_SETTING,
+    SFX_HOME,
+    SFX_NOCK,
+    SFX_TURN_OFF,
+    SFX_TURN_ON
+} SfxResources;
+
+>>>>>>> release/v0.3
 #endif /* !RESOURCES_HPP_ */

@@ -11,6 +11,10 @@
 #include <string>
 #include <iostream>
 #include "raylib.h"
+<<<<<<< HEAD
+=======
+#include "Image/Image.hpp"
+>>>>>>> release/v0.3
 
 namespace Raylib
 {
@@ -51,6 +55,28 @@ namespace Raylib
          * @brief Close window
          */
         static void closeWindow(void);
+<<<<<<< HEAD
+=======
+
+        /**
+         * @brief Set the Window Icon
+         *
+         * @param image Image
+         */
+        static void setWindowIcon(Raylib::Image image);
+
+        /**
+         * @brief Check if window is currently fullscreen
+         *
+         * @return
+         */
+        static bool isWindowFullscreen(void);
+
+        /**
+         * @brief Toggle window state: fullscreen/windowed (only PLATFORM_DESKTOP)
+         */
+        static void toggleFullscreen();
+>>>>>>> release/v0.3
     };
 
     #include "Window.inl"

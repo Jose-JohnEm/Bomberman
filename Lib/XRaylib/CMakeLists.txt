@@ -13,7 +13,11 @@ PROJECT(xray VERSION ${PROJECT_VERSION})
 SET(CMAKE_CXX_STANDARD 17)
 
 # Find globaly and recursively all source files required to compile the project
+<<<<<<< HEAD
 FILE(GLOB XRAY_SRCS CONFIGURE_DEPENDS
+=======
+FILE(GLOB_RECURSE XRAY_SRCS CONFIGURE_DEPENDS
+>>>>>>> release/v0.3
     "${PROJECT_SOURCE_DIR}/XRay/sources/*.cpp"
 )
 
@@ -40,4 +44,8 @@ TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PRIVATE
 )
 
 # Active in debug environment or hidden in release
+<<<<<<< HEAD
 #TARGET_COMPILE_OPTIONS(xray PRIVATE -g3)
+=======
+#TARGET_COMPILE_OPTIONS(xray PRIVATE -g3 -lstdc++fs)
+>>>>>>> release/v0.3

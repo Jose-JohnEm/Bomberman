@@ -19,15 +19,33 @@
 namespace Raylib {
     class Camera3D {
     public:
+<<<<<<< HEAD
         /**
          * @brief Construct a new Camera3D object
          */
         Camera3D();
+=======
+
+        /**
+         * @brief Construct a new Camera 3D object
+         *
+         * @param position A Vector3
+         * @param target A Vector3
+         * @param up A Vector3
+         * @param fovy A float
+         * @param projection A int
+         */
+        Camera3D(const Vector3 &position = Vector3(10, 10, 10), const Vector3 &target = Vector3(0, 0, 0), const Vector3 &up = Vector3(0, 1, 0), const float &fovy = 45, const int &projection = ::CAMERA_PERSPECTIVE);
+>>>>>>> release/v0.3
 
         /**
          * @brief Destroy the Camera3D object
          */
+<<<<<<< HEAD
         ~Camera3D();
+=======
+        ~Camera3D(void);
+>>>>>>> release/v0.3
 
         /**
          * @brief Construct a new Camera object (Copy Constructor)
@@ -40,7 +58,11 @@ namespace Raylib {
          * @brief Get C Structure for Camera3D Class
          * @return A Camera3D C Structure
          */
+<<<<<<< HEAD
         ::Camera3D getCStruct() const;
+=======
+        ::Camera3D getCStruct(void) const;
+>>>>>>> release/v0.3
 
         /**
           * @brief Overload of '=' operator
@@ -53,9 +75,14 @@ namespace Raylib {
         /**
          * @brief Initialize 3D mode with custom camera (3D)
          *
+<<<<<<< HEAD
          * @param Camera3D A Camera3D Class
          */
         void beginMode3D(Camera3D const &camera) const;
+=======
+         */
+        void beginMode3D(void) const;
+>>>>>>> release/v0.3
 
         /**
          * @brief Ends 3D mode with custom camera
@@ -65,17 +92,35 @@ namespace Raylib {
         /**
          * @brief Set camera mode (multiple camera modes available)
          *
+<<<<<<< HEAD
          * @param Camera3D A Camera3D Class
          * @param mode An int for the mode
          */
         void setCameraMode(Camera3D const &camera, int const &mode) const;
+=======
+         * @param mode An int for the mode
+         */
+        void setCameraMode(int const &mode) const;
+        
+        /**
+         * @brief Set the Position object
+         * 
+         * @param position 
+         */
+        void setPosition(const Vector3 &position);
+>>>>>>> release/v0.3
 
         /**
          * @brief Update camera position for selected mode
          *
+<<<<<<< HEAD
          * @param Camera3D A Camera3D Class
          */
         void updateCamera(Camera3D *camera) const;
+=======
+         */
+        void updateCamera(void);
+>>>>>>> release/v0.3
 
         /**
          * @brief Set camera pan key to combine with mouse movement (free camera)
@@ -119,8 +164,12 @@ namespace Raylib {
          * @param camera Camera3D Class
          * @return Ray type (useful for raycast)
          */
+<<<<<<< HEAD
         Ray getMouseRay(::Vector2 const &mousePosition,
                         Camera3D const &camera) const;
+=======
+        Ray getMouseRay(::Vector2 const &mousePosition) const;
+>>>>>>> release/v0.3
 
         /**
          * @brief Returns camera transform matrix (view matrix)
@@ -128,7 +177,11 @@ namespace Raylib {
          * @param camera Camera3D Class
          * @return Matrix
          */
+<<<<<<< HEAD
         Matrix getCameraMatrix(Camera3D const &camera) const;
+=======
+        Matrix getCameraMatrix(void) const;
+>>>>>>> release/v0.3
 
         /**
           * @brief Returns the screen space position for a 3d world space position
@@ -137,7 +190,11 @@ namespace Raylib {
           * @return Vector2 Class
           */
         ::Vector2
+<<<<<<< HEAD
         getWorldToScreen(Vector3 const &position, Camera3D const &camera) const;
+=======
+        getWorldToScreen(Vector3 const &position) const;
+>>>>>>> release/v0.3
 
         /**
           * @brief Returns size position for a 3d world space position
@@ -146,7 +203,11 @@ namespace Raylib {
           * @return Vector2 Class
           */
         ::Vector2
+<<<<<<< HEAD
         getWorldToScreenEx(Vector3 const &position, Camera3D const &camera,
+=======
+        getWorldToScreenEx(Vector3 const &position,
+>>>>>>> release/v0.3
                            int const &width, int const &height) const;
 
         /**
@@ -158,7 +219,11 @@ namespace Raylib {
          * @param size A float
          * @param tint A Color Class
          */
+<<<<<<< HEAD
         void drawBillboard(Camera3D const &camera, Texture2D const &texture,
+=======
+        void drawBillboard(Texture2D const &texture,
+>>>>>>> release/v0.3
                            Vector3 const &center, float const &size,
                            Raylib::Color const &tint) const;
 
@@ -172,7 +237,11 @@ namespace Raylib {
          * @param size A float
          * @param tint A Color Class
          */
+<<<<<<< HEAD
         void drawBillboardRec(Camera3D const &camera, Texture2D const &texture,
+=======
+        void drawBillboardRec(Texture2D const &texture,
+>>>>>>> release/v0.3
                               Rectangle const &source, Vector3 const &center,
                               float const &size,
                               Raylib::Color const &tint) const;
@@ -192,10 +261,14 @@ namespace Raylib {
          */
         void set(const Camera3D &camera);
 
+<<<<<<< HEAD
         /**
          * @brief C Camera3D structure instance
          * 
          */
+=======
+        // C Camera3D structure instance
+>>>>>>> release/v0.3
         ::Camera3D _camera3D;
     };
 

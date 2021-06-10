@@ -20,5 +20,9 @@ Raylib::Texture::Texture(const Raylib::Image &image)
 Raylib::Texture::~Texture()
 {
     //TODO: try it
+<<<<<<< HEAD
     //unloadTexture(*this);
+=======
+//    unloadTexture(*this);
+>>>>>>> release/v0.3
 }

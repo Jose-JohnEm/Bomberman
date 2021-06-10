@@ -15,6 +15,16 @@ inline void XRay::closeWindow(void) const
     _window.closeWindow();
 }
 
+inline void XRay::setMap(std::vector<std::string> &map)
+{
+    _map = map;
+}
+
+inline std::pair<size_t, size_t> XRay::getMapSizeAndType()
+{
+    return std::make_pair(_sizeMap, _mapType);
+}
+
 inline void XRay::beginDrawing(void) const
 {
     Raylib::Drawing::beginDrawing();
@@ -35,10 +45,13 @@ inline void XRay::endDrawing(void) const
 
 inline void XRay::display(void)
 {
+    // Hide the cursor
+    Raylib::Cursor::hideCursor();
+
     (this->*_scenesFunc[(int)_scene])();
 }
 
-inline void XRay::setPlayersStats(const std::map<std::string, std::pair<std::string, std::string>> &info)
+inline void XRay::setPlayersStats(const std::vector<std::vector<std::pair<std::string, std::string>>> &info)
 {
     _playersStats = info;
 }
@@ -107,7 +120,7 @@ inline std::vector<size_t> XRay::createBox(const size_t &upperLeftCorner, const 
 
 inline void XRay::displayMouse(void) const
 {
-    _resources.at(HEAD)->drawTexture(Raylib::Mouse::getMouseX() - 30, Raylib::Mouse::getMouseY() - 30, Raylib::Color::White());
+    _resources.at(HEAD)->drawTexture(Raylib::Mouse::getMouseX() - 15, Raylib::Mouse::getMouseY() - 15, Raylib::Color::White());
 }
 
 inline size_t XRay::countFilesDirectory(const std::filesystem::path &path) const

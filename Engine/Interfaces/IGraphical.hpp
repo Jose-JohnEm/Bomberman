@@ -33,10 +33,22 @@ class IGraphical {
             SETTINGS,
             /// This scene is the one used to choose the players and the different game parameters
             PLAYER_CHOICE,
+<<<<<<< HEAD
+=======
+            /// This scene is the one used to choose map, sets and time
+            MAP_CHOICE,
+>>>>>>> release/v0.3
             /// This scene is the one used to load a game backup
             LOAD_GAME,
             /// This is the scene where the game is in progress
             IN_GAME,
+<<<<<<< HEAD
+=======
+            /// This is the scene where the display winner options
+            VICTORY,
+            /// This is the scene where the display loser options
+            DEFEAT,
+>>>>>>> release/v0.3
             /// This scene represents the end of the game
             END_GAME
         };
@@ -78,9 +90,15 @@ class IGraphical {
          * @brief This is called in a loop when the game is running. Sets the current informations about players and their stats. The first element of the pair
          *  is the category (e.g. Score), the second is the value (e.g. 200).
          *
+<<<<<<< HEAD
          * @param info A map of all the stats [PlayerName -- (NameOfStat, Value)]...
          */
         virtual void setPlayersStats(const std::map<std::string, std::pair<std::string, std::string>> &info) = 0;
+=======
+         * @param info A vector of a vector all the stats by player [Player -- (NameOfStat, Value)]...
+         */
+        virtual void setPlayersStats(const std::vector<std::vector<std::pair<std::string, std::string>>> &info) = 0;
+>>>>>>> release/v0.3
 
         /**
          * @brief Get the Users Names
@@ -136,6 +154,23 @@ class IGraphical {
          * @brief This function must display the current scene. It is used in the game loop
          */
         virtual void display(void) = 0;
+<<<<<<< HEAD
+=======
+
+        /**
+         * @brief Set the Map
+         *
+         * @param map A const std::vector<std::string>&
+         */
+        virtual void setMap(std::vector<std::string> &map) = 0;
+
+        /**
+         * @brief Get the size and type of Map
+         *
+         * @return A pair of size_t
+         */
+        virtual std::pair<size_t, size_t> getMapSizeAndType() = 0;
+>>>>>>> release/v0.3
 };
 
 #endif /* !IGRAPHICAL_HPP_ */
