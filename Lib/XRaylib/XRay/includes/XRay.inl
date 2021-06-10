@@ -15,9 +15,14 @@ inline void XRay::closeWindow(void) const
     _window.closeWindow();
 }
 
-inline const std::vector<std::string> &XRay::getMap()
+inline void XRay::setMap(std::vector<std::string> &map)
 {
-    return _map;
+    _map = map;
+}
+
+inline std::pair<size_t, size_t> XRay::getMapSizeAndType()
+{
+    return std::make_pair(_sizeMap, _mapType);
 }
 
 inline void XRay::beginDrawing(void) const

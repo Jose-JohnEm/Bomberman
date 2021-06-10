@@ -101,7 +101,8 @@ typedef enum {
     OFF,
     SETTING_BG,
     VOLUME_UP,
-    VOLUME_DOWN
+    VOLUME_DOWN,
+    LOADINGFRAMEO
 } Resources;
 
 #endif /* !RESOURCES_HPP_ */

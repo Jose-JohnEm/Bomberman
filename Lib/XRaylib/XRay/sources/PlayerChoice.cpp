@@ -82,7 +82,6 @@ void XRay::displayCardsSettings(std::vector<std::pair<int, int>> &removeButtons,
         if (i != 0)
             removeButtons.push_back(std::make_pair((*x)+307, b+9));
         if (_card[i] == 36) {
-            _userNames.push_back(_pSelector[i].getName());
             Raylib::Text::drawText(_pSelector[i].getName(), 200 + 450 * i + ((180 - Raylib::Text::measureText(_pSelector[i].getName(), 50)) / 2), 595, 50, Raylib::Color::Black());
         }
     }
@@ -128,7 +127,7 @@ void XRay::displayPlayerChoiceScene(void)
     (goBack ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000);
     (goNext ? _resources.at(NEXT_HOVER) : _resources.at(NEXTSCENE))->drawTexture(1700, 1000);
 
-    _pSelector.draw();
+    _pSelector.drawPlayers();
 
     displayMouse();
     endDrawing();
@@ -143,12 +142,11 @@ void XRay::displayPlayerChoiceScene(void)
     if (goBack && Raylib::Mouse::isButtonPressed(0)) {
         (this->*_scenesBack[_scene])();
         _scenesBack[PLAYER_CHOICE] = _scenesBackBackup[PLAYER_CHOICE];
-        _pSelector.unloadAll();
     }
     if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _allIntegers[2] * 40) {
+        for (size_t o = 0; o < _allIntegers[2]; o++)
+            _userNames.push_back(_pSelector[o].getName());
         displayMapChoiceScene();
         // TODO: USERNAMES UPDATE
-        for (size_t i = 0; _pSelector[])
-        _userNames = {"Prince", "Is", "God"};
     }
 }
