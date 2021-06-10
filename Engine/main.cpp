@@ -10,12 +10,12 @@
 
 int main(void)
 {
-    try {
+//    try {
         Engine::Core core;
         core.run();
-    } catch (...) {
+/*    } catch (...) {
         std::cerr << "Error !! I catch something !" << std::endl;
         return 84;
-    }
+    }*/
     return EXIT_SUCCESS;
 }

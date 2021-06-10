@@ -66,7 +66,7 @@ namespace Engine
             std::vector<std::pair<std::string, std::string>> _gameHighScores;   // Game's high scores
             std::vector<std::string> _backups;                                  // Paths of Backup Files
 
-            bool _isPaused;                                                     // Pause flag
+            bool _isPaused = false;                                                     // Pause flag
     };
 }
 

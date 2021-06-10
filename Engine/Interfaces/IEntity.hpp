@@ -37,14 +37,10 @@ class IEntity {
         virtual void setPositions(Raylib::Vector3 &vector) = 0;
 
         /**
-         * @brief Get Path To Obj
+         * @brief Draw Entity
+         *
          */
-        virtual std::string getPathToObj() const = 0;
-
-        /**
-         * @brief Get Path To Png
-         */
-        virtual std::vector<std::string> getPathToPngs() const = 0;
+        virtual void drawEntity() = 0;
 
         /**
          * @brief Set a boolean to know if this entity should be displayed
