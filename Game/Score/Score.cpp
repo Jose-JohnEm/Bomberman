@@ -7,7 +7,7 @@
 
 #include "Score.hpp"
 
-Game::Score::Score(const std::array<std::size_t, 7> &settings, Game::Player const &player)
+Game::Score::Score(const std::array<std::size_t, 8> &settings, Game::Player const &player)
     : _settings(settings), _player(player)
 {
     // Calcul the total of powerUps

@@ -7,17 +7,17 @@
 
 #include "Save.hpp"
 
-Game::Save::Save(const std::array<std::size_t, 7> &settings, const std::vector<Game::Player> &players, const Game::MapGeneration &map)
+Game::Save::Save(const std::array<std::size_t, 8> &settings, const std::vector<Game::Player> &players, const Game::MapGeneration &map)
+    : _settings(settings), _players(players), _map(map)
 {
-    std::string fileName(".backups/" + getCurrentDateTime() + ".backup");
-    std::replace(fileName.begin(), fileName.end(), ' ', '-');
+    std::string fileName = createBackupName();
     std::ofstream backupFile(fileName);
 
-    if (backupFile.is_open()) 
+    if (backupFile.is_open())
     {
-        setSaveGameSettings(backupFile, settings);
-        setSavePlayer(backupFile, players);
-        setSaveMap(backupFile, map);
+        writeSettings(backupFile);
+        writePlayersInfos(backupFile);
+        writeMap(backupFile);
         backupFile.close();
     }
 }

@@ -7,17 +7,9 @@
 
 #include <iostream>
 #include "Core/Core.hpp"
-#include "../Game/Save/Save.hpp"
-#include "../Game/Player/Player.hpp"
-#include "../Game/Map/MapGeneration.hpp"
 
 int main(void)
 {
-    std::array<size_t, 7> settings = {};
-    std::vector<Game::Player> players;
-    Game::MapGeneration map(15, 15);
-    Game::Save save(settings, players, map);
-
     try {
         Engine::Core core;
         core.run();

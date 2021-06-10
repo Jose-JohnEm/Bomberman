@@ -24,7 +24,7 @@ namespace Game
             /**
             * @brief Construct the Save object to load a backup file (Copy Constructor)
             */
-            Save(const std::array<std::size_t, 7> &settings, const std::vector<Game::Player> &player, const Game::MapGeneration &map);
+            Save(const std::array<std::size_t, 8> &settings, const std::vector<Game::Player> &player, const Game::MapGeneration &map);
 
             /**
             * @brief Construct the Save object to unload a backup file (Copy Constructor)
@@ -37,37 +37,44 @@ namespace Game
             ~Save();
 
             /**
-            * @brief Write the save of game's settings
-            * 
-            * @param settings A const reference to a std::array
+            * @brief Write game settings
+            *
+            * @param settings A reference to a stream
             */
-           void setSaveGameSettings(std::ofstream &backupFile, const std::array<std::size_t, 7> &settings);
+           void writeSettings(std::ofstream &os) const;
 
             /**
-            * @brief Write the save of game's players
-            * 
-            * @param players A const reference to a std::vector of Player
+            * @brief Write game players infos
+            *
+            * @param players A reference to a stream
             */
-           void setSavePlayer(std::ofstream &backupFile, const std::vector<Game::Player> &players);
+           void writePlayersInfos(std::ofstream &os) const;
 
             /**
-            * @brief Write the save of game's map
-            * 
-            * @param map A const reference to a std::array
+            * @brief Write the map
+            *
+            * @param map A reference to a stream
             */
-           void setSaveMap(std::ofstream &backupFile, const Game::MapGeneration &map);
+           void writeMap(std::ofstream &os) const;
 
         private:
-            std::array<std::size_t, 7> _settings; // An array of 7 size_t
+            std::array<std::size_t, 8> _settings; // An array of 7 size_t
             std::vector<Game::Player> _players; // A vector of players
             Game::MapGeneration _map; // The map
 
             /**
             * @brief Get the current date and time (for save's filename)
-            * 
+            *
             * @return A std::string
             */
             std::string getCurrentDateTime(void) const;
+
+            /**
+            * @brief Create a name for a new backup file
+            *
+            * @return A std::string
+            */
+            std::string createBackupName(void) const;
     };
 
     #include "Save.inl"
