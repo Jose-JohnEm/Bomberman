@@ -1,0 +1,22 @@
+/*
+** EPITECH PROJECT, 2020
+** B-YEP-400-LYN-4-1-indiestudio-lucas.guichard
+** File description:
+** Clock.hpp
+*/
+
+#include <chrono>
+
+class Clock
+{
+    public:
+        Clock();
+        ~Clock();
+
+        float getElapsedTime();
+        bool doesTimeElapsed(const float &time, const bool &reset = true);
+
+    private:
+        float _start;
+};
+
