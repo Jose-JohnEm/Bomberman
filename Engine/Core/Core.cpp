@@ -78,7 +78,7 @@ void Engine::Core::saveBestScores(void)
     std::ofstream fileScores(path);
 
     if (!fileScores.good())
-        return;
+        throw "ERROR: problem with score's file";
     for (const auto &score : _gameHighScores)
         fileScores << (score.first.empty() ? "Unknown" : score.first) << " " << score.second << std::endl;
     fileScores.close();
