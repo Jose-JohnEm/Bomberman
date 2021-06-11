@@ -11,6 +11,7 @@
 #include <array>
 #include <fstream>
 #include <ctime>
+#include <sstream>
 #include <algorithm>
 #include "../includes/Settings.hpp"
 #include "../Player/Player.hpp"
@@ -75,6 +76,21 @@ namespace Game
             * @param map A reference to a stream
             */
             void writeMap(std::ofstream &os) const;
+
+            /**
+             * @brief Parse a specific backup file
+             *
+             * @param backupFile An ifstream corresponding to a backup file
+             */
+            void parseBackup(std::ifstream &backupFile) const;
+
+            /**
+             * @brief Get the Input Arguments (line split by space)
+             *
+             * @param line A const reference to a string (string get by getline function)
+             * @return std::vector<std::string> (a vector composed of words's group)
+             */
+            std::vector<std::string> getInputArguments(const std::string &line) const;
     };
 
     #include "Save.inl"
