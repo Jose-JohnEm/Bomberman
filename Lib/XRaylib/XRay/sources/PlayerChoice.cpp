@@ -12,8 +12,7 @@ void XRay::detectPlayerInput(void)
     Resources tmp;
     size_t t = 0;
 
-    while (t < _allIntegers[2]-1 && _playerTab[t])
-        t++;
+    for (; t < _allIntegers[2]-1 && _playerTab[t]; t++);
     tmp = _controlsTab[t];
     _controlsTab[t] = (Raylib::Gamepad::isGamepadAvailable(0) && Raylib::Gamepad::isGamepadButtonPressed(0, 15)) ? PLAYSTATIONYELLOW : _controlsTab[t];
     _controlsTab[t] = (Raylib::Gamepad::isGamepadAvailable(1) && Raylib::Gamepad::isGamepadButtonPressed(1, 15)) ? XBOXYELLOW : _controlsTab[t];
@@ -151,6 +150,15 @@ void XRay::displayPlayerChoiceScene(void)
     if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _allIntegers[2] * 40) {
         for (size_t o = 0; o < _allIntegers[2]; o++)
             _userNames.push_back(_pSelector[o].getName());
+        _pSelector.initMaps({
+            {"WWWWWWW"},
+            {"W*****W"},
+            {"W*WMW*W"},
+            {"W*MMM*W"},
+            {"W*WMW*W"},
+            {"W*****W"},
+            {"WWWWWWW"},
+        });
         displayMapChoiceScene();
         // TODO: USERNAMES UPDATE
     }

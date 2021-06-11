@@ -15,6 +15,21 @@ inline void XRay::closeWindow(void) const
     _window.closeWindow();
 }
 
+inline void XRay::setRestartFunc(std::function<void ()> pointerToFunc)
+{
+    _pointerToRestartFunc = pointerToFunc;
+}
+
+inline void XRay::setLoadFunc(std::function<void (std::string)> pointerToFunc)
+{
+    _pointerToLoadFunc = pointerToFunc;
+}
+
+inline void XRay::setSaveFunc(std::function<void (std::array<std::size_t, 8>)> pointerToFunc)
+{
+    _pointerToSaveFunc = pointerToFunc;
+}
+
 inline void XRay::setMap(std::vector<std::string> &map)
 {
     _map = map;

@@ -26,6 +26,21 @@ class IGame {
         virtual void restart(void) = 0;
 
         /**
+         * @brief Call this function to save the game.
+         *
+         * @param settings Backup Container
+         */
+        virtual void saveGame(std::array<std::size_t, 8> settings) = 0;
+
+        /**
+         * @brief Call this function to load a game.
+         *
+         * @param backupFilePath Backup File Path
+         * @return A new instance IGame
+         */
+        virtual std::shared_ptr<IGame> loadGame(std::string backupFilePath) = 0;
+
+        /**
          * @brief Set the Users Names
          *
          * @param userNames A vector of all the users names as a const std::vector<std::string>&

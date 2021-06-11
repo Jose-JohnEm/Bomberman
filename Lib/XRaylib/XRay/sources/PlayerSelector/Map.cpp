@@ -41,18 +41,31 @@ std::vector<std::vector<Texture>> findTexturesAvailable(int &nb_textures)
     return res;
 }
 
-PlayerSelector::Map::Map(std::vector<std::pair<Model, float>> models, std::vector<std::string> &asciiMap)
+PlayerSelector::Map::Map(std::vector<Player> models, std::vector<std::string> &asciiMap)
 : _textures(findTexturesAvailable(_nbTextures)),
 current(0),
 _COEF(0.3),
-_characters(models)
+_characters(models),
+_y(0),
+_x(0),
+_direction(0)
 {
+    if (models.size() >= 1)
+        asciiMap[1][1] = '1';
+    if (models.size() >= 2)
+        asciiMap[5][1] = '2';
+    if (models.size() >= 3)
+        asciiMap[5][5] = '3';
+    if (models.size() >= 4)
+        asciiMap[1][5] = '4';
+
     std::cout << "------------ Generated Map ------------" << std::endl;
     for (auto &line : asciiMap)
     {
         std::cout << line << std::endl;
     }
     _charMap = asciiMap;
+
 }
 
 PlayerSelector::Map::~Map()
@@ -84,13 +97,56 @@ size_t PlayerSelector::Map::getMapType() const
     return current;
 }
 
+void PlayerSelector::Map::drawHandlingCharacters(const int &id)
+{
+    const float SPEED = 0.06;
+    Raylib::Vector3 pos(0,0,0);
+    bool canMove = _clock.doesTimeElapsed(0.01);
+    int rotation = 0;
+
+    if (canMove)
+        _direction += SPEED;
+    if (_direction >= 16.f)
+        _direction = 0;
+    if (canMove)
+    {
+        if (_direction < 4.f) {
+            _x += SPEED;
+            rotation = 0;
+        } else if (_direction < 8.f) {
+            _y += SPEED;
+            rotation = 90;
+        } else if (_direction < 12.f) {
+            _x -= SPEED;
+            rotation = 180;
+        } else {
+            _y -= SPEED;
+            rotation = 270;
+        }
+    }
+    if (id == 0)
+    {
+        _characters[0].drawForMaps(rotation, {_x + 1, _y + 1, 0});
+    }
+    if (id == 1)
+    {
+        _characters[1].drawForMaps(rotation + 90, {4 - _y + 1, _x + 1, 0});
+    }
+    if (id == 2)
+    {
+        _characters[2].drawForMaps(rotation + 180, {_y + 1, _x + 1, 0});
+    }
+    if (id == 3)
+    {
+        _characters[3].drawForMaps(rotation + 270, {_x + 1, 4 - _y + 1, 0});
+    }
+}
+
 void PlayerSelector::Map::draw()
 {
     float x;
     float y = 0;
     float scale;
-
-    std::cout << "LINE " << _charMap.size() << std::endl;
 
     for (const std::string &line : _charMap)
     {
@@ -99,8 +155,7 @@ void PlayerSelector::Map::draw()
         {
             if (c == '1' || c == '2' || c == '3' || c == '4')
             {
-                scale = _characters[c - '1'].second * 0.35;
-                DrawModelEx(_characters[c - '1'].first, {x * _COEF - (float)2.4, y * _COEF - (float)0.5, 0}, {1, 0, 0}, 90, {scale, scale, scale}, Raylib::Color::White().getCStruct());
+                drawHandlingCharacters(c - '1');
             }
             if (c == 'W' || c == 'E')
             {

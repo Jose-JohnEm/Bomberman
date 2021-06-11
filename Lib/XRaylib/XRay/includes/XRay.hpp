@@ -27,6 +27,10 @@
     #include <dirent.h>
 #endif
 
+#include "IPlayerInput.hpp"
+#include "MousePlayerInput.hpp"
+#include "KeyboardPlayerInput.hpp"
+#include "GamepadPlayerInput.hpp"
 #include "Interfaces/IGraphical.hpp"
 #include "Camera3D/Camera3D.hpp"
 #include "Texture/Texture.hpp"
@@ -211,6 +215,16 @@ class XRay : public IGraphical {
         void displaySettingsScene(void);
 
         /**
+         * @brief Change the volume of all the music
+         */
+        void changeMusicVolume(void);
+
+        /**
+         * @brief Change the volume of all the sfx
+         */
+        void changeSfxVolume(void);
+
+        /**
          * @brief Quit program
          */
         void quitGame(void);
@@ -386,6 +400,27 @@ class XRay : public IGraphical {
          */
         void updateTextBox(std::vector<bool> &mouseOnText, const std::vector<Raylib::Rectangle> &textBox);
 
+        /**
+         * @brief Set pointer to Load Function
+         *
+         * @param loadFunc A pointer to Load function in the core
+         */
+        void setLoadFunc(std::function<void (std::string)>) override;
+
+        /**
+         * @brief Set pointer to Save Function
+         *
+         * @param saveFunc A pointer to Save function in the core
+         */
+        void setSaveFunc(std::function<void (std::array<std::size_t, 8>)>) override;
+
+        /**
+         * @brief Set the Restart Func
+         *
+         * @param restartFunc A pointer to Restart function in the core
+         */
+        void setRestartFunc(std::function<void ()>) override;
+
     private:
         Raylib::Window _window;                     // Game window
 
@@ -393,10 +428,15 @@ class XRay : public IGraphical {
         size_t _sizeMap = 5;                            // Size of Map
         std::vector<std::string> _map;              // Map
         float masterVolume;                         // Master volume
+        float musicVolume;                         // Master volume
+        float sfxVolume;                         // Master volume
         std::vector<std::string> _userNames;        // A vector of all the users names
         std::pair<bool, void (XRay::*)()> _intro;   // Intro pointer to function
         Scene _scene = MENU;                   // Current scene
         std::vector<void (XRay::*)()> _scenesFunc;  // Array of pointers to function (a scene, a function)
+        std::function<void ()> _pointerToRestartFunc;   // Pointer to Restart Func
+        std::function<void (std::array<std::size_t, 8>)> _pointerToSaveFunc;   // Pointer to Save Func
+        std::function<void (std::string)> _pointerToLoadFunc;   // Pointer to Load Func
 
         std::vector<bool> _playerTab{true, false, false, false};                     // A vector of boolean that represents if the player is an AI or not
         std::vector<Resources> _controlsTab{UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN};                   // A vector of resources (See in Resources.hpp) that represents if the controls
@@ -419,6 +459,7 @@ class XRay : public IGraphical {
         std::map<Resources, std::shared_ptr<Raylib::Texture>> _resources; // Texture dictionary
         std::map<MusicResources, std::shared_ptr<Raylib::Music>> _musics; // Music dictionary
         std::map<SfxResources, std::shared_ptr<Raylib::Sound>> _sfx; // SFX dictionary
+        std::vector<std::shared_ptr<IPlayerInput>> _playersInput{std::shared_ptr<IPlayerInput>(new MousePlayerInput())};
         PlayerSelector::Selector _pSelector; // 3D Camera
 };
 
