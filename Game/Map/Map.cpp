@@ -25,6 +25,7 @@ Game::Map::Map(const size_t &width, const size_t &height, const size_t &playersN
     placeBorders();
     placeSolidWalls();
     placePlayers();
+    setPlayersAreas(2);
 }
 
 Game::Map::~Map()

@@ -97,6 +97,13 @@ namespace Game
              */
             void dump(void) const;
 
+            /**
+             * @brief Set the Players Areas in the map
+             *
+             * @param areaSize A const reference to a size_t
+             */
+            void setPlayersAreas(const size_t &areaSize);
+
         private:
             size_t _width; // Width of the map
             size_t _height; // Height of the map
