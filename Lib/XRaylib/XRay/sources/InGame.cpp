@@ -48,27 +48,27 @@ void XRay::goToAnotherScene()
     // Go to another scene according to mouse position
     if (pauseButton && Raylib::Mouse::isButtonPressed(0))
         _isPaused = true;
-    if (resume && Raylib::Mouse::isButtonPressed(0)) {
+    if (_isPaused && resume && Raylib::Mouse::isButtonPressed(0)) {
         _isPaused = false;
 //        m_isPaused = 2;
     }
-    if (restart && Raylib::Mouse::isButtonPressed(0)) {
+    if (_isPaused && restart && Raylib::Mouse::isButtonPressed(0)) {
         _isPaused = false;
         m_isPaused = 2;
         displayCinematic("loading", 0, 0);
         displayInGameScene();
     }
-    if (save && Raylib::Mouse::isButtonPressed(0)) {
+    if (_isPaused && save && Raylib::Mouse::isButtonPressed(0)) {
         beginDrawing(false);
         _resources.at(SAVED)->drawTexture(650, 20);
         endDrawing();
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
-    if (settings && Raylib::Mouse::isButtonPressed(0)) {
+    if (_isPaused && settings && Raylib::Mouse::isButtonPressed(0)) {
         _scenesBack[Scene::SETTINGS] = &XRay::displayInGameScene;
         displaySettingsScene();
     }
-    if (home && Raylib::Mouse::isButtonPressed(0)) {
+    if (_isPaused && home && Raylib::Mouse::isButtonPressed(0)) {
         _isPaused = false;
         m_isPaused = 2;
         displayMenuScene();

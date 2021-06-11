@@ -22,8 +22,8 @@ void XRay::displayMenuScene(void)
     bool quit = mouseIsInBox(createBox(1160, 875, 1160+755, 875+132)) ? true : false;
 
     // Display INDIE STUDIO
-//    if (_intro.first == true)
-//        (this->*_intro.second)();
+    if (_intro.first == true)
+        (this->*_intro.second)();
 
     // Parallax update
     _scrollingBack -= 0.1f;

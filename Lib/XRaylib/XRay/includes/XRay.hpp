@@ -27,6 +27,10 @@
     #include <dirent.h>
 #endif
 
+#include "IPlayerInput.hpp"
+#include "MousePlayerInput.hpp"
+#include "KeyboardPlayerInput.hpp"
+#include "GamepadPlayerInput.hpp"
 #include "Interfaces/IGraphical.hpp"
 #include "Camera3D/Camera3D.hpp"
 #include "Texture/Texture.hpp"
@@ -419,6 +423,7 @@ class XRay : public IGraphical {
         std::map<Resources, std::shared_ptr<Raylib::Texture>> _resources; // Texture dictionary
         std::map<MusicResources, std::shared_ptr<Raylib::Music>> _musics; // Music dictionary
         std::map<SfxResources, std::shared_ptr<Raylib::Sound>> _sfx; // SFX dictionary
+        std::vector<std::shared_ptr<IPlayerInput>> _playersInput{std::shared_ptr<IPlayerInput>(new MousePlayerInput())};
         PlayerSelector::Selector _pSelector; // 3D Camera
 };
 
