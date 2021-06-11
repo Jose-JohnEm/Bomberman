@@ -211,6 +211,16 @@ class XRay : public IGraphical {
         void displaySettingsScene(void);
 
         /**
+         * @brief Change the volume of all the music
+         */
+        void changeMusicVolume(void);
+
+        /**
+         * @brief Change the volume of all the sfx
+         */
+        void changeSfxVolume(void);
+
+        /**
          * @brief Quit program
          */
         void quitGame(void);
@@ -393,6 +403,8 @@ class XRay : public IGraphical {
         size_t _sizeMap = 5;                            // Size of Map
         std::vector<std::string> _map;              // Map
         float masterVolume;                         // Master volume
+        float musicVolume;                         // Master volume
+        float sfxVolume;                         // Master volume
         std::vector<std::string> _userNames;        // A vector of all the users names
         std::pair<bool, void (XRay::*)()> _intro;   // Intro pointer to function
         Scene _scene = MENU;                   // Current scene
