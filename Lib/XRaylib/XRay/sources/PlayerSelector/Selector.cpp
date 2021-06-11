@@ -235,10 +235,8 @@ void PlayerSelector::Selector::drawPlayers()
 void PlayerSelector::Selector::initMaps(std::vector<std::string> asciiMap)
 {
     camera->setPosition({-0.02, -3, 6});
-    if (asciiMap.size() != _asciiMap.size()) {
-        _map = new Map(_players, asciiMap);
-        _asciiMap = asciiMap;
-    }
+    _map = new Map(_players, asciiMap);
+    _asciiMap = asciiMap;
 }
 
 void PlayerSelector::Selector::drawMaps()
@@ -258,10 +256,7 @@ std::vector<std::string> PlayerSelector::Selector::getMap() const
 void PlayerSelector::Selector::endMaps()
 {
     camera->setPosition({0, 0, 10});
-
-// FIXME: In constructor _map don't init when delete (byPRINCE)
-/*    if (_map != nullptr)
-        delete _map;*/
+    delete _map;
 }
 
 void PlayerSelector::Selector::nextMap()

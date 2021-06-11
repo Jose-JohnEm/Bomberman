@@ -150,6 +150,15 @@ void XRay::displayPlayerChoiceScene(void)
     if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _allIntegers[2] * 40) {
         for (size_t o = 0; o < _allIntegers[2]; o++)
             _userNames.push_back(_pSelector[o].getName());
+        _pSelector.initMaps({
+            {"WWWWWWW"},
+            {"W*****W"},
+            {"W*WMW*W"},
+            {"W*MMM*W"},
+            {"W*WMW*W"},
+            {"W*****W"},
+            {"WWWWWWW"},
+        });
         displayMapChoiceScene();
         // TODO: USERNAMES UPDATE
     }

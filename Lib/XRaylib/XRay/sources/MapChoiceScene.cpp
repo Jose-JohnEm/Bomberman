@@ -32,16 +32,6 @@ void XRay::displayMapChoiceScene(void)
     bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
     bool goNext = mouseIsInBox(createBox(1700, 1000, 1918, 1061)) ? true : false;
 
-    _pSelector.initMaps({
-        {"WWWWWWW"},
-        {"W1****W"},
-        {"W*WMW*W"},
-        {"W*MMM*W"},
-        {"W*WMW*W"},
-        {"W*****W"},
-        {"WWWWWWW"},
-    });
-
     // Draw scene
     beginDrawing();
     displayBack();
