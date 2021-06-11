@@ -21,7 +21,7 @@ ADD_SUBDIRECTORY(Lib/XRaylib)
 FILE(GLOB_RECURSE SRCS CONFIGURE_DEPENDS
     "${PROJET_DIRECTORY}Engine/Core/*.cpp"
     "${PROJET_DIRECTORY}Game/*.cpp"
-    "Tests.cpp"
+    "sources/*.cpp"
 )
 
 # Set Headers paths
