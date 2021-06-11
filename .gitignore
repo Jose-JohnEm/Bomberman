@@ -10,3 +10,4 @@ resources
 Tests/Lib
 Tests/Engine
 .backups/*.backup
+Tests/test_bomberman
