@@ -48,8 +48,9 @@ namespace Game
             *
             * @param width Width of the map
             * @param height Height of the map
+            * @param playersNumber Number of players in the map
             */
-            Map(const size_t &width, const size_t &height);
+            Map(const size_t &width, const size_t &height, const size_t &playersNumber);
 
             /**
             * @brief Destroy the Map object
@@ -96,16 +97,10 @@ namespace Game
              */
             void dump(void) const;
 
-            /**
-             * @brief Place the players in the map
-             *
-             * @param playersNumber A const reference to a size_t (number of players)
-             */
-            void placePlayers(const size_t &playersNumber);
-
         private:
             size_t _width; // Width of the map
             size_t _height; // Height of the map
+            size_t _playersNumber; // Number of players in the map
             std::vector<std::string> _map; // Map
 
             /**
@@ -134,6 +129,11 @@ namespace Game
              * @brief Place solid walls
              */
             void placeSolidWalls(void);
+
+            /**
+             * @brief Place the players in the map
+             */
+            void placePlayers(void);
     };
 
     #include "Map.inl"

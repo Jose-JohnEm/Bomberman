@@ -101,13 +101,13 @@ inline void Game::Map::placeBorders(void)
     }
 }
 
-inline void Game::Map::placePlayers(const size_t &playersNumber)
+inline void Game::Map::placePlayers(void)
 {
-    if (!(1 <= playersNumber && playersNumber <= 4))
+    if (!(1 <= _playersNumber && _playersNumber <= 4))
     {
         throw std::invalid_argument("ERROR: Invalid number of players");
     }
-    for (size_t i = 1; i <= playersNumber; i++)
+    for (size_t i = 1; i <= _playersNumber; i++)
     {
         if (i == 1)
         {

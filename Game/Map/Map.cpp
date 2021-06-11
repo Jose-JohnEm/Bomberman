@@ -11,8 +11,8 @@ Game::Map::Map()
 {
 }
 
-Game::Map::Map(const size_t &width, const size_t &height)
-    : _width{width + BORDER}, _height{height + BORDER}
+Game::Map::Map(const size_t &width, const size_t &height, const size_t &playersNumber)
+    : _width{width + BORDER}, _height{height + BORDER}, _playersNumber{playersNumber}
 {
     if (width % 2 == 0 || width <= 3 || height < 3)
     {
@@ -24,6 +24,7 @@ Game::Map::Map(const size_t &width, const size_t &height)
     maze();
     placeBorders();
     placeSolidWalls();
+    placePlayers();
 }
 
 Game::Map::~Map()
