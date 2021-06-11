@@ -10,15 +10,6 @@ ENABLE_TESTING()
 # Set g++ standard version
 SET(CMAKE_CXX_STANDARD 17)
 
-
-# We add this to ensure the CI/CDs don't fetch resources
-IF (NOT DEFINED ENV{SKIP_RESOURCES_FETCHING})
-    # Call the Findresources module
-    INCLUDE(${PROJET_DIRECTORY}cmake/Findresources.cmake)
-ELSE()
-    MESSAGE("Skipping resources fetching...")
-ENDIF()
-
 # Make XRay CMakeList meta-compile XRay library that himself
 # will make Raylib-cpp meta compile
 # It will be linked with our Bomberman project
@@ -28,7 +19,7 @@ ADD_SUBDIRECTORY(Lib/XRaylib)
 
 # Generate a list of files
 FILE(GLOB_RECURSE SRCS CONFIGURE_DEPENDS
-    "${PROJET_DIRECTORY}Engine/*.cpp"
+    "${PROJET_DIRECTORY}Engine/Core/*.cpp"
     "${PROJET_DIRECTORY}Game/*.cpp"
     "Tests.cpp"
 )
