@@ -22,12 +22,12 @@ namespace Game
     {
         public:
             /**
-            * @brief Construct the Save object to load a backup file (Copy Constructor)
+            * @brief Construct the Save object to create a backup file (Copy Constructor)
             */
             Save(const std::array<std::size_t, 8> &settings, const std::vector<Game::Player> &player, const Game::Map &map);
 
             /**
-            * @brief Construct the Save object to unload a backup file (Copy Constructor)
+            * @brief Construct the Save object to read a backup file and load its content into an IGame object (Copy Constructor)
             */
             Save(const std::string &fileName);
 
