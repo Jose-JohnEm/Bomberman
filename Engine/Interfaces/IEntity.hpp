@@ -15,7 +15,6 @@
 class IEntity {
 
     public:
-
         /**
          * @brief Destroy the IEntity object
          *

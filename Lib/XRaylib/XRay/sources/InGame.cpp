@@ -50,7 +50,6 @@ void XRay::goToAnotherScene()
         _isPaused = true;
     if (_isPaused && resume && Raylib::Mouse::isButtonPressed(0)) {
         _isPaused = false;
-//        m_isPaused = 2;
     }
     if (_isPaused && restart && Raylib::Mouse::isButtonPressed(0)) {
         _isPaused = false;

@@ -11,6 +11,7 @@
 #include <array>
 #include <fstream>
 #include <ctime>
+#include <sstream>
 #include <algorithm>
 #include "../includes/Settings.hpp"
 #include "../Player/Player.hpp"
@@ -22,12 +23,12 @@ namespace Game
     {
         public:
             /**
-            * @brief Construct the Save object to load a backup file (Copy Constructor)
+            * @brief Construct the Save object to create a backup file (Copy Constructor)
             */
             Save(const std::array<std::size_t, 8> &settings, const std::vector<Game::Player> &player, const Game::Map &map);
 
             /**
-            * @brief Construct the Save object to unload a backup file (Copy Constructor)
+            * @brief Construct the Save object to read a backup file and load its content into an IGame object (Copy Constructor)
             */
             Save(const std::string &fileName);
 
@@ -75,6 +76,21 @@ namespace Game
             * @param map A reference to a stream
             */
             void writeMap(std::ofstream &os) const;
+
+            /**
+             * @brief Parse a specific backup file
+             *
+             * @param backupFile An ifstream corresponding to a backup file
+             */
+            void parseBackup(std::ifstream &backupFile) const;
+
+            /**
+             * @brief Get the Input Arguments (line split by space)
+             *
+             * @param line A const reference to a string (string get by getline function)
+             * @return std::vector<std::string> (a vector composed of words's group)
+             */
+            std::vector<std::string> getInputArguments(const std::string &line) const;
     };
 
     #include "Save.inl"

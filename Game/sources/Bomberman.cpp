@@ -39,8 +39,9 @@ void Game::Bomberman::initEntities()
 std::vector<std::string> &Game::Bomberman::getMap(size_t size)
 {
     if (_map.size() != size+2) {
-        Game::Map newMap(size, size);
-        newMap.placePlayers(_userNames.size());
+        Game::Map newMap(size, size, _userNames.size());
+
+        std::cout << " YAOI " << _userNames.size() << std::endl;
         _map = newMap.getMap();
     }
     return _map;

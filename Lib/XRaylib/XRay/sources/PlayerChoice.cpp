@@ -12,7 +12,8 @@ void XRay::detectPlayerInput(void)
     Resources tmp;
     size_t t = 0;
 
-    for (; t < _allIntegers[2]-1 && _playerTab[t]; t++);
+    while (t < _allIntegers[2]-1 && _playerTab[t])
+        t++;
     tmp = _controlsTab[t];
     _controlsTab[t] = (Raylib::Gamepad::isGamepadAvailable(0) && Raylib::Gamepad::isGamepadButtonPressed(0, 15)) ? PLAYSTATIONYELLOW : _controlsTab[t];
     _controlsTab[t] = (Raylib::Gamepad::isGamepadAvailable(1) && Raylib::Gamepad::isGamepadButtonPressed(1, 15)) ? XBOXYELLOW : _controlsTab[t];

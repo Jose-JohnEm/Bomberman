@@ -52,7 +52,8 @@ std::vector<PlayerSelector::CharDictionary> findCharactersAvailable(int &nb_Char
             }
             if (obj != "null" && texture != "null")
                 res.push_back({obj, texture, scalable, name});
-        }
+        } else
+            throw "ERROR : Wrong directory (Ressources - Selector)";
     }
     nb_Characters = res.size();
     return res;

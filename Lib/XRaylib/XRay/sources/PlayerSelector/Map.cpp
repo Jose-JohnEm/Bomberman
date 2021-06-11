@@ -34,7 +34,8 @@ std::vector<std::vector<Texture>> findTexturesAvailable(int &nb_textures)
                     Raylib::Texture(dir.path().string() + "/box.png").getCStruct()
                 });
             }
-        }
+        } else
+            throw "ERROR : Wrong directory (Ressources - Map)";
     }
     nb_textures = res.size();
     return res;

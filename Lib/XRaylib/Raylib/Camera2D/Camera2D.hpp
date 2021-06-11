@@ -102,7 +102,7 @@ namespace Raylib
 
             /**
              * @brief C Camera2D Structure instance
-             * 
+             *
              */
             ::Camera2D _camera2D;
     };
