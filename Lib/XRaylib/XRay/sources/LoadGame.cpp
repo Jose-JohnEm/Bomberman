@@ -9,9 +9,7 @@
 
 void XRay::loadThisBackup(const std::string &_pathToBackupFile)
 {
-    // Add deserialization and loading of data
-    // hereeeee (je suis gentil d'où je mets ça ... :/ c'est évident !!! Allez hop hop !!)
-
+    _pointerToLoadFunc(_pathToBackupFile);
     displayCinematic("loading", 0, 0);
     displayInGameScene();
 }

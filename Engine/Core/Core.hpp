@@ -53,6 +53,24 @@ namespace Engine
              */
             void getBackupFiles(void);
 
+            /**
+             * @brief Save the game
+             *
+             * @param settings Backup Container
+             */
+            void saveGame(std::array<std::size_t, 8> settings);
+
+            /**
+             * @brief Load the game
+             *
+             * @param filepath Path to backup file
+             */
+            void loadGame(std::string filepath);
+
+            /**
+             * @brief Restart the game
+             */
+            void restartGame();
 
         private:
             std::shared_ptr<IGraphical> _graphical;                             // Graphical instance

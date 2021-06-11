@@ -390,6 +390,27 @@ class XRay : public IGraphical {
          */
         void updateTextBox(std::vector<bool> &mouseOnText, const std::vector<Raylib::Rectangle> &textBox);
 
+        /**
+         * @brief Set pointer to Load Function
+         *
+         * @param loadFunc A pointer to Load function in the core
+         */
+        void setLoadFunc(std::function<void (std::string)>) override;
+
+        /**
+         * @brief Set pointer to Save Function
+         *
+         * @param saveFunc A pointer to Save function in the core
+         */
+        void setSaveFunc(std::function<void (std::array<std::size_t, 8>)>) override;
+
+        /**
+         * @brief Set the Restart Func
+         *
+         * @param restartFunc A pointer to Restart function in the core
+         */
+        void setRestartFunc(std::function<void ()>) override;
+
     private:
         Raylib::Window _window;                     // Game window
 
@@ -401,6 +422,9 @@ class XRay : public IGraphical {
         std::pair<bool, void (XRay::*)()> _intro;   // Intro pointer to function
         Scene _scene = MENU;                   // Current scene
         std::vector<void (XRay::*)()> _scenesFunc;  // Array of pointers to function (a scene, a function)
+        std::function<void ()> _pointerToRestartFunc;   // Pointer to Restart Func
+        std::function<void (std::array<std::size_t, 8>)> _pointerToSaveFunc;   // Pointer to Save Func
+        std::function<void (std::string)> _pointerToLoadFunc;   // Pointer to Load Func
 
         std::vector<bool> _playerTab{true, false, false, false};                     // A vector of boolean that represents if the player is an AI or not
         std::vector<Resources> _controlsTab{UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN};                   // A vector of resources (See in Resources.hpp) that represents if the controls

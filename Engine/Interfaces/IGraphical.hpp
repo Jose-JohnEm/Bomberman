@@ -44,7 +44,7 @@ class IGraphical {
             /// This is the scene where the display loser options
             DEFEAT,
             /// This scene represents the end of the game
-            END_GAME
+            END_GAME,
         };
 
         /**
@@ -156,6 +156,27 @@ class IGraphical {
          * @return A pair of size_t
          */
         virtual std::pair<size_t, size_t> getMapSizeAndType() = 0;
+
+        /**
+         * @brief Set pointer to Load Function
+         *
+         * @param loadFunc A pointer to Load function in the core
+         */
+        virtual void setLoadFunc(std::function<void (std::string)>) = 0;
+
+        /**
+         * @brief Set pointer to Save Function
+         *
+         * @param saveFunc A pointer to Save function in the core
+         */
+        virtual void setSaveFunc(std::function<void (std::array<std::size_t, 8>)>) = 0;
+
+        /**
+         * @brief Set the Restart Func
+         *
+         * @param restartFunc A pointer to Restart function in the core
+         */
+        virtual void setRestartFunc(std::function<void ()>) = 0;
 };
 
 #endif /* !IGRAPHICAL_HPP_ */

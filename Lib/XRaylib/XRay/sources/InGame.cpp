@@ -55,6 +55,7 @@ void XRay::goToAnotherScene()
     if (_isPaused && restart && Raylib::Mouse::isButtonPressed(0)) {
         _isPaused = false;
         m_isPaused = 2;
+        _pointerToRestartFunc();
         displayCinematic("loading", 0, 0);
         displayInGameScene();
     }
@@ -62,6 +63,7 @@ void XRay::goToAnotherScene()
         beginDrawing(false);
         _resources.at(SAVED)->drawTexture(650, 20);
         endDrawing();
+        _pointerToSaveFunc(*(new std::array<size_t, 8>));
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
     if (_isPaused && settings && Raylib::Mouse::isButtonPressed(0)) {
