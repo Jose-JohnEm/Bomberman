@@ -101,13 +101,13 @@ inline void Game::Map::placeBorders(void)
     }
 }
 
-inline void Game::Map::placePlayers(const size_t &playersNumber)
+inline void Game::Map::placePlayers(void)
 {
-    if (!(1 <= playersNumber && playersNumber <= 4))
+    if (!(1 <= _playersNumber && _playersNumber <= 4))
     {
         throw std::invalid_argument("ERROR: Invalid number of players");
     }
-    for (size_t i = 1; i <= playersNumber; i++)
+    for (size_t i = 1; i <= _playersNumber; i++)
     {
         if (i == 1)
         {
@@ -135,6 +135,35 @@ inline void Game::Map::placeSolidWalls(void)
         for (size_t x = 2; x < _width - BORDER; x += 2)
         {
             _map[y][x] = SOLID_WALL;
+        }
+    }
+}
+
+inline void Game::Map::setPlayersAreas(const size_t &areaSize)
+{
+    for (size_t player = 1; player <= _playersNumber; player++)
+    {
+        for (size_t i = 1; i <= areaSize; i++)
+        {
+            switch (player)
+            {
+                case 1:
+                    _map[1][1 + i] = EMPTY_SPACE;
+                    _map[1 + i][1] = EMPTY_SPACE;
+                    break;
+                case 2:
+                    _map[_height - BORDER][1 + i] = EMPTY_SPACE;
+                    _map[_height - BORDER - i][1] = EMPTY_SPACE;
+                    break;
+                case 3:
+                    _map[_height - BORDER][_width - BORDER - i] = EMPTY_SPACE;
+                    _map[_height - BORDER - i][_width - BORDER] = EMPTY_SPACE;
+                case 4:
+                    _map[1][_width - BORDER - i] = EMPTY_SPACE;
+                    _map[1 + i][_width - BORDER] = EMPTY_SPACE;
+                default:
+                    break;
+            }
         }
     }
 }
