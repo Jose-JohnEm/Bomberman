@@ -10,10 +10,28 @@
 Engine::Core::Core()
 : _graphical{std::make_shared<XRay>()}, _game{std::make_shared<Game::Bomberman>()}, _userNames{{""}}
 {
+    _graphical->setLoadFunc([this] (std::string filepath) {this->loadGame(filepath);});
+    _graphical->setSaveFunc([this] (std::array<std::size_t, 8> settings) {this->saveGame(settings);});
+    _graphical->setRestartFunc([this] () {this->restartGame();});
 }
 
 Engine::Core::~Core()
 {
+}
+
+void Engine::Core::saveGame(std::array<std::size_t, 8> settings)
+{
+    _game->saveGame(settings);
+}
+
+void Engine::Core::loadGame(std::string filepath)
+{
+    _game->loadGame(filepath);
+}
+
+void Engine::Core::restartGame()
+{
+    _game->restart();
 }
 
 void Engine::Core::run(void)
@@ -30,6 +48,7 @@ void Engine::Core::run(void)
             if (_userNames != _graphical->getUserNames()) {
                 _userNames = _graphical->getUserNames();
                 _game->setMapType(_graphical->getMapSizeAndType().second);
+                _game->setUserNames(_graphical->getUserNames());
                 _graphical->setMap(_game->getMap(_graphical->getMapSizeAndType().first));
             }
             if (!_isPaused)

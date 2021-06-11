@@ -11,13 +11,18 @@
 
 void XRay::displayGameSettings(void)
 {
+    size_t iaOrNot = 0;
+
     _resources.at(PREVIOUS)->drawTexture(10, 400);
     _resources.at(NEXT)->drawTexture(910, 400);
 
     (mouseIsInBox(createBox(1160, 245, 1160+755, 245+83)) ? _resources.at(SIZE_HOVER) : _resources.at(SIZE))->drawTexture(1160, 245);
     (mouseIsInBox(createBox(1160, 455, 1160+755, 455+83)) ? _resources.at(SETS_HOVER) : _resources.at(Resources::SETS))->drawTexture(1160, 455);
     (mouseIsInBox(createBox(1160, 665, 1160+755, 665+83)) ? _resources.at(DURATION_HOVER) : _resources.at(Resources::DURATION))->drawTexture(1160, 665);
-    (mouseIsInBox(createBox(1160, 875, 1160+755, 875+83)) ? _resources.at(AI_HOVER) : _resources.at(Resources::IA))->drawTexture(1160, 875);
+    for (size_t t = 0; t < _allIntegers[2] && t <_playerTab.size(); t++)
+        iaOrNot += (!_playerTab[t]) ? 1 : 0;
+    if (iaOrNot > 0)
+        (mouseIsInBox(createBox(1160, 875, 1160+755, 875+83)) ? _resources.at(AI_HOVER) : _resources.at(Resources::IA))->drawTexture(1160, 875);
 }
 
 void XRay::displayMapChoiceScene(void)
@@ -47,9 +52,9 @@ void XRay::displayMapChoiceScene(void)
     // Go to another scene according to mouse position
     if (goBack && Raylib::Mouse::isButtonPressed(0)) {
         _sfx.at(SFX_HOME)->play();
+        _pSelector.endMaps();
         (this->*_scenesBack[_scene])();
         _scenesBack[MAP_CHOICE] = _scenesBackBackup[MAP_CHOICE];
-        _pSelector.endMaps();
     }
     if (goNext && Raylib::Mouse::isButtonPressed(0)) {
         _mapType = _pSelector.getMapType();

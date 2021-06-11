@@ -13,6 +13,7 @@
 #include <algorithm>
 #include <map>
 #include "../Map/Map.hpp"
+#include "../Save/Save.hpp"
 #include "Interfaces/IGame.hpp"
 #include "MotionlessEntity.hpp"
 
@@ -36,6 +37,21 @@ namespace Game
              * @brief Call this function to restart the entire game. The game must reset himself.
              */
             void restart(void) override;
+
+            /**
+             * @brief Call this function to save the game.
+             *
+             * @param settings Backup Container
+             */
+            void saveGame(std::array<std::size_t, 8> settings) override;
+
+            /**
+             * @brief Call this function to load a game.
+             *
+             * @param backupFilePath Backup File Path
+             * @return A new instance IGame
+             */
+            std::shared_ptr<IGame> loadGame(std::string backupFilePath) override;
 
             /**
              * @brief Set the Users Names
