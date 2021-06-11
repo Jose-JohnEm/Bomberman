@@ -1,17 +1,75 @@
 #include <gtest/gtest.h>
-#include "../Engine/Core/Core.hpp"
+#include "../Game/Map/Map.hpp"
 
-// Demonstrate some basic assertions.
-TEST(HelloTest, BasicAssertions) {
-  // Expect two strings not to be equal.
-  EXPECT_STRNE("hello", "world");
-  // Expect equality.
-  EXPECT_EQ(7 * 6, 42);
+TEST(MapTest, pass)
+{
+    try {
+        Game::Map map(15, 15, 4);
+    } catch (std::exception &ex) {
+        EXPECT_STREQ("ERROR: Invalid map dimensions", ex.what());
+    }
 }
 
-TEST(HelloTest, Test1) {
-  // Expect two strings not to be equal.
-  EXPECT_STRNE("hello", "world");
-  // Expect equality.
-  EXPECT_EQ(7 * 6, 42);
+TEST(MapTest, fail_width_dimension)
+{
+    try {
+        Game::Map map(0, 15, 4);
+    } catch (std::exception &ex) {
+        EXPECT_STREQ("ERROR: Invalid map dimensions", ex.what());
+    }
+}
+
+TEST(MapTest, fail_height_dimension)
+{
+    try {
+        Game::Map map(15, 0, 4);
+    } catch (std::exception &ex) {
+        EXPECT_STREQ("ERROR: Invalid map dimensions", ex.what());
+    }
+}
+
+TEST(MapTest, fail_player)
+{
+    try {
+        Game::Map map(15, 15, 0);
+    } catch (std::exception &ex) {
+        EXPECT_STREQ("ERROR: Invalid number of players", ex.what());
+    }
+}
+
+TEST(MapTest, getWidth)
+{
+    Game::Map map(15, 15, 4);
+
+    EXPECT_EQ(15, map.getWidth());
+}
+
+TEST(MapTest, getHeight)
+{
+    Game::Map map(15, 15, 4);
+
+    EXPECT_EQ(15, map.getHeight());
+}
+
+TEST(MapTest, setWidth)
+{
+    Game::Map map(15, 15, 4);
+
+    map.setWidth(21);
+    EXPECT_EQ(21, map.getWidth());
+}
+
+TEST(MapTest, setHeight)
+{
+    Game::Map map(15, 15, 4);
+
+    map.setHeight(21);
+    EXPECT_EQ(21, map.getHeight());
+}
+
+TEST(MapTest, isMapEmpty)
+{
+    Game::Map map(15, 15, 4);
+
+    EXPECT_EQ(map.getMap().empty(), false);
 }
