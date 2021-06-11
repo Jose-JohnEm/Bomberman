@@ -7,3 +7,4 @@ bomberman
 bomberman.exe
 .DS_Store
 resources
+Tests/Lib
