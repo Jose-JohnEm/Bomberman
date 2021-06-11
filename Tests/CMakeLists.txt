@@ -23,6 +23,7 @@ ENDIF()
 # will make Raylib-cpp meta compile
 # It will be linked with our Bomberman project
 FILE(COPY ${PROJET_DIRECTORY}/Lib DESTINATION ${CMAKE_CURRENT_SOURCE_DIR})
+FILE(COPY ${PROJET_DIRECTORY}/Engine DESTINATION ${CMAKE_CURRENT_SOURCE_DIR})
 ADD_SUBDIRECTORY(Lib/XRaylib)
 
 # Generate a list of files
