@@ -55,6 +55,12 @@ void PlayerSelector::Player::drawForMaps(const float &rotation, const Raylib::Ve
     float scale_value = _scalable * 0.3;
     float rad_rotation = (0 * PI) / 180;
 
+    _persoModel.transform = {
+        0, 0, 1, 0,
+        cosf(rad_rotation), sinf(rad_rotation), 0, 0,
+        -sinf(rad_rotation), cosf(rad_rotation), 0, 0,
+        0, 0, 0, 1
+    };
     if (_animations.size() == 3)
     {
         if (clock.doesTimeElapsed(0.01))
@@ -62,19 +68,6 @@ void PlayerSelector::Player::drawForMaps(const float &rotation, const Raylib::Ve
         UpdateModelAnimation(_persoModel, _animations[1], counter);
         if (counter >= _animations[1].frameCount)
             counter = 0;
-        _persoModel.transform = {
-            0, 0, 1, 0,
-            cosf(rad_rotation), sinf(rad_rotation), 0, 0,
-            -sinf(rad_rotation), cosf(rad_rotation), 0, 0,
-            0, 0, 0, 1
-        };
-        /*_persoModel.transform.m0 = -sinf(rad_rotation);
-        _persoModel.transform.m1 = cosf(rad_rotation);
-        _persoModel.transform.m6 = 1;
-        _persoModel.transform.m8 = cosf(rad_rotation);
-        _persoModel.transform.m9 = sinf(rad_rotation);
-        _persoModel.transform.m15 = 1;*/
-
         DrawModelEx(_persoModel, {pos.x * 0.3f - (float)2.4, pos.y * 0.3f - (float)0.5, 0}, {0, 0, 1}, rotation, {scale_value, scale_value, scale_value}, _color.getCStruct());
     }
     else
