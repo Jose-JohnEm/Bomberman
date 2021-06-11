@@ -7,4 +7,11 @@ bomberman
 bomberman.exe
 .DS_Store
 resources
+<<<<<<< HEAD
 Tests/Lib
+=======
+<<<<<<< HEAD
+.backups/*.backup
+=======
+>>>>>>> 56afb68 (Fixed compile problem (80%))
+>>>>>>> 92d2b92554ce69980bb1c2424b8cf133703a54b5
