@@ -37,15 +37,13 @@ void XRay::displayMapChoiceScene(void)
     bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
     bool goNext = mouseIsInBox(createBox(1700, 1000, 1918, 1061)) ? true : false;
 
-    _pSelector.initMaps(_map);
-
     // Draw scene
     beginDrawing();
     displayBack();
     displayGameSettings();
     (goBack ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000);
     (goNext ? _resources.at(NEXT_HOVER) : _resources.at(NEXTSCENE))->drawTexture(1700, 1000);
-    _pSelector.drawMaps(_map);
+    _pSelector.drawMaps();
     displayMouse();
     endDrawing();
 
@@ -58,12 +56,12 @@ void XRay::displayMapChoiceScene(void)
     }
     if (goNext && Raylib::Mouse::isButtonPressed(0)) {
         _mapType = _pSelector.getMapType();
-        _pSelector.endMaps();
         _scene = IN_GAME;
         beginDrawing(false);
         _resources.at(LOADINGFRAMEO)->drawTexture(0, 0);
         endDrawing();
         _sizeMap = 19;
+        _pSelector.endMaps();
     }
     // Click on Next and Prev buttons
     if (Raylib::Mouse::isButtonPressed(0)) {
