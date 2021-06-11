@@ -10,6 +10,7 @@
 #include "Color/Color.hpp"
 #include "Texture/Texture.hpp"
 #include <filesystem>
+#include "PlayerSelector/Player.hpp"
 
 namespace PlayerSelector
 {
@@ -24,7 +25,7 @@ namespace PlayerSelector
              * @param models pair of models with their scalable values
              * @param asciiMap the ascii map to print
              */
-            Map(std::vector<std::pair<Model, float>> models, std::vector<std::string> &asciiMap);
+            Map(std::vector<Player> models, std::vector<std::string> &asciiMap);
 
             /**
              * @brief Destroy the Map object
@@ -79,13 +80,20 @@ namespace PlayerSelector
             std::vector<Texture2D> getTextures() const;
 
         private:
+            void drawHandlingCharacters(const int &id);
+        
             std::vector<std::vector<Texture2D>> _textures;
             std::vector<std::string> _charMap;
-            std::vector<std::pair<Model, float>> _characters;
+            std::vector<Player> _characters;
+
+            Clock _clock;
 
             int _nbTextures;
             int current;
             float _COEF;
+            float _direction;
+            float _x = 0;
+            float _y = 0;
 
     };
 }

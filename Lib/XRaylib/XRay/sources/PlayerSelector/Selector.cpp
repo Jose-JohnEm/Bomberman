@@ -232,24 +232,17 @@ void PlayerSelector::Selector::drawPlayers()
     camera->endMode3D();
 }
 
-void PlayerSelector::Selector::initMaps(std::vector<std::string> &asciiMap)
+void PlayerSelector::Selector::initMaps(std::vector<std::string> asciiMap)
 {
     camera->setPosition({-0.02, -3, 6});
     if (asciiMap.size() != _asciiMap.size()) {
-        std::vector<std::pair<Model, float>> persos;
-
-        for (auto &p : _players)
-            persos.push_back(p.getModel());
-        _map = new Map(persos, asciiMap);
+        _map = new Map(_players, asciiMap);
         _asciiMap = asciiMap;
     }
 }
 
-void PlayerSelector::Selector::drawMaps(std::vector<std::string> &asciiMap)
+void PlayerSelector::Selector::drawMaps()
 {
-    if (_asciiMap != asciiMap)
-        _asciiMap = asciiMap;
-
     camera->beginMode3D();
 
     _map->draw();

@@ -99,14 +99,14 @@ namespace PlayerSelector
              * 
              * @param asciiMap the ascii map
              */
-            void initMaps(std::vector<std::string> &asciiMap);
+            void initMaps(std::vector<std::string> asciiMap);
 
             /**
              * @brief Display the 3D map
              * 
              * @param asciiMap a new ascii map 
              */
-            void drawMaps(std::vector<std::string> &asciiMap);
+            void drawMaps();
 
             /**
              * @brief Get the Ascii Map

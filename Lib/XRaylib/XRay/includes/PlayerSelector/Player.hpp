@@ -12,6 +12,7 @@
 #include "Texture/Texture.hpp"
 #include "Vector3/Vector3.hpp"
 #include "Clock.hpp"
+#include <cmath>
 
 namespace PlayerSelector
 {
@@ -45,6 +46,13 @@ namespace PlayerSelector
              * @param pos position to display the character
              */
             void draw(const float &rotation, const Raylib::Vector3 &pos);
+
+            /**
+             * @brief Display the character on the map selector
+             * 
+             * @param pos position to display the character
+             */
+            void PlayerSelector::Player::drawForMaps(const float &rotation, const Raylib::Vector3 &pos);
             
             /**
              * @brief Get the character's Id 
