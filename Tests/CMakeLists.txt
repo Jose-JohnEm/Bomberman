@@ -45,9 +45,6 @@ ADD_EXECUTABLE(${PROJECT_NAME} ${SRCS} ${HEADERS_FILES})
 # This part downloads raylib and builds it if it's not installed on your system
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} xray) # Specify libraries or flags to use when linking a given target and/or its dependents
 
-# Active in debug environment or hidden in release
-#TARGET_COMPILE_OPTIONS(bomberman PRIVATE -g3)
-
 ######################################################
 #                     GOOGLETEST                     #
 ######################################################
@@ -66,7 +63,6 @@ FetchContent_MakeAvailable(googletest)
 # Specify include directories to use when compiling a given target
 # PRIVATE keyword ensure a complete compilation beetwin dependencies
 TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PRIVATE
-    ${RAYLIB}
     ${ENGINE_HEADERS_PATH}
     ${GAME_HEADERS_PATH}
     ${XRAY_HEADERS_PATH}
@@ -83,4 +79,3 @@ target_link_libraries(
 )
 
 include(GoogleTest)
-# gtest_discover_tests(${PROJECT_NAME})
