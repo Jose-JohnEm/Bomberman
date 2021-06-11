@@ -256,7 +256,6 @@ std::vector<std::string> PlayerSelector::Selector::getMap() const
 void PlayerSelector::Selector::endMaps()
 {
     camera->setPosition({0, 0, 10});
-    delete _map;
 }
 
 void PlayerSelector::Selector::nextMap()

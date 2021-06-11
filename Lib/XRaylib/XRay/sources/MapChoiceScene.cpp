@@ -51,12 +51,12 @@ void XRay::displayMapChoiceScene(void)
     }
     if (goNext && Raylib::Mouse::isButtonPressed(0)) {
         _mapType = _pSelector.getMapType();
-        _pSelector.endMaps();
         _scene = IN_GAME;
         beginDrawing(false);
         _resources.at(LOADINGFRAMEO)->drawTexture(0, 0);
         endDrawing();
         _sizeMap = 19;
+        _pSelector.endMaps();
     }
     // Click on Next and Prev buttons
     if (Raylib::Mouse::isButtonPressed(0)) {
