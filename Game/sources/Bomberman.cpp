@@ -40,8 +40,6 @@ std::vector<std::string> &Game::Bomberman::getMap(size_t size)
 {
     if (_map.size() != size+2) {
         Game::Map newMap(size, size);
-
-        std::cout << " YAOI " << _userNames.size() << std::endl;
         newMap.placePlayers(_userNames.size());
         _map = newMap.getMap();
     }
