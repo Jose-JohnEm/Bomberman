@@ -25,9 +25,14 @@ inline size_t Game::Player::getKills(void) const
     return _kills;
 }
 
-inline std::array<size_t, 5> Game::Player::getPowerUps(void) const
+inline std::array<int, 5> Game::Player::getPowerUps(void) const
 {
     return _powerUps;
+}
+
+inline int Game::Player::getID(void) const
+{
+    return _ID;
 }
 
 inline void Game::Player::setName(const std::string &name)
@@ -50,7 +55,12 @@ inline void Game::Player::setKills(const size_t &kills)
     _kills = kills;
 }
 
-inline void Game::Player::setPowerUps(const std::array<size_t, 5> &powerUps)
+inline void Game::Player::setPowerUps(const std::array<int, 5> &powerUps)
 {
     _powerUps = powerUps;
+}
+
+inline void Game::Player::setID(const int &ID)
+{
+    _ID = ID;
 }

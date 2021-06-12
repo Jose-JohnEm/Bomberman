@@ -167,3 +167,8 @@ inline void Game::Map::setPlayersAreas(const size_t &areaSize)
         }
     }
 }
+
+inline void Game::Map::setMap(const std::vector<std::string> &map)
+{
+    _map = map;
+}
