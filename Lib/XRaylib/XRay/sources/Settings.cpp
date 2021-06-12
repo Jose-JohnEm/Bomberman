@@ -24,9 +24,11 @@ void XRay::displaySettingsScene(void)
     bool onMusicVolumeUp = mouseIsInBox(createBox(1390, 390, 1764, 454)) ? true : false;
     bool onSfxVolumeDown = mouseIsInBox(createBox(1185, 475, 1249, 539)) ? true : false;
     bool onSfxVolumeUp = mouseIsInBox(createBox(1390, 475, 1764, 539)) ? true : false;
+    bool onMods = mouseIsInBox(createBox(1200, 600, 1425, 658)) ? true : false;
 
     // On / off buton for fullscreen button
     std::shared_ptr<Raylib::Texture> fullscreenButton = _resources.at(Raylib::Window::isWindowFullscreen() ? ON : OFF);
+    std::shared_ptr<Raylib::Texture> modsButton = _resources.at(_pSelector.isModsAvailable() ? ON : OFF);
 
     /// Draw scene
     beginDrawing();
@@ -55,6 +57,10 @@ void XRay::displaySettingsScene(void)
     _resources.at(VOLUME_DOWN)->drawTexture(1185, 475, Raylib::Color::White());
     Raylib::Text::drawText(std::to_string((int)sfxVolume), 1290, 490, 48, Raylib::Color::Yellow());
     _resources.at(VOLUME_UP)->drawTexture(1390, 475, Raylib::Color::White());
+
+    // Mods
+    Raylib::Text::drawText("Mods :", 765, 600, 48, Raylib::Color::Yellow());
+    modsButton->drawTexture(1200, 600, Raylib::Color::White());
 
     // Back button
     (mouseIsInBox(createBox(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000, Raylib::Color::White());
@@ -119,6 +125,11 @@ void XRay::displaySettingsScene(void)
         if (sfxVolume > 100)
             sfxVolume = 100;
         changeSfxVolume();
+    }
+    // Mods bouton handling
+    if (onMods && Raylib::Mouse::isButtonPressed(0)) {
+        _sfx.at(SFX_TURN_OFF)->play();
+        _pSelector.toggleModsAvailable();
     }
 }
 

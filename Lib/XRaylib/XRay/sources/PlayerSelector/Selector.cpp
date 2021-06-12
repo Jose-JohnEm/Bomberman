@@ -8,14 +8,14 @@
 #include "PlayerSelector/Selector.hpp"
 
 PlayerSelector::Selector::Selector()
-: camera(nullptr), _rotationAxis(0), _players({}), _nbCharacters(0), _map(nullptr)
+: camera(nullptr), _rotationAxis(0), _players({}), _nbCharacters(0), _map(nullptr), _modAvailable(false)
 {
     POS.push_back(POS_1);
     POS.push_back(POS_2);
     POS.push_back(POS_3);
     POS.push_back(POS_4);
 
-    preloadBasicsCharacters(_charaDictionary);
+    preloadBasicsCharacters();
 
     std::cout  << std::endl << "####### Start Player Selector #######"  << std::endl << std::endl;
 }
@@ -26,9 +26,10 @@ PlayerSelector::Selector::~Selector()
         delete camera;
 }
 
-void PlayerSelector::Selector::preloadBasicsCharacters(std::vector<PlayerSelector::CharDictionary> &res)
+void PlayerSelector::Selector::preloadBasicsCharacters()
 {
-    res.push_back({
+    _charaDictionary.clear();
+    _charaDictionary.push_back({
         "resources/players/3D/Bombermans/white_tpose.glb",
         "resources/players/3D/Bombermans/texture.png",
         0.6,
@@ -41,7 +42,7 @@ void PlayerSelector::Selector::preloadBasicsCharacters(std::vector<PlayerSelecto
         }
     });
 
-    res.push_back({
+    _charaDictionary.push_back({
         "resources/players/3D/Bombermans/white_tpose.glb",
         "resources/players/3D/Bombermans/texture.png",
             0.6,
@@ -54,7 +55,7 @@ void PlayerSelector::Selector::preloadBasicsCharacters(std::vector<PlayerSelecto
             }
         });
 
-    res.push_back({
+    _charaDictionary.push_back({
             "resources/players/3D/Bombermans/white_tpose.glb",
             "resources/players/3D/Bombermans/texture.png",
             0.6,
@@ -67,7 +68,7 @@ void PlayerSelector::Selector::preloadBasicsCharacters(std::vector<PlayerSelecto
             }
         });
 
-    res.push_back({
+    _charaDictionary.push_back({
             "resources/players/3D/Bombermans/white_tpose.glb",
             "resources/players/3D/Bombermans/texture.png",
             0.6,
@@ -80,7 +81,7 @@ void PlayerSelector::Selector::preloadBasicsCharacters(std::vector<PlayerSelecto
             }
         });
 
-    _nbCharacters = _charaDictionary.size();
+    _nbCharacters = 4;
 }
 
 void PlayerSelector::Selector::findModsCharacters()
@@ -91,7 +92,7 @@ void PlayerSelector::Selector::findModsCharacters()
     float scalable;
 
     _charaDictionary.clear();
-    preloadBasicsCharacters(_charaDictionary);
+    preloadBasicsCharacters();
 
     for (const auto & file : std::filesystem::directory_iterator("resources/players/3D"))
     {
@@ -134,6 +135,21 @@ void PlayerSelector::Selector::findModsCharacters()
             throw "ERROR : Wrong directory (Ressources - Selector)";
     }
     _nbCharacters = _charaDictionary.size();
+}
+
+void PlayerSelector::Selector::toggleModsAvailable()
+{
+    _modAvailable = (_modAvailable) ? false : true;
+
+    if (_modAvailable)
+        findModsCharacters();
+    else
+        preloadBasicsCharacters();
+}
+
+bool PlayerSelector::Selector::isModsAvailable()
+{
+    return _modAvailable;
 }
 
 PlayerSelector::Player &PlayerSelector::Selector::operator[](const int &index)
@@ -279,7 +295,7 @@ size_t PlayerSelector::Selector::getMapType() const
 
 void PlayerSelector::Selector::next(const int &id)
 {
-    int next_id = (_players[id].getId() + 1 == _nbCharacters) ? 0 : _players[id].getId() + 1;
+    int next_id = (_players[id].getId() + 1 >= _nbCharacters) ? 0 : _players[id].getId() + 1;
 
     _players[id] = Player(_charaDictionary[next_id].obj, _charaDictionary[next_id].texture, _charaDictionary[next_id].scalable, next_id, _charaDictionary[next_id].name, _charaDictionary[next_id].color, _charaDictionary[next_id].animations);
 }
