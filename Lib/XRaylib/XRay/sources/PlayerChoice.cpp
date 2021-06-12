@@ -21,6 +21,17 @@ void XRay::detectPlayerInput(void)
     for (size_t k = 0; k < t; k++)
         _controlsTab[t] = (_controlsTab[t] == _controlsTab[k]) ? tmp : _controlsTab[t];
     _playerTab[t] = (tmp != _controlsTab[t]) ? true : _playerTab[t];
+    if (tmp != _controlsTab[t]) {
+        _playersInput.pop_back();
+        if (_controlsTab[t] == PLAYSTATIONYELLOW)
+            _playersInput.push_back(std::shared_ptr<IPlayerInput>(new GamepadPlayerInput(0)));
+        if (_controlsTab[t] == XBOXYELLOW)
+            _playersInput.push_back(std::shared_ptr<IPlayerInput>(new GamepadPlayerInput(1)));
+        if (_controlsTab[t] == KEYBOARDYELLOW)
+            _playersInput.push_back(std::shared_ptr<IPlayerInput>(new KeyboardPlayerInput()));
+        if (_controlsTab[t] == MOUSEYELLOW)
+            _playersInput.push_back(std::shared_ptr<IPlayerInput>(new MousePlayerInput()));
+    }
 }
 
 void XRay::removePlayer(const std::vector<std::pair<int, int>> &removeButtons)
@@ -28,8 +39,10 @@ void XRay::removePlayer(const std::vector<std::pair<int, int>> &removeButtons)
     for (size_t u = 0; u < removeButtons.size(); u++) {
         if (mouseIsInBox(createBox(removeButtons[u].first, removeButtons[u].second, removeButtons[u].first+64, removeButtons[u].second+63)) && Raylib::Mouse::isButtonPressed(0)) {
             _allIntegers[2] -= 1;
-            if (_playerTab[u+1])
+            if (_playerTab[u+1]) {
                 _controlsTab.erase(_controlsTab.begin() + u + 1);
+                _playersInput.erase(_playersInput.begin() + u + 1);
+            }
             _playerTab.erase(_playerTab.begin() + u + 1);
             _pSelector.unload(u + 1);
         }
@@ -43,6 +56,7 @@ void XRay::addPlayer(void)
         _allIntegers[2] += 1;
         _playerTab.push_back(false);
         _pSelector.load();
+        _playersInput.push_back(std::shared_ptr<IPlayerInput>(new MousePlayerInput()));
     }
 }
 
@@ -51,23 +65,14 @@ void XRay::manageNextOrPrev(void)
     auto glambda = [](size_t a) { return a == 40 ? 36 : 40; };
 
     _nextOrNot = 0;
-    for (size_t u = 0; u < _allIntegers[2]; u++) {
-        if (_controlsTab[u] == Resources::PLAYSTATIONYELLOW)
-            _card[u] = Raylib::Gamepad::isGamepadButtonPressed(0, 7) ? glambda(_card[u]) : _card[u];
-        if (_controlsTab[u] == Resources::XBOXYELLOW)
-            _card[u] = Raylib::Gamepad::isGamepadButtonPressed(1, 7) ? glambda(_card[u]) : _card[u];
-        if (_controlsTab[u] == Resources::MOUSEYELLOW)
-            _card[u] = Raylib::Mouse::isButtonPressed(1) ? glambda(_card[u]) : _card[u];
-        if (_controlsTab[u] == Resources::KEYBOARDYELLOW)
-            _card[u] = (Raylib::Keyboard::getKeyPressed() == 32) ? glambda(_card[u]) : _card[u];
-
-        if (Raylib::Mouse::isButtonPressed(0))
-        {
-            if (mouseIsInBox(createBox(100 + 450 * u, 580, 180 + 450 * u, 630)))
-                _pSelector.prev(u);
-            if (mouseIsInBox(createBox(400 + 450 * u, 580, 480 + 450 * u, 630)))
-                _pSelector.next(u);
-        }
+    for (size_t u = 0; u < _allIntegers[2] && u < _playersInput.size(); u++) {
+        _card[u] = (_playersInput[u]->shouldSimulateAClick()) ? glambda(_card[u]) : _card[u];
+        if (!_playerTab[u])
+            _card[u] = 40;
+        if (_playersInput[u]->shouldChangeToPrev() && _playerTab[u] && _card[u] != 40)
+            _pSelector.prev(u);
+        if (_playersInput[u]->shouldChangeToNext() && _playerTab[u] && _card[u] != 40)
+            _pSelector.next(u);
         _nextOrNot += _card[u];
     }
 }
@@ -135,11 +140,11 @@ void XRay::displayPlayerChoiceScene(void)
     displayMouse();
     endDrawing();
 
-    // Check and Manage Click on buttons
-    addPlayer();
-    removePlayer(removeButtons);
-
     manageNextOrPrev();
+
+    // Check and Manage Click on buttons
+    removePlayer(removeButtons);
+    addPlayer();
 
     // Go to another scene according to mouse position
     if (goBack && Raylib::Mouse::isButtonPressed(0)) {

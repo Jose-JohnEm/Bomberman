@@ -85,12 +85,20 @@ namespace Game
             void parseBackup(std::ifstream &backupFile) const;
 
             /**
-             * @brief Get the Input Arguments (line split by space)
+             * @brief Get the Input Arguments (line split by separator)
              *
              * @param line A const reference to a string (string get by getline function)
+             * @param separator A const reference to a char (Use to split a string)
              * @return std::vector<std::string> (a vector composed of words's group)
              */
-            std::vector<std::string> getInputArguments(const std::string &line) const;
+            std::vector<std::string> getInputArguments(const std::string &line, const char &separator) const;
+
+            /**
+             * @brief Parse settings informations
+             *
+             * @param settings A vector of strings containing settings
+             */
+            void parseSettings(const std::vector<std::string> &settings) const;
     };
 
     #include "Save.inl"
