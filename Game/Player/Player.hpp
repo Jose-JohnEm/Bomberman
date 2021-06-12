@@ -31,6 +31,17 @@ namespace Game
             Player();
 
             /**
+            * @brief Construct the Player object (Copy Constructor)
+            *
+            * @param name A const reference to a std::string
+            * @param position A const reference to a std::pair of float
+            * @param brokenWalls A const reference to a size_t
+            * @param kills A const reference to a size_t
+            * @param powerUps A const reference to a std::array of 5 size_t
+            */
+            Player(const std::string &name, const std::pair<float, float> &positions, const size_t &kills, const size_t &brokenWalls, const std::array<size_t, 5> &powerUps);
+
+            /**
             * @brief Destroy the Player object
             */
             ~Player();
