@@ -143,8 +143,14 @@ void PlayerSelector::Selector::toggleModsAvailable()
 
     if (_modAvailable)
         findModsCharacters();
-    else
+    else {
+        for (PlayerSelector::Player &player : _players)
+        {
+            _players.pop_back();
+        }
         preloadBasicsCharacters();
+        load();
+    }
 }
 
 bool PlayerSelector::Selector::isModsAvailable()
