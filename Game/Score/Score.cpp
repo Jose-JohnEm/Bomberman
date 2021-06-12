@@ -10,8 +10,9 @@
 Game::Score::Score(const std::array<std::size_t, 8> &settings, Game::Player const &player)
     : _settings(settings), _player(player)
 {
+    std::array<size_t, 5> powerUps = _player.getPowerUps();
     // Calcul the total of powerUps
-    size_t powerUpsTotal = std::accumulate(_player.getPowerUps().begin(), _player.getPowerUps().end(), 0);
+    size_t powerUpsTotal = std::accumulate(powerUps.begin(), powerUps.end(), 0);
 
     // Calcul the score
     _score = ((_player.getKills() * 200) + (powerUpsTotal * 50) + (_player.getBrokenWalls() * 10)) * getCoefficient();
