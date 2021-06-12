@@ -43,10 +43,10 @@ void Game::Save::parseBackup(std::ifstream &backupFile) const
 
     while (getline(backupFile, line))
     {
-        std::vector<std::string> inputArguments = getInputArguments(line);
+        std::vector<std::string> inputArguments = getInputArguments(line, ' ');
         if (inputArguments[0].compare("settings") == 0)
         {
-            std::cout << "Setting" << std::endl;
+            parseSettings(inputArguments);
         }
         else if (inputArguments[0].compare("player") == 0)
         {
@@ -63,13 +63,53 @@ void Game::Save::parseBackup(std::ifstream &backupFile) const
     }
 }
 
-std::vector<std::string> Game::Save::getInputArguments(const std::string &line) const
+void Game::Save::parseSettings(const std::vector<std::string> &settings) const
+{
+    if (settings[1].compare("timestamp") == 0)
+    {
+        std::cout << settings[2] << std::endl;
+    }
+    else if (settings[1].compare("set_nbr") == 0)
+    {
+        std::cout << settings[2] << std::endl;
+    }
+    else if (settings[1].compare("set_id") == 0)
+    {
+        std::cout << settings[2] << std::endl;
+    }
+    else if (settings[1].compare("time_game") == 0)
+    {
+        std::cout << settings[2] << std::endl;
+    }
+    else if (settings[1].compare("time_remaining") == 0)
+    {
+        std::cout << settings[2] << std::endl;
+    }
+    else if (settings[1].compare("ai_nbr") == 0)
+    {
+        std::cout << settings[2] << std::endl;
+    }
+    else if (settings[1].compare("ai_lvl") == 0)
+    {
+        std::cout << settings[2] << std::endl;
+    }
+    else if (settings[1].compare("player_nbr") == 0)
+    {
+        std::cout << settings[2] << std::endl;
+    }
+    else
+    {
+        throw std::invalid_argument("ERROR: Invalid backup setting");
+    }
+}
+
+std::vector<std::string> Game::Save::getInputArguments(const std::string &line, const char &separator) const
 {
     std::stringstream ss(line);
     std::string token;
     std::vector<std::string> inputArguments;
 
-    while (std::getline(ss, token, ' ')) {
+    while (std::getline(ss, token, separator)) {
         inputArguments.push_back(token);
     }
     return inputArguments;
