@@ -37,6 +37,25 @@ Game::Save::~Save()
 {
 }
 
+// map dimensions 15,15
+// EEEEEEEEEEEEEEEEE
+// E1**MMMM*MMMM**4E
+// E*W*W*WMW*W*W*W*E
+// E**M*MMMMM*M*M**E
+// EMWMW*W*WMWMWMWME
+// EM*M*MMM*MMMMMMME
+// EMWMW*WMW*W*W*WME
+// EMMM*M*MMMMM*M*ME
+// E*WMWMW*W*WMWMWME
+// EM*MMM*MMMMMMMMME
+// EMW*WMW*W*W*W*W*E
+// EM*M*M*M*M*MMMMME
+// EMWMWMWMWMW*W*WME
+// E*MM*M*M*MMMMM**E
+// E*WMWMWMW*W*WMW*E
+// E2**MM*MMMMM***3E
+// EEEEEEEEEEEEEEEEE
+
 void Game::Save::parseBackup(std::ifstream &backupFile)
 {
     std::string line;
@@ -54,7 +73,9 @@ void Game::Save::parseBackup(std::ifstream &backupFile)
         }
         else if (inputArguments[0].compare("map") == 0)
         {
-            std::cout << "Map dimensions" << std::endl;
+            std::vector<std::string> dimensions = getInputArguments(inputArguments[2], ',');
+            _map.setWidth(std::stol(dimensions[0]));
+            _map.setHeight(std::stol(dimensions[1]));
         }
         else
         {
@@ -141,12 +162,6 @@ void Game::Save::parsePlayers(const std::vector<std::string> &playersInfos)
             throw std::invalid_argument("ERROR: Invalid player ID");
     }
 }
-
-// player 1 name Name
-// player 1 positions 30,40
-// player 1 powerups skate:1,bomb:0,pass:1,fire:1,life:0
-// player 1 broken_walls 200
-// player 1 kills 2
 
 void Game::Save::parsePlayer(Game::Player &player, const std::vector<std::string> &playerInfos) const
 {
