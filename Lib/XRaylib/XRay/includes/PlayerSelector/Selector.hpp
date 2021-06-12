@@ -160,9 +160,23 @@ namespace PlayerSelector
             const PlayerSelector::Player &operator[](const int &index) const;
 
         private:
-            
+
             /**
-             * @brief update Characters z Rotation axis 
+             * @brief Preload the 4 first characters
+             * 
+             * @param dictionary the players available dictionary
+             */
+            void preloadBasicsCharacters(std::vector<PlayerSelector::CharDictionary> &dictionary);
+
+            /**
+             * @brief Find if some DLC characters are available and add them to the dictionary
+             * 
+             * @param dictionary the players available dictionary
+             */
+            void findModsCharacters();
+
+            /**
+             * @brief update Characters z Rotation axis
              * 
              */
             void updateRotationAxis();
