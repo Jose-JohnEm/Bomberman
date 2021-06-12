@@ -59,6 +59,7 @@ Game::Save::~Save()
 void Game::Save::parseBackup(std::ifstream &backupFile)
 {
     std::string line;
+    std::vector<std::string> map;
 
     while (getline(backupFile, line))
     {
@@ -79,9 +80,12 @@ void Game::Save::parseBackup(std::ifstream &backupFile)
         }
         else
         {
-            std::cout << "Map char" << std::endl;
+            map.push_back(line);
         }
     }
+
+    // Set the map
+    _map.setMap(map);
 }
 
 void Game::Save::parseSettings(const std::vector<std::string> &settings)
