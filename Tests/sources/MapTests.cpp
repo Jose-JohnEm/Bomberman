@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2021
+** Indie
+** File description:
+** MapTests
+*/
+
 #include <gtest/gtest.h>
 #include "../Game/Map/Map.hpp"
 
