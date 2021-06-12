@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2021
 ** Indie
 ** File description:
-** MapTests
+** ClockTests
 */
 
 #include <gtest/gtest.h>
