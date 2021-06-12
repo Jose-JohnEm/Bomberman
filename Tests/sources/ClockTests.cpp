@@ -35,4 +35,3 @@ TEST(ClockTests, timeisntElapsedwithreset)
 
     EXPECT_EQ(false, clock.doesTimeElapsed(100, true));
 }
-// bool doesTimeElapsed(const float &time, const bool &reset = true);
