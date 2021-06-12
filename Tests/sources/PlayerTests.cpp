@@ -16,7 +16,6 @@ TEST(PlayerTests, name)
     EXPECT_EQ(player.getName(), "PlayerName");
 }
 
-
 TEST(PlayerTests, brokenWall)
 {
     Game::Player player;
