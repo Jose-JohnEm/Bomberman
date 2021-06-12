@@ -23,7 +23,7 @@ namespace Raylib
          * @param z z coordinate
          * @param w w coordinate
          */
-        Vector2(float x, float y);
+        Vector2(float x = 0, float y = 0);
 
         /**
          * @brief Construct a new Vector 4 object
