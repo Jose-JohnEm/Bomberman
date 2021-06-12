@@ -102,7 +102,27 @@ typedef enum {
     SETTING_BG,
     VOLUME_UP,
     VOLUME_DOWN,
-    LOADINGFRAMEO
+    LOADINGFRAMEO,
+    S7X7S,
+    S9X9S,
+    S11X11S,
+    S13X13S,
+    S15X15S,
+    S17X17S,
+    S19X19S,
+    MIN1MIN,
+    MIN2MIN,
+    MIN3MIN,
+    MIN4MIN,
+    MIN5MIN,
+    SET1SET,
+    SET2SET,
+    SET3SET,
+    SET4SET,
+    SET5SET,
+    EASY,
+    MEDIUM,
+    DIFFICULT
 } Resources;
 
 typedef enum {

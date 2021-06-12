@@ -176,6 +176,13 @@ class XRay : public IGraphical {
         std::pair<size_t, size_t> getMapSizeAndType() override;
 
         /**
+         * @brief Get Game Settings
+
+         * @return A vector of size_t
+         */
+        std::vector<size_t> getGameSettings() override;
+
+        /**
          * @brief Return true if the mouse is in the region and false otherwise
          *
          * @param box Vector contains Box positions
@@ -421,10 +428,19 @@ class XRay : public IGraphical {
          */
         void setRestartFunc(std::function<void ()>) override;
 
+        /**
+         * @brief Check Click on MapChoiceScene
+         */
+        void checkClickOnMapChoiceScene();
+
     private:
         Raylib::Window _window;                     // Game window
 
+        std::vector<size_t> _gameSettings;          // Game Settings
+        size_t _aiLevel = 1;                        // 1 = EASY; 2 = MEDIUM; 3 = DIFFICULT
         size_t _mapType = 0;                        // Type of Map
+        size_t _duration = 1;                       // Duration in min
+        size_t _sets = 1;                        // Sets of Map
         size_t _sizeMap = 5;                            // Size of Map
         std::vector<std::string> _map;              // Map
         float masterVolume;                         // Master volume

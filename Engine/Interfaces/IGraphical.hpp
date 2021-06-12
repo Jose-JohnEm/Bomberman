@@ -177,6 +177,13 @@ class IGraphical {
          * @param restartFunc A pointer to Restart function in the core
          */
         virtual void setRestartFunc(std::function<void ()>) = 0;
+
+        /**
+         * @brief Get Game Settings
+
+         * @return A vector of size_t
+         */
+        virtual std::vector<size_t> getGameSettings() = 0;
 };
 
 #endif /* !IGRAPHICAL_HPP_ */
