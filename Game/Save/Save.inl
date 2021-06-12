@@ -61,7 +61,7 @@ inline std::array<std::size_t, 8> Game::Save::getSettings(void) const
     return _settings;
 }
 
-inline std::vector<Game::Player> Game::Save::getPlayers(void) const
+inline std::array<Game::Player, 4> Game::Save::getPlayers(void) const
 {
     return _players;
 }

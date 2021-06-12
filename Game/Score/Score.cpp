@@ -10,7 +10,7 @@
 Game::Score::Score(const std::array<std::size_t, 8> &settings, Game::Player const &player)
     : _settings(settings), _player(player)
 {
-    std::array<size_t, 5> powerUps = _player.getPowerUps();
+    std::array<int, 5> powerUps = _player.getPowerUps();
     // Calcul the total of powerUps
     size_t powerUpsTotal = std::accumulate(powerUps.begin(), powerUps.end(), 0);
 

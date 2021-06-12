@@ -13,6 +13,7 @@
 #include <ctime>
 #include <sstream>
 #include <algorithm>
+#include <utility>
 #include "../includes/Settings.hpp"
 #include "../Player/Player.hpp"
 #include "../Map/Map.hpp"
@@ -24,11 +25,17 @@ namespace Game
         public:
             /**
             * @brief Construct the Save object to create a backup file (Copy Constructor)
+            *
+            * @param settings Settings of the Game
+            * @param players Players of the Game
+            * @param map Map of the Game
             */
-            Save(const std::array<std::size_t, 8> &settings, const std::vector<Game::Player> &player, const Game::Map &map);
+            Save(const std::array<std::size_t, 8> &settings, const std::array<Game::Player, 4> &players, const Game::Map &map);
 
             /**
             * @brief Construct the Save object to read a backup file and load its content into an IGame object (Copy Constructor)
+            *
+            * @param fileName A const reference to string (the backup file)
             */
             Save(const std::string &fileName);
 
@@ -47,9 +54,9 @@ namespace Game
             /**
              * @brief Get the Players from the backup file
              *
-             * @return std::vector<Game::Player>
+             * @return std::array<Game::Player, 4>
              */
-            std::vector<Game::Player> getPlayers(void) const;
+            std::array<Game::Player, 4> getPlayers(void) const;
 
             /**
              * @brief Get the Map from the backup file
@@ -60,7 +67,7 @@ namespace Game
 
         private:
             std::array<std::size_t, 8> _settings; // An array of 7 size_t
-            std::vector<Game::Player> _players; // A vector of players
+            std::array<Game::Player, 4> _players; // An array of 4 players
             Game::Map _map; // The map
 
             /**
