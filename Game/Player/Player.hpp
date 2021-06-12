@@ -82,6 +82,13 @@ namespace Game
             std::array<size_t, 5> getPowerUps(void) const;
 
             /**
+             * @brief Get the player ID
+             *
+             * @return An int which represents the ID of the player
+             */
+            int getID(void) const;
+
+            /**
              * @brief Set the name of the player
              *
              * @param name A const reference to a string
@@ -116,12 +123,18 @@ namespace Game
              */
             void setPowerUps(const std::array<size_t, 5> &powerUps);
 
+            /**
+             * @brief Set the ID of the player
+             */
+            void setID(const int &ID);
+
         private:
             std::string _name; // Name of the player entitiy
             std::pair<float, float> _positions; // A pair of float for player positions (x, y)
             size_t _brokenWalls; // Amount of broken walls
             size_t _kills; // Amount of kills
             std::array<size_t, 5> _powerUps; // Amount of powerUps
+            int _ID; // ID of the player
     };
 
     #include "Player.inl"

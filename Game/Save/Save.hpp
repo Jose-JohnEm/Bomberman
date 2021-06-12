@@ -37,6 +37,27 @@ namespace Game
             */
             ~Save();
 
+            /**
+             * @brief Get the Settings arrray from the backup file
+             *
+             * @return An std::array<std::size_t, 8> which represents the Game settings
+             */
+            std::array<std::size_t, 8> getSettings(void) const;
+
+            /**
+             * @brief Get the Players from the backup file
+             *
+             * @return std::vector<Game::Player>
+             */
+            std::vector<Game::Player> getPlayers(void) const;
+
+            /**
+             * @brief Get the Map from the backup file
+             *
+             * @return Game::Map object
+             */
+            Game::Map getMap(void) const;
+
         private:
             std::array<std::size_t, 8> _settings; // An array of 7 size_t
             std::vector<Game::Player> _players; // A vector of players
@@ -82,7 +103,7 @@ namespace Game
              *
              * @param backupFile An ifstream corresponding to a backup file
              */
-            void parseBackup(std::ifstream &backupFile) const;
+            void parseBackup(std::ifstream &backupFile);
 
             /**
              * @brief Get the Input Arguments (line split by separator)
@@ -98,7 +119,22 @@ namespace Game
              *
              * @param settings A vector of strings containing settings
              */
-            void parseSettings(const std::vector<std::string> &settings) const;
+            void parseSettings(const std::vector<std::string> &settings);
+
+            /**
+             * @brief Parse players informations
+             *
+             * @param playersInfos A vector of strings containing players infos
+             */
+            void parsePlayers(const std::vector<std::string> &playersInfos);
+
+            /**
+             * @brief Parse player informations
+             *
+             * @param player A Game::Player object
+             * @param playersInfos A vector of strings containing player infos
+             */
+            void parsePlayer(Game::Player &player, const std::vector<std::string> &playerInfos) const;
     };
 
     #include "Save.inl"
