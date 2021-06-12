@@ -107,7 +107,8 @@ typedef enum {
     TEXT_SFX,
     TEXT_FULLSCREEN,
     TEXT_MUSIC,
-    TEXT_GENERAL
+    TEXT_GENERAL,
+    TEXT_MODS
 } Resources;
 
 typedef enum {
