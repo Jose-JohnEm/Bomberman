@@ -17,13 +17,13 @@ void XRay::displaySettingsScene(void)
 
     // Check if mouse is on button spot
     bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
-    bool onFullscreen = mouseIsInBox(createBox(1200, 210, 1425, 268)) ? true : false;
-    bool onMasterVolumeDown = mouseIsInBox(createBox(1185, 300, 1249, 364)) ? true : false;
-    bool onMasterVolumeUp = mouseIsInBox(createBox(1390, 300, 1454, 364)) ? true : false;
-    bool onMusicVolumeDown = mouseIsInBox(createBox(1185, 390, 1249, 454)) ? true : false;
-    bool onMusicVolumeUp = mouseIsInBox(createBox(1390, 390, 1764, 454)) ? true : false;
-    bool onSfxVolumeDown = mouseIsInBox(createBox(1185, 475, 1249, 539)) ? true : false;
-    bool onSfxVolumeUp = mouseIsInBox(createBox(1390, 475, 1764, 539)) ? true : false;
+    bool onFullscreen = mouseIsInBox(createBox(1150, 400, 1510, 509)) ? true : false;
+    bool onMasterVolumeDown = mouseIsInBox(createBox(560, 395, 624, 459)) ? true : false;
+    bool onMasterVolumeUp = mouseIsInBox(createBox(765, 395, 829, 459)) ? true : false;
+    bool onMusicVolumeDown = mouseIsInBox(createBox(560, 480, 624, 544)) ? true : false;
+    bool onMusicVolumeUp = mouseIsInBox(createBox(765, 480, 829, 544)) ? true : false;
+    bool onSfxVolumeDown = mouseIsInBox(createBox(560, 565, 624, 629)) ? true : false;
+    bool onSfxVolumeUp = mouseIsInBox(createBox(765, 565, 829, 629)) ? true : false;
     bool onMods = mouseIsInBox(createBox(1200, 600, 1425, 658)) ? true : false;
 
     // On / off buton for fullscreen button
@@ -37,26 +37,29 @@ void XRay::displaySettingsScene(void)
     _resources.at(SETTING_BG)->drawTexture(0, 0, Raylib::Color::White());
 
     // Fullscreen
-    Raylib::Text::drawText("Fullscreen :", 765, 210, 48, Raylib::Color::Yellow());
-    fullscreenButton->drawTexture(1200, 210, Raylib::Color::White());
+    _resources.at(TEXT_FULLSCREEN)->drawTexture(1100, 310, Raylib::Color::White());
+    fullscreenButton->drawTexture(1150, 400, Raylib::Color::White());
+
+    // VOLUME
+    _resources.at(TEXT_VOLUME)->drawTexture(440, 310, Raylib::Color::White());
+    _resources.at(TEXT_GENERAL)->drawTexture(200, 400, Raylib::Color::White());
+    _resources.at(TEXT_MUSIC)->drawTexture(285, 490, Raylib::Color::White());
+    _resources.at(TEXT_SFX)->drawTexture(375, 575, Raylib::Color::White());
 
     // Master Volume
-    Raylib::Text::drawText("Global volume :", 765, 310, 48, Raylib::Color::Yellow());
-    _resources.at(VOLUME_DOWN)->drawTexture(1185, 300, Raylib::Color::White());
-    Raylib::Text::drawText(std::to_string((int)masterVolume), 1290, 310, 48, Raylib::Color::Yellow());
-    _resources.at(VOLUME_UP)->drawTexture(1390, 300, Raylib::Color::White());
+    _resources.at(VOLUME_DOWN)->drawTexture(560, 395, Raylib::Color::White());
+    Raylib::Text::drawText(std::to_string((int)masterVolume), 670, 405, 48, Raylib::Color::Black());
+    _resources.at(VOLUME_UP)->drawTexture(765, 395, Raylib::Color::White());
 
     // Music volume
-    Raylib::Text::drawText("Music volume :", 765, 400, 48, Raylib::Color::Yellow());
-    _resources.at(VOLUME_DOWN)->drawTexture(1185, 390, Raylib::Color::White());
-    Raylib::Text::drawText(std::to_string((int)musicVolume), 1290, 400, 48, Raylib::Color::Yellow());
-    _resources.at(VOLUME_UP)->drawTexture(1390, 390, Raylib::Color::White());
+    _resources.at(VOLUME_DOWN)->drawTexture(560, 480, Raylib::Color::White());
+    Raylib::Text::drawText(std::to_string((int)musicVolume), 670, 490, 48, Raylib::Color::Black());
+    _resources.at(VOLUME_UP)->drawTexture(765, 480, Raylib::Color::White());
 
     // Sfx volume
-    Raylib::Text::drawText("Sfx volume :", 765, 490, 48, Raylib::Color::Yellow());
-    _resources.at(VOLUME_DOWN)->drawTexture(1185, 475, Raylib::Color::White());
-    Raylib::Text::drawText(std::to_string((int)sfxVolume), 1290, 490, 48, Raylib::Color::Yellow());
-    _resources.at(VOLUME_UP)->drawTexture(1390, 475, Raylib::Color::White());
+    _resources.at(VOLUME_DOWN)->drawTexture(560, 565, Raylib::Color::White());
+    Raylib::Text::drawText(std::to_string((int)sfxVolume), 670, 575, 48, Raylib::Color::Black());
+    _resources.at(VOLUME_UP)->drawTexture(765, 565, Raylib::Color::White());
 
     // Mods
     Raylib::Text::drawText("Mods :", 765, 600, 48, Raylib::Color::Yellow());

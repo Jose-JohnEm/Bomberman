@@ -102,7 +102,12 @@ typedef enum {
     SETTING_BG,
     VOLUME_UP,
     VOLUME_DOWN,
-    LOADINGFRAMEO
+    LOADINGFRAMEO,
+    TEXT_VOLUME,
+    TEXT_SFX,
+    TEXT_FULLSCREEN,
+    TEXT_MUSIC,
+    TEXT_GENERAL
 } Resources;
 
 typedef enum {
