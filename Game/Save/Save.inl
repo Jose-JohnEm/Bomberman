@@ -55,3 +55,18 @@ inline std::string Game::Save::createBackupName(void) const
     std::replace(fileName.begin(), fileName.end(), ' ', '-');
     return fileName;
 }
+
+inline std::array<std::size_t, 8> Game::Save::getSettings(void) const
+{
+    return _settings;
+}
+
+inline std::array<Game::Player, 4> Game::Save::getPlayers(void) const
+{
+    return _players;
+}
+
+inline Game::Map Game::Save::getMap(void) const
+{
+    return _map;
+}

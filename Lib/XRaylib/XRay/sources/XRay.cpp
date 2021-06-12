@@ -182,6 +182,12 @@ void XRay::setResources(void)
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::EASY, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/easy.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::MEDIUM, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/medium.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::DIFFICULT, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/hard.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::TEXT_FULLSCREEN, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/textFullscreen.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::TEXT_GENERAL, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/textGeneral.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::TEXT_MUSIC, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/textMusic.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::TEXT_SFX, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/textSfx.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::TEXT_VOLUME, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/textVolume.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::TEXT_MODS, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/textMods.png"))));
 }
 
 void XRay::setAudioResources(void)

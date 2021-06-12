@@ -50,6 +50,20 @@ namespace PlayerSelector
             ~Selector();
 
             /**
+             * @brief Toggle Mods Available
+             * 
+             */
+            void toggleModsAvailable();
+
+            /**
+             * @brief Check if mods are available
+             * 
+             * @return true if mods are available
+             * @return false otherwise
+             */
+            bool isModsAvailable();
+
+            /**
              * @brief Load for the first time a character
              * 
              */
@@ -160,9 +174,23 @@ namespace PlayerSelector
             const PlayerSelector::Player &operator[](const int &index) const;
 
         private:
-            
+
             /**
-             * @brief update Characters z Rotation axis 
+             * @brief Preload the 4 first characters
+             * 
+             * @param dictionary the players available dictionary
+             */
+            void preloadBasicsCharacters();
+
+            /**
+             * @brief Find if some DLC characters are available and add them to the dictionary
+             * 
+             * @param dictionary the players available dictionary
+             */
+            void findModsCharacters();
+
+            /**
+             * @brief update Characters z Rotation axis
              * 
              */
             void updateRotationAxis();
@@ -173,6 +201,8 @@ namespace PlayerSelector
             std::vector<CharDictionary> _charaDictionary;
             Map *_map;
             std::vector<std::string> _asciiMap = {""};
+
+            bool _modAvailable;
 
             float _rotationAxis;
     };
