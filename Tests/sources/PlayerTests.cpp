@@ -25,6 +25,14 @@ TEST(PlayerTests, copy_const)
     EXPECT_EQ(powerups[P_LIFE], 0);
 }
 
+TEST(PlayerTests, id)
+{
+    Game::Player player;
+
+    player.setID(1);
+    EXPECT_EQ(player.getID(), 1);
+}
+
 TEST(PlayerTests, name)
 {
     Game::Player player;
