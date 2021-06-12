@@ -69,9 +69,9 @@ void XRay::manageNextOrPrev(void)
         _card[u] = (_playersInput[u]->shouldSimulateAClick()) ? glambda(_card[u]) : _card[u];
         if (!_playerTab[u])
             _card[u] = 40;
-        if (_playersInput[u]->shouldChangeToPrev() && _playerTab[u])
+        if (_playersInput[u]->shouldChangeToPrev() && _playerTab[u] && _card[u] != 40)
             _pSelector.prev(u);
-        if (_playersInput[u]->shouldChangeToNext() && _playerTab[u])
+        if (_playersInput[u]->shouldChangeToNext() && _playerTab[u] && _card[u] != 40)
             _pSelector.next(u);
         _nextOrNot += _card[u];
     }
