@@ -80,6 +80,7 @@ void XRay::displayMapChoiceScene(void)
         _resources.at(LOADINGFRAMEO)->drawTexture(0, 0);
         endDrawing();
         _pSelector.endMaps();
+        _gameSettings[3] *= (_gameSettings[3] < 6) ? 60 : 1;
     }
     if (Raylib::Mouse::isButtonPressed(0)) {
         if (mouseIsInBox(createBox(10, 400, 160, 550)))
