@@ -45,7 +45,7 @@ void Game::Floor::drawEntity()
     DrawCubeTexture(_textures[0].getCStruct(), _positions.getCStruct(), 1.0f, 1.0f, 1.0f, WHITE);
 }
 
-std::string Game::SolidWall::getType()
+std::string Game::SolidWall::getType() const
 {
     return ("Wall");
 }
@@ -59,7 +59,7 @@ Game::SolidWall::SolidWall(Raylib::Vector3 positions, size_t mapType)
     _textures.push_back(*(new Raylib::Texture("resources/map/Iron/wall.png")));
 }
 
-std::string Game::BreakableWall::getType()
+std::string Game::BreakableWall::getType() const
 {
     return ("Wall");
 }
@@ -73,7 +73,7 @@ Game::BreakableWall::BreakableWall(Raylib::Vector3 positions, size_t mapType)
     _textures.push_back(*(new Raylib::Texture("resources/map/Iron/box.png")));
 }
 
-std::string Game::Floor::getType()
+std::string Game::Floor::getType() const
 {
     return ("Floor");
 }
@@ -84,3 +84,5 @@ Game::Floor::Floor(Raylib::Vector3 positions, size_t mapType)
     _mapType = mapType;
     _textures.push_back(*(new Raylib::Texture("resources/map/Wood/floor.png")));
 }
+
+//TODO: inline!

@@ -17,6 +17,7 @@
 #include "../includes/Settings.hpp"
 #include "../Player/Player.hpp"
 #include "../Map/Map.hpp"
+#include "../Lib/XRaylib/Raylib/Vector3/Vector3.hpp"
 
 namespace Game
 {
@@ -30,7 +31,7 @@ namespace Game
             * @param players Players of the Game
             * @param map Map of the Game
             */
-            Save(const std::array<std::size_t, 8> &settings, const std::array<Game::Player, 4> &players, const Game::Map &map);
+            Save(const std::array<std::size_t, 8> &settings, const std::vector<std::shared_ptr<Game::Player>> &players, const Game::Map &map);
 
             /**
             * @brief Construct the Save object to read a backup file and load its content into an IGame object (Copy Constructor)
@@ -54,9 +55,9 @@ namespace Game
             /**
              * @brief Get the Players from the backup file
              *
-             * @return std::array<Game::Player, 4>
+             * @return A vector of players
              */
-            std::array<Game::Player, 4> getPlayers(void) const;
+            std::vector<std::shared_ptr<Game::Player>> getPlayers(void) const;
 
             /**
              * @brief Get the Map from the backup file
@@ -67,7 +68,7 @@ namespace Game
 
         private:
             std::array<std::size_t, 8> _settings; // An array of 7 size_t
-            std::array<Game::Player, 4> _players; // An array of 4 players
+            std::vector<std::shared_ptr<Game::Player>> _players; // A vector of players
             Game::Map _map; // The map
 
             /**
@@ -141,7 +142,7 @@ namespace Game
              * @param player A Game::Player object
              * @param playersInfos A vector of strings containing player infos
              */
-            void parsePlayer(Game::Player &player, const std::vector<std::string> &playerInfos) const;
+            void parsePlayer(std::shared_ptr<Game::Player> player, const std::vector<std::string> &playerInfos) const;
     };
 
     #include "Save.inl"

@@ -5,49 +5,6 @@
 ** Bomberman
 */
 
-inline void Game::Bomberman::restart(void)
-{
-    // Reset Scores
-    // TODO: TO IMPLEMENT
-    std::cout << "I restart" << std::endl;
-/*    for (size_t i = 0; i < _scores.size(); i++) {
-        _scores[i].second = "0";
-        for (size_t j = 0; j < _playersStats[i].size(); j++)
-            _playersStats[i][j].second = "0";
-    }
-*/
-    // Reset Entities
-}
-
-
-inline void Game::Bomberman::saveGame(std::array<std::size_t, 8> settings)
-{
-    // TODO: TO IMPLEMENT
-    std::cout << "I save" << std::endl;
-}
-
-inline std::shared_ptr<IGame> Game::Bomberman::loadGame(std::string backupFilePath)
-{
-    // TODO: TO IMPLEMENT
-    std::cout << "I load " << backupFilePath << std::endl;
-    return nullptr;
-}
-
-inline void Game::Bomberman::updateGame(void)
-{
-    static int i = 0;
-    if (i == 0) {
-        initEntities();
-        initPlayersStats();
-    }
-    if (_gameOver) {
-        updateEntities();
-        updateScores();
-        updatePlayersStats();
-    }
-    i++;
-}
-
 inline void Game::Bomberman::setMapType(std::size_t mapType)
 {
     _mapType = mapType;

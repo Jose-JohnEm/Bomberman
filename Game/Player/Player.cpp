@@ -11,13 +11,16 @@ Game::Player::Player()
 {
 }
 
-Game::Player::Player(const std::string &name, const std::pair<float, float> &positions, const size_t &kills, const size_t &brokenWalls, const std::array<int, 5> &powerUps)
+Game::Player::Player(const std::string &name, const Raylib::Vector3 &positions, const size_t &kills, const size_t &brokenWalls, const std::array<int, 5> &powerUps)
     : _name{name}, _positions{positions}, _kills{kills}, _brokenWalls{brokenWalls}, _powerUps{powerUps}
 {
 
 }
 
+Game::AI::AI()
+{
+}
 
-Game::Player::~Player()
+Game::Human::Human()
 {
 }

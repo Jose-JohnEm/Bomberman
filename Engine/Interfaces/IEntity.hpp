@@ -22,6 +22,13 @@ class IEntity {
         virtual ~IEntity() {};
 
         /**
+        * @brief Get the Type object
+        *
+        * @return A std::string
+        */
+        virtual std::string getType() const = 0;
+
+        /**
          * @brief Get the Positions object
          *
          * @return A Raylib::Vector3

@@ -128,7 +128,8 @@ typedef enum {
     TEXT_FULLSCREEN,
     TEXT_MUSIC,
     TEXT_GENERAL,
-    TEXT_MODS
+    TEXT_MODS,
+    CLOCKBAR
 } Resources;
 
 typedef enum {

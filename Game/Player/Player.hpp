@@ -11,6 +11,8 @@
 #include <array>
 #include <utility>
 #include <string>
+#include "Interfaces/IEntity.hpp"
+#include "../Lib/XRaylib/Raylib/Vector3/Vector3.hpp"
 
 typedef enum {
     P_SKATE,
@@ -22,7 +24,7 @@ typedef enum {
 
 namespace Game
 {
-    class Player
+    class Player : public IEntity
     {
         public:
            /**
@@ -39,12 +41,7 @@ namespace Game
             * @param kills A const reference to a size_t
             * @param powerUps A const reference to a std::array of 5 int
             */
-            Player(const std::string &name, const std::pair<float, float> &positions, const size_t &kills, const size_t &brokenWalls, const std::array<int, 5> &powerUps);
-
-            /**
-            * @brief Destroy the Player object
-            */
-            ~Player();
+            Player(const std::string &name, const Raylib::Vector3 &positions, const size_t &kills, const size_t &brokenWalls, const std::array<int, 5> &powerUps);
 
             /**
              * @brief Get the Name of the Player
@@ -52,13 +49,6 @@ namespace Game
              * @return A string
              */
             std::string getName(void) const;
-
-            /**
-             * @brief Get the Positions of the Player
-             *
-             * @return A pair of floats
-             */
-            std::pair<float, float> getPositions(void) const;
 
             /**
              * @brief Get Broken Walls by the Player
@@ -96,13 +86,6 @@ namespace Game
             void setName(const std::string &name);
 
             /**
-             * @brief Set the Player positions
-             *
-             * @param positions A const reference to a pair of floats
-             */
-            void setPositions(const std::pair<float, float> &positions);
-
-            /**
              * @brief Set the broken walls number
              *
              * @param brokenWalls A const reference to a size_t
@@ -128,13 +111,88 @@ namespace Game
              */
             void setID(const int &ID);
 
+            /**
+             * @brief Destroy the Player Entity object
+             */
+            virtual ~Player(void) {};
+
+            /**
+             * @brief Get the Type object
+             *
+             * @return A std::string
+             */
+            virtual std::string getType() const = 0;
+
+            /**
+             * @brief Get the Positions object
+             *
+             * @return A Raylib::Vector3
+             */
+            Raylib::Vector3 getPositions(void) const;
+
+            /**
+             * @brief Set the Positions
+             *
+             * @param positions A vector3
+             */
+            void setPositions(Raylib::Vector3 &positions);
+
+            /**
+             * @brief Draw Entity
+             *
+             */
+            virtual void drawEntity() = 0; //TODO: const ?
+
+            /**
+             * @brief Set a boolean to know if this entity should be displayed
+             *
+             * @param shouldDisplay A boolean to know if this entity should be displayed
+             */
+            void setShouldDisplay(bool shouldDisplay); //TODO: const pram ?
+
+            /**
+             * @brief Get a boolean to know if this entity should be displayed
+             *
+             * @return true or false
+             */
+            bool getShouldDisplay(void) const;
+
         private:
             std::string _name; // Name of the player entitiy
-            std::pair<float, float> _positions; // A pair of float for player positions (x, y)
+            Raylib::Vector3 _positions{0, 0, 0}; // A vector3 that represents positions
             size_t _brokenWalls; // Amount of broken walls
             size_t _kills; // Amount of kills
             std::array<int, 5> _powerUps; // Amount of powerUps
             int _ID; // ID of the player
+            bool _shouldDisplay = true; // A boolean to know if this entity should be displayed
+    };
+
+    class Human : public virtual Player {
+
+        public:
+
+            /**
+             * @brief Construct a new Human
+             */
+            Human();
+
+            std::string getType() const override;
+            void drawEntity() override;
+
+    };
+
+    class AI : public virtual Player {
+
+        public:
+
+            /**
+             * @brief Construct a new AI
+             */
+            AI();
+
+            std::string getType() const override;
+            void drawEntity() override;
+
     };
 
     #include "Player.inl"

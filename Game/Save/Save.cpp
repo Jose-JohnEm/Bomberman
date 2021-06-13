@@ -7,7 +7,7 @@
 
 #include "Save.hpp"
 
-Game::Save::Save(const std::array<std::size_t, 8> &settings, const std::array<Game::Player, 4> &players, const Game::Map &map)
+Game::Save::Save(const std::array<std::size_t, 8> &settings, const std::vector<std::shared_ptr<Game::Player>> &players, const Game::Map &map)
     : _settings(settings), _players(players), _map(map)
 {
     std::string fileName = createBackupName();
@@ -118,7 +118,7 @@ void Game::Save::parseSettings(const std::vector<std::string> &settings)
     {
         _settings[6] = std::stoul(settings[2]);
     }
-    else if (settings[1].compare("player_nbr") == 0)
+    else if (settings[1].compare("human_nbr") == 0)
     {
         _settings[7] = std::stoul(settings[2]);
     }
@@ -130,34 +130,42 @@ void Game::Save::parseSettings(const std::vector<std::string> &settings)
 
 void Game::Save::parsePlayers(const std::vector<std::string> &playersInfos)
 {
-    bool firstIsParse = false, secondIsParse = false, thirdIsParse = false, fourthIsParse = false;
+    static bool firstIsParse = false, secondIsParse = false, thirdIsParse = false, fourthIsParse = false;
 
+    if (!firstIsParse)
+    {
+        _players.reserve(_settings[HUMAN_NBR] + _settings[AI_NBR]);
+        for (int i = 0; i < _settings[HUMAN_NBR]; i++)
+            _players.push_back(std::shared_ptr<Game::Player>(new Game::Human()));
+        for (int i = 0; i < _settings[AI_NBR]; i++)
+            _players.push_back(std::shared_ptr<Game::Player>(new Game::AI()));
+    }
     switch (std::stoi(playersInfos[1]))
     {
         case 1:
             if (!firstIsParse)
-                _players[0].setID(std::stoi(playersInfos[1]));
+                _players[0]->setID(std::stoi(playersInfos[1]));
             else
                 firstIsParse = true;
             parsePlayer(_players[0], playersInfos);
             break;
         case 2:
             if (!secondIsParse)
-                _players[1].setID(std::stoi(playersInfos[1]));
+                _players[1]->setID(std::stoi(playersInfos[1]));
             else
                 secondIsParse = true;
             parsePlayer(_players[1], playersInfos);
             break;
         case 3:
             if (!thirdIsParse)
-                _players[2].setID(std::stoi(playersInfos[1]));
+                _players[2]->setID(std::stoi(playersInfos[1]));
             else
                 thirdIsParse = true;
             parsePlayer(_players[2], playersInfos);
             break;
         case 4:
             if (!fourthIsParse)
-                _players[3].setID(std::stoi(playersInfos[1]));
+                _players[3]->setID(std::stoi(playersInfos[1]));
             else
                 fourthIsParse = true;
             parsePlayer(_players[3], playersInfos);
@@ -167,21 +175,22 @@ void Game::Save::parsePlayers(const std::vector<std::string> &playersInfos)
     }
 }
 
-void Game::Save::parsePlayer(Game::Player &player, const std::vector<std::string> &playerInfos) const
+void Game::Save::parsePlayer(std::shared_ptr<Game::Player> player, const std::vector<std::string> &playerInfos) const
 {
     if (playerInfos[2].compare("name") == 0)
     {
-        player.setName(playerInfos[3]);
+        player->setName(playerInfos[3]);
     }
     else if (playerInfos[2].compare("positions") == 0)
     {
         std::vector<std::string> positions = getInputArguments(playerInfos[3], ',');
-        player.setPositions(std::make_pair(std::stof(positions[0]), std::stof(positions[1])));
+        Raylib::Vector3 vector(std::stof(positions[0]), std::stof(positions[1]), 0.0);
+        player->setPositions(vector); //FIXME: z always 0 ?
     }
     else if (playerInfos[2].compare("powerups") == 0)
     {
         std::vector<std::string> powerups = getInputArguments(playerInfos[3], ',');
-        player.setPowerUps(
+        player->setPowerUps(
             {
                 atoi(powerups[P_SKATE].c_str() + (powerups[P_SKATE].size() - 1)),
                 atoi(powerups[P_BOMB].c_str() + (powerups[P_BOMB].size() - 1)),
@@ -193,11 +202,11 @@ void Game::Save::parsePlayer(Game::Player &player, const std::vector<std::string
     }
     else if (playerInfos[2].compare("broken_walls") == 0)
     {
-        player.setBrokenWalls(std::stoul(playerInfos[3]));
+        player->setBrokenWalls(std::stoul(playerInfos[3]));
     }
     else if (playerInfos[2].compare("kills") == 0)
     {
-        player.setKills(std::stoul(playerInfos[3]));
+        player->setKills(std::stoul(playerInfos[3]));
     }
     else
     {

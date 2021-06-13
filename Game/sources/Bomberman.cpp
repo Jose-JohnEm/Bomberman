@@ -8,7 +8,7 @@
 #include "../includes/Bomberman.hpp"
 
 Game::Bomberman::Bomberman(void)
-: _gameName{"Bomberman"}, _gameOver{false}
+    : _gameName{"Bomberman"}, _gameOver{false}
 {
 }
 
@@ -16,7 +16,7 @@ Game::Bomberman::~Bomberman(void)
 {
 }
 
-void Game::Bomberman::initEntities()
+void Game::Bomberman::initEntities() //TODO: pushback player
 {
     float x;
     float y = 0;
@@ -66,4 +66,72 @@ void Game::Bomberman::updateScores()
 
 void Game::Bomberman::updatePlayersStats()
 {
+}
+
+void Game::Bomberman::restart(void)
+{
+    // Reset Scores
+    // TODO: TO IMPLEMENT
+    std::cout << "I restart" << std::endl;
+/*    for (size_t i = 0; i < _scores.size(); i++) {
+        _scores[i].second = "0";
+        for (size_t j = 0; j < _playersStats[i].size(); j++)
+            _playersStats[i][j].second = "0";
+    }
+*/
+    // Reset Entities
+}
+
+void Game::Bomberman::saveGame(const std::array<std::size_t, 8> &settings)
+{
+    // Get players entities
+    std::vector<std::shared_ptr<Game::Player>> players;
+
+    for (const std::shared_ptr<IEntity> &entity : _entities)
+    {
+        if (entity->getType().compare("Human") == 0)
+        {
+            players.push_back(std::make_shared<Game::Human>(*dynamic_cast<Game::Human *>(entity.get())));
+        }
+        else if (entity->getType().compare("AI") == 0)
+        {
+            players.push_back(std::make_shared<Game::AI>(*dynamic_cast<Game::AI *>(entity.get())));
+        }
+    }
+
+    // Get Map
+    Game::Map map;
+    map.setHeight(_map.size());
+    map.setWidth(_map[0].size());
+    map.setMap(_map);
+
+    // Save it all
+    Game::Save save(settings, players, map);
+    std::cout << "I save" << std::endl;
+}
+
+std::shared_ptr<IGame> Game::Bomberman::loadGame(const std::string &backupFilePath)
+{
+    // Game::Save load(backupFilePath);
+
+    //_map = load.getMap();
+    //_settings = load.getSettings();
+    // TODO: TO IMPLEMENT
+    std::cout << "I load " << backupFilePath << std::endl;
+    return nullptr;
+}
+
+void Game::Bomberman::updateGame(void)
+{
+    static int i = 0;
+    if (i == 0) {
+        initEntities();
+        initPlayersStats();
+    }
+    if (_gameOver) {
+        updateEntities();
+        updateScores();
+        updatePlayersStats();
+    }
+    i++;
 }

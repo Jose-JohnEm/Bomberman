@@ -14,19 +14,19 @@ inline void Game::Save::writeSettings(std::ofstream &os) const
         << "settings time_remaining " << _settings[TIME_REMAINING] << std::endl
         << "settings ai_nbr " << _settings[AI_NBR] << std::endl
         << "settings ai_lvl " << _settings[AI_LVL] << std::endl
-        << "settings player_nbr " << _settings[PLAYER_NBR] << std::endl;
+        << "settings human_nbr " << _settings[HUMAN_NBR] << std::endl;
 }
 
 inline void Game::Save::writePlayersInfos(std::ofstream &os) const
 {
     int id = 1;
 
-    for (const Game::Player player : _players)
+    for (const std::shared_ptr<Game::Player> &player : _players)
     {
-        std::array powerups = player.getPowerUps();
-        std::pair<float, float> positions = player.getPositions();
-        os  << "player " << id << " name " << player.getName() << std::endl
-            << "player " << id << " positions " << positions.first << "," << positions.second << std::endl
+        std::array powerups = player->getPowerUps();
+        Raylib::Vector3 positions = player->getPositions();
+        os  << "player " << id << " name " << player->getName() << std::endl
+            << "player " << id << " positions " << positions.x << "," << positions.y << std::endl //TODO: z also ?
             << "player " << id << " powerups "
                 << "skate:" << powerups[P_SKATE]
                 << ",bomb:" << powerups[P_BOMB]
@@ -34,8 +34,8 @@ inline void Game::Save::writePlayersInfos(std::ofstream &os) const
                 << ",fire:" << powerups[P_FIRE]
                 << ",life:" << powerups[P_LIFE]
             << std::endl
-            << "player " << id << " broken_walls " << player.getBrokenWalls() << std::endl
-            << "player " << id << " kills " << player.getKills() << std::endl;
+            << "player " << id << " broken_walls " << player->getBrokenWalls() << std::endl
+            << "player " << id << " kills " << player->getKills() << std::endl;
         id++;
     }
 }
@@ -61,7 +61,7 @@ inline std::array<std::size_t, 8> Game::Save::getSettings(void) const
     return _settings;
 }
 
-inline std::array<Game::Player, 4> Game::Save::getPlayers(void) const
+inline std::vector<std::shared_ptr<Game::Player>> Game::Save::getPlayers(void) const
 {
     return _players;
 }

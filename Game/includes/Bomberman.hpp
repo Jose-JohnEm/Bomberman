@@ -43,7 +43,7 @@ namespace Game
              *
              * @param settings Backup Container
              */
-            void saveGame(std::array<std::size_t, 8> settings) override;
+            void saveGame(const std::array<std::size_t, 8> &settings) override;
 
             /**
              * @brief Call this function to load a game.
@@ -51,7 +51,7 @@ namespace Game
              * @param backupFilePath Backup File Path
              * @return A new instance IGame
              */
-            std::shared_ptr<IGame> loadGame(std::string backupFilePath) override;
+            std::shared_ptr<IGame> loadGame(const std::string &backupFilePath) override;
 
             /**
              * @brief Set the Users Names
@@ -137,9 +137,8 @@ namespace Game
             void setMapType(std::size_t mapType) override;
 
         private:
-
+            std::vector<std::string> _map; // Game map
             std::size_t _mapType;                             // A size_t that represents map type
-            std::vector<std::string> _map;                                              // Map Game
             std::vector<std::vector<std::pair<std::string, std::string>>> _playersStats; // A vector of vector all the stats [Player -- (NameOfStat, Value)]...
             std::vector<std::pair<std::string, std::string>> _scores;                 // A vector of pair (username, score)
             std::vector<std::shared_ptr<IEntity>> _entities;                         // A vector of shared pointer that represent all the entities to display. Ex : Map, Score, UserInfo, Button
@@ -148,7 +147,6 @@ namespace Game
             bool _isPaused;                             // A boolean to know if the game is in pause or not
             std::string _gameName;                      // A string that represents the game name
             std::vector<std::string> _userNames;        // A vector of all the users names
-
     };
 }
 

@@ -153,6 +153,10 @@ void XRay::displayPlayerChoiceScene(void)
         _scenesBack[PLAYER_CHOICE] = _scenesBackBackup[PLAYER_CHOICE];
     }
     if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _allIntegers[2] * 40) {
+        _gameSettings[5] = 0;
+        for (size_t t = 0; t < _allIntegers[2] && t <_playerTab.size(); t++)
+            _gameSettings[5] += (!_playerTab[t]) ? 1 : 0;
+        _gameSettings[7] = _allIntegers[2] - _gameSettings[5];
         for (size_t o = 0; o < _allIntegers[2]; o++)
             _userNames.push_back(_pSelector[o].getName());
         _pSelector.initMaps({
@@ -165,6 +169,5 @@ void XRay::displayPlayerChoiceScene(void)
             {"WWWWWWW"},
         });
         displayMapChoiceScene();
-        // TODO: USERNAMES UPDATE
     }
 }

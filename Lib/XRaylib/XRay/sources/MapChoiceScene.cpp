@@ -11,7 +11,6 @@
 
 void XRay::displayGameSettings(void)
 {
-    size_t iaOrNot = 0;
     _resources.at(PREVIOUS)->drawTexture(10, 400);
     _resources.at(NEXT)->drawTexture(910, 400);
 
@@ -19,13 +18,11 @@ void XRay::displayGameSettings(void)
     (mouseIsInBox(createBox(1160, 455, 1160+755, 455+83)) ? _resources.at(SETS_HOVER) : _resources.at(Resources::SETS))->drawTexture(1160, 455);
     (mouseIsInBox(createBox(1160, 665, 1160+755, 665+83)) ? _resources.at(DURATION_HOVER) : _resources.at(Resources::DURATION))->drawTexture(1160, 665);
     _resources.at((Resources)((int)S7X7S + ((_sizeMap > 6 && _sizeMap < 20) ? (_sizeMap-7) / 2 : 0)))->drawTexture(1645, 260);
-    _resources.at((Resources)((int)SET1SET + ((_sets > 0 && _sets < 6) ? _sets-1 : 0)))->drawTexture(1730, 465);
-    _resources.at((Resources)((int)MIN1MIN + ((_duration > 0 && _duration < 6) ? _duration-1 : 0)))->drawTexture(1665, 675);
-    for (size_t t = 0; t < _allIntegers[2] && t <_playerTab.size(); t++)
-        iaOrNot += (!_playerTab[t]) ? 1 : 0;
-    if (iaOrNot > 0) {
+    _resources.at((Resources)((int)SET1SET + ((_gameSettings[1] > 0 && _gameSettings[1] < 6) ? _gameSettings[1]-1 : 0)))->drawTexture(1730, 465);
+    _resources.at((Resources)((int)MIN1MIN + ((_gameSettings[3] > 0 && _gameSettings[3] < 6) ? _gameSettings[3]-1 : 0)))->drawTexture(1665, 675);
+    if (_gameSettings[5] > 0) {
         (mouseIsInBox(createBox(1160, 875, 1160+755, 875+83)) ? _resources.at(AI_HOVER) : _resources.at(Resources::IA))->drawTexture(1160, 875);
-        _resources.at((Resources)((int)EASY + ((_aiLevel > 0 && _aiLevel < 4) ? _aiLevel-1 : 0)))->drawTexture(1660, 898);
+        _resources.at((Resources)((int)EASY + ((_gameSettings[6] > 0 && _gameSettings[6] < 4) ? _gameSettings[6]-1 : 0)))->drawTexture(1660, 898);
     }
 }
 
@@ -35,14 +32,14 @@ void XRay::checkClickOnMapChoiceScene(void)
     for (size_t y = 245; y <= 875; y += 210) {
         if (mouseIsInBox(createBox(1610, y+7, 1650, y+7+70))) {
             _sizeMap = (y == 245) ? ((_sizeMap > 7) ? _sizeMap-2 : 19) : _sizeMap;
-            _sets = (y == 455) ? ((_sets > 1) ? _sets-1 : 5) : _sets;
-            _duration = (y == 665) ? ((_duration > 1) ? _duration-1 : 5) : _duration;
-            _aiLevel = (y == 875) ? ((_aiLevel > 1) ? _aiLevel-1 : 3) : _aiLevel;
+            _gameSettings[1] = (y == 455) ? ((_gameSettings[1] > 1) ? _gameSettings[1]-1 : 5) : _gameSettings[1];
+            _gameSettings[3] = (y == 665) ? ((_gameSettings[3] > 1) ? _gameSettings[3]-1 : 5) : _gameSettings[3];
+            _gameSettings[6] = (y == 875) ? ((_gameSettings[6] > 1) ? _gameSettings[6]-1 : 3) : _gameSettings[6];
         } else if (mouseIsInBox(createBox(1880, y+7, 1920, y+7+70))) {
             _sizeMap = (y == 245) ? ((_sizeMap < 19) ? _sizeMap+2 : 7) : _sizeMap;
-            _sets = (y == 455) ? ((_sets < 5) ? _sets+1 : 1) : _sets;
-            _duration = (y == 665) ? ((_duration < 5) ? _duration+1 : 1) : _duration;
-            _aiLevel = (y == 875) ? ((_aiLevel < 3) ? _aiLevel+1 : 1) : _aiLevel;
+            _gameSettings[1] = (y == 455) ? ((_gameSettings[1] < 5) ? _gameSettings[1]+1 : 1) : _gameSettings[1];
+            _gameSettings[3] = (y == 665) ? ((_gameSettings[3] < 5) ? _gameSettings[3]+1 : 1) : _gameSettings[3];
+            _gameSettings[6] = (y == 875) ? ((_gameSettings[6] < 3) ? _gameSettings[6]+1 : 1) : _gameSettings[6];
         }
     }
 }
@@ -58,7 +55,6 @@ void XRay::displayMapChoiceScene(void)
     // Check if mouse is on button spot
     bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
     bool goNext = mouseIsInBox(createBox(1700, 1000, 1918, 1061)) ? true : false;
-    bool tmp = false;
 
     // Draw scene
     beginDrawing();

@@ -7,7 +7,7 @@
 
 #include "Score.hpp"
 
-Game::Score::Score(const std::array<std::size_t, 8> &settings, Game::Player const &player)
+Game::Score::Score(const std::array<std::size_t, 8> &settings, const Game::Human &player) //TODO: shared_ptr Player
     : _settings(settings), _player(player)
 {
     std::array<int, 5> powerUps = _player.getPowerUps();

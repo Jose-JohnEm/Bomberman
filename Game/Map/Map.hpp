@@ -111,6 +111,14 @@ namespace Game
              */
             void setPlayersAreas(const size_t &areaSize);
 
+            /**
+             * @brief Overwritting of assignment operator
+             *
+             * @param map The map to copy
+             * @return Map& A new map instance
+             */
+            Map &operator=(const Map &map);
+
         private:
             size_t _width; // Width of the map
             size_t _height; // Height of the map

@@ -188,6 +188,7 @@ void XRay::setResources(void)
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::TEXT_SFX, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/textSfx.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::TEXT_VOLUME, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/textVolume.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::TEXT_MODS, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/textMods.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::CLOCKBAR, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/clockbar.png"))));
 }
 
 void XRay::setAudioResources(void)

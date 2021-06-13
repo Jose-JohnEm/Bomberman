@@ -29,7 +29,7 @@ namespace Game
              *
              * @return A std::string
              */
-            virtual std::string getType() = 0;
+            virtual std::string getType() const = 0;
 
             /**
              * @brief Get the Positions object
@@ -88,7 +88,7 @@ namespace Game
              */
             SolidWall(Raylib::Vector3 positions = {0, 0, 0}, size_t mapType = 0);
 
-            std::string getType() override;
+            std::string getType() const override;
 
             void drawEntity() override;
 
@@ -108,7 +108,7 @@ namespace Game
              */
             BreakableWall(Raylib::Vector3 positions = {0, 0, 0}, size_t mapType = 0);
 
-            std::string getType() override;
+            std::string getType() const override;
 
             void drawEntity() override;
 
@@ -128,7 +128,7 @@ namespace Game
              */
             Floor(Raylib::Vector3 positions = {0, 0, 0}, size_t mapType = 0);
 
-            std::string getType() override;
+            std::string getType() const override;
 
             void drawEntity() override;
 

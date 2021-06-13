@@ -172,3 +172,11 @@ inline void Game::Map::setMap(const std::vector<std::string> &map)
 {
     _map = map;
 }
+
+inline Game::Map &Game::Map::operator=(const Map &map)
+{
+    setMap(map.getMap());
+    setWidth(map.getWidth());
+    setHeight(map.getHeight());
+    return *this;
+}

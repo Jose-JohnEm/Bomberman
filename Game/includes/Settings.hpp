@@ -24,7 +24,7 @@ typedef enum {
     // Level of AIs
     AI_LVL,
     // Number of players
-    PLAYER_NBR
+    HUMAN_NBR
 } Settings;
 
 #endif /* !SETTINGS_HPP_ */

@@ -30,7 +30,7 @@ class IGame {
          *
          * @param settings Backup Container
          */
-        virtual void saveGame(std::array<std::size_t, 8> settings) = 0;
+        virtual void saveGame(const std::array<std::size_t, 8> &settings) = 0;
 
         /**
          * @brief Call this function to load a game.
@@ -38,7 +38,7 @@ class IGame {
          * @param backupFilePath Backup File Path
          * @return A new instance IGame
          */
-        virtual std::shared_ptr<IGame> loadGame(std::string backupFilePath) = 0;
+        virtual std::shared_ptr<IGame> loadGame(const std::string &backupFilePath) = 0;
 
         /**
          * @brief Set the Users Names

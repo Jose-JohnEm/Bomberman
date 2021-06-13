@@ -180,10 +180,10 @@ class IGraphical {
 
         /**
          * @brief Get Game Settings
-
-         * @return A vector of size_t
+         *
+         * @return An array of 8 size_t
          */
-        virtual std::vector<size_t> getGameSettings() = 0;
+        virtual std::array<size_t, 8> getGameSettings() = 0;
 };
 
 #endif /* !IGRAPHICAL_HPP_ */

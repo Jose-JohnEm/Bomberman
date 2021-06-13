@@ -7,6 +7,15 @@
 
 #include "XRay.hpp"
 
+std::string XRay::getTimeInFormat(void)
+{
+    int min = _gameSettings[4] / 60;
+    int secs = _gameSettings[4] % 60;
+    std::string time(std::to_string(min)+std::string(":")+std::to_string(secs));
+
+    return time;
+}
+
 void XRay::displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &panelPos)
 {
     for (size_t u = 0; u < _allIntegers[2]; u++) {
@@ -19,6 +28,8 @@ void XRay::displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &panelPos
         if (_controlsTab[u] == Resources::KEYBOARDYELLOW)
             _resources.at(KEYBOARDPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
     }
+    _resources.at(CLOCKBAR)->drawTexture(835, 15);
+//    Raylib::Text::drawText(getTimeInFormat(), 850, Raylib::Color::White());
 }
 
 void XRay::displayPauseScene(void)
@@ -62,7 +73,7 @@ void XRay::goToAnotherScene()
         beginDrawing(false);
         _resources.at(SAVED)->drawTexture(650, 20);
         endDrawing();
-        _pointerToSaveFunc(*(new std::array<size_t, 8>));
+        _pointerToSaveFunc(_gameSettings);
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
     if (_isPaused && settings && Raylib::Mouse::isButtonPressed(0)) {
@@ -96,6 +107,8 @@ void XRay::displayInGameScene(void)
     if (m_isPaused == 2) {
         displayCinematic("loading", 0, 0);
         displayCinematic("readygo", 0, 1000);
+        _startingTime = Raylib::Timing::getTime();
+        _gameSettings[4] = _gameSettings[3];
     }
 
     // Draw scene
@@ -112,7 +125,7 @@ void XRay::displayInGameScene(void)
     endDrawing();
 
     m_isPaused = _isPaused;
-
+    _gameSettings[4] -= _gameSettings[4] > 0 ? Raylib::Timing::getTime() - _startingTime : 0;
     // Call function that check click on button
     goToAnotherScene();
 

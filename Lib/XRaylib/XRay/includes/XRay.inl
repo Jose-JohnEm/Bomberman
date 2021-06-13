@@ -15,7 +15,7 @@ inline void XRay::closeWindow(void) const
     _window.closeWindow();
 }
 
-inline std::vector<size_t> XRay::getGameSettings()
+inline std::array<size_t, 8> XRay::getGameSettings()
 {
     return _gameSettings;
 }
