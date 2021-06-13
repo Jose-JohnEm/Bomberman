@@ -13,6 +13,7 @@
 #include <string>
 #include "Interfaces/IEntity.hpp"
 #include "../Lib/XRaylib/Raylib/Vector3/Vector3.hpp"
+#include "Modeler.hpp"
 
 typedef enum {
     P_SKATE,
@@ -141,7 +142,7 @@ namespace Game
              * @brief Draw Entity
              *
              */
-            virtual void drawEntity() = 0; //TODO: const ?
+            void drawEntity() override;
 
             /**
              * @brief Set a boolean to know if this entity should be displayed
@@ -165,6 +166,8 @@ namespace Game
             std::array<int, 5> _powerUps; // Amount of powerUps
             int _ID; // ID of the player
             bool _shouldDisplay = true; // A boolean to know if this entity should be displayed
+            Modeler _model;
+            const Raylib::Color _color;
     };
 
     class Human : public virtual Player {
@@ -177,7 +180,6 @@ namespace Game
             Human();
 
             std::string getType() const override;
-            void drawEntity() override;
 
     };
 
@@ -191,7 +193,6 @@ namespace Game
             AI();
 
             std::string getType() const override;
-            void drawEntity() override;
 
     };
 

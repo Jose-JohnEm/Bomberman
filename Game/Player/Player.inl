@@ -65,6 +65,12 @@ inline void Game::Player::setID(const int &ID)
     _ID = ID;
 }
 
+inline void Game::Player::drawEntity()
+{
+    _model.update();
+    DrawModelEx(_model.getModel(), _positions.getCStruct(), {1, 0, 0}, 90, {1, 1, 1}, _color.getCStruct());
+}
+
 inline std::string Game::Human::getType() const
 {
     return ("Human");
@@ -73,14 +79,6 @@ inline std::string Game::Human::getType() const
 inline std::string Game::AI::getType() const
 {
     return ("AI");
-}
-
-inline void Game::Human::drawEntity()
-{
-}
-
-inline void Game::AI::drawEntity()
-{
 }
 
 inline void Game::Player::setShouldDisplay(bool shouldDisplay)
