@@ -459,6 +459,7 @@ class XRay : public IGraphical {
         size_t _mapType = 0;                        // Type of Map
         size_t _sizeMap = 5;                            // Size of Map
         double _startingTime;                  // Get Time from raylib
+        double _lastFrameTime;                  // Get Time every frame from raylib
         std::vector<std::string> _map;              // Map
         float masterVolume;                         // Master volume
         float musicVolume;                         // Master volume
