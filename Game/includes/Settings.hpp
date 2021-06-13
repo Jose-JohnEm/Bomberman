@@ -9,13 +9,21 @@
 #define SETTINGS_HPP_
 
 typedef enum {
+    // Timestamp of the Game
     TIMESTAMP,
+    // Number of sets
     SET_NBR,
+    // ID of the current set
     SET_ID,
+    // Total time of the game
     TIME_GAME,
+    // Remaining time of the current set
     TIME_REMAINING,
+    // Number of AIs
     AI_NBR,
+    // Level of AIs
     AI_LVL,
+    // Number of players
     PLAYER_NBR
 } Settings;
 
