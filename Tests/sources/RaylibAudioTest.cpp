@@ -10,31 +10,31 @@
 
 
 
-TEST(AudioTest, initAudioDeviceTest)
+TEST(AudioTest, initAudioDeviceTest1)
 {
     try {
-        Audio test;
-        test.initAudioDevice(void);
+        Raylib::Audio test;
+        test.initAudioDevice();
     } catch (std::exception &ex) {
-        EXPECT_STREQ("ERROR: Invalid map dimensions", ex.what());
+        EXPECT_STREQ("ERROR: Invalid audio settings", ex.what());
     }
 }
 
-TEST(AudioTest, initAudioDeviceTest)
+TEST(AudioTest, initAudioDeviceTest2)
 {
     try {
-        Audio test;
-        test.closeAudioDevice(void;
+        Raylib::Audio test;
+        test.closeAudioDevice();
     } catch (std::exception &ex) {
-        EXPECT_STREQ("ERROR: Invalid map dimensions", ex.what());
+        EXPECT_STREQ("ERROR: Invalid audio settings", ex.what());
     }
 }
 
 TEST(AudioTest, isAudioDeviceReady)
 {
-    Audio test;
+    Raylib::Audio test;
 
-    auto res = input.isAudioDeviceReady(void);
+    auto res = test.isAudioDeviceReady();
     
     EXPECT_EQ(true,res);
 }
@@ -42,7 +42,7 @@ TEST(AudioTest, isAudioDeviceReady)
 TEST(AudioTest, setMasterVolume1)
 {
     try {
-        Audio test;
+        Raylib::Audio test;
         test.setMasterVolume(1.0);
     } catch (std::exception &ex) {
         EXPECT_STREQ("ERROR: Invalid volume parameters", ex.what());
