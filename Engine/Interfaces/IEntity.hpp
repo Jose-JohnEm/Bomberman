@@ -53,7 +53,7 @@ class IEntity {
          *
          * @param shouldDisplay A boolean to know if this entity should be displayed
          */
-        virtual void setShouldDisplay(bool shouldDisplay) = 0;
+        virtual void setShouldDisplay(const bool &shouldDisplay) = 0;
 
         /**
          * @brief Get a boolean to know if this entity should be displayed

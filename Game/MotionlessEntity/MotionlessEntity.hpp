@@ -56,7 +56,7 @@ namespace Game
              *
              * @param shouldDisplay A boolean to know if this entity should be displayed
              */
-            void setShouldDisplay(bool shouldDisplay);
+            void setShouldDisplay(const bool &shouldDisplay);
 
             /**
              * @brief Get a boolean to know if this entity should be displayed

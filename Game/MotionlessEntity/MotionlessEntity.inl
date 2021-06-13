@@ -15,7 +15,7 @@ inline void Game::MotionlessEntity::setPositions(Raylib::Vector3 &vector)
     _positions = vector;
 }
 
-inline void Game::MotionlessEntity::setShouldDisplay(bool shouldDisplay)
+inline void Game::MotionlessEntity::setShouldDisplay(const bool &shouldDisplay)
 {
     _shouldDisplay = shouldDisplay;
 }

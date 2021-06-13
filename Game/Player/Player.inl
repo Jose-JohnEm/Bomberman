@@ -83,7 +83,7 @@ inline void Game::AI::drawEntity()
 {
 }
 
-inline void Game::Player::setShouldDisplay(bool shouldDisplay)
+inline void Game::Player::setShouldDisplay(const bool &shouldDisplay)
 {
     _shouldDisplay = shouldDisplay;
 }
