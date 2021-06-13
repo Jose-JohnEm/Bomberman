@@ -101,7 +101,7 @@ void Game::Bomberman::saveGame(const std::array<std::size_t, 8> &settings)
 
     // Get Map
     Game::Map map;
-    map.setHeight(_map.size());
+    map.setHeight(_map.size()); //TODO: Check the dimensions
     map.setWidth(_map[0].size());
     map.setMap(_map);
 
