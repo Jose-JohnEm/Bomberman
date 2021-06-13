@@ -5,7 +5,7 @@
 ** Bomberman
 */
 
-#include "../includes/Bomberman.hpp"
+#include "Bomberman.hpp"
 
 Game::Bomberman::Bomberman(void)
     : _gameName{"Bomberman"}, _gameOver{false}

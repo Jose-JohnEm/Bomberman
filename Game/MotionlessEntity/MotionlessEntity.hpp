@@ -136,6 +136,7 @@ namespace Game
             size_t _mapType;        // A size_t
     };
 
+    #include "MotionlessEntity.inl"
 }
 
 #endif /* !MOTIONLESSENTITY_HPP_ */
