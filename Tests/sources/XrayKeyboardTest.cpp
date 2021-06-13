@@ -33,7 +33,7 @@ TEST(KeyboardTest, shouldGoToEast)
 }
 
 
-TEST(GamePadTest, shouldGoToWest)
+TEST(KeyboardTest, shouldGoToWest)
 {
     KeyboardPlayerInput input;
 
@@ -42,7 +42,7 @@ TEST(GamePadTest, shouldGoToWest)
     EXPECT_EQ(262,res);
 }
 
-TEST(GamePadTest, shouldGoToNorth)
+TEST(KeyboardTest, shouldGoToNorth)
 {
 
     KeyboardPlayerInput input;
@@ -52,7 +52,7 @@ TEST(GamePadTest, shouldGoToNorth)
     EXPECT_EQ(265,res);
 }
 
-TEST(GamePadTest, shouldGoToSouth)
+TEST(KeyboardTest, shouldGoToSouth)
 {
     KeyboardPlayerInput input;
 
@@ -61,7 +61,7 @@ TEST(GamePadTest, shouldGoToSouth)
     EXPECT_EQ(264,res);
 }
 
-TEST(GamePadTest, shouldChangeToPrev)
+TEST(KeyboardTest, shouldChangeToPrev)
 {
     KeyboardPlayerInput input;
 
@@ -70,7 +70,7 @@ TEST(GamePadTest, shouldChangeToPrev)
     EXPECT_EQ(264,res);
 }
 
-TEST(GamePadTest, shouldChangeToNext)
+TEST(KeyboardTest, shouldChangeToNext)
 {
     KeyboardPlayerInput input;
 
@@ -79,7 +79,7 @@ TEST(GamePadTest, shouldChangeToNext)
     EXPECT_EQ(262,res);
 }
 
-TEST(GamePadTest, shouldSimulateAClick)
+TEST(KeyboardTest, shouldSimulateAClick)
 {
     KeyboardPlayerInput input;
 
