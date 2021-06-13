@@ -36,7 +36,7 @@ TEST(AudioTest, isAudioDeviceReady)
 
     auto res = test.isAudioDeviceReady();
     
-    EXPECT_EQ(true,res);
+    EXPECT_EQ(false,res);
 }
 
 TEST(AudioTest, setMasterVolume1)
