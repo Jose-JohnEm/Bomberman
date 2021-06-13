@@ -13,7 +13,7 @@
 #include <algorithm>
 #include "XRay.hpp"
 #include "Interfaces/IGraphical.hpp"
-#include "../../Game/includes/Bomberman.hpp"
+#include "../../Game/Bomberman/Bomberman.hpp"
 #include "Interfaces/IGame.hpp"
 
 namespace Engine

@@ -12,10 +12,10 @@
 #include <istream>
 #include <algorithm>
 #include <map>
+#include "Interfaces/IGame.hpp"
 #include "../Map/Map.hpp"
 #include "../Save/Save.hpp"
-#include "Interfaces/IGame.hpp"
-#include "MotionlessEntity.hpp"
+#include "../MotionlessEntity/MotionlessEntity.hpp"
 
 namespace Game
 {
