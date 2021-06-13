@@ -11,7 +11,7 @@
 TEST(PlayerTests, copy_const)
 {
     Game::Player player("PlayerName", {30, 40}, 2, 200, {1, 0, 0, 1, 0});
-    std::array<size_t, 5> powerups = player.getPowerUps();
+    std::array<int, 5> powerups = player.getPowerUps();
 
     EXPECT_EQ(player.getName(), "PlayerName");
     EXPECT_EQ(player.getPositions().first, 30);
@@ -63,7 +63,7 @@ TEST(PlayerTests, powerUps)
     Game::Player player;
 
     player.setPowerUps({1, 0, 1, 1, 0});
-    std::array<size_t, 5> powerups = player.getPowerUps();
+    std::array<int, 5> powerups = player.getPowerUps();
 
     EXPECT_EQ(powerups[P_SKATE], 1);
     EXPECT_EQ(powerups[P_BOMB], 0);

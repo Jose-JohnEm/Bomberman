@@ -93,6 +93,13 @@ namespace Game
             std::vector<std::string> getMap(void) const;
 
             /**
+             * @brief Setter for map
+             *
+             * @param map The new map (a vector of strings)
+             */
+            void setMap(const std::vector<std::string> &map);
+
+            /**
              * @brief Dump the map
              */
             void dump(void) const;

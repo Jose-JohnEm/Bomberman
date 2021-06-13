@@ -37,9 +37,9 @@ namespace Game
             * @param position A const reference to a std::pair of float
             * @param brokenWalls A const reference to a size_t
             * @param kills A const reference to a size_t
-            * @param powerUps A const reference to a std::array of 5 size_t
+            * @param powerUps A const reference to a std::array of 5 int
             */
-            Player(const std::string &name, const std::pair<float, float> &positions, const size_t &kills, const size_t &brokenWalls, const std::array<size_t, 5> &powerUps);
+            Player(const std::string &name, const std::pair<float, float> &positions, const size_t &kills, const size_t &brokenWalls, const std::array<int, 5> &powerUps);
 
             /**
             * @brief Destroy the Player object
@@ -77,9 +77,16 @@ namespace Game
             /**
              * @brief Get PowerUps gotten by the Player
              *
-             * @return An Array of 5 (size_t)
+             * @return An Array of 5 (int)
              */
-            std::array<size_t, 5> getPowerUps(void) const;
+            std::array<int, 5> getPowerUps(void) const;
+
+            /**
+             * @brief Get the player ID
+             *
+             * @return An int which represents the ID of the player
+             */
+            int getID(void) const;
 
             /**
              * @brief Set the name of the player
@@ -112,16 +119,22 @@ namespace Game
             /**
              * @brief Set the powerUps of the player
              *
-             * @param powerUps A const reference to an array of 5 size_t
+             * @param powerUps A const reference to an array of 5 int
              */
-            void setPowerUps(const std::array<size_t, 5> &powerUps);
+            void setPowerUps(const std::array<int, 5> &powerUps);
+
+            /**
+             * @brief Set the ID of the player
+             */
+            void setID(const int &ID);
 
         private:
             std::string _name; // Name of the player entitiy
             std::pair<float, float> _positions; // A pair of float for player positions (x, y)
             size_t _brokenWalls; // Amount of broken walls
             size_t _kills; // Amount of kills
-            std::array<size_t, 5> _powerUps; // Amount of powerUps
+            std::array<int, 5> _powerUps; // Amount of powerUps
+            int _ID; // ID of the player
     };
 
     #include "Player.inl"

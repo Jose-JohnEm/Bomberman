@@ -15,6 +15,11 @@ inline void XRay::closeWindow(void) const
     _window.closeWindow();
 }
 
+inline std::vector<size_t> XRay::getGameSettings()
+{
+    return _gameSettings;
+}
+
 inline void XRay::setRestartFunc(std::function<void ()> pointerToFunc)
 {
     _pointerToRestartFunc = pointerToFunc;
