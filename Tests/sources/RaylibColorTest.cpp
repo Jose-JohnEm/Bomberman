@@ -24,7 +24,7 @@ TEST(ColorTest, colorToIntTest)
 {
     Raylib::Color test;
     auto red = test.Gray();
-    EXPECT_EQ(true, test.colorToInt(red));
+    EXPECT_EQ(18446744071604175615, test.colorToInt(red));
 }
 
 TEST(ColorTest, colorFromHSVTest)

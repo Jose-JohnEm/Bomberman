@@ -48,7 +48,7 @@ TEST(GamePadTest, shouldGoToEast)
 
     auto res = input.shouldGoToEast();
     
-    EXPECT_EQ(4,res);
+    EXPECT_EQ(false,res);
 }
 
 TEST(GamePadTest, shouldGoToWest)
@@ -57,7 +57,7 @@ TEST(GamePadTest, shouldGoToWest)
 
     auto res = input.shouldGoToWest();
     
-    EXPECT_EQ(2,res);
+    EXPECT_EQ(false,res);
 }
 
 TEST(GamePadTest, shouldGoToNorth)
@@ -67,7 +67,7 @@ TEST(GamePadTest, shouldGoToNorth)
 
     auto res = input.shouldGoToNorth();
     
-    EXPECT_EQ(1,res);
+    EXPECT_EQ(false,res);
 }
 
 TEST(GamePadTest, shouldGoToSouth)
@@ -76,7 +76,7 @@ TEST(GamePadTest, shouldGoToSouth)
 
     auto res = input.shouldGoToSouth();
     
-    EXPECT_EQ(3,res);
+    EXPECT_EQ(false,res);
 }
 
 TEST(GamePadTest, shouldChangeToPrev)
@@ -85,7 +85,7 @@ TEST(GamePadTest, shouldChangeToPrev)
 
     auto res = input.shouldChangeToPrev();
     
-    EXPECT_EQ(4,res);
+    EXPECT_EQ(false,res);
 }
 
 TEST(GamePadTest, shouldChangeToNext)
@@ -94,7 +94,7 @@ TEST(GamePadTest, shouldChangeToNext)
 
     auto res = input.shouldChangeToNext();
     
-    EXPECT_EQ(2,res);
+    EXPECT_EQ(false,res);
 }
 
 TEST(GamePadTest, shouldSimulateAClick)
@@ -103,6 +103,6 @@ TEST(GamePadTest, shouldSimulateAClick)
 
     auto res = input.shouldSimulateAClick();
     
-    EXPECT_EQ(7,res);
+    EXPECT_EQ(false,res);
 }
 

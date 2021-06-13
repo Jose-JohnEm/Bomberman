@@ -8,6 +8,7 @@
 #include <gtest/gtest.h>
 #include "../Tests/Lib/XRaylib/Raylib/Drawing/Drawing.hpp"
 
+/*
 TEST(DrawingTest, clearBackgroundTest)
 {
     try {
@@ -20,6 +21,7 @@ TEST(DrawingTest, clearBackgroundTest)
     }
 }
 
+
 TEST(DrawingTest, beginDrawingTest)
 {
     try {
@@ -30,3 +32,16 @@ TEST(DrawingTest, beginDrawingTest)
         EXPECT_STREQ("ERROR: Invalid Setup canvas", ex.what());
     }
 }
+
+
+TEST(DrawingTest, endDrawingTest)
+{
+    try {
+        Raylib::Drawing test;
+
+        test.endDrawing();
+    } catch (std::exception &ex) {
+        EXPECT_STREQ("ERROR: Invalid End canvas drawing", ex.what());
+    }
+}
+*/

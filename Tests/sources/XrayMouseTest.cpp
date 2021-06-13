@@ -49,7 +49,7 @@ TEST(MousePlayerTest, shouldGoToEast)
 
     auto res = input.shouldGoToEast();
     
-    EXPECT_EQ(4,res);
+    EXPECT_EQ(false,res);
 }
 
 TEST(MousePlayerTest, shouldGoToWest)
@@ -58,7 +58,7 @@ TEST(MousePlayerTest, shouldGoToWest)
 
     auto res = input.shouldGoToWest();
     
-    EXPECT_EQ(2,res);
+    EXPECT_EQ(false,res);
 }
 
 TEST(MousePlayerTest, shouldGoToNorth)
@@ -68,7 +68,7 @@ TEST(MousePlayerTest, shouldGoToNorth)
 
     auto res = input.shouldGoToNorth();
     
-    EXPECT_EQ(1,res);
+    EXPECT_EQ(false,res);
 }
 
 TEST(MousePlayerTest, shouldGoToSouth)
@@ -77,7 +77,7 @@ TEST(MousePlayerTest, shouldGoToSouth)
 
     auto res = input.shouldGoToSouth();
     
-    EXPECT_EQ(3,res);
+    EXPECT_EQ(false,res);
 }
 
 TEST(MousePlayerTest, shouldChangeToPrev)
@@ -86,7 +86,7 @@ TEST(MousePlayerTest, shouldChangeToPrev)
 
     auto res = input.shouldChangeToPrev();
     
-    EXPECT_EQ(4,res);
+    EXPECT_EQ(false,res);
 }
 
 TEST(MousePlayerTest, shouldChangeToNext)
@@ -95,7 +95,7 @@ TEST(MousePlayerTest, shouldChangeToNext)
 
     auto res = input.shouldChangeToNext();
     
-    EXPECT_EQ(2,res);
+    EXPECT_EQ(false,res);
 }
 
 TEST(MousePlayerTest, shouldSimulateAClick)
@@ -104,5 +104,5 @@ TEST(MousePlayerTest, shouldSimulateAClick)
 
     auto res = input.shouldSimulateAClick();
     
-    EXPECT_EQ(7,res);
+    EXPECT_EQ(false,res);
 }

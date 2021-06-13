@@ -29,7 +29,7 @@ TEST(KeyboardTest, shouldGoToEast)
 
     auto res = input.shouldGoToEast();
     
-    EXPECT_EQ(263,res);
+    EXPECT_EQ(false,res);
 }
 
 
@@ -39,7 +39,7 @@ TEST(KeyboardTest, shouldGoToWest)
 
     auto res = input.shouldGoToWest();
     
-    EXPECT_EQ(262,res);
+    EXPECT_EQ(false,res);
 }
 
 TEST(KeyboardTest, shouldGoToNorth)
@@ -49,7 +49,7 @@ TEST(KeyboardTest, shouldGoToNorth)
 
     auto res = input.shouldGoToNorth();
     
-    EXPECT_EQ(265,res);
+    EXPECT_EQ(false,res);
 }
 
 TEST(KeyboardTest, shouldGoToSouth)
@@ -58,7 +58,7 @@ TEST(KeyboardTest, shouldGoToSouth)
 
     auto res = input.shouldGoToSouth();
     
-    EXPECT_EQ(264,res);
+    EXPECT_EQ(false,res);
 }
 
 TEST(KeyboardTest, shouldChangeToPrev)
@@ -67,7 +67,7 @@ TEST(KeyboardTest, shouldChangeToPrev)
 
     auto res = input.shouldChangeToPrev();
     
-    EXPECT_EQ(264,res);
+    EXPECT_EQ(false,res);
 }
 
 TEST(KeyboardTest, shouldChangeToNext)
@@ -76,7 +76,7 @@ TEST(KeyboardTest, shouldChangeToNext)
 
     auto res = input.shouldChangeToNext();
     
-    EXPECT_EQ(262,res);
+    EXPECT_EQ(false,res);
 }
 
 TEST(KeyboardTest, shouldSimulateAClick)
@@ -85,5 +85,5 @@ TEST(KeyboardTest, shouldSimulateAClick)
 
     auto res = input.shouldSimulateAClick();
     
-    EXPECT_EQ(32,res);
+    EXPECT_EQ(false,res);
 }
