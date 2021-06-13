@@ -16,7 +16,7 @@ Game::Bomberman::~Bomberman(void)
 {
 }
 
-void Game::Bomberman::initEntities() //TODO: pushback player
+void Game::Bomberman::initEntities() //TODO: pushback player //TODO: floor under !
 {
     float x;
     float y = 0;
@@ -117,10 +117,22 @@ void Game::Bomberman::saveGame(const std::array<std::size_t, 8> &settings)
 
 std::shared_ptr<IGame> Game::Bomberman::loadGame(const std::string &backupFilePath)
 {
-    // Game::Save load(backupFilePath);
+    // Parse data
+    Game::Save load(backupFilePath);
 
-    //_map = load.getMap();
-    //_settings = load.getSettings();
+    // Load players
+    std::vector<std::shared_ptr<Game::Player>> players = load.getPlayers();
+    for (const std::shared_ptr<Game::Player> &player : players)
+    {
+        _entities.push_back(player);
+    }
+
+    // Load map
+    _map = load.getMap().getMap();
+
+    // Load the settings
+    std::array<std::size_t, 8> settings = load.getSettings();
+
     // TODO: TO IMPLEMENT
     std::cout << "I load " << backupFilePath << std::endl;
     return nullptr;

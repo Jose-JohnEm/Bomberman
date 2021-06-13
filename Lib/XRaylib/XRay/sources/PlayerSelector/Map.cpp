@@ -23,7 +23,7 @@ std::vector<std::vector<Texture>> findTexturesAvailable(int &nb_textures)
             {
                 files.push_back(f.path().filename().string());
             }
- 
+
             if (files.end() != find(files.begin(), files.end(), "wall.png") &&
                 files.end() != find(files.begin(), files.end(), "floor.png") &&
                 files.end() != find(files.begin(), files.end(), "box.png"))
@@ -51,7 +51,7 @@ _x(0),
 _direction(0)
 {
     if (models.size() >= 1)
-        asciiMap[1][1] = '1'; //TODO: 'H
+        asciiMap[1][1] = '1';
     if (models.size() >= 2)
         asciiMap[5][1] = '2';
     if (models.size() >= 3)
@@ -153,7 +153,7 @@ void PlayerSelector::Map::draw()
         x = 0;
         for (const char &c : line)
         {
-            if (c == '1' || c == '2' || c == '3' || c == '4') //TODO: 'H
+            if (c == '1' || c == '2' || c == '3' || c == '4')
             {
                 drawHandlingCharacters(c - '1');
             }
