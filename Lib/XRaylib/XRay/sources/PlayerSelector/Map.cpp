@@ -51,7 +51,7 @@ _x(0),
 _direction(0)
 {
     if (models.size() >= 1)
-        asciiMap[1][1] = '1';
+        asciiMap[1][1] = '1'; //TODO: 'H
     if (models.size() >= 2)
         asciiMap[5][1] = '2';
     if (models.size() >= 3)
@@ -153,7 +153,7 @@ void PlayerSelector::Map::draw()
         x = 0;
         for (const char &c : line)
         {
-            if (c == '1' || c == '2' || c == '3' || c == '4')
+            if (c == '1' || c == '2' || c == '3' || c == '4') //TODO: 'H
             {
                 drawHandlingCharacters(c - '1');
             }

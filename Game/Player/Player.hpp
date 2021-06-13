@@ -158,11 +158,11 @@ namespace Game
             bool getShouldDisplay(void) const;
 
         private:
-            std::string _name; // Name of the player entitiy
+            std::string _name = "Name"; // Name of the player entitiy
             Raylib::Vector3 _positions{0, 0, 0}; // A vector3 that represents positions
-            size_t _brokenWalls; // Amount of broken walls
-            size_t _kills; // Amount of kills
-            std::array<int, 5> _powerUps; // Amount of powerUps
+            size_t _brokenWalls = 0; // Amount of broken walls
+            size_t _kills = 0; // Amount of kills
+            std::array<int, 5> _powerUps{0, 0, 0, 0, 0}; // Amount of powerUps
             int _ID; // ID of the player
             bool _shouldDisplay = true; // A boolean to know if this entity should be displayed
     };

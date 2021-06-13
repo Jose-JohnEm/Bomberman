@@ -103,27 +103,26 @@ inline void Game::Map::placeBorders(void)
 
 inline void Game::Map::placePlayers(void)
 {
-    if (!(1 <= _playersNumber && _playersNumber <= 4))
+    if (!(1 <= (_playersNumber.first + _playersNumber.second) && (_playersNumber.first + _playersNumber.second) <= 4))
     {
         throw std::invalid_argument("ERROR: Invalid number of players");
     }
-    for (size_t i = 1; i <= _playersNumber; i++)
+    for (size_t i = 1; i <= (_playersNumber.first + _playersNumber.second); i++)
     {
-        if (i == 1)
+        switch (i)
         {
-            _map[1][1] = PLAYER_ONE;
-        }
-        else if (i == 2)
-        {
-            _map[_height - BORDER][1] = PLAYER_TWO;
-        }
-        else if (i == 3)
-        {
-            _map[_height - BORDER][_width - BORDER] = PLAYER_THREE;
-        }
-        else
-        {
-            _map[1][_width - BORDER] = PLAYER_FOUR;
+            case 1:
+                _map[1][1] = (i <= _playersNumber.first) ? HUMAN : ARTIFICIAL_INTELLIGENCE;
+                break;
+            case 2:
+                _map[_height - BORDER][1] = (i <= _playersNumber.first) ? HUMAN : ARTIFICIAL_INTELLIGENCE;
+                break;
+            case 3:
+                _map[_height - BORDER][_width - BORDER] = (i <= _playersNumber.first) ? HUMAN : ARTIFICIAL_INTELLIGENCE;
+                break;
+            default:
+                _map[1][_width - BORDER] = (i <= _playersNumber.first) ? HUMAN : ARTIFICIAL_INTELLIGENCE;
+                break;
         }
     }
 }
@@ -141,7 +140,7 @@ inline void Game::Map::placeSolidWalls(void)
 
 inline void Game::Map::setPlayersAreas(const size_t &areaSize)
 {
-    for (size_t player = 1; player <= _playersNumber; player++)
+    for (size_t player = 1; player <= (_playersNumber.first + _playersNumber.second); player++)
     {
         for (size_t i = 1; i <= areaSize; i++)
         {

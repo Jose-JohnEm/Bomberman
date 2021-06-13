@@ -184,8 +184,8 @@ void Game::Save::parsePlayer(std::shared_ptr<Game::Player> player, const std::ve
     else if (playerInfos[2].compare("positions") == 0)
     {
         std::vector<std::string> positions = getInputArguments(playerInfos[3], ',');
-        Raylib::Vector3 vector(std::stof(positions[0]), std::stof(positions[1]), 0.0);
-        player->setPositions(vector); //FIXME: z always 0 ?
+        Raylib::Vector3 vector(std::stof(positions[0]), std::stof(positions[1]), std::stof(positions[2]));
+        player->setPositions(vector);
     }
     else if (playerInfos[2].compare("powerups") == 0)
     {

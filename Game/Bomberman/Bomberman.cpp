@@ -25,21 +25,26 @@ void Game::Bomberman::initEntities() //TODO: pushback player
     for (const std::string &line : _map) {
         x = 0;
         for (const char &c : line) {
-            if (c == 'W' || c == 'E')
+            if (c == 'H')
+                _entities.push_back(std::shared_ptr<IEntity>(new Game::Human));
+            else if (c == 'A')
+                _entities.push_back(std::shared_ptr<IEntity>(new Game::AI));
+            else if (c == 'W' || c == 'E')
                 _entities.push_back(std::shared_ptr<IEntity>(new Game::SolidWall(Raylib::Vector3(x, y, 0), _mapType)));
-            if (c == 'M')
+            else if (c == 'M')
                 _entities.push_back(std::shared_ptr<IEntity>(new Game::BreakableWall(Raylib::Vector3(x, y, 0), _mapType)));
-            _entities.push_back(std::shared_ptr<IEntity>(new Game::Floor(Raylib::Vector3(x, y, -0.4f), _mapType)));
+            else
+                _entities.push_back(std::shared_ptr<IEntity>(new Game::Floor(Raylib::Vector3(x, y, -0.4f), _mapType)));
             x++;
         }
         y++;
     }
 }
 
-std::vector<std::string> &Game::Bomberman::getMap(size_t size)
+std::vector<std::string> &Game::Bomberman::getMap(size_t size) // TODO: le nombre de human et d'AI
 {
     if (_map.size() != size+2) {
-        Game::Map newMap(size, size, _userNames.size());
+        Game::Map newMap(size, size, std::make_pair(_userNames.size(), 0)); // TODO: set first and second
 
         std::cout << " YAOI " << _userNames.size() << std::endl;
         _map = newMap.getMap();
