@@ -45,6 +45,7 @@ void XRay::removePlayer(const std::vector<std::pair<int, int>> &removeButtons)
             }
             _playerTab.erase(_playerTab.begin() + u + 1);
             _pSelector.unload(u + 1);
+            _sfx.at(SFX_JIG1)->play();
         }
     }
 }
@@ -57,6 +58,7 @@ void XRay::addPlayer(void)
         _playerTab.push_back(false);
         _pSelector.load();
         _playersInput.push_back(std::shared_ptr<IPlayerInput>(new MousePlayerInput()));
+        _sfx.at(SFX_JIG)->play();
     }
 }
 
@@ -66,13 +68,20 @@ void XRay::manageNextOrPrev(void)
 
     _nextOrNot = 0;
     for (size_t u = 0; u < _allIntegers[2] && u < _playersInput.size(); u++) {
-        _card[u] = (_playersInput[u]->shouldSimulateAClick()) ? glambda(_card[u]) : _card[u];
+        if (_playersInput[u]->shouldSimulateAClick()) {
+            _card[u] = glambda(_card[u]);
+            _sfx.at(SFX_BING)->play();
+        }
         if (!_playerTab[u])
             _card[u] = 40;
-        if (_playersInput[u]->shouldChangeToPrev() && _playerTab[u] && _card[u] != 40)
+        if (_playersInput[u]->shouldChangeToPrev() && _playerTab[u] && _card[u] != 40) {
+            _sfx.at(SFX_KLICK)->play();
             _pSelector.prev(u);
-        if (_playersInput[u]->shouldChangeToNext() && _playerTab[u] && _card[u] != 40)
+        }
+        if (_playersInput[u]->shouldChangeToNext() && _playerTab[u] && _card[u] != 40) {
+            _sfx.at(SFX_KLICK)->play();
             _pSelector.next(u);
+        }
         _nextOrNot += _card[u];
     }
 }
@@ -153,6 +162,11 @@ void XRay::displayPlayerChoiceScene(void)
         _scenesBack[PLAYER_CHOICE] = _scenesBackBackup[PLAYER_CHOICE];
     }
     if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _allIntegers[2] * 40) {
+        _sfx.at(SFX_NOCK)->play();
+        _gameSettings[5] = 0;
+        for (size_t t = 0; t < _allIntegers[2] && t <_playerTab.size(); t++)
+            _gameSettings[5] += (!_playerTab[t]) ? 1 : 0;
+        _gameSettings[7] = _allIntegers[2] - _gameSettings[5];
         for (size_t o = 0; o < _allIntegers[2]; o++)
             _userNames.push_back(_pSelector[o].getName());
         _pSelector.initMaps({
@@ -165,6 +179,5 @@ void XRay::displayPlayerChoiceScene(void)
             {"WWWWWWW"},
         });
         displayMapChoiceScene();
-        // TODO: USERNAMES UPDATE
     }
 }

@@ -128,7 +128,12 @@ typedef enum {
     TEXT_FULLSCREEN,
     TEXT_MUSIC,
     TEXT_GENERAL,
-    TEXT_MODS
+    TEXT_MODS,
+    CLOCKBAR,
+    YELLOWBOMBERMAN,
+    REDBOMBERMAN,
+    BLUEBOMBERMAN,
+    GREENBOMBERMAN
 } Resources;
 
 typedef enum {
@@ -142,7 +147,10 @@ typedef enum {
     SFX_HOME,
     SFX_NOCK,
     SFX_TURN_OFF,
-    SFX_TURN_ON
+    SFX_TURN_ON,
+    SFX_JIG,
+    SFX_JIG1,
+    SFX_BING
 } SfxResources;
 
 #endif /* !RESOURCES_HPP_ */

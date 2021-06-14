@@ -30,7 +30,7 @@ class IGame {
          *
          * @param settings Backup Container
          */
-        virtual void saveGame(std::array<std::size_t, 8> settings) = 0;
+        virtual void saveGame(const std::array<std::size_t, 8> &settings) = 0;
 
         /**
          * @brief Call this function to load a game.
@@ -38,7 +38,7 @@ class IGame {
          * @param backupFilePath Backup File Path
          * @return A new instance IGame
          */
-        virtual std::shared_ptr<IGame> loadGame(std::string backupFilePath) = 0;
+        virtual std::shared_ptr<IGame> loadGame(const std::string &backupFilePath) = 0;
 
         /**
          * @brief Set the Users Names
@@ -46,6 +46,13 @@ class IGame {
          * @param userNames A vector of all the users names as a const std::vector<std::string>&
          */
         virtual void setUserNames(const std::vector<std::string> &userNames) = 0;
+
+        /**
+         * @brief Set the game settings
+         *
+         * @param settings An array of 8 size_t
+         */
+        virtual void setSettings(const std::array<std::size_t, 8> &settings) = 0;
 
         /**
          * @brief Getter for the score
@@ -89,14 +96,14 @@ class IGame {
         /**
          * @brief Get the Map
          */
-        virtual std::vector<std::string> &getMap(size_t size) = 0;
+        virtual std::vector<std::string> &getMap(const size_t &size) = 0;
 
         /**
          * @brief Set the Map Type
          *
          * @param mapType A size_t
          */
-        virtual void setMapType(std::size_t mapType) = 0;
+        virtual void setMapType(const std::size_t &mapType) = 0;
 };
 
 #endif /* !IGAME_HPP_ */

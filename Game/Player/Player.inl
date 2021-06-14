@@ -10,7 +10,7 @@ inline std::string Game::Player::getName(void) const
     return _name;
 }
 
-inline std::pair<float, float> Game::Player::getPositions(void) const
+inline Raylib::Vector3 Game::Player::getPositions(void) const
 {
     return _positions;
 }
@@ -40,7 +40,7 @@ inline void Game::Player::setName(const std::string &name)
     _name = name;
 }
 
-inline void Game::Player::setPositions(const std::pair<float, float> &positions)
+inline void Game::Player::setPositions(Raylib::Vector3 &positions)
 {
     _positions = positions;
 }
@@ -63,4 +63,39 @@ inline void Game::Player::setPowerUps(const std::array<int, 5> &powerUps)
 inline void Game::Player::setID(const int &ID)
 {
     _ID = ID;
+}
+
+inline std::string Game::Human::getType() const
+{
+    return ("Human");
+}
+
+inline std::string Game::AI::getType() const
+{
+    return ("AI");
+}
+
+inline void Game::Player::drawEntity()
+{
+    _model.update();
+
+    DrawModelEx(_model.getModel(), _positions.getCStruct(), {1, 0, 0}, 90, {1, 1, 1}, _color.getCStruct());
+}
+
+/*inline void Game::Human::drawEntity()
+{
+}
+
+inline void Game::AI::drawEntity()
+{
+}*/
+
+inline void Game::Player::setShouldDisplay(const bool &shouldDisplay)
+{
+    _shouldDisplay = shouldDisplay;
+}
+
+inline bool Game::Player::getShouldDisplay(void) const
+{
+    return _shouldDisplay;
 }

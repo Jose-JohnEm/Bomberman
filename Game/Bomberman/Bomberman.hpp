@@ -12,10 +12,10 @@
 #include <istream>
 #include <algorithm>
 #include <map>
+#include "Interfaces/IGame.hpp"
 #include "../Map/Map.hpp"
 #include "../Save/Save.hpp"
-#include "Interfaces/IGame.hpp"
-#include "MotionlessEntity.hpp"
+#include "../MotionlessEntity/MotionlessEntity.hpp"
 
 namespace Game
 {
@@ -43,7 +43,7 @@ namespace Game
              *
              * @param settings Backup Container
              */
-            void saveGame(std::array<std::size_t, 8> settings) override;
+            void saveGame(const std::array<std::size_t, 8> &settings) override;
 
             /**
              * @brief Call this function to load a game.
@@ -51,7 +51,7 @@ namespace Game
              * @param backupFilePath Backup File Path
              * @return A new instance IGame
              */
-            std::shared_ptr<IGame> loadGame(std::string backupFilePath) override;
+            std::shared_ptr<IGame> loadGame(const std::string &backupFilePath) override;
 
             /**
              * @brief Set the Users Names
@@ -59,6 +59,13 @@ namespace Game
              * @param userNames A vector of all the users names as a const std::vector<std::string>&
              */
             void setUserNames(const std::vector<std::string> &userNames) override;
+
+            /**
+             * @brief Set the game settings
+             *
+             * @param settings An array of 8 size_t
+             */
+            void setSettings(const std::array<std::size_t, 8> &settings) override;
 
             /**
              * @brief Getter for the score
@@ -127,19 +134,19 @@ namespace Game
             /**
              * @brief Get the Map
              */
-            std::vector<std::string> &getMap(size_t size) override;
+            std::vector<std::string> &getMap(const size_t &size) override;
 
             /**
              * @brief Set the Map Type
              *
              * @param mapType A size_t
              */
-            void setMapType(std::size_t mapType) override;
+            void setMapType(const std::size_t &mapType) override;
 
         private:
-
+            std::array<std::size_t, 8> _settings; // Game settings
+            std::vector<std::string> _map; // Game map
             std::size_t _mapType;                             // A size_t that represents map type
-            std::vector<std::string> _map;                                              // Map Game
             std::vector<std::vector<std::pair<std::string, std::string>>> _playersStats; // A vector of vector all the stats [Player -- (NameOfStat, Value)]...
             std::vector<std::pair<std::string, std::string>> _scores;                 // A vector of pair (username, score)
             std::vector<std::shared_ptr<IEntity>> _entities;                         // A vector of shared pointer that represent all the entities to display. Ex : Map, Score, UserInfo, Button
@@ -148,7 +155,6 @@ namespace Game
             bool _isPaused;                             // A boolean to know if the game is in pause or not
             std::string _gameName;                      // A string that represents the game name
             std::vector<std::string> _userNames;        // A vector of all the users names
-
     };
 }
 

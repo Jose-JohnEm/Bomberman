@@ -7,6 +7,28 @@
 
 #include "XRay.hpp"
 
+std::string XRay::getTimeInFormat(void)
+{
+    int min = _gameSettings[4] / 60;
+    int secs = _gameSettings[4] % 60;
+    std::string time(std::string("0")+std::to_string(min)+std::string(":")
+    +((secs >= 10) ? std::string("") : std::string("0"))+std::to_string(secs));
+
+    return time;
+}
+
+void XRay::drawPlayersHead(size_t i, size_t x, size_t y)
+{
+    if (_userNames[i] == "Yellow")
+        _resources.at(YELLOWBOMBERMAN)->drawTexture(x, y);
+    if (_userNames[i] == "Red")
+        _resources.at(REDBOMBERMAN)->drawTexture(x, y);
+    if (_userNames[i] == "Blue")
+        _resources.at(BLUEBOMBERMAN)->drawTexture(x, y);
+    if (_userNames[i] == "Green")
+        _resources.at(GREENBOMBERMAN)->drawTexture(x, y);
+}
+
 void XRay::displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &panelPos)
 {
     for (size_t u = 0; u < _allIntegers[2]; u++) {
@@ -18,7 +40,12 @@ void XRay::displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &panelPos
             _resources.at(MOUSEPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
         if (_controlsTab[u] == Resources::KEYBOARDYELLOW)
             _resources.at(KEYBOARDPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
+        drawPlayersHead(u, panelPos[u].first-10, panelPos[u].second-180);
     }
+    _resources.at(CLOCKBAR)->drawTexture(1600, 200);
+    _resources.at(CLOCKBAR)->drawTexture(1600, 50);
+    Raylib::Text::drawText(std::to_string(_gameSettings[2]), 1720, 75, 60, Raylib::Color::White());
+    Raylib::Text::drawText(getTimeInFormat(), 1645, 225, 60, Raylib::Color::White());
 }
 
 void XRay::displayPauseScene(void)
@@ -46,10 +73,13 @@ void XRay::goToAnotherScene()
     bool home = mouseIsInBox(createBox(460, 885, 460+375, 885+65)) ? true : false;
 
     // Go to another scene according to mouse position
-    if (pauseButton && Raylib::Mouse::isButtonPressed(0))
+    if (pauseButton && Raylib::Mouse::isButtonPressed(0)) {
         _isPaused = true;
+        _lastFrameTime = Raylib::Timing::getTime();
+    }
     if (_isPaused && resume && Raylib::Mouse::isButtonPressed(0)) {
         _isPaused = false;
+        _startingTime += Raylib::Timing::getTime() - _lastFrameTime;
     }
     if (_isPaused && restart && Raylib::Mouse::isButtonPressed(0)) {
         _isPaused = false;
@@ -62,7 +92,7 @@ void XRay::goToAnotherScene()
         beginDrawing(false);
         _resources.at(SAVED)->drawTexture(650, 20);
         endDrawing();
-        _pointerToSaveFunc(*(new std::array<size_t, 8>));
+        _pointerToSaveFunc(_gameSettings);
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
     if (_isPaused && settings && Raylib::Mouse::isButtonPressed(0)) {
@@ -95,7 +125,21 @@ void XRay::displayInGameScene(void)
     // Display Cinematic ready, 3, 2, 1, go
     if (m_isPaused == 2) {
         displayCinematic("loading", 0, 0);
+        _resources.at(MAPCHOICEBG)->drawTexture(0, 0);
         displayCinematic("readygo", 0, 1000);
+        _startingTime = Raylib::Timing::getTime();
+        _lastFrameTime = Raylib::Timing::getTime();
+        _gameSettings[4] = _gameSettings[3];
+    }
+
+    // Next Set
+    if (_gameSettings[4] == 0 && _gameSettings[2] < _gameSettings[1]) {
+        _resources.at(MAPCHOICEBG)->drawTexture(0, 0);
+        displayCinematic("readygo", 0, 1000);
+        _startingTime = Raylib::Timing::getTime();
+        _lastFrameTime = Raylib::Timing::getTime();
+        _gameSettings[2] += 1;
+        _gameSettings[4] = _gameSettings[3];
     }
 
     // Draw scene
@@ -112,7 +156,7 @@ void XRay::displayInGameScene(void)
     endDrawing();
 
     m_isPaused = _isPaused;
-
+    _gameSettings[4] = !_isPaused && _gameSettings[4] > 0 ? _gameSettings[3] - (Raylib::Timing::getTime() - _startingTime) : _gameSettings[4];
     // Call function that check click on button
     goToAnotherScene();
 

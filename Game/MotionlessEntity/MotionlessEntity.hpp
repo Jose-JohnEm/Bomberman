@@ -29,7 +29,7 @@ namespace Game
              *
              * @return A std::string
              */
-            virtual std::string getType() = 0;
+            virtual std::string getType() const = 0;
 
             /**
              * @brief Get the Positions object
@@ -56,7 +56,7 @@ namespace Game
              *
              * @param shouldDisplay A boolean to know if this entity should be displayed
              */
-            void setShouldDisplay(bool shouldDisplay);
+            void setShouldDisplay(const bool &shouldDisplay);
 
             /**
              * @brief Get a boolean to know if this entity should be displayed
@@ -88,7 +88,7 @@ namespace Game
              */
             SolidWall(Raylib::Vector3 positions = {0, 0, 0}, size_t mapType = 0);
 
-            std::string getType() override;
+            std::string getType() const override;
 
             void drawEntity() override;
 
@@ -108,7 +108,7 @@ namespace Game
              */
             BreakableWall(Raylib::Vector3 positions = {0, 0, 0}, size_t mapType = 0);
 
-            std::string getType() override;
+            std::string getType() const override;
 
             void drawEntity() override;
 
@@ -128,7 +128,7 @@ namespace Game
              */
             Floor(Raylib::Vector3 positions = {0, 0, 0}, size_t mapType = 0);
 
-            std::string getType() override;
+            std::string getType() const override;
 
             void drawEntity() override;
 
@@ -136,6 +136,7 @@ namespace Game
             size_t _mapType;        // A size_t
     };
 
+    #include "MotionlessEntity.inl"
 }
 
 #endif /* !MOTIONLESSENTITY_HPP_ */

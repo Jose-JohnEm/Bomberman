@@ -177,10 +177,10 @@ class XRay : public IGraphical {
 
         /**
          * @brief Get Game Settings
-
-         * @return A vector of size_t
+         *
+         * @return An array of 8 size_t
          */
-        std::vector<size_t> getGameSettings() override;
+        std::array<size_t, 8> getGameSettings() override;
 
         /**
          * @brief Return true if the mouse is in the region and false otherwise
@@ -429,19 +429,53 @@ class XRay : public IGraphical {
         void setRestartFunc(std::function<void ()>) override;
 
         /**
+         * @brief Set pointer to Settings Function
+         *
+         * @param settingsFunc A pointer to Settings function in the core
+         */
+        void setSettingsFunc(std::function<void (std::array<std::size_t, 8>)>) override;
+
+        /**
          * @brief Check Click on MapChoiceScene
          */
         void checkClickOnMapChoiceScene();
 
+        /**
+         * @brief Get time in good format from clock and return in minutes and second
+         *
+         * @return Time in format (MIN : SECOND)
+         */
+        std::string getTimeInFormat(void);
+
+        /**
+         * @brief Draw Players Head
+         *
+         * @param i A size_t
+         * @param x A size_t
+         * @param y A size_t
+         */
+        void drawPlayersHead(size_t i, size_t x, size_t y);
+
     private:
         Raylib::Window _window;                     // Game window
 
-        std::vector<size_t> _gameSettings;          // Game Settings
-        size_t _aiLevel = 1;                        // 1 = EASY; 2 = MEDIUM; 3 = DIFFICULT
+        /**
+         * @brief Game Settings
+         * A vector of size_t
+         * [0] -- TIMESTAMP --- (NO)
+         * [1] -- _sets °
+         * [2] -- _currentSet °
+         * [3] -- _duration °
+         * [4] -- _remaining time --- (NO)
+         * [5] -- _aiNumber °
+         * [6] -- _aiLevel °
+         * [7] -- _allIntegers[2] - _aiNumber °
+         */
+        std::array<size_t, 8> _gameSettings = {0, 1, 1, 60, 60, 0, 1, 1};
         size_t _mapType = 0;                        // Type of Map
-        size_t _duration = 1;                       // Duration in min
-        size_t _sets = 1;                        // Sets of Map
         size_t _sizeMap = 5;                            // Size of Map
+        double _startingTime;                  // Get Time from raylib
+        double _lastFrameTime;                  // Get Time every frame from raylib
         std::vector<std::string> _map;              // Map
         float masterVolume;                         // Master volume
         float musicVolume;                         // Master volume
@@ -452,6 +486,7 @@ class XRay : public IGraphical {
         std::vector<void (XRay::*)()> _scenesFunc;  // Array of pointers to function (a scene, a function)
         std::function<void ()> _pointerToRestartFunc;   // Pointer to Restart Func
         std::function<void (std::array<std::size_t, 8>)> _pointerToSaveFunc;   // Pointer to Save Func
+        std::function<void (std::array<std::size_t, 8>)> _pointerToSettingsFunc;   // Pointer to Settings Func
         std::function<void (std::string)> _pointerToLoadFunc;   // Pointer to Load Func
 
         std::vector<bool> _playerTab{true, false, false, false};                     // A vector of boolean that represents if the player is an AI or not
