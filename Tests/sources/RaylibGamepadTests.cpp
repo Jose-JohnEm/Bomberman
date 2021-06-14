@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2021
 ** Indie
 ** File description:
-** PlayerTests
+** RaylibGamepadTests
 */
 
 #include <gtest/gtest.h>
@@ -19,17 +19,6 @@ TEST(GamepadTest, isGamepadNameTest)
     Raylib::Gamepad test;
     EXPECT_EQ(false, test.isGamepadName(1,"Xbox"));
 }
-/*
-TEST(GamepadTest, getGamepadNameTest)
-{
-    try {
-        Raylib::Gamepad test;
-        test.getGamepadName(1);
-    } catch (std::exception &ex) {
-        EXPECT_STREQ("ERROR: Invalid Return gamepad internal name id", ex.what());
-    }
-}
-*/
 
 TEST(GamepadTest, isGamepadButtonPressed11Test)
 {

@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2021
 ** Indie
 ** File description:
-** Collision2DTest
+** RaylibCollision2DTest
 */
 
 #include <gtest/gtest.h>

@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2021
 ** Indie
 ** File description:
-** MapTests
+** XRayCinematicClock
 */
 
 #include <gtest/gtest.h>
@@ -22,9 +22,6 @@ TEST(ClockTest, ElapsedTimepassReseTtrue)
 
     EXPECT_EQ(true, clock.doesTimeElapsed(0, true));
 }
-//Clock::doesTimeElapsed(const float &time, const bool &reset)
-
-//float Clock::getElapsedTime()
 
 TEST(ClockTest, getElapsedTimePassTrue)
 {

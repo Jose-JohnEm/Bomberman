@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2021
 ** Indie
 ** File description:
-** PlayerTests
+** RaylibMouseTests
 */
 
 #include <gtest/gtest.h>

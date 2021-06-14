@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2021
 ** Indie
 ** File description:
-** PlayerTests
+** RaylibTextTests
 */
 
 #include <gtest/gtest.h>
@@ -20,21 +20,6 @@ TEST(TextTest, drawTextTest)
         EXPECT_STREQ("ERROR: Invalid billboard texture", ex.what());
     }
 }
-
-/*
-TEST(TextTest, drawTextExTest)
-{
-    try {
-        Raylib::Text test;
-        Raylib::Color color;
-        color.Red();
-        std::pair<int, int> position(1,1);
-        test.drawTextEx("test","default", position, 1.0, 1.0,color);
-    } catch (std::exception &ex) {
-        EXPECT_STREQ("ERROR: Invalid billboard texture", ex.what());
-    }
-}
-*/
 
 TEST(TextTest, measureTextTest)
 {

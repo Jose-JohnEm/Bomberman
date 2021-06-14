@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2021
 ** Indie
 ** File description:
-** PlayerTests
+** RaylibTextureTests
 */
 
 #include <gtest/gtest.h>
@@ -42,18 +42,3 @@ TEST(TextureTest, loadTextureFromImageTest)
         EXPECT_STREQ("ERROR: Invalid billboard texture", ex.what());
     }
 }
-
-/*
-TEST(TextureTest, beginTextureModeTest)
-{
-    try {
-        Raylib::Texture test("default");
-        Raylib::RenderTexture renderTexture;
-        ::BeginTextureMode(renderTexture.getCStruct());
-        test.beginTextureMode(renderTexture);
-    } catch (std::exception &ex) {
-        EXPECT_STREQ("ERROR: Invalid billboard texture", ex.what());
-    }
-}
-*/
-
