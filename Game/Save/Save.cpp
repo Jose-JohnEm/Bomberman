@@ -177,7 +177,11 @@ void Game::Save::parsePlayers(const std::vector<std::string> &playersInfos)
 
 void Game::Save::parsePlayer(std::shared_ptr<Game::Player> player, const std::vector<std::string> &playerInfos) const
 {
-    if (playerInfos[2].compare("name") == 0)
+    if (playerInfos[2].compare("type") == 0)
+    {
+        std::cout << (playerInfos[3].compare("Human") ? "Is a human" : "Is an AI") << std::endl;
+    }
+    else if (playerInfos[2].compare("name") == 0)
     {
         player->setName(playerInfos[3]);
     }
