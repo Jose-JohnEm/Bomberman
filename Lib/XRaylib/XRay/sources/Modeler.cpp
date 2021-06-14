@@ -53,6 +53,8 @@ bool Modeler::isThereAnimationsPath(const Animator &animation_path) const
 
 void Modeler::update()
 {
+    if (!_isAnimated)
+        return;
     if (clock.doesTimeElapsed(FRAMETIME)) {
         _frame++;
         if (_frame >= _animations[_currentAnimation].frameCount)
