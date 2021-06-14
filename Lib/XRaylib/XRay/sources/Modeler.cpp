@@ -8,7 +8,7 @@
 #include "Modeler.hpp"
 
 Modeler::Modeler(const std::string &obj_path, const std::string &texture_path, const Animator &animation_path)
-: _model(LoadModel(texture_path.c_str())),
+: _model(LoadModel(obj_path.c_str())),
 _isAnimated(isThereAnimationsPath(animation_path)),
 _currentAnimation(WALK)
 {
