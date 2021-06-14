@@ -23,6 +23,11 @@ void XRay::displayCinematic(const std::string &cinematicPathDirectory, const siz
 {
     size_t filesNumber = countFilesDirectory("resources/cinematic/" + cinematicPathDirectory);
 
+    if (!_musics.at(MSC_OPENNING)->isPlaying()) {
+        std::thread tMusic(&XRay::playAndUpdateMusic, this, MSC_OPENNING);
+        tMusic.detach();
+    }
+
     // Launch cinematic
     for (size_t i = 0; i < filesNumber && !(i < hideSkip && Raylib::Mouse::isButtonPressed(0) && mouseIsInBox(createBox(1760, 950, 1883, 1005))); i++)
     {
@@ -40,4 +45,6 @@ void XRay::displayCinematic(const std::string &cinematicPathDirectory, const siz
         	std::this_thread::sleep_for(std::chrono::milliseconds(gap));
         endDrawing();
     }
+
+    _musics.at(MSC_OPENNING)->stop();
 }
