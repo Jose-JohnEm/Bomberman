@@ -45,12 +45,12 @@ inline void Game::Floor::drawEntity()
 
 inline std::string Game::SolidWall::getType() const
 {
-    return ("Wall");
+    return ("SolidWall");
 }
 
 inline std::string Game::BreakableWall::getType() const
 {
-    return ("Wall");
+    return ("BreakableWall");
 }
 
 inline std::string Game::Floor::getType() const
