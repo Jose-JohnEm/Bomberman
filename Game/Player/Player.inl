@@ -79,7 +79,7 @@ inline void Game::Player::drawEntity()
 {
     _model.update();
 
-    DrawModelEx(_model.getModel(), _positions.getCStruct(), {1, 0, 0}, 90, {1, 1, 1}, _color.getCStruct());
+    DrawModelEx(_model.getModel(), _positions.getCStruct(), {1, 0, 0}, 90, {_scalable, _scalable, _scalable}, _color.getCStruct());
 }
 
 /*inline void Game::Human::drawEntity()

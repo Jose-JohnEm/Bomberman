@@ -18,6 +18,7 @@ Game::Player::Player(const std::string &name, const Raylib::Vector3 &positions, 
     _brokenWalls{brokenWalls},
     _powerUps{powerUps},
     _model("resources/players/3D/Bombermans/white_tpose.glb", "resources/players/3D/Bombermans/texture.png", {}),
+    _scalable(0.6),
     _color(Raylib::Color::Red())
 {
 
@@ -33,26 +34,27 @@ Animator Game::Player::getAnimator(const std::vector<std::string> &animation_pat
         return Animator({"null", "null", "null"});
 }
 
-Game::Player::Player(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path, const Raylib::Color color)
+Game::Player::Player(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path, const float &scalable, const Raylib::Color color)
     : _name{name},
     _positions{positions},
     _kills{0},
     _brokenWalls{0},
     _powerUps{0},
     _model(obj_path, texture_path, getAnimator(animation_path)),
-    _color(color)
+    _color(color),
+    _scalable(scalable)
 {
     std::cout << "Hey I'm a new player : " << name << std::endl;
 }
 
-Game::AI::AI(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path, const Raylib::Color color)
-: Player(name, positions, obj_path, texture_path, animation_path, color)
+Game::AI::AI(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path, const float &scalable, const Raylib::Color color)
+: Player(name, positions, obj_path, texture_path, animation_path, scalable, color)
 {
 
 }
 
-Game::Human::Human(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path, const Raylib::Color color)
-: Player(name, positions, obj_path, texture_path, animation_path, color)
+Game::Human::Human(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path, const float &scalable, const Raylib::Color color)
+: Player(name, positions, obj_path, texture_path, animation_path, scalable, color)
 {
 
 }

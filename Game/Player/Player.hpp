@@ -46,14 +46,14 @@ namespace Game
 
             /**
              * @brief Construct a new Player object
-             *
+             * 
              * @param name the name of the character
              * @param positions the 3D positions of the character
              * @param obj_path the model path
              * @param texture_path the texture path
              * @param animation_path the animations paths
              */
-            Player(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path = {}, const Raylib::Color color = Raylib::Color::White());
+            Player(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path = {}, const float &scalable = 0.6, const Raylib::Color color = Raylib::Color::White());
 
             /**
              * @brief Get the Name of the Player
@@ -133,21 +133,21 @@ namespace Game
              *
              * @return A std::string
              */
-            virtual std::string getType() const override = 0;
+            virtual std::string getType() const = 0;
 
             /**
              * @brief Get the Positions object
              *
              * @return A Raylib::Vector3
              */
-            Raylib::Vector3 getPositions(void) const override;
+            Raylib::Vector3 getPositions(void) const;
 
             /**
              * @brief Set the Positions
              *
              * @param positions A vector3
              */
-            void setPositions(Raylib::Vector3 &positions) override;
+            void setPositions(Raylib::Vector3 &positions);
 
             /**
              * @brief Draw Entity
@@ -160,24 +160,24 @@ namespace Game
              *
              * @param shouldDisplay A boolean to know if this entity should be displayed
              */
-            void setShouldDisplay(const bool &shouldDisplay) override;
+            void setShouldDisplay(const bool &shouldDisplay);
 
             /**
              * @brief Get a boolean to know if this entity should be displayed
              *
              * @return true or false
              */
-            bool getShouldDisplay(void) const override;
+            bool getShouldDisplay(void) const;
 
         private:
 
             /**
              * @brief convert vector of string path to Animator
-             *
+             * 
              * @param animation_path vector of string paths
-             * @return Animator
+             * @return Animator 
              */
-            Animator getAnimator(const std::vector<std::string> &animation_path);
+            Animator Game::Player::getAnimator(const std::vector<std::string> &animation_path);
 
             std::string _name = "Name"; // Name of the player entitiy
             Raylib::Vector3 _positions{0, 0, 0}; // A vector3 that represents positions
@@ -188,6 +188,7 @@ namespace Game
             bool _shouldDisplay = true; // A boolean to know if this entity should be displayed
             Modeler _model;
             const Raylib::Color _color;
+            float _scalable;
     };
 
     class Human : public virtual Player {
@@ -196,14 +197,14 @@ namespace Game
 
             /**
              * @brief Construct a new Player object
-             *
+             * 
              * @param name the name of the character
              * @param positions the 3D positions of the character
              * @param obj_path the model path
              * @param texture_path the texture path
              * @param animation_path the animations paths
              */
-            Human(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path = "resources/players/3D/Bombermans/white_tpose.glb", const std::string &texture_path = "resources/players/3D/Bombermans/texture.png", const std::vector<std::string> &animation_path = {}, const Raylib::Color color = Raylib::Color::White());
+            Human(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path = "resources/players/3D/Bombermans/white_tpose.glb", const std::string &texture_path = "resources/players/3D/Bombermans/texture.png", const std::vector<std::string> &animation_path = {}, const float &scalable = 0.6, const Raylib::Color color = Raylib::Color::White());
 
             std::string getType() const override;
 
@@ -215,14 +216,14 @@ namespace Game
 
             /**
              * @brief Construct a new Player object
-             *
+             * 
              * @param name the name of the character
              * @param positions the 3D positions of the character
              * @param obj_path the model path
              * @param texture_path the texture path
              * @param animation_path the animations paths
              */
-            AI(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path = "resources/players/3D/Bombermans/white_tpose.glb", const std::string &texture_path = "resources/players/3D/Bombermans/texture.png", const std::vector<std::string> &animation_path = {}, const Raylib::Color color = Raylib::Color::White());
+            AI(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path = "resources/players/3D/Bombermans/white_tpose.glb", const std::string &texture_path = "resources/players/3D/Bombermans/texture.png", const std::vector<std::string> &animation_path = {}, const float &scalable = 0.6, const Raylib::Color color = Raylib::Color::White());
 
             std::string getType() const override;
 
