@@ -30,11 +30,13 @@ SET(ENGINE_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Engine/")
 SET(GAME_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Game/")
 SET(XRAY_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Lib/XRaylib/XRay/includes/")
 SET(RAYLIB_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Lib/XRaylib/Raylib/")
+FIND_PACKAGE(Threads REQUIRED)
 
 # This is the main part:
 ADD_EXECUTABLE(${PROJECT_NAME} ${SRCS} ${HEADERS_FILES})
 # This part downloads raylib and builds it if it's not installed on your system
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} xray) # Specify libraries or flags to use when linking a given target and/or its dependents
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${CMAKE_THREAD_LIBS_INIT}) # Specify libraries or flags to use when linking a given target and/or its dependents
 
 # Specify include directories to use when compiling a given target
 # PRIVATE keyword ensure a complete compilation beetwin dependencies
