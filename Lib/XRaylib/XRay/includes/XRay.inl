@@ -23,7 +23,7 @@ inline std::array<size_t, 8> XRay::getGameSettings()
 inline void XRay::resetAll(void)
 {}
 
-inline void XRay::setPlayerActionsFunc(std::function<void (std::size_t, std::string)> playerActionsFunc)
+inline void XRay::setPlayerActionsFunc(std::function<void (const size_t pos, const std::string action)> playerActionsFunc)
 {
     _playerActionsFunc = playerActionsFunc;
 }
