@@ -45,6 +45,17 @@ namespace Game
             Player(const std::string &name, const Raylib::Vector3 &positions, const size_t &kills, const size_t &brokenWalls, const std::array<int, 5> &powerUps);
 
             /**
+             * @brief Construct a new Player object
+             * 
+             * @param name the name of the character
+             * @param positions the 3D positions of the character
+             * @param obj_path the model path
+             * @param texture_path the texture path
+             * @param animation_path the animations paths
+             */
+            Player(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const Animator &animation_path = {}, const Raylib::Color color = Raylib::Color::White());
+
+            /**
              * @brief Get the Name of the Player
              *
              * @return A string
@@ -175,9 +186,15 @@ namespace Game
         public:
 
             /**
-             * @brief Construct a new Human
+             * @brief Construct a new Player object
+             * 
+             * @param name the name of the character
+             * @param positions the 3D positions of the character
+             * @param obj_path the model path
+             * @param texture_path the texture path
+             * @param animation_path the animations paths
              */
-            Human();
+            Human(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path = "resources/players/3D/Bombermans/white_tpose.glb", const std::string &texture_path = "resources/players/3D/Bombermans/texture.png", const Animator &animation_path = {}, const Raylib::Color color = Raylib::Color::White());
 
             std::string getType() const override;
 
@@ -188,9 +205,15 @@ namespace Game
         public:
 
             /**
-             * @brief Construct a new AI
+             * @brief Construct a new Player object
+             * 
+             * @param name the name of the character
+             * @param positions the 3D positions of the character
+             * @param obj_path the model path
+             * @param texture_path the texture path
+             * @param animation_path the animations paths
              */
-            AI();
+            AI(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path = "resources/players/3D/Bombermans/white_tpose.glb", const std::string &texture_path = "resources/players/3D/Bombermans/texture.png", const Animator &animation_path = {}, const Raylib::Color color = Raylib::Color::White());
 
             std::string getType() const override;
 
