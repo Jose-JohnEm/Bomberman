@@ -18,11 +18,21 @@ jobs:
     - name: configure CMake
       run: sudo apt-get install libgtest-dev && sudo apt-get install xorg-dev libglu1-mesa-dev && sudo apt-get install libirrlicht1.8 libirrlicht-dev libirrlicht-doc && cmake -E env SKIP_RESOURCES_FETCHING="TRUE" cmake -B ${{ github.workspace}}/Tests/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
-    - name: make
+    - name: Build on linux
+      # Build your program with the given configuration
+      run: cmake --build ${{ github.workspace }}/build --config ${{env.BUILD_TYPE}}
+
+    - name: Test bomberman
+      working-directory: ${{ github.workspace }}/build
+      # Execute tests defined by the CMake configuration.
+      # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
+      run: ctest -C ${{env.BUILD_TYPE}}
+
+    - name: Configure CMake for test
       working-directory: ${{ github.workspace }}/Tests
       run: cd build && cmake --build . ##--config ${{env.BUILD_TYPE}}
 
-    - name: Test Game
+    - name: Test tester
       working-directory: ${{ github.workspace }}/Tests/build
       # Execute tests defined by the CMake configuration.
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
