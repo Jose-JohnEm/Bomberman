@@ -19,7 +19,7 @@ Game::Bomberman::~Bomberman(void)
 void Game::Bomberman::initEntities() //TODO: pushback player
 {
     float x;
-    float y = 0;
+    float y = _map.size();
     float scale;
     int dic_index = 0;
 
@@ -41,7 +41,7 @@ void Game::Bomberman::initEntities() //TODO: pushback player
             _entities.push_back(std::shared_ptr<IEntity>(new Game::Floor(Raylib::Vector3(x, y, -0.4f), _mapType)));
             x++;
         }
-        y++;
+        y--;
     }
 }
 
