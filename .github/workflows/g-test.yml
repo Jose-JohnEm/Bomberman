@@ -22,5 +22,5 @@ jobs:
       run: cmake --build ${{ github.workspace }}/Tests/build ##--config ${{env.BUILD_TYPE}}
 
     - name: configure & Run Test
-      run: rm -r Tests/build  && cd Tests && mkdir build && cd build && cmake .. && cmake --build . && cp test_bomberman .. && export DISPLAY=:0  && ./test_bomberman
+      run: rm -r Tests/build  && cd Tests && mkdir build && cd build && cmake .. && cmake --build . && cp test_bomberman .. && export DISPLAY=:0  && glxinfo | grep OpenGL && ./test_bomberman
 
