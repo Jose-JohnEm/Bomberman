@@ -129,7 +129,11 @@ typedef enum {
     TEXT_MUSIC,
     TEXT_GENERAL,
     TEXT_MODS,
-    CLOCKBAR
+    CLOCKBAR,
+    YELLOWBOMBERMAN,
+    REDBOMBERMAN,
+    BLUEBOMBERMAN,
+    GREENBOMBERMAN
 } Resources;
 
 typedef enum {

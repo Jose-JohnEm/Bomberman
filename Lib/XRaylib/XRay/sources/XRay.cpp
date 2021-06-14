@@ -191,6 +191,10 @@ void XRay::setResources(void)
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::TEXT_VOLUME, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/textVolume.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::TEXT_MODS, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/textMods.png"))));
 	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::CLOCKBAR, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/clockbar.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::YELLOWBOMBERMAN, std::make_shared<Raylib::Texture>(Raylib::Image("resources/players/bioYellow.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::REDBOMBERMAN, std::make_shared<Raylib::Texture>(Raylib::Image("resources/players/bioRed.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::BLUEBOMBERMAN, std::make_shared<Raylib::Texture>(Raylib::Image("resources/players/bioBlue.png"))));
+	_resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::GREENBOMBERMAN, std::make_shared<Raylib::Texture>(Raylib::Image("resources/players/bioGreen.png"))));
 }
 
 void XRay::setAudioResources(void)

@@ -17,6 +17,18 @@ std::string XRay::getTimeInFormat(void)
     return time;
 }
 
+void XRay::drawPlayersHead(size_t i, size_t x, size_t y)
+{
+    if (_userNames[i] == "Yellow")
+        _resources.at(YELLOWBOMBERMAN)->drawTexture(x, y);
+    if (_userNames[i] == "Red")
+        _resources.at(REDBOMBERMAN)->drawTexture(x, y);
+    if (_userNames[i] == "Blue")
+        _resources.at(BLUEBOMBERMAN)->drawTexture(x, y);
+    if (_userNames[i] == "Green")
+        _resources.at(GREENBOMBERMAN)->drawTexture(x, y);
+}
+
 void XRay::displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &panelPos)
 {
     for (size_t u = 0; u < _allIntegers[2]; u++) {
@@ -28,6 +40,7 @@ void XRay::displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &panelPos
             _resources.at(MOUSEPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
         if (_controlsTab[u] == Resources::KEYBOARDYELLOW)
             _resources.at(KEYBOARDPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
+        drawPlayersHead(u, panelPos[u].first-10, panelPos[u].second-180);
     }
     _resources.at(CLOCKBAR)->drawTexture(1600, 200);
     _resources.at(CLOCKBAR)->drawTexture(1600, 50);
@@ -112,6 +125,7 @@ void XRay::displayInGameScene(void)
     // Display Cinematic ready, 3, 2, 1, go
     if (m_isPaused == 2) {
         displayCinematic("loading", 0, 0);
+        _resources.at(MAPCHOICEBG)->drawTexture(0, 0);
         displayCinematic("readygo", 0, 1000);
         _startingTime = Raylib::Timing::getTime();
         _lastFrameTime = Raylib::Timing::getTime();
@@ -120,6 +134,7 @@ void XRay::displayInGameScene(void)
 
     // Next Set
     if (_gameSettings[4] == 0 && _gameSettings[2] < _gameSettings[1]) {
+        _resources.at(MAPCHOICEBG)->drawTexture(0, 0);
         displayCinematic("readygo", 0, 1000);
         _startingTime = Raylib::Timing::getTime();
         _lastFrameTime = Raylib::Timing::getTime();

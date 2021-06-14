@@ -440,6 +440,15 @@ class XRay : public IGraphical {
          */
         std::string getTimeInFormat(void);
 
+        /**
+         * @brief Draw Players Head
+         *
+         * @param i A size_t
+         * @param x A size_t
+         * @param y A size_t
+         */
+        void drawPlayersHead(size_t i, size_t x, size_t y);
+
     private:
         Raylib::Window _window;                     // Game window
 
