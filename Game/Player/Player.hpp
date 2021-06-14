@@ -196,7 +196,7 @@ namespace Game
 
             /**
              * @brief Construct a new Player object
-             * 
+             *
              * @param name the name of the character
              * @param positions the 3D positions of the character
              * @param obj_path the model path
@@ -215,7 +215,7 @@ namespace Game
 
             /**
              * @brief Construct a new Player object
-             * 
+             *
              * @param name the name of the character
              * @param positions the 3D positions of the character
              * @param obj_path the model path

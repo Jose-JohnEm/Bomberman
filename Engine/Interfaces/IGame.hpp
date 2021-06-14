@@ -11,19 +11,7 @@
 #include "IEntity.hpp"
 #include <memory>
 #include <vector>
-
-#ifndef __CHARDICTIONARY__
-#define __CHARDICTIONARY__
-    struct CharDictionary
-    {
-        std::string obj;
-        std::string texture;
-        float scalable;
-        std::string name;
-        Raylib::Color color;
-        std::vector<std::string> animations;
-    };
-#endif
+#include "PlayerSelector/CharDictionary.hpp"
 
 class IGame {
 
