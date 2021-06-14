@@ -146,10 +146,10 @@ namespace Game
             /**
              * @brief Do A player Action
              *
-             * @param pos Pos of player
-             * @param action Action in a string
+             * @param pos Pos of player [0 -- 1 -- 2 -- 3]
+             * @param action Action in a string ["goEast", "goNorth", "goSouth", "goWest", "dropBomb"]
              */
-            void doPlayerAction(size_t pos, std::string action) override;
+            void doPlayerAction(const size_t pos, const std::string action) override;
 
             /**
              * @brief Set the current Players data
