@@ -12,7 +12,7 @@ std::string XRay::getTimeInFormat(void)
     int min = _gameSettings[4] / 60;
     int secs = _gameSettings[4] % 60;
     std::string time(std::string("0")+std::to_string(min)+std::string(":")
-    +((secs > 10) ? std::string("") : std::string("0"))+std::to_string(secs));
+    +((secs >= 10) ? std::string("") : std::string("0"))+std::to_string(secs));
 
     return time;
 }
