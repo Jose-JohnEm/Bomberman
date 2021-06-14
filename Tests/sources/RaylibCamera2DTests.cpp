@@ -79,17 +79,3 @@ TEST(Camera2DTests, getScreenToWorld2D)
     EXPECT_EQ(camera.getScreenToWorld2D(Raylib::Vector2(0,0).getCStruct(), camera).x >= 0, false);
     EXPECT_EQ(camera.getScreenToWorld2D(Raylib::Vector2(0,0).getCStruct(), camera).y >= 0, true);
 }
-
-
-TEST(Camera2DTests, getScreenToWorld2D)
-{
-    ::Camera2D cameraC;
-
-    cameraC.offset = Raylib::Vector2(12, 12).getCStruct();
-    cameraC.target = Raylib::Vector2(12, 12).getCStruct();
-    cameraC.rotation = 1;
-    cameraC.zoom = 1;
-    Raylib::Camera2D camera(cameraC);
-    EXPECT_EQ(camera.getScreenToWorld2D(Raylib::Vector2(0,0).getCStruct(), camera).x >= 0, false);
-    EXPECT_EQ(camera.getScreenToWorld2D(Raylib::Vector2(0,0).getCStruct(), camera).y >= 0, true);
-}

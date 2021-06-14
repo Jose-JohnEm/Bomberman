@@ -33,10 +33,10 @@ TEST(RectangleTest, copy_const2Vector2)
 {
     Raylib::Rectangle rectangle(Raylib::Vector2(1, 1), Raylib::Vector2(2, 2));
 
-    EXPECT_EQ(1, rectangle.getCStruct().height);
-    EXPECT_EQ(1, rectangle.getCStruct().width);
-    EXPECT_EQ(2, rectangle.getCStruct().x);
-    EXPECT_EQ(2, rectangle.getCStruct().y);
+    EXPECT_EQ(2, rectangle.getCStruct().height);
+    EXPECT_EQ(2, rectangle.getCStruct().width);
+    EXPECT_EQ(1, rectangle.getCStruct().x);
+    EXPECT_EQ(1, rectangle.getCStruct().y);
 }
 
 TEST(RectangleTest, copy_constVector)
@@ -55,7 +55,7 @@ TEST(RectangleTest, operatorequal)
     Raylib::Rectangle rectangle2 = rectangle;
 
     EXPECT_EQ(rectangle.getCStruct().height, rectangle2.getCStruct().height);
-    EXPECT_EQ(rectangle.getCStruct().height, rectangle2.getCStruct().width);
-    EXPECT_EQ(rectangle.getCStruct().height, rectangle2.getCStruct().x);
-    EXPECT_EQ(rectangle.getCStruct().height, rectangle2.getCStruct().y);
+    EXPECT_EQ(rectangle.getCStruct().width, rectangle2.getCStruct().width);
+    EXPECT_EQ(rectangle.getCStruct().x, rectangle2.getCStruct().x);
+    EXPECT_EQ(rectangle.getCStruct().y, rectangle2.getCStruct().y);
 }
