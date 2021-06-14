@@ -26,6 +26,8 @@
 #define PLAYER_TWO '2'
 #define PLAYER_THREE '3'
 #define PLAYER_FOUR '4'
+#define HUMAN 'H'
+#define ARTIFICIAL_INTELLIGENCE 'A'
 
 // Power-ups
 #define WALL_PASS 'P'
@@ -48,9 +50,9 @@ namespace Game
             *
             * @param width Width of the map
             * @param height Height of the map
-            * @param playersNumber Number of players in the map
+            * @param playersNumber Number of players in the map (first: human number, second: AI number)
             */
-            Map(const size_t &width, const size_t &height, const size_t &playersNumber);
+            Map(const size_t &width, const size_t &height, const std::pair<size_t, size_t> &playersNumber);
 
             /**
             * @brief Destroy the Map object
@@ -122,7 +124,7 @@ namespace Game
         private:
             size_t _width; // Width of the map
             size_t _height; // Height of the map
-            size_t _playersNumber; // Number of players in the map
+            std::pair<size_t, size_t> _playersNumber; // Number of players in the map (first: human number, second: AI number)
             std::vector<std::string> _map; // Map
 
             /**

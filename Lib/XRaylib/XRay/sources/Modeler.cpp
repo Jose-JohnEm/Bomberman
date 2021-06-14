@@ -24,6 +24,21 @@ _currentAnimation(WALK)
     SetMaterialTexture(&_model.materials[0], MAP_DIFFUSE, LoadTexture(texture_path.c_str()));
 }
 
+Modeler::Modeler()
+: _model(LoadModel("resources/players/3D/Bombermans/white_tpose.glb")),
+_isAnimated(true),
+_currentAnimation(WALK)
+{
+
+    int fake_counter = 0;
+
+    _animations.push_back(LoadModelAnimations("resources/players/3D/Bombermans/animations/white_walking.glb", &fake_counter)[0]);
+    _animations.push_back(LoadModelAnimations("resources/players/3D/Bombermans/animations/white_bomb.glb", &fake_counter)[0]);
+    _animations.push_back(LoadModelAnimations("resources/players/3D/Bombermans/animations/white_emote.glb", &fake_counter)[0]);
+
+    SetMaterialTexture(&_model.materials[0], MAP_DIFFUSE, LoadTexture("resources/players/3D/Bombermans/texture.png"));
+}
+
 Modeler::~Modeler()
 {
 
@@ -61,7 +76,7 @@ void Modeler::makeEmote()
     _currentAnimation = EMOTE;
 }
 
-Model &Modeler::operator->()
+Model &Modeler::getModel()
 {
     return _model;
 }

@@ -16,7 +16,7 @@ Game::Bomberman::~Bomberman(void)
 {
 }
 
-void Game::Bomberman::initEntities() //TODO: pushback player
+void Game::Bomberman::initEntities() //TODO: pushback player //TODO: floor under !
 {
     float x;
     float y = 0;
@@ -25,9 +25,13 @@ void Game::Bomberman::initEntities() //TODO: pushback player
     for (const std::string &line : _map) {
         x = 0;
         for (const char &c : line) {
-            if (c == 'W' || c == 'E')
+            if (c == 'H')
+                _entities.push_back(std::shared_ptr<IEntity>(new Game::Human));
+            else if (c == 'A')
+                _entities.push_back(std::shared_ptr<IEntity>(new Game::AI));
+            else if (c == 'W' || c == 'E')
                 _entities.push_back(std::shared_ptr<IEntity>(new Game::SolidWall(Raylib::Vector3(x, y, 0), _mapType)));
-            if (c == 'M')
+            else if (c == 'M')
                 _entities.push_back(std::shared_ptr<IEntity>(new Game::BreakableWall(Raylib::Vector3(x, y, 0), _mapType)));
             _entities.push_back(std::shared_ptr<IEntity>(new Game::Floor(Raylib::Vector3(x, y, -0.4f), _mapType)));
             x++;
@@ -36,10 +40,10 @@ void Game::Bomberman::initEntities() //TODO: pushback player
     }
 }
 
-std::vector<std::string> &Game::Bomberman::getMap(size_t size)
+std::vector<std::string> &Game::Bomberman::getMap(size_t size) // TODO: le nombre de human et d'AI
 {
     if (_map.size() != size+2) {
-        Game::Map newMap(size, size, _userNames.size());
+        Game::Map newMap(size, size, std::make_pair(_userNames.size(), 0)); // TODO: set first and second
 
         std::cout << " YAOI " << _userNames.size() << std::endl;
         _map = newMap.getMap();
@@ -101,8 +105,8 @@ void Game::Bomberman::saveGame(const std::array<std::size_t, 8> &settings)
 
     // Get Map
     Game::Map map;
-    map.setHeight(_map.size()); //TODO: Check the dimensions
-    map.setWidth(_map[0].size());
+    map.setHeight(_map.size() - 2);
+    map.setWidth(_map[0].size() - 2);
     map.setMap(_map);
 
     // Save it all
@@ -112,10 +116,22 @@ void Game::Bomberman::saveGame(const std::array<std::size_t, 8> &settings)
 
 std::shared_ptr<IGame> Game::Bomberman::loadGame(const std::string &backupFilePath)
 {
-    // Game::Save load(backupFilePath);
+    // Parse data
+    Game::Save load(backupFilePath);
 
-    //_map = load.getMap();
-    //_settings = load.getSettings();
+    // Load players
+    std::vector<std::shared_ptr<Game::Player>> players = load.getPlayers();
+    for (const std::shared_ptr<Game::Player> &player : players)
+    {
+        _entities.push_back(player);
+    }
+
+    // Load map
+    _map = load.getMap().getMap();
+
+    // Load the settings
+    std::array<std::size_t, 8> settings = load.getSettings();
+
     // TODO: TO IMPLEMENT
     std::cout << "I load " << backupFilePath << std::endl;
     return nullptr;

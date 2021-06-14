@@ -75,15 +75,22 @@ inline std::string Game::AI::getType() const
     return ("AI");
 }
 
-inline void Game::Human::drawEntity()
+inline void Game::Player::drawEntity()
+{
+    _model.update();
+
+    DrawModelEx(_model.getModel(), _positions.getCStruct(), {1, 0, 0}, 90, {1, 1, 1}, _color.getCStruct());
+}
+
+/*inline void Game::Human::drawEntity()
 {
 }
 
 inline void Game::AI::drawEntity()
 {
-}
+}*/
 
-inline void Game::Player::setShouldDisplay(bool shouldDisplay)
+inline void Game::Player::setShouldDisplay(const bool &shouldDisplay)
 {
     _shouldDisplay = shouldDisplay;
 }

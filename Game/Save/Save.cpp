@@ -136,9 +136,9 @@ void Game::Save::parsePlayers(const std::vector<std::string> &playersInfos)
     {
         _players.reserve(_settings[HUMAN_NBR] + _settings[AI_NBR]);
         for (int i = 0; i < _settings[HUMAN_NBR]; i++)
-            _players.push_back(std::shared_ptr<Game::Player>(new Game::Human()));
+            _players.push_back(std::shared_ptr<Game::Player>(new Game::Human("Test",{0, 0, 0})));
         for (int i = 0; i < _settings[AI_NBR]; i++)
-            _players.push_back(std::shared_ptr<Game::Player>(new Game::AI()));
+            _players.push_back(std::shared_ptr<Game::Player>(new Game::AI("Test AI", {0, 0, 0})));
     }
     switch (std::stoi(playersInfos[1]))
     {
@@ -184,8 +184,8 @@ void Game::Save::parsePlayer(std::shared_ptr<Game::Player> player, const std::ve
     else if (playerInfos[2].compare("positions") == 0)
     {
         std::vector<std::string> positions = getInputArguments(playerInfos[3], ',');
-        Raylib::Vector3 vector(std::stof(positions[0]), std::stof(positions[1]), 0.0);
-        player->setPositions(vector); //FIXME: z always 0 ?
+        Raylib::Vector3 vector(std::stof(positions[0]), std::stof(positions[1]), std::stof(positions[2]));
+        player->setPositions(vector);
     }
     else if (playerInfos[2].compare("powerups") == 0)
     {

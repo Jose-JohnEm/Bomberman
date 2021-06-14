@@ -13,6 +13,7 @@
 #include <string>
 #include "Interfaces/IEntity.hpp"
 #include "../Lib/XRaylib/Raylib/Vector3/Vector3.hpp"
+#include "Modeler.hpp"
 
 typedef enum {
     P_SKATE,
@@ -42,6 +43,17 @@ namespace Game
             * @param powerUps A const reference to a std::array of 5 int
             */
             Player(const std::string &name, const Raylib::Vector3 &positions, const size_t &kills, const size_t &brokenWalls, const std::array<int, 5> &powerUps);
+
+            /**
+             * @brief Construct a new Player object
+             * 
+             * @param name the name of the character
+             * @param positions the 3D positions of the character
+             * @param obj_path the model path
+             * @param texture_path the texture path
+             * @param animation_path the animations paths
+             */
+            Player(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const Animator &animation_path = {}, const Raylib::Color color = Raylib::Color::White());
 
             /**
              * @brief Get the Name of the Player
@@ -141,14 +153,14 @@ namespace Game
              * @brief Draw Entity
              *
              */
-            virtual void drawEntity() = 0; //TODO: const ?
+            void drawEntity() override;
 
             /**
              * @brief Set a boolean to know if this entity should be displayed
              *
              * @param shouldDisplay A boolean to know if this entity should be displayed
              */
-            void setShouldDisplay(bool shouldDisplay); //TODO: const pram ?
+            void setShouldDisplay(const bool &shouldDisplay);
 
             /**
              * @brief Get a boolean to know if this entity should be displayed
@@ -158,13 +170,15 @@ namespace Game
             bool getShouldDisplay(void) const;
 
         private:
-            std::string _name; // Name of the player entitiy
+            std::string _name = "Name"; // Name of the player entitiy
             Raylib::Vector3 _positions{0, 0, 0}; // A vector3 that represents positions
-            size_t _brokenWalls; // Amount of broken walls
-            size_t _kills; // Amount of kills
-            std::array<int, 5> _powerUps; // Amount of powerUps
+            size_t _brokenWalls = 0; // Amount of broken walls
+            size_t _kills = 0; // Amount of kills
+            std::array<int, 5> _powerUps{0, 0, 0, 0, 0}; // Amount of powerUps
             int _ID; // ID of the player
             bool _shouldDisplay = true; // A boolean to know if this entity should be displayed
+            Modeler _model;
+            const Raylib::Color _color;
     };
 
     class Human : public virtual Player {
@@ -172,12 +186,17 @@ namespace Game
         public:
 
             /**
-             * @brief Construct a new Human
+             * @brief Construct a new Player object
+             * 
+             * @param name the name of the character
+             * @param positions the 3D positions of the character
+             * @param obj_path the model path
+             * @param texture_path the texture path
+             * @param animation_path the animations paths
              */
-            Human();
+            Human(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path = "resources/players/3D/Bombermans/white_tpose.glb", const std::string &texture_path = "resources/players/3D/Bombermans/texture.png", const Animator &animation_path = {}, const Raylib::Color color = Raylib::Color::White());
 
             std::string getType() const override;
-            void drawEntity() override;
 
     };
 
@@ -186,12 +205,17 @@ namespace Game
         public:
 
             /**
-             * @brief Construct a new AI
+             * @brief Construct a new Player object
+             * 
+             * @param name the name of the character
+             * @param positions the 3D positions of the character
+             * @param obj_path the model path
+             * @param texture_path the texture path
+             * @param animation_path the animations paths
              */
-            AI();
+            AI(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path = "resources/players/3D/Bombermans/white_tpose.glb", const std::string &texture_path = "resources/players/3D/Bombermans/texture.png", const Animator &animation_path = {}, const Raylib::Color color = Raylib::Color::White());
 
             std::string getType() const override;
-            void drawEntity() override;
 
     };
 

@@ -35,11 +35,13 @@ void XRay::checkClickOnMapChoiceScene(void)
             _gameSettings[1] = (y == 455) ? ((_gameSettings[1] > 1) ? _gameSettings[1]-1 : 5) : _gameSettings[1];
             _gameSettings[3] = (y == 665) ? ((_gameSettings[3] > 1) ? _gameSettings[3]-1 : 5) : _gameSettings[3];
             _gameSettings[6] = (y == 875) ? ((_gameSettings[6] > 1) ? _gameSettings[6]-1 : 3) : _gameSettings[6];
+            _sfx.at(SFX_KLICK)->play();
         } else if (mouseIsInBox(createBox(1880, y+7, 1920, y+7+70)) && Raylib::Mouse::isButtonPressed(0)) {
             _sizeMap = (y == 245) ? ((_sizeMap < 19) ? _sizeMap+2 : 7) : _sizeMap;
             _gameSettings[1] = (y == 455) ? ((_gameSettings[1] < 5) ? _gameSettings[1]+1 : 1) : _gameSettings[1];
             _gameSettings[3] = (y == 665) ? ((_gameSettings[3] < 5) ? _gameSettings[3]+1 : 1) : _gameSettings[3];
             _gameSettings[6] = (y == 875) ? ((_gameSettings[6] < 3) ? _gameSettings[6]+1 : 1) : _gameSettings[6];
+            _sfx.at(SFX_KLICK)->play();
         }
     }
 }
@@ -82,6 +84,7 @@ void XRay::displayMapChoiceScene(void)
         _scenesBack[MAP_CHOICE] = _scenesBackBackup[MAP_CHOICE];
     }
     if (goNext && Raylib::Mouse::isButtonPressed(0)) {
+        _sfx.at(SFX_NOCK)->play();
         _mapType = _pSelector.getMapType();
         _scene = IN_GAME;
         beginDrawing(false);
@@ -91,4 +94,18 @@ void XRay::displayMapChoiceScene(void)
         _sizeMap = (_sizeMap == 5) ? 7 : _sizeMap;
         _gameSettings[3] *= (_gameSettings[3] < 6) ? 60 : 1;
     }
+<<<<<<< HEAD
+=======
+    if (Raylib::Mouse::isButtonPressed(0)) {
+        if (mouseIsInBox(createBox(10, 400, 160, 550))) {
+            _pSelector.prevMap();
+            _sfx.at(SFX_KLICK)->play();
+        }
+        if (mouseIsInBox(createBox(900, 400, 1050, 550))) {
+            _pSelector.nextMap();
+            _sfx.at(SFX_KLICK)->play();
+        }
+        checkClickOnMapChoiceScene();
+    }
+>>>>>>> 8c0fb38acc24b37b7f08435d042248ab9b5af635
 }

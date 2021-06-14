@@ -23,7 +23,7 @@ std::vector<std::vector<Texture>> findTexturesAvailable(int &nb_textures)
             {
                 files.push_back(f.path().filename().string());
             }
- 
+
             if (files.end() != find(files.begin(), files.end(), "wall.png") &&
                 files.end() != find(files.begin(), files.end(), "floor.png") &&
                 files.end() != find(files.begin(), files.end(), "box.png"))
