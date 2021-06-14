@@ -66,10 +66,11 @@ XRay::XRay(void)
 }
 
 void XRay::playAndUpdateMusic(MusicResources music) {
+    Clock clock;
     _musics.at(music)->playMusic();
     while (1) {
-        _musics.at(music)->update();
-        usleep(10000); // Add delay to not update to many time the buffer
+        if (clock.doesTimeElapsed(0.01))
+            _musics.at(music)->update();
     }
 }
 
