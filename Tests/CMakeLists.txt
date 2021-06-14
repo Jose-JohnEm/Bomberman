@@ -24,6 +24,7 @@ FILE(GLOB_RECURSE SRCS CONFIGURE_DEPENDS
     "${PROJET_DIRECTORY}Game/*.cpp"
     "sources/Raylib/*.cpp"
     "sources/XRay/*.cpp"
+    #"sources/Game/GamePlayer*.cpp" Need to edit tests
 )
 
 # Set Headers paths
