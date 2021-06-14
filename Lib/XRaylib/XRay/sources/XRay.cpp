@@ -58,7 +58,7 @@ XRay::XRay(void)
     // Play bomberman music
     _musics.at(MSC_BOMBERMAN)->playMusic();
     masterVolume = 50;
-    musicVolume = 0; // FIXME 100
+    musicVolume = 100;
     sfxVolume = 100;
     Raylib::Audio::setMasterVolume(masterVolume / 100);
     changeMusicVolume();
