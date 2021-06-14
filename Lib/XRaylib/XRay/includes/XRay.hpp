@@ -460,7 +460,7 @@ class XRay : public IGraphical {
          * 
          * @return std::vector<PlayerData> represents all the players data
          */
-        std::vector<CharDictionary> XRay::getPlayersData() override;
+        std::vector<CharDictionary> getPlayersData() override;
 
     private:
         Raylib::Window _window;                     // Game window
