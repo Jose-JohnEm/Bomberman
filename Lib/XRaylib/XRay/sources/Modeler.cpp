@@ -57,13 +57,10 @@ void Modeler::update()
 {
     if (!_isAnimated)
         return;
-    std::cout << "The model is animated !" << std::endl;
     if (clock.doesTimeElapsed(FRAMETIME)) {
         _frame++;
-        std::cout << "The frame is incremented !" << std::endl;
         if (_frame >= _animations[_currentAnimation].frameCount)
             _frame = 0;
-        std::cout << "The frame is good, lets update !" << std::endl;
         UpdateModelAnimation(_model, _animations[_currentAnimation], _frame);
         std::cout << "ITS UPDATED !!!" << std::endl;
     }

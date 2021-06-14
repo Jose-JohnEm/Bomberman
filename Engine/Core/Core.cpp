@@ -47,6 +47,7 @@ void Engine::Core::run(void)
                 _game->setMapType(_graphical->getMapSizeAndType().second);
                 _game->setUserNames(_graphical->getUserNames());
                 _graphical->setMap(_game->getMap(_graphical->getMapSizeAndType().first));
+                _game->setPlayers(_graphical->getPlayersData());
             }
             if (!_isPaused)
                 _game->updateGame();
