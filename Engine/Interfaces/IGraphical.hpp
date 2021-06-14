@@ -194,8 +194,15 @@ class IGraphical {
         virtual std::array<size_t, 8> getGameSettings() = 0;
 
         /**
+         * @brief Set the Player Actions Func
+         *
+         * @param playerActionsFunc A pointer to function that manage all players actions in the game (left, right ...)
+         */
+        virtual void setPlayerActionsFunc(std::function<void (const size_t pos, const std::string action)>) = 0;
+
+        /**
          * @brief Get the Players Data
-         * 
+         *
          * @return std::vector<CharDictionary> containing players data
          */
         virtual std::vector<CharDictionary> getPlayersData() = 0;

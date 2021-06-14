@@ -144,8 +144,16 @@ namespace Game
             void setMapType(const std::size_t &mapType) override;
 
             /**
+             * @brief Do A player Action
+             *
+             * @param pos Pos of player [0 -- 1 -- 2 -- 3]
+             * @param action Action in a string ["goEast", "goNorth", "goSouth", "goWest", "dropBomb"]
+             */
+            void doPlayerAction(const size_t pos, const std::string action) override;
+
+            /**
              * @brief Set the current Players data
-             * 
+             *
              * @param playersData Dictionary of the players' data
              */
             void setPlayers(const std::vector<CharDictionary> &playersData) override;

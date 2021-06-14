@@ -32,7 +32,6 @@ PlayerSelector::Player::Player(const std::string &obj, const std::string &textur
 
 PlayerSelector::Player::~Player()
 {
-
 }
 
 void PlayerSelector::Player::draw(const float &rotation, const Raylib::Vector3 &pos)

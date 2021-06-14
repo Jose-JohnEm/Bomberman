@@ -107,8 +107,16 @@ class IGame {
         virtual void setMapType(const std::size_t &mapType) = 0;
 
         /**
+         * @brief Do A player Action
+         *
+         * @param pos Pos of player
+         * @param action Action in a string
+         */
+        virtual void doPlayerAction(const size_t pos, const std::string action) = 0;
+
+        /**
          * @brief Set the current Players data
-         * 
+         *
          * @param playersData Dictionary of the players' data
          */
         virtual void setPlayers(const std::vector<CharDictionary> &playersData) = 0;
