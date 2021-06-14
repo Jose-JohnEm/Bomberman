@@ -177,7 +177,7 @@ namespace Game
              * @param animation_path vector of string paths
              * @return Animator 
              */
-            Animator Game::Player::getAnimator(const std::vector<std::string> &animation_path);
+            Animator getAnimator(const std::vector<std::string> &animation_path);
 
             std::string _name = "Name"; // Name of the player entitiy
             Raylib::Vector3 _positions{0, 0, 0}; // A vector3 that represents positions
