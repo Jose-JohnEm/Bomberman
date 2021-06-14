@@ -29,8 +29,10 @@ void XRay::displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &panelPos
         if (_controlsTab[u] == Resources::KEYBOARDYELLOW)
             _resources.at(KEYBOARDPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
     }
-    _resources.at(CLOCKBAR)->drawTexture(200, 300);
-    Raylib::Text::drawText(getTimeInFormat(), 245, 325, 60, Raylib::Color::White());
+    _resources.at(CLOCKBAR)->drawTexture(1600, 200);
+    _resources.at(CLOCKBAR)->drawTexture(1600, 50);
+    Raylib::Text::drawText(std::to_string(_gameSettings[2]), 1720, 75, 60, Raylib::Color::White());
+    Raylib::Text::drawText(getTimeInFormat(), 1645, 225, 60, Raylib::Color::White());
 }
 
 void XRay::displayPauseScene(void)
@@ -113,6 +115,15 @@ void XRay::displayInGameScene(void)
         displayCinematic("readygo", 0, 1000);
         _startingTime = Raylib::Timing::getTime();
         _lastFrameTime = Raylib::Timing::getTime();
+        _gameSettings[4] = _gameSettings[3];
+    }
+
+    // Next Set
+    if (_gameSettings[4] == 0 && _gameSettings[2] < _gameSettings[1]) {
+        displayCinematic("readygo", 0, 1000);
+        _startingTime = Raylib::Timing::getTime();
+        _lastFrameTime = Raylib::Timing::getTime();
+        _gameSettings[2] += 1;
         _gameSettings[4] = _gameSettings[3];
     }
 

@@ -448,7 +448,7 @@ class XRay : public IGraphical {
          * A vector of size_t
          * [0] -- TIMESTAMP --- (NO)
          * [1] -- _sets °
-         * [2] -- _currentSet --- (NO)
+         * [2] -- _currentSet °
          * [3] -- _duration °
          * [4] -- _remaining time --- (NO)
          * [5] -- _aiNumber °

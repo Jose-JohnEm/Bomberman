@@ -30,12 +30,12 @@ void XRay::checkClickOnMapChoiceScene(void)
 {
     // Click on Next and Prev buttons
     for (size_t y = 245; y <= 875; y += 210) {
-        if (mouseIsInBox(createBox(1610, y+7, 1650, y+7+70))) {
+        if (mouseIsInBox(createBox(1610, y+7, 1650, y+7+70)) && Raylib::Mouse::isButtonPressed(0)) {
             _sizeMap = (y == 245) ? ((_sizeMap > 7) ? _sizeMap-2 : 19) : _sizeMap;
             _gameSettings[1] = (y == 455) ? ((_gameSettings[1] > 1) ? _gameSettings[1]-1 : 5) : _gameSettings[1];
             _gameSettings[3] = (y == 665) ? ((_gameSettings[3] > 1) ? _gameSettings[3]-1 : 5) : _gameSettings[3];
             _gameSettings[6] = (y == 875) ? ((_gameSettings[6] > 1) ? _gameSettings[6]-1 : 3) : _gameSettings[6];
-        } else if (mouseIsInBox(createBox(1880, y+7, 1920, y+7+70))) {
+        } else if (mouseIsInBox(createBox(1880, y+7, 1920, y+7+70)) && Raylib::Mouse::isButtonPressed(0)) {
             _sizeMap = (y == 245) ? ((_sizeMap < 19) ? _sizeMap+2 : 7) : _sizeMap;
             _gameSettings[1] = (y == 455) ? ((_gameSettings[1] < 5) ? _gameSettings[1]+1 : 1) : _gameSettings[1];
             _gameSettings[3] = (y == 665) ? ((_gameSettings[3] < 5) ? _gameSettings[3]+1 : 1) : _gameSettings[3];
@@ -66,6 +66,14 @@ void XRay::displayMapChoiceScene(void)
     displayMouse();
     endDrawing();
 
+    if (Raylib::Mouse::isButtonPressed(0)) {
+        if (mouseIsInBox(createBox(10, 400, 160, 550)))
+            _pSelector.prevMap();
+        if (mouseIsInBox(createBox(900, 400, 1050, 550)))
+            _pSelector.nextMap();
+    }
+    checkClickOnMapChoiceScene();
+
     // Go to another scene according to mouse position
     if (goBack && Raylib::Mouse::isButtonPressed(0)) {
         _sfx.at(SFX_HOME)->play();
@@ -80,13 +88,7 @@ void XRay::displayMapChoiceScene(void)
         _resources.at(LOADINGFRAMEO)->drawTexture(0, 0);
         endDrawing();
         _pSelector.endMaps();
+        _sizeMap = (_sizeMap == 5) ? 7 : _sizeMap;
         _gameSettings[3] *= (_gameSettings[3] < 6) ? 60 : 1;
-    }
-    if (Raylib::Mouse::isButtonPressed(0)) {
-        if (mouseIsInBox(createBox(10, 400, 160, 550)))
-            _pSelector.prevMap();
-        if (mouseIsInBox(createBox(900, 400, 1050, 550)))
-            _pSelector.nextMap();
-        checkClickOnMapChoiceScene();
     }
 }
