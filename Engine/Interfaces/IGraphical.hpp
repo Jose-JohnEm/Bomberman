@@ -191,6 +191,13 @@ class IGraphical {
          * @return An array of 8 size_t
          */
         virtual std::array<size_t, 8> getGameSettings() = 0;
+
+        /**
+         * @brief Set the Player Actions Func
+         *
+         * @param playerActionsFunc A pointer to function that manage all players actions in the game (left, right ...)
+         */
+        virtual void setPlayerActionsFunc(std::function<void (std::size_t, std::string)>) = 0;
 };
 
 #endif /* !IGRAPHICAL_HPP_ */
