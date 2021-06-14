@@ -136,9 +136,9 @@ void Game::Save::parsePlayers(const std::vector<std::string> &playersInfos)
     {
         _players.reserve(_settings[HUMAN_NBR] + _settings[AI_NBR]);
         for (int i = 0; i < _settings[HUMAN_NBR]; i++)
-            _players.push_back(std::shared_ptr<Game::Player>(new Game::Human("Test",{0, 0, 0})));
+            _players.push_back(std::shared_ptr<Game::Player>(new Game::Human("Human", {0, 0, 0})));
         for (int i = 0; i < _settings[AI_NBR]; i++)
-            _players.push_back(std::shared_ptr<Game::Player>(new Game::AI("Test AI", {0, 0, 0})));
+            _players.push_back(std::shared_ptr<Game::Player>(new Game::AI("AI", {0, 0, 0})));
     }
     switch (std::stoi(playersInfos[1]))
     {

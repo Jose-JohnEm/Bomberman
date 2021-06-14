@@ -46,7 +46,7 @@ namespace Game
 
             /**
              * @brief Construct a new Player object
-             * 
+             *
              * @param name the name of the character
              * @param positions the 3D positions of the character
              * @param obj_path the model path
@@ -173,9 +173,9 @@ namespace Game
 
             /**
              * @brief convert vector of string path to Animator
-             * 
+             *
              * @param animation_path vector of string paths
-             * @return Animator 
+             * @return Animator
              */
             Animator getAnimator(const std::vector<std::string> &animation_path);
 
@@ -197,7 +197,7 @@ namespace Game
 
             /**
              * @brief Construct a new Player object
-             * 
+             *
              * @param name the name of the character
              * @param positions the 3D positions of the character
              * @param obj_path the model path
@@ -216,7 +216,7 @@ namespace Game
 
             /**
              * @brief Construct a new Player object
-             * 
+             *
              * @param name the name of the character
              * @param positions the 3D positions of the character
              * @param obj_path the model path
