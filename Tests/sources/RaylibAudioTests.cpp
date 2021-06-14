@@ -2,13 +2,11 @@
 ** EPITECH PROJECT, 2021
 ** Indie
 ** File description:
-** PlayerTests
+** RaylibAudioTests
 */
 
 #include <gtest/gtest.h>
 #include "../Tests/Lib/XRaylib/Raylib/Audio/Audio.hpp"
-
-
 
 TEST(AudioTest, initAudioDeviceTest1)
 {
@@ -35,7 +33,7 @@ TEST(AudioTest, isAudioDeviceReady)
     Raylib::Audio test;
 
     auto res = test.isAudioDeviceReady();
-    
+
     EXPECT_EQ(false,res);
 }
 

@@ -6,7 +6,7 @@
 */
 
 #include <gtest/gtest.h>
-#include "../Tests/Lib/XRaylib/Raylib/Color/Color.hpp" 
+#include "../Tests/Lib/XRaylib/Raylib/Color/Color.hpp"
 
 TEST(ColorTest, fadeTest)
 {
