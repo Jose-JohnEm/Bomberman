@@ -2,9 +2,9 @@ name: gtest actions
 
 on:
   push:
-    branches: [ features/tests ]
+    branches: [ master, develop ]
   pull_request:
-    branches: [ features/tests ]
+    branches: [ master, develop ]
 
 jobs:
   build:
