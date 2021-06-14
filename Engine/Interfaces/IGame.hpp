@@ -112,7 +112,7 @@ class IGame {
          * @param pos Pos of player
          * @param action Action in a string
          */
-        virtual void doPlayerAction(size_t pos, std::string action) = 0;
+        virtual void doPlayerAction(const size_t pos, const std::string action) = 0;
 
         /**
          * @brief Set the current Players data
