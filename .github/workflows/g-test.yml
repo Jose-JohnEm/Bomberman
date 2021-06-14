@@ -22,9 +22,8 @@ jobs:
       run: cmake --build ${{ github.workspace }}/Tests/build ##--config ${{env.BUILD_TYPE}}
 
     - name: configure
-      run: cd Tests && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Werror" ..
-    - name: make
-      run: cd Lib && make
+      run: git -f clean && cd Tests && mkdir build && cd build && && cmake .. && cmake --build . && cp test_bomberman .. && ./test_bomberman
+
     - name: Run Test
-      run: ./test_bomberman
+      run: cd build && cmake .. && cmake --build . && cp test_bomberman .. && ./test_bomberman
 
