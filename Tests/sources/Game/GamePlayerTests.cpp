@@ -8,26 +8,26 @@
 #include <gtest/gtest.h>
 #include "../Game/Player/Player.hpp"
 
-TEST(PlayerTests, copy_const)
-{
-    Raylib::Vector3 positions(30, 40, 1);
-    Raylib::Color color = Raylib::Color::White();
-    Animator animations;
-    //Game::Human player("PlayerName", positions, "../../resources/players/3D/Bombermans/white_tpose.glb", "../../resources/players/3D/Bombermans/texture.png", animations, color);
-    //std::array<int, 5> powerups = player.getPowerUps();
+// TEST(PlayerTests, copy_const)
+// {
+//     Raylib::Vector3 positions(30, 40, 1);
+//     Raylib::Color color = Raylib::Color::White();
+//     Animator animations;
+//     Game::Human player("PlayerName", positions, "../../resources/players/3D/Bombermans/white_tpose.glb", "../../resources/players/3D/Bombermans/texture.png", animations, color);
+//     std::array<int, 5> powerups = player.getPowerUps();
 
-    // EXPECT_EQ(player.getName(), "PlayerName");
-    // EXPECT_EQ(player.getPositions().x, 30);
-    // EXPECT_EQ(player.getPositions().y, 40);
-    // EXPECT_EQ(player.getPositions().z, 40);
-    // EXPECT_EQ(player.getKills(), 2);
-    // EXPECT_EQ(player.getBrokenWalls(), 200);
-    // EXPECT_EQ(powerups[P_SKATE], 0);
-    // EXPECT_EQ(powerups[P_BOMB], 0);
-    // EXPECT_EQ(powerups[P_PASS], 0);
-    // EXPECT_EQ(powerups[P_FIRE], 0);
-    // EXPECT_EQ(powerups[P_LIFE], 0);
-}
+//     EXPECT_EQ(player.getName(), "PlayerName");
+//     EXPECT_EQ(player.getPositions().x, 30);
+//     EXPECT_EQ(player.getPositions().y, 40);
+//     EXPECT_EQ(player.getPositions().z, 40);
+//     EXPECT_EQ(player.getKills(), 2);
+//     EXPECT_EQ(player.getBrokenWalls(), 200);
+//     EXPECT_EQ(powerups[P_SKATE], 0);
+//     EXPECT_EQ(powerups[P_BOMB], 0);
+//     EXPECT_EQ(powerups[P_PASS], 0);
+//     EXPECT_EQ(powerups[P_FIRE], 0);
+//     EXPECT_EQ(powerups[P_LIFE], 0);
+// }
 
 // TEST(PlayerTests, id)
 // {

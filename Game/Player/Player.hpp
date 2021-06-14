@@ -53,7 +53,7 @@ namespace Game
              * @param texture_path the texture path
              * @param animation_path the animations paths
              */
-            Player(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const Animator &animation_path = {}, const Raylib::Color color = Raylib::Color::White());
+            Player(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path = {}, const float &scalable = 0.6, const Raylib::Color color = Raylib::Color::White());
 
             /**
              * @brief Get the Name of the Player
@@ -170,6 +170,15 @@ namespace Game
             bool getShouldDisplay(void) const;
 
         private:
+
+            /**
+             * @brief convert vector of string path to Animator
+             * 
+             * @param animation_path vector of string paths
+             * @return Animator 
+             */
+            Animator getAnimator(const std::vector<std::string> &animation_path);
+
             std::string _name = "Name"; // Name of the player entitiy
             Raylib::Vector3 _positions{0, 0, 0}; // A vector3 that represents positions
             size_t _brokenWalls = 0; // Amount of broken walls
@@ -179,6 +188,7 @@ namespace Game
             bool _shouldDisplay = true; // A boolean to know if this entity should be displayed
             Modeler _model;
             const Raylib::Color _color;
+            float _scalable;
     };
 
     class Human : public virtual Player {
@@ -194,7 +204,7 @@ namespace Game
              * @param texture_path the texture path
              * @param animation_path the animations paths
              */
-            Human(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path = "resources/players/3D/Bombermans/white_tpose.glb", const std::string &texture_path = "resources/players/3D/Bombermans/texture.png", const Animator &animation_path = {}, const Raylib::Color color = Raylib::Color::White());
+            Human(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path = "resources/players/3D/Bombermans/white_tpose.glb", const std::string &texture_path = "resources/players/3D/Bombermans/texture.png", const std::vector<std::string> &animation_path = {}, const float &scalable = 0.6, const Raylib::Color color = Raylib::Color::White());
 
             std::string getType() const override;
 
@@ -213,7 +223,7 @@ namespace Game
              * @param texture_path the texture path
              * @param animation_path the animations paths
              */
-            AI(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path = "resources/players/3D/Bombermans/white_tpose.glb", const std::string &texture_path = "resources/players/3D/Bombermans/texture.png", const Animator &animation_path = {}, const Raylib::Color color = Raylib::Color::White());
+            AI(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path = "resources/players/3D/Bombermans/white_tpose.glb", const std::string &texture_path = "resources/players/3D/Bombermans/texture.png", const std::vector<std::string> &animation_path = {}, const float &scalable = 0.6, const Raylib::Color color = Raylib::Color::White());
 
             std::string getType() const override;
 

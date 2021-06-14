@@ -18,6 +18,7 @@
 #include <memory>
 #include <utility>
 #include "IEntity.hpp"
+#include "PlayerSelector/CharDictionary.hpp"
 
 class IGraphical {
 
@@ -198,6 +199,13 @@ class IGraphical {
          * @param playerActionsFunc A pointer to function that manage all players actions in the game (left, right ...)
          */
         virtual void setPlayerActionsFunc(std::function<void (std::size_t, std::string)>) = 0;
+
+        /**
+         * @brief Get the Players Data
+         *
+         * @return std::vector<CharDictionary> containing players data
+         */
+        virtual std::vector<CharDictionary> getPlayersData() = 0;
 };
 
 #endif /* !IGRAPHICAL_HPP_ */

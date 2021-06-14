@@ -21,14 +21,19 @@ void Game::Bomberman::initEntities() //TODO: pushback player
     float x;
     float y = 0;
     float scale;
+    int dic_index = 0;
 
     for (const std::string &line : _map) {
         x = 0;
         for (const char &c : line) {
-            if (c == 'H')
-                _entities.push_back(std::shared_ptr<IEntity>(new Game::Human("Test", {x, y, 0})));
-            else if (c == 'A')
-                _entities.push_back(std::shared_ptr<IEntity>(new Game::AI("Test", {x, y, 0})));
+            if ((c == 'H' || c == 'A') && dic_index < _players.size())
+            {
+                if (c == 'H')
+                    _entities.push_back(std::shared_ptr<IEntity>(new Game::Human(_players[dic_index].name, {x, y, 0}, _players[dic_index].obj, _players[dic_index].texture, _players[dic_index].animations, _players[dic_index].scalable, _players[dic_index].color)));
+                else if (c == 'A')
+                    _entities.push_back(std::shared_ptr<IEntity>(new Game::AI(_players[dic_index].name, {x, y, 0}, _players[dic_index].obj, _players[dic_index].texture, _players[dic_index].animations, _players[dic_index].scalable, _players[dic_index].color)));
+                dic_index++;
+            }
             else if (c == 'W' || c == 'E')
                 _entities.push_back(std::shared_ptr<IEntity>(new Game::SolidWall(Raylib::Vector3(x, y, 0), _mapType)));
             else if (c == 'M')
@@ -132,6 +137,11 @@ std::shared_ptr<IGame> Game::Bomberman::loadGame(const std::string &backupFilePa
 
     std::cout << "I load " << backupFilePath << std::endl;
     return nullptr;
+}
+
+void Game::Bomberman::setPlayers(const std::vector<CharDictionary> &playersData)
+{
+    _players = playersData;
 }
 
 void Game::Bomberman::updateGame(void)

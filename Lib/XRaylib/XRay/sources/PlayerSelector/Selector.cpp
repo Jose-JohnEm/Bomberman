@@ -32,7 +32,7 @@ void PlayerSelector::Selector::preloadBasicsCharacters()
     _charaDictionary.push_back({
         "resources/players/3D/Bombermans/white_tpose.glb",
         "resources/players/3D/Bombermans/texture.png",
-        0.6,
+        0.6f,
         "Red",
         Raylib::Color::Red(),
         {
@@ -45,7 +45,7 @@ void PlayerSelector::Selector::preloadBasicsCharacters()
     _charaDictionary.push_back({
         "resources/players/3D/Bombermans/white_tpose.glb",
         "resources/players/3D/Bombermans/texture.png",
-            0.6,
+            0.6f,
             "Blue",
             Raylib::Color::Blue(),
             {
@@ -58,7 +58,7 @@ void PlayerSelector::Selector::preloadBasicsCharacters()
     _charaDictionary.push_back({
             "resources/players/3D/Bombermans/white_tpose.glb",
             "resources/players/3D/Bombermans/texture.png",
-            0.6,
+            0.6f,
             "Yellow",
             Raylib::Color::Yellow(),
             {
@@ -71,7 +71,7 @@ void PlayerSelector::Selector::preloadBasicsCharacters()
     _charaDictionary.push_back({
             "resources/players/3D/Bombermans/white_tpose.glb",
             "resources/players/3D/Bombermans/texture.png",
-            0.6,
+            0.6f,
             "Green",
             Raylib::Color::Green(),
             {
@@ -98,7 +98,7 @@ void PlayerSelector::Selector::findModsCharacters()
     {
         obj = "null";
         texture = "null";
-        scalable = 0.6;
+        scalable = 0.6f;
         name = "null";
 
         if (file.is_directory())
@@ -173,6 +173,11 @@ void PlayerSelector::Selector::firstLoad()
 {
     if (_players.size() == 0)
         load();
+}
+
+std::vector<CharDictionary> PlayerSelector::Selector::getPlayerData() const
+{
+    return _charaDictionary;
 }
 
 void PlayerSelector::Selector::load()

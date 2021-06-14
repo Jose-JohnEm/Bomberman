@@ -472,6 +472,12 @@ class XRay : public IGraphical {
          * @param y A size_t
          */
         void drawPlayersHead(size_t i, size_t x, size_t y);
+        /**
+         * @brief Get players Data to the Game
+         * 
+         * @return std::vector<PlayerData> represents all the players data
+         */
+        std::vector<CharDictionary> getPlayersData() override;
 
     private:
         Raylib::Window _window;                     // Game window

@@ -10,7 +10,8 @@
 Modeler::Modeler(const std::string &obj_path, const std::string &texture_path, const Animator &animation_path)
 : _model(LoadModel(obj_path.c_str())),
 _isAnimated(isThereAnimationsPath(animation_path)),
-_currentAnimation(WALK)
+_currentAnimation(WALK),
+_frame(0)
 {
     int fake_counter = 0;
 
@@ -27,7 +28,8 @@ _currentAnimation(WALK)
 Modeler::Modeler()
 : _model(LoadModel("resources/players/3D/Bombermans/white_tpose.glb")),
 _isAnimated(true),
-_currentAnimation(WALK)
+_currentAnimation(WALK),
+_frame(0)
 {
 
     int fake_counter = 0;
@@ -60,6 +62,7 @@ void Modeler::update()
         if (_frame >= _animations[_currentAnimation].frameCount)
             _frame = 0;
         UpdateModelAnimation(_model, _animations[_currentAnimation], _frame);
+        std::cout << "ITS UPDATED !!!" << std::endl;
     }
 }
 

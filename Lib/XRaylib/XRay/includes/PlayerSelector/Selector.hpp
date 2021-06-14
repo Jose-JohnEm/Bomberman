@@ -13,6 +13,7 @@
 #include "raylib.h"
 #include "PlayerSelector/Player.hpp"
 #include "PlayerSelector/Map.hpp"
+#include "PlayerSelector/CharDictionary.hpp"
 #include <filesystem>
 
 #define POS_1 Raylib::Vector3(-3.25, -0.15, 0)
@@ -20,19 +21,8 @@
 #define POS_3 Raylib::Vector3(1.15, -0.15, 0)
 #define POS_4 Raylib::Vector3(3.35, -0.15, 0)
 
-
-
 namespace PlayerSelector
 {
-    struct CharDictionary
-    {
-        std::string obj;
-        std::string texture;
-        float scalable;
-        std::string name;
-        Raylib::Color color;
-        std::vector<std::string> animations;
-    };
 
     class Selector
     {
@@ -168,7 +158,10 @@ namespace PlayerSelector
              */
             size_t getMapType() const;
 
+            std::vector<CharDictionary> getPlayerData() const;
+
             std::vector<Raylib::Vector3> POS;
+
 
             PlayerSelector::Player &operator[](const int &index);
             const PlayerSelector::Player &operator[](const int &index) const;

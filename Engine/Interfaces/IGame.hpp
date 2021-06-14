@@ -11,6 +11,7 @@
 #include "IEntity.hpp"
 #include <memory>
 #include <vector>
+#include "PlayerSelector/CharDictionary.hpp"
 
 class IGame {
 
@@ -112,6 +113,13 @@ class IGame {
          * @param action Action in a string
          */
         virtual void doPlayerAction(size_t pos, std::string action) = 0;
+
+        /**
+         * @brief Set the current Players data
+         *
+         * @param playersData Dictionary of the players' data
+         */
+        virtual void setPlayers(const std::vector<CharDictionary> &playersData) = 0;
 };
 
 #endif /* !IGAME_HPP_ */
