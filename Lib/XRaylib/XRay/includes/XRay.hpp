@@ -436,9 +436,26 @@ class XRay : public IGraphical {
         void setSettingsFunc(std::function<void (std::array<std::size_t, 8>)>) override;
 
         /**
+         * @brief Set the Player Actions Func
+         *
+         * @param playerActionsFunc A pointer to function that manage all players actions in the game (left, right ...)
+         */
+        void setPlayerActionsFunc(std::function<void (std::size_t, std::string)>);
+
+        /**
          * @brief Check Click on MapChoiceScene
          */
-        void checkClickOnMapChoiceScene();
+        void checkClickOnMapChoiceScene(void);
+
+        /**
+         * @brief Manage Players Actions
+         */
+        void managePlayersActions(void);
+
+        /**
+         * @brief Reset All attributes
+         */
+        void resetAll(void);
 
         /**
          * @brief Get time in good format from clock and return in minutes and second
@@ -488,6 +505,7 @@ class XRay : public IGraphical {
         std::function<void (std::array<std::size_t, 8>)> _pointerToSaveFunc;   // Pointer to Save Func
         std::function<void (std::array<std::size_t, 8>)> _pointerToSettingsFunc;   // Pointer to Settings Func
         std::function<void (std::string)> _pointerToLoadFunc;   // Pointer to Load Func
+        std::function<void (std::size_t, std::string)> _playerActionsFunc;              // Pointer to playerActionsFunc
 
         std::vector<bool> _playerTab{true, false, false, false};                     // A vector of boolean that represents if the player is an AI or not
         std::vector<Resources> _controlsTab{UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN};                   // A vector of resources (See in Resources.hpp) that represents if the controls
