@@ -137,7 +137,8 @@ typedef enum {
 } Resources;
 
 typedef enum {
-    MSC_BOMBERMAN
+    MSC_BOMBERMAN,
+    MSC_OPENNING
 } MusicResources;
 
 typedef enum {
