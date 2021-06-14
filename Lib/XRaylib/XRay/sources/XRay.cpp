@@ -56,13 +56,24 @@ XRay::XRay(void)
     _intro = std::make_pair(true, &XRay::displayStudio);
 
     // Play bomberman music
-    _musics.at(MSC_BOMBERMAN)->playMusic();
+//    _musics.at(MSC_BOMBERMAN)->playMusic();
     masterVolume = 50;
     musicVolume = 100;
     sfxVolume = 100;
     Raylib::Audio::setMasterVolume(masterVolume / 100);
     changeMusicVolume();
     changeSfxVolume();
+
+//    std::thread tMusic(&XRay::playAndUpdateMusic, this, MSC_BOMBERMAN);
+//    tMusic.detach();
+}
+
+void XRay::playAndUpdateMusic(MusicResources music) {
+    _musics.at(music)->playMusic();
+    while (1) {
+        _musics.at(music)->update();
+        usleep(10000); // Add delay to not update to many time the buffer
+    }
 }
 
 XRay::~XRay(void)
@@ -201,6 +212,7 @@ void XRay::setAudioResources(void)
 {
     // Music
     _musics.insert(std::pair<MusicResources, std::shared_ptr<Raylib::Music>>(MusicResources::MSC_BOMBERMAN, std::make_shared<Raylib::Music>(*(new Raylib::Music("resources/music/Bomberman.mp3")))));
+    _musics.insert(std::pair<MusicResources, std::shared_ptr<Raylib::Music>>(MusicResources::MSC_OPENNING, std::make_shared<Raylib::Music>(*(new Raylib::Music("resources/music/opening.mp3")))));
 
     // Sound
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_KLICK, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Klick.wav")))));

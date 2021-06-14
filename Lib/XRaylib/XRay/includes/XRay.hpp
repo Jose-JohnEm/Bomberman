@@ -23,6 +23,7 @@
 #include <iterator>
 #include <filesystem>
 #include <thread>
+#include<unistd.h>
 #ifdef __linux__
     #include <dirent.h>
 #endif
@@ -328,6 +329,11 @@ class XRay : public IGraphical {
          * @brief Set the Audio
          */
         void setAudioResources(void);
+
+        /**
+         * @brief Play a music in a thread
+         */
+        void playAndUpdateMusic(MusicResources music);
 
         /**
          * @brief Display Game Settings
