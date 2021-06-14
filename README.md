@@ -110,8 +110,8 @@ Do your best to avoid clunky animations or graphical glitches, manage your camer
 
 ## TESTS
 
-We have implemented tests with Google Tests
-To use them you must compile the project like its explain in the compilation section.
+We have implemented tests with Google Tests, to use them you must compile the project like its explain in the compilation section.
+
 Once this done, use these commands (at root of the project):
 
 ```
