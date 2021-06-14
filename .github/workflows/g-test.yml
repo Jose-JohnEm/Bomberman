@@ -21,9 +21,6 @@ jobs:
     - name: make
       run: cmake --build ${{ github.workspace }}/Tests/build ##--config ${{env.BUILD_TYPE}}
 
-    - name: configure
-      run: rm -r Tests/build  && cd Tests && mkdir build && cd build && cmake .. && cmake --build . && cp test_bomberman .. && ./test_bomberman
-
-    - name: Run Test
-      run: cd build && cmake .. && cmake --build . && cp test_bomberman .. && ./test_bomberman
+    - name: configure & Run Test
+      run: rm -r Tests/build  && cd Tests && mkdir build && cd build && cmake .. && cmake --build . && cp test_bomberman .. && export DISPLAY=:0 ./test_bomberman
 
