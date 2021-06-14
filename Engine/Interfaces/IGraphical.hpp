@@ -198,7 +198,7 @@ class IGraphical {
          *
          * @param playerActionsFunc A pointer to function that manage all players actions in the game (left, right ...)
          */
-        virtual void setPlayerActionsFunc(std::function<void (std::size_t, std::string)>) = 0;
+        virtual void setPlayerActionsFunc(std::function<void (const size_t pos, const std::string action)>) = 0;
 
         /**
          * @brief Get the Players Data
