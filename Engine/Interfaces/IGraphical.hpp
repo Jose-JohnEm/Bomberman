@@ -200,6 +200,13 @@ class IGraphical {
          */
         virtual void setPlayerActionsFunc(std::function<void (const size_t pos, const std::string action)>) = 0;
 
+        /*
+         * @brief Set Game Settings
+         *
+         * @param settings An array of 8 size_t
+         */
+        virtual void setGameSettings(const std::array<size_t, 8> &settings) = 0;
+
         /**
          * @brief Get the Players Data
          *

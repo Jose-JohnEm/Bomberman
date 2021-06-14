@@ -165,3 +165,8 @@ inline std::vector<CharDictionary> XRay::getPlayersData()
 {
     return _pSelector.getPlayerData();
 }
+
+inline void XRay::setGameSettings(const std::array<size_t, 8> &settings)
+{
+    _gameSettings = settings;
+}
