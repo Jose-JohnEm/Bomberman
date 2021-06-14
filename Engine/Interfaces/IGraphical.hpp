@@ -172,6 +172,13 @@ class IGraphical {
         virtual void setSaveFunc(std::function<void (std::array<std::size_t, 8>)>) = 0;
 
         /**
+         * @brief Set pointer to Settings Function
+         *
+         * @param settingsFunc A pointer to Settings function in the core
+         */
+        virtual void setSettingsFunc(std::function<void (std::array<std::size_t, 8>)>) = 0;
+
+        /**
          * @brief Set the Restart Func
          *
          * @param restartFunc A pointer to Restart function in the core

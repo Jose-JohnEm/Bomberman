@@ -5,7 +5,7 @@
 ** Bomberman
 */
 
-inline void Game::Bomberman::setMapType(std::size_t mapType)
+inline void Game::Bomberman::setMapType(const std::size_t &mapType)
 {
     _mapType = mapType;
 }
@@ -38,4 +38,9 @@ inline const std::string &Game::Bomberman::getGameName(void) const
 inline void Game::Bomberman::setUserNames(const std::vector<std::string> &userNames)
 {
     _userNames = userNames;
+}
+
+inline void Game::Bomberman::setSettings(const std::array<std::size_t, 8> &settings)
+{
+    _settings = settings;
 }

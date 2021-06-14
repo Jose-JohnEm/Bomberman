@@ -97,5 +97,6 @@ void XRay::displayMapChoiceScene(void)
         _pSelector.endMaps();
         _sizeMap = (_sizeMap == 5) ? 7 : _sizeMap;
         _gameSettings[3] *= (_gameSettings[3] < 6) ? 60 : 1;
+        _pointerToSettingsFunc(_gameSettings);
     }
 }

@@ -61,6 +61,13 @@ namespace Game
             void setUserNames(const std::vector<std::string> &userNames) override;
 
             /**
+             * @brief Set the game settings
+             *
+             * @param settings An array of 8 size_t
+             */
+            void setSettings(const std::array<std::size_t, 8> &settings) override;
+
+            /**
              * @brief Getter for the score
              *
              * @return A array of pair (Player, Score) of the current game
@@ -127,16 +134,17 @@ namespace Game
             /**
              * @brief Get the Map
              */
-            std::vector<std::string> &getMap(size_t size) override;
+            std::vector<std::string> &getMap(const size_t &size) override;
 
             /**
              * @brief Set the Map Type
              *
              * @param mapType A size_t
              */
-            void setMapType(std::size_t mapType) override;
+            void setMapType(const std::size_t &mapType) override;
 
         private:
+            std::array<std::size_t, 8> _settings; // Game settings
             std::vector<std::string> _map; // Game map
             std::size_t _mapType;                             // A size_t that represents map type
             std::vector<std::vector<std::pair<std::string, std::string>>> _playersStats; // A vector of vector all the stats [Player -- (NameOfStat, Value)]...
