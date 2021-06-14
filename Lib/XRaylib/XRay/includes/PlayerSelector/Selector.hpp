@@ -21,9 +21,8 @@
 #define POS_4 Raylib::Vector3(3.35, -0.15, 0)
 
 
-
-namespace PlayerSelector
-{
+#ifndef __CHARDICTIONARY__
+#define __CHARDICTIONARY__
     struct CharDictionary
     {
         std::string obj;
@@ -33,6 +32,10 @@ namespace PlayerSelector
         Raylib::Color color;
         std::vector<std::string> animations;
     };
+#endif
+
+namespace PlayerSelector
+{
 
     class Selector
     {
@@ -168,7 +171,10 @@ namespace PlayerSelector
              */
             size_t getMapType() const;
 
+            std::vector<CharDictionary> getPlayerData() const;
+
             std::vector<Raylib::Vector3> POS;
+
 
             PlayerSelector::Player &operator[](const int &index);
             const PlayerSelector::Player &operator[](const int &index) const;

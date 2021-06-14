@@ -19,6 +19,19 @@
 #include <utility>
 #include "IEntity.hpp"
 
+#ifndef __CHARDICTIONARY__
+#define __CHARDICTIONARY__
+    struct CharDictionary
+    {
+        std::string obj;
+        std::string texture;
+        float scalable;
+        std::string name;
+        Raylib::Color color;
+        std::vector<std::string> animations;
+    };
+#endif __CHARDICTIONARY__
+
 class IGraphical {
 
     public:
@@ -184,6 +197,13 @@ class IGraphical {
          * @return An array of 8 size_t
          */
         virtual std::array<size_t, 8> getGameSettings() = 0;
+
+        /**
+         * @brief Get the Players Data
+         * 
+         * @return std::vector<CharDictionary> containing players data
+         */
+        virtual std::vector<CharDictionary> getPlayersData() = 0;
 };
 
 #endif /* !IGRAPHICAL_HPP_ */

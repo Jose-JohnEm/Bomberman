@@ -147,3 +147,8 @@ inline size_t XRay::countFilesDirectory(const std::filesystem::path &path) const
 {
     return (std::size_t)std::distance(std::filesystem::directory_iterator{path}, std::filesystem::directory_iterator{});
 }
+
+inline std::vector<CharDictionary> XRay::getPlayersData()
+{
+    return _pSelector.getPlayerData();
+}

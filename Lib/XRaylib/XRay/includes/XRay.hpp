@@ -440,6 +440,13 @@ class XRay : public IGraphical {
          */
         std::string getTimeInFormat(void);
 
+        /**
+         * @brief Get players Data to the Game
+         * 
+         * @return std::vector<PlayerData> represents all the players data
+         */
+        std::vector<CharDictionary> XRay::getPlayersData() override;
+
     private:
         Raylib::Window _window;                     // Game window
 
