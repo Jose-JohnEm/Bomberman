@@ -7,11 +7,16 @@
 
 #include "Modeler.hpp"
 
+//TODO: GLOBAL REVIEW (raylib out the encapsulation! no documentation!)
+
 Modeler::Modeler(const std::string &obj_path, const std::string &texture_path, const Animator &animation_path)
 : _model(LoadModel(obj_path.c_str())),
 _isAnimated(isThereAnimationsPath(animation_path)),
 _currentAnimation(WALK),
-_frame(0)
+_frame(0),
+_model_path(obj_path),
+_texture_path(texture_path),
+_animator(animation_path)
 {
     int fake_counter = 0;
 
@@ -29,7 +34,15 @@ Modeler::Modeler()
 : _model(LoadModel("resources/players/3D/Bombermans/white_tpose.glb")),
 _isAnimated(true),
 _currentAnimation(WALK),
-_frame(0)
+_frame(0),
+_model_path("resources/players/3D/Bombermans/white_tpose.glb"),
+_texture_path("resources/players/3D/Bombermans/texture.png"),
+_animator({
+    "resources/players/3D/Bombermans/animations/white_walking.glb",
+    "resources/players/3D/Bombermans/animations/white_bomb.glb",
+    "resources/players/3D/Bombermans/animations/white_emote.glb"
+    }
+)
 {
 
     int fake_counter = 0;
@@ -41,10 +54,58 @@ _frame(0)
     SetMaterialTexture(&_model.materials[0], MAP_DIFFUSE, LoadTexture("resources/players/3D/Bombermans/texture.png"));
 }
 
+/*Modeler::Modeler(const Modeler &model)
+: _model(LoadModel(model.getObjPath()),
+_isAnimated(isThereAnimationsPath(model.getTexturePath())),
+_currentAnimation(WALK),
+_frame(0),
+_model_path(model.getObjPath()),
+_texture_path(model.getTexturePath()),
+_animations(model.getAnimationPath())
+{
+
+}*/
+
+Modeler& Modeler::operator=(Modeler model)
+{
+    int fake_counter = 0;
+
+    _isAnimated = isThereAnimationsPath(model.getAnimationPath());
+    _texture_path = model.getTexturePath();
+    _animator = model.getAnimationPath();
+
+    _model = LoadModel(_model_path.c_str());
+
+    _animations.clear();
+    _animations.push_back(LoadModelAnimations(_animator.WALK.c_str(), &fake_counter)[0]);
+    _animations.push_back(LoadModelAnimations(_animator.BOMB.c_str(), &fake_counter)[0]);
+    _animations.push_back(LoadModelAnimations(_animator.EMOTE.c_str(), &fake_counter)[0]);
+
+    SetMaterialTexture(&_model.materials[0], MAP_DIFFUSE, LoadTexture(_texture_path.c_str()));
+
+    return *this;
+}
+
 Modeler::~Modeler()
 {
 
 }
+
+Animator Modeler::getAnimationPath()
+{
+    return _animator;
+}
+
+std::string Modeler::getObjPath()
+{
+    return _model_path;
+}
+
+std::string Modeler::getTexturePath()
+{
+    return _texture_path;
+}
+
 
 bool Modeler::isThereAnimationsPath(const Animator &animation_path) const
 {

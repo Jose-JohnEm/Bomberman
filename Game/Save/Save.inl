@@ -27,6 +27,7 @@ inline void Game::Save::writePlayersInfos(std::ofstream &os) const
         Raylib::Vector3 positions = player->getPositions();
         os  << "player " << id << " type " << player->getType() << std::endl
             << "player " << id << " name " << player->getName() << std::endl
+            << "player " << id << " scalable " << player->getScalable() << std::endl
             << "player " << id << " positions " << positions.x << "," << positions.y << "," << positions.y << std::endl
             << "player " << id << " powerups "
                 << "skate:" << powerups[P_SKATE]

@@ -82,13 +82,27 @@ inline void Game::Player::drawEntity()
     DrawModelEx(_model.getModel(), _positions.getCStruct(), {1, 0, 0}, 90, {_scalable, _scalable, _scalable}, _color.getCStruct());
 }
 
-/*inline void Game::Human::drawEntity()
+inline void Game::Player::setColor(const Raylib::Color &color)
 {
+    _color = color;
 }
 
-inline void Game::AI::drawEntity()
+inline void Game::Player::setColor(const std::string &color)
 {
-}*/
+    if (color.compare("Blue") == 0
+    || color.compare("Green") == 0
+    || color.compare("Yellow") == 0
+    || color.compare("Red") == 0)
+    {
+        std::map<std::string, Raylib::Color> colors = {
+            {"Blue", Raylib::Color::Blue()},
+            {"Green", Raylib::Color::Green()},
+            {"Yellow", Raylib::Color::Yellow()},
+            {"Red", Raylib::Color::Red()}
+        };
+        setColor(colors[color]);
+    }
+}
 
 inline void Game::Player::setShouldDisplay(const bool &shouldDisplay)
 {
@@ -98,4 +112,14 @@ inline void Game::Player::setShouldDisplay(const bool &shouldDisplay)
 inline bool Game::Player::getShouldDisplay(void) const
 {
     return _shouldDisplay;
+}
+
+inline float Game::Player::getScalable(void) const
+{
+    return _scalable;
+}
+
+inline void Game::Player::setScalable(const float &scalable)
+{
+    _scalable = scalable;
 }

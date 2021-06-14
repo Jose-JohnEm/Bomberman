@@ -8,20 +8,21 @@
 #ifndef MODELER_HPP_
 #define MODELER_HPP_
 
+//TODO: GLOBAL REVIEW (raylib out the encapsulation! no documentation!)
+
 #include <string>
 #include <vector>
-#include "raylib.h"
 #include <iostream>
-
+#include "raylib.h"
 #include "Clock.hpp"
 
 #define FRAMETIME 0.03f
 
 struct Animator
 {
-    const std::string WALK = "null";
-    const std::string BOMB = "null";
-    const std::string EMOTE = "null";
+    std::string WALK = "null";
+    std::string BOMB = "null";
+    std::string EMOTE = "null";
 };
 
 enum AnimSequence {
@@ -36,6 +37,9 @@ class Modeler
 
         Modeler();
         Modeler(const std::string &obj_path, const std::string &texture_path, const Animator &animation_path);
+
+        Modeler& operator=(Modeler model);
+
         ~Modeler();
 
         void makeWalk();
@@ -46,14 +50,22 @@ class Modeler
 
         void update();
 
+        std::string getObjPath();
+        std::string getTexturePath();
+        Animator getAnimationPath();
+
+
     private:
 
         bool isThereAnimationsPath(const Animator &animation_path) const;
 
         Model _model;
+        std::string _model_path;
+        std::string _texture_path;
         std::vector<ModelAnimation> _animations;
+        Animator _animator;
 
-        const bool _isAnimated;
+        bool _isAnimated;
         int _frame;
 
         Clock clock;

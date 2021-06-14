@@ -143,31 +143,31 @@ void Game::Save::parsePlayers(const std::vector<std::string> &playersInfos)
     switch (std::stoi(playersInfos[1]))
     {
         case 1:
-            if (!firstIsParse)
+            if (!firstIsParse) {
                 _players[0]->setID(std::stoi(playersInfos[1]));
-            else
                 firstIsParse = true;
+            }
             parsePlayer(_players[0], playersInfos);
             break;
         case 2:
-            if (!secondIsParse)
+            if (!secondIsParse) {
                 _players[1]->setID(std::stoi(playersInfos[1]));
-            else
                 secondIsParse = true;
+            }
             parsePlayer(_players[1], playersInfos);
             break;
         case 3:
-            if (!thirdIsParse)
+            if (!thirdIsParse) {
                 _players[2]->setID(std::stoi(playersInfos[1]));
-            else
                 thirdIsParse = true;
+            }
             parsePlayer(_players[2], playersInfos);
             break;
         case 4:
-            if (!fourthIsParse)
+            if (!fourthIsParse) {
                 _players[3]->setID(std::stoi(playersInfos[1]));
-            else
                 fourthIsParse = true;
+            }
             parsePlayer(_players[3], playersInfos);
             break;
         default:
@@ -184,6 +184,12 @@ void Game::Save::parsePlayer(std::shared_ptr<Game::Player> player, const std::ve
     else if (playerInfos[2].compare("name") == 0)
     {
         player->setName(playerInfos[3]);
+        player->setModel(playerInfos[3]);
+        player->setColor(playerInfos[3]);
+    }
+    else if (playerInfos[2].compare("scalable") == 0)
+    {
+        player->setScalable(std::stof(playerInfos[3]));
     }
     else if (playerInfos[2].compare("positions") == 0)
     {

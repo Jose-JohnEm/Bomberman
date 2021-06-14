@@ -11,6 +11,7 @@
 #include <array>
 #include <utility>
 #include <string>
+#include <filesystem>
 #include "Interfaces/IEntity.hpp"
 #include "../Lib/XRaylib/Raylib/Vector3/Vector3.hpp"
 #include "Modeler.hpp"
@@ -124,6 +125,20 @@ namespace Game
             void setID(const int &ID);
 
             /**
+             * @brief Set player color
+             *
+             * @param color A const reference to a Raylib::Color
+             */
+            void setColor(const Raylib::Color &color);
+
+            /**
+             * @brief Set player color
+             *
+             * @param color A const reference to a string
+             */
+            void setColor(const std::string &color);
+
+            /**
              * @brief Destroy the Player Entity object
              */
             virtual ~Player(void) {};
@@ -134,6 +149,20 @@ namespace Game
              * @return A std::string
              */
             virtual std::string getType() const = 0;
+
+            /**
+             * @brief Get player scalability
+             *
+             * @return A float
+             */
+            float getScalable(void) const;
+
+            /**
+             * @brief Set player scalability
+             *
+             * @param scalable A float
+             */
+            void setScalable(const float &scalable);
 
             /**
              * @brief Get the Positions object
@@ -169,6 +198,13 @@ namespace Game
              */
             bool getShouldDisplay(void) const;
 
+            /**
+             * @brief Set a player model
+             *
+             * @param model A const reference to a string describing the player name
+             */
+            void setModel(const std::string &model);
+
         private:
 
             /**
@@ -186,9 +222,9 @@ namespace Game
             std::array<int, 5> _powerUps{0, 0, 0, 0, 0}; // Amount of powerUps
             int _ID; // ID of the player
             bool _shouldDisplay = true; // A boolean to know if this entity should be displayed
-            Modeler _model;
-            const Raylib::Color _color;
-            float _scalable;
+            Modeler _model; // Player model
+            Raylib::Color _color; // Player color
+            float _scalable; // Player scalability
     };
 
     class Human : public virtual Player {

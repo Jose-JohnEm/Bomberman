@@ -21,7 +21,6 @@ Game::Player::Player(const std::string &name, const Raylib::Vector3 &positions, 
     _scalable(0.6),
     _color(Raylib::Color::Red())
 {
-
 }
 
 Animator Game::Player::getAnimator(const std::vector<std::string> &animation_path)
@@ -50,11 +49,43 @@ Game::Player::Player(const std::string &name, const Raylib::Vector3 &positions, 
 Game::AI::AI(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path, const float &scalable, const Raylib::Color color)
 : Player(name, positions, obj_path, texture_path, animation_path, scalable, color)
 {
-
 }
 
 Game::Human::Human(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path, const float &scalable, const Raylib::Color color)
 : Player(name, positions, obj_path, texture_path, animation_path, scalable, color)
 {
+}
 
+void Game::Player::setModel(const std::string &model)
+{
+    bool ok = false;
+    std::string obj_path = "null";
+    std::string texture_path = "null";
+
+    if (model == "Blue" || model == "Green" || model == "Yellow" || model == "Red")
+    {
+        _model = Modeler("resources/players/3D/Bombermans/white_tpose.glb",
+            "resources/players/3D/Bombermans/texture.png",
+            {
+                "resources/players/3D/Bombermans/animations/white_walking.glb",
+                "resources/players/3D/Bombermans/animations/white_bomb.glb",
+                "resources/players/3D/Bombermans/animations/white_emote.glb"
+            }
+        );
+    }
+    else
+    {
+        for (const auto & file : std::filesystem::directory_iterator("resources/players/3D/" + model))
+        {
+            if (file.path().extension() == ".obj")
+                obj_path = file.path().string();
+            if (file.path().filename() == "texture.png")
+                texture_path = file.path().string();
+        }
+        if (obj_path != "null" && texture_path != "null")
+        {
+            _model = Modeler(obj_path, texture_path, {"null", "null", "null"});
+        }
+    }
+    std::cout << "MODELER " << _model.getObjPath() << " " << _model.getTexturePath() << " " << _model.getAnimationPath().WALK << std::endl;
 }
