@@ -58,9 +58,11 @@ XRay::XRay(void)
     // Play bomberman music
     _musics.at(MSC_BOMBERMAN)->playMusic();
     masterVolume = 50;
-    sfxVolume = 100;
     musicVolume = 100;
+    sfxVolume = 100;
     Raylib::Audio::setMasterVolume(masterVolume / 100);
+    changeMusicVolume();
+    changeSfxVolume();
 }
 
 XRay::~XRay(void)
@@ -204,6 +206,9 @@ void XRay::setAudioResources(void)
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_NOCK, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Nock.wav")))));
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_TURN_OFF, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/TurnOff.wav")))));
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_TURN_ON, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/TurnOn.wav")))));
+    _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_JIG, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Jig0.wav")))));
+    _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_JIG1, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Jig1.wav")))));
+    _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_BING, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Bing.wav")))));
 }
 
 void XRay::quitGame(void)
