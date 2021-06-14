@@ -69,10 +69,14 @@ void XRay::displayMapChoiceScene(void)
     endDrawing();
 
     if (Raylib::Mouse::isButtonPressed(0)) {
-        if (mouseIsInBox(createBox(10, 400, 160, 550)))
+        if (mouseIsInBox(createBox(10, 400, 160, 550))) {
             _pSelector.prevMap();
-        if (mouseIsInBox(createBox(900, 400, 1050, 550)))
+            _sfx.at(SFX_KLICK)->play();
+        }
+        if (mouseIsInBox(createBox(900, 400, 1050, 550))) {
             _pSelector.nextMap();
+            _sfx.at(SFX_KLICK)->play();
+        }
     }
     checkClickOnMapChoiceScene();
 
@@ -94,18 +98,4 @@ void XRay::displayMapChoiceScene(void)
         _sizeMap = (_sizeMap == 5) ? 7 : _sizeMap;
         _gameSettings[3] *= (_gameSettings[3] < 6) ? 60 : 1;
     }
-<<<<<<< HEAD
-=======
-    if (Raylib::Mouse::isButtonPressed(0)) {
-        if (mouseIsInBox(createBox(10, 400, 160, 550))) {
-            _pSelector.prevMap();
-            _sfx.at(SFX_KLICK)->play();
-        }
-        if (mouseIsInBox(createBox(900, 400, 1050, 550))) {
-            _pSelector.nextMap();
-            _sfx.at(SFX_KLICK)->play();
-        }
-        checkClickOnMapChoiceScene();
-    }
->>>>>>> 8c0fb38acc24b37b7f08435d042248ab9b5af635
 }
