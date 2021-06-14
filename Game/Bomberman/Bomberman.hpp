@@ -143,6 +143,13 @@ namespace Game
              */
             void setMapType(const std::size_t &mapType) override;
 
+            /**
+             * @brief Set the current Players data
+             * 
+             * @param playersData Dictionary of the players' data
+             */
+            void setPlayers(const std::vector<CharDictionary> &playersData) override;
+
         private:
             std::array<std::size_t, 8> _settings; // Game settings
             std::vector<std::string> _map; // Game map
@@ -155,6 +162,7 @@ namespace Game
             bool _isPaused;                             // A boolean to know if the game is in pause or not
             std::string _gameName;                      // A string that represents the game name
             std::vector<std::string> _userNames;        // A vector of all the users names
+            std::vector<CharDictionary> _players;
     };
 }
 

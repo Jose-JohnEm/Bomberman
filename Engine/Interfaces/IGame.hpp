@@ -12,6 +12,19 @@
 #include <memory>
 #include <vector>
 
+#ifndef __CHARDICTIONARY__
+#define __CHARDICTIONARY__
+    struct CharDictionary
+    {
+        std::string obj;
+        std::string texture;
+        float scalable;
+        std::string name;
+        Raylib::Color color;
+        std::vector<std::string> animations;
+    };
+#endif
+
 class IGame {
 
     public:
@@ -104,6 +117,13 @@ class IGame {
          * @param mapType A size_t
          */
         virtual void setMapType(const std::size_t &mapType) = 0;
+
+        /**
+         * @brief Set the current Players data
+         * 
+         * @param playersData Dictionary of the players' data
+         */
+        virtual void setPlayers(const std::vector<CharDictionary> &playersData) = 0;
 };
 
 #endif /* !IGAME_HPP_ */
