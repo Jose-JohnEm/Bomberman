@@ -40,7 +40,7 @@ inline void Game::BreakableWall::drawEntity()
 inline void Game::Floor::drawEntity()
 {
     // TODO: USE ENCAPSULATION
-    DrawCubeTexture(_textures[0].getCStruct(), _positions.getCStruct(), 1.0f, 1.0f, 1.0f, WHITE);
+    DrawCubeTexture(_textures[_mapType].getCStruct(), _positions.getCStruct(), 1.0f, 1.0f, 1.0f, WHITE);
 }
 
 inline std::string Game::SolidWall::getType() const

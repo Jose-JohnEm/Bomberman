@@ -30,4 +30,6 @@ Game::Floor::Floor(Raylib::Vector3 positions, size_t mapType)
     _positions = positions;
     _mapType = mapType;
     _textures.push_back(*(new Raylib::Texture("resources/map/Wood/floor.png")));
+    _textures.push_back(*(new Raylib::Texture("resources/map/Snow/floor.png")));
+    _textures.push_back(*(new Raylib::Texture("resources/map/Iron/floor.png")));
 }
