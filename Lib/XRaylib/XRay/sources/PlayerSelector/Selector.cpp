@@ -177,7 +177,13 @@ void PlayerSelector::Selector::firstLoad()
 
 std::vector<CharDictionary> PlayerSelector::Selector::getPlayerData() const
 {
-    return _charaDictionary;
+    std::vector<CharDictionary> res;
+
+    for (auto p : _players)
+    {
+        res.push_back(p.getCharDictionary());
+    }
+    return res;
 }
 
 void PlayerSelector::Selector::load()

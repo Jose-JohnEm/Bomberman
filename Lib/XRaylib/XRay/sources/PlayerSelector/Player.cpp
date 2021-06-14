@@ -8,13 +8,16 @@
 #include "PlayerSelector/Player.hpp"
 
 PlayerSelector::Player::Player(const std::string &obj, const std::string &texture, const float &scalable, const int &idCharacter, const std::string &name, const Raylib::Color &color, const std::vector<std::string> &animations)
-: counter(0),
-_persoModel(LoadModel(obj.c_str())),
-_persoTexture(Raylib::Texture(texture)),
-_idCharacter(idCharacter),
-_scalable(scalable),
-_name(name),
-_color(color)
+    : counter(0),
+    _persoModel(LoadModel(obj.c_str())),
+    _persoTexture(Raylib::Texture(texture)),
+    _idCharacter(idCharacter),
+    _scalable(scalable),
+    _name(name),
+    _color(color),
+    _perso_path(obj),
+    _texture_path(texture),
+    _animations_path(animations)
 {
     if (animations.size() == 3)
     {
@@ -29,7 +32,7 @@ _color(color)
 
 PlayerSelector::Player::~Player()
 {
-    
+
 }
 
 void PlayerSelector::Player::draw(const float &rotation, const Raylib::Vector3 &pos)
@@ -85,6 +88,18 @@ int PlayerSelector::Player::getId(void) const
 const std::string PlayerSelector::Player::getName(void) const
 {
     return _name;
+}
+
+const CharDictionary PlayerSelector::Player::getCharDictionary() const
+{
+    return {
+        _perso_path,
+        _texture_path,
+        _scalable,
+        _name,
+        _color,
+        _animations_path
+    };
 }
 
 std::pair<Model, float> PlayerSelector::Player::getModel() const

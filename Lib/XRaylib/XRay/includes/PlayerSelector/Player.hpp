@@ -13,6 +13,7 @@
 #include "Vector3/Vector3.hpp"
 #include "Clock.hpp"
 #include <cmath>
+#include "CharDictionary.hpp"
 
 namespace PlayerSelector
 {
@@ -69,6 +70,13 @@ namespace PlayerSelector
             const std::string getName() const;
 
             /**
+             * @brief Get the Char Dictionary object
+             *
+             * @return const CharDictionary
+             */
+            const CharDictionary getCharDictionary() const;
+
+            /**
              * @brief Get the Model
              *
              * @return a pair of the Model and its scalable value
@@ -83,6 +91,10 @@ namespace PlayerSelector
             Raylib::Texture _persoTexture;
             Raylib::Color _color;
             std::vector<ModelAnimation> _animations;
+
+            std::string _perso_path;
+            std::string _texture_path;
+            std::vector<std::string> _animations_path;
 
             Clock clock;
             int counter;
