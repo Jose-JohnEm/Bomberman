@@ -13,6 +13,7 @@ Engine::Core::Core()
     _graphical->setLoadFunc([this] (std::string filepath) {this->loadGame(filepath);});
     _graphical->setSaveFunc([this] (std::array<std::size_t, 8> settings) {this->saveGame(settings);});
     _graphical->setRestartFunc([this] () {this->restartGame();});
+    _graphical->setSettingsFunc([this] (std::array<std::size_t, 8> settings) {_game->setSettings(settings);});
 }
 
 Engine::Core::~Core()
@@ -40,10 +41,6 @@ void Engine::Core::run(void)
         getBackupFiles();
         _graphical->display();
         _scene = _graphical->getScene();
-        if (_scene == IGraphical::MAP_CHOICE || (_graphical->getMapSizeAndType().first > 5 && _scene < IGraphical::MAP_CHOICE)) {
-            _game->setUserNames(_graphical->getUserNames());
-            _graphical->setMap(_game->getMap(5));
-        }
         if (_scene == IGraphical::IN_GAME && _game) {
             if (_userNames != _graphical->getUserNames()) {
                 _userNames = _graphical->getUserNames();

@@ -429,6 +429,13 @@ class XRay : public IGraphical {
         void setRestartFunc(std::function<void ()>) override;
 
         /**
+         * @brief Set pointer to Settings Function
+         *
+         * @param settingsFunc A pointer to Settings function in the core
+         */
+        void setSettingsFunc(std::function<void (std::array<std::size_t, 8>)>) override;
+
+        /**
          * @brief Check Click on MapChoiceScene
          */
         void checkClickOnMapChoiceScene();
@@ -470,6 +477,7 @@ class XRay : public IGraphical {
         std::vector<void (XRay::*)()> _scenesFunc;  // Array of pointers to function (a scene, a function)
         std::function<void ()> _pointerToRestartFunc;   // Pointer to Restart Func
         std::function<void (std::array<std::size_t, 8>)> _pointerToSaveFunc;   // Pointer to Save Func
+        std::function<void (std::array<std::size_t, 8>)> _pointerToSettingsFunc;   // Pointer to Settings Func
         std::function<void (std::string)> _pointerToLoadFunc;   // Pointer to Load Func
 
         std::vector<bool> _playerTab{true, false, false, false};                     // A vector of boolean that represents if the player is an AI or not

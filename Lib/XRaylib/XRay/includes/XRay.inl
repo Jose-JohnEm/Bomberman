@@ -35,6 +35,11 @@ inline void XRay::setSaveFunc(std::function<void (std::array<std::size_t, 8>)> p
     _pointerToSaveFunc = pointerToFunc;
 }
 
+inline void XRay::setSettingsFunc(std::function<void (std::array<std::size_t, 8>)> pointerToFunc)
+{
+    _pointerToSettingsFunc = pointerToFunc;
+}
+
 inline void XRay::setMap(std::vector<std::string> &map)
 {
     _map = map;

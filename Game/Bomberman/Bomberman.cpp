@@ -40,12 +40,10 @@ void Game::Bomberman::initEntities() //TODO: pushback player //TODO: floor under
     }
 }
 
-std::vector<std::string> &Game::Bomberman::getMap(size_t size) // TODO: le nombre de human et d'AI
+std::vector<std::string> &Game::Bomberman::getMap(const size_t &size)
 {
     if (_map.size() != size+2) {
-        Game::Map newMap(size, size, std::make_pair(_userNames.size(), 0)); // TODO: set first and second
-
-        std::cout << " YAOI " << _userNames.size() << std::endl;
+        Game::Map newMap(size, size, std::make_pair(_settings[HUMAN_NBR], _settings[AI_NBR]));
         _map = newMap.getMap();
     }
     return _map;
