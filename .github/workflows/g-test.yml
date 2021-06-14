@@ -20,7 +20,7 @@ jobs:
 
     - name: make
       working-directory: ${{ github.workspace }}/Tests/build
-      run: cmake --build . ##--config ${{env.BUILD_TYPE}}
+      run: cmake --build . && ./test_bomberman ##--config ${{env.BUILD_TYPE}}
 
     - name: Test Game
       working-directory: ${{ github.workspace }}/Tests/build
