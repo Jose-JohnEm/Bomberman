@@ -102,7 +102,25 @@ void XRay::goToAnotherScene()
     if (_isPaused && home && Raylib::Mouse::isButtonPressed(0)) {
         _isPaused = false;
         m_isPaused = 2;
+        _pointerToRestartFunc();
+        resetAll();
         displayMenuScene();
+    }
+}
+
+void XRay::managePlayersActions(void)
+{
+    for (size_t u = 0; u < _playersInput.size(); u++) {
+        if (_playersInput[u]->shouldGoToEast())
+            _playerActionsFunc(u, "goEast");
+        if (_playersInput[u]->shouldGoToNorth())
+            _playerActionsFunc(u, "goNorth");
+        if (_playersInput[u]->shouldGoToSouth())
+            _playerActionsFunc(u, "goSouth");
+        if (_playersInput[u]->shouldGoToWest())
+            _playerActionsFunc(u, "goWest");
+        if (_playersInput[u]->shouldSimulateAClick())
+            _playerActionsFunc(u, "dropBomb");
     }
 }
 
@@ -157,6 +175,8 @@ void XRay::displayInGameScene(void)
 
     m_isPaused = _isPaused;
     _gameSettings[4] = !_isPaused && _gameSettings[4] > 0 ? _gameSettings[3] - (Raylib::Timing::getTime() - _startingTime) : _gameSettings[4];
+
+    managePlayersActions();
     // Call function that check click on button
     goToAnotherScene();
 
