@@ -19,12 +19,3 @@ TEST(MusicTest, unloadMusicTest)
         EXPECT_STREQ("ERROR: Invalid Unload music stream", ex.what());
     }
 }
-
-/*
-TEST(MusicTest, isPlayingTest)
-{
-    Raylib::Music test;
-    EXPECT_EQ(false, test.isPlaying());
-}
-how to implement since no music playing ??
-*/

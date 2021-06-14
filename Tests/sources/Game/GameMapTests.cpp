@@ -11,7 +11,8 @@
 TEST(MapTest, pass)
 {
     try {
-        Game::Map map(15, 15, 4);
+        std::pair<size_t, size_t> players;
+        Game::Map map(15, 15, players);
     } catch (std::exception &ex) {
         EXPECT_STREQ("ERROR: Invalid map dimensions", ex.what());
     }
@@ -20,7 +21,8 @@ TEST(MapTest, pass)
 TEST(MapTest, fail_width_dimension)
 {
     try {
-        Game::Map map(0, 15, 4);
+        std::pair<size_t, size_t> players;
+        Game::Map map(0, 15, players);
     } catch (std::exception &ex) {
         EXPECT_STREQ("ERROR: Invalid map dimensions", ex.what());
     }
@@ -29,7 +31,8 @@ TEST(MapTest, fail_width_dimension)
 TEST(MapTest, fail_height_dimension)
 {
     try {
-        Game::Map map(15, 0, 4);
+        std::pair<size_t, size_t> players;
+        Game::Map map(15, 0, players);
     } catch (std::exception &ex) {
         EXPECT_STREQ("ERROR: Invalid map dimensions", ex.what());
     }
@@ -38,7 +41,8 @@ TEST(MapTest, fail_height_dimension)
 TEST(MapTest, fail_player)
 {
     try {
-        Game::Map map(15, 15, 0);
+        std::pair<size_t, size_t> players = {0, 0};
+        Game::Map map(15, 15, players);
     } catch (std::exception &ex) {
         EXPECT_STREQ("ERROR: Invalid number of players", ex.what());
     }
@@ -46,21 +50,24 @@ TEST(MapTest, fail_player)
 
 TEST(MapTest, getWidth)
 {
-    Game::Map map(15, 15, 4);
+    std::pair<size_t, size_t> players = {2, 2};
+    Game::Map map(15, 15, players);
 
     EXPECT_EQ(15, map.getWidth());
 }
 
 TEST(MapTest, getHeight)
 {
-    Game::Map map(15, 15, 4);
+    std::pair<size_t, size_t> players = {2, 2};
+    Game::Map map(15, 15, players);
 
     EXPECT_EQ(15, map.getHeight());
 }
 
 TEST(MapTest, setWidth)
 {
-    Game::Map map(15, 15, 4);
+    std::pair<size_t, size_t> players = {2, 2};
+    Game::Map map(15, 15, players);
 
     map.setWidth(21);
     EXPECT_EQ(21, map.getWidth());
@@ -68,7 +75,8 @@ TEST(MapTest, setWidth)
 
 TEST(MapTest, setHeight)
 {
-    Game::Map map(15, 15, 4);
+    std::pair<size_t, size_t> players = {2, 2};
+    Game::Map map(15, 15, players);
 
     map.setHeight(21);
     EXPECT_EQ(21, map.getHeight());
@@ -76,7 +84,8 @@ TEST(MapTest, setHeight)
 
 TEST(MapTest, isMapEmpty)
 {
-    Game::Map map(15, 15, 4);
+    std::pair<size_t, size_t> players = {2, 2};
+    Game::Map map(15, 15, players);
 
     EXPECT_EQ(map.getMap().empty(), false);
 }

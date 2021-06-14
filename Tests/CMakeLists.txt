@@ -15,13 +15,15 @@ SET(CMAKE_CXX_STANDARD 17)
 # It will be linked with our Bomberman project
 FILE(COPY ${PROJET_DIRECTORY}/Lib DESTINATION ${CMAKE_CURRENT_SOURCE_DIR})
 FILE(COPY ${PROJET_DIRECTORY}/Engine DESTINATION ${CMAKE_CURRENT_SOURCE_DIR})
+
 ADD_SUBDIRECTORY(Lib/XRaylib)
 
 # Generate a list of files
 FILE(GLOB_RECURSE SRCS CONFIGURE_DEPENDS
     "${PROJET_DIRECTORY}Engine/Core/*.cpp"
     "${PROJET_DIRECTORY}Game/*.cpp"
-    "sources/*.cpp"
+    "sources/Raylib/*.cpp"
+    "sources/XRay/*.cpp"
 )
 
 # Set Headers paths
