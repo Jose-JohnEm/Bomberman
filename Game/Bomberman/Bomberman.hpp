@@ -143,6 +143,14 @@ namespace Game
              */
             void setMapType(const std::size_t &mapType) override;
 
+            /**
+             * @brief Do A player Action
+             *
+             * @param pos Pos of player
+             * @param action Action in a string
+             */
+            void doPlayerAction(size_t pos, std::string action) override;
+
         private:
             std::array<std::size_t, 8> _settings; // Game settings
             std::vector<std::string> _map; // Game map
