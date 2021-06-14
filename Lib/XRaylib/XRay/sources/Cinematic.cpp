@@ -27,6 +27,11 @@ void XRay::displayCinematic(const std::string &cinematicPathDirectory, const siz
     size_t filesNumber = countFilesDirectory("resources/cinematic/" + cinematicPathDirectory);
     Clock clock;
 
+    if (!_musics.at(MSC_OPENNING)->isPlaying()) {
+        std::thread tMusic(&XRay::playAndUpdateMusic, this, MSC_OPENNING);
+        tMusic.detach();
+    }
+
     // Launch cinematic
     size_t i = 0;
 
@@ -48,4 +53,6 @@ void XRay::displayCinematic(const std::string &cinematicPathDirectory, const siz
             i++;
         }
     }
+
+    _musics.at(MSC_OPENNING)->stop();
 }
