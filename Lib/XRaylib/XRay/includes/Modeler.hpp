@@ -32,6 +32,8 @@ enum AnimSequence {
 class Modeler
 {
     public:
+
+        Modeler();
         Modeler(const std::string &obj_path, const std::string &texture_path, const Animator &animation_path);
         ~Modeler();
 
@@ -39,8 +41,9 @@ class Modeler
         void makeBomb();
         void makeEmote();
 
+        Model &getModel();
+
         void update();
-        Model &operator->();
 
     private:
 
