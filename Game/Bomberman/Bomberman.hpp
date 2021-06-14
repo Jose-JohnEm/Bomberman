@@ -49,9 +49,8 @@ namespace Game
              * @brief Call this function to load a game.
              *
              * @param backupFilePath Backup File Path
-             * @return A new instance IGame
              */
-            std::shared_ptr<IGame> loadGame(const std::string &backupFilePath) override;
+            void loadGame(const std::string &backupFilePath) override;
 
             /**
              * @brief Set the Users Names
@@ -66,6 +65,13 @@ namespace Game
              * @param settings An array of 8 size_t
              */
             void setSettings(const std::array<std::size_t, 8> &settings) override;
+
+            /**
+             * @brief Get the game settings
+             *
+             * @return An array of 8 size_t
+             */
+            std::array<std::size_t, 8> getSettings(void) const override;
 
             /**
              * @brief Getter for the score

@@ -480,6 +480,13 @@ class XRay : public IGraphical {
          */
         std::vector<CharDictionary> getPlayersData() override;
 
+        /**
+         * @brief Set Game Settings
+         *
+         * @param settings An array of 8 size_t
+         */
+        void setGameSettings(const std::array<size_t, 8> &settings) override;
+
     private:
         Raylib::Window _window;                     // Game window
 

@@ -16,7 +16,7 @@ Game::Bomberman::~Bomberman(void)
 {
 }
 
-void Game::Bomberman::initEntities() //TODO: pushback player
+void Game::Bomberman::initEntities() //TODO: pushback player color
 {
     float x;
     float y = 0;
@@ -117,7 +117,7 @@ void Game::Bomberman::saveGame(const std::array<std::size_t, 8> &settings)
     std::cout << "I save" << std::endl;
 }
 
-std::shared_ptr<IGame> Game::Bomberman::loadGame(const std::string &backupFilePath)
+void Game::Bomberman::loadGame(const std::string &backupFilePath)
 {
     // Parse data
     Game::Save load(".backups/" + backupFilePath);
@@ -136,7 +136,6 @@ std::shared_ptr<IGame> Game::Bomberman::loadGame(const std::string &backupFilePa
     _settings = load.getSettings();
 
     std::cout << "I load " << backupFilePath << std::endl;
-    return nullptr;
 }
 
 void Game::Bomberman::setPlayers(const std::vector<CharDictionary> &playersData)

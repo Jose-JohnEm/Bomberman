@@ -29,6 +29,7 @@ void Engine::Core::saveGame(std::array<std::size_t, 8> settings)
 void Engine::Core::loadGame(std::string filepath)
 {
     _game->loadGame(filepath);
+    //_graphical->setGameSettings(_game->getSettings());
 }
 
 void Engine::Core::restartGame()
