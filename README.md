@@ -74,7 +74,7 @@ $ ./bomberman
 
 OR
 
-$ cd build && cmake .. && cmake --build . && cp bomberman ../ && cd ../; ./bomberman
+$ cd build && cmake .. && cmake --build . -j && cp bomberman ../ && cd ../; ./bomberman
 ```
 
 ## Usage
