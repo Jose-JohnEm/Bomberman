@@ -44,3 +44,8 @@ inline void Game::Bomberman::setSettings(const std::array<std::size_t, 8> &setti
 {
     _settings = settings;
 }
+
+inline void Game::Bomberman::doPlayerAction(size_t pos, std::string action)
+{
+    // TODO: LUCAS, JO HERE;
+}
