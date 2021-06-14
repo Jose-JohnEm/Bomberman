@@ -63,9 +63,6 @@ XRay::XRay(void)
     Raylib::Audio::setMasterVolume(masterVolume / 100);
     changeMusicVolume();
     changeSfxVolume();
-
-//    std::thread tMusic(&XRay::playAndUpdateMusic, this, MSC_BOMBERMAN);
-//    tMusic.detach();
 }
 
 void XRay::playAndUpdateMusic(MusicResources music) {
