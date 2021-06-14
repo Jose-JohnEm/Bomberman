@@ -104,6 +104,14 @@ class IGame {
          * @param mapType A size_t
          */
         virtual void setMapType(const std::size_t &mapType) = 0;
+
+        /**
+         * @brief Do A player Action
+         *
+         * @param pos Pos of player
+         * @param action Action in a string
+         */
+        virtual void doPlayerAction(size_t pos, std::string action) = 0;
 };
 
 #endif /* !IGAME_HPP_ */
