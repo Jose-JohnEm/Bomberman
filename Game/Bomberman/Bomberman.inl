@@ -86,9 +86,8 @@ inline bool Game::Bomberman::checkPlayerPositionPass(const std::string action, c
 {
     if (y < 0 || x < 0 || y > _map.size() || x > _map.size())
         return false;
-    if (_map[y][x] == '*') {
+    if (_map[y][x] == '*')
         return true;
-    }
     return false;
 }
 
