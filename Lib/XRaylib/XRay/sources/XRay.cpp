@@ -242,8 +242,8 @@ void XRay::displayStudio(void)
 }
 
 void XRay::playMusic(MusicResources music) {
-    if (!_musics.at(MSC_BOMBERMAN)->isPlaying()) {
-        std::thread tMusic(&XRay::playAndUpdateMusic, this, MSC_BOMBERMAN);
+    if (!_musics.at(music)->isPlaying()) {
+        std::thread tMusic(&XRay::playAndUpdateMusic, this, music);
         tMusic.detach();
     }
 }
