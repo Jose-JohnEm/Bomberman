@@ -93,6 +93,9 @@ void Game::Player::setModel(const std::string &model)
 
 bool Game::Player::move(const std::string &direction)
 {
+        //"goEast", "goNorth", "goSouth", "goWest", "dropBomb"]
+    if (direction == "goUp" && moveUp() == true)
+        std::cout << "cooool" << std::endl;
     return false;
 }
 

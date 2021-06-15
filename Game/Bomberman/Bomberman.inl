@@ -47,7 +47,6 @@ inline void Game::Bomberman::setSettings(const std::array<std::size_t, 9> &setti
 
 inline void Game::Bomberman::doPlayerAction(const size_t playerID, const std::string action)
 {
-    std::cout << "AAAAAAAAAAAA" << std::endl;
     //"goEast", "goNorth", "goSouth", "goWest", "dropBomb"]
     if (action == "goEast"
     || action == "goNorth"
@@ -55,10 +54,29 @@ inline void Game::Bomberman::doPlayerAction(const size_t playerID, const std::st
     || action == "goWest") {
         for (const std::shared_ptr<IEntity> &entity : _entities) {
             if (entity->getType().compare("Human") == 0) {
-                std::cout << "OKOKOK - " << std::make_shared<Game::Human>(*dynamic_cast<Game::Human *>(entity.get()))->getID() << std::endl;
+                if (dynamic_cast<Game::Human *>(entity.get()) != nullptr && playerID == dynamic_cast<Game::Human *>(entity.get())->getID())
+                    std::cout << "AAAAAA" << checkPlayerPosition(action, *dynamic_cast<Game::Human *>(entity.get())) << std::endl;
+                ;
             }
         }
     }
+}
+
+inline bool Game::Bomberman::checkPlayerPosition(const std::string action, Human &human)
+{
+    Raylib::Vector3 positions = human.getPositions();
+    std::map<std::string, std::pair<int, int>> direction = {
+        {"goEast", {-1, 0}},
+        {"goNorth", {0, -1}},
+        {"goSouth", {0, 1}},
+        {"goWest", {1, 0}}
+    };
+
+    if (_map[direction[action].second][direction[action].first] == '*')
+        return true;
+    else if (_map[direction[action].second * 2][direction[action].first * 2] == '*' && human.getPowerUps()[P_PASS] > 0)
+        return true;
+    return false;
 }
 
 inline std::array<std::size_t, 9> Game::Bomberman::getSettings(void) const
