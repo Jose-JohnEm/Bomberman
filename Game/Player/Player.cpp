@@ -90,3 +90,8 @@ void Game::Player::setModel(const std::string &model)
     }
     std::cout << "MODELER " << _model.getObjPath() << " " << _model.getTexturePath() << " " << _model.getAnimationPath().WALK << std::endl;
 }
+
+bool Game::Human::move(const std::string &direction)
+{
+
+}

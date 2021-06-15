@@ -149,7 +149,7 @@ namespace Game
              *
              * @return A std::string
              */
-            virtual std::string getType() const = 0;
+            virtual std::string getType() const override = 0;
 
             /**
              * @brief Get player scalability
@@ -170,14 +170,14 @@ namespace Game
              *
              * @return A Raylib::Vector3
              */
-            Raylib::Vector3 getPositions(void) const;
+            Raylib::Vector3 getPositions(void) const override;
 
             /**
              * @brief Set the Positions
              *
              * @param positions A vector3
              */
-            void setPositions(Raylib::Vector3 &positions);
+            void setPositions(Raylib::Vector3 &positions) override;
 
             /**
              * @brief Draw Entity
@@ -190,14 +190,14 @@ namespace Game
              *
              * @param shouldDisplay A boolean to know if this entity should be displayed
              */
-            void setShouldDisplay(const bool &shouldDisplay);
+            void setShouldDisplay(const bool &shouldDisplay) override;
 
             /**
              * @brief Get a boolean to know if this entity should be displayed
              *
              * @return true or false
              */
-            bool getShouldDisplay(void) const;
+            bool getShouldDisplay(void) const override;
 
             /**
              * @brief Set a player model
@@ -246,7 +246,27 @@ namespace Game
              */
             Human(const std::string &name, const int ID, const Raylib::Vector3 &positions, const std::string &obj_path = "resources/players/3D/Bombermans/white_tpose.glb", const std::string &texture_path = "resources/players/3D/Bombermans/texture.png", const std::vector<std::string> &animation_path = {}, const float &scalable = 0.6, const Raylib::Color color = Raylib::Color::White());
 
+            /**
+             * @brief Get the Type object
+             *
+             * @return std::string
+             */
             std::string getType() const override;
+
+            /**
+             * @brief
+             *
+             * @param direction a const reference to a std::string
+             * @return a boolean
+             */
+            bool move(const std::string &direction);
+
+            /**
+             * @brief Drop a bomb
+             *
+             * @return aboolean
+             */
+            bool dropBomb(void);
 
     };
 
@@ -266,6 +286,11 @@ namespace Game
              */
             AI(const std::string &name, const int ID, const Raylib::Vector3 &positions, const std::string &obj_path = "resources/players/3D/Bombermans/white_tpose.glb", const std::string &texture_path = "resources/players/3D/Bombermans/texture.png", const std::vector<std::string> &animation_path = {}, const float &scalable = 0.6, const Raylib::Color color = Raylib::Color::White());
 
+            /**
+             * @brief Get the Type object
+             *
+             * @return std::string
+             */
             std::string getType() const override;
 
     };
