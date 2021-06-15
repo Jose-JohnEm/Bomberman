@@ -47,7 +47,7 @@ void XRay::displayLoadGameScene(void)
     // Go to another scene according to mouse position
     if (goBack && Raylib::Mouse::isButtonPressed(0)) {
         _sfx.at(SFX_HOME)->play();
-        _scenesBack[LOAD_GAME] = _scenesBackBackup[LOAD_GAME];
         (this->*_scenesBack[_scene])();
+        _scenesBack[LOAD_GAME] = _scenesBackBackup[LOAD_GAME];
     }
 }
