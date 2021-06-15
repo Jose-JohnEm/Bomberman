@@ -7,29 +7,65 @@
 
 #include "MotionlessEntity.hpp"
 
+void Game::MotionlessEntity::updateAvailablePaths(void)
+{
+    std::vector<std::string> files;
+    bool isThereThree;
+
+    for (const auto & dir : std::filesystem::directory_iterator("resources/map"))
+    {
+        isThereThree = false;
+
+        if (dir.is_directory())
+        {
+            for (const auto &f : std::filesystem::directory_iterator(dir.path()))
+            {
+                files.push_back(f.path().filename().string());
+            }
+
+            if (files.end() != find(files.begin(), files.end(), "wall.png") &&
+                files.end() != find(files.begin(), files.end(), "floor.png") &&
+                files.end() != find(files.begin(), files.end(), "box.png"))
+            {
+                _available_paths.push_back(dir.path().filename().string());
+            }
+        } else
+            throw "ERROR : Wrong directory (Ressources - Map)";
+    }
+}
+
 Game::SolidWall::SolidWall(Raylib::Vector3 positions, size_t mapType)
 {
     _positions = positions;
     _mapType = mapType;
-    _textures.push_back(*(new Raylib::Texture("resources/map/Iron/wall.png")));
-    _textures.push_back(*(new Raylib::Texture("resources/map/Snow/wall.png")));
-    _textures.push_back(*(new Raylib::Texture("resources/map/Wood/wall.png")));
+
+    updateAvailablePaths();
+    for (auto &path: _available_paths)
+    {
+        _textures.push_back(*(new Raylib::Texture("resources/map/" + path + "/wall.png")));
+    }
 }
 
 Game::BreakableWall::BreakableWall(Raylib::Vector3 positions, size_t mapType)
 {
     _positions = positions;
     _mapType = mapType;
-    _textures.push_back(*(new Raylib::Texture("resources/map/Iron/box.png")));
-    _textures.push_back(*(new Raylib::Texture("resources/map/Snow/box.png")));
-    _textures.push_back(*(new Raylib::Texture("resources/map/Wood/box.png")));
+
+    updateAvailablePaths();
+    for (auto &path: _available_paths)
+    {
+        _textures.push_back(*(new Raylib::Texture("resources/map/" + path + "/box.png")));
+    }
 }
 
 Game::Floor::Floor(Raylib::Vector3 positions, size_t mapType)
 {
     _positions = positions;
     _mapType = mapType;
-    _textures.push_back(*(new Raylib::Texture("resources/map/Iron/floor.png")));
-    _textures.push_back(*(new Raylib::Texture("resources/map/Snow/floor.png")));
-    _textures.push_back(*(new Raylib::Texture("resources/map/Wood/floor.png")));
+
+    updateAvailablePaths();
+    for (auto &path: _available_paths)
+    {
+        _textures.push_back(*(new Raylib::Texture("resources/map/" + path + "/floor.png")));
+    }
 }

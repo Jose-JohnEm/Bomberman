@@ -13,6 +13,7 @@
 #include <algorithm>
 #include <map>
 #include "Interfaces/IEntity.hpp"
+#include <filesystem>
 
 namespace Game
 {
@@ -65,6 +66,12 @@ namespace Game
              */
             bool getShouldDisplay(void) const;
 
+            /**
+             * @brief Update the available textures paths
+             *
+             */
+            void updateAvailablePaths(void);
+
         protected:
 
             MotionlessEntity() = default;
@@ -74,6 +81,7 @@ namespace Game
             Raylib::Vector3 _positions{0, 0, 0};     // A vector3 that represents positions
             std::vector<Raylib::Texture> _textures;     // A vector of texture
             bool _shouldDisplay = true;            // A boolean to know if this entity should be displayed
+            std::vector<std::string> _available_paths;
     };
 
      class SolidWall : public virtual MotionlessEntity {
