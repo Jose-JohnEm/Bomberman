@@ -93,9 +93,17 @@ void Game::Player::setModel(const std::string &model)
 
 bool Game::Player::move(const std::string &direction)
 {
-        //"goEast", "goNorth", "goSouth", "goWest", "dropBomb"]
-    if (direction == "goUp" && moveUp() == true)
-        std::cout << "cooool" << std::endl;
+    std::map<std::string, std::pair<float, float>> dict = {
+        {"goEast", {-0.1f, 0.f}},
+        {"goNorth", {0.f, 0.1f}},
+        {"goSouth", {0.f, -0.1f}},
+        {"goWest", {0.1f, 0.f}}
+    };
+
+    _model.makeWalk();
+
+    _positions.x += dict[direction].first;
+    _positions.y += dict[direction].second;
     return false;
 }
 
