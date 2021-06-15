@@ -253,7 +253,8 @@ void XRay::playAndUpdateMusic(MusicResources music) {
     Clock clock;
     _musics.at(music)->playMusic();
     while (_musics.at(music)->isPlaying()) {
-        if (clock.doesTimeElapsed(0.01))
+        if (clock.doesTimeElapsed(0.01)) {
             _musics.at(music)->update();
+        }
     }
 }
