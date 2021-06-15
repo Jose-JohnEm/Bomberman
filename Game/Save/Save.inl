@@ -18,7 +18,7 @@ inline void Game::Save::writeSettings(std::ofstream &os) const
         << "settings world " << _settings[WORLD] << std::endl;
 }
 
-inline void Game::Save::writePlayersInfos(std::ofstream &os) const //TODO: position mauvaise!
+inline void Game::Save::writePlayersInfos(std::ofstream &os) const
 {
     int id = 0;
 
@@ -29,7 +29,7 @@ inline void Game::Save::writePlayersInfos(std::ofstream &os) const //TODO: posit
         os  << "player " << id << " type " << player->getType() << std::endl
             << "player " << id << " name " << player->getName() << std::endl
             << "player " << id << " scalable " << player->getScalable() << std::endl
-            << "player " << id << " positions " << positions.x << "," << positions.y << "," << positions.y << std::endl
+            << "player " << id << " positions " << positions.x << "," << (_map.getMap().size() - positions.y) << "," << positions.z << std::endl
             << "player " << id << " powerups "
                 << "skate:" << powerups[P_SKATE]
                 << ",bomb:" << powerups[P_BOMB]
