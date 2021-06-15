@@ -213,6 +213,13 @@ namespace Game
              */
             void setModel(const std::string &model);
 
+            /**
+             * @brief move the character
+             *
+             * @param direction
+             */
+            void move(const std::string &direction);
+
         private:
 
             /**
