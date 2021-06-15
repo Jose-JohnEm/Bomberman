@@ -37,6 +37,7 @@ SET(RAYLIB_HEADERS_PATH "${PROJET_DIRECTORY}/Lib/XRaylib/Raylib/")
 IF (NOT DEFINED ENV{SKIP_RESOURCES_FETCHING})
     MESSAGE("-- Compile all tests")
 ELSE()
+    LIST(REMOVE_ITEM lib_srcs "sources/Raylib/RaylibWindowTests.cpp")
     MESSAGE("-- Skipping windows tests for CI/CD...")
 ENDIF()
 
