@@ -131,8 +131,6 @@ void XRay::displayInGameScene(void)
 
     float size_m = ((float)_sizeMap+1) / 2;
 
-    static Raylib::Camera3D _camera(Vector3{size_m, size_m * -0.3f, size_m * 2.2f}, Vector3{size_m, size_m, 0}, Vector3{0, 1, 0}, 50, 0);
-
     // Lambda for panel pos
     auto panelLambda = [](size_t a) { return (a <= 2) ? std::vector<std::pair<size_t, size_t>>{{20, 500}, {1500, 500}}
     : std::vector<std::pair<size_t, size_t>>{{20, 500}, {1500, 500}, {20, 950}, {1500, 950}}; };
@@ -142,6 +140,7 @@ void XRay::displayInGameScene(void)
 
     // Display Cinematic ready, 3, 2, 1, go
     if (m_isPaused == 2) {
+        _camera = Raylib::Camera3D(Vector3{size_m, size_m * -0.3f, size_m * 2.2f}, Vector3{size_m, size_m, 0}, Vector3{0, 1, 0}, 50, 0);
         displayCinematic("loading", 0, 0);
         _resources.at(MAPCHOICEBG)->drawTexture(0, 0);
         displayCinematic("readygo", 0, 1000);
