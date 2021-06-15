@@ -73,3 +73,8 @@ inline Game::Map Game::Save::getMap(void) const
 {
     return _map;
 }
+
+inline std::vector<std::string> Game::Save::getUserNames(void) const
+{
+    return _userNames;
+}

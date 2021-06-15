@@ -16,7 +16,7 @@ Game::Bomberman::~Bomberman(void)
 {
 }
 
-void Game::Bomberman::initEntities() //TODO: pushback player color
+void Game::Bomberman::initEntities()
 {
     float x;
     float y = _map.size();

@@ -41,7 +41,7 @@ class IGame {
         virtual void loadGame(const std::string &backupFilePath) = 0;
 
         /**
-         * @brief Set the Users Names
+         * @brief Set the User Names
          *
          * @param userNames A vector of all the users names as a const std::vector<std::string>&
          */
@@ -87,6 +87,13 @@ class IGame {
          * The game must manage time on it's own.
          */
         virtual void updateGame(void) = 0;
+
+        /**
+         * @brief Get the User Names
+         *
+         * @return A vector of all the users names as a const std::vector<std::string>&
+         */
+        virtual const std::vector<std::string> &getUserNames(void) const = 0;
 
         /**
          * @brief Check if the game is over

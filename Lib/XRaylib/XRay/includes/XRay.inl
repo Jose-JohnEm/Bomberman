@@ -121,6 +121,11 @@ inline const std::vector<std::string> &XRay::getUserNames(void) const
     return _userNames;
 }
 
+inline void XRay::setUserNames(const std::vector<std::string> &userNames)
+{
+    _userNames = userNames;
+}
+
 inline IGraphical::Scene XRay::getScene(void) const
 {
     return _scene;

@@ -53,7 +53,7 @@ namespace Game
             void loadGame(const std::string &backupFilePath) override;
 
             /**
-             * @brief Set the Users Names
+             * @brief Set the User Names
              *
              * @param userNames A vector of all the users names as a const std::vector<std::string>&
              */
@@ -141,6 +141,13 @@ namespace Game
              * @brief Get the Map
              */
             std::vector<std::string> &getMap(const size_t &size) override;
+
+            /**
+             * @brief Get the User Names
+             *
+             * @return A vector of all the users names as a const std::vector<std::string>&
+             */
+            const std::vector<std::string> &getUserNames(void) const override;
 
             /**
              * @brief Set the Map Type

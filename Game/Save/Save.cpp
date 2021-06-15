@@ -179,7 +179,7 @@ void Game::Save::parsePlayers(const std::vector<std::string> &playersInfos)
     }
 }
 
-void Game::Save::parsePlayer(std::shared_ptr<Game::Player> player, const std::vector<std::string> &playerInfos) const
+void Game::Save::parsePlayer(std::shared_ptr<Game::Player> player, const std::vector<std::string> &playerInfos)
 {
     if (playerInfos[2].compare("type") == 0)
     {
@@ -187,6 +187,7 @@ void Game::Save::parsePlayer(std::shared_ptr<Game::Player> player, const std::ve
     }
     else if (playerInfos[2].compare("name") == 0)
     {
+        _userNames.push_back(playerInfos[3]);
         player->setName(playerInfos[3]);
         player->setModel(playerInfos[3]);
         player->setColor(playerInfos[3]);
