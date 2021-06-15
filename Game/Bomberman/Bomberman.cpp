@@ -23,6 +23,8 @@ void Game::Bomberman::initEntities() //TODO: pushback player color
     float scale;
     int dic_index = 0;
 
+    _entities.clear();
+
     for (const std::string &line : _map) {
         x = 0;
         for (const char &c : line) {
@@ -80,6 +82,7 @@ void Game::Bomberman::restart(void)
     // Reset Scores
     // TODO: TO IMPLEMENT
     std::cout << "I restart" << std::endl;
+    _reinit = 0;
 /*    for (size_t i = 0; i < _scores.size(); i++) {
         _scores[i].second = "0";
         for (size_t j = 0; j < _playersStats[i].size(); j++)
@@ -147,15 +150,14 @@ void Game::Bomberman::setPlayers(const std::vector<CharDictionary> &playersData)
 
 void Game::Bomberman::updateGame(void)
 {
-    static int i = 0;
-    if (i == 0) {
+    if (_reinit == 0) {
         initEntities();
         initPlayersStats();
+        _reinit++;
     }
     if (_gameOver) {
         updateEntities();
         updateScores();
         updatePlayersStats();
     }
-    i++;
 }
