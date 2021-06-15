@@ -131,7 +131,7 @@ void XRay::displayInGameScene(void)
 
     float size_m = ((float)_sizeMap+1) / 2;
 
-    static Raylib::Camera3D _camera(Vector3{0, 0, 30}, Vector3{size_m, size_m, 0}, Vector3{0, 1, 0}, 100, 0);
+    static Raylib::Camera3D _camera(Vector3{size_m, size_m * -0.3f, size_m * 2.2f}, Vector3{size_m, size_m, 0}, Vector3{0, 1, 0}, 50, 0);
 
     // Lambda for panel pos
     auto panelLambda = [](size_t a) { return (a <= 2) ? std::vector<std::pair<size_t, size_t>>{{20, 500}, {1500, 500}}
@@ -163,7 +163,6 @@ void XRay::displayInGameScene(void)
     // Draw scene
     beginDrawing();
     Raylib::Drawing::clearBackground(Raylib::Color::Brown());
-    _camera.updateCamera();
     _camera.beginMode3D();
     for (size_t o = 0; o < _gameInfos.size(); o++)
         _gameInfos[o]->drawEntity();
