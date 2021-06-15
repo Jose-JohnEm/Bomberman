@@ -41,6 +41,8 @@ void Engine::Core::run(void)
 {
     while (_scene != IGraphical::END_GAME && !_graphical->shouldCloseWindow()) {
         getBackupFiles();
+        if (_graphical->getBackups() != _backups)
+            _graphical->setBackups(_backups);
         _graphical->display();
         _scene = _graphical->getScene();
         if (_scene == IGraphical::IN_GAME && _game) {
@@ -59,8 +61,6 @@ void Engine::Core::run(void)
                 _graphical->setPlayersStats(_game->getPlayersStats());
             }
         }
-        if (_graphical->getBackups() != _backups)
-            _graphical->setBackups(_backups);
     }
     _graphical->closeWindow();
 }
