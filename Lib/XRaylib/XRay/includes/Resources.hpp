@@ -137,7 +137,8 @@ typedef enum {
 } Resources;
 
 typedef enum {
-    MSC_BOMBERMAN
+    MSC_BOMBERMAN,
+    MSC_OPENNING
 } MusicResources;
 
 typedef enum {
@@ -150,7 +151,8 @@ typedef enum {
     SFX_TURN_ON,
     SFX_JIG,
     SFX_JIG1,
-    SFX_BING
+    SFX_BING,
+    SFX_OPENNING
 } SfxResources;
 
 #endif /* !RESOURCES_HPP_ */

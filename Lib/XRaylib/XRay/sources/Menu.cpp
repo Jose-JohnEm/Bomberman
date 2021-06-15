@@ -12,9 +12,6 @@ void XRay::displayMenuScene(void)
     // Set scene
     _scene = MENU;
 
-    // Audio
-    _musics.at(MSC_BOMBERMAN)->update();
-
     // Check if mouse is on button spot
     bool goPlay = mouseIsInBox(createBox(1160, 245, 1160+755, 245+132)) ? true : false;
     bool goHowToPlay = mouseIsInBox(createBox(1160, 455, 1160+755, 455+132)) ? true : false;
@@ -24,6 +21,9 @@ void XRay::displayMenuScene(void)
     // Display INDIE STUDIO
     if (_intro.first == true)
         (this->*_intro.second)();
+
+    // Launch
+    playMusic(MSC_BOMBERMAN);
 
     // Parallax update
     _scrollingBack -= 0.1f;

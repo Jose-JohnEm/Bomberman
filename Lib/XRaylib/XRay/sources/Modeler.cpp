@@ -70,9 +70,12 @@ Modeler& Modeler::operator=(Modeler model)
 {
     int fake_counter = 0;
 
+    _model = model.getModel();
     _isAnimated = isThereAnimationsPath(model.getAnimationPath());
     _texture_path = model.getTexturePath();
     _animator = model.getAnimationPath();
+
+    std::cout << "TESTING Try to get model !" << std::endl;
 
     _model = LoadModel(_model_path.c_str());
 
@@ -82,6 +85,8 @@ Modeler& Modeler::operator=(Modeler model)
     _animations.push_back(LoadModelAnimations(_animator.EMOTE.c_str(), &fake_counter)[0]);
 
     SetMaterialTexture(&_model.materials[0], MAP_DIFFUSE, LoadTexture(_texture_path.c_str()));
+
+    std::cout << "TESTING Affected !" << std::endl;
 
     return *this;
 }

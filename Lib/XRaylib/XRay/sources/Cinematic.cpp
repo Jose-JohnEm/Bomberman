@@ -9,35 +9,43 @@
 
 void XRay::displayCinematic(const Cinematic &cinematic)
 {
-    switch (cinematic)
-    {
-    case INTRO:
-        displayCinematic("intro", 300, 0);
-        break;
-    default:
-        break;
+    switch (cinematic) {
+        case INTRO:
+            if (!_sfx.at(SFX_OPENNING)->isPlaying())
+                _sfx.at(SFX_OPENNING)->play();
+            displayCinematic("intro", 300, 1);
+            if (_sfx.at(SFX_OPENNING)->isPlaying())
+                _sfx.at(SFX_OPENNING)->stop();
+            break;
+        default:
+            break;
     }
 }
 
 void XRay::displayCinematic(const std::string &cinematicPathDirectory, const size_t &hideSkip, const size_t &gap) const
 {
     size_t filesNumber = countFilesDirectory("resources/cinematic/" + cinematicPathDirectory);
+    Clock clock;
 
     // Launch cinematic
-    for (size_t i = 0; i < filesNumber && !(i < hideSkip && Raylib::Mouse::isButtonPressed(0) && mouseIsInBox(createBox(1760, 950, 1883, 1005))); i++)
-    {
-        // Set Textures
-        Raylib::Texture frame(Raylib::Image("resources/cinematic/" + cinematicPathDirectory + "/frame" + std::to_string(i) + ".png"));
+    size_t i = 0;
 
-        // Draw cinematic
-        beginDrawing();
-        frame.drawTexture(0, 0);
-        if (i < hideSkip) {
-            (mouseIsInBox(createBox(1760, 950, 1883, 1005)) ? _resources.at(SKIP_HOVER) : _resources.at(SKIP))->drawTexture(1760, 950);
-            displayMouse();
+//    for (size_t i = 0; i < filesNumber && !(i < hideSkip && Raylib::Mouse::isButtonPressed(0) && mouseIsInBox(createBox(1760, 950, 1883, 1005))) && clock.doesTimeElapsed(0.01); i++)
+    while (i < filesNumber && !(i < hideSkip && Raylib::Mouse::isButtonPressed(0) && mouseIsInBox(createBox(1760, 950, 1883, 1005)))) {
+
+        if (clock.doesTimeElapsed(0.001)) {
+            // Set Textures
+            Raylib::Texture frame(Raylib::Image("resources/cinematic/" + cinematicPathDirectory + "/frame" + std::to_string(i) + ".png"));
+
+            // Draw cinematic
+            beginDrawing();
+            frame.drawTexture(0, 0);
+            if (i < hideSkip) {
+                (mouseIsInBox(createBox(1760, 950, 1883, 1005)) ? _resources.at(SKIP_HOVER) : _resources.at(SKIP))->drawTexture(1760, 950);
+                displayMouse();
+            }
+            endDrawing();
+            i++;
         }
-        if (gap > 0)
-        	std::this_thread::sleep_for(std::chrono::milliseconds(gap));
-        endDrawing();
     }
 }

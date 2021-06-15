@@ -12,9 +12,6 @@ void XRay::displaySettingsScene(void)
     // Set scene
     _scene = SETTINGS;
 
-    // Audio
-    _musics.at(MSC_BOMBERMAN)->update();
-
     // Check if mouse is on button spot
     bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
     bool onFullscreen = mouseIsInBox(createBox(1150, 400, 1510, 509)) ? true : false;

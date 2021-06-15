@@ -115,13 +115,13 @@ inline void Game::Map::placePlayers(void)
                 _map[1][1] = (i <= _playersNumber.first) ? HUMAN : ARTIFICIAL_INTELLIGENCE;
                 break;
             case 2:
-                _map[_height - BORDER][1] = (i <= _playersNumber.first) ? HUMAN : ARTIFICIAL_INTELLIGENCE;
+                _map[1][_width - BORDER] = (i <= _playersNumber.first) ? HUMAN : ARTIFICIAL_INTELLIGENCE;
                 break;
             case 3:
-                _map[_height - BORDER][_width - BORDER] = (i <= _playersNumber.first) ? HUMAN : ARTIFICIAL_INTELLIGENCE;
+                _map[_height - BORDER][1] = (i <= _playersNumber.first) ? HUMAN : ARTIFICIAL_INTELLIGENCE;
                 break;
             default:
-                _map[1][_width - BORDER] = (i <= _playersNumber.first) ? HUMAN : ARTIFICIAL_INTELLIGENCE;
+                _map[_height - BORDER][_width - BORDER] = (i <= _playersNumber.first) ? HUMAN : ARTIFICIAL_INTELLIGENCE;
                 break;
         }
     }
