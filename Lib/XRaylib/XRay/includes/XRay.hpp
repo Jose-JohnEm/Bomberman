@@ -513,7 +513,7 @@ class XRay : public IGraphical {
          * [7] -- _allIntegers[2] - _aiNumber °
          * [8] -- _mapType
          */
-        std::array<size_t, 9> _gameSettings = {0, 1, 1, 60, 60, 0, 1, 1, 0};
+        std::array<size_t, 9> _gameSettings = {0, 1, 1, 1, 60, 0, 1, 1, 0};
         size_t _mapType = 0;                        // Type of Map
         size_t _sizeMap = 5;                            // Size of Map
         double _startingTime;                  // Get Time from raylib

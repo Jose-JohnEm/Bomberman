@@ -31,7 +31,7 @@ void XRay::displayLoadGameScene(void)
     _resources.at(LOADSCENE)->drawTexture(0, 0);
     Raylib::Text::drawText("BACKUPS", 230, 210, 65, Raylib::Color::Black());
     for (; u < _backups.size(); u++) {
-        if (mouseIsInBox(createBox(300, ordinate + 20, 300+(65 * _backups[u].substr(0, _backups[u].find('.')).length()), ordinate + 85)))
+        if (mouseIsInBox(createBox(300, ordinate + 20, 1100, ordinate + 85)))
             _resources.at(BACKUPBAR)->drawTexture(295, ordinate + 10);
         _resources.at(BRANCH)->drawTexture(150, ordinate);
         Raylib::Text::drawText(_backups[u].substr(0, _backups[u].find('.')), 300, ordinate + 20, 65, Raylib::Color::Black());
@@ -41,12 +41,13 @@ void XRay::displayLoadGameScene(void)
     displayMouse();
     endDrawing();
 
+    for (u = 0, ordinate = 300; u < _backups.size(); u++, ordinate += 100)
+        if (Raylib::Mouse::isButtonDown(0) && mouseIsInBox(createBox(300, ordinate + 20, 1100, ordinate + 85)))
+            loadThisBackup(_backups[u]);
     // Go to another scene according to mouse position
-    if (_backups.size() > 0 && (u-1) > 0 && Raylib::Mouse::isButtonPressed(0) && mouseIsInBox(createBox(300, ordinate + 20, 300+(65 * _backups[u-1].substr(0, _backups[u-1].find('.')).length()), ordinate + 85)))
-        loadThisBackup(_backups[u-1]);
     if (goBack && Raylib::Mouse::isButtonPressed(0)) {
         _sfx.at(SFX_HOME)->play();
-        _scenesBack[LOAD_GAME] = _scenesBackBackup[LOAD_GAME];
         (this->*_scenesBack[_scene])();
+        _scenesBack[LOAD_GAME] = _scenesBackBackup[LOAD_GAME];
     }
 }
