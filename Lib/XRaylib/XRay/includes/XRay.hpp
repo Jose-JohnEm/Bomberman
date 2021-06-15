@@ -531,6 +531,7 @@ class XRay : public IGraphical {
         std::function<void (std::array<std::size_t, 9>)> _pointerToSettingsFunc;   // Pointer to Settings Func
         std::function<void (std::string)> _pointerToLoadFunc;   // Pointer to Load Func
         std::function<void (const size_t pos, const std::string action)> _playerActionsFunc;              // Pointer to playerActionsFunc
+        Raylib::Camera3D _camera;
 
         std::vector<bool> _playerTab{true, false, false, false};                     // A vector of boolean that represents if the player is an AI or not
         std::vector<Resources> _controlsTab{UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN};                   // A vector of resources (See in Resources.hpp) that represents if the controls
