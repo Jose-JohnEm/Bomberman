@@ -21,8 +21,7 @@ void XRay::detectPlayerInput(void)
     for (size_t k = 0; k < t; k++)
         _controlsTab[t] = (_controlsTab[t] == _controlsTab[k]) ? tmp : _controlsTab[t];
     _playerTab[t] = (tmp != _controlsTab[t]) ? true : _playerTab[t];
-    if (tmp != _controlsTab[t]) {
-        _playersInput.pop_back();
+    if (tmp != _controlsTab[t] && _playersInput.size() == t) {
         if (_controlsTab[t] == PLAYSTATIONYELLOW)
             _playersInput.push_back(std::shared_ptr<IPlayerInput>(new GamepadPlayerInput(0)));
         if (_controlsTab[t] == XBOXYELLOW)
@@ -57,7 +56,6 @@ void XRay::addPlayer(void)
         _allIntegers[2] += 1;
         _playerTab.push_back(false);
         _pSelector.load();
-        _playersInput.push_back(std::shared_ptr<IPlayerInput>(new MousePlayerInput()));
         _sfx.at(SFX_JIG)->play();
     }
 }
@@ -68,21 +66,19 @@ void XRay::manageNextOrPrev(void)
 
     _nextOrNot = 0;
     for (size_t u = 0; u < _allIntegers[2] && u < _playersInput.size(); u++) {
-        if (_playersInput[u]->shouldSimulateAClick()) {
+        if (_playerTab[u] && _playersInput[u]->shouldSimulateAClick()) {
             _card[u] = glambda(_card[u]);
             _sfx.at(SFX_BING)->play();
         }
-        if (!_playerTab[u])
-            _card[u] = 40;
-        if (_playersInput[u]->shouldChangeToPrev() && _playerTab[u] && _card[u] != 40) {
+        if (_playerTab[u] && _playersInput[u]->shouldChangeToPrev() && _card[u] != 40) {
             _sfx.at(SFX_KLICK)->play();
             _pSelector.prev(u);
         }
-        if (_playersInput[u]->shouldChangeToNext() && _playerTab[u] && _card[u] != 40) {
+        if (_playerTab[u] && _playersInput[u]->shouldChangeToNext() && _playerTab[u] && _card[u] != 40) {
             _sfx.at(SFX_KLICK)->play();
             _pSelector.next(u);
         }
-        _nextOrNot += _card[u];
+        _nextOrNot += _playerTab[u] ? _card[u] : 0;
     }
 }
 
@@ -158,14 +154,18 @@ void XRay::displayPlayerChoiceScene(void)
         (this->*_scenesBack[_scene])();
         _scenesBack[PLAYER_CHOICE] = _scenesBackBackup[PLAYER_CHOICE];
     }
-    if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _allIntegers[2] * 40) {
+
+    // Update Game Settings
+    _gameSettings[5] = 0;
+    for (size_t t = 0; t < _allIntegers[2] && t <_playerTab.size(); t++)
+        _gameSettings[5] += (!_playerTab[t]) ? 1 : 0;
+    _gameSettings[7] = _allIntegers[2] - _gameSettings[5];
+    for (size_t o = 0; o < _allIntegers[2]; o++)
+        _userNames.push_back(_pSelector[o].getName());
+
+    // Go to another scene according to mouse position
+    if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _gameSettings[5] * 40) {
         _sfx.at(SFX_NOCK)->play();
-        _gameSettings[5] = 0;
-        for (size_t t = 0; t < _allIntegers[2] && t <_playerTab.size(); t++)
-            _gameSettings[5] += (!_playerTab[t]) ? 1 : 0;
-        _gameSettings[7] = _allIntegers[2] - _gameSettings[5];
-        for (size_t o = 0; o < _allIntegers[2]; o++)
-            _userNames.push_back(_pSelector[o].getName());
         _pSelector.initMaps({
             {"WWWWWWW"},
             {"W*****W"},
