@@ -18,7 +18,7 @@ inline void Game::Save::writeSettings(std::ofstream &os) const
         << "settings world " << _settings[WORLD] << std::endl;
 }
 
-inline void Game::Save::writePlayersInfos(std::ofstream &os) const
+inline void Game::Save::writePlayersInfos(std::ofstream &os) const //TODO: position mauvaise!
 {
     int id = 0;
 
