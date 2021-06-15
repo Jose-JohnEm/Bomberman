@@ -43,7 +43,7 @@ namespace Game
              *
              * @param settings Backup Container
              */
-            void saveGame(const std::array<std::size_t, 8> &settings) override;
+            void saveGame(std::array<std::size_t, 8> settings) override;
 
             /**
              * @brief Call this function to load a game.

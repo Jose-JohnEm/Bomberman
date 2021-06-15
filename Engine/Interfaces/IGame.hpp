@@ -31,7 +31,7 @@ class IGame {
          *
          * @param settings Backup Container
          */
-        virtual void saveGame(const std::array<std::size_t, 8> &settings) = 0;
+        virtual void saveGame(std::array<std::size_t, 8> settings) = 0;
 
         /**
          * @brief Call this function to load a game.
