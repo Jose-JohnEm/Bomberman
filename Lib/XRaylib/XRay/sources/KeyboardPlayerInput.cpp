@@ -17,22 +17,22 @@ KeyboardPlayerInput::~KeyboardPlayerInput()
 
 bool KeyboardPlayerInput::shouldGoToEast(void) const
 {
-    return Raylib::Keyboard::isKeyPressed(263);
+    return Raylib::Keyboard::isKeyDown(263);
 }
 
 bool KeyboardPlayerInput::shouldGoToWest(void) const
 {
-    return Raylib::Keyboard::isKeyPressed(262);
+    return Raylib::Keyboard::isKeyDown(262);
 }
 
 bool KeyboardPlayerInput::shouldGoToNorth(void) const
 {
-    return Raylib::Keyboard::isKeyPressed(265);
+    return Raylib::Keyboard::isKeyDown(265);
 }
 
 bool KeyboardPlayerInput::shouldGoToSouth(void) const
 {
-    return Raylib::Keyboard::isKeyPressed(264);
+    return Raylib::Keyboard::isKeyDown(264);
 }
 
 bool KeyboardPlayerInput::shouldChangeToPrev(void) const
