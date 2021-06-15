@@ -21,7 +21,9 @@ void XRay::detectPlayerInput(void)
     for (size_t k = 0; k < t; k++)
         _controlsTab[t] = (_controlsTab[t] == _controlsTab[k]) ? tmp : _controlsTab[t];
     _playerTab[t] = (tmp != _controlsTab[t]) ? true : _playerTab[t];
-    if (tmp != _controlsTab[t] && _playersInput.size() == t) {
+    if (tmp != _controlsTab[t]) {
+        if (_playersInput.size() > t)
+            _playersInput.pop_back();
         if (_controlsTab[t] == PLAYSTATIONYELLOW)
             _playersInput.push_back(std::shared_ptr<IPlayerInput>(new GamepadPlayerInput(0)));
         if (_controlsTab[t] == XBOXYELLOW)
@@ -39,7 +41,7 @@ void XRay::removePlayer(const std::vector<std::pair<int, int>> &removeButtons)
         if (mouseIsInBox(createBox(removeButtons[u].first, removeButtons[u].second, removeButtons[u].first+64, removeButtons[u].second+63)) && Raylib::Mouse::isButtonPressed(0)) {
             _allIntegers[2] -= 1;
             if (_playerTab[u+1]) {
-                _controlsTab.erase(_controlsTab.begin() + u + 1);
+                _controlsTab[u + 1] = UNKNOWN;
                 _playersInput.erase(_playersInput.begin() + u + 1);
             }
             _playerTab.erase(_playerTab.begin() + u + 1);
@@ -74,7 +76,7 @@ void XRay::manageNextOrPrev(void)
             _sfx.at(SFX_KLICK)->play();
             _pSelector.prev(u);
         }
-        if (_playerTab[u] && _playersInput[u]->shouldChangeToNext() && _playerTab[u] && _card[u] != 40) {
+        if (_playerTab[u] && _playersInput[u]->shouldChangeToNext() && _card[u] != 40) {
             _sfx.at(SFX_KLICK)->play();
             _pSelector.next(u);
         }
@@ -86,7 +88,7 @@ void XRay::displayCardsSettings(std::vector<std::pair<int, int>> &removeButtons,
 {
     int i, b;
     for (i = 0, (*x) = 100, b = 200; _allIntegers[2] < 5 && i < _allIntegers[2]; i++, (*x) += 450) {
-        (_playerTab[i]) ? _resources.at((Resources)(_card[i]+i))->drawTexture((*x), b) : _resources.at(AI)->drawTexture((*x), b);
+        (_playerTab[i]) ? _resources[(Resources)(_card[i]+i)]->drawTexture((*x), b) : _resources[AI]->drawTexture((*x), b);
         if (_playerTab[i])
             _resources.at((Resources)(size_t)((_controlsTab[i])+_card[i]-36))->drawTexture((*x)+109, b+9);
         if (i != 0)
@@ -134,8 +136,8 @@ void XRay::displayPlayerChoiceScene(void)
     displayBack();
 
     displayCardsSettings(removeButtons, &x);
-    (goBack ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000);
-    (goNext ? _resources.at(NEXT_HOVER) : _resources.at(NEXTSCENE))->drawTexture(1700, 1000);
+    (goBack ? _resources[BACK_HOVER] : _resources[BACK])->drawTexture(20, 1000);
+    (goNext ? _resources[NEXT_HOVER] : _resources[NEXTSCENE])->drawTexture(1700, 1000);
 
     _pSelector.drawPlayers();
 
@@ -160,11 +162,11 @@ void XRay::displayPlayerChoiceScene(void)
     for (size_t t = 0; t < _allIntegers[2] && t <_playerTab.size(); t++)
         _gameSettings[5] += (!_playerTab[t]) ? 1 : 0;
     _gameSettings[7] = _allIntegers[2] - _gameSettings[5];
-    for (size_t o = 0; o < _allIntegers[2]; o++)
-        _userNames.push_back(_pSelector[o].getName());
 
     // Go to another scene according to mouse position
     if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _gameSettings[7] * 40) {
+        for (size_t o = 0; o < _allIntegers[2]; o++)
+            _userNames.push_back(_pSelector[o].getName());
         _sfx.at(SFX_NOCK)->play();
         _pSelector.initMaps({
             {"WWWWWWW"},
