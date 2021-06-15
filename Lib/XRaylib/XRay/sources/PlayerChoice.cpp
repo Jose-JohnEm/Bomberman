@@ -164,7 +164,7 @@ void XRay::displayPlayerChoiceScene(void)
         _userNames.push_back(_pSelector[o].getName());
 
     // Go to another scene according to mouse position
-    if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _gameSettings[5] * 40) {
+    if (goNext && Raylib::Mouse::isButtonPressed(0)) {// && _nextOrNot == _gameSettings[5] * 40) {
         _sfx.at(SFX_NOCK)->play();
         _pSelector.initMaps({
             {"WWWWWWW"},
