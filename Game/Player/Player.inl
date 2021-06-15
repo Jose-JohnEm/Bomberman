@@ -77,7 +77,10 @@ inline std::string Game::AI::getType() const
 
 inline void Game::Player::drawEntity()
 {
+    std::cout << "-- I will update --" << std::endl;
     _model.update();
+
+    std::cout << "-- I will display --" << std::endl;
 
     DrawModelEx(_model.getModel(), _positions.getCStruct(), {1, 0, 0}, 90, {_scalable, _scalable, _scalable}, _color.getCStruct());
 }
