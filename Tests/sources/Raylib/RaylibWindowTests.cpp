@@ -8,7 +8,7 @@
 #include <gtest/gtest.h>
 #include "../Tests/Lib/XRaylib/Raylib/Window/Window.hpp"
 
-
+/*
 TEST(WindowTest, initWindowTest)
 {
     try {
@@ -61,3 +61,4 @@ TEST(WindowTest, toggleFullscreenTest)
         EXPECT_STREQ("ERROR: Invalid Toggle window state:", ex.what());
     }
 }
+*/
