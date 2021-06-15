@@ -14,7 +14,7 @@ Engine::Core::Core()
     _graphical->setSaveFunc([this] (std::array<std::size_t, 9> settings) {this->saveGame(settings);});
     _graphical->setRestartFunc([this] () {this->restartGame();});
     _graphical->setSettingsFunc([this] (std::array<std::size_t, 9> settings) {_game->setSettings(settings);});
-    _graphical->setPlayerActionsFunc([this] (const size_t pos, const std::string action) {_game->doPlayerAction(pos, action);});
+    _graphical->setPlayerActionsFunc([this] (const size_t playerID, const std::string action) {_game->doPlayerAction(playerID, action);});
 }
 
 Engine::Core::~Core()

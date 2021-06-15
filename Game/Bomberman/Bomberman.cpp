@@ -29,9 +29,9 @@ void Game::Bomberman::initEntities() //TODO: pushback player color
             if ((c == 'H' || c == 'A') && dic_index < _players.size())
             {
                 if (c == 'H')
-                    _entities.push_back(std::shared_ptr<IEntity>(new Game::Human(_players[dic_index].name, {x, y, 0}, _players[dic_index].obj, _players[dic_index].texture, _players[dic_index].animations, _players[dic_index].scalable, _players[dic_index].color)));
+                    _entities.push_back(std::shared_ptr<IEntity>(new Game::Human(_players[dic_index].name, dic_index, {x, y, 0}, _players[dic_index].obj, _players[dic_index].texture, _players[dic_index].animations, _players[dic_index].scalable, _players[dic_index].color)));
                 else if (c == 'A')
-                    _entities.push_back(std::shared_ptr<IEntity>(new Game::AI(_players[dic_index].name, {x, y, 0}, _players[dic_index].obj, _players[dic_index].texture, _players[dic_index].animations, _players[dic_index].scalable, _players[dic_index].color)));
+                    _entities.push_back(std::shared_ptr<IEntity>(new Game::AI(_players[dic_index].name, dic_index, {x, y, 0}, _players[dic_index].obj, _players[dic_index].texture, _players[dic_index].animations, _players[dic_index].scalable, _players[dic_index].color)));
                 dic_index++;
             }
             else if (c == 'W' || c == 'E')
