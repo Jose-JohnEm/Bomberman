@@ -18,20 +18,13 @@ FILE(COPY ${PROJET_DIRECTORY}/Engine DESTINATION ${CMAKE_CURRENT_SOURCE_DIR})
 
 ADD_SUBDIRECTORY(Lib/XRaylib)
 
-# We add this to ensure the CI/CDs don't fetch resources
-IF (NOT DEFINED ENV{SKIP_RESOURCES_FETCHING})
-    MESSAGE("-- Compile all tests")
-ELSE()
-    LIST(REMOVE_ITEM SRCS "sources/Raylib/RaylibWindowTests.cpp")
-    MESSAGE("-- Skipping windows tests for CI/CD...")
-ENDIF()
-
 # Generate a list of files
 FILE(GLOB_RECURSE SRCS CONFIGURE_DEPENDS
     "${PROJET_DIRECTORY}Engine/Core/*.cpp"
     "${PROJET_DIRECTORY}Game/*.cpp"
     "sources/XRay/*.cpp"
-    #"sources/Game/GamePlayer*.cpp" Need to edit tests
+    "sources/Raylib/*.cpp"
+    #"sources/Game/*.cpp" Need to edit tests
 )
 
 # Set Headers paths
@@ -39,6 +32,13 @@ SET(ENGINE_HEADERS_PATH "${PROJET_DIRECTORY}/Engine/")
 SET(GAME_HEADERS_PATH "${PROJET_DIRECTORY}/Game/")
 SET(XRAY_HEADERS_PATH "${PROJET_DIRECTORY}/Lib/XRaylib/XRay/includes/")
 SET(RAYLIB_HEADERS_PATH "${PROJET_DIRECTORY}/Lib/XRaylib/Raylib/")
+
+# We add this to ensure the CI/CDs don't fetch resources
+IF (NOT DEFINED ENV{SKIP_RESOURCES_FETCHING})
+    MESSAGE("-- Compile all tests")
+ELSE()
+    MESSAGE("-- Skipping windows tests for CI/CD...")
+ENDIF()
 
 # This is the main part:
 ADD_EXECUTABLE(${PROJECT_NAME} ${SRCS} ${HEADERS_FILES})
