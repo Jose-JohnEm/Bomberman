@@ -47,7 +47,18 @@ inline void Game::Bomberman::setSettings(const std::array<std::size_t, 9> &setti
 
 inline void Game::Bomberman::doPlayerAction(const size_t playerID, const std::string action)
 {
-    // TODO: LUCAS, JO HERE;
+    std::cout << "AAAAAAAAAAAA" << std::endl;
+    //"goEast", "goNorth", "goSouth", "goWest", "dropBomb"]
+    if (action == "goEast"
+    || action == "goNorth"
+    || action == "goSouth"
+    || action == "goWest") {
+        for (const std::shared_ptr<IEntity> &entity : _entities) {
+            if (entity->getType().compare("Human") == 0) {
+                std::cout << "OKOKOK - " << std::make_shared<Game::Human>(*dynamic_cast<Game::Human *>(entity.get()))->getID() << std::endl;
+            }
+        }
+    }
 }
 
 inline std::array<std::size_t, 9> Game::Bomberman::getSettings(void) const
