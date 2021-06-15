@@ -248,7 +248,7 @@ void XRay::playMusic(MusicResources music) {
     }
 }
 
-// Dont call this function only use it with playMusic(MusicResources music)
+// Don't call this function only use it with playMusic(MusicResources music)
 void XRay::playAndUpdateMusic(MusicResources music) {
     Clock clock;
     _musics.at(music)->playMusic();
