@@ -56,8 +56,9 @@ inline void Game::Bomberman::doPlayerAction(const size_t playerID, const std::st
             if (entity->getType().compare("Human") == 0) {
                 if (dynamic_cast<Game::Human *>(entity.get()) != nullptr && playerID == dynamic_cast<Game::Human *>(entity.get())->getID())
                 {
-                    if (checkPlayerPosition(action, *dynamic_cast<Game::Human *>(entity.get())));
-                        (*dynamic_cast<Game::Human *>(entity.get())).move(action);
+
+                    if (checkPlayerPosition(action, *dynamic_cast<Game::Human *>(entity.get())))
+                        dynamic_cast<Game::Human *>(entity.get())->move(action);
                 }
             }
         }
