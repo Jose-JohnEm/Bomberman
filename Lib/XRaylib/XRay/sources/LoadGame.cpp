@@ -34,6 +34,7 @@ void XRay::displayLoadGameScene(void)
             _resources.at(BACKUPBAR)->drawTexture(295, ordinate + 10);
         if (mouseIsInBox(createBox(300, ordinate + 20, 300+(65 * backup.substr(0, backup.find('.')).length()), ordinate + 85)) && Raylib::Mouse::isButtonPressed(0)) {
             loadThisBackup(backup);
+            //TODO: endDrawing();
             return ;
         }
         _resources.at(BRANCH)->drawTexture(150, ordinate);
