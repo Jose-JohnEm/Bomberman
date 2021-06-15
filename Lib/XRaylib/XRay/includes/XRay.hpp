@@ -450,7 +450,7 @@ class XRay : public IGraphical {
          *
          * @param playerActionsFunc A pointer to function that manage all players actions in the game (left, right ...)
          */
-        void setPlayerActionsFunc(std::function<void (const size_t pos, const std::string action)>);
+        void setPlayerActionsFunc(std::function<void (const size_t pos, const std::string action)>) override;
 
         /**
          * @brief Check Click on MapChoiceScene

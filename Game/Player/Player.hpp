@@ -148,7 +148,7 @@ namespace Game
              *
              * @return A std::string
              */
-            virtual std::string getType() const = 0;
+            virtual std::string getType() const override = 0;
 
             /**
              * @brief Get player scalability
@@ -169,14 +169,14 @@ namespace Game
              *
              * @return A Raylib::Vector3
              */
-            Raylib::Vector3 getPositions(void) const;
+            Raylib::Vector3 getPositions(void) const override;
 
             /**
              * @brief Set the Positions
              *
              * @param positions A vector3
              */
-            void setPositions(Raylib::Vector3 &positions);
+            void setPositions(Raylib::Vector3 &positions) override;
 
             /**
              * @brief Draw Entity
@@ -189,14 +189,14 @@ namespace Game
              *
              * @param shouldDisplay A boolean to know if this entity should be displayed
              */
-            void setShouldDisplay(const bool &shouldDisplay);
+            void setShouldDisplay(const bool &shouldDisplay) override;
 
             /**
              * @brief Get a boolean to know if this entity should be displayed
              *
              * @return true or false
              */
-            bool getShouldDisplay(void) const;
+            bool getShouldDisplay(void) const override;
 
             /**
              * @brief Set a player model
