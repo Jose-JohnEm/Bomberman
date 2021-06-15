@@ -33,8 +33,9 @@ Animator Game::Player::getAnimator(const std::vector<std::string> &animation_pat
         return Animator({"null", "null", "null"});
 }
 
-Game::Player::Player(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path, const float &scalable, const Raylib::Color color)
+Game::Player::Player(const std::string &name, const int &ID, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path, const float &scalable, const Raylib::Color color)
     : _name{name},
+    _ID{ID},
     _positions{positions},
     _kills{0},
     _brokenWalls{0},
@@ -46,13 +47,13 @@ Game::Player::Player(const std::string &name, const Raylib::Vector3 &positions, 
     std::cout << "Hey I'm a new player : " << name << std::endl;
 }
 
-Game::AI::AI(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path, const float &scalable, const Raylib::Color color)
-: Player(name, positions, obj_path, texture_path, animation_path, scalable, color)
+Game::AI::AI(const std::string &name, const int ID, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path, const float &scalable, const Raylib::Color color)
+: Player(name, ID, positions, obj_path, texture_path, animation_path, scalable, color)
 {
 }
 
-Game::Human::Human(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path, const float &scalable, const Raylib::Color color)
-: Player(name, positions, obj_path, texture_path, animation_path, scalable, color)
+Game::Human::Human(const std::string &name, const int ID, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path, const float &scalable, const Raylib::Color color)
+: Player(name, ID, positions, obj_path, texture_path, animation_path, scalable, color)
 {
 }
 
@@ -88,4 +89,32 @@ void Game::Player::setModel(const std::string &model)
         }
     }
     std::cout << "MODELER " << _model.getObjPath() << " " << _model.getTexturePath() << " " << _model.getAnimationPath().WALK << std::endl;
+}
+
+bool Game::Player::move(const std::string &direction)
+{
+        //"goEast", "goNorth", "goSouth", "goWest", "dropBomb"]
+    if (direction == "goUp" && moveUp() == true)
+        std::cout << "cooool" << std::endl;
+    return false;
+}
+
+bool Game::Player::moveUp()
+{
+    return false;
+}
+
+bool Game::Player::moveDown()
+{
+    return false;
+}
+
+bool Game::Player::moveEast()
+{
+    return false;
+}
+
+bool Game::Player::moveWest()
+{
+    return false;
 }

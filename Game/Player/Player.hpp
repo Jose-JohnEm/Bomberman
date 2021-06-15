@@ -49,12 +49,13 @@ namespace Game
              * @brief Construct a new Player object
              *
              * @param name the name of the character
+             * @param ID A const reference to a int
              * @param positions the 3D positions of the character
              * @param obj_path the model path
              * @param texture_path the texture path
              * @param animation_path the animations paths
              */
-            Player(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path = {}, const float &scalable = 0.6, const Raylib::Color color = Raylib::Color::White());
+            Player(const std::string &name, const int &ID, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path = {}, const float &scalable = 0.6, const Raylib::Color color = Raylib::Color::White());
 
             /**
              * @brief Get the Name of the Player
@@ -151,6 +152,49 @@ namespace Game
             virtual std::string getType() const override = 0;
 
             /**
+             * @brief Move the player
+             *
+             * @param direction a const reference to a std::string
+             * @return true if the player can move up, false otherwise
+             */
+            bool move(const std::string &direction);
+
+            /**
+             * @brief Move up the player
+             *
+             * @return true if the player can move up, false otherwise
+             */
+            bool moveUp(void);
+
+            /**
+             * @brief Move down the player
+             *
+             * @return true if the player can move down, false otherwise
+             */
+            bool moveDown(void);
+
+            /**
+             * @brief Move right the player
+             *
+             * @return true if the player can move right, false otherwise
+             */
+            bool moveEast(void);
+
+            /**
+             * @brief Move left the player
+             *
+             * @return true if the player can move left, false otherwise
+             */
+            bool moveWest(void);
+
+            /**
+             * @brief Drop a bomb
+             *
+             * @return true if the player successfully drops a bomb, false otherwise
+             */
+            bool dropBomb(void);
+
+            /**
              * @brief Get player scalability
              *
              * @return A float
@@ -225,6 +269,8 @@ namespace Game
             Modeler _model; // Player model
             Raylib::Color _color; // Player color
             float _scalable; // Player scalability
+            bool _isAlive = true; // Flag to indicate if the player is alive or not
+            size_t droppedBombNumber = 0; // Number of dropped bombs
     };
 
     class Human : public virtual Player {
@@ -235,13 +281,19 @@ namespace Game
              * @brief Construct a new Player object
              *
              * @param name the name of the character
+             * @param ID A const reference to a int
              * @param positions the 3D positions of the character
              * @param obj_path the model path
              * @param texture_path the texture path
              * @param animation_path the animations paths
              */
-            Human(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path = "resources/players/3D/Bombermans/white_tpose.glb", const std::string &texture_path = "resources/players/3D/Bombermans/texture.png", const std::vector<std::string> &animation_path = {}, const float &scalable = 0.6, const Raylib::Color color = Raylib::Color::White());
+            Human(const std::string &name, const int ID, const Raylib::Vector3 &positions, const std::string &obj_path = "resources/players/3D/Bombermans/white_tpose.glb", const std::string &texture_path = "resources/players/3D/Bombermans/texture.png", const std::vector<std::string> &animation_path = {}, const float &scalable = 0.6, const Raylib::Color color = Raylib::Color::White());
 
+            /**
+             * @brief Get the Type object
+             *
+             * @return std::string
+             */
             std::string getType() const override;
 
     };
@@ -254,13 +306,19 @@ namespace Game
              * @brief Construct a new Player object
              *
              * @param name the name of the character
+             * @param ID A const reference to a int
              * @param positions the 3D positions of the character
              * @param obj_path the model path
              * @param texture_path the texture path
              * @param animation_path the animations paths
              */
-            AI(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path = "resources/players/3D/Bombermans/white_tpose.glb", const std::string &texture_path = "resources/players/3D/Bombermans/texture.png", const std::vector<std::string> &animation_path = {}, const float &scalable = 0.6, const Raylib::Color color = Raylib::Color::White());
+            AI(const std::string &name, const int ID, const Raylib::Vector3 &positions, const std::string &obj_path = "resources/players/3D/Bombermans/white_tpose.glb", const std::string &texture_path = "resources/players/3D/Bombermans/texture.png", const std::vector<std::string> &animation_path = {}, const float &scalable = 0.6, const Raylib::Color color = Raylib::Color::White());
 
+            /**
+             * @brief Get the Type object
+             *
+             * @return std::string
+             */
             std::string getType() const override;
 
     };

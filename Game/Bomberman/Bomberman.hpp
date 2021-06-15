@@ -152,11 +152,12 @@ namespace Game
             /**
              * @brief Do A player Action
              *
-             * @param pos Pos of player [0 -- 1 -- 2 -- 3]
+             * @param playerID ID of the Player (Human or AI)
              * @param action Action in a string ["goEast", "goNorth", "goSouth", "goWest", "dropBomb"]
              */
-            void doPlayerAction(const size_t pos, const std::string action) override;
+            void doPlayerAction(const size_t playerID, const std::string action) override;
 
+            bool checkPlayerPosition(const std::string action, Human &human);
             /**
              * @brief Set the current Players data
              *

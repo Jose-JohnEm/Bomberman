@@ -20,7 +20,7 @@ inline void Game::Save::writeSettings(std::ofstream &os) const
 
 inline void Game::Save::writePlayersInfos(std::ofstream &os) const
 {
-    int id = 1;
+    int id = 0;
 
     for (const std::shared_ptr<Game::Player> &player : _players)
     {
