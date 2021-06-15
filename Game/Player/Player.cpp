@@ -90,39 +90,3 @@ void Game::Player::setModel(const std::string &model)
     }
     std::cout << "MODELER " << _model.getObjPath() << " " << _model.getTexturePath() << " " << _model.getAnimationPath().WALK << std::endl;
 }
-
-bool Game::Player::move(const std::string &direction)
-{
-    std::map<std::string, std::pair<float, float>> dict = {
-        {"goEast", {-0.1f, 0.f}},
-        {"goNorth", {0.f, 0.1f}},
-        {"goSouth", {0.f, -0.1f}},
-        {"goWest", {0.1f, 0.f}}
-    };
-
-    _model.makeWalk();
-
-    _positions.x += dict[direction].first;
-    _positions.y += dict[direction].second;
-    return false;
-}
-
-bool Game::Player::moveUp()
-{
-    return false;
-}
-
-bool Game::Player::moveDown()
-{
-    return false;
-}
-
-bool Game::Player::moveEast()
-{
-    return false;
-}
-
-bool Game::Player::moveWest()
-{
-    return false;
-}

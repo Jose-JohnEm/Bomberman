@@ -152,42 +152,6 @@ namespace Game
             virtual std::string getType() const override = 0;
 
             /**
-             * @brief Move the player
-             *
-             * @param direction a const reference to a std::string
-             * @return true if the player can move up, false otherwise
-             */
-            bool move(const std::string &direction);
-
-            /**
-             * @brief Move up the player
-             *
-             * @return true if the player can move up, false otherwise
-             */
-            bool moveUp(void);
-
-            /**
-             * @brief Move down the player
-             *
-             * @return true if the player can move down, false otherwise
-             */
-            bool moveDown(void);
-
-            /**
-             * @brief Move right the player
-             *
-             * @return true if the player can move right, false otherwise
-             */
-            bool moveEast(void);
-
-            /**
-             * @brief Move left the player
-             *
-             * @return true if the player can move left, false otherwise
-             */
-            bool moveWest(void);
-
-            /**
              * @brief Drop a bomb
              *
              * @return true if the player successfully drops a bomb, false otherwise
