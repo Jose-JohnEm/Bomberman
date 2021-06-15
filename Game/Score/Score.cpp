@@ -7,7 +7,7 @@
 
 #include "Score.hpp"
 
-Game::Score::Score(const std::array<std::size_t, 8> &settings, const std::shared_ptr<Game::Player> &player)
+Game::Score::Score(const std::array<std::size_t, 9> &settings, const std::shared_ptr<Game::Player> &player)
     : _settings(settings)
 {
     std::array<int, 5> powerUps = player->getPowerUps();

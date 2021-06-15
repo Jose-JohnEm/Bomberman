@@ -31,7 +31,7 @@ class IGame {
          *
          * @param settings Backup Container
          */
-        virtual void saveGame(std::array<std::size_t, 8> settings) = 0;
+        virtual void saveGame(std::array<std::size_t, 9> settings) = 0;
 
         /**
          * @brief Call this function to load a game.
@@ -50,16 +50,16 @@ class IGame {
         /**
          * @brief Set the game settings
          *
-         * @param settings An array of 8 size_t
+         * @param settings An array of 9 size_t
          */
-        virtual void setSettings(const std::array<std::size_t, 8> &settings) = 0;
+        virtual void setSettings(const std::array<std::size_t, 9> &settings) = 0;
 
         /**
          * @brief Get the game settings
          *
-         * @return An array of 8 size_t
+         * @return An array of 9 size_t
          */
-        virtual std::array<std::size_t, 8> getSettings(void) const = 0;
+        virtual std::array<std::size_t, 9> getSettings(void) const = 0;
 
         /**
          * @brief Getter for the score

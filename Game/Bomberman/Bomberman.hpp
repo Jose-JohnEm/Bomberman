@@ -43,7 +43,7 @@ namespace Game
              *
              * @param settings Backup Container
              */
-            void saveGame(std::array<std::size_t, 8> settings) override;
+            void saveGame(std::array<std::size_t, 9> settings) override;
 
             /**
              * @brief Call this function to load a game.
@@ -62,16 +62,16 @@ namespace Game
             /**
              * @brief Set the game settings
              *
-             * @param settings An array of 8 size_t
+             * @param settings An array of 9 size_t
              */
-            void setSettings(const std::array<std::size_t, 8> &settings) override;
+            void setSettings(const std::array<std::size_t, 9> &settings) override;
 
             /**
              * @brief Get the game settings
              *
-             * @return An array of 8 size_t
+             * @return An array of 9 size_t
              */
-            std::array<std::size_t, 8> getSettings(void) const override;
+            std::array<std::size_t, 9> getSettings(void) const override;
 
             /**
              * @brief Getter for the score
@@ -165,7 +165,7 @@ namespace Game
             void setPlayers(const std::vector<CharDictionary> &playersData) override;
 
         private:
-            std::array<std::size_t, 8> _settings; // Game settings
+            std::array<std::size_t, 9> _settings; // Game settings
             std::vector<std::string> _map; // Game map
             std::size_t _mapType;                             // A size_t that represents map type
             std::vector<std::vector<std::pair<std::string, std::string>>> _playersStats; // A vector of vector all the stats [Player -- (NameOfStat, Value)]...

@@ -89,7 +89,7 @@ void Game::Bomberman::restart(void)
     // Reset Entities
 }
 
-void Game::Bomberman::saveGame(std::array<std::size_t, 8> settings)
+void Game::Bomberman::saveGame(std::array<std::size_t, 9> settings)
 {
     // Get players entities
     std::vector<std::shared_ptr<Game::Player>> players;
@@ -113,7 +113,8 @@ void Game::Bomberman::saveGame(std::array<std::size_t, 8> settings)
     map.setMap(_map);
 
     // Save it all
-    settings[TIMESTAMP] = std::time(0);;
+    settings[TIMESTAMP] = std::time(0);
+    settings[WORLD] = _mapType;
     Game::Save save(settings, players, map);
     std::cout << "I save" << std::endl;
 }

@@ -9,6 +9,15 @@
 #define SETTINGS_HPP_
 
 typedef enum {
+    // Iron template
+    IRON,
+    // Snow template
+    SNOW,
+    // Wood template
+    WOOD
+} Worlds;
+
+typedef enum {
     // Timestamp of the Game
     TIMESTAMP,
     // Number of sets
@@ -24,7 +33,9 @@ typedef enum {
     // Level of AIs
     AI_LVL,
     // Number of players
-    HUMAN_NBR
+    HUMAN_NBR,
+    // World template
+    WORLD
 } Settings;
 
 #endif /* !SETTINGS_HPP_ */

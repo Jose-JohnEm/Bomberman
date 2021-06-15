@@ -58,7 +58,7 @@ namespace Engine
              *
              * @param settings Backup Container
              */
-            void saveGame(std::array<std::size_t, 8> settings);
+            void saveGame(std::array<std::size_t, 9> settings);
 
             /**
              * @brief Load the game

@@ -178,9 +178,9 @@ class XRay : public IGraphical {
         /**
          * @brief Get Game Settings
          *
-         * @return An array of 8 size_t
+         * @return An array of 9 size_t
          */
-        std::array<size_t, 8> getGameSettings() override;
+        std::array<size_t, 9> getGameSettings() override;
 
         /**
          * @brief Return true if the mouse is in the region and false otherwise
@@ -429,7 +429,7 @@ class XRay : public IGraphical {
          *
          * @param saveFunc A pointer to Save function in the core
          */
-        void setSaveFunc(std::function<void (std::array<std::size_t, 8>)>) override;
+        void setSaveFunc(std::function<void (std::array<std::size_t, 9>)>) override;
 
         /**
          * @brief Set the Restart Func
@@ -443,7 +443,7 @@ class XRay : public IGraphical {
          *
          * @param settingsFunc A pointer to Settings function in the core
          */
-        void setSettingsFunc(std::function<void (std::array<std::size_t, 8>)>) override;
+        void setSettingsFunc(std::function<void (std::array<std::size_t, 9>)>) override;
 
         /**
          * @brief Set the Player Actions Func
@@ -493,9 +493,9 @@ class XRay : public IGraphical {
         /**
          * @brief Set Game Settings
          *
-         * @param settings An array of 8 size_t
+         * @param settings An array of 9 size_t
          */
-        void setGameSettings(const std::array<size_t, 8> &settings) override;
+        void setGameSettings(const std::array<size_t, 9> &settings) override;
 
     private:
         Raylib::Window _window;                     // Game window
@@ -511,8 +511,9 @@ class XRay : public IGraphical {
          * [5] -- _aiNumber °
          * [6] -- _aiLevel °
          * [7] -- _allIntegers[2] - _aiNumber °
+         * [8] -- _mapType
          */
-        std::array<size_t, 8> _gameSettings = {0, 1, 1, 60, 60, 0, 1, 1};
+        std::array<size_t, 9> _gameSettings = {0, 1, 1, 60, 60, 0, 1, 1, 0};
         size_t _mapType = 0;                        // Type of Map
         size_t _sizeMap = 5;                            // Size of Map
         double _startingTime;                  // Get Time from raylib
@@ -526,8 +527,8 @@ class XRay : public IGraphical {
         Scene _scene = MENU;                   // Current scene
         std::vector<void (XRay::*)()> _scenesFunc;  // Array of pointers to function (a scene, a function)
         std::function<void ()> _pointerToRestartFunc;   // Pointer to Restart Func
-        std::function<void (std::array<std::size_t, 8>)> _pointerToSaveFunc;   // Pointer to Save Func
-        std::function<void (std::array<std::size_t, 8>)> _pointerToSettingsFunc;   // Pointer to Settings Func
+        std::function<void (std::array<std::size_t, 9>)> _pointerToSaveFunc;   // Pointer to Save Func
+        std::function<void (std::array<std::size_t, 9>)> _pointerToSettingsFunc;   // Pointer to Settings Func
         std::function<void (std::string)> _pointerToLoadFunc;   // Pointer to Load Func
         std::function<void (const size_t pos, const std::string action)> _playerActionsFunc;              // Pointer to playerActionsFunc
 

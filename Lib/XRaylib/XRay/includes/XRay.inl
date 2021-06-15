@@ -15,7 +15,7 @@ inline void XRay::closeWindow(void) const
     _window.closeWindow();
 }
 
-inline std::array<size_t, 8> XRay::getGameSettings()
+inline std::array<size_t, 9> XRay::getGameSettings()
 {
     return _gameSettings;
 }
@@ -38,12 +38,12 @@ inline void XRay::setLoadFunc(std::function<void (std::string)> pointerToFunc)
     _pointerToLoadFunc = pointerToFunc;
 }
 
-inline void XRay::setSaveFunc(std::function<void (std::array<std::size_t, 8>)> pointerToFunc)
+inline void XRay::setSaveFunc(std::function<void (std::array<std::size_t, 9>)> pointerToFunc)
 {
     _pointerToSaveFunc = pointerToFunc;
 }
 
-inline void XRay::setSettingsFunc(std::function<void (std::array<std::size_t, 8>)> pointerToFunc)
+inline void XRay::setSettingsFunc(std::function<void (std::array<std::size_t, 9>)> pointerToFunc)
 {
     _pointerToSettingsFunc = pointerToFunc;
 }
@@ -166,7 +166,7 @@ inline std::vector<CharDictionary> XRay::getPlayersData()
     return _pSelector.getPlayerData();
 }
 
-inline void XRay::setGameSettings(const std::array<size_t, 8> &settings)
+inline void XRay::setGameSettings(const std::array<size_t, 9> &settings)
 {
     _gameSettings = settings;
 }

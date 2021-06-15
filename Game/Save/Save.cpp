@@ -7,7 +7,7 @@
 
 #include "Save.hpp"
 
-Game::Save::Save(const std::array<std::size_t, 8> &settings, const std::vector<std::shared_ptr<Game::Player>> &players, const Game::Map &map)
+Game::Save::Save(const std::array<std::size_t, 9> &settings, const std::vector<std::shared_ptr<Game::Player>> &players, const Game::Map &map)
     : _settings(settings), _players(players), _map(map)
 {
     std::string fileName = createBackupName();
@@ -121,6 +121,10 @@ void Game::Save::parseSettings(const std::vector<std::string> &settings)
     else if (settings[1].compare("human_nbr") == 0)
     {
         _settings[7] = std::stoul(settings[2]);
+    }
+    else if (settings[1].compare("world") == 0)
+    {
+        _settings[8] = std::stoul(settings[2]);
     }
     else
     {

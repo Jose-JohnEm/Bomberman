@@ -40,7 +40,7 @@ inline void Game::Bomberman::setUserNames(const std::vector<std::string> &userNa
     _userNames = userNames;
 }
 
-inline void Game::Bomberman::setSettings(const std::array<std::size_t, 8> &settings)
+inline void Game::Bomberman::setSettings(const std::array<std::size_t, 9> &settings)
 {
     _settings = settings;
 }
@@ -50,7 +50,7 @@ inline void Game::Bomberman::doPlayerAction(const size_t pos, const std::string 
     // TODO: LUCAS, JO HERE;
 }
 
-inline std::array<std::size_t, 8> Game::Bomberman::getSettings(void) const
+inline std::array<std::size_t, 9> Game::Bomberman::getSettings(void) const
 {
     return _settings;
 }

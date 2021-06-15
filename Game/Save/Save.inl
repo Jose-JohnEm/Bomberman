@@ -14,7 +14,8 @@ inline void Game::Save::writeSettings(std::ofstream &os) const
         << "settings time_remaining " << _settings[TIME_REMAINING] << std::endl
         << "settings ai_nbr " << _settings[AI_NBR] << std::endl
         << "settings ai_lvl " << _settings[AI_LVL] << std::endl
-        << "settings human_nbr " << _settings[HUMAN_NBR] << std::endl;
+        << "settings human_nbr " << _settings[HUMAN_NBR] << std::endl
+        << "settings world " << _settings[WORLD] << std::endl;
 }
 
 inline void Game::Save::writePlayersInfos(std::ofstream &os) const
@@ -58,7 +59,7 @@ inline std::string Game::Save::createBackupName(void) const
     return fileName;
 }
 
-inline std::array<std::size_t, 8> Game::Save::getSettings(void) const
+inline std::array<std::size_t, 9> Game::Save::getSettings(void) const
 {
     return _settings;
 }

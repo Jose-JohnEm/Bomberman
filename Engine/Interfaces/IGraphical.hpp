@@ -170,14 +170,14 @@ class IGraphical {
          *
          * @param saveFunc A pointer to Save function in the core
          */
-        virtual void setSaveFunc(std::function<void (std::array<std::size_t, 8>)>) = 0;
+        virtual void setSaveFunc(std::function<void (std::array<std::size_t, 9>)>) = 0;
 
         /**
          * @brief Set pointer to Settings Function
          *
          * @param settingsFunc A pointer to Settings function in the core
          */
-        virtual void setSettingsFunc(std::function<void (std::array<std::size_t, 8>)>) = 0;
+        virtual void setSettingsFunc(std::function<void (std::array<std::size_t, 9>)>) = 0;
 
         /**
          * @brief Set the Restart Func
@@ -189,9 +189,9 @@ class IGraphical {
         /**
          * @brief Get Game Settings
          *
-         * @return An array of 8 size_t
+         * @return An array of 9 size_t
          */
-        virtual std::array<size_t, 8> getGameSettings() = 0;
+        virtual std::array<size_t, 9> getGameSettings() = 0;
 
         /**
          * @brief Set the Player Actions Func
@@ -203,9 +203,9 @@ class IGraphical {
         /*
          * @brief Set Game Settings
          *
-         * @param settings An array of 8 size_t
+         * @param settings An array of 9 size_t
          */
-        virtual void setGameSettings(const std::array<size_t, 8> &settings) = 0;
+        virtual void setGameSettings(const std::array<size_t, 9> &settings) = 0;
 
         /**
          * @brief Get the Players Data

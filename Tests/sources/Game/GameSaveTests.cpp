@@ -10,7 +10,7 @@
 
 Game::Save initSaveTests()
 {
-    std::array<std::size_t, 8> settings = {1, 2, 3, 4, 5, 6, 7, 8};
+    std::array<std::size_t, 9> settings = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     std::array<Game::Player, 4> players;
     Game::Player player;
     player.setID(1);

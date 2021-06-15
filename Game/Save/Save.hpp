@@ -31,7 +31,7 @@ namespace Game
             * @param players Players of the Game
             * @param map Map of the Game
             */
-            Save(const std::array<std::size_t, 8> &settings, const std::vector<std::shared_ptr<Game::Player>> &players, const Game::Map &map);
+            Save(const std::array<std::size_t, 9> &settings, const std::vector<std::shared_ptr<Game::Player>> &players, const Game::Map &map);
 
             /**
             * @brief Construct the Save object to read a backup file and load its content into an IGame object (Copy Constructor)
@@ -48,9 +48,9 @@ namespace Game
             /**
              * @brief Get the Settings arrray from the backup file
              *
-             * @return An std::array<std::size_t, 8> which represents the Game settings
+             * @return An std::array<std::size_t, 9> which represents the Game settings
              */
-            std::array<std::size_t, 8> getSettings(void) const;
+            std::array<std::size_t, 9> getSettings(void) const;
 
             /**
              * @brief Get the Players from the backup file
@@ -67,7 +67,7 @@ namespace Game
             Game::Map getMap(void) const;
 
         private:
-            std::array<std::size_t, 8> _settings; // An array of 7 size_t
+            std::array<std::size_t, 9> _settings; // An array of 9 size_t
             std::vector<std::shared_ptr<Game::Player>> _players; // A vector of players
             Game::Map _map; // The map
 

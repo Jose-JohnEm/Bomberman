@@ -10,7 +10,7 @@
 
 Game::Score initScore()
 {
-    std::array<size_t, 8> settings = {1, 2, 3, 4, 5, 6, 7, 8};
+    std::array<size_t, 9> settings = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     Game::Player player;
 
     player.setName("Name");
