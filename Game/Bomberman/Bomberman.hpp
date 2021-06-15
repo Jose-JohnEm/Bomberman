@@ -178,6 +178,7 @@ namespace Game
             void doPlayerAction(const size_t playerID, const std::string action) override;
 
             bool checkPlayerPosition(const std::string action, Human &human);
+            bool checkPlayerPositionPass(const std::string action, const int &y, const int &x);
             /**
              * @brief Set the current Players data
              *

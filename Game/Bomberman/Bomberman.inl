@@ -55,8 +55,7 @@ inline void Game::Bomberman::doPlayerAction(const size_t playerID, const std::st
         for (const std::shared_ptr<IEntity> &entity : _entities) {
             if (entity->getType().compare("Human") == 0) {
                 if (dynamic_cast<Game::Human *>(entity.get()) != nullptr && playerID == dynamic_cast<Game::Human *>(entity.get())->getID())
-                    std::cout << "AAAAAA" << checkPlayerPosition(action, *dynamic_cast<Game::Human *>(entity.get())) << std::endl;
-                ;
+                    checkPlayerPosition(action, *dynamic_cast<Game::Human *>(entity.get()));
             }
         }
     }
@@ -72,10 +71,22 @@ inline bool Game::Bomberman::checkPlayerPosition(const std::string action, Human
         {"goWest", {1, 0}}
     };
 
-    if (_map[direction[action].second][direction[action].first] == '*')
+    human.setPowerUps({1, 1, 1, 1, 1});
+    positions.y = _map.size() - positions.y;
+    if (_map[direction[action].second + positions.y][direction[action].first + positions.x] == '*') {
         return true;
-    else if (_map[direction[action].second * 2][direction[action].first * 2] == '*' && human.getPowerUps()[P_PASS] > 0)
+    } else if (human.getPowerUps()[P_PASS] > 0 && checkPlayerPositionPass(action, direction[action].second * 2 + positions.y, direction[action].first * 2 + positions.x) == true)
         return true;
+    return false;
+}
+
+inline bool Game::Bomberman::checkPlayerPositionPass(const std::string action, const int &y, const int &x)
+{
+    if (y < 0 || x < 0)
+        return false;
+    if (_map[y][x] == '*') {
+        return true;
+    }
     return false;
 }
 
