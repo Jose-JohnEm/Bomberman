@@ -10,7 +10,7 @@ inline std::string Game::Player::getName(void) const
     return _name;
 }
 
-inline Raylib::Vector3 Game::Player::getPositions(void) const
+inline Raylib::Vector3 Game::Animated::getPositions(void) const
 {
     return _positions;
 }
@@ -40,7 +40,7 @@ inline void Game::Player::setName(const std::string &name)
     _name = name;
 }
 
-inline void Game::Player::setPositions(Raylib::Vector3 &positions)
+inline void Game::Animated::setPositions(Raylib::Vector3 &positions)
 {
     _positions = positions;
 }
@@ -75,7 +75,7 @@ inline std::string Game::AI::getType() const
     return ("AI");
 }
 
-inline void Game::Player::drawEntity()
+inline void Game::Animated::drawEntity()
 {
     float rad_rotation = (0 * PI) / 180;
 
@@ -88,12 +88,12 @@ inline void Game::Player::drawEntity()
     DrawModelEx(_model.getModel(), _positions.getCStruct(), {0, 0, 1}, _rotation, {_scalable, _scalable, _scalable}, _color.getCStruct());
 }
 
-inline void Game::Player::setColor(const Raylib::Color &color)
+inline void Game::Animated::setColor(const Raylib::Color &color)
 {
     _color = color;
 }
 
-inline void Game::Player::setColor(const std::string &color)
+inline void Game::Animated::setColor(const std::string &color)
 {
     if (color.compare("Blue") == 0
     || color.compare("Green") == 0
@@ -110,22 +110,22 @@ inline void Game::Player::setColor(const std::string &color)
     }
 }
 
-inline void Game::Player::setShouldDisplay(const bool &shouldDisplay)
+inline void Game::Animated::setShouldDisplay(const bool &shouldDisplay)
 {
     _shouldDisplay = shouldDisplay;
 }
 
-inline bool Game::Player::getShouldDisplay(void) const
+inline bool Game::Animated::getShouldDisplay(void) const
 {
     return _shouldDisplay;
 }
 
-inline float Game::Player::getScalable(void) const
+inline float Game::Animated::getScalable(void) const
 {
     return _scalable;
 }
 
-inline void Game::Player::setScalable(const float &scalable)
+inline void Game::Animated::setScalable(const float &scalable)
 {
     _scalable = scalable;
 }

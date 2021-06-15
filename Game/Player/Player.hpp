@@ -26,7 +26,122 @@ typedef enum {
 
 namespace Game
 {
-    class Player : public IEntity
+    class Animated : public IEntity
+    {
+        public:
+
+            /**
+             * @brief Construct a new Animated object
+             *
+             * @param positions the Animated Object positions
+             * @param obj_path the model path
+             * @param texture_path the texture path
+             * @param animation_path the animation path
+             * @param scalable the scalable value
+             * @param color the color
+             */
+            Animated(const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path = {}, const float &scalable = 0.6, const Raylib::Color color = Raylib::Color::White());
+
+            /**
+             * @brief Destroy the Animated Entity object
+             */
+            virtual ~Animated(void) {};
+
+            /**
+             * @brief Get the Animated positions
+             *
+             * @return A Raylib::Vector3
+             */
+            Raylib::Vector3 getPositions(void) const override;
+
+            /**
+             * @brief Get the Type object
+             *
+             * @return A std::string
+             */
+            virtual std::string getType() const override = 0;
+
+            /**
+             * @brief Get player scalability
+             *
+             * @return A float
+             */
+            float getScalable(void) const;
+
+            /**
+             * @brief Set player scalability
+             *
+             * @param scalable A float
+             */
+            void setScalable(const float &scalable);
+
+            /**
+             * @brief Set the Positions
+             *
+             * @param positions A vector3
+             */
+            void setPositions(Raylib::Vector3 &positions) override;
+
+            /**
+             * @brief Draw Entity
+             *
+             */
+            void drawEntity() override;
+
+            /**
+             * @brief Set a boolean to know if this entity should be displayed
+             *
+             * @param shouldDisplay A boolean to know if this entity should be displayed
+             */
+            void setShouldDisplay(const bool &shouldDisplay) override;
+
+            /**
+             * @brief Get a boolean to know if this entity should be displayed
+             *
+             * @return true or false
+             */
+            bool getShouldDisplay(void) const override;
+
+            /**
+             * @brief Set a animated model
+             *
+             * @param model A const reference to a string describing the player name
+             */
+            void setModel(const std::string &model);
+
+            /**
+             * @brief Set player color
+             *
+             * @param color A const reference to a Raylib::Color
+             */
+            void setColor(const Raylib::Color &color);
+
+            /**
+             * @brief Set player color
+             *
+             * @param color A const reference to a string
+             */
+            void setColor(const std::string &color);
+
+        private:
+
+            /**
+             * @brief convert vector of string path to Animator
+             *
+             * @param animation_path vector of string paths
+             * @return Animator
+             */
+            Animator getAnimator(const std::vector<std::string> &animation_path);
+
+            Raylib::Vector3 _positions{0, 0, 0}; // A vector3 that represents positions
+            bool _shouldDisplay = true; // A boolean to know if this entity should be displayed
+            Modeler _model; // Player model
+            Raylib::Color _color; // Player color
+            float _scalable; // Player scalability
+
+    };
+
+    class Player : public Animated
     {
         public:
            /**
@@ -49,13 +164,12 @@ namespace Game
              * @brief Construct a new Player object
              *
              * @param name the name of the character
-             * @param ID A const reference to a int
              * @param positions the 3D positions of the character
              * @param obj_path the model path
              * @param texture_path the texture path
              * @param animation_path the animations paths
              */
-            Player(const std::string &name, const int &ID, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path = {}, const float &scalable = 0.6, const Raylib::Color color = Raylib::Color::White());
+            Player(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path = {}, const float &scalable = 0.6, const Raylib::Color color = Raylib::Color::White());
 
             /**
              * @brief Get the Name of the Player
@@ -126,130 +240,17 @@ namespace Game
             void setID(const int &ID);
 
             /**
-             * @brief Set player color
-             *
-             * @param color A const reference to a Raylib::Color
-             */
-            void setColor(const Raylib::Color &color);
-
-            /**
-             * @brief Set player color
-             *
-             * @param color A const reference to a string
-             */
-            void setColor(const std::string &color);
-
-            /**
              * @brief Destroy the Player Entity object
              */
             virtual ~Player(void) {};
 
-            /**
-             * @brief Get the Type object
-             *
-             * @return A std::string
-             */
-            virtual std::string getType() const override = 0;
-
-            /**
-             * @brief Drop a bomb
-             *
-             * @return true if the player successfully drops a bomb, false otherwise
-             */
-            bool dropBomb(void);
-
-            /**
-             * @brief Get player scalability
-             *
-             * @return A float
-             */
-            float getScalable(void) const;
-
-            /**
-             * @brief Set player scalability
-             *
-             * @param scalable A float
-             */
-            void setScalable(const float &scalable);
-
-            /**
-             * @brief Get the Positions object
-             *
-             * @return A Raylib::Vector3
-             */
-            Raylib::Vector3 getPositions(void) const override;
-
-            /**
-             * @brief Set the Positions
-             *
-             * @param positions A vector3
-             */
-            void setPositions(Raylib::Vector3 &positions) override;
-
-            /**
-             * @brief Draw Entity
-             *
-             */
-            void drawEntity() override;
-
-            /**
-             * @brief Set a boolean to know if this entity should be displayed
-             *
-             * @param shouldDisplay A boolean to know if this entity should be displayed
-             */
-            void setShouldDisplay(const bool &shouldDisplay) override;
-
-            /**
-             * @brief Get a boolean to know if this entity should be displayed
-             *
-             * @return true or false
-             */
-            bool getShouldDisplay(void) const override;
-
-            /**
-             * @brief Set a player model
-             *
-             * @param model A const reference to a string describing the player name
-             */
-            void setModel(const std::string &model);
-
-            /**
-             * @brief move the character
-             *
-             * @param direction
-             */
-            void move(const std::string &direction);
-
-            /**
-             * @brief Get the Positions2 D object
-             *
-             * @return std::pair<int, int>
-             */
-            std::pair<int, int> getPositions2D(); 
-
         private:
 
-            /**
-             * @brief convert vector of string path to Animator
-             *
-             * @param animation_path vector of string paths
-             * @return Animator
-             */
-            Animator getAnimator(const std::vector<std::string> &animation_path);
-
             std::string _name = "Name"; // Name of the player entitiy
-            Raylib::Vector3 _positions{0, 0, 0}; // A vector3 that represents positions
             size_t _brokenWalls = 0; // Amount of broken walls
             size_t _kills = 0; // Amount of kills
             std::array<int, 5> _powerUps{0, 0, 0, 0, 0}; // Amount of powerUps
             int _ID; // ID of the player
-            bool _shouldDisplay = true; // A boolean to know if this entity should be displayed
-            Modeler _model; // Player model
-            Raylib::Color _color; // Player color
-            float _scalable; // Player scalability
-            bool _isAlive = true; // Flag to indicate if the player is alive or not
-            size_t droppedBombNumber = 0; // Number of dropped bombs
-            float _rotation;
     };
 
     class Human : public virtual Player {

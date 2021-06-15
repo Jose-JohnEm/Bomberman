@@ -7,24 +7,31 @@
 
 #include "Player.hpp"
 
+Game::Animated::Animated(const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path, const float &scalable, const Raylib::Color color)
+    : _positions(positions),
+    _model(obj_path, texture_path, getAnimator(animation_path)),
+    _scalable(scalable),
+    _color(color)
+{
+}
+
 Game::Player::Player()
+    : Animated({0, 0, 0}, "resources/players/3D/Bombermans/white_tpose.glb", "resources/players/3D/Bombermans/texture.png"),
+    _kills{0},
+    _brokenWalls{0},
+    _powerUps{0}
 {
 }
 
 Game::Player::Player(const std::string &name, const Raylib::Vector3 &positions, const size_t &kills, const size_t &brokenWalls, const std::array<int, 5> &powerUps)
-    : _name{name},
-    _positions{positions},
+    : Animated(positions, "resources/players/3D/Bombermans/white_tpose.glb", "resources/players/3D/Bombermans/texture.png"),
     _kills{kills},
     _brokenWalls{brokenWalls},
-    _powerUps{powerUps},
-    _model("resources/players/3D/Bombermans/white_tpose.glb", "resources/players/3D/Bombermans/texture.png", {}),
-    _scalable(0.6),
-    _color(Raylib::Color::Red()),
-    _rotation(0)
+    _powerUps{powerUps}
 {
 }
 
-Animator Game::Player::getAnimator(const std::vector<std::string> &animation_path)
+Animator Game::Animated::getAnimator(const std::vector<std::string> &animation_path)
 {
     for (auto p : animation_path)
         std::cout << p << std::endl;
@@ -34,17 +41,12 @@ Animator Game::Player::getAnimator(const std::vector<std::string> &animation_pat
         return Animator({"null", "null", "null"});
 }
 
-Game::Player::Player(const std::string &name, const int &ID, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path, const float &scalable, const Raylib::Color color)
-    : _name{name},
-    _ID{ID},
-    _positions{positions},
+Game::Player::Player(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path, const float &scalable, const Raylib::Color color)
+    : Animated(positions, obj_path, texture_path, animation_path, scalable, color),
+     _name{name},
     _kills{0},
     _brokenWalls{0},
-    _powerUps{0},
-    _model(obj_path, texture_path, getAnimator(animation_path)),
-    _color(color),
-    _scalable(scalable),
-    _rotation(0)
+    _powerUps{0}
 {
     std::cout << "Hey I'm a new player : " << name << std::endl;
 }
@@ -59,7 +61,7 @@ Game::Human::Human(const std::string &name, const int ID, const Raylib::Vector3 
 {
 }
 
-void Game::Player::setModel(const std::string &model)
+void Game::Animated::setModel(const std::string &model)
 {
     bool ok = false;
     std::string obj_path = "null";
@@ -122,4 +124,4 @@ void Game::Player::move(const std::string &direction)
 std::pair<int, int> Game::Player::getPositions2D()
 {
     return {(int)round(_positions.x), (int)round(_positions.y)};
-} 
+}
