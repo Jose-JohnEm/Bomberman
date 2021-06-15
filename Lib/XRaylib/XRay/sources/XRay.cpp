@@ -55,23 +55,12 @@ XRay::XRay(void)
     // Display Intro (studio and introduction cinematic)
     _intro = std::make_pair(true, &XRay::displayStudio);
 
-    // Play bomberman music
-//    _musics.at(MSC_BOMBERMAN)->playMusic();
     masterVolume = 50;
     musicVolume = 100;
     sfxVolume = 100;
     Raylib::Audio::setMasterVolume(masterVolume / 100);
     changeMusicVolume();
     changeSfxVolume();
-}
-
-void XRay::playAndUpdateMusic(MusicResources music) {
-    Clock clock;
-    _musics.at(music)->playMusic();
-    while (1) {
-        if (clock.doesTimeElapsed(0.01))
-            _musics.at(music)->update();
-    }
 }
 
 XRay::~XRay(void)
@@ -210,9 +199,10 @@ void XRay::setAudioResources(void)
 {
     // Music
     _musics.insert(std::pair<MusicResources, std::shared_ptr<Raylib::Music>>(MusicResources::MSC_BOMBERMAN, std::make_shared<Raylib::Music>(*(new Raylib::Music("resources/music/Bomberman.mp3")))));
-    _musics.insert(std::pair<MusicResources, std::shared_ptr<Raylib::Music>>(MusicResources::MSC_OPENNING, std::make_shared<Raylib::Music>(*(new Raylib::Music("resources/music/opening.mp3")))));
+//    _musics.insert(std::pair<MusicResources, std::shared_ptr<Raylib::Music>>(MusicResources::MSC_OPENNING, std::make_shared<Raylib::Music>(*(new Raylib::Music("resources/music/opening.mp3")))));
 
     // Sound
+    _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_OPENNING, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/music/opening.mp3")))));
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_KLICK, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Klick.wav")))));
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_ENTER, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Enter.wav")))));
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_SETTING, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Settings.wav")))));
@@ -249,4 +239,21 @@ void XRay::displayStudio(void)
     // Intro is done, so update its status flag
     _intro.first = false;
     displayCinematic(Cinematic::INTRO);
+}
+
+void XRay::playMusic(MusicResources music) {
+    if (!_musics.at(MSC_BOMBERMAN)->isPlaying()) {
+        std::thread tMusic(&XRay::playAndUpdateMusic, this, MSC_BOMBERMAN);
+        tMusic.detach();
+    }
+}
+
+// Dont call this function only use it with playMusic(MusicResources music)
+void XRay::playAndUpdateMusic(MusicResources music) {
+    Clock clock;
+    _musics.at(music)->playMusic();
+    while (_musics.at(music)->isPlaying()) {
+        if (clock.doesTimeElapsed(0.01))
+            _musics.at(music)->update();
+    }
 }

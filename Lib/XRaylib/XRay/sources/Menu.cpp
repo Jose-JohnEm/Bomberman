@@ -22,11 +22,8 @@ void XRay::displayMenuScene(void)
     if (_intro.first == true)
         (this->*_intro.second)();
 
-    // Music
-    if (!_musics.at(MSC_BOMBERMAN)->isPlaying()) {
-        std::thread tMusic(&XRay::playAndUpdateMusic, this, MSC_BOMBERMAN);
-        tMusic.detach();
-    }
+    // Launch
+    playMusic(MSC_BOMBERMAN);
 
     // Parallax update
     _scrollingBack -= 0.1f;

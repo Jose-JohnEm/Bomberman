@@ -330,7 +330,12 @@ class XRay : public IGraphical {
         void setAudioResources(void);
 
         /**
-         * @brief Play a music in a thread
+         * @brief Function that start a music and call playAndUpdateMusic() in a thread
+         */
+        void playMusic(MusicResources music);
+
+        /**
+         * @brief Play a music in a thread, dont call this function only use it with playMusic(MusicResources music)
          */
         void playAndUpdateMusic(MusicResources music);
 

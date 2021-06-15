@@ -11,13 +11,11 @@ void XRay::displayCinematic(const Cinematic &cinematic)
 {
     switch (cinematic) {
         case INTRO:
-            if (!_musics.at(MSC_OPENNING)->isPlaying()) {
-                std::thread tMusic(&XRay::playAndUpdateMusic, this, MSC_OPENNING);
-                tMusic.detach();
-            }
+            if (!_sfx.at(SFX_OPENNING)->isPlaying())
+                _sfx.at(SFX_OPENNING)->play();
             displayCinematic("intro", 300, 1);
-            if (_musics.at(MSC_OPENNING)->isPlaying())
-                _musics.at(MSC_OPENNING)->stop();
+            if (_sfx.at(SFX_OPENNING)->isPlaying())
+                _sfx.at(SFX_OPENNING)->stop();
             break;
         default:
             break;
