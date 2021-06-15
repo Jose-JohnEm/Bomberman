@@ -30,13 +30,13 @@ void XRay::checkClickOnMapChoiceScene(void)
 {
     // Click on Next and Prev buttons
     for (size_t y = 245; y <= 875; y += 210) {
-        if (mouseIsInBox(createBox(1610, y+7, 1650, y+7+70)) && Raylib::Mouse::isButtonPressed(0)) {
+        if (mouseIsInBox(createBox(1610, y+7, 1650, y+7+70))) {
             _sizeMap = (y == 245) ? ((_sizeMap > 7) ? _sizeMap-2 : 19) : _sizeMap;
             _gameSettings[1] = (y == 455) ? ((_gameSettings[1] > 1) ? _gameSettings[1]-1 : 5) : _gameSettings[1];
             _gameSettings[3] = (y == 665) ? ((_gameSettings[3] > 1) ? _gameSettings[3]-1 : 5) : _gameSettings[3];
             _gameSettings[6] = (y == 875) ? ((_gameSettings[6] > 1) ? _gameSettings[6]-1 : 3) : _gameSettings[6];
             _sfx.at(SFX_KLICK)->play();
-        } else if (mouseIsInBox(createBox(1880, y+7, 1920, y+7+70)) && Raylib::Mouse::isButtonPressed(0)) {
+        } else if (mouseIsInBox(createBox(1880, y+7, 1920, y+7+70))) {
             _sizeMap = (y == 245) ? ((_sizeMap < 19) ? _sizeMap+2 : 7) : _sizeMap;
             _gameSettings[1] = (y == 455) ? ((_gameSettings[1] < 5) ? _gameSettings[1]+1 : 1) : _gameSettings[1];
             _gameSettings[3] = (y == 665) ? ((_gameSettings[3] < 5) ? _gameSettings[3]+1 : 1) : _gameSettings[3];
@@ -75,7 +75,8 @@ void XRay::displayMapChoiceScene(void)
             _sfx.at(SFX_KLICK)->play();
         }
     }
-    checkClickOnMapChoiceScene();
+    if (Raylib::Mouse::isButtonPressed(0))
+        checkClickOnMapChoiceScene();
 
     // Go to another scene according to mouse position
     if (goBack && Raylib::Mouse::isButtonPressed(0)) {
