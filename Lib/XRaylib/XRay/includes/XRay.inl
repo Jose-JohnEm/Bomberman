@@ -21,7 +21,19 @@ inline std::array<size_t, 9> XRay::getGameSettings()
 }
 
 inline void XRay::resetAll(void)
-{}
+{
+    _gameSettings = {0, 1, 1, 1, 60, 0, 1, 1, 0};
+    _mapType = 0;
+    _sizeMap = 5;
+    _userNames.clear();
+    _playerTab = {true, false, false, false};
+    _controlsTab = {UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN};
+    _allIntegers = {50, 400, 1};
+    _card = {36, 36, 36, 36};
+    _isPaused = false;
+    m_isPaused = 2;
+    _scrollingBack = 0.0f;
+}
 
 inline void XRay::setPlayerActionsFunc(std::function<void (const size_t pos, const std::string action)> playerActionsFunc)
 {
