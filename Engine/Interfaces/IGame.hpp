@@ -114,6 +114,11 @@ class IGame {
         virtual std::vector<std::string> &getMap(const size_t &size) = 0;
 
         /**
+         * @brief Get the Map
+         */
+        virtual std::vector<std::string> &getMap() = 0;
+
+        /**
          * @brief Set the Map Type
          *
          * @param mapType A size_t
@@ -140,7 +145,7 @@ class IGame {
          *
          * @return A vector containing the player controls as a string
          */
-        virtual std::vector<std::string> getPlayerControls(void) const = 0;
+        virtual const std::vector<std::string> &getPlayerControls(void) const = 0;
 };
 
 #endif /* !IGAME_HPP_ */
