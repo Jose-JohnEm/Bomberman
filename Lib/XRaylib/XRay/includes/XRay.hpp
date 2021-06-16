@@ -27,6 +27,7 @@
     #include <dirent.h>
 #endif
 
+#include "CFunctions.hpp"
 #include "IPlayerInput.hpp"
 #include "MousePlayerInput.hpp"
 #include "KeyboardPlayerInput.hpp"
@@ -274,6 +275,11 @@ class XRay : public IGraphical {
          * @brief Display Intro Scene
          */
         void displayStudio(void);
+
+        /**
+         * @brief Display A intro Scene
+         */
+        void displayTeamPresentation(void);
 
         /**
          * @brief Go to Another Scene
@@ -550,7 +556,7 @@ class XRay : public IGraphical {
         float musicVolume;                         // Master volume
         float sfxVolume;                         // Master volume
         std::vector<std::string> _userNames;        // A vector of all the users names
-        std::pair<bool, void (XRay::*)()> _intro;   // Intro pointer to function
+        std::pair<bool, std::vector<void (XRay::*)()>> _intro;   // Intro pointer to member function
         Scene _scene = MENU;                   // Current scene
         std::vector<void (XRay::*)()> _scenesFunc;  // Array of pointers to function (a scene, a function)
         std::function<void ()> _pointerToRestartFunc;   // Pointer to Restart Func
