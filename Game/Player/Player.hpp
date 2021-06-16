@@ -126,6 +126,13 @@ namespace Game
              */
             virtual ~Player(void) {};
 
+            /**
+             * @brief Drop a bomb
+             *
+             * @return true if the player successfully drops a bomb, false otherwise
+             */
+            bool dropBomb(void);
+
         private:
 
             std::string _name = "Name"; // Name of the player entitiy

@@ -24,6 +24,11 @@ Game::Bomb::Bomb(const Raylib::Vector3 &positions, const int &fire)
 
 }
 
+Game::Bomb::~Bomb()
+{
+
+}
+
 Animator Game::Animated::getAnimator(const std::vector<std::string> &animation_path)
 {
     for (auto p : animation_path)
@@ -66,4 +71,35 @@ void Game::Animated::setModel(const std::string &model)
         }
     }
     std::cout << "MODELER " << _model.getObjPath() << " " << _model.getTexturePath() << " " << _model.getAnimationPath().WALK << std::endl;
+}
+
+void Game::Animated::move(const std::string &direction)
+{
+    std::map<std::string, std::pair<float, float>> dict = {
+        {"goEast", {-0.01f, 0.f}},
+        {"goNorth", {0.f, 0.01f}},
+        {"goSouth", {0.f, -0.01f}},
+        {"goWest", {0.01f, 0.f}}
+    };
+
+    std::map<std::string, float> rota = {
+        {"goEast", 180.f},
+        {"goNorth", 90.f},
+        {"goSouth", 270.f},
+        {"goWest", 0.f}
+    };
+
+    _model.makeWalk();
+    _rotation = rota[direction];
+
+    _positions.x += dict[direction].first;
+    _positions.y += dict[direction].second;
+
+    _model.update();
+
+}
+
+std::pair<int, int> Game::Animated::getPositions2D()
+{
+    return {(int)round(_positions.x), (int)round(_positions.y)};
 }

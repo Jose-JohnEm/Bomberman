@@ -111,6 +111,20 @@ class Animated : public IEntity
              */
             void setColor(const std::string &color);
 
+            /**
+             * @brief
+             *
+             * @param direction
+             */
+            void Game::Animated::move(const std::string &direction);
+
+            /**
+             * @brief
+             *
+             * @return std::pair<int, int>
+             */
+            std::pair<int, int> Game::Animated::getPositions2D();
+
         private:
 
             /**
@@ -126,6 +140,7 @@ class Animated : public IEntity
             Modeler _model; // Player model
             Raylib::Color _color; // Player color
             float _scalable; // Player scalability
+            float _rotation;
 
     };
 
