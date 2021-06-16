@@ -47,6 +47,11 @@ void Game::Bomberman::initEntities()
     }
 }
 
+std::vector<std::string> &Game::Bomberman::getMap()
+{
+    return _map;
+}
+
 std::vector<std::string> &Game::Bomberman::getMap(const size_t &size)
 {
     if (_map.size() != size+2) {
