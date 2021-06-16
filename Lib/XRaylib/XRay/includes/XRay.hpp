@@ -511,6 +511,13 @@ class XRay : public IGraphical {
          */
         std::vector<std::string> getPlayerControls(void) const override;
 
+        /**
+         * @brief Set the player controls
+         *
+         * @param playerControls A vector containing all the player controls as a string
+         */
+        void setPlayerControls(const std::vector<std::string> &playerControls) override;
+
     private:
         Raylib::Window _window;                     // Game window
 

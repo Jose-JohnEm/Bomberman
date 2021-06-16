@@ -227,6 +227,13 @@ class IGraphical {
          * @return A vector containing the player controls as a string
          */
         virtual std::vector<std::string> getPlayerControls(void) const = 0;
+
+        /**
+         * @brief Set the player controls
+         *
+         * @param playerControls A vector containing all the player controls as a string
+         */
+        virtual void setPlayerControls(const std::vector<std::string> &playerControls) = 0;
 };
 
 #endif /* !IGRAPHICAL_HPP_ */

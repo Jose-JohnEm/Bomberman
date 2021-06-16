@@ -158,6 +158,13 @@ namespace Game
             void setMapType(const std::size_t &mapType) override;
 
             /**
+             * @brief Get the player controls
+             *
+             * @return A vector containing the player controls as a string
+             */
+            std::vector<std::string> getPlayerControls(void) const override;
+
+            /**
              * @brief Do A player Action
              *
              * @param playerID ID of the Player (Human or AI)
@@ -187,6 +194,7 @@ namespace Game
             std::string _gameName;                      // A string that represents the game name
             std::vector<std::string> _userNames;        // A vector of all the users names
             std::vector<CharDictionary> _players;
+            std::vector<std::string> _playerControls; // A vector of all the players control as a string
     };
 }
 

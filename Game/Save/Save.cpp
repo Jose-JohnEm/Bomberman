@@ -192,6 +192,10 @@ void Game::Save::parsePlayer(std::shared_ptr<Game::Player> player, const std::ve
         player->setModel(playerInfos[3]);
         player->setColor(playerInfos[3]);
     }
+    else if (playerInfos[2].compare("controls") == 0)
+    {
+        _playerControls.push_back(playerInfos[3]);
+    }
     else if (playerInfos[2].compare("scalable") == 0)
     {
         player->setScalable(std::stof(playerInfos[3]));

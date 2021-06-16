@@ -134,6 +134,9 @@ void Game::Bomberman::loadGame(const std::string &backupFilePath)
         _entities.push_back(player);
     }
 
+    // Load player controls
+    _playerControls = load.getPlayerControls();
+
     // Load map
     _map = load.getMap().getMap();
 

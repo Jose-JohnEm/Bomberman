@@ -74,6 +74,13 @@ namespace Game
              */
             std::vector<std::string> getUserNames(void) const;
 
+            /**
+             * @brief Get the player controls
+             *
+             * @return A vector containing the player controls as a string
+             */
+            std::vector<std::string> getPlayerControls(void) const;
+
         private:
             std::array<std::size_t, 9> _settings; // An array of 9 size_t
             std::vector<std::shared_ptr<Game::Player>> _players; // A vector of players

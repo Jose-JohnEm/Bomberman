@@ -204,3 +204,8 @@ inline std::vector<std::string> XRay::getPlayerControls(void) const
     }
     return controls;
 }
+
+inline void XRay::setPlayerControls(const std::vector<std::string> &playerControls)
+{
+    // TODO: Prince
+}

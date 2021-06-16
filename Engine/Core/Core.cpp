@@ -31,6 +31,7 @@ void Engine::Core::loadGame(std::string filepath)
     _game->loadGame(filepath);
     _graphical->setGameSettings(_game->getSettings());
     _graphical->setUserNames(_game->getUserNames());
+    _graphical->setPlayerControls(_game->getPlayerControls());
 }
 
 void Engine::Core::restartGame()

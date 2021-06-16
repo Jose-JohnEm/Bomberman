@@ -79,3 +79,8 @@ inline std::vector<std::string> Game::Save::getUserNames(void) const
 {
     return _userNames;
 }
+
+inline std::vector<std::string> Game::Save::getPlayerControls(void) const
+{
+    return _playerControls;
+}

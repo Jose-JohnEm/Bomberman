@@ -88,3 +88,8 @@ inline const std::vector<std::string> &Game::Bomberman::getUserNames(void) const
 {
     return _userNames;
 }
+
+inline std::vector<std::string> Game::Bomberman::getPlayerControls(void) const
+{
+    return _playerControls;
+}

@@ -134,6 +134,13 @@ class IGame {
          * @param playersData Dictionary of the players' data
          */
         virtual void setPlayers(const std::vector<CharDictionary> &playersData) = 0;
+
+        /**
+         * @brief Get the player controls
+         *
+         * @return A vector containing the player controls as a string
+         */
+        virtual std::vector<std::string> getPlayerControls(void) const = 0;
 };
 
 #endif /* !IGAME_HPP_ */
