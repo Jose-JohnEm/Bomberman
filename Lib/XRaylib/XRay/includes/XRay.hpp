@@ -436,7 +436,7 @@ class XRay : public IGraphical {
          *
          * @param saveFunc A pointer to Save function in the core
          */
-        void setSaveFunc(std::function<void (std::array<std::size_t, 9>)>) override;
+        void setSaveFunc(std::function<void (std::array<std::size_t, 9>, std::vector<std::string>)>) override;
 
         /**
          * @brief Set the Restart Func
@@ -504,6 +504,13 @@ class XRay : public IGraphical {
          */
         void setGameSettings(const std::array<size_t, 9> &settings) override;
 
+        /**
+         * @brief Get the player controls
+         *
+         * @return A vector containing the player controls as a string
+         */
+        std::vector<std::string> getPlayerControls(void) const override;
+
     private:
         Raylib::Window _window;                     // Game window
 
@@ -534,7 +541,7 @@ class XRay : public IGraphical {
         Scene _scene = MENU;                   // Current scene
         std::vector<void (XRay::*)()> _scenesFunc;  // Array of pointers to function (a scene, a function)
         std::function<void ()> _pointerToRestartFunc;   // Pointer to Restart Func
-        std::function<void (std::array<std::size_t, 9>)> _pointerToSaveFunc;   // Pointer to Save Func
+        std::function<void (std::array<std::size_t, 9>, std::vector<std::string>)> _pointerToSaveFunc;   // Pointer to Save Func
         std::function<void (std::array<std::size_t, 9>)> _pointerToSettingsFunc;   // Pointer to Settings Func
         std::function<void (std::string)> _pointerToLoadFunc;   // Pointer to Load Func
         std::function<void (const size_t pos, const std::string action)> _playerActionsFunc;              // Pointer to playerActionsFunc

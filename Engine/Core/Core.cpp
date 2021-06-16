@@ -11,7 +11,7 @@ Engine::Core::Core()
 : _graphical{std::make_shared<XRay>()}, _game{std::make_shared<Game::Bomberman>()}, _userNames{{""}}
 {
     _graphical->setLoadFunc([this] (std::string filepath) {this->loadGame(filepath);});
-    _graphical->setSaveFunc([this] (std::array<std::size_t, 9> settings) {this->saveGame(settings);});
+    _graphical->setSaveFunc([this] (std::array<std::size_t, 9> settings, std::vector<std::string> playerControls) {this->saveGame(settings, playerControls);});
     _graphical->setRestartFunc([this] () {this->restartGame();});
     _graphical->setSettingsFunc([this] (std::array<std::size_t, 9> settings) {_game->setSettings(settings);});
     _graphical->setPlayerActionsFunc([this] (const size_t playerID, const std::string action) {_game->doPlayerAction(playerID, action);});
@@ -21,9 +21,9 @@ Engine::Core::~Core()
 {
 }
 
-void Engine::Core::saveGame(std::array<std::size_t, 9> settings)
+void Engine::Core::saveGame(std::array<std::size_t, 9> settings, std::vector<std::string> playerControls)
 {
-    _game->saveGame(settings);
+    _game->saveGame(settings, playerControls);
 }
 
 void Engine::Core::loadGame(std::string filepath)

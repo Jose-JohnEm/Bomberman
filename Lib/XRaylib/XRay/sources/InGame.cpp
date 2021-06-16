@@ -92,7 +92,7 @@ void XRay::goToAnotherScene()
         beginDrawing(false);
         _resources.at(SAVED)->drawTexture(650, 20);
         endDrawing();
-        _pointerToSaveFunc(_gameSettings);
+        _pointerToSaveFunc(_gameSettings, getPlayerControls());
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
     if (_isPaused && settings && Raylib::Mouse::isButtonPressed(0)) {

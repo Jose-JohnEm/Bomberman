@@ -177,7 +177,7 @@ class IGraphical {
          *
          * @param saveFunc A pointer to Save function in the core
          */
-        virtual void setSaveFunc(std::function<void (std::array<std::size_t, 9>)>) = 0;
+        virtual void setSaveFunc(std::function<void (std::array<std::size_t, 9>, std::vector<std::string>)>) = 0;
 
         /**
          * @brief Set pointer to Settings Function
@@ -220,6 +220,13 @@ class IGraphical {
          * @return std::vector<CharDictionary> containing players data
          */
         virtual std::vector<CharDictionary> getPlayersData() = 0;
+
+        /**
+         * @brief Get the player controls
+         *
+         * @return A vector containing the player controls as a string
+         */
+        virtual std::vector<std::string> getPlayerControls(void) const = 0;
 };
 
 #endif /* !IGRAPHICAL_HPP_ */

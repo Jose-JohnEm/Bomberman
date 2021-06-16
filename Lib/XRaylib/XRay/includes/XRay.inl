@@ -50,7 +50,7 @@ inline void XRay::setLoadFunc(std::function<void (std::string)> pointerToFunc)
     _pointerToLoadFunc = pointerToFunc;
 }
 
-inline void XRay::setSaveFunc(std::function<void (std::array<std::size_t, 9>)> pointerToFunc)
+inline void XRay::setSaveFunc(std::function<void (std::array<std::size_t, 9>, std::vector<std::string>)> pointerToFunc)
 {
     _pointerToSaveFunc = pointerToFunc;
 }
@@ -186,4 +186,21 @@ inline std::vector<CharDictionary> XRay::getPlayersData()
 inline void XRay::setGameSettings(const std::array<size_t, 9> &settings)
 {
     _gameSettings = settings;
+}
+
+inline std::vector<std::string> XRay::getPlayerControls(void) const
+{
+    std::vector<std::string> controls;
+
+    for (size_t i = 0; i < _controlsTab.size(); i++) {
+        if (_controlsTab[i] == Resources::PLAYSTATIONYELLOW)
+            controls.push_back("PLAYSTATION");
+        if (_controlsTab[i] == Resources::XBOXYELLOW)
+            controls.push_back("XBOX");
+        if (_controlsTab[i] == Resources::MOUSEYELLOW)
+            controls.push_back("MOUSE");
+        if (_controlsTab[i] == Resources::KEYBOARDYELLOW)
+            controls.push_back("KEYBOARD");
+    }
+    return controls;
 }

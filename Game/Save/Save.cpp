@@ -7,8 +7,8 @@
 
 #include "Save.hpp"
 
-Game::Save::Save(const std::array<std::size_t, 9> &settings, const std::vector<std::shared_ptr<Game::Player>> &players, const Game::Map &map)
-    : _settings(settings), _players(players), _map(map)
+Game::Save::Save(const std::array<std::size_t, 9> &settings, const std::vector<std::shared_ptr<Game::Player>> &players, const std::vector<std::string> &playerControls, const Game::Map &map)
+    : _settings(settings), _players(players), _playerControls(playerControls), _map(map)
 {
     std::string fileName = createBackupName();
     std::ofstream backupFile(fileName);

@@ -29,9 +29,10 @@ namespace Game
             *
             * @param settings Settings of the Game
             * @param players Players of the Game
+            * @param playerControls Controls of the players ("PLAYSTATION", "XBOX", "MOUSE", "KEYBOARD")
             * @param map Map of the Game
             */
-            Save(const std::array<std::size_t, 9> &settings, const std::vector<std::shared_ptr<Game::Player>> &players, const Game::Map &map);
+            Save(const std::array<std::size_t, 9> &settings, const std::vector<std::shared_ptr<Game::Player>> &players, const std::vector<std::string> &playerControls, const Game::Map &map);
 
             /**
             * @brief Construct the Save object to read a backup file and load its content into an IGame object (Copy Constructor)
@@ -76,6 +77,7 @@ namespace Game
         private:
             std::array<std::size_t, 9> _settings; // An array of 9 size_t
             std::vector<std::shared_ptr<Game::Player>> _players; // A vector of players
+            std::vector<std::string> _playerControls; // A vector of all the players control as a string
             Game::Map _map; // The map
             std::vector<std::string> _userNames; // A vector of all the user names
 
