@@ -53,9 +53,9 @@ XRay::XRay(void)
     _scenesBackBackup.insert(std::pair<Scene, void (XRay::*)()>(Scene::MAP_CHOICE, &XRay::displayPlayerChoiceScene));
 
     // Display Intro (studio and introduction cinematic)
-    _intro = std::make_pair(true, &XRay::displayStudio);
+	_intro = std::make_pair(true, std::vector<void (XRay::*)()>{&XRay::displayStudio, &XRay::displayTeamPresentation});
 
-    masterVolume = 50;
+	masterVolume = 50;
     musicVolume = 100;
     sfxVolume = 100;
     Raylib::Audio::setMasterVolume(masterVolume / 100);
@@ -196,6 +196,13 @@ void XRay::setResources(void)
     _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::HOWTO_BG, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/howToBack.png"))));
     _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::MOUSERADAR, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/mouseRadar.png"))));
     _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::BACKUPERROR, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/backupBarRed.png"))));
+    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::PRINCE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/prince.png"))));
+    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::LUCAS, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/lucas.png"))));
+    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::JONATHAN, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/jonathan.png"))));
+    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::NICO, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/nico.png"))));
+    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::MEHDI, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/mehdi.png"))));
+    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::CHARLES, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/charles.png"))));
+    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::TEAMTITLE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/teamAndTitle.png"))));
 }
 
 void XRay::setAudioResources(void)
@@ -242,6 +249,35 @@ void XRay::displayStudio(void)
     // Intro is done, so update its status flag
     _intro.first = false;
     displayCinematic(Cinematic::INTRO);
+}
+
+void XRay::displayTeamPresentation(void)
+{
+    // Draw
+    for (int f = 0, x = 0; x < 480; f += 1) {
+        x = -100 + f;
+        beginDrawing();
+		std::this_thread::sleep_for(std::chrono::milliseconds(3));
+		_resources.at(PRINCE)->drawTexture(x, CFunctions::generatePairOfRandomIntegers(1, 780).second);
+		_resources.at(LUCAS)->drawTexture(CFunctions::generatePairOfRandomIntegers(1080, 1080).first, CFunctions::generatePairOfRandomIntegers(1980, 1080).second);
+		_resources.at(JONATHAN)->drawTexture(CFunctions::generatePairOfRandomIntegers(780, 1080).first, x);
+		_resources.at(NICO)->drawTexture(x, CFunctions::generatePairOfRandomIntegers(1980, 580).second);
+		_resources.at(MEHDI)->drawTexture(CFunctions::generatePairOfRandomIntegers(1980, 1080).first, CFunctions::generatePairOfRandomIntegers(1980, 1080).second);
+		_resources.at(CHARLES)->drawTexture(CFunctions::generatePairOfRandomIntegers(500, 500).first, CFunctions::generatePairOfRandomIntegers(500, 500).second);
+        endDrawing();
+    }
+
+	std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+
+	beginDrawing();
+	_resources.at(TEAMTITLE)->drawTexture(0, 0);
+	endDrawing();
+
+	std::this_thread::sleep_for(std::chrono::milliseconds(4000));
+
+	// Intro is done, so update its status flag
+	_intro.first = false;
+	displayCinematic(Cinematic::INTRO);
 }
 
 void XRay::playMusic(MusicResources music) {
