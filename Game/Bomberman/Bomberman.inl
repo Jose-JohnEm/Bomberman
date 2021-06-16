@@ -65,9 +65,15 @@ inline void Game::Bomberman::doPlayerAction(const size_t playerID, const std::st
     }
 }
 
+inline bool round90(float x, float y)
+{
+    return (y - 0.1f < x && y + 0.1f > x) ? true : false;
+}
+
 inline bool Game::Bomberman::checkPlayerPosition(const std::string action, Human &human)
 {
-    Raylib::Vector3 positions = human.getPositions();
+    std::pair<int, int> positions = human.getPositions2D();
+    Raylib::Vector3 pos3D = human.getPositions();
     std::map<std::string, std::pair<int, int>> direction = {
         {"goEast", {-1, 0}},
         {"goNorth", {0, -1}},
@@ -75,14 +81,14 @@ inline bool Game::Bomberman::checkPlayerPosition(const std::string action, Human
         {"goWest", {1, 0}}
     };
 
-    positions.y = _map.size() - positions.y;
-    for (auto i: _map)
-        std::cout << i << std::endl;
-    if (_map[direction[action].second + positions.y][direction[action].first + positions.x] == '*') {
-        updateMap(positions, direction[action].second + positions.y, direction[action].first + positions.x);
+    positions.second = _map.size() - positions.second;
+    if (_map[direction[action].second + positions.second][direction[action].first + positions.first] != 'W' && _map[direction[action].second + positions.second][direction[action].first + positions.first] != 'M' && _map[direction[action].second + positions.second][direction[action].first + positions.first] != 'E') {
         return true;
-    } else if (human.getPowerUps()[P_PASS] > 0 && checkPlayerPositionPass(action, direction[action].second * 2 + positions.y, direction[action].first * 2 + positions.x) == true)
-        updateMap(positions, direction[action].second * 2 + positions.y, direction[action].first * 2 + positions.x);
+    } else if (human.getPowerUps()[P_PASS] > 0 && checkPlayerPositionPass(action, direction[action].second * 2 + positions.second, direction[action].first * 2 + positions.first) == true)
+        return true;
+/*    if ((abs(pos3D.x - positions.first) < abs(direction[action].first) / 2 && action == "goEast" && action == "goWest") ||
+        (abs(pos3D.y - positions.second) < abs(direction[action].second) / 2 && action == "goNorth" && action == "goSouth"))*/
+    if ((!round90(pos3D.x, positions.first) && (action == "goEast" || action == "goWest")) || (!round90(pos3D.y, human.getPositions2D().second) && (action == "goNorth" || action == "goSouth")))
         return true;
     return false;
 }

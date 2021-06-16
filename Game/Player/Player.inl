@@ -77,12 +77,15 @@ inline std::string Game::AI::getType() const
 
 inline void Game::Player::drawEntity()
 {
-    std::cout << "-- I will update --" << std::endl;
-    _model.update();
+    float rad_rotation = (0 * PI) / 180;
 
-    std::cout << "-- I will display --" << std::endl;
-
-    DrawModelEx(_model.getModel(), _positions.getCStruct(), {1, 0, 0}, 90, {_scalable, _scalable, _scalable}, _color.getCStruct());
+    _model.getModel().transform = {
+        0, 0, 1, 0,
+        cosf(rad_rotation), sinf(rad_rotation), 0, 0,
+        -sinf(rad_rotation), cosf(rad_rotation), 0, 0,
+        0, 0, 0, 1
+    };
+    DrawModelEx(_model.getModel(), _positions.getCStruct(), {0, 0, 1}, _rotation, {_scalable, _scalable, _scalable}, _color.getCStruct());
 }
 
 inline void Game::Player::setColor(const Raylib::Color &color)

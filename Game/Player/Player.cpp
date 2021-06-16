@@ -19,7 +19,8 @@ Game::Player::Player(const std::string &name, const Raylib::Vector3 &positions, 
     _powerUps{powerUps},
     _model("resources/players/3D/Bombermans/white_tpose.glb", "resources/players/3D/Bombermans/texture.png", {}),
     _scalable(0.6),
-    _color(Raylib::Color::Red())
+    _color(Raylib::Color::Red()),
+    _rotation(0)
 {
 }
 
@@ -42,7 +43,8 @@ Game::Player::Player(const std::string &name, const int &ID, const Raylib::Vecto
     _powerUps{0},
     _model(obj_path, texture_path, getAnimator(animation_path)),
     _color(color),
-    _scalable(scalable)
+    _scalable(scalable),
+    _rotation(0)
 {
     std::cout << "Hey I'm a new player : " << name << std::endl;
 }
@@ -89,4 +91,35 @@ void Game::Player::setModel(const std::string &model)
         }
     }
     std::cout << "MODELER " << _model.getObjPath() << " " << _model.getTexturePath() << " " << _model.getAnimationPath().WALK << std::endl;
+}
+
+void Game::Player::move(const std::string &direction)
+{
+    std::map<std::string, std::pair<float, float>> dict = {
+        {"goEast", {-0.01f, 0.f}},
+        {"goNorth", {0.f, 0.01f}},
+        {"goSouth", {0.f, -0.01f}},
+        {"goWest", {0.01f, 0.f}}
+    };
+
+    std::map<std::string, float> rota = {
+        {"goEast", 180.f},
+        {"goNorth", 90.f},
+        {"goSouth", 270.f},
+        {"goWest", 0.f}
+    };
+
+    _model.makeWalk();
+    _rotation = rota[direction];
+
+    _positions.x += dict[direction].first;
+    _positions.y += dict[direction].second;
+
+    _model.update();
+
+}
+
+std::pair<int, int> Game::Player::getPositions2D()
+{
+    return {(int)round(_positions.x), (int)round(_positions.y)};
 }

@@ -220,6 +220,13 @@ namespace Game
              */
             void move(const std::string &direction);
 
+            /**
+             * @brief Get the Positions2 D object
+             *
+             * @return std::pair<int, int>
+             */
+            std::pair<int, int> getPositions2D();
+
         private:
 
             /**
@@ -242,6 +249,7 @@ namespace Game
             float _scalable; // Player scalability
             bool _isAlive = true; // Flag to indicate if the player is alive or not
             size_t droppedBombNumber = 0; // Number of dropped bombs
+            float _rotation;
     };
 
     class Human : public virtual Player {
