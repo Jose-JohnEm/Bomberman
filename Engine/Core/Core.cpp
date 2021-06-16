@@ -46,7 +46,7 @@ void Engine::Core::run(void)
         _graphical->display();
         _scene = _graphical->getScene();
         if (_scene == IGraphical::IN_GAME && _game) {
-            if (_userNames != _graphical->getUserNames()) {
+            if (_refreshFlag == 0 || _userNames != _graphical->getUserNames()) {
                 _userNames = _graphical->getUserNames();
                 _game->setMapType(_graphical->getMapSizeAndType().second);
                 _game->setUserNames(_graphical->getUserNames());
@@ -60,7 +60,9 @@ void Engine::Core::run(void)
                 _graphical->updateGameInfos(_game->getEntities());
                 _graphical->setPlayersStats(_game->getPlayersStats());
             }
-        }
+            _refreshFlag++;
+        } else
+            _refreshFlag = 0;
     }
     _graphical->closeWindow();
 }
