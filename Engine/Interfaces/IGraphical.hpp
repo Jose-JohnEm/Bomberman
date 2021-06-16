@@ -166,6 +166,13 @@ class IGraphical {
         virtual std::pair<size_t, size_t> getMapSizeAndType() = 0;
 
         /**
+         * @brief Set the size of Map
+         *
+         * @param size A size_t
+         */
+        virtual void setMapSize(size_t size) = 0;
+
+        /**
          * @brief Set pointer to Load Function
          *
          * @param loadFunc A pointer to Load function in the core
