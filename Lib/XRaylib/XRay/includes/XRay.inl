@@ -23,7 +23,6 @@ inline std::array<size_t, 9> XRay::getGameSettings()
 inline void XRay::resetAll(void)
 {
     _gameSettings = {0, 1, 1, 1, 60, 0, 1, 1, 0};
-    _mapType = 0;
     _sizeMap = 5;
     _userNames.clear();
     _playerTab = {true, false, false, false};
@@ -33,6 +32,11 @@ inline void XRay::resetAll(void)
     _isPaused = false;
     m_isPaused = 2;
     _scrollingBack = 0.0f;
+}
+
+inline void XRay::setMapSize(size_t size)
+{
+    _sizeMap = size;
 }
 
 inline void XRay::setPlayerActionsFunc(std::function<void (const size_t pos, const std::string action)> playerActionsFunc)
@@ -67,7 +71,7 @@ inline void XRay::setMap(std::vector<std::string> &map)
 
 inline std::pair<size_t, size_t> XRay::getMapSizeAndType()
 {
-    return std::make_pair(_sizeMap, _mapType);
+    return std::make_pair(_sizeMap, _gameSettings[8]);
 }
 
 inline void XRay::beginDrawing(void) const
@@ -208,4 +212,22 @@ inline std::vector<std::string> XRay::getPlayerControls(void) const
 inline void XRay::setPlayerControls(const std::vector<std::string> &playerControls)
 {
     // TODO: Prince
+    _playersInput.pop_back();
+    for (size_t y = 0; y < playerControls.size(); y++) {
+        if (!playerControls[y].compare("NONE"))
+            _controlsTab[y] = Resources::UNKNOWN;
+        else if (!playerControls[y].compare("XBOX")) {
+            _controlsTab[y] = Resources::XBOXYELLOW;
+            _playersInput.push_back(std::shared_ptr<IPlayerInput>(new GamepadPlayerInput(1)));
+        } else if (!playerControls[y].compare("PLAYSTATION")) {
+            _controlsTab[y] = Resources::PLAYSTATIONYELLOW;
+            _playersInput.push_back(std::shared_ptr<IPlayerInput>(new GamepadPlayerInput(0)));
+        } else if (!playerControls[y].compare("MOUSE")) {
+            _controlsTab[y] = Resources::MOUSEYELLOW;
+            _playersInput.push_back(std::shared_ptr<IPlayerInput>(new MousePlayerInput()));
+        } else if (!playerControls[y].compare("KEYBOARD")) {
+            _controlsTab[y] = Resources::KEYBOARDYELLOW;
+            _playersInput.push_back(std::shared_ptr<IPlayerInput>(new KeyboardPlayerInput()));
+        }
+    }
 }
