@@ -20,7 +20,7 @@ void XRay::displayMenuScene(void)
 
     // Display INDIE STUDIO
     if (_intro.first == true)
-        (this->*_intro.second)();
+        (this->*_intro.second[CFunctions::generatePairOfRandomIntegers(2, 1).first])();
 
     // Launch
     playMusic(MSC_BOMBERMAN);
