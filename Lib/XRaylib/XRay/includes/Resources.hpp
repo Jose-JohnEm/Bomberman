@@ -100,6 +100,7 @@ typedef enum {
     ON,
     OFF,
     SETTING_BG,
+    HOWTO_BG,
     VOLUME_UP,
     VOLUME_DOWN,
     LOADINGFRAMEO,

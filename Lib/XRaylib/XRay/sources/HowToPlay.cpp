@@ -17,6 +17,13 @@ void XRay::displayHowToPlayScene(void)
 
     // Draw scene
     beginDrawing();
+
+    //Background
+    _resources.at(HOWTO_BG)->drawTexture(0, 0, Raylib::Color::White());
+
+    _resources.at(PREVIOUS)->drawTexture(50, 500);
+    _resources.at(NEXT)->drawTexture(1754, 500);
+
     (goBack ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000);
     displayMouse();
     endDrawing();
