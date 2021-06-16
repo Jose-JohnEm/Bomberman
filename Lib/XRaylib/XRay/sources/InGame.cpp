@@ -31,7 +31,7 @@ void XRay::drawPlayersHead(size_t i, size_t x, size_t y)
 
 void XRay::displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &panelPos)
 {
-    for (size_t u = 0; u < _gameSettings[7]; u++) {
+    for (size_t u = 0; u < (_gameSettings[7] + _gameSettings[5]); u++) {
         if (_controlsTab[u] == Resources::PLAYSTATIONYELLOW)
             _resources.at(PLAYSTATIONPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
         if (_controlsTab[u] == Resources::XBOXYELLOW)
