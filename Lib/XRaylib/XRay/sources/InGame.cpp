@@ -138,7 +138,7 @@ void XRay::displayInGameScene(void)
     : std::vector<std::pair<size_t, size_t>>{{20, 500}, {1500, 500}, {20, 950}, {1500, 950}}; };
 
     // Position of all Panels in a vector of pair (x, y)
-    static std::vector<std::pair<size_t, size_t>> panelPos = panelLambda(_allIntegers[2]);
+    static std::vector<std::pair<size_t, size_t>> panelPos = panelLambda(_gameSettings[7] + _gameSettings[5]);
 
     // Display Cinematic ready, 3, 2, 1, go
     if (m_isPaused == 2) {
