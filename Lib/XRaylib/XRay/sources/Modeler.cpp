@@ -77,8 +77,6 @@ Modeler& Modeler::operator=(Modeler model)
 
     std::cout << "TESTING Try to get model !" << std::endl;
 
-    _model = LoadModel(_model_path.c_str());
-
     _animations.clear();
     _animations.push_back(LoadModelAnimations(_animator.WALK.c_str(), &fake_counter)[0]);
     _animations.push_back(LoadModelAnimations(_animator.BOMB.c_str(), &fake_counter)[0]);
