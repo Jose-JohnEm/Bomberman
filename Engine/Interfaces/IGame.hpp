@@ -29,9 +29,10 @@ class IGame {
         /**
          * @brief Call this function to save the game.
          *
-         * @param settings Backup Container
+         * @param settings Backup Container containing the settings
+         * @param playerControls Backup Container containing the player controls
          */
-        virtual void saveGame(std::array<std::size_t, 9> settings) = 0;
+        virtual void saveGame(std::array<std::size_t, 9> settings, std::vector<std::string> playerControls) = 0;
 
         /**
          * @brief Call this function to load a game.
@@ -41,7 +42,7 @@ class IGame {
         virtual void loadGame(const std::string &backupFilePath) = 0;
 
         /**
-         * @brief Set the Users Names
+         * @brief Set the User Names
          *
          * @param userNames A vector of all the users names as a const std::vector<std::string>&
          */
@@ -89,6 +90,13 @@ class IGame {
         virtual void updateGame(void) = 0;
 
         /**
+         * @brief Get the User Names
+         *
+         * @return A vector of all the users names as a const std::vector<std::string>&
+         */
+        virtual const std::vector<std::string> &getUserNames(void) const = 0;
+
+        /**
          * @brief Check if the game is over
          * @return bool which indicate if the game is over
          */
@@ -104,6 +112,11 @@ class IGame {
          * @brief Get the Map
          */
         virtual std::vector<std::string> &getMap(const size_t &size) = 0;
+
+        /**
+         * @brief Get the Map
+         */
+        virtual std::vector<std::string> &getMap() = 0;
 
         /**
          * @brief Set the Map Type
@@ -126,6 +139,13 @@ class IGame {
          * @param playersData Dictionary of the players' data
          */
         virtual void setPlayers(const std::vector<CharDictionary> &playersData) = 0;
+
+        /**
+         * @brief Get the player controls
+         *
+         * @return A vector containing the player controls as a string
+         */
+        virtual const std::vector<std::string> &getPlayerControls(void) const = 0;
 };
 
 #endif /* !IGAME_HPP_ */

@@ -31,21 +31,23 @@ void XRay::drawPlayersHead(size_t i, size_t x, size_t y)
 
 void XRay::displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &panelPos)
 {
-    for (size_t u = 0; u < _allIntegers[2]; u++) {
+    for (size_t u = 0; u < (_gameSettings[7] + _gameSettings[5]); u++) {
         if (_controlsTab[u] == Resources::PLAYSTATIONYELLOW)
             _resources.at(PLAYSTATIONPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
         if (_controlsTab[u] == Resources::XBOXYELLOW)
             _resources.at(XBOXPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
-        if (_controlsTab[u] == Resources::MOUSEYELLOW)
+        if (_controlsTab[u] == Resources::MOUSEYELLOW) {
             _resources.at(MOUSEPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
+            _resources.at(MOUSERADAR)->drawTexture(1600, 40);
+        }
         if (_controlsTab[u] == Resources::KEYBOARDYELLOW)
             _resources.at(KEYBOARDPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
         drawPlayersHead(u, panelPos[u].first-10, panelPos[u].second-180);
     }
-    _resources.at(CLOCKBAR)->drawTexture(1600, 200);
-    _resources.at(CLOCKBAR)->drawTexture(1600, 50);
-    Raylib::Text::drawText(std::to_string(_gameSettings[2]), 1720, 75, 60, Raylib::Color::White());
-    Raylib::Text::drawText(getTimeInFormat(), 1645, 225, 60, Raylib::Color::White());
+    _resources.at(CLOCKBAR)->drawTexture(600, 0);
+    _resources.at(CLOCKBAR)->drawTexture(1200, 0);
+    Raylib::Text::drawText(std::to_string(_gameSettings[2]), 720, 15, 60, Raylib::Color::White());
+    Raylib::Text::drawText(getTimeInFormat(), 1245, 15, 60, Raylib::Color::White());
 }
 
 void XRay::displayPauseScene(void)
@@ -92,7 +94,7 @@ void XRay::goToAnotherScene()
         beginDrawing(false);
         _resources.at(SAVED)->drawTexture(650, 20);
         endDrawing();
-        _pointerToSaveFunc(_gameSettings);
+        _pointerToSaveFunc(_gameSettings, getPlayerControls());
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
     if (_isPaused && settings && Raylib::Mouse::isButtonPressed(0)) {

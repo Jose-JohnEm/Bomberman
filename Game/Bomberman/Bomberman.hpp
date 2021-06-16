@@ -41,9 +41,10 @@ namespace Game
             /**
              * @brief Call this function to save the game.
              *
-             * @param settings Backup Container
+             * @param settings Backup Container containing the settings
+             * @param playerControls Backup Container containing the player controls
              */
-            void saveGame(std::array<std::size_t, 9> settings) override;
+            void saveGame(std::array<std::size_t, 9> settings, std::vector<std::string> playerControls) override;
 
             /**
              * @brief Call this function to load a game.
@@ -53,7 +54,7 @@ namespace Game
             void loadGame(const std::string &backupFilePath) override;
 
             /**
-             * @brief Set the Users Names
+             * @brief Set the User Names
              *
              * @param userNames A vector of all the users names as a const std::vector<std::string>&
              */
@@ -143,11 +144,30 @@ namespace Game
             std::vector<std::string> &getMap(const size_t &size) override;
 
             /**
+             * @brief Get the Map
+             */
+            std::vector<std::string> &getMap() override;
+
+            /**
+             * @brief Get the User Names
+             *
+             * @return A vector of all the users names as a const std::vector<std::string>&
+             */
+            const std::vector<std::string> &getUserNames(void) const override;
+
+            /**
              * @brief Set the Map Type
              *
              * @param mapType A size_t
              */
             void setMapType(const std::size_t &mapType) override;
+
+            /**
+             * @brief Get the player controls
+             *
+             * @return A vector containing the player controls as a string
+             */
+            const std::vector<std::string> &getPlayerControls(void) const override;
 
             /**
              * @brief Do A player Action
@@ -179,6 +199,7 @@ namespace Game
             std::string _gameName;                      // A string that represents the game name
             std::vector<std::string> _userNames;        // A vector of all the users names
             std::vector<CharDictionary> _players;
+            std::vector<std::string> _playerControls; // A vector of all the players control as a string
     };
 }
 

@@ -90,11 +90,18 @@ class IGraphical {
         virtual void setPlayersStats(const std::vector<std::vector<std::pair<std::string, std::string>>> &info) = 0;
 
         /**
-         * @brief Get the Users Names
+         * @brief Get the User Names
          *
          * @return A vector of all the users names as a const std::vector<std::string>&
          */
         virtual const std::vector<std::string> &getUserNames(void) const = 0;
+
+        /**
+         * @brief Set the User Names
+         *
+         * @param userNames A vector containing all the users names
+         */
+        virtual void setUserNames(const std::vector<std::string> &userNames) = 0;
 
         /**
          * @brief Get the paths to all backups files
@@ -159,6 +166,13 @@ class IGraphical {
         virtual std::pair<size_t, size_t> getMapSizeAndType() = 0;
 
         /**
+         * @brief Set the size of Map
+         *
+         * @param size A size_t
+         */
+        virtual void setMapSize(size_t size) = 0;
+
+        /**
          * @brief Set pointer to Load Function
          *
          * @param loadFunc A pointer to Load function in the core
@@ -170,7 +184,7 @@ class IGraphical {
          *
          * @param saveFunc A pointer to Save function in the core
          */
-        virtual void setSaveFunc(std::function<void (std::array<std::size_t, 9>)>) = 0;
+        virtual void setSaveFunc(std::function<void (std::array<std::size_t, 9>, std::vector<std::string>)>) = 0;
 
         /**
          * @brief Set pointer to Settings Function
@@ -213,6 +227,20 @@ class IGraphical {
          * @return std::vector<CharDictionary> containing players data
          */
         virtual std::vector<CharDictionary> getPlayersData() = 0;
+
+        /**
+         * @brief Get the player controls
+         *
+         * @return A vector containing the player controls as a string
+         */
+        virtual std::vector<std::string> getPlayerControls(void) const = 0;
+
+        /**
+         * @brief Set the player controls
+         *
+         * @param playerControls A vector containing all the player controls as a string
+         */
+        virtual void setPlayerControls(const std::vector<std::string> &playerControls) = 0;
 };
 
 #endif /* !IGRAPHICAL_HPP_ */

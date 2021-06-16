@@ -28,8 +28,9 @@ inline void Game::Save::writePlayersInfos(std::ofstream &os) const
         Raylib::Vector3 positions = player->getPositions();
         os  << "player " << id << " type " << player->getType() << std::endl
             << "player " << id << " name " << player->getName() << std::endl
+            << "player " << id << " controls " << ((player->getType().compare("AI") == 0) ? "NONE" : _playerControls[id]) << std::endl
             << "player " << id << " scalable " << player->getScalable() << std::endl
-            << "player " << id << " positions " << positions.x << "," << positions.y << "," << positions.y << std::endl
+            << "player " << id << " positions " << positions.x << "," << (_map.getMap().size() - positions.y) << "," << positions.z << std::endl
             << "player " << id << " powerups "
                 << "skate:" << powerups[P_SKATE]
                 << ",bomb:" << powerups[P_BOMB]
@@ -72,4 +73,14 @@ inline std::vector<std::shared_ptr<Game::Player>> Game::Save::getPlayers(void) c
 inline Game::Map Game::Save::getMap(void) const
 {
     return _map;
+}
+
+inline std::vector<std::string> Game::Save::getUserNames(void) const
+{
+    return _userNames;
+}
+
+inline std::vector<std::string> Game::Save::getPlayerControls(void) const
+{
+    return _playerControls;
 }

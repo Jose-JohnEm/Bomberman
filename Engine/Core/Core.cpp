@@ -11,7 +11,7 @@ Engine::Core::Core()
 : _graphical{std::make_shared<XRay>()}, _game{std::make_shared<Game::Bomberman>()}, _userNames{{""}}
 {
     _graphical->setLoadFunc([this] (std::string filepath) {this->loadGame(filepath);});
-    _graphical->setSaveFunc([this] (std::array<std::size_t, 9> settings) {this->saveGame(settings);});
+    _graphical->setSaveFunc([this] (std::array<std::size_t, 9> settings, std::vector<std::string> playerControls) {this->saveGame(settings, playerControls);});
     _graphical->setRestartFunc([this] () {this->restartGame();});
     _graphical->setSettingsFunc([this] (std::array<std::size_t, 9> settings) {_game->setSettings(settings);});
     _graphical->setPlayerActionsFunc([this] (const size_t playerID, const std::string action) {_game->doPlayerAction(playerID, action);});
@@ -21,15 +21,19 @@ Engine::Core::~Core()
 {
 }
 
-void Engine::Core::saveGame(std::array<std::size_t, 9> settings)
+void Engine::Core::saveGame(std::array<std::size_t, 9> settings, std::vector<std::string> playerControls)
 {
-    _game->saveGame(settings);
+    _game->saveGame(settings, playerControls);
 }
 
 void Engine::Core::loadGame(std::string filepath)
 {
+    _refreshFlag = 0;
     _game->loadGame(filepath);
-    //_graphical->setGameSettings(_game->getSettings());
+    _graphical->setGameSettings(_game->getSettings());
+    _graphical->setMapSize(_game->getMap().size()-2);
+    _graphical->setUserNames(_game->getUserNames());
+    _graphical->setPlayerControls(_game->getPlayerControls());
 }
 
 void Engine::Core::restartGame()
@@ -46,7 +50,7 @@ void Engine::Core::run(void)
         _graphical->display();
         _scene = _graphical->getScene();
         if (_scene == IGraphical::IN_GAME && _game) {
-            if (_userNames != _graphical->getUserNames()) {
+            if (_refreshFlag == 0 || _userNames != _graphical->getUserNames()) {
                 _userNames = _graphical->getUserNames();
                 _game->setMapType(_graphical->getMapSizeAndType().second);
                 _game->setUserNames(_graphical->getUserNames());
@@ -60,7 +64,9 @@ void Engine::Core::run(void)
                 _graphical->updateGameInfos(_game->getEntities());
                 _graphical->setPlayersStats(_game->getPlayersStats());
             }
-        }
+            _refreshFlag++;
+        } else
+            _refreshFlag = 0;
     }
     _graphical->closeWindow();
 }

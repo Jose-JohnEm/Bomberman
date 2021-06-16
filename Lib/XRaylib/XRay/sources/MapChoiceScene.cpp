@@ -87,7 +87,7 @@ void XRay::displayMapChoiceScene(void)
     }
     if (goNext && Raylib::Mouse::isButtonPressed(0)) {
         _sfx.at(SFX_NOCK)->play();
-        _mapType = _pSelector.getMapType();
+        _gameSettings[8] = _pSelector.getMapType();
         _scene = IN_GAME;
         beginDrawing(false);
         _resources.at(LOADINGFRAMEO)->drawTexture(0, 0);

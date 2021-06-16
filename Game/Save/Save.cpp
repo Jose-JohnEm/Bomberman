@@ -7,8 +7,8 @@
 
 #include "Save.hpp"
 
-Game::Save::Save(const std::array<std::size_t, 9> &settings, const std::vector<std::shared_ptr<Game::Player>> &players, const Game::Map &map)
-    : _settings(settings), _players(players), _map(map)
+Game::Save::Save(const std::array<std::size_t, 9> &settings, const std::vector<std::shared_ptr<Game::Player>> &players, const std::vector<std::string> &playerControls, const Game::Map &map)
+    : _settings(settings), _players(players), _playerControls(playerControls), _map(map)
 {
     std::string fileName = createBackupName();
     std::ofstream backupFile(fileName);
@@ -146,28 +146,28 @@ void Game::Save::parsePlayers(const std::vector<std::string> &playersInfos)
     }
     switch (std::stoi(playersInfos[1]))
     {
-        case 1:
+        case 0:
             if (!firstIsParse) {
                 _players[0]->setID(std::stoi(playersInfos[1]));
                 firstIsParse = true;
             }
             parsePlayer(_players[0], playersInfos);
             break;
-        case 2:
+        case 1:
             if (!secondIsParse) {
                 _players[1]->setID(std::stoi(playersInfos[1]));
                 secondIsParse = true;
             }
             parsePlayer(_players[1], playersInfos);
             break;
-        case 3:
+        case 2:
             if (!thirdIsParse) {
                 _players[2]->setID(std::stoi(playersInfos[1]));
                 thirdIsParse = true;
             }
             parsePlayer(_players[2], playersInfos);
             break;
-        case 4:
+        case 3:
             if (!fourthIsParse) {
                 _players[3]->setID(std::stoi(playersInfos[1]));
                 fourthIsParse = true;
@@ -179,7 +179,7 @@ void Game::Save::parsePlayers(const std::vector<std::string> &playersInfos)
     }
 }
 
-void Game::Save::parsePlayer(std::shared_ptr<Game::Player> player, const std::vector<std::string> &playerInfos) const
+void Game::Save::parsePlayer(std::shared_ptr<Game::Player> player, const std::vector<std::string> &playerInfos)
 {
     if (playerInfos[2].compare("type") == 0)
     {
@@ -187,9 +187,14 @@ void Game::Save::parsePlayer(std::shared_ptr<Game::Player> player, const std::ve
     }
     else if (playerInfos[2].compare("name") == 0)
     {
+        _userNames.push_back(playerInfos[3]);
         player->setName(playerInfos[3]);
         player->setModel(playerInfos[3]);
         player->setColor(playerInfos[3]);
+    }
+    else if (playerInfos[2].compare("controls") == 0)
+    {
+        _playerControls.push_back(playerInfos[3]);
     }
     else if (playerInfos[2].compare("scalable") == 0)
     {

@@ -18,12 +18,12 @@ GamepadPlayerInput::~GamepadPlayerInput()
 
 bool GamepadPlayerInput::shouldGoToEast(void) const
 {
-    return Raylib::Gamepad::isGamepadButtonDown(_pos, 4);
+    return Raylib::Gamepad::isGamepadButtonPressed(_pos, 2);
 }
 
 bool GamepadPlayerInput::shouldGoToWest(void) const
 {
-    return Raylib::Gamepad::isGamepadButtonDown(_pos, 2);
+    return Raylib::Gamepad::isGamepadButtonPressed(_pos, 4);
 }
 
 bool GamepadPlayerInput::shouldGoToNorth(void) const

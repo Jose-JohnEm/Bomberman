@@ -16,7 +16,7 @@ Game::Bomberman::~Bomberman(void)
 {
 }
 
-void Game::Bomberman::initEntities() //TODO: pushback player color
+void Game::Bomberman::initEntities()
 {
     float x;
     float y = _map.size();
@@ -45,6 +45,11 @@ void Game::Bomberman::initEntities() //TODO: pushback player color
         }
         y--;
     }
+}
+
+std::vector<std::string> &Game::Bomberman::getMap()
+{
+    return _map;
 }
 
 std::vector<std::string> &Game::Bomberman::getMap(const size_t &size)
@@ -92,7 +97,7 @@ void Game::Bomberman::restart(void)
     // Reset Entities
 }
 
-void Game::Bomberman::saveGame(std::array<std::size_t, 9> settings)
+void Game::Bomberman::saveGame(std::array<std::size_t, 9> settings, std::vector<std::string> playerControls)
 {
     // Get players entities
     std::vector<std::shared_ptr<Game::Player>> players;
@@ -118,7 +123,7 @@ void Game::Bomberman::saveGame(std::array<std::size_t, 9> settings)
     // Save it all
     settings[TIMESTAMP] = std::time(0);
     settings[WORLD] = _mapType;
-    Game::Save save(settings, players, map);
+    Game::Save save(settings, players, playerControls, map);
     std::cout << "I save" << std::endl;
 }
 
@@ -133,6 +138,12 @@ void Game::Bomberman::loadGame(const std::string &backupFilePath)
     {
         _entities.push_back(player);
     }
+
+    // Load the user names
+    _userNames = load.getUserNames();
+
+    // Load player controls
+    _playerControls = load.getPlayerControls();
 
     // Load map
     _map = load.getMap().getMap();

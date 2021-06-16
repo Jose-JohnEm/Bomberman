@@ -83,3 +83,13 @@ inline std::array<std::size_t, 9> Game::Bomberman::getSettings(void) const
 {
     return _settings;
 }
+
+inline const std::vector<std::string> &Game::Bomberman::getUserNames(void) const
+{
+    return _userNames;
+}
+
+inline const std::vector<std::string> &Game::Bomberman::getPlayerControls(void) const
+{
+    return _playerControls;
+}

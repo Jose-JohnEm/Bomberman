@@ -11,7 +11,7 @@ void XRay::loadThisBackup(const std::string &_pathToBackupFile)
 {
     _pointerToLoadFunc(_pathToBackupFile);
     displayCinematic("loading", 0, 0);
-    displayInGameScene();
+    _scene = IN_GAME;
 }
 
 void XRay::displayLoadGameScene(void)

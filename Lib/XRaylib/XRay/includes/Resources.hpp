@@ -134,7 +134,8 @@ typedef enum {
     YELLOWBOMBERMAN,
     REDBOMBERMAN,
     BLUEBOMBERMAN,
-    GREENBOMBERMAN
+    GREENBOMBERMAN,
+    MOUSERADAR
 } Resources;
 
 typedef enum {

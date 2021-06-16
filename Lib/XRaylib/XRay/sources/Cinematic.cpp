@@ -44,6 +44,8 @@ void XRay::displayCinematic(const std::string &cinematicPathDirectory, const siz
                 (mouseIsInBox(createBox(1760, 950, 1883, 1005)) ? _resources.at(SKIP_HOVER) : _resources.at(SKIP))->drawTexture(1760, 950);
                 displayMouse();
             }
+            if (gap > 0)
+                std::this_thread::sleep_for(std::chrono::milliseconds(gap));
             endDrawing();
             i++;
         }

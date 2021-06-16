@@ -106,11 +106,18 @@ class XRay : public IGraphical {
         void setPlayersStats(const std::vector<std::vector<std::pair<std::string, std::string>>> &info) override;
 
         /**
-         * @brief Get the Users Names
+         * @brief Get the User Names
          *
-         * @return A vector of all the users names as a const std::vector<std::string>&
+         * @return A vector of all the user names as a const std::vector<std::string>&
          */
         const std::vector<std::string> &getUserNames(void) const override;
+
+        /**
+         * @brief Set the User Names
+         *
+         * @param userNames A vector containing all the user names
+         */
+        void setUserNames(const std::vector<std::string> &userNames) override;
 
         /**
          * @brief Returns the current scene.
@@ -174,6 +181,13 @@ class XRay : public IGraphical {
          * @return A pair of size_t
          */
         std::pair<size_t, size_t> getMapSizeAndType() override;
+
+        /**
+         * @brief Set the size of Map
+         *
+         * @param size A size_t
+         */
+        void setMapSize(size_t size) override;
 
         /**
          * @brief Get Game Settings
@@ -429,7 +443,7 @@ class XRay : public IGraphical {
          *
          * @param saveFunc A pointer to Save function in the core
          */
-        void setSaveFunc(std::function<void (std::array<std::size_t, 9>)>) override;
+        void setSaveFunc(std::function<void (std::array<std::size_t, 9>, std::vector<std::string>)>) override;
 
         /**
          * @brief Set the Restart Func
@@ -497,6 +511,20 @@ class XRay : public IGraphical {
          */
         void setGameSettings(const std::array<size_t, 9> &settings) override;
 
+        /**
+         * @brief Get the player controls
+         *
+         * @return A vector containing the player controls as a string
+         */
+        std::vector<std::string> getPlayerControls(void) const override;
+
+        /**
+         * @brief Set the player controls
+         *
+         * @param playerControls A vector containing all the player controls as a string
+         */
+        void setPlayerControls(const std::vector<std::string> &playerControls) override;
+
     private:
         Raylib::Window _window;                     // Game window
 
@@ -514,7 +542,6 @@ class XRay : public IGraphical {
          * [8] -- _mapType
          */
         std::array<size_t, 9> _gameSettings = {0, 1, 1, 1, 60, 0, 1, 1, 0};
-        size_t _mapType = 0;                        // Type of Map
         size_t _sizeMap = 5;                            // Size of Map
         double _startingTime;                  // Get Time from raylib
         double _lastFrameTime;                  // Get Time every frame from raylib
@@ -527,7 +554,7 @@ class XRay : public IGraphical {
         Scene _scene = MENU;                   // Current scene
         std::vector<void (XRay::*)()> _scenesFunc;  // Array of pointers to function (a scene, a function)
         std::function<void ()> _pointerToRestartFunc;   // Pointer to Restart Func
-        std::function<void (std::array<std::size_t, 9>)> _pointerToSaveFunc;   // Pointer to Save Func
+        std::function<void (std::array<std::size_t, 9>, std::vector<std::string>)> _pointerToSaveFunc;   // Pointer to Save Func
         std::function<void (std::array<std::size_t, 9>)> _pointerToSettingsFunc;   // Pointer to Settings Func
         std::function<void (std::string)> _pointerToLoadFunc;   // Pointer to Load Func
         std::function<void (const size_t pos, const std::string action)> _playerActionsFunc;              // Pointer to playerActionsFunc
