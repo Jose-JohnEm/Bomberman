@@ -136,7 +136,14 @@ typedef enum {
     BLUEBOMBERMAN,
     GREENBOMBERMAN,
     MOUSERADAR,
-    BACKUPERROR
+    BACKUPERROR,
+    PRINCE,
+    LUCAS,
+    JONATHAN,
+    NICO,
+    MEHDI,
+    CHARLES,
+    TEAMTITLE
 } Resources;
 
 typedef enum {
