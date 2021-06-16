@@ -128,6 +128,54 @@ class Animated : public IEntity
             float _scalable; // Player scalability
 
     };
+
+    class Bomb : public Animated
+    {
+        public:
+
+            /**
+             * @brief Construct a new Bomb object
+             *
+             * @param positions
+             * @param fire
+             */
+            Bomb(const Raylib::Vector3 &positions, const int &fire);
+
+            /**
+             * @brief Destroy the Bomb object
+             *
+             */
+            ~Bomb();
+
+            /**
+             * @brief Make the bomb explose
+             *
+             */
+            int makeExplode();
+
+            /**
+             * @brief
+             *
+             * @return true
+             * @return false
+             */
+            bool isExploding();
+
+            /**
+             * @brief
+             *
+             * @return true
+             * @return false
+             */
+            bool hasExplode();
+
+        private:
+            Clock clock;
+            bool _explosing;
+            bool _exploded;
+            int _fire;
+    };
+
     #include "Animated.inl"
 
 } // namespace Game

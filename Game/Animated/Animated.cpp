@@ -15,6 +15,15 @@ Game::Animated::Animated(const Raylib::Vector3 &positions, const std::string &ob
 {
 }
 
+Game::Bomb::Bomb(const Raylib::Vector3 &positions, const int &fire)
+    : Animated(positions, "resources/assets/3D/Bombs/Animated/bomb.glb", "resources/assets/3D/Bombs/Animated/texture.png", {"resources/assets/3D/Bombs/Animated/bomb.glb", "resources/assets/3D/Bombs/Animated/bomb.glb", "resources/assets/3D/Bombs/Animated/bomb.glb"}),
+    _fire(fire),
+    _exploded(false),
+    _explosing(false)
+{
+
+}
+
 Animator Game::Animated::getAnimator(const std::vector<std::string> &animation_path)
 {
     for (auto p : animation_path)

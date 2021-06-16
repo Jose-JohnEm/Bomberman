@@ -66,3 +66,18 @@ inline void Game::Animated::setScalable(const float &scalable)
 {
     _scalable = scalable;
 }
+
+inline int Game::Bomb::makeExplode()
+{
+    return _fire;
+}
+
+inline bool Game::Bomb::isExploding()
+{
+    return clock.doesTimeElapsed(3, false);
+}
+
+inline bool Game::Bomb::hasExplode()
+{
+    return clock.doesTimeElapsed(4, false);
+}
