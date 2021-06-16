@@ -90,11 +90,18 @@ class IGraphical {
         virtual void setPlayersStats(const std::vector<std::vector<std::pair<std::string, std::string>>> &info) = 0;
 
         /**
-         * @brief Get the Users Names
+         * @brief Get the User Names
          *
          * @return A vector of all the users names as a const std::vector<std::string>&
          */
         virtual const std::vector<std::string> &getUserNames(void) const = 0;
+
+        /**
+         * @brief Set the User Names
+         *
+         * @param userNames A vector containing all the users names
+         */
+        virtual void setUserNames(const std::vector<std::string> &userNames) = 0;
 
         /**
          * @brief Get the paths to all backups files

@@ -66,10 +66,18 @@ namespace Game
              */
             Game::Map getMap(void) const;
 
+            /**
+             * @brief Get the User Names
+             *
+             * @return A vector containing all the user names
+             */
+            std::vector<std::string> getUserNames(void) const;
+
         private:
             std::array<std::size_t, 9> _settings; // An array of 9 size_t
             std::vector<std::shared_ptr<Game::Player>> _players; // A vector of players
             Game::Map _map; // The map
+            std::vector<std::string> _userNames; // A vector of all the user names
 
             /**
             * @brief Get the current date and time (for save's filename)
@@ -142,7 +150,7 @@ namespace Game
              * @param player A Game::Player object
              * @param playersInfos A vector of strings containing player infos
              */
-            void parsePlayer(std::shared_ptr<Game::Player> player, const std::vector<std::string> &playerInfos) const;
+            void parsePlayer(std::shared_ptr<Game::Player> player, const std::vector<std::string> &playerInfos);
     };
 
     #include "Save.inl"

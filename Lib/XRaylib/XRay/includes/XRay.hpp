@@ -106,11 +106,18 @@ class XRay : public IGraphical {
         void setPlayersStats(const std::vector<std::vector<std::pair<std::string, std::string>>> &info) override;
 
         /**
-         * @brief Get the Users Names
+         * @brief Get the User Names
          *
-         * @return A vector of all the users names as a const std::vector<std::string>&
+         * @return A vector of all the user names as a const std::vector<std::string>&
          */
         const std::vector<std::string> &getUserNames(void) const override;
+
+        /**
+         * @brief Set the User Names
+         *
+         * @param userNames A vector containing all the user names
+         */
+        void setUserNames(const std::vector<std::string> &userNames) override;
 
         /**
          * @brief Returns the current scene.
