@@ -16,11 +16,18 @@ void XRay::goToAnotherSceneFromDefeat()
     // Call function that check click on button
     if (restart && Raylib::Mouse::isButtonPressed(0)) {
         _isPaused = false;
+        m_isPaused = 2;
+        _pointerToRestartFunc();
         displayCinematic("loading", 0, 0);
         displayInGameScene();
     }
-    if (home && Raylib::Mouse::isButtonPressed(0))
+    if (home && Raylib::Mouse::isButtonPressed(0)) {
+        _isPaused = false;
+        m_isPaused = 2;
+        _pointerToRestartFunc();
+        resetAll();
         displayMenuScene();
+    }
 }
 
 void XRay::displayDefeatScene()
