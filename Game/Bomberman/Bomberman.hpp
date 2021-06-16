@@ -144,6 +144,11 @@ namespace Game
             std::vector<std::string> &getMap(const size_t &size) override;
 
             /**
+             * @brief Get the Map
+             */
+            std::vector<std::string> &getMap() override;
+
+            /**
              * @brief Get the User Names
              *
              * @return A vector of all the users names as a const std::vector<std::string>&
@@ -162,7 +167,7 @@ namespace Game
              *
              * @return A vector containing the player controls as a string
              */
-            std::vector<std::string> getPlayerControls(void) const override;
+            const std::vector<std::string> &getPlayerControls(void) const override;
 
             /**
              * @brief Do A player Action
