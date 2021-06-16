@@ -225,7 +225,7 @@ namespace Game
              *
              * @return std::pair<int, int>
              */
-            std::pair<int, int> getPositions2D();
+            std::pair<int, int> getPositions2D(); 
 
         private:
 
