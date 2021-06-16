@@ -183,6 +183,13 @@ class XRay : public IGraphical {
         std::pair<size_t, size_t> getMapSizeAndType() override;
 
         /**
+         * @brief Set the size of Map
+         *
+         * @param size A size_t
+         */
+        void setMapSize(size_t size) override;
+
+        /**
          * @brief Get Game Settings
          *
          * @return An array of 9 size_t
@@ -535,7 +542,6 @@ class XRay : public IGraphical {
          * [8] -- _mapType
          */
         std::array<size_t, 9> _gameSettings = {0, 1, 1, 1, 60, 0, 1, 1, 0};
-        size_t _mapType = 0;                        // Type of Map
         size_t _sizeMap = 5;                            // Size of Map
         double _startingTime;                  // Get Time from raylib
         double _lastFrameTime;                  // Get Time every frame from raylib
