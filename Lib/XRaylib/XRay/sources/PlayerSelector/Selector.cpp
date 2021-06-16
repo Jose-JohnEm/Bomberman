@@ -36,9 +36,9 @@ void PlayerSelector::Selector::preloadBasicsCharacters()
         "Red",
         Raylib::Color::Red(),
         {
-            "resources/players/3D/Bombermans/animations/white_emote.glb",
             "resources/players/3D/Bombermans/animations/white_walking.glb",
-            "resources/players/3D/Bombermans/animations/white_bomb.glb"
+            "resources/players/3D/Bombermans/animations/white_bomb.glb",
+            "resources/players/3D/Bombermans/animations/white_emote.glb"
         }
     });
 
@@ -49,9 +49,9 @@ void PlayerSelector::Selector::preloadBasicsCharacters()
             "Blue",
             Raylib::Color::Blue(),
             {
-                "resources/players/3D/Bombermans/animations/white_emote.glb",
                 "resources/players/3D/Bombermans/animations/white_walking.glb",
-                "resources/players/3D/Bombermans/animations/white_bomb.glb"
+                "resources/players/3D/Bombermans/animations/white_bomb.glb",
+                "resources/players/3D/Bombermans/animations/white_emote.glb"
             }
         });
 
@@ -62,9 +62,9 @@ void PlayerSelector::Selector::preloadBasicsCharacters()
             "Yellow",
             Raylib::Color::Yellow(),
             {
-                "resources/players/3D/Bombermans/animations/white_emote.glb",
                 "resources/players/3D/Bombermans/animations/white_walking.glb",
-                "resources/players/3D/Bombermans/animations/white_bomb.glb"
+                "resources/players/3D/Bombermans/animations/white_bomb.glb",
+                "resources/players/3D/Bombermans/animations/white_emote.glb"
             }
         });
 
@@ -75,9 +75,9 @@ void PlayerSelector::Selector::preloadBasicsCharacters()
             "Green",
             Raylib::Color::Green(),
             {
-                "resources/players/3D/Bombermans/animations/white_emote.glb",
                 "resources/players/3D/Bombermans/animations/white_walking.glb",
-                "resources/players/3D/Bombermans/animations/white_bomb.glb"
+                "resources/players/3D/Bombermans/animations/white_bomb.glb",
+                "resources/players/3D/Bombermans/animations/white_emote.glb"
             }
         });
 

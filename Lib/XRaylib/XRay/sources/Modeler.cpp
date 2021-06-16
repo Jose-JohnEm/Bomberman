@@ -126,7 +126,6 @@ void Modeler::update()
         if (_frame >= _animations[_currentAnimation].frameCount)
             _frame = 0;
         UpdateModelAnimation(_model, _animations[_currentAnimation], _frame);
-        std::cout << "ITS UPDATED !!!" << std::endl;
     }
 }
 

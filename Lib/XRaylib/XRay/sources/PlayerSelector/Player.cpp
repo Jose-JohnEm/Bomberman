@@ -40,8 +40,8 @@ void PlayerSelector::Player::draw(const float &rotation, const Raylib::Vector3 &
     {
         if (clock.doesTimeElapsed(0.03))
             counter++;
-        UpdateModelAnimation(_persoModel, _animations[0], counter);
-        if (counter >= _animations[0].frameCount)
+        UpdateModelAnimation(_persoModel, _animations[2], counter);
+        if (counter >= _animations[2].frameCount)
             counter = 0;
         DrawModelEx(_persoModel, pos.getCStruct(), {0, 0, 0}, 0, {_scalable, _scalable, _scalable}, _color.getCStruct());
     }
@@ -67,8 +67,8 @@ void PlayerSelector::Player::drawForMaps(const float &rotation, const Raylib::Ve
     {
         if (clock.doesTimeElapsed(0.01))
             counter++;
-        UpdateModelAnimation(_persoModel, _animations[1], counter);
-        if (counter >= _animations[1].frameCount)
+        UpdateModelAnimation(_persoModel, _animations[0], counter);
+        if (counter >= _animations[0].frameCount)
             counter = 0;
         DrawModelEx(_persoModel, {pos.x * 0.3f - (float)2.4, pos.y * 0.3f - (float)0.5, 0}, {0, 0, 1}, rotation, {scale_value, scale_value, scale_value}, _color.getCStruct());
     }
