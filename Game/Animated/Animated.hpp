@@ -9,6 +9,7 @@
 #include "../Lib/XRaylib/Raylib/Vector3/Vector3.hpp"
 #include <string>
 #include <filesystem>
+#include <cmath>
 #include "Interfaces/IEntity.hpp"
 #include "Modeler.hpp"
 
@@ -116,14 +117,14 @@ class Animated : public IEntity
              *
              * @param direction
              */
-            void Game::Animated::move(const std::string &direction);
+            void move(const std::string &direction);
 
             /**
              * @brief
              *
              * @return std::pair<int, int>
              */
-            std::pair<int, int> Game::Animated::getPositions2D();
+            std::pair<int, int> getPositions2D();
 
         private:
 
