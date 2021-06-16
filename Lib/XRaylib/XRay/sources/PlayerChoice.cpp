@@ -88,7 +88,7 @@ void XRay::displayCardsSettings(std::vector<std::pair<int, int>> &removeButtons,
 {
     int i, b;
     for (i = 0, (*x) = 100, b = 200; _allIntegers[2] < 5 && i < _allIntegers[2]; i++, (*x) += 450) {
-        (_playerTab[i]) ? _resources[(Resources)(_card[i]+i)]->drawTexture((*x), b) : _resources[AI]->drawTexture((*x), b);
+        (_playerTab[i]) ? _resources.at((Resources)(_card[i]+i))->drawTexture((*x), b) : _resources.at(AI)->drawTexture((*x), b);
         if (_playerTab[i])
             _resources.at((Resources)(size_t)((_controlsTab[i])+_card[i]-36))->drawTexture((*x)+109, b+9);
         if (i != 0)
@@ -136,8 +136,8 @@ void XRay::displayPlayerChoiceScene(void)
     displayBack();
 
     displayCardsSettings(removeButtons, &x);
-    (goBack ? _resources[BACK_HOVER] : _resources[BACK])->drawTexture(20, 1000);
-    (goNext ? _resources[NEXT_HOVER] : _resources[NEXTSCENE])->drawTexture(1700, 1000);
+    (goBack ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000);
+    (goNext ? _resources.at(NEXT_HOVER) : _resources.at(NEXTSCENE))->drawTexture(1700, 1000);
 
     _pSelector.drawPlayers();
 
