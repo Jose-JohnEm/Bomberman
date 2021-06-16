@@ -140,24 +140,24 @@ inline void Game::Map::placeSolidWalls(void)
 
 inline void Game::Map::setPlayersAreas(const size_t &areaSize)
 {
-    for (size_t player = 1; player <= (_playersNumber.first + _playersNumber.second); player++)
+    for (size_t player = 0; player < (_playersNumber.first + _playersNumber.second); player++)
     {
         for (size_t i = 1; i <= areaSize; i++)
         {
             switch (player)
             {
-                case 1:
+                case 0:
                     _map[1][1 + i] = EMPTY_SPACE;
                     _map[1 + i][1] = EMPTY_SPACE;
                     break;
-                case 2:
+                case 1:
                     _map[_height - BORDER][1 + i] = EMPTY_SPACE;
                     _map[_height - BORDER - i][1] = EMPTY_SPACE;
                     break;
-                case 3:
+                case 2:
                     _map[_height - BORDER][_width - BORDER - i] = EMPTY_SPACE;
                     _map[_height - BORDER - i][_width - BORDER] = EMPTY_SPACE;
-                case 4:
+                case 3:
                     _map[1][_width - BORDER - i] = EMPTY_SPACE;
                     _map[1 + i][_width - BORDER] = EMPTY_SPACE;
                 default:
