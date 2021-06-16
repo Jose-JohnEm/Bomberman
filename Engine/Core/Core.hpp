@@ -86,6 +86,7 @@ namespace Engine
             std::vector<std::string> _backups;                                  // Paths of Backup Files
 
             bool _isPaused = false;                                                     // Pause flag
+            size_t _refreshFlag = 0;                                              // Refresh Flag
     };
 }
 
