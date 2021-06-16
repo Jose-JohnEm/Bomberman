@@ -64,3 +64,8 @@ inline std::string Game::AI::getType() const
 {
     return ("AI");
 }
+
+inline bool Game::Player::dropBomb()
+{
+    return true;
+}

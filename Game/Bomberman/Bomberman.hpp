@@ -181,6 +181,12 @@ namespace Game
              * @brief
              *
              */
+            void doDropBomb(const size_t &playerID, std::pair<int, int> position);
+
+            /**
+             * @brief
+             *
+             */
             Game::Player &Game::Bomberman::findPlayer(const size_t &id);
 
             /**

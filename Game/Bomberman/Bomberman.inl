@@ -45,7 +45,7 @@ inline void Game::Bomberman::setSettings(const std::array<std::size_t, 9> &setti
     _settings = settings;
 }
 
-Game::Player &Game::Bomberman::findPlayer(const size_t &id)
+inline Game::Player &Game::Bomberman::findPlayer(const size_t &id)
 {
     Game::Player *res = nullptr;
 
@@ -57,6 +57,10 @@ Game::Player &Game::Bomberman::findPlayer(const size_t &id)
     return findPlayer(id - 1);
 }
 
+inline void Game::Bomberman::doDropBomb(const size_t &playerID, std::pair<int, int> position)
+{
+    _entities.push_back(std::shared_ptr<IEntity>(new Game::Bomb({(float)position.first, (float)position.second, 0}, 1)));
+}
 
 inline void Game::Bomberman::doPlayerAction(const size_t playerID, const std::string action)
 {
@@ -67,7 +71,8 @@ inline void Game::Bomberman::doPlayerAction(const size_t playerID, const std::st
     }
     if (action == "dropBomb")
     {
-        findPlayer(playerID).dropBomb();
+        if (findPlayer(playerID).dropBomb())
+            doDropBomb(playerID, findPlayer(playerID).getPositions2D());
     }
 }
 

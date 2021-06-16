@@ -164,6 +164,13 @@ class Animated : public IEntity
             ~Bomb();
 
             /**
+             * @brief Get the Type object
+             *
+             * @return A std::string
+             */
+            std::string getType() const override;
+
+            /**
              * @brief Make the bomb explose
              *
              */
