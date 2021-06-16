@@ -151,15 +151,15 @@ inline void Game::Map::setPlayersAreas(const size_t &areaSize)
                     _map[1 + i][1] = EMPTY_SPACE;
                     break;
                 case 1:
-                    _map[_height - BORDER][1 + i] = EMPTY_SPACE;
-                    _map[_height - BORDER - i][1] = EMPTY_SPACE;
-                    break;
-                case 2:
-                    _map[_height - BORDER][_width - BORDER - i] = EMPTY_SPACE;
-                    _map[_height - BORDER - i][_width - BORDER] = EMPTY_SPACE;
-                case 3:
                     _map[1][_width - BORDER - i] = EMPTY_SPACE;
                     _map[1 + i][_width - BORDER] = EMPTY_SPACE;
+                    break;
+                case 2:
+                    _map[_height - BORDER][1 + i] = EMPTY_SPACE;
+                    _map[_height - BORDER - i][1] = EMPTY_SPACE;
+                case 3:
+                    _map[_height - BORDER][_width - BORDER - i] = EMPTY_SPACE;
+                    _map[_height - BORDER - i][_width - BORDER] = EMPTY_SPACE;
                 default:
                     break;
             }
