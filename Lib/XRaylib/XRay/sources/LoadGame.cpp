@@ -13,9 +13,9 @@ void XRay::loadThisBackup(const std::string &_pathToBackupFile)
         _pointerToLoadFunc(_pathToBackupFile);
         displayCinematic("loading", 0, 0);
         _scene = IN_GAME;
-    } catch (const std::exception &exception)
-    {
+    } catch (const std::exception &exception) {
         std::cerr << exception.what() << std::endl;
+        throw std::logic_error("ERROR: Wrong backup file syntax");
     }
 }
 
@@ -43,12 +43,21 @@ void XRay::displayLoadGameScene(void)
         ordinate += 100;
     }
     (goBack ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000);
+
     displayMouse();
+
+    // If backup file is valid go to load scene
+    for (u = 0, ordinate = 300; u < _backups.size(); u++, ordinate += 100)
+        if (Raylib::Mouse::isButtonDown(0) && mouseIsInBox(createBox(300, ordinate + 20, 1100, ordinate + 85))) {
+            try {
+                loadThisBackup(_backups[u]);
+            } catch (const std::logic_error &exception) {
+                std::cerr << exception.what() << std::endl;
+                _resources.at(BACKUPERROR)->drawTexture(295, ordinate + 10);
+            }
+        }
     endDrawing();
 
-    for (u = 0, ordinate = 300; u < _backups.size(); u++, ordinate += 100)
-        if (Raylib::Mouse::isButtonDown(0) && mouseIsInBox(createBox(300, ordinate + 20, 1100, ordinate + 85)))
-            loadThisBackup(_backups[u]);
     // Go to another scene according to mouse position
     if (goBack && Raylib::Mouse::isButtonPressed(0)) {
         _sfx.at(SFX_HOME)->play();

@@ -8,7 +8,7 @@
 #include "XRay.hpp"
 
 XRay::XRay(void)
-        : _window(1920, 1080, "Bomberman")
+    : _window(1920, 1080, "Bomberman")
 {
     // Set icon for window
     Raylib::Window::setWindowIcon(Raylib::Image("resources/assets/head.png"));
@@ -195,6 +195,7 @@ void XRay::setResources(void)
     _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::GREENBOMBERMAN, std::make_shared<Raylib::Texture>(Raylib::Image("resources/players/bioGreen.png"))));
     _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::HOWTO_BG, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/howToBack.png"))));
     _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::MOUSERADAR, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/mouseRadar.png"))));
+    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::BACKUPERROR, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/backupBarRed.png"))));
 }
 
 void XRay::setAudioResources(void)
