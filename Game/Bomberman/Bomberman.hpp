@@ -177,9 +177,42 @@ namespace Game
              */
             void doPlayerAction(const size_t playerID, const std::string action) override;
 
-            bool checkPlayerPosition(const std::string action, Human &human);
+            /**
+             * @brief
+             *
+             */
+            Game::Player &Game::Bomberman::findPlayer(const size_t &id);
+
+            /**
+             * @brief
+             *
+             * @param action
+             * @param player
+             * @return true
+             * @return false
+             */
+            bool checkPlayerPosition(const std::string action, Player &player);
+
+            /**
+             * @brief
+             *
+             * @param action
+             * @param y
+             * @param x
+             * @return true
+             * @return false
+             */
             bool checkPlayerPositionPass(const std::string action, const int &y, const int &x);
+
+            /**
+             * @brief
+             *
+             * @param playerPos
+             * @param y
+             * @param x
+             */
             void updateMap(const std::pair<int, int>  &playerPos, const int &y, const int &x);
+
             /**
              * @brief Set the current Players data
              *
