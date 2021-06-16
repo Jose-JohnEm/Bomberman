@@ -9,9 +9,14 @@
 
 void XRay::loadThisBackup(const std::string &_pathToBackupFile)
 {
-    _pointerToLoadFunc(_pathToBackupFile);
-    displayCinematic("loading", 0, 0);
-    _scene = IN_GAME;
+    try {
+        _pointerToLoadFunc(_pathToBackupFile);
+        displayCinematic("loading", 0, 0);
+        _scene = IN_GAME;
+    } catch (const std::exception &exception)
+    {
+        std::cerr << exception.what() << std::endl;
+    }
 }
 
 void XRay::displayLoadGameScene(void)
