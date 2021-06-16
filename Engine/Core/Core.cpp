@@ -28,8 +28,10 @@ void Engine::Core::saveGame(std::array<std::size_t, 9> settings, std::vector<std
 
 void Engine::Core::loadGame(std::string filepath)
 {
+    _refreshFlag = 0;
     _game->loadGame(filepath);
     _graphical->setGameSettings(_game->getSettings());
+    _graphical->setMapSize(_game->getMap().size()-2);
     _graphical->setUserNames(_game->getUserNames());
     _graphical->setPlayerControls(_game->getPlayerControls());
 }
