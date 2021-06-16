@@ -76,11 +76,21 @@ inline bool Game::Bomberman::checkPlayerPosition(const std::string action, Human
     };
 
     positions.y = _map.size() - positions.y;
+    for (auto i: _map)
+        std::cout << i << std::endl;
     if (_map[direction[action].second + positions.y][direction[action].first + positions.x] == '*') {
+        updateMap(positions, direction[action].second + positions.y, direction[action].first + positions.x);
         return true;
     } else if (human.getPowerUps()[P_PASS] > 0 && checkPlayerPositionPass(action, direction[action].second * 2 + positions.y, direction[action].first * 2 + positions.x) == true)
+        updateMap(positions, direction[action].second * 2 + positions.y, direction[action].first * 2 + positions.x);
         return true;
     return false;
+}
+
+inline void Game::Bomberman::updateMap(const Raylib::Vector3 &playerPos, const int &y, const int &x)
+{
+    _map[y][x] = _map[playerPos.y][playerPos.x];
+    _map[playerPos.y][playerPos.x] = '*';
 }
 
 inline bool Game::Bomberman::checkPlayerPositionPass(const std::string action, const int &y, const int &x)

@@ -179,6 +179,7 @@ namespace Game
 
             bool checkPlayerPosition(const std::string action, Human &human);
             bool checkPlayerPositionPass(const std::string action, const int &y, const int &x);
+            void updateMap(const Raylib::Vector3 &playerPos, const int &y, const int &x);
             /**
              * @brief Set the current Players data
              *
