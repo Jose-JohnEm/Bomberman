@@ -109,6 +109,14 @@ namespace Game
              * @return true if current cell is unblocked, false otherwise
              */
             bool isUnBlocked(const Point &currentCell) const;
+
+            /**
+             * @brief Check if destination cell has been reached or not
+             *
+             * @param currentCell Current node
+             * @return true if current cell is the destination, false otherwise
+             */
+            bool isDestination(Point currentCell) const;
     };
 
     #include "Astar.inl"

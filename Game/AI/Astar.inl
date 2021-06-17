@@ -20,3 +20,8 @@ inline bool Game::Astar::isUnBlocked(const Point &currentCell) const
 {
     return _map[currentCell._y][currentCell._x] == '*';
 }
+
+inline bool Game::Astar::isDestination(Point currentCell) const
+{
+    return currentCell == _target;
+}
