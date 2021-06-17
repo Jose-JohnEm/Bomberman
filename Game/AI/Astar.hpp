@@ -100,7 +100,15 @@ namespace Game
              * @param currentCell Current node
              * @return true if current cell is in ranges, false otherwise
              */
-            bool isValid(const Point &currentCell) const;
+            bool isInRange(const Point &currentCell) const;
+
+            /**
+             * @brief Check if current cell is blocked or not
+             *
+             * @param currentCell Current node
+             * @return true if current cell is unblocked, false otherwise
+             */
+            bool isUnBlocked(const Point &currentCell) const;
     };
 
     #include "Astar.inl"
