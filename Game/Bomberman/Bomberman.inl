@@ -102,10 +102,13 @@ inline bool Game::Bomberman::checkPlayerPosition(const std::string action, Playe
 
     if (collision && _map[direction[action].second + positions.second][direction[action].first + positions.first] != '*')
     {
+        Raylib::Vector3 p1(pos3D.x, positions.second, pos3D.z);
+        Raylib::Vector3 p2(positions.first, pos3D.y, pos3D.z);
+
         if (action == "goEast" || action == "goWest")
-            player.setPositions(Raylib::Vector3(pos3D.x, positions.second, pos3D.z));
+            player.setPositions(p1);
         if (action == "goNorth" || action == "goSouth")
-            player.setPositions(Raylib::Vector3(positions.first, pos3D.y, pos3D.z));
+            player.setPositions(p2);
     }
 
     positions.second = _map.size() - positions.second;
