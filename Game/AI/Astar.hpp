@@ -12,6 +12,7 @@
 #include <vector>
 #include <string>
 #include <array>
+#include <cmath>
 
 namespace Game
 {
@@ -83,6 +84,14 @@ namespace Game
             // #######
             // #2#6#3#
             // #######
+
+            /**
+             * @brief Calcul the heuristic distance between a cell and the target (Euclidean Distance)
+             *
+             * @param currentCell Current node
+             * @return float - The heuristic distance between a cell and the target
+             */
+            float calculateHValue(const Point &currentCell) const;
     };
 
     #include "Astar.inl"
