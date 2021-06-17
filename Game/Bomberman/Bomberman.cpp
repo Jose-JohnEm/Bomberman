@@ -94,7 +94,7 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
         current = _map[pos.second][pos.first + i];
         if (current == 'W' || current == 'X' || current == 'E')
             break;
-        if (current == 'M') {
+        if (current == 'M' || current == 'H'  || current == 'A') {
             _map[pos.second][pos.first + i] = c;
             eraseEntitiesOnBomb({pos.first + i, pos.second});
             break;
@@ -110,7 +110,7 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
             std::cout << "Et non..." << std::endl;
             break;
         }
-        if (current == 'M') {
+        if (current == 'M' || current == 'H'  || current == 'A') {
             _map[pos.second][pos.first - i] = c;
             eraseEntitiesOnBomb({pos.first - i, pos.second});
             break;
@@ -122,7 +122,7 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
         current = _map[pos.second + i][pos.first];
         if (current == 'W' || current == 'X' || current == 'E')
             break;
-        if (current == 'M') {
+        if (current == 'M' || current == 'H'  || current == 'A') {
             _map[pos.second + i][pos.first] = c;
             eraseEntitiesOnBomb({pos.first, pos.second + i});
             break;
@@ -134,7 +134,7 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
         current = _map[pos.second - i][pos.first];
         if (current == 'W' || current == 'X' || current == 'E')
             break;
-        if (current == 'M') {
+        if (current == 'M' || current == 'H'  || current == 'A') {
             _map[pos.second - i][pos.first] = c;
             eraseEntitiesOnBomb({pos.first, pos.second - i});
             break;
@@ -179,6 +179,7 @@ void Game::Bomberman::updateEntities()
     {
         if ((bomb = dynamic_cast<Game::Bomb *>(entity.get())) != nullptr)
         {
+            
             bomb->update();
             bombExplosion(*bomb, index);
         }

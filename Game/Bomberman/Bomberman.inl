@@ -94,7 +94,7 @@ inline bool Game::Bomberman::checkPlayerPosition(const std::string action, Playe
         {"goWest", {1, 0}}
     };
 
-    bool collision = CheckCollisionSpheres(pos3D.getCStruct(), 0.4,  {(float)positions.first + direction[action].first, (float)positions.second + direction[action].second, 0}, 0.4);
+    bool collision = CheckCollisionSpheres(pos3D.getCStruct(), 0.46,  {(float)positions.first + direction[action].first, (float)positions.second + direction[action].second, 0}, 0.46);
 
     std::cout << "<<<< Position du perso : { " << pos3D.getCStruct().x << ", " << pos3D.getCStruct().y << ", " << pos3D.getCStruct().z << "}"<< std::endl;
     std::cout << "<<<< Position du mur : { " << direction[action].first + positions.first << ", " << direction[action].second + positions.second << ", " << 0 << "}"<< std::endl;
