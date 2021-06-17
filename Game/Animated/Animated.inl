@@ -41,10 +41,10 @@ inline void Game::Bomb::drawEntity()
     if (_bZoneX.first != 0 && _bZoneX.second != 0 && _bZoneY.first != 0 && _bZoneY.second != 0)
     {
         for (int i = 0; i < _bZoneX.second; i++)
-            DrawCube({(float)_bZoneX.first + i, pos.y, pos.z}, 1 , 1, 1, RED);
+            DrawCubeTexture(LoadTexture("resources/assets/fire.png"), {(float)_bZoneX.first + i, pos.y, pos.z}, 1 , 1, 1, RED);
         for (int i = 0; i < _bZoneY.second; i++)
-            DrawCube({pos.x, (float)_bZoneY.first - i, pos.z}, 1, 1, 1, RED);
-        //DrawCircle3D(Animated::getPositions().getCStruct(), 2, {0,0,0}, 0, RED);
+            DrawCubeTexture(LoadTexture("resources/assets/fire.png"), {pos.x, (float)_bZoneY.first - i, pos.z}, 1, 1, 1, RED);
+        DrawSphere(Animated::getPositions().getCStruct(), 0.9, RED);
     }
     Animated::drawEntity();
 }
