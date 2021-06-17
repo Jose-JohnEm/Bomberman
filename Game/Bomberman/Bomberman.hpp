@@ -96,6 +96,27 @@ namespace Game
             const std::vector<std::vector<std::pair<std::string, std::string>>> &getPlayersStats(void) const override;
 
             /**
+             * @brief
+             *
+             */
+            void Game::Bomberman::eraseEntitiesOnBomb(const std::pair<int, int> &pos);
+
+            /**
+             * @brief
+             *
+             * @param c
+             * @param rad
+             * @param pos
+             */
+            void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<int, int> pos);
+
+            /**
+             * @brief
+             *
+             */
+            void Game::Bomberman::bombExplosion(Game::Bomb &bomb, const size_t &index);
+
+            /**
              * @brief updateGame function should be called in a loop. It's used to advance the game and update all logic.
              * The game must manage time on it's own.
              */

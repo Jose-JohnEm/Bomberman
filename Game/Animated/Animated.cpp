@@ -11,7 +11,8 @@ Game::Animated::Animated(const Raylib::Vector3 &positions, const std::string &ob
     : _positions(positions),
     _model(obj_path, texture_path, getAnimator(animation_path)),
     _scalable(scalable),
-    _color(color)
+    _color(color),
+    _moving(false)
 {
 }
 
@@ -19,7 +20,9 @@ Game::Bomb::Bomb(const Raylib::Vector3 &positions, const int &fire)
     : Animated(positions, "resources/assets/3D/Bombs/Animated/bomb.glb", "resources/assets/3D/Bombs/Animated/texture.png", {"resources/assets/3D/Bombs/Animated/bomb.glb", "resources/assets/3D/Bombs/Animated/bomb.glb", "resources/assets/3D/Bombs/Animated/bomb.glb"}),
     _fire(fire),
     _exploded(false),
-    _explosing(false)
+    _explosing(false),
+    _bZoneX({0, 0}),
+    _bZoneY({0, 0})
 {
 
 }
@@ -95,6 +98,7 @@ void Game::Animated::move(const std::string &direction)
     _positions.x += dict[direction].first;
     _positions.y += dict[direction].second;
 
+    _moving = true;
     _model.update();
 
 }

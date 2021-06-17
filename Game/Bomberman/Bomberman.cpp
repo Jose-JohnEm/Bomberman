@@ -70,8 +70,120 @@ void Game::Bomberman::initPlayersStats()
     }
 }
 
+void Game::Bomberman::eraseEntitiesOnBomb(const std::pair<int, int> &pos)
+{
+    size_t index = 0;
+
+    for (const auto &entity : _entities)
+    {
+        if ((int)entity->getPositions().x == pos.first && _map.size() - (int)entity->getPositions().y == pos.second)
+        {
+            _entities.erase(_entities.begin() + index);
+            break;
+        }
+        index++;
+    }
+}
+
+void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<int, int> pos)
+{
+    char current = 0;
+
+    for (int i = 1; i <= rad; i++)
+    {
+        current = _map[pos.second][pos.first + i];
+        if (current == 'W' || current == 'X' || current == 'E')
+            break;
+        if (current == 'M') {
+            _map[pos.second][pos.first + i] = c;
+            eraseEntitiesOnBomb({pos.first + i, pos.second});
+            break;
+        }
+        _map[pos.second][pos.first + i] = c;
+    }
+    for (int i = 1; i <= rad; i++)
+    {
+        std::cout << "Boom a gauche" << std::endl;
+        current = _map[pos.second][pos.first - i];
+        if (current == 'W' || current == 'X' || current == 'E')
+        {
+            std::cout << "Et non..." << std::endl;
+            break;
+        }
+        if (current == 'M') {
+            _map[pos.second][pos.first - i] = c;
+            eraseEntitiesOnBomb({pos.first - i, pos.second});
+            break;
+        }
+        _map[pos.second][pos.first - i] = c;
+    }
+    for (int i = 1; i <= rad; i++)
+    {
+        current = _map[pos.second + i][pos.first];
+        if (current == 'W' || current == 'X' || current == 'E')
+            break;
+        if (current == 'M') {
+            _map[pos.second + i][pos.first] = c;
+            eraseEntitiesOnBomb({pos.first, pos.second + i});
+            break;
+        }
+        _map[pos.second + i][pos.first] = c;
+    }
+    for (int i = 1; i <= rad; i++)
+    {
+        current = _map[pos.second - i][pos.first];
+        if (current == 'W' || current == 'X' || current == 'E')
+            break;
+        if (current == 'M') {
+            _map[pos.second - i][pos.first] = c;
+            eraseEntitiesOnBomb({pos.first, pos.second - i});
+            break;
+        }
+        _map[pos.second - i][pos.first] = c;
+    }
+}
+
+void Game::Bomberman::bombExplosion(Game::Bomb &bomb, const size_t &index)
+{
+    int rad = 0;
+    std::pair<int, int> pos = bomb.getPositions2D();
+    pos.second = _map.size() - pos.second;
+
+    if (bomb.hasExplode())
+    {
+        _entities.erase(_entities.begin() + index);
+    }
+    else if (bomb.isExploding())
+    {
+        rad = bomb.makeExplode();
+        _map[pos.second][pos.first] = 'X';
+        setCharOnRadius('X', rad, pos);
+        bomb.setBombzone(_map);
+        for (int y = 0;  y < _map.size(); y++)
+        {
+            for (int x = 0; x < _map[0].size(); x++)
+            {
+                if (_map[y][x] == 'X')
+                    _map[y][x] = 42;
+            }
+        }
+    }
+}
+
 void Game::Bomberman::updateEntities()
 {
+    size_t index = 0;
+    Game::Bomb *bomb = nullptr;
+
+    for (auto entity : _entities)
+    {
+        if ((bomb = dynamic_cast<Game::Bomb *>(entity.get())) != nullptr)
+        {
+            bomb->update();
+            bombExplosion(*bomb, index);
+        }
+        index++;
+    }
 }
 
 void Game::Bomberman::updateScores()
@@ -166,8 +278,8 @@ void Game::Bomberman::updateGame(void)
         initPlayersStats();
         _reinit++;
     }
+    updateEntities();
     if (_gameOver) {
-        updateEntities();
         updateScores();
         updatePlayersStats();
     }

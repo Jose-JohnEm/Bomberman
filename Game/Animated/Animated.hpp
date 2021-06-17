@@ -142,6 +142,7 @@ class Animated : public IEntity
             Raylib::Color _color; // Player color
             float _scalable; // Player scalability
             float _rotation;
+            bool _moving;
 
     };
 
@@ -192,11 +193,32 @@ class Animated : public IEntity
              */
             bool hasExplode();
 
+            /**
+             * @brief
+             *
+             */
+            void drawEntity() override;
+
+            /**
+             * @brief
+             *
+             */
+            void update();
+
+            /**
+             * @brief Set the Bombzone object
+             *
+             * @param map
+             */
+            void setBombzone(std::vector<std::string> map);
+
         private:
             Clock clock;
             bool _explosing;
             bool _exploded;
             int _fire;
+            std::pair<int, int> _bZoneX;
+            std::pair<int, int> _bZoneY;
     };
 
     #include "Animated.inl"
