@@ -13,6 +13,20 @@ Game::Point::Point(const int &x, const int &y)
 }
 
 Game::Astar::Astar(const std::vector<std::string> &map, const Point &start, const Point &target)
-    : _map(map), _start(start), _target(target)
+    : _map(map),
+    _start(start),
+    _target(target),
+    _neighbors(
+        {
+            Point(-1, -1),
+            Point(1, -1),
+            Point(-1, 1),
+            Point(1, 1),
+            Point(0, -1),
+            Point(-1, 0),
+            Point(0, 1),
+            Point(1, 0)
+        }
+    )
 {
 }

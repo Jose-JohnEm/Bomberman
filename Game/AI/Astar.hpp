@@ -11,6 +11,7 @@
 #include <utility>
 #include <vector>
 #include <string>
+#include <array>
 
 namespace Game
 {
@@ -49,6 +50,15 @@ namespace Game
             const int _y; // The ordinate coordinate
     };
 
+    class Node
+    {
+        public:
+            Point _positions; // Square positions
+            Point _parentPositions; // Parent square positions
+            int _g; // The movement cost to move from the starting point to a given square on the grid, following the path generated to get there
+            int _h; // The estimated movement cost to move from that given square/node on the grid to the final destination
+    };
+
     class Astar
     {
         public:
@@ -62,9 +72,17 @@ namespace Game
             Astar(const std::vector<std::string> &map, const Point &start, const Point &target);
 
         private:
-            std::vector<std::string> _map;
-            Point _start;
-            Point _target;
+            std::vector<std::string> _map; // The map
+            Point _start; // The start point
+            Point _target; // The start point
+            std::array<Point, 8> _neighbors; // An array of 8 points representing the 8 neighbors of the current node
+            // #######
+            // #0#4#1#
+            // #######
+            // #5#C#7#  THE NEIGHBORS[8]
+            // #######
+            // #2#6#3#
+            // #######
     };
 
     #include "Astar.inl"
