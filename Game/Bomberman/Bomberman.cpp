@@ -72,6 +72,8 @@ void Game::Bomberman::initPlayersStats()
 
 void Game::Bomberman::updateEntities()
 {
+    //TODO: AI
+    //doAction("string");
 }
 
 void Game::Bomberman::updateScores()
@@ -166,7 +168,7 @@ void Game::Bomberman::updateGame(void)
         initPlayersStats();
         _reinit++;
     }
-    if (_gameOver) {
+    if (!_gameOver) {
         updateEntities();
         updateScores();
         updatePlayersStats();
