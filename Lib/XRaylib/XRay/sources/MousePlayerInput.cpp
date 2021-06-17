@@ -46,7 +46,7 @@ bool MousePlayerInput::shouldGoToEast(void) const
         mousePos = (x - y) >= 0 ? true : false;
     else
         mousePos = (x + y) >= 0 ? true : false;
-    return Raylib::Mouse::isButtonPressed(2) && mousePos;
+    return Raylib::Mouse::isButtonDown(0) && mousePos;
 }
 
 bool MousePlayerInput::shouldGoToWest(void) const
@@ -61,7 +61,7 @@ bool MousePlayerInput::shouldGoToWest(void) const
         mousePos = -(x + y) >= 0 ? true : false;
     else
         mousePos = (y - x) >= 0 ? true : false;
-    return Raylib::Mouse::isButtonPressed(2) && mousePos;
+    return Raylib::Mouse::isButtonDown(0) && mousePos;
 }
 
 bool MousePlayerInput::shouldGoToNorth(void) const
@@ -76,7 +76,7 @@ bool MousePlayerInput::shouldGoToNorth(void) const
         mousePos = -(x + y) >= 0 ? true : false;
     else
         mousePos = (x - y) >= 0 ? true : false;
-    return Raylib::Mouse::isButtonPressed(2) && mousePos;
+    return Raylib::Mouse::isButtonDown(0) && mousePos;
 }
 
 bool MousePlayerInput::shouldGoToSouth(void) const
@@ -91,7 +91,7 @@ bool MousePlayerInput::shouldGoToSouth(void) const
         mousePos = (y - x) >= 0 ? true : false;
     else
         mousePos = (x + y) >= 0 ? true : false;
-    return Raylib::Mouse::isButtonPressed(2) && mousePos;
+    return Raylib::Mouse::isButtonDown(0) && mousePos;
 }
 
 bool MousePlayerInput::shouldChangeToPrev(void) const
