@@ -13,6 +13,7 @@
 #include <string>
 #include <array>
 #include <cmath>
+#include <list>
 
 namespace Game
 {
@@ -37,16 +38,6 @@ namespace Game
                 return (point._x == _x && point._y == _y);
             }
 
-            /**
-             * @brief Add operator
-             *
-             * @param point Point to add
-             * @return A new point with addition positions
-             */
-            Point operator+(const Point &point) {
-                return Point(point._x + _x, point._y + _y);
-            }
-
             const int _x; // The abscissa coordinate
             const int _y; // The ordinate coordinate
     };
@@ -54,6 +45,16 @@ namespace Game
     class Node
     {
         public:
+            /**
+             * @brief Construct a new Node object
+             *
+             * @param positions The Node positions
+             * @param parentPositions The node's parent positions
+             * @param g The movement cost
+             * @param h The movement heuristic
+             */
+            Node(const Point &positions, const Point &parentPositions, const int &g, const int &h);
+
             Point _positions; // Square positions
             Point _parentPositions; // Parent square positions
             int _g; // The movement cost to move from the starting point to a given square on the grid, following the path generated to get there
@@ -72,11 +73,20 @@ namespace Game
              */
             Astar(const std::vector<std::string> &map, const Point &start, const Point &target);
 
+            /**
+             * @brief Find a path to the target
+             *
+             * @return true if the destination has been found, false otherwise
+             */
+            bool targetIsFound(void);
+
         private:
             std::vector<std::string> _map; // The map
             std::pair<int, int> _mapDimensions; // The map dimensions (first: width, second: height)
             Point _start; // The start point
             Point _target; // The start point
+            std::list<Node> _open; // Open list of nodes
+            std::list<Node> _closed; // Closed list of nodes
             std::array<Point, 8> _neighbors; // An array of 8 points representing the 8 neighbors of the current node
             // #######
             // #0#4#1#
@@ -111,7 +121,7 @@ namespace Game
             bool isUnBlocked(const Point &currentCell) const;
 
             /**
-             * @brief Check if destination cell has been reached or not
+             * @brief Check if the current cell is the destination cell
              *
              * @param currentCell Current node
              * @return true if current cell is the destination, false otherwise
