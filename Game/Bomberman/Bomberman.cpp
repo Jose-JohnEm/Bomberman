@@ -304,8 +304,8 @@ void Game::Bomberman::updateGame(void)
         initPlayersStats();
         _reinit++;
     }
-    updateEntities();
-    if (_gameOver) {
+    if (!_gameOver) {
+        updateEntities();
         updateScores();
         updatePlayersStats();
     }
