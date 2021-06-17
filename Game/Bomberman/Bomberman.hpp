@@ -99,7 +99,7 @@ namespace Game
              * @brief
              *
              */
-            void Game::Bomberman::eraseEntitiesOnBomb(const std::pair<int, int> &pos);
+            void eraseEntitiesOnBomb(const std::pair<int, int> &pos);
 
             /**
              * @brief
@@ -108,13 +108,13 @@ namespace Game
              * @param rad
              * @param pos
              */
-            void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<int, int> pos);
+            void setCharOnRadius(const char &c, const int &rad, std::pair<int, int> pos);
 
             /**
              * @brief
              *
              */
-            void Game::Bomberman::bombExplosion(Game::Bomb &bomb, const size_t &index);
+            void bombExplosion(Game::Bomb &bomb, const size_t &index);
 
             /**
              * @brief updateGame function should be called in a loop. It's used to advance the game and update all logic.
@@ -208,7 +208,7 @@ namespace Game
              * @brief
              *
              */
-            Game::Player &Game::Bomberman::findPlayer(const size_t &id);
+            Game::Player &findPlayer(const size_t &id);
 
             /**
              * @brief
