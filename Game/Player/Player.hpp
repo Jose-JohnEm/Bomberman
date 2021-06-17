@@ -51,7 +51,7 @@ namespace Game
              * @param texture_path the texture path
              * @param animation_path the animations paths
              */
-            Player(const std::string &name, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path = {}, const float &scalable = 0.6, const Raylib::Color color = Raylib::Color::White());
+            Player(const std::string &name, const int &id, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path = {}, const float &scalable = 0.6, const Raylib::Color color = Raylib::Color::White());
 
             /**
              * @brief Get the Name of the Player

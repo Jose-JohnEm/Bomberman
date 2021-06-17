@@ -110,10 +110,10 @@ inline bool Game::Bomberman::checkPlayerPosition(const std::string action, Playe
     return false;
 }
 
-inline void Game::Bomberman::updateMap(const Raylib::Vector3 &playerPos, const int &y, const int &x)
+inline void Game::Bomberman::updateMap(const std::pair<int, int> &playerPos, const int &y, const int &x)
 {
-    _map[y][x] = _map[playerPos.y][playerPos.x];
-    _map[playerPos.y][playerPos.x] = '*';
+    _map[y][x] = _map[playerPos.second][playerPos.first];
+    _map[playerPos.second][playerPos.first] = '*';
 }
 
 inline bool Game::Bomberman::checkPlayerPositionPass(const std::string action, const int &y, const int &x)
