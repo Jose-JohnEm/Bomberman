@@ -14,6 +14,7 @@ Game::Point::Point(const int &x, const int &y)
 
 Game::Astar::Astar(const std::vector<std::string> &map, const Point &start, const Point &target)
     : _map(map),
+    _mapDimensions(std::make_pair(map[0].size(), map.size())),
     _start(start),
     _target(target),
     _neighbors(

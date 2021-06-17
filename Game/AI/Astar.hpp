@@ -74,6 +74,7 @@ namespace Game
 
         private:
             std::vector<std::string> _map; // The map
+            std::pair<int, int> _mapDimensions; // The map dimensions (first: width, second: height)
             Point _start; // The start point
             Point _target; // The start point
             std::array<Point, 8> _neighbors; // An array of 8 points representing the 8 neighbors of the current node
@@ -92,6 +93,14 @@ namespace Game
              * @return float - The heuristic distance between a cell and the target
              */
             float calculateHValue(const Point &currentCell) const;
+
+            /**
+             * @brief Check if current cell is valid (not out map ranges)
+             *
+             * @param currentCell Current node
+             * @return true if current cell is in ranges, false otherwise
+             */
+            bool isValid(const Point &currentCell) const;
     };
 
     #include "Astar.inl"
