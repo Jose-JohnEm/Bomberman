@@ -48,6 +48,31 @@ bool Game::Astar::targetIsFound(void)
         Node openHead = _open.front();
         // Remove the open list head
         _open.pop_front();
+        // Added it into closed list
+        _close.push_back(openHead);
+        if (targetIsReached(openHead))
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Game::Astar::targetIsReached(Node &openHead) //TODO: to continue
+{
+    Point neighbor;
+
+    for (int i = 0; i < _neighbors.size(); i++)
+    {
+        // Select a specific slot
+        neighbor = openHead._positions + _neighbors[i];
+        if (isDestination(neighbor))
+        {
+            return true;
+        }
+        else if (isInMap(neighbor) && isUnBlocked(neighbor))
+        {
+        }
     }
     return false;
 }

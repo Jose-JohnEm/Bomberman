@@ -38,8 +38,24 @@ namespace Game
                 return (point._x == _x && point._y == _y);
             }
 
-            const int _x; // The abscissa coordinate
-            const int _y; // The ordinate coordinate
+            /**
+             * @brief Add operator
+             *
+             * @param point Point to add
+             * @return A new point with addition positions
+             */
+            Point operator+(const Point &point) {
+                return Point(point._x + _x, point._y + _y);
+            }
+
+            Point &operator=(const Point &point) {
+                _x = point._x;
+                _y = point._y;
+                return *this;
+            }
+
+            int _x; // The abscissa coordinate
+            int _y; // The ordinate coordinate
     };
 
     class Node
@@ -86,7 +102,7 @@ namespace Game
             Point _start; // The start point
             Point _target; // The start point
             std::list<Node> _open; // Open list of nodes
-            std::list<Node> _closed; // Closed list of nodes
+            std::list<Node> _close; // Closed list of nodes
             std::array<Point, 8> _neighbors; // An array of 8 points representing the 8 neighbors of the current node
             // #######
             // #0#4#1#
@@ -108,9 +124,9 @@ namespace Game
              * @brief Check if current cell is valid (not out map ranges)
              *
              * @param currentCell Current node
-             * @return true if current cell is in ranges, false otherwise
+             * @return true if current cell is in map ranges, false otherwise
              */
-            bool isInRange(const Point &currentCell) const;
+            bool isInMap(const Point &currentCell) const;
 
             /**
              * @brief Check if current cell is blocked or not
@@ -126,7 +142,15 @@ namespace Game
              * @param currentCell Current node
              * @return true if current cell is the destination, false otherwise
              */
-            bool isDestination(Point currentCell) const;
+            bool isDestination(Point &currentCell) const;
+
+            /**
+             * @brief Reach the target
+             *
+             * @param openHead The open list head
+             * @return true if the destination has been reached, false otherwise
+             */
+            bool targetIsReached(Node &openHead);
     };
 
     #include "Astar.inl"
