@@ -14,6 +14,7 @@
 #include <array>
 #include <cmath>
 #include <list>
+#include <algorithm>
 
 namespace Game
 {
@@ -48,6 +49,12 @@ namespace Game
                 return Point(point._x + _x, point._y + _y);
             }
 
+            /**
+             * @brief Assign operator
+             *
+             * @param point Point to assign
+             * @return A reference to the assign point Object
+             */
             Point &operator=(const Point &point) {
                 _x = point._x;
                 _y = point._y;
@@ -70,6 +77,16 @@ namespace Game
              * @param h The movement heuristic
              */
             Node(const Point &positions, const Point &parentPositions, const int &g, const int &h);
+
+            /**
+             * @brief Equal operator
+             *
+             * @param point Point to compare
+             * @return true if the points are the same, false otherwise
+             */
+            bool operator==(const Point point) {
+                return _positions == point;
+            }
 
             Point _positions; // Square positions
             Point _parentPositions; // Parent square positions
@@ -151,6 +168,15 @@ namespace Game
              * @return true if the destination has been reached, false otherwise
              */
             bool targetIsReached(Node &openHead);
+
+            /**
+             * @brief Check if a cell has a best quality cost than the current cost
+             *
+             * @param currentCell Current node
+             * @param currentCost The current heuristic cost (addition of g and h variables)
+             * @return true if current cell has a best cost quality than the current cost
+             */
+            bool isQualityNode(const Point &currentCell, const int &currentCost);
     };
 
     #include "Astar.inl"

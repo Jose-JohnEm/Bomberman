@@ -76,3 +76,39 @@ bool Game::Astar::targetIsReached(Node &openHead) //TODO: to continue
     }
     return false;
 }
+
+bool Game::Astar::isQualityNode(const Point &currentCell, const int &currentCost)
+{
+    // In closed list
+    std::list<Node>::iterator itClose(std::find(_close.begin(), _close.end(), currentCell));
+
+    if (itClose != _close.end())
+    {
+        if ((*itClose)._g + (*itClose)._h < currentCost)
+        {
+            return true;
+        }
+        else
+        {
+            _close.erase(itClose);
+            return false;
+        }
+    }
+
+    // In open list
+    std::list<Node>::iterator itOpen(std::find(_open.begin(), _open.end(), currentCell));
+
+    if (itOpen != _open.end())
+    {
+        if ((*itOpen)._g + (*itOpen)._h < currentCost)
+        {
+            return true;
+        }
+        else
+        {
+            _open.erase(itOpen);
+            return false;
+        }
+    }
+    return false;
+}
