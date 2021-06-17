@@ -9,6 +9,8 @@
 #define ASTAR_HPP_
 
 #include <utility>
+#include <vector>
+#include <string>
 
 namespace Game
 {
@@ -43,13 +45,26 @@ namespace Game
                 return Point(point._x + _x, point._y + _y);
             }
 
-        private:
-            int _x; // The abscissa coordinate
-            int _y; // The ordinate coordinate
+            const int _x; // The abscissa coordinate
+            const int _y; // The ordinate coordinate
     };
 
     class Astar
     {
+        public:
+            /**
+             * @brief Construct a new Astar object
+             *
+             * @param map The map
+             * @param start The start point
+             * @param target The end map
+             */
+            Astar(const std::vector<std::string> &map, const Point &start, const Point &target);
+
+        private:
+            std::vector<std::string> _map;
+            Point _start;
+            Point _target;
     };
 
     #include "Astar.inl"
