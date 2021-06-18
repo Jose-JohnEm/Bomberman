@@ -12,7 +12,7 @@ inline void Raylib::Text::drawText(const std::string &title, const int &posX, co
 
 inline void Raylib::Text::drawTextEx(const std::string &font, const std::string &text, const std::pair<int, int> &position, const float &fontSize, const float &spacing, const Color &tint)
 {
-    ::Vector2 vec = {(float)position.first, (float)position.second};
+    ::Vector2 vec = {static_cast<float>(position.first), static_cast<float>(position.second)};
     ::Font loadedFont = ::LoadFont(font.c_str());
 
     ::SetTextureFilter(loadedFont.texture, TEXTURE_FILTER_BILINEAR);
