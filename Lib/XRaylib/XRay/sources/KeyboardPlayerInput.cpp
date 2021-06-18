@@ -6,6 +6,7 @@
 */
 
 #include "KeyboardPlayerInput.hpp"
+#include "../../../Engine/Exception/MyException.hpp"
 
 KeyboardPlayerInput::KeyboardPlayerInput()
 {
@@ -48,4 +49,91 @@ bool KeyboardPlayerInput::shouldChangeToNext(void) const
 bool KeyboardPlayerInput::shouldSimulateAClick(void) const
 {
     return Raylib::Keyboard::isKeyPressed(32);
+}
+
+
+// STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
+// catch
+// throw
+// try
+
+int catchThrowTryKeyboardException() {
+    try
+    {   KeyboardPlayerInput test;
+    	test.shouldGoToEast();
+        
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    try
+    {   KeyboardPlayerInput test;
+    	test.shouldGoToWest();
+        
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    try
+    {   KeyboardPlayerInput test;
+    	test.shouldGoToNorth();
+        
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    try
+    {   KeyboardPlayerInput test;
+    	test.shouldGoToSouth();
+        
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    try
+    {   KeyboardPlayerInput test;
+    	test.shouldChangeToPrev();
+        
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    try
+    {   KeyboardPlayerInput test;
+    	test.shouldChangeToNext();
+        
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    try
+    {   KeyboardPlayerInput test;
+    	test.shouldSimulateAClick();
+        
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
 }

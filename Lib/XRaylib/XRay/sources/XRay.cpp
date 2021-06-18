@@ -6,6 +6,7 @@
 */
 
 #include "XRay.hpp"
+#include "../../../Engine/Exception/MyException.hpp"
 
 XRay::XRay(void)
     : _window(1920, 1080, "Bomberman")
@@ -54,6 +55,14 @@ XRay::XRay(void)
 
     // Display Intro (studio and introduction cinematic)
 	_intro = std::make_pair(true, std::vector<void (XRay::*)()>{&XRay::displayStudio, &XRay::displayTeamPresentation});
+
+    //Transition Manager
+    _transitionManager.insert(std::pair<Scene, std::pair<bool, bool>>(Scene::HELP, std::pair<bool, bool>(false, false)));
+    _transitionManager.insert(std::pair<Scene, std::pair<bool, bool>>(Scene::SETTINGS, std::pair<bool, bool>(false, false)));
+    _transitionManager.insert(std::pair<Scene, std::pair<bool, bool>>(Scene::GAME_MODE, std::pair<bool, bool>(false, false)));
+    _transitionManager.insert(std::pair<Scene, std::pair<bool, bool>>(Scene::PLAYER_CHOICE, std::pair<bool, bool>(false, false)));
+    _transitionManager.insert(std::pair<Scene, std::pair<bool, bool>>(Scene::LOAD_GAME, std::pair<bool, bool>(false, false)));
+    _transitionManager.insert(std::pair<Scene, std::pair<bool, bool>>(Scene::MAP_CHOICE, std::pair<bool, bool>(false, false)));
 
 	masterVolume = 50;
     musicVolume = 100;
@@ -225,6 +234,7 @@ void XRay::setAudioResources(void)
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_BING, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Bing.wav")))));
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_WEEE, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/wee.wav")))));
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_BOOM, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/boom.wav")))));
+    _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_TUDUM, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/tudum.wav")))));
 }
 
 void XRay::quitGame(void)
@@ -297,4 +307,67 @@ void XRay::playAndUpdateMusic(MusicResources music) {
         if (clock.doesTimeElapsed(0.01))
             _musics.at(music)->update();
     }
+}
+
+// STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
+// catch
+// throw
+// try
+
+int catchThrowTrydisplayStudio() {
+    try
+    {   XRay test;
+    	test.displayStudio();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrydisplayTeamPresentation() {
+    try
+    {   XRay test;
+    	test.displayTeamPresentation();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTryplayMusic() {
+    try
+    {   XRay test;
+        MusicResources music;
+    	test.playMusic(music);
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTryplayAndUpdateMusic() {
+    try
+    {   XRay test;
+        MusicResources music;
+    	test.playAndUpdateMusic(music);
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
 }

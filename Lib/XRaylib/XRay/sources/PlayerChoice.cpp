@@ -6,6 +6,7 @@
 */
 
 #include "XRay.hpp"
+#include "../../../Engine/Exception/MyException.hpp"
 
 void XRay::detectPlayerInput(void)
 {
@@ -17,7 +18,7 @@ void XRay::detectPlayerInput(void)
     _controlsTab[t] = (Raylib::Gamepad::isGamepadAvailable(0) && Raylib::Gamepad::isGamepadButtonPressed(0, 15)) ? PLAYSTATIONYELLOW : _controlsTab[t];
     _controlsTab[t] = (Raylib::Gamepad::isGamepadAvailable(1) && Raylib::Gamepad::isGamepadButtonPressed(1, 15)) ? XBOXYELLOW : _controlsTab[t];
     _controlsTab[t] = (Raylib::Keyboard::getKeyPressed()) ? KEYBOARDYELLOW : _controlsTab[t];
-    _controlsTab[t] = (Raylib::Mouse::isButtonPressed(0)) ? MOUSEYELLOW : _controlsTab[t];
+    _controlsTab[t] = (Raylib::Mouse::isButtonPressed(1) || (Raylib::Mouse::isButtonPressed(0) && t == 0)) ? MOUSEYELLOW : _controlsTab[t];
     for (size_t k = 0; k < t; k++)
         _controlsTab[t] = (_controlsTab[t] == _controlsTab[k]) ? tmp : _controlsTab[t];
     _playerTab[t] = (tmp != _controlsTab[t]) ? true : _playerTab[t];
@@ -90,7 +91,7 @@ void XRay::displayCardsSettings(std::vector<std::pair<int, int>> &removeButtons,
     for (i = 0, (*x) = 100, b = 200; _allIntegers[2] < 5 && i < _allIntegers[2]; i++, (*x) += 450) {
         (_playerTab[i]) ? _resources.at((Resources)(_card[i]+i))->drawTexture((*x), b) : _resources.at(AI)->drawTexture((*x), b);
         if (_playerTab[i])
-            _resources.at((Resources)(size_t)((_controlsTab[i])+_card[i]-36))->drawTexture((*x)+109, b+9);
+            _resources.at((Resources)static_cast<size_t>((_controlsTab[i])+_card[i]-36))->drawTexture((*x)+109, b+9);
         if (i != 0)
             removeButtons.push_back(std::make_pair((*x)+307, b+9));
         if (_card[i] == 36) {
@@ -179,4 +180,110 @@ void XRay::displayPlayerChoiceScene(void)
         });
         displayMapChoiceScene();
     }
+}
+
+// STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
+// catch
+// throw
+// try
+
+int catchThrowTrydetectPlayerInput() {
+    try
+    {   XRay test;
+    	test.detectPlayerInput();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTryremovePlayer() {
+    try
+    {   XRay test;
+        std::vector<std::pair<int, int>> removeButtons;
+    	test.removePlayer(removeButtons);
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTryaddPlayer() {
+    try
+    {   XRay test;
+    	test.addPlayer();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrymanageNextOrPrev() {
+    try
+    {   XRay test;
+    	test.manageNextOrPrev();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrydisplayCardsSettings() {
+    try
+    {   XRay test;
+    int x;
+        std::vector<std::pair<int, int>> removeButtons;
+    	test.displayCardsSettings(removeButtons,&x);
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrydisplayBack() {
+    try
+    {   XRay test;
+    	test.displayBack();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrydisplayPlayerChoiceScene() {
+    try
+    {   XRay test;
+    	test.displayPlayerChoiceScene();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
 }

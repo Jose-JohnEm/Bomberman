@@ -19,46 +19,46 @@ namespace Game
 {
     class Score
     {
-        public:
-            /**
-            * @brief Construct the Score object (Copy Constructor)
-            *
-            * @param settings A const reference to an array of 9 size_t
-            * @param player A const reference to Class Player
-            */
-            Score(const std::array<std::size_t, 9> &settings, const std::shared_ptr<Game::Player> &player);
+    public:
+        /**
+        * @brief Construct the Score object (Copy Constructor)
+        *
+        * @param settings A const reference to an array of 9 size_t
+        * @param player A const reference to Class Player
+        */
+        Score(const std::array<std::size_t, 9> &settings, const std::shared_ptr<Game::Player> &player);
 
-            /**
-            * @brief Destroy the Score object
-            */
-            ~Score();
+        /**
+        * @brief Destroy the Score object
+        */
+        ~Score();
 
-            /**
-             * @brief Get the Score of the Player
-             *
-             * @return A size_t
-             */
-            size_t getScore() const;
+        /**
+         * @brief Get the Score of the Player
+         *
+         * @return A size_t
+         */
+        size_t getScore() const;
 
-            /**
-             * @brief Set the Score of the Player
-             *
-             * @param score A const reference to a size_t
-             */
-            void setScore(size_t const &score);
+        /**
+         * @brief Set the Score of the Player
+         *
+         * @param score A const reference to a size_t
+         */
+        void setScore(size_t const &score);
 
-        private:
-            std::array<std::size_t, 9> _settings; // An array of 9 size_t
-            size_t _score; // Player score (size_t)
+    private:
+        std::array<std::size_t, 9> _settings; // An array of 9 size_t
+        size_t _score; // Player score (size_t)
 
-            /**
-             * @brief Get the mulitiplicator of Player's score
-             *
-             * @return A float
-             */
-            float getCoefficient(void) const;
+        /**
+         * @brief Get the mulitiplicator of Player's score
+         *
+         * @return A float
+         */
+        float getCoefficient(void) const;
     };
 
-    #include "Score.inl"
+#include "Score.inl"
 }
 #endif /* !SCORE_HPP_ */

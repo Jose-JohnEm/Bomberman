@@ -8,7 +8,7 @@
 #include "Bomberman.hpp"
 
 Game::Bomberman::Bomberman(void)
-    : _gameName{"Bomberman"}, _gameOver{false}
+: _gameName{"Bomberman"}, _gameOver{false}
 {
 }
 
@@ -25,6 +25,13 @@ void Game::Bomberman::initEntities()
 
     _entities.clear();
 
+    // Push back floor and borders
+    _entities.push_back(std::shared_ptr<IEntity>(new Game::Floor(Raylib::Vector3((y-1)/2, (y+1)/2, -1), _mapType, y-2, y-1, 1.0f)));
+    _entities.push_back(std::shared_ptr<IEntity>(new Game::SolidWall(Raylib::Vector3(0, (y+1)/2, 0), _mapType, 1.0f, y, 1.0f)));
+    _entities.push_back(std::shared_ptr<IEntity>(new Game::SolidWall(Raylib::Vector3((y-1)/2, y, 0), _mapType, y-2, 1.0f, 1.0f)));
+    _entities.push_back(std::shared_ptr<IEntity>(new Game::SolidWall(Raylib::Vector3((y-1)/2, 1, 0), _mapType, y-2, 1.0f, 1.0f)));
+    _entities.push_back(std::shared_ptr<IEntity>(new Game::SolidWall(Raylib::Vector3(_map.at(0).size()-1, (y+1)/2, 0), _mapType, 1.0f, y, 1.0f)));
+
     for (const std::string &line : _map) {
         x = 0;
         for (const char &c : line) {
@@ -36,11 +43,10 @@ void Game::Bomberman::initEntities()
                     _entities.push_back(std::shared_ptr<IEntity>(new Game::AI(_players[dic_index].name, dic_index, {x, y, 0}, _players[dic_index].obj, _players[dic_index].texture, _players[dic_index].animations, _players[dic_index].scalable, _players[dic_index].color)));
                 dic_index++;
             }
-            else if (c == 'W' || c == 'E')
+            else if (c == 'W')
                 _entities.push_back(std::shared_ptr<IEntity>(new Game::SolidWall(Raylib::Vector3(x, y, 0), _mapType)));
             else if (c == 'M')
                 _entities.push_back(std::shared_ptr<IEntity>(new Game::BreakableWall(Raylib::Vector3(x, y, 0), _mapType)));
-            _entities.push_back(std::shared_ptr<IEntity>(new Game::Floor(Raylib::Vector3(x, y, -1), _mapType)));
             x++;
         }
         y--;
@@ -70,13 +76,35 @@ void Game::Bomberman::initPlayersStats()
     }
 }
 
+bool Game::Bomberman::playerGotHit(const std::pair<int, int> &pos, const float &posX, const float &posY) const
+{
+    if (pos.first >= posX && pos.first <= posX + 1 && pos.second >= posY && pos.second <= posY + 1) {
+        std::cout << "AAAAAAAAAA" << std::endl;
+        return true;
+    }
+    return false;
+}
+
 void Game::Bomberman::eraseEntitiesOnBomb(const std::pair<int, int> &pos)
 {
     size_t index = 0;
+    Raylib::Vector3 banned(1, 1, 0);
+    Game::Player *res = nullptr;
 
     for (const auto &entity : _entities)
     {
-        if ((int)entity->getPositions().x == pos.first && _map.size() - (int)entity->getPositions().y == pos.second)
+        //if (static_cast<int>(entity->getPositions().x) == pos.first && _map.size() - static_cast<int>(entity->getPositions().y) == pos.second)
+        if (playerGotHit(pos, entity->getPositions().x == pos.first, _map.size() - entity->getPositions().y == pos.second)) {
+            ///entity->setPositions(banned);
+            //_entities.erase(_entities.begin() + index);
+            // for (const std::shared_ptr<IEntity> &entity : _entities)
+            // {
+            //     if ((res = dynamic_cast<Game::Player *>(entity.get())) != nullptr && entity->getPositions().x == res->getPositions().x && entity->getPositions().y == res->getPositions().y)
+            //     res->setAlive(false);
+            // }
+            // break;
+        }
+        if (entity->getType() == "BreakableWall" && entity->getPositions().x == pos.first && _map.size() - entity->getPositions().y == pos.second)
         {
             _entities.push_back(std::shared_ptr<IEntity>(new Game::Life(entity->getPositions().getCStruct())));
             _entities.erase(_entities.begin() + index);
@@ -88,14 +116,21 @@ void Game::Bomberman::eraseEntitiesOnBomb(const std::pair<int, int> &pos)
 
 void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<int, int> pos)
 {
-    char current = 0;
+    char current = _map[pos.second][pos.first];
+
+    std::cout << "C ==>" << current << std::endl;
+    if (current == 'H' || current == 'A') {
+        std::cout << "zeuuubi" << std::endl;
+        eraseEntitiesOnBomb({pos.first, pos.second});
+    }
+    _map[pos.second][pos.first] = c;
 
     for (int i = 1; i <= rad; i++)
     {
         current = _map[pos.second][pos.first + i];
         if (current == 'W' || current == 'X' || current == 'E')
             break;
-        if (current == 'M' || current == 'H'  || current == 'A') {
+        if (current == 'M' || current == 'H' || current == 'A') {
             _map[pos.second][pos.first + i] = c;
             eraseEntitiesOnBomb({pos.first + i, pos.second});
             break;
@@ -104,14 +139,10 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
     }
     for (int i = 1; i <= rad; i++)
     {
-        std::cout << "Boom a gauche" << std::endl;
         current = _map[pos.second][pos.first - i];
         if (current == 'W' || current == 'X' || current == 'E')
-        {
-            std::cout << "Et non..." << std::endl;
             break;
-        }
-        if (current == 'M' || current == 'H'  || current == 'A') {
+        if (current == 'M' || current == 'H' || current == 'A') {
             _map[pos.second][pos.first - i] = c;
             eraseEntitiesOnBomb({pos.first - i, pos.second});
             break;
@@ -123,7 +154,7 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
         current = _map[pos.second + i][pos.first];
         if (current == 'W' || current == 'X' || current == 'E')
             break;
-        if (current == 'M' || current == 'H'  || current == 'A') {
+        if (current == 'M' || current == 'H' || current == 'A') {
             _map[pos.second + i][pos.first] = c;
             eraseEntitiesOnBomb({pos.first, pos.second + i});
             break;
@@ -135,7 +166,7 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
         current = _map[pos.second - i][pos.first];
         if (current == 'W' || current == 'X' || current == 'E')
             break;
-        if (current == 'M' || current == 'H'  || current == 'A') {
+        if (current == 'M' || current == 'H' || current == 'A') {
             _map[pos.second - i][pos.first] = c;
             eraseEntitiesOnBomb({pos.first, pos.second - i});
             break;
@@ -157,7 +188,6 @@ void Game::Bomberman::bombExplosion(Game::Bomb &bomb, const size_t &index)
     else if (bomb.isExploding())
     {
         rad = bomb.makeExplode();
-        _map[pos.second][pos.first] = 'X';
         setCharOnRadius('X', rad, pos);
         bomb.setBombzone(_map);
         for (int y = 0;  y < _map.size(); y++)
@@ -193,7 +223,6 @@ void Game::Bomberman::updateEntities()
             handleIfPlayerIsNearAnItem(*dynamic_cast<Game::Player *>(entity.get()));
         if ((bomb = dynamic_cast<Game::Bomb *>(entity.get())) != nullptr)
         {
-
             bomb->update();
             bombExplosion(*bomb, index);
         }
@@ -213,7 +242,6 @@ void Game::Bomberman::restart(void)
 {
     // Reset Scores
     // TODO: TO IMPLEMENT
-    std::cout << "I restart" << std::endl;
     _reinit = 0;
 /*    for (size_t i = 0; i < _scores.size(); i++) {
         _scores[i].second = "0";
@@ -251,7 +279,6 @@ void Game::Bomberman::saveGame(std::array<std::size_t, 9> settings, std::vector<
     settings[TIMESTAMP] = std::time(0);
     settings[WORLD] = _mapType;
     Game::Save save(settings, players, playerControls, map);
-    std::cout << "I save" << std::endl;
 }
 
 void Game::Bomberman::loadGame(const std::string &backupFilePath)
@@ -277,8 +304,6 @@ void Game::Bomberman::loadGame(const std::string &backupFilePath)
 
     // Load the settings
     _settings = load.getSettings();
-
-    std::cout << "I load " << backupFilePath << std::endl;
 }
 
 void Game::Bomberman::setPlayers(const std::vector<CharDictionary> &playersData)

@@ -8,6 +8,7 @@
 */
 
 #include "XRay.hpp"
+#include "../../../Engine/Exception/MyException.hpp"
 
 void XRay::displayGameSettings(void)
 {
@@ -17,12 +18,12 @@ void XRay::displayGameSettings(void)
     (mouseIsInBox(createBox(1160, 245, 1160+755, 245+83)) ? _resources.at(SIZE_HOVER) : _resources.at(SIZE))->drawTexture(1160, 245);
     (mouseIsInBox(createBox(1160, 455, 1160+755, 455+83)) ? _resources.at(SETS_HOVER) : _resources.at(Resources::SETS))->drawTexture(1160, 455);
     (mouseIsInBox(createBox(1160, 665, 1160+755, 665+83)) ? _resources.at(DURATION_HOVER) : _resources.at(Resources::DURATION))->drawTexture(1160, 665);
-    _resources.at((Resources)((int)S7X7S + ((_sizeMap > 6 && _sizeMap < 20) ? (_sizeMap-7) / 2 : 0)))->drawTexture(1645, 260);
-    _resources.at((Resources)((int)SET1SET + ((_gameSettings[1] > 0 && _gameSettings[1] < 6) ? _gameSettings[1]-1 : 0)))->drawTexture(1730, 465);
-    _resources.at((Resources)((int)MIN1MIN + ((_gameSettings[3] > 0 && _gameSettings[3] < 6) ? _gameSettings[3]-1 : 0)))->drawTexture(1665, 675);
+    _resources.at((Resources)(static_cast<int>(S7X7S) + ((_sizeMap > 6 && _sizeMap < 20) ? (_sizeMap-7) / 2 : 0)))->drawTexture(1645, 260);
+    _resources.at((Resources)(static_cast<int>(SET1SET) + ((_gameSettings[1] > 0 && _gameSettings[1] < 6) ? _gameSettings[1]-1 : 0)))->drawTexture(1730, 465);
+    _resources.at((Resources)(static_cast<int>(MIN1MIN) + ((_gameSettings[3] > 0 && _gameSettings[3] < 6) ? _gameSettings[3]-1 : 0)))->drawTexture(1665, 675);
     if (_gameSettings[5] > 0) {
         (mouseIsInBox(createBox(1160, 875, 1160+755, 875+83)) ? _resources.at(AI_HOVER) : _resources.at(Resources::IA))->drawTexture(1160, 875);
-        _resources.at((Resources)((int)EASY + ((_gameSettings[6] > 0 && _gameSettings[6] < 4) ? _gameSettings[6]-1 : 0)))->drawTexture(1660, 898);
+        _resources.at((Resources)(static_cast<int>(EASY) + ((_gameSettings[6] > 0 && _gameSettings[6] < 4) ? _gameSettings[6]-1 : 0)))->drawTexture(1660, 898);
     }
 }
 
@@ -97,4 +98,52 @@ void XRay::displayMapChoiceScene(void)
         _gameSettings[3] *= (_gameSettings[3] < 6) ? 60 : 1;
         _pointerToSettingsFunc(_gameSettings);
     }
+}
+
+// STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
+// catch
+// throw
+// try
+
+int catchThrowTrydisplayGameSettings() {
+    try
+    {   XRay test;
+    	test.displayGameSettings();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrycheckClickOnMapChoiceScene() {
+    try
+    {   XRay test;
+        test.checkClickOnMapChoiceScene();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrydisplayMapChoiceScene() {
+    XRay test;
+    try
+    { 
+        test.displayMapChoiceScene();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
 }

@@ -6,6 +6,7 @@
 */
 
 #include "MousePlayerInput.hpp"
+#include "../../../Engine/Exception/MyException.hpp"
 
 /*
     MOUSE_BUTTON_LEFT    = 0,
@@ -37,23 +38,8 @@ MousePlayerInput::~MousePlayerInput()
 bool MousePlayerInput::shouldGoToEast(void) const
 {
     bool mousePos;
-    int x = (int)Raylib::Mouse::getMouseX() - 1725;
-    int y = (int)Raylib::Mouse::getMouseY() - 165;
-
-    if ((Raylib::Mouse::getMouseX() < 1600 || Raylib::Mouse::getMouseX() > 1850) || (Raylib::Mouse::getMouseY() < 40 || Raylib::Mouse::getMouseY() > 290))
-        mousePos = false;
-    else if (y >= 0)
-        mousePos = (x - y) >= 0 ? true : false;
-    else
-        mousePos = (x + y) >= 0 ? true : false;
-    return Raylib::Mouse::isButtonDown(0) && mousePos;
-}
-
-bool MousePlayerInput::shouldGoToWest(void) const
-{
-    bool mousePos;
-    int x = (int)Raylib::Mouse::getMouseX() - 1725;
-    int y = (int)Raylib::Mouse::getMouseY() - 165;
+    int x = static_cast<int>(Raylib::Mouse::getMouseX()) - 1725;
+    int y = static_cast<int>(Raylib::Mouse::getMouseY()) - 165;
 
     if ((Raylib::Mouse::getMouseX() < 1600 || Raylib::Mouse::getMouseX() > 1850) || (Raylib::Mouse::getMouseY() < 40 || Raylib::Mouse::getMouseY() > 290))
         mousePos = false;
@@ -64,11 +50,26 @@ bool MousePlayerInput::shouldGoToWest(void) const
     return Raylib::Mouse::isButtonDown(0) && mousePos;
 }
 
+bool MousePlayerInput::shouldGoToWest(void) const
+{
+    bool mousePos;
+    int x = static_cast<int>(Raylib::Mouse::getMouseX()) - 1725;
+    int y = static_cast<int>(Raylib::Mouse::getMouseY()) - 165;
+
+    if ((Raylib::Mouse::getMouseX() < 1600 || Raylib::Mouse::getMouseX() > 1850) || (Raylib::Mouse::getMouseY() < 40 || Raylib::Mouse::getMouseY() > 290))
+        mousePos = false;
+    else if (y >= 0)
+        mousePos = (x - y) >= 0 ? true : false;
+    else
+        mousePos = (x + y) >= 0 ? true : false;
+    return Raylib::Mouse::isButtonDown(0) && mousePos;
+}
+
 bool MousePlayerInput::shouldGoToNorth(void) const
 {
     bool mousePos;
-    int x = (int)Raylib::Mouse::getMouseX() - 1725;
-    int y = (int)Raylib::Mouse::getMouseY() - 165;
+    int x = static_cast<int>(Raylib::Mouse::getMouseX()) - 1725;
+    int y = static_cast<int>(Raylib::Mouse::getMouseY()) - 165;
 
     if ((Raylib::Mouse::getMouseX() < 1600 || Raylib::Mouse::getMouseX() > 1850) || (Raylib::Mouse::getMouseY() < 40 || Raylib::Mouse::getMouseY() > 290))
         mousePos = false;
@@ -82,8 +83,8 @@ bool MousePlayerInput::shouldGoToNorth(void) const
 bool MousePlayerInput::shouldGoToSouth(void) const
 {
     bool mousePos;
-    int x = (int)Raylib::Mouse::getMouseX() - 1725;
-    int y = (int)Raylib::Mouse::getMouseY() - 165;
+    int x = static_cast<int>(Raylib::Mouse::getMouseX()) - 1725;
+    int y = static_cast<int>(Raylib::Mouse::getMouseY()) - 165;
 
     if ((Raylib::Mouse::getMouseX() < 1600 || Raylib::Mouse::getMouseX() > 1850) || (Raylib::Mouse::getMouseY() < 40 || Raylib::Mouse::getMouseY() > 290))
         mousePos = false;
@@ -107,4 +108,110 @@ bool MousePlayerInput::shouldChangeToNext(void) const
 bool MousePlayerInput::shouldSimulateAClick(void) const
 {
     return Raylib::Mouse::isButtonPressed(1);
+}
+
+
+// STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
+// catch
+// throw
+// try
+
+
+
+int catchThrowTryshouldGoToEast() {
+    try
+    {   MousePlayerInput test;
+    	test.shouldGoToEast();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTryshouldGoToWest() {
+    try
+    {   MousePlayerInput test;
+    	test.shouldGoToWest();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTryshouldGoToNorth() {
+    try
+    {   MousePlayerInput test;
+    	test.shouldGoToNorth();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTryshouldGoToSouth() {
+    try
+    {   MousePlayerInput test;
+    	test.shouldGoToSouth();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTryshouldChangeToPrev() {
+    try
+    {   MousePlayerInput test;
+    	test.shouldChangeToPrev();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTryshouldChangeToNext() {
+    try
+    {   MousePlayerInput test;
+    	test.shouldChangeToNext();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTryshouldSimulateAClick() {
+    try
+    {   MousePlayerInput test;
+    	test.shouldSimulateAClick();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
 }

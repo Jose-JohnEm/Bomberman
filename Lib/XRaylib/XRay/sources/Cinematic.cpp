@@ -6,6 +6,7 @@
 */
 
 #include "XRay.hpp"
+#include "../../../Engine/Exception/MyException.hpp"
 
 void XRay::displayCinematic(const Cinematic &cinematic)
 {
@@ -51,4 +52,24 @@ void XRay::displayCinematic(const std::string &cinematicPathDirectory, const siz
             i++;
         }
     }
+}
+
+// STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
+// catch
+// throw
+// try
+
+int catchThrowTrydisplayCinematic() {
+    try
+    {   XRay test;
+        Cinematic cinematic;
+    	test.displayCinematic(cinematic);
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
 }

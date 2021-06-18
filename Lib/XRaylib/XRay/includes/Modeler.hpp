@@ -33,43 +33,43 @@ enum AnimSequence {
 
 class Modeler
 {
-    public:
+public:
 
-        Modeler();
-        Modeler(const std::string &obj_path, const std::string &texture_path, const Animator &animation_path);
+    Modeler();
+    Modeler(const std::string &obj_path, const std::string &texture_path, const Animator &animation_path);
 
-        Modeler& operator=(Modeler model);
+    Modeler& operator=(Modeler model);
 
-        ~Modeler();
+    ~Modeler();
 
-        void makeWalk();
-        void makeBomb();
-        void makeEmote();
+    void makeWalk();
+    void makeBomb();
+    void makeEmote();
 
-        Model &getModel();
+    Model &getModel();
 
-        void update();
+    void update();
 
-        std::string getObjPath();
-        std::string getTexturePath();
-        Animator getAnimationPath();
+    std::string getObjPath();
+    std::string getTexturePath();
+    Animator getAnimationPath();
 
 
-    private:
+private:
 
-        bool isThereAnimationsPath(const Animator &animation_path) const;
+    bool isThereAnimationsPath(const Animator &animation_path) const;
 
-        Model _model;
-        std::string _model_path;
-        std::string _texture_path;
-        std::vector<ModelAnimation> _animations;
-        Animator _animator;
+    Model _model;
+    std::string _model_path;
+    std::string _texture_path;
+    std::vector<ModelAnimation> _animations;
+    Animator _animator;
 
-        bool _isAnimated;
-        int _frame;
+    bool _isAnimated;
+    int _frame;
 
-        Clock clock;
-        int _currentAnimation;
+    Clock clock;
+    int _currentAnimation;
 };
 
 #endif

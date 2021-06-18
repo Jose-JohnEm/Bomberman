@@ -8,7 +8,7 @@
 #include "PlayerSelector/Selector.hpp"
 
 PlayerSelector::Selector::Selector()
-: camera(nullptr), _rotationAxis(0), _players({}), _nbCharacters(0), _map(nullptr), _modAvailable(false)
+        : camera(nullptr), _rotationAxis(0), _players({}), _nbCharacters(0), _map(nullptr), _modAvailable(false)
 {
     POS.push_back(POS_1);
     POS.push_back(POS_2);
@@ -16,8 +16,6 @@ PlayerSelector::Selector::Selector()
     POS.push_back(POS_4);
 
     preloadBasicsCharacters();
-
-    std::cout  << std::endl << "####### Start Player Selector #######"  << std::endl << std::endl;
 }
 
 PlayerSelector::Selector::~Selector()
@@ -30,56 +28,56 @@ void PlayerSelector::Selector::preloadBasicsCharacters()
 {
     _charaDictionary.clear();
     _charaDictionary.push_back({
-        "resources/players/3D/Bombermans/white_tpose.glb",
-        "resources/players/3D/Bombermans/texture.png",
-        0.6f,
-        "Red",
-        Raylib::Color::Red(),
-        {
-            "resources/players/3D/Bombermans/animations/white_walking.glb",
-            "resources/players/3D/Bombermans/animations/white_bomb.glb",
-            "resources/players/3D/Bombermans/animations/white_emote.glb"
-        }
-    });
+                                       "resources/players/3D/Bombermans/white_tpose.glb",
+                                       "resources/players/3D/Bombermans/texture.png",
+                                       0.6f,
+                                       "Red",
+                                       Raylib::Color::Red(),
+                                       {
+                                               "resources/players/3D/Bombermans/animations/white_walking.glb",
+                                               "resources/players/3D/Bombermans/animations/white_bomb.glb",
+                                               "resources/players/3D/Bombermans/animations/white_emote.glb"
+                                       }
+                               });
 
     _charaDictionary.push_back({
-        "resources/players/3D/Bombermans/white_tpose.glb",
-        "resources/players/3D/Bombermans/texture.png",
-            0.6f,
-            "Blue",
-            Raylib::Color::Blue(),
-            {
-                "resources/players/3D/Bombermans/animations/white_walking.glb",
-                "resources/players/3D/Bombermans/animations/white_bomb.glb",
-                "resources/players/3D/Bombermans/animations/white_emote.glb"
-            }
-        });
+                                       "resources/players/3D/Bombermans/white_tpose.glb",
+                                       "resources/players/3D/Bombermans/texture.png",
+                                       0.6f,
+                                       "Blue",
+                                       Raylib::Color::Blue(),
+                                       {
+                                               "resources/players/3D/Bombermans/animations/white_walking.glb",
+                                               "resources/players/3D/Bombermans/animations/white_bomb.glb",
+                                               "resources/players/3D/Bombermans/animations/white_emote.glb"
+                                       }
+                               });
 
     _charaDictionary.push_back({
-            "resources/players/3D/Bombermans/white_tpose.glb",
-            "resources/players/3D/Bombermans/texture.png",
-            0.6f,
-            "Yellow",
-            Raylib::Color::Yellow(),
-            {
-                "resources/players/3D/Bombermans/animations/white_walking.glb",
-                "resources/players/3D/Bombermans/animations/white_bomb.glb",
-                "resources/players/3D/Bombermans/animations/white_emote.glb"
-            }
-        });
+                                       "resources/players/3D/Bombermans/white_tpose.glb",
+                                       "resources/players/3D/Bombermans/texture.png",
+                                       0.6f,
+                                       "Yellow",
+                                       Raylib::Color::Yellow(),
+                                       {
+                                               "resources/players/3D/Bombermans/animations/white_walking.glb",
+                                               "resources/players/3D/Bombermans/animations/white_bomb.glb",
+                                               "resources/players/3D/Bombermans/animations/white_emote.glb"
+                                       }
+                               });
 
     _charaDictionary.push_back({
-            "resources/players/3D/Bombermans/white_tpose.glb",
-            "resources/players/3D/Bombermans/texture.png",
-            0.6f,
-            "Green",
-            Raylib::Color::Green(),
-            {
-                "resources/players/3D/Bombermans/animations/white_walking.glb",
-                "resources/players/3D/Bombermans/animations/white_bomb.glb",
-                "resources/players/3D/Bombermans/animations/white_emote.glb"
-            }
-        });
+                                       "resources/players/3D/Bombermans/white_tpose.glb",
+                                       "resources/players/3D/Bombermans/texture.png",
+                                       0.6f,
+                                       "Green",
+                                       Raylib::Color::Green(),
+                                       {
+                                               "resources/players/3D/Bombermans/animations/white_walking.glb",
+                                               "resources/players/3D/Bombermans/animations/white_bomb.glb",
+                                               "resources/players/3D/Bombermans/animations/white_emote.glb"
+                                       }
+                               });
 
     _nbCharacters = 4;
 }
@@ -104,29 +102,21 @@ void PlayerSelector::Selector::findModsCharacters()
         if (file.is_directory())
         {
             name = file.path().filename().string();
-            for (const auto &f : std::filesystem::directory_iterator(file.path()))
-            {
-                if (f.path().extension() == ".obj")
-                    {
-                        obj = f.path().string();
-                        break;
+            for (const auto &f : std::filesystem::directory_iterator(file.path())) {
+                if (f.path().extension() == ".obj") {
+                    obj = f.path().string();
+                    break;
                 }
             }
-            for (const auto &f : std::filesystem::directory_iterator(file.path()))
-            {
-                if (f.path().filename() == "texture.png")
-                {
+            for (const auto &f : std::filesystem::directory_iterator(file.path())) {
+                if (f.path().filename() == "texture.png") {
                     texture = f.path().string();
                     break;
                 }
             }
-            for (const auto &f : std::filesystem::directory_iterator(file.path()))
-            {
-                if (f.path().filename() == ".scalable")
-                {
+            for (const auto &f : std::filesystem::directory_iterator(file.path())) {
+                if (f.path().filename() == ".scalable") {
                     std::ifstream(f.path().string()) >> scalable;
-
-                    std::cout << "################ ||||| Scalable trouve !!! : " << scalable << std::endl;
                 }
             }
             if (obj != "null" && texture != "null")
@@ -188,8 +178,6 @@ std::vector<CharDictionary> PlayerSelector::Selector::getPlayerData() const
 
 void PlayerSelector::Selector::load()
 {
-    std::cout << std::endl << "######## Load Player Selector ########" << std::endl << std::endl;
-
     if (_players.size() == 4)
         return;
     if (!camera)
@@ -199,14 +187,11 @@ void PlayerSelector::Selector::load()
         Raylib::Vector3 up(0, 1, 0);
 
         camera = new Raylib::Camera3D(pos, target, up, 30);
-        std::cout << "Camera OK" << std::endl;
 
         camera->updateCamera();
 
         camera->setCameraMode(CAMERA_FREE);
     }
-
-    std::cout << std::endl << "######## Init Player Selector ########" << std::endl << std::endl;
 
     _players.push_back(Player(_charaDictionary[0].obj, _charaDictionary[0].texture, _charaDictionary[0].scalable, 0, _charaDictionary[0].name, _charaDictionary[0].color, _charaDictionary[0].animations));
 }
@@ -229,20 +214,15 @@ std::vector<Texture2D> PlayerSelector::Selector::getBlocTextures() const
 
 void PlayerSelector::Selector::unload(const int &id)
 {
-    std::cout << std::endl << "######## End Player Selector ########" << std::endl << std::endl;
-
     _players.erase(_players.begin() + id);
 }
 
 void PlayerSelector::Selector::unloadAll()
 {
     for (PlayerSelector::Player &player : _players)
-    {
         _players.pop_back();
-    }
 
-    if (camera != nullptr)
-        delete camera;
+    delete camera;
 }
 
 void PlayerSelector::Selector::updateRotationAxis()
@@ -259,8 +239,7 @@ void PlayerSelector::Selector::drawPlayers()
 
     camera->beginMode3D();
 
-    for (PlayerSelector::Player &player : _players)
-    {
+    for (PlayerSelector::Player &player : _players) {
         player.draw(_rotationAxis, POS[i]);
         i++;
     }

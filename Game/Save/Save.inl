@@ -32,11 +32,11 @@ inline void Game::Save::writePlayersInfos(std::ofstream &os) const
             << "player " << id << " scalable " << player->getScalable() << std::endl
             << "player " << id << " positions " << positions.x << "," << (_map.getMap().size() - positions.y) << "," << positions.z << std::endl
             << "player " << id << " powerups "
-                << "skate:" << powerups[P_SKATE]
-                << ",bomb:" << powerups[P_BOMB]
-                << ",pass:" << powerups[P_PASS]
-                << ",fire:" << powerups[P_FIRE]
-                << ",life:" << powerups[P_LIFE]
+            << "skate:" << powerups[P_SKATE]
+            << ",bomb:" << powerups[P_BOMB]
+            << ",pass:" << powerups[P_PASS]
+            << ",fire:" << powerups[P_FIRE]
+            << ",life:" << powerups[P_LIFE]
             << std::endl
             << "player " << id << " broken_walls " << player->getBrokenWalls() << std::endl
             << "player " << id << " kills " << player->getKills() << std::endl;

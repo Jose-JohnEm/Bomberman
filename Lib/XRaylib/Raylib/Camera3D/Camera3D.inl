@@ -97,7 +97,7 @@ inline void Raylib::Camera3D::drawBillboard(Texture2D const &texture, Vector3 co
 }
 
 inline void Raylib::Camera3D::drawBillboardRec(Texture2D const &texture,
-Raylib::Rectangle const &source, Vector3 const &center, const float &size, Raylib::Color const &tint) const
+                                               Raylib::Rectangle const &source, Vector3 const &center, const float &size, Raylib::Color const &tint) const
 {
     return ::DrawBillboardRec(_camera3D, texture, source.getCStruct(), center.getCStruct(), size, tint.getCStruct());
 }
