@@ -10,7 +10,7 @@
 void Game::MotionlessEntity::updateAvailablePaths(void)
 {
     std::vector<std::string> files;
-    bool isThereThree;
+    bool isThereThree; // FIXME: what is the use ???
 
     for (const auto & dir : std::filesystem::directory_iterator("resources/map"))
     {
@@ -34,10 +34,13 @@ void Game::MotionlessEntity::updateAvailablePaths(void)
     }
 }
 
-Game::SolidWall::SolidWall(Raylib::Vector3 positions, size_t mapType)
+Game::SolidWall::SolidWall(Raylib::Vector3 positions, size_t mapType, float width, float height, float length)
 {
     _positions = positions;
     _mapType = mapType;
+    _width = width;
+    _length = length;
+    _height = height;
 
     updateAvailablePaths();
     for (auto &path: _available_paths)
@@ -46,10 +49,13 @@ Game::SolidWall::SolidWall(Raylib::Vector3 positions, size_t mapType)
     }
 }
 
-Game::BreakableWall::BreakableWall(Raylib::Vector3 positions, size_t mapType)
+Game::BreakableWall::BreakableWall(Raylib::Vector3 positions, size_t mapType, float width, float height, float length)
 {
     _positions = positions;
     _mapType = mapType;
+    _width = width;
+    _length = length;
+    _height = height;
 
     updateAvailablePaths();
     for (auto &path: _available_paths)
@@ -58,10 +64,13 @@ Game::BreakableWall::BreakableWall(Raylib::Vector3 positions, size_t mapType)
     }
 }
 
-Game::Floor::Floor(Raylib::Vector3 positions, size_t mapType)
+Game::Floor::Floor(Raylib::Vector3 positions, size_t mapType, float width, float height, float length)
 {
     _positions = positions;
     _mapType = mapType;
+    _width = width;
+    _length = length;
+    _height = height;
 
     updateAvailablePaths();
     for (auto &path: _available_paths)
