@@ -32,7 +32,7 @@ void XRay::displayMenuScene(void)
 
     // Draw scene
     while (!_transitionManager[scene].second && scene != SETTINGS)
-        scene = (Scene)((int)scene + 1);
+        scene = static_cast<Scene>(static_cast<int>(scene) + 1);
     (!_transitionManager[scene].second) ? beginDrawing() : beginDrawing(false);
     fadeThisScene(scene);
     if (!_transitionManager[scene].second) {
