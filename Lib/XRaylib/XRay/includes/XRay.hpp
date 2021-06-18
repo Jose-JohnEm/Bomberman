@@ -217,6 +217,21 @@ class XRay : public IGraphical {
         std::vector<size_t> createBox(const size_t &upperLeftCorner, const size_t &upperRightCorner, const size_t &lowerLeftCorner, const size_t &lowerRightCorner) const;
 
         /**
+         * @brief Update Transition Manager
+         *
+         * @param toFadeOut Scene to fade out
+         * @param toFadeIn  Scene to fade in
+         */
+        void updateTransitionManager(Scene toFadeOut, Scene toFadeIn);
+
+        /**
+         * @brief This function do fadeIn or fadeOut for a scene in relation to transition manager
+         *
+         * @param toFade Scene to fade
+         */
+        void fadeThisScene(Scene toFade);
+
+        /**
          * @brief Display Main Menu
          */
         void displayMenuScene(void);
@@ -583,6 +598,7 @@ class XRay : public IGraphical {
         std::vector<std::pair<std::string, std::string>> _bestScores;             // A vector of pair (username, score), List of Bests Scores
         std::vector<std::shared_ptr<IEntity>> _gameInfos;                         // A vector of shared pointer that represent all the entities to display. Ex : Map, Score, UserInfo, Button
         std::vector<std::string> _backups;                                        // A vector of all the paths to backups files as a const std::vector<std::string>&
+        std::map<Scene, std::pair<bool, bool>> _transitionManager;                // A map of Scene and pair of bool to manage transition (Scene -- (shouldFadeIn=true, shouldFadeOut=true))
 
         std::map<Resources, std::shared_ptr<Raylib::Texture>> _resources; // Texture dictionary
         std::map<MusicResources, std::shared_ptr<Raylib::Music>> _musics; // Music dictionary

@@ -21,24 +21,31 @@ void XRay::displayHowToPlayScene(void)
     bool onNext = mouseIsInBox(createBox(1754, 500, 1870, 620)) ? true : false;
 
     // Draw scene
-    beginDrawing();
+    (!_transitionManager[MENU].second) ? beginDrawing() : beginDrawing(false);
+    fadeThisScene(MENU);
 
-    //Background
-    _resources.at(HOWTO_BG)->drawTexture(0, 0, Raylib::Color::White());
+    if (!_transitionManager[MENU].second) {
+        //Background
+        _resources.at(HOWTO_BG)->drawTexture(0, 0, Raylib::Color::White());
 
-    // Help Cards
-    card.drawTexture(220, 140);
+        // Help Cards
+        card.drawTexture(220, 140);
 
-    _resources.at(PREVIOUS)->drawTexture(50, 500);
-    _resources.at(NEXT)->drawTexture(1754, 500);
+        _resources.at(PREVIOUS)->drawTexture(50, 500);
+        _resources.at(NEXT)->drawTexture(1754, 500);
 
-    (goBack ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000);
-    displayMouse();
+        (goBack ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000);
+        displayMouse();
+
+        // Transition
+        fadeThisScene(_scene);
+    }
     endDrawing();
 
     // Go to another scene according to mouse position
     if (goBack && Raylib::Mouse::isButtonPressed(0)) {
         _sfx.at(SFX_HOME)->play();
+        updateTransitionManager(_scene, MENU);
         (this->*_scenesBack[_scene])();
         _scenesBack[HELP] = _scenesBackBackup[HELP];
     }

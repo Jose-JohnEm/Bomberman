@@ -49,7 +49,7 @@ namespace Raylib
              * @param alpha A float
              * @return A Color
              */
-            Color fade(Color color, const float &alpha) const;
+            static Color fade(Color color, const float &alpha);
 
             /**
              * @brief Returns hexadecimal value for a Color
