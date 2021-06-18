@@ -18,17 +18,42 @@ Game::ArtificialIntelligence::ArtificialIntelligence(const std::vector<AI> &AIs,
 
 void Game::ArtificialIntelligence::run(void) const
 {
+    int smallestDistance = _map.size() * 2;
+    Raylib::Vector3 targetPositions = {0, 0, 0};
+
     for (const Game::AI &AI : _AIs)
     {
         // Get AI positions
         Raylib::Vector3 AIPositions = AI.getPositions();
-        float xAI = AIPositions.x, yAI = AIPositions.y;
+
         for (const Game::Human &human : _humans)
         {
             // Get human positions
             Raylib::Vector3 humanPositions = human.getPositions();
-            float xHuman = humanPositions.x, yHuman = humanPositions.y;
-            std::cout << "Distance between AI n°" << AI.getID() << " and human n°" << human.getID() << " : " << calculateDistance(Point(xAI, yAI), Point(xHuman, yHuman)) << std::endl;
+
+            // Calcul euclidean distance
+            int currentDistance = calculateDistance(Point(AIPositions.x, AIPositions.y), Point(humanPositions.x, humanPositions.y));
+
+            // Set the smallest distance
+            smallestDistance = (currentDistance < smallestDistance) ? currentDistance : smallestDistance;
+
+            // Set the target positions
+            if (smallestDistance == currentDistance)
+            {
+                targetPositions = humanPositions;
+            }
+        }
+
+        // Run Astar algorithm
+        Astar astar(_map, Point(AIPositions.x, AIPositions.y), Point(targetPositions.x, targetPositions.y));
+
+        if (astar.targetIsFound())
+        {
+            std::cout << "Path finding" << std::endl;
+        }
+        else
+        {
+            std::cerr << "ERROR: No path finding" << std::endl;
         }
     }
 }
