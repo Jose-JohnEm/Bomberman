@@ -89,6 +89,13 @@ namespace Game
             int getID(void) const;
 
             /**
+             * @brief Get if the player is dead or alive
+             *
+             * @return bool value, true if the player is alive, false if he's is dead
+             */
+            bool getAlive(void) const;
+
+            /**
              * @brief Set the name of the player
              *
              * @param name A const reference to a string
@@ -122,6 +129,13 @@ namespace Game
             void setID(const int &ID);
 
             /**
+             * @brief Set the player dead or alive
+             *
+             * @param alive a const reference to a bool value
+             */
+            void setAlive(const bool &alive);
+
+            /**
              * @brief Destroy the Player Entity object
              */
             virtual ~Player(void) {};
@@ -140,6 +154,7 @@ namespace Game
             size_t _kills = 0; // Amount of kills
             std::array<int, 5> _powerUps{0, 0, 0, 0, 0}; // Amount of powerUps
             int _ID; // ID of the player
+            bool _alive = true; //Is alive ?
     };
 
     class Human : public virtual Player {
