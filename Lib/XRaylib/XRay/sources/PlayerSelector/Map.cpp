@@ -150,10 +150,10 @@ void PlayerSelector::Map::draw()
             if (c == '1' || c == '2' || c == '3' || c == '4')
                 drawHandlingCharacters(c - '1');
             if (c == 'W' || c == 'E')
-                Raylib::Drawing::drawCubeTexture(_textures[current][WALL], {x * _COEF - (float)2.4, y * _COEF - (float)0.5, 0}, _COEF, _COEF, _COEF, Raylib::Color::White());
+                Raylib::Drawing::drawCubeTexture(_textures[current][WALL], {x * _COEF - static_cast<float>(2.4), y * _COEF - static_cast<float>(0.5), 0}, _COEF, _COEF, _COEF, Raylib::Color::White());
             if (c == 'M')
-                Raylib::Drawing::drawCubeTexture(_textures[current][BOX], {x * _COEF - (float)2.4, y * _COEF - (float)0.5, 0}, _COEF, _COEF, _COEF, Raylib::Color::White());
-            Raylib::Drawing::drawCubeTexture(_textures[current][FLOOR], {x * _COEF - (float)2.4, y * _COEF - (float)0.5, -_COEF}, _COEF, _COEF, _COEF, Raylib::Color::Gray());
+                Raylib::Drawing::drawCubeTexture(_textures[current][BOX], {x * _COEF - static_cast<float>(2.4), y * _COEF - static_cast<float>(0.5), 0}, _COEF, _COEF, _COEF, Raylib::Color::White());
+            Raylib::Drawing::drawCubeTexture(_textures[current][FLOOR], {x * _COEF - static_cast<float>(2.4), y * _COEF - static_cast<float>(0.5), -_COEF}, _COEF, _COEF, _COEF, Raylib::Color::Gray());
             x++;
         }
         y++;

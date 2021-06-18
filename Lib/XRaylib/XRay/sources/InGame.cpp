@@ -131,7 +131,7 @@ void XRay::displayInGameScene(void)
     // Set scene
     _scene = IN_GAME;
 
-    float size_m = ((float)_sizeMap+1) / 2;
+    float size_m = (static_cast<float>(_sizeMap+1)) / 2;
 
     // Lambda for panel pos
     auto panelLambda = [](size_t a) { return (a <= 2) ? std::vector<std::pair<size_t, size_t>>{{20, 500}, {1500, 500}}

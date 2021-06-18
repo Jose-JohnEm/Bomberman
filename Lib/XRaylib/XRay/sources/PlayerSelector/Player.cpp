@@ -70,11 +70,11 @@ void PlayerSelector::Player::drawForMaps(const float &rotation, const Raylib::Ve
         UpdateModelAnimation(_persoModel, _animations[0], counter);
         if (counter >= _animations[0].frameCount)
             counter = 0;
-        DrawModelEx(_persoModel, {pos.x * 0.3f - (float)2.4, pos.y * 0.3f - (float)0.5, 0}, {0, 0, 1}, rotation, {scale_value, scale_value, scale_value}, _color.getCStruct());
+        DrawModelEx(_persoModel, {pos.x * 0.3f - static_cast<float>(2.4), pos.y * 0.3f - static_cast<float>(0.5), 0}, {0, 0, 1}, rotation, {scale_value, scale_value, scale_value}, _color.getCStruct());
     }
     else
     {
-        DrawModelEx(_persoModel, {pos.x * 0.3f - (float)2.4, pos.y * 0.3f - (float)0.5, 0}, {0, 0, 1}, rotation, {scale_value, scale_value, scale_value}, _color.getCStruct());
+        DrawModelEx(_persoModel, {pos.x * 0.3f - static_cast<float>(2.4), pos.y * 0.3f - static_cast<float>(0.5), 0}, {0, 0, 1}, rotation, {scale_value, scale_value, scale_value}, _color.getCStruct());
     }
 
 }

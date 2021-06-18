@@ -22,7 +22,7 @@ bool Clock::doesTimeElapsed(const float &time, const bool &reset)
 {
     bool res = false;
 
-    if ((float)(clock() - _start) / CLOCKS_PER_SEC >= time)
+    if (static_cast<float>(clock() - _start) / CLOCKS_PER_SEC >= time)
     {
         res = true;
         if (reset)
@@ -33,5 +33,5 @@ bool Clock::doesTimeElapsed(const float &time, const bool &reset)
 
 float Clock::getElapsedTime()
 {
-    return (float)(clock() - _start / CLOCKS_PER_SEC);
+    return static_cast<float>(clock() - _start / CLOCKS_PER_SEC);
 }
