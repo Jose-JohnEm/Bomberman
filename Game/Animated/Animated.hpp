@@ -7,6 +7,7 @@
 
 #include "Interfaces/IEntity.hpp"
 #include "../Lib/XRaylib/Raylib/Vector3/Vector3.hpp"
+#include "../Lib/XRaylib/Raylib/Sound/Sound.hpp"
 #include <string>
 #include <filesystem>
 #include <cmath>

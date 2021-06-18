@@ -37,6 +37,7 @@ inline void Game::Animated::drawEntity()
 inline void Game::Bomb::drawEntity()
 {
     Raylib::Vector3 pos = Animated::getPositions();
+    static Raylib::Sound boom ("resources/Sound/boom.wav");
 
     if (_bZoneX.first != 0 && _bZoneX.second != 0 && _bZoneY.first != 0 && _bZoneY.second != 0)
     {
@@ -45,6 +46,8 @@ inline void Game::Bomb::drawEntity()
         for (int i = 0; i < _bZoneY.second; i++)
             DrawCubeTexture(LoadTexture("resources/assets/fire.png"), {pos.x, (float)_bZoneY.first - i, pos.z}, 1, 1, 1, RED);
         DrawSphere(Animated::getPositions().getCStruct(), 0.9, RED);
+        if (!boom.isPlaying())
+            boom.play();
     }
     Animated::drawEntity();
 }
