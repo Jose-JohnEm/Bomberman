@@ -13,7 +13,7 @@ void XRay::displayCinematic(const Cinematic &cinematic)
         case INTRO:
             if (!_sfx.at(SFX_OPENNING)->isPlaying())
                 _sfx.at(SFX_OPENNING)->play();
-            displayCinematic("intro", 300, 1);
+            displayCinematic(CFunctions::generatePairOfRandomIntegers(2, 1).first ? "intro1" : "intro2", 300, 1);
             if (_sfx.at(SFX_OPENNING)->isPlaying())
                 _sfx.at(SFX_OPENNING)->stop();
             break;
@@ -39,6 +39,7 @@ void XRay::displayCinematic(const std::string &cinematicPathDirectory, const siz
 
             // Draw cinematic
             beginDrawing();
+            Raylib::Drawing::clearBackground(Raylib::Color::Black());
             frame.drawTexture(0, 0);
             if (i < hideSkip) {
                 (mouseIsInBox(createBox(1760, 950, 1883, 1005)) ? _resources.at(SKIP_HOVER) : _resources.at(SKIP))->drawTexture(1760, 950);
