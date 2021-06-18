@@ -8,7 +8,7 @@
 #include "Bomberman.hpp"
 
 Game::Bomberman::Bomberman(void)
-    : _gameName{"Bomberman"}, _gameOver{false}
+        : _gameName{"Bomberman"}, _gameOver{false}
 {
 }
 
@@ -103,14 +103,10 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
     }
     for (int i = 1; i <= rad; i++)
     {
-        std::cout << "Boom a gauche" << std::endl;
         current = _map[pos.second][pos.first - i];
         if (current == 'W' || current == 'X' || current == 'E')
-        {
-            std::cout << "Et non..." << std::endl;
             break;
-        }
-        if (current == 'M' || current == 'H'  || current == 'A') {
+        if (current == 'M' || current == 'H' || current == 'A') {
             _map[pos.second][pos.first - i] = c;
             eraseEntitiesOnBomb({pos.first - i, pos.second});
             break;
@@ -179,7 +175,7 @@ void Game::Bomberman::updateEntities()
     {
         if ((bomb = dynamic_cast<Game::Bomb *>(entity.get())) != nullptr)
         {
-            
+
             bomb->update();
             bombExplosion(*bomb, index);
         }
@@ -199,7 +195,6 @@ void Game::Bomberman::restart(void)
 {
     // Reset Scores
     // TODO: TO IMPLEMENT
-    std::cout << "I restart" << std::endl;
     _reinit = 0;
 /*    for (size_t i = 0; i < _scores.size(); i++) {
         _scores[i].second = "0";
@@ -237,7 +232,6 @@ void Game::Bomberman::saveGame(std::array<std::size_t, 9> settings, std::vector<
     settings[TIMESTAMP] = std::time(0);
     settings[WORLD] = _mapType;
     Game::Save save(settings, players, playerControls, map);
-    std::cout << "I save" << std::endl;
 }
 
 void Game::Bomberman::loadGame(const std::string &backupFilePath)
@@ -263,8 +257,6 @@ void Game::Bomberman::loadGame(const std::string &backupFilePath)
 
     // Load the settings
     _settings = load.getSettings();
-
-    std::cout << "I load " << backupFilePath << std::endl;
 }
 
 void Game::Bomberman::setPlayers(const std::vector<CharDictionary> &playersData)

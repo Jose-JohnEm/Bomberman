@@ -96,10 +96,6 @@ inline bool Game::Bomberman::checkPlayerPosition(const std::string action, Playe
 
     bool collision = CheckCollisionSpheres(pos3D.getCStruct(), 0.46,  {(float)positions.first + direction[action].first, (float)positions.second + direction[action].second, 0}, 0.46);
 
-    std::cout << "<<<< Position du perso : { " << pos3D.getCStruct().x << ", " << pos3D.getCStruct().y << ", " << pos3D.getCStruct().z << "}"<< std::endl;
-    std::cout << "<<<< Position du mur : { " << direction[action].first + positions.first << ", " << direction[action].second + positions.second << ", " << 0 << "}"<< std::endl;
-    std::cout << "<<<< DIAGO ! : " << collision << std::endl;
-
     if (collision && _map[direction[action].second + positions.second][direction[action].first + positions.first] != '*')
     {
         Raylib::Vector3 p1(pos3D.x, positions.second, pos3D.z);

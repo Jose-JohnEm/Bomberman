@@ -126,15 +126,8 @@ inline void Game::Bomb::update()
 
 inline void Game::Bomb::setBombzone(std::vector<std::string> map)
 {
-
-    std::cout << "Map apres la bombe" << std::endl;
-    for (auto line: map)
-        std::cout << line << std::endl;
-    std::cout << std::endl << std::endl<< std::endl;
-
     Raylib::Vector3 pos = Animated::getPositions();
 
-    std::cout << "Position de la bombe {" << pos.x << ", " << pos.y << "}" << std::endl;
     pos.y = map.size() - pos.y;
 
     _bZoneX.first = static_cast<int>(pos.x);
@@ -154,6 +147,4 @@ inline void Game::Bomb::setBombzone(std::vector<std::string> map)
         _bZoneY.second++;
 
     _bZoneY.first = map.size() - _bZoneY.first;
-    std::cout << "BZoneX {" << _bZoneX.first << ", " << _bZoneX.second << "}" << std::endl;
-    std::cout << "BZoneY {" << _bZoneY.first << ", " << _bZoneY.second << "}" << std::endl;
 }

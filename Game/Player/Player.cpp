@@ -32,7 +32,6 @@ Game::Player::Player(const std::string &name, const int &id, const Raylib::Vecto
     _powerUps{0},
     _ID(id)
 {
-    std::cout << "Hey I'm a new player : " << name << std::endl;
 }
 
 Game::AI::AI(const std::string &name, const int ID, const Raylib::Vector3 &positions, const std::string &obj_path, const std::string &texture_path, const std::vector<std::string> &animation_path, const float &scalable, const Raylib::Color color)

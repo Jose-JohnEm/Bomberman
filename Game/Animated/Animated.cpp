@@ -34,8 +34,6 @@ Game::Bomb::~Bomb()
 
 Animator Game::Animated::getAnimator(const std::vector<std::string> &animation_path)
 {
-    for (auto p : animation_path)
-        std::cout << p << std::endl;
     if (animation_path.size() == 3)
         return Animator({animation_path[0], animation_path[1], animation_path[2]});
     else
@@ -73,7 +71,6 @@ void Game::Animated::setModel(const std::string &model)
             _model = Modeler(obj_path, texture_path, {"null", "null", "null"});
         }
     }
-    std::cout << "MODELER " << _model.getObjPath() << " " << _model.getTexturePath() << " " << _model.getAnimationPath().WALK << std::endl;
 }
 
 void Game::Animated::move(const std::string &direction)
