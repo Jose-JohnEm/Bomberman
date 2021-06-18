@@ -58,12 +58,15 @@ bool Game::Astar::targetIsFound(void)
     return false;
 }
 
-bool Game::Astar::targetIsReached(Node &openHead) //TODO: to continue
+bool Game::Astar::targetIsReached(Node &openHead)
 {
     Point neighbor;
+    int g = 0, h = 0, neighborCost = 0;
 
     for (int i = 0; i < _neighbors.size(); i++)
     {
+        // Different cost according to neighbor slots
+        neighborCost = (i < _neighbors.size() / 2) ? 1 : 1;
         // Select a specific slot
         neighbor = openHead._positions + _neighbors[i];
         if (isDestination(neighbor))
@@ -72,6 +75,13 @@ bool Game::Astar::targetIsReached(Node &openHead) //TODO: to continue
         }
         else if (isInMap(neighbor) && isUnBlocked(neighbor))
         {
+            g = openHead._g + neighborCost;
+            h = calculateHValue(neighbor);
+            if (!isQualityNode(neighbor, g + h))
+            {
+                Node dummy(neighbor, openHead._positions, g, h);
+                _open.push_back(dummy);
+            }
         }
     }
     return false;
