@@ -8,6 +8,7 @@
 */
 
 #include "XRay.hpp"
+#include "../../../Engine/Exception/MyException.hpp"
 
 void XRay::displayGameSettings(void)
 {
@@ -97,4 +98,52 @@ void XRay::displayMapChoiceScene(void)
         _gameSettings[3] *= (_gameSettings[3] < 6) ? 60 : 1;
         _pointerToSettingsFunc(_gameSettings);
     }
+}
+
+// STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
+// catch
+// throw
+// try
+
+int catchThrowTrydisplayGameSettings() {
+    try
+    {   XRay test;
+    	test.displayGameSettings();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrycheckClickOnMapChoiceScene() {
+    try
+    {   XRay test;
+        test.checkClickOnMapChoiceScene();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrydisplayMapChoiceScene() {
+    XRay test;
+    try
+    { 
+        test.displayMapChoiceScene();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
 }

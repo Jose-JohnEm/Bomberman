@@ -6,6 +6,7 @@
 */
 
 #include "XRay.hpp"
+#include "../../../Engine/Exception/MyException.hpp"
 
 void XRay::updateTransitionManager(Scene toFadeOut, Scene toFadeIn)
 {
@@ -36,4 +37,20 @@ void XRay::fadeThisScene(Scene toFade)
             transAlpha = 1.0f;
         }
     }
+}
+
+int catchThrowTryupdateTransitionManager() {
+    try
+    {   XRay test;
+        IGraphical::Scene toFadeOut;
+        IGraphical::Scene toFadeIn;
+    	test.updateTransitionManager(toFadeOut, toFadeIn);
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
 }

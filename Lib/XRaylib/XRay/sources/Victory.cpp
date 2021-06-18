@@ -6,6 +6,7 @@
 */
 
 #include "XRay.hpp"
+#include "../../../Engine/Exception/MyException.hpp"
 
 void XRay::goToAnotherSceneFromVictory()
 {
@@ -64,4 +65,38 @@ void XRay::displayVictoryScene()
 
     // Call function that check click on button
     goToAnotherSceneFromVictory();
+}
+
+
+// STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
+// catch
+// throw
+// try
+
+int catchThrowTrygoToAnotherSceneFromVictory() {
+    try
+    {   XRay test;
+    	test.goToAnotherSceneFromVictory();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrydisplayVictoryScene() {
+    try
+    {   XRay test;
+    	test.displayVictoryScene();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
 }

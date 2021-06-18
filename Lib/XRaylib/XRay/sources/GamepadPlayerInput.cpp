@@ -6,6 +6,7 @@
 */
 
 #include "GamepadPlayerInput.hpp"
+#include "../../../Engine/Exception/MyException.hpp"
 
 GamepadPlayerInput::GamepadPlayerInput(size_t pos)
 {
@@ -49,4 +50,90 @@ bool GamepadPlayerInput::shouldChangeToNext(void) const
 bool GamepadPlayerInput::shouldSimulateAClick(void) const
 {
     return Raylib::Gamepad::isGamepadButtonPressed(_pos, 7);
+}
+
+// STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
+// catch
+// throw
+// try
+
+int catchThrowTryGamepadException() {
+    try
+    {   GamepadPlayerInput test;
+    	test.shouldGoToEast();
+        
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    try
+    {   GamepadPlayerInput test;
+    	test.shouldGoToWest();
+        
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    try
+    {   GamepadPlayerInput test;
+    	test.shouldGoToNorth();
+        
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    try
+    {   GamepadPlayerInput test;
+    	test.shouldGoToSouth();
+        
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    try
+    {   GamepadPlayerInput test;
+    	test.shouldChangeToPrev();
+        
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    try
+    {   GamepadPlayerInput test;
+    	test.shouldChangeToNext();
+        
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    try
+    {   GamepadPlayerInput test;
+    	test.shouldSimulateAClick();
+        
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
 }

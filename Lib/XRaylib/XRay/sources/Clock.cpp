@@ -6,6 +6,7 @@
 */
 
 #include "Clock.hpp"
+#include "../../../Engine/Exception/MyException.hpp"
 
 Clock::Clock()
 :_start(clock())
@@ -34,4 +35,39 @@ bool Clock::doesTimeElapsed(const float &time, const bool &reset)
 float Clock::getElapsedTime()
 {
     return static_cast<float>(clock() - _start / CLOCKS_PER_SEC);
+}
+
+// STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
+// catch
+// throw
+// try
+
+int catchThrowTrydoesTimeElapsed() {
+    try
+    {   Clock test;
+        float time;
+        bool reset;
+    	test.doesTimeElapsed(time,reset);
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrygetElapsedTime() {
+    try
+    {   Clock test;
+    	test.getElapsedTime();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
 }

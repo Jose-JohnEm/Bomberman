@@ -6,7 +6,7 @@
 */
 
 #include "Input.hpp"
-
+#include "../../../Engine/Exception/MyException.hpp"
 Input::Input()
 {
     _inputs[UP] = 1;
@@ -45,4 +45,18 @@ void updateGamepad()
     if (GetGamepadButtonPressed() != -1) DrawText(TextFormat("DETECTED BUTTON: %i", GetGamepadButtonPressed()), 10, 430, 10, RED);
     else DrawText("DETECTED BUTTON: NONE", 10, 430, 10, GRAY);
         ;*/
+}
+
+int catchThrowTryupdateGamepad() {
+    try
+    {   Input test;
+    	test.updateGamepad();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
 }
