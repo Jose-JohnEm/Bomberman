@@ -137,7 +137,7 @@ inline void Game::Bomb::setBombzone(std::vector<std::string> map)
     std::cout << "Position de la bombe {" << pos.x << ", " << pos.y << "}" << std::endl;
     pos.y = map.size() - pos.y;
 
-    _bZoneX.first = (int)pos.x;
+    _bZoneX.first = static_cast<int>(pos.x);
     _bZoneX.second = 0;
 
     for (int i = 1; map[pos.y][pos.x - i] == 'X'; i++)
@@ -145,7 +145,7 @@ inline void Game::Bomb::setBombzone(std::vector<std::string> map)
     for (int i = 0; map[pos.y][_bZoneX.first + i] == 'X'; i++)
         _bZoneX.second++;
 
-    _bZoneY.first = (int)pos.y;
+    _bZoneY.first = static_cast<int>(pos.y);
     _bZoneY.second = 0;
 
     for (int i = 1; map[pos.y - i][pos.x] == 'X'; i++)

@@ -76,7 +76,7 @@ void Game::Bomberman::eraseEntitiesOnBomb(const std::pair<int, int> &pos)
 
     for (const auto &entity : _entities)
     {
-        if ((int)entity->getPositions().x == pos.first && _map.size() - (int)entity->getPositions().y == pos.second)
+        if (static_cast<int>(entity->getPositions().x) == pos.first && _map.size() - static_cast<int>(entity->getPositions().y) == pos.second)
         {
             _entities.erase(_entities.begin() + index);
             break;

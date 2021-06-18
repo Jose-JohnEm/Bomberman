@@ -105,5 +105,5 @@ void Game::Animated::move(const std::string &direction)
 
 std::pair<int, int> Game::Animated::getPositions2D()
 {
-    return {(int)round(_positions.x), (int)round(_positions.y)};
+    return {static_cast<int>(round(_positions.x)), static_cast<int>(round(_positions.y))};
 }
