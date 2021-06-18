@@ -13,6 +13,8 @@
 #include <algorithm>
 #include <map>
 #include "Interfaces/IEntity.hpp"
+#include "../Raylib/Drawing/Drawing.hpp"
+#include "../Raylib/Color/Color.hpp"
 #include <filesystem>
 
 namespace Game
