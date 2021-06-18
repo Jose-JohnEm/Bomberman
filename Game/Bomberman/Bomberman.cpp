@@ -89,17 +89,14 @@ void Game::Bomberman::eraseEntitiesOnBomb(const std::pair<int, int> &pos)
     {
         //if (static_cast<int>(entity->getPositions().x) == pos.first && _map.size() - static_cast<int>(entity->getPositions().y) == pos.second)
         if (playerGotHit(pos, entity->getPositions().x == pos.first, _map.size() - entity->getPositions().y == pos.second)) {
-            entity->setPositions(banned);
-            _entities.erase(_entities.begin() + index);
-            for (const std::shared_ptr<IEntity> &entity : _entities)
-            {
-                if ((res = dynamic_cast<Game::Player *>(entity.get())) != nullptr && entity->getPositions().x == res->getPositions().x && entity->getPositions().y == res->getPositions().y)
-                res->setAlive(false);
-                //TODO : Créer un setlife players V
-                //TODO : si toucher par la bombe (ici) --> ici setlife à 0
-                //TODO : dans raylib if life --> 0 on détruit et bloque les commandes
-            }
-            break;
+            ///entity->setPositions(banned);
+            //_entities.erase(_entities.begin() + index);
+            // for (const std::shared_ptr<IEntity> &entity : _entities)
+            // {
+            //     if ((res = dynamic_cast<Game::Player *>(entity.get())) != nullptr && entity->getPositions().x == res->getPositions().x && entity->getPositions().y == res->getPositions().y)
+            //     res->setAlive(false);
+            // }
+            // break;
         }
         if (entity->getType() == "BreakableWall" && entity->getPositions().x == pos.first && _map.size() - entity->getPositions().y == pos.second)
         {
