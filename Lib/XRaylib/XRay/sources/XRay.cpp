@@ -233,6 +233,7 @@ void XRay::setAudioResources(void)
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_BING, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/Bing.wav")))));
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_WEEE, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/wee.wav")))));
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_BOOM, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/boom.wav")))));
+    _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_TUDUM, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/tudum.wav")))));
 }
 
 void XRay::quitGame(void)
