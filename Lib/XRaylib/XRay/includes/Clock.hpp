@@ -12,15 +12,15 @@
 
 class Clock
 {
-    public:
-        Clock();
-        ~Clock();
+public:
+    Clock();
+    ~Clock();
 
-        float getElapsedTime();
-        bool doesTimeElapsed(const float &time, const bool &reset = true);
+    float getElapsedTime();
+    bool doesTimeElapsed(const float &time, const bool &reset = true);
 
-    private:
-        float _start;
+private:
+    float _start;
 };
 
 #endif
