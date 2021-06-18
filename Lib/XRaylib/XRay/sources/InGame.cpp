@@ -121,8 +121,10 @@ void XRay::managePlayersActions(void)
             _playerActionsFunc(u, "goSouth");
         if (_playersInput[u]->shouldGoToWest())
             _playerActionsFunc(u, "goWest");
-        if (_playersInput[u]->shouldSimulateAClick())
+        if (_playersInput[u]->shouldSimulateAClick()) {
             _playerActionsFunc(u, "dropBomb");
+            _sfx.at(SFX_BOOM)->play();
+        }
     }
 }
 

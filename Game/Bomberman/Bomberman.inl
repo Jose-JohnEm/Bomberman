@@ -67,7 +67,9 @@ inline void Game::Bomberman::doPlayerAction(const size_t playerID, const std::st
     //"goEast", "goNorth", "goSouth", "goWest", "dropBomb"]
     if (action == "goEast" || action == "goNorth" || action == "goSouth" || action == "goWest") {
         if (checkPlayerPosition(action, findPlayer(playerID)))
+        {
             findPlayer(playerID).move(action);
+        }
     }
     if (action == "dropBomb")
     {
@@ -91,6 +93,23 @@ inline bool Game::Bomberman::checkPlayerPosition(const std::string action, Playe
         {"goSouth", {0, 1}},
         {"goWest", {1, 0}}
     };
+
+    bool collision = CheckCollisionSpheres(pos3D.getCStruct(), 0.46,  {(float)positions.first + direction[action].first, (float)positions.second + direction[action].second, 0}, 0.46);
+
+    std::cout << "<<<< Position du perso : { " << pos3D.getCStruct().x << ", " << pos3D.getCStruct().y << ", " << pos3D.getCStruct().z << "}"<< std::endl;
+    std::cout << "<<<< Position du mur : { " << direction[action].first + positions.first << ", " << direction[action].second + positions.second << ", " << 0 << "}"<< std::endl;
+    std::cout << "<<<< DIAGO ! : " << collision << std::endl;
+
+    if (collision && _map[direction[action].second + positions.second][direction[action].first + positions.first] != '*')
+    {
+        Raylib::Vector3 p1(pos3D.x, positions.second, pos3D.z);
+        Raylib::Vector3 p2(positions.first, pos3D.y, pos3D.z);
+
+        if (action == "goEast" || action == "goWest")
+            player.setPositions(p1);
+        if (action == "goNorth" || action == "goSouth")
+            player.setPositions(p2);
+    }
 
     positions.second = _map.size() - positions.second;
     for (auto i: _map)
