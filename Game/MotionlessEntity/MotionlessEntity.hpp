@@ -21,132 +21,132 @@ namespace Game
 {
     class MotionlessEntity : public IEntity {
 
-        public:
-            /**
-             * @brief Destroy the Motionless Entity object
-             */
-            virtual ~MotionlessEntity(void) {};
+    public:
+        /**
+         * @brief Destroy the Motionless Entity object
+         */
+        virtual ~MotionlessEntity(void) {};
 
-            /**
-             * @brief Get the Type object
-             *
-             * @return A std::string
-             */
-            virtual std::string getType() const = 0;
+        /**
+         * @brief Get the Type object
+         *
+         * @return A std::string
+         */
+        virtual std::string getType() const = 0;
 
-            /**
-             * @brief Get the Positions object
-             *
-             * @return A Raylib::Vector3
-             */
-            Raylib::Vector3 getPositions(void) const;
+        /**
+         * @brief Get the Positions object
+         *
+         * @return A Raylib::Vector3
+         */
+        Raylib::Vector3 getPositions(void) const;
 
-            /**
-             * @brief Set the Positions
-             *
-             * @param vector A vector3
-             */
-            void setPositions(Raylib::Vector3 &vector);
+        /**
+         * @brief Set the Positions
+         *
+         * @param vector A vector3
+         */
+        void setPositions(Raylib::Vector3 &vector);
 
-            /**
-             * @brief Draw Entity
-             *
-             */
-            virtual void drawEntity() = 0;
+        /**
+         * @brief Draw Entity
+         *
+         */
+        virtual void drawEntity() = 0;
 
-            /**
-             * @brief Set a boolean to know if this entity should be displayed
-             *
-             * @param shouldDisplay A boolean to know if this entity should be displayed
-             */
-            void setShouldDisplay(const bool &shouldDisplay);
+        /**
+         * @brief Set a boolean to know if this entity should be displayed
+         *
+         * @param shouldDisplay A boolean to know if this entity should be displayed
+         */
+        void setShouldDisplay(const bool &shouldDisplay);
 
-            /**
-             * @brief Get a boolean to know if this entity should be displayed
-             *
-             * @return true or false
-             */
-            bool getShouldDisplay(void) const;
+        /**
+         * @brief Get a boolean to know if this entity should be displayed
+         *
+         * @return true or false
+         */
+        bool getShouldDisplay(void) const;
 
-            /**
-             * @brief Update the available textures paths
-             *
-             */
-            void updateAvailablePaths(void);
+        /**
+         * @brief Update the available textures paths
+         *
+         */
+        void updateAvailablePaths(void);
 
-        protected:
+    protected:
 
-            MotionlessEntity() = default;
+        MotionlessEntity() = default;
 
-            // TODO: USE ENCAPSULATION
-            Model _model;
-            Raylib::Vector3 _positions{0, 0, 0};     // A vector3 that represents positions
-            std::vector<Raylib::Texture> _textures;     // A vector of texture
-            bool _shouldDisplay = true;            // A boolean to know if this entity should be displayed
-            std::vector<std::string> _available_paths;
+        // TODO: USE ENCAPSULATION
+        Model _model;
+        Raylib::Vector3 _positions{0, 0, 0};     // A vector3 that represents positions
+        std::vector<Raylib::Texture> _textures;     // A vector of texture
+        bool _shouldDisplay = true;            // A boolean to know if this entity should be displayed
+        std::vector<std::string> _available_paths;
     };
 
-     class SolidWall : public virtual MotionlessEntity {
+    class SolidWall : public virtual MotionlessEntity {
 
-        public:
+    public:
 
-            /**
-             * @brief Construct a new Solid Wall
-             *
-             * @param positions A vector3, {0, 0, 0} as default value
-             * @param mapType A size_t, 0 as default value
-             */
-            SolidWall(Raylib::Vector3 positions = {0, 0, 0}, size_t mapType = 0);
+        /**
+         * @brief Construct a new Solid Wall
+         *
+         * @param positions A vector3, {0, 0, 0} as default value
+         * @param mapType A size_t, 0 as default value
+         */
+        SolidWall(Raylib::Vector3 positions = {0, 0, 0}, size_t mapType = 0);
 
-            std::string getType() const override;
+        std::string getType() const override;
 
-            void drawEntity() override;
+        void drawEntity() override;
 
-        private:
-            size_t _mapType;        // A size_t
+    private:
+        size_t _mapType;        // A size_t
     };
 
     class BreakableWall : public virtual MotionlessEntity {
 
-        public:
+    public:
 
-            /**
-             * @brief Construct a new Breakable Wall
-             *
-             * @param positions A vector3, {0, 0, 0} as default value
-             * @param mapType A size_t, 0 as default value
-             */
-            BreakableWall(Raylib::Vector3 positions = {0, 0, 0}, size_t mapType = 0);
+        /**
+         * @brief Construct a new Breakable Wall
+         *
+         * @param positions A vector3, {0, 0, 0} as default value
+         * @param mapType A size_t, 0 as default value
+         */
+        BreakableWall(Raylib::Vector3 positions = {0, 0, 0}, size_t mapType = 0);
 
-            std::string getType() const override;
+        std::string getType() const override;
 
-            void drawEntity() override;
+        void drawEntity() override;
 
-        private:
-            size_t _mapType;        // A size_t
+    private:
+        size_t _mapType;        // A size_t
     };
 
     class Floor : public virtual MotionlessEntity {
 
-        public:
+    public:
 
-            /**
-             * @brief Construct a new Floor
-             *
-             * @param positions A vector3, {0, 0, 0} as default value
-             * @param mapType A size_t, 0 as default value
-             */
-            Floor(Raylib::Vector3 positions = {0, 0, 0}, size_t mapType = 0);
+        /**
+         * @brief Construct a new Floor
+         *
+         * @param positions A vector3, {0, 0, 0} as default value
+         * @param mapType A size_t, 0 as default value
+         */
+        Floor(Raylib::Vector3 positions = {0, 0, 0}, size_t mapType = 0);
 
-            std::string getType() const override;
+        std::string getType() const override;
 
-            void drawEntity() override;
+        void drawEntity() override;
 
-        private:
-            size_t _mapType;        // A size_t
+    private:
+        size_t _mapType;        // A size_t
     };
 
-    #include "MotionlessEntity.inl"
+#include "MotionlessEntity.inl"
 }
 
 #endif /* !MOTIONLESSENTITY_HPP_ */
