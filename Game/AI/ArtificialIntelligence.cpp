@@ -57,3 +57,6 @@ void Game::ArtificialIntelligence::run(void) const
         }
     }
 }
+
+//TODO: Pas de diagonales
+//TODO: Convertir liste de points en directions
