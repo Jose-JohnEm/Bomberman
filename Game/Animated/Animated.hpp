@@ -5,6 +5,9 @@
 ** Animated.hpp
 */
 
+#ifndef ANIMATED_HPP_
+#define ANIMATED_HPP_
+
 #include "Interfaces/IEntity.hpp"
 #include "../Lib/XRaylib/Raylib/Vector3/Vector3.hpp"
 #include <string>
@@ -224,3 +227,5 @@ class Animated : public IEntity
     #include "Animated.inl"
 
 } // namespace Game
+
+#endif
