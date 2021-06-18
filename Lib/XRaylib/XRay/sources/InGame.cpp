@@ -77,13 +77,16 @@ void XRay::goToAnotherScene()
     // Go to another scene according to mouse position
     if (pauseButton && Raylib::Mouse::isButtonPressed(0)) {
         _isPaused = true;
+        _sfx.at(SFX_KLICK)->play();
         _lastFrameTime = Raylib::Timing::getTime();
     }
     if (_isPaused && resume && Raylib::Mouse::isButtonPressed(0)) {
         _isPaused = false;
+        _sfx.at(SFX_KLICK)->play();
         _startingTime += Raylib::Timing::getTime() - _lastFrameTime;
     }
     if (_isPaused && restart && Raylib::Mouse::isButtonPressed(0)) {
+        _sfx.at(SFX_KLICK)->play();
         _isPaused = false;
         m_isPaused = 2;
         _pointerToRestartFunc();
@@ -92,6 +95,7 @@ void XRay::goToAnotherScene()
     }
     if (_isPaused && save && Raylib::Mouse::isButtonPressed(0)) {
         beginDrawing(false);
+        _sfx.at(SFX_KLICK)->play();
         _resources.at(SAVED)->drawTexture(650, 20);
         endDrawing();
         _pointerToSaveFunc(_gameSettings, getPlayerControls());
@@ -99,10 +103,12 @@ void XRay::goToAnotherScene()
     }
     if (_isPaused && settings && Raylib::Mouse::isButtonPressed(0)) {
         _scenesBack[Scene::SETTINGS] = &XRay::displayInGameScene;
+        _sfx.at(SFX_SETTING)->play();
         displaySettingsScene();
     }
     if (_isPaused && home && Raylib::Mouse::isButtonPressed(0)) {
         _isPaused = false;
+        _sfx.at(SFX_HOME)->play();
         m_isPaused = 2;
         _pointerToRestartFunc();
         resetAll();

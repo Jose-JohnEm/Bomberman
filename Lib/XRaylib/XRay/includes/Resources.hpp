@@ -164,7 +164,8 @@ typedef enum {
     SFX_BING,
     SFX_OPENNING,
     SFX_WEEE,
-    SFX_BOOM
+    SFX_BOOM,
+    SFX_TUDUM
 } SfxResources;
 
 #endif /* !RESOURCES_HPP_ */

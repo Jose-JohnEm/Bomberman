@@ -14,45 +14,45 @@
 #include "Mouse/Mouse.hpp"
 
 class Input {
-    public:
+public:
 
-        enum GamePadTouch {
-            UP,
-            RIGHT,
-            DOWN,
-            LEFT,
-            TRIANGLE,
-            ROND,
-            CROIX,
-            CARRE,
-            L1,
-            L2,
-            R1,
-            R2,
-            SHARE,
-            UNKNOWN,
-            OPTIONS,
-            L3,
-            R3
-        };
+    enum GamePadTouch {
+        UP,
+        RIGHT,
+        DOWN,
+        LEFT,
+        TRIANGLE,
+        ROND,
+        CROIX,
+        CARRE,
+        L1,
+        L2,
+        R1,
+        R2,
+        SHARE,
+        UNKNOWN,
+        OPTIONS,
+        L3,
+        R3
+    };
 
-        /**
-         * @brief Construct a new Input object
-         */
-        Input();
+    /**
+     * @brief Construct a new Input object
+     */
+    Input();
 
-        /**
-         * @brief Destroy the Input object
-         */
-        ~Input();
+    /**
+     * @brief Destroy the Input object
+     */
+    ~Input();
 
-        /**
-         * @brief Get and Set Gamepad Input
-         */
-        static void updateGamepad();
+    /**
+     * @brief Get and Set Gamepad Input
+     */
+    static void updateGamepad();
 
-    private:
-        std::map<GamePadTouch, int> _inputs;
+private: //TODO: DOC
+    std::map<GamePadTouch, int> _inputs;
 
 };
 

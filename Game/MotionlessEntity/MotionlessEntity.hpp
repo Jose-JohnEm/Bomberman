@@ -89,9 +89,9 @@ namespace Game
             float _length;              // A float
     };
 
-     class SolidWall : public virtual MotionlessEntity {
+    class SolidWall : public virtual MotionlessEntity {
 
-        public:
+    public:
 
             /**
              * @brief Construct a new Solid Wall
@@ -116,13 +116,13 @@ namespace Game
              */
             void drawEntity(void) override;
 
-        private:
-            size_t _mapType;        // A size_t
+    private:
+        size_t _mapType;        // A size_t
     };
 
     class BreakableWall : public virtual MotionlessEntity {
 
-        public:
+    public:
 
             /**
              * @brief Construct a new Breakable Wall
@@ -147,13 +147,13 @@ namespace Game
              */
             void drawEntity(void) override;
 
-        private:
-            size_t _mapType;        // A size_t
+    private:
+        size_t _mapType;        // A size_t
     };
 
     class Floor : public virtual MotionlessEntity {
 
-        public:
+    public:
 
             /**
              * @brief Construct a new Floor
@@ -178,11 +178,11 @@ namespace Game
              */
             void drawEntity(void) override;
 
-        private:
-            size_t _mapType;        // A size_t
+    private:
+        size_t _mapType;        // A size_t
     };
 
-    #include "MotionlessEntity.inl"
+#include "MotionlessEntity.inl"
 }
 
 #endif /* !MOTIONLESSENTITY_HPP_ */

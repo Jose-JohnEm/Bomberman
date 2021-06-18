@@ -50,12 +50,9 @@ inline void Game::Map::fill(const char &character)
 
 inline void Game::Map::dump(void) const
 {
-    for (const std::string &row : _map)
-    {
+    for (const std::string &row : _map) {
         for (const char &character : row)
-        {
             std::cout << character;
-        }
         std::cout << std::endl;
     }
 }
@@ -69,13 +66,10 @@ inline void Game::Map::maze(void)
 {
     int choice = 0;
 
-    for (size_t y = 0; y < _height; y += 2)
-    {
-        for (size_t x = 0; x < _width; x += 2)
-        {
+    for (size_t y = 0; y < _height; y += 2) {
+        for (size_t x = 0; x < _width; x += 2) {
             _map[y][x] = EMPTY_SPACE;
-            if (y != 0 && x != 0)
-            {
+            if (y != 0 && x != 0) {
                 choice = rand() % 2;
                 _map[(choice) ? y : y - 1][(choice) ? x - 1 : x] = EMPTY_SPACE;
             }
@@ -89,14 +83,10 @@ inline void Game::Map::placeBorders(void)
     std::fill(_map[0].begin(), _map[0].end(), EDGE);
     std::fill(_map[_height - 1].begin(), _map[_height - 1].end(), EDGE);
     // Place left and right borders
-    for (size_t y = 0; y < _height; y++)
-    {
-        for (size_t x = 0; x < _width; x++)
-        {
+    for (size_t y = 0; y < _height; y++) {
+        for (size_t x = 0; x < _width; x++) {
             if (x == 0 || x == _width - 1)
-            {
                 _map[y][x] = EDGE;
-            }
         }
     }
 }
@@ -104,11 +94,8 @@ inline void Game::Map::placeBorders(void)
 inline void Game::Map::placePlayers(void)
 {
     if (!(1 <= (_playersNumber.first + _playersNumber.second) && (_playersNumber.first + _playersNumber.second) <= 4))
-    {
         throw std::invalid_argument("ERROR: Invalid number of players");
-    }
-    for (size_t i = 1; i <= (_playersNumber.first + _playersNumber.second); i++)
-    {
+    for (size_t i = 1; i <= (_playersNumber.first + _playersNumber.second); i++) {
         switch (i)
         {
             case 1:
@@ -129,23 +116,17 @@ inline void Game::Map::placePlayers(void)
 
 inline void Game::Map::placeSolidWalls(void)
 {
-    for (size_t y = 2; y < _height - 1; y += 2)
-    {
+    for (size_t y = 2; y < _height - 1; y += 2) {
         for (size_t x = 2; x < _width - BORDER; x += 2)
-        {
             _map[y][x] = SOLID_WALL;
-        }
     }
 }
 
 inline void Game::Map::setPlayersAreas(const size_t &areaSize)
 {
-    for (size_t player = 0; player < (_playersNumber.first + _playersNumber.second); player++)
-    {
-        for (size_t i = 1; i <= areaSize; i++)
-        {
-            switch (player)
-            {
+    for (size_t player = 0; player < (_playersNumber.first + _playersNumber.second); player++) {
+        for (size_t i = 1; i <= areaSize; i++) {
+            switch (player) {
                 case 0:
                     _map[1][1 + i] = EMPTY_SPACE;
                     _map[1 + i][1] = EMPTY_SPACE;

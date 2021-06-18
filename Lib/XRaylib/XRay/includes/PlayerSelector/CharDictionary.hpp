@@ -13,7 +13,7 @@
 #include "Color/Color.hpp"
 
 struct CharDictionary
-{
+{ //TODO: DOC
     std::string obj;
     std::string texture;
     float scalable;

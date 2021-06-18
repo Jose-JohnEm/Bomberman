@@ -69,3 +69,13 @@ inline bool Game::Player::dropBomb()
 {
     return true;
 }
+
+inline void Game::Player::setAlive(const bool &alive)
+{
+    _alive = alive;
+}
+
+inline bool Game::Player::getAlive() const
+{
+    return _alive;
+}

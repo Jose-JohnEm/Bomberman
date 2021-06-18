@@ -8,8 +8,7 @@
 #include <iostream>
 #include "Core/Core.hpp"
 
-int main(void)
-{
+int main(void) {
     try {
         Engine::Core core;
         core.run();
