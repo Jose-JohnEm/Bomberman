@@ -74,3 +74,8 @@ inline void Game::Animated::setScalable(const float &scalable)
 {
     _scalable = scalable;
 }
+
+inline void Game::Animated::setRotation(const float &rotation)
+{
+    _rotation = rotation;
+}

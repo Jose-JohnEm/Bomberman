@@ -132,6 +132,13 @@ namespace Game
          */
         std::pair<int, int> getPositions2D();
 
+        /**
+         * @brief Set the Rotation of the Animated
+         *
+         * @param rotation
+         */
+        void setRotation(const float &rotation);
+
     private:
 
         /**
