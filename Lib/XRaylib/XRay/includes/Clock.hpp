@@ -12,7 +12,7 @@
 
 class Clock
 {
-public:
+public: //TODO: DOC
     Clock();
     ~Clock();
 

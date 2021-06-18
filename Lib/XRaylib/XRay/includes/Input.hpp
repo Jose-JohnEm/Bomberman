@@ -51,7 +51,7 @@ public:
      */
     static void updateGamepad();
 
-private:
+private: //TODO: DOC
     std::map<GamePadTouch, int> _inputs;
 
 };

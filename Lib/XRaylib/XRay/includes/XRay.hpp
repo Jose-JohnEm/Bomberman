@@ -563,48 +563,48 @@ private:
      * [8] -- _mapType
      */
     std::array<size_t, 9> _gameSettings = {0, 1, 1, 1, 60, 0, 1, 1, 0};
-    size_t _sizeMap = 5;                            // Size of Map
-    double _startingTime;                  // Get Time from raylib
-    double _lastFrameTime;                  // Get Time every frame from raylib
-    std::vector<std::string> _map;              // Map
-    float masterVolume;                         // Master volume
-    float musicVolume;                         // Master volume
-    float sfxVolume;                         // Master volume
-    std::vector<std::string> _userNames;        // A vector of all the users names
-    std::pair<bool, std::vector<void (XRay::*)()>> _intro;   // Intro pointer to member function
-    Scene _scene = MENU;                   // Current scene
-    std::vector<void (XRay::*)()> _scenesFunc;  // Array of pointers to function (a scene, a function)
-    std::function<void ()> _pointerToRestartFunc;   // Pointer to Restart Func
-    std::function<void (std::array<std::size_t, 9>, std::vector<std::string>)> _pointerToSaveFunc;   // Pointer to Save Func
-    std::function<void (std::array<std::size_t, 9>)> _pointerToSettingsFunc;   // Pointer to Settings Func
-    std::function<void (std::string)> _pointerToLoadFunc;   // Pointer to Load Func
-    std::function<void (const size_t pos, const std::string action)> _playerActionsFunc;              // Pointer to playerActionsFunc
-    Raylib::Camera3D _camera;
+    size_t _sizeMap = 5;                                                        // Size of Map
+    double _startingTime;                                                       // Get Time from raylib
+    double _lastFrameTime;                                                      // Get Time every frame from raylib
+    std::vector<std::string> _map;                                              // Map
+    float masterVolume;                                                         // Master volume
+    float musicVolume;                                                          // Master volume
+    float sfxVolume;                                                            // Master volume
+    std::vector<std::string> _userNames;                                        // A vector of all the users names
+    std::pair<bool, std::vector<void (XRay::*)()>> _intro;                      // Intro pointer to member function
+    Scene _scene = MENU;                                                        // Current scene
+    std::vector<void (XRay::*)()> _scenesFunc;                                  // Array of pointers to function (a scene, a function)
+    std::function<void ()> _pointerToRestartFunc;                               // Pointer to Restart Func
+    std::function<void (std::array<std::size_t, 9>, std::vector<std::string>)> _pointerToSaveFunc;          // Pointer to Save Func
+    std::function<void (std::array<std::size_t, 9>)> _pointerToSettingsFunc;                                // Pointer to Settings Func
+    std::function<void (std::string)> _pointerToLoadFunc;                                                   // Pointer to Load Func
+    std::function<void (const size_t pos, const std::string action)> _playerActionsFunc;                    // Pointer to playerActionsFunc
+    Raylib::Camera3D _camera;                                                   // The camera
 
-    std::vector<bool> _playerTab{true, false, false, false};                     // A vector of boolean that represents if the player is an AI or not
-    std::vector<Resources> _controlsTab{UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN};                   // A vector of resources (See in Resources.hpp) that represents if the controls
-    std::array<int, 3> _allIntegers = {50, 400, 1};   // An array of main positions on this scene
-    std::vector<std::pair<int, int>> _letterAndFrame; // A vector of infos about the boxes of pseudos
-    std::vector<size_t> _card{36, 36, 36, 36};        // Cards (Blue or Yellow)
-    size_t _nextOrNot;                                // A size_t to know if can go to next scene or not
-    std::map<Scene, void (XRay::*)()> _scenesBack;         // Map of pointers to function and Scene (a scene, a pointer to function)
-    std::map<Scene, void (XRay::*)()> _scenesBackBackup;   // Map of pointers to function and Scene (a scene, a pointer to function)
-    bool _isPaused = false;                            // Boolean to know if game is on pause or not
-    int m_isPaused = 2;                                // Int to know if game is on pause or not
-    float _scrollingBack = 0.0f;                      // A variable for parallax
+    std::vector<bool> _playerTab{true, false, false, false};                    // A vector of boolean that represents if the player is an AI or not
+    std::vector<Resources> _controlsTab{UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN};                    // A vector of resources (See in Resources.hpp) that represents if the controls
+    std::array<int, 3> _allIntegers = {50, 400, 1};     // An array of main positions on this scene
+    std::vector<std::pair<int, int>> _letterAndFrame;                           // A vector of infos about the boxes of pseudos
+    std::vector<size_t> _card{36, 36, 36, 36};                                  // Cards (Blue or Yellow)
+    size_t _nextOrNot;                                                          // A size_t to know if can go to next scene or not
+    std::map<Scene, void (XRay::*)()> _scenesBack;                              // Map of pointers to function and Scene (a scene, a pointer to function)
+    std::map<Scene, void (XRay::*)()> _scenesBackBackup;                        // Map of pointers to function and Scene (a scene, a pointer to function)
+    bool _isPaused = false;                                                     // Boolean to know if game is on pause or not
+    int m_isPaused = 2;                                                         // Int to know if game is on pause or not
+    float _scrollingBack = 0.0f;                                                // A variable for parallax
 
     std::vector<std::vector<std::pair<std::string, std::string>>> _playersStats; // A vector of a vector all the stats by player [Player -- (NameOfStat, Value)]...
-    std::vector<std::pair<std::string, std::string>> _scores;                 // A vector of pair (username, score)
-    std::vector<std::pair<std::string, std::string>> _bestScores;             // A vector of pair (username, score), List of Bests Scores
-    std::vector<std::shared_ptr<IEntity>> _gameInfos;                         // A vector of shared pointer that represent all the entities to display. Ex : Map, Score, UserInfo, Button
-    std::vector<std::string> _backups;                                        // A vector of all the paths to backups files as a const std::vector<std::string>&
-    std::map<Scene, std::pair<bool, bool>> _transitionManager;                // A map of Scene and pair of bool to manage transition (Scene -- (shouldFadeIn=true, shouldFadeOut=true))
+    std::vector<std::pair<std::string, std::string>> _scores;                   // A vector of pair (username, score)
+    std::vector<std::pair<std::string, std::string>> _bestScores;               // A vector of pair (username, score), List of Bests Scores
+    std::vector<std::shared_ptr<IEntity>> _gameInfos;                           // A vector of shared pointer that represent all the entities to display. Ex : Map, Score, UserInfo, Button
+    std::vector<std::string> _backups;                                          // A vector of all the paths to backups files as a const std::vector<std::string>&
+    std::map<Scene, std::pair<bool, bool>> _transitionManager;                  // A map of Scene and pair of bool to manage transition (Scene -- (shouldFadeIn=true, shouldFadeOut=true))
 
-    std::map<Resources, std::shared_ptr<Raylib::Texture>> _resources; // Texture dictionary
-    std::map<MusicResources, std::shared_ptr<Raylib::Music>> _musics; // Music dictionary
-    std::map<SfxResources, std::shared_ptr<Raylib::Sound>> _sfx; // SFX dictionary
-    std::vector<std::shared_ptr<IPlayerInput>> _playersInput{std::shared_ptr<IPlayerInput>(new MousePlayerInput())};
-    PlayerSelector::Selector _pSelector; // 3D Camera
+    std::map<Resources, std::shared_ptr<Raylib::Texture>> _resources;           // Texture dictionary
+    std::map<MusicResources, std::shared_ptr<Raylib::Music>> _musics;           // Music dictionary
+    std::map<SfxResources, std::shared_ptr<Raylib::Sound>> _sfx;                // SFX dictionary
+    std::vector<std::shared_ptr<IPlayerInput>> _playersInput{std::shared_ptr<IPlayerInput>(new MousePlayerInput())};    // Player input
+    PlayerSelector::Selector _pSelector;                                        // 3D Camera
 };
 
 #include "XRay.inl"

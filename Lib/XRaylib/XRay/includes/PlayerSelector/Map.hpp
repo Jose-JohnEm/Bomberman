@@ -59,8 +59,7 @@ namespace PlayerSelector
          */
         size_t getMapType() const;
 
-        enum ModelMode
-        {
+        enum ModelMode {
             FLOOR,
             WALL,
             BOX
@@ -80,7 +79,7 @@ namespace PlayerSelector
          */
         std::vector<Texture2D> getTextures() const;
 
-    private:
+    private: //TODO: DOC
         void drawHandlingCharacters(const int &id);
 
         std::vector<std::vector<Texture2D>> _textures;

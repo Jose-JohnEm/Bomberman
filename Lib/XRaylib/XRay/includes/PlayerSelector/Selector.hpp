@@ -158,12 +158,28 @@ namespace PlayerSelector
          */
         size_t getMapType() const;
 
+        /**
+         *  //TODO: DOC
+         * @return
+         */
         std::vector<CharDictionary> getPlayerData() const;
 
+        /**
+         * //TODO: DOC
+         */
         std::vector<Raylib::Vector3> POS;
 
-
+        /**
+         * //TODO: DOC
+         * @param index
+         * @return
+         */
         PlayerSelector::Player &operator[](const int &index);
+        /**
+         * //TODO: DOC
+         * @param index
+         * @return
+         */
         const PlayerSelector::Player &operator[](const int &index) const;
 
     private:
@@ -188,6 +204,7 @@ namespace PlayerSelector
          */
         void updateRotationAxis();
 
+        //TODO: DOC
         Raylib::Camera3D *camera;
         std::vector<PlayerSelector::Player> _players;
         int _nbCharacters;
