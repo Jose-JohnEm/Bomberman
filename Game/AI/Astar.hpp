@@ -131,6 +131,14 @@ namespace Game
              */
             int fillPath(std::list<Point> &path);
 
+            /**
+             * @brief Calcul the heuristic distance between a cell and the target (Euclidean Distance)
+             *
+             * @param currentCell Current node
+             * @return float - The heuristic distance between a cell and the target
+             */
+            float calculateHValue(const Point &currentCell) const;
+
         private:
             std::vector<std::string> _map; // The map
             std::pair<int, int> _mapDimensions; // The map dimensions (first: width, second: height)
@@ -146,14 +154,6 @@ namespace Game
             // #######
             // #2#6#3#
             // #######
-
-            /**
-             * @brief Calcul the heuristic distance between a cell and the target (Euclidean Distance)
-             *
-             * @param currentCell Current node
-             * @return float - The heuristic distance between a cell and the target
-             */
-            float calculateHValue(const Point &currentCell) const;
 
             /**
              * @brief Check if current cell is valid (not out map ranges)
