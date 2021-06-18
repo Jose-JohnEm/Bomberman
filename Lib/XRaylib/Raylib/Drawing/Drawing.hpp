@@ -9,6 +9,8 @@
 #define DRAWING_HPP_
 
 #include "../Color/Color.hpp"
+#include "../Vector3/Vector3.hpp"
+#include "../Texture/Texture.hpp"
 
 namespace Raylib
 {
@@ -41,6 +43,11 @@ namespace Raylib
              * @brief End canvas drawing and swap buffers (double buffering)
              */
             static void endDrawing(void);
+
+            /**
+             * @brief End canvas drawing and swap buffers (double buffering)
+             */
+            static void drawCubeTexture(Texture2D texture, Vector3 position, float width, float height, float length, Color color); // Draw cube textured
     };
 
     #include "Drawing.inl"
