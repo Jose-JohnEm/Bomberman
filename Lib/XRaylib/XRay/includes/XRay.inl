@@ -97,7 +97,7 @@ inline void XRay::display(void)
     // Hide the cursor
     Raylib::Cursor::hideCursor();
 
-    (this->*_scenesFunc[(int)_scene])();
+    (this->*_scenesFunc[static_cast<int>(_scene)])();
 }
 
 inline void XRay::setPlayersStats(const std::vector<std::vector<std::pair<std::string, std::string>>> &info)

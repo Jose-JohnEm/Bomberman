@@ -47,17 +47,17 @@ void XRay::displaySettingsScene(void)
 
         // Master Volume
         _resources.at(VOLUME_DOWN)->drawTexture(560, 395, Raylib::Color::White());
-        Raylib::Text::drawText(std::to_string((int)masterVolume), 670, 405, 48, Raylib::Color::White());
+        Raylib::Text::drawText(std::to_string(static_cast<int>(masterVolume)), 670, 405, 48, Raylib::Color::White());
         _resources.at(VOLUME_UP)->drawTexture(765, 395, Raylib::Color::White());
 
         // Music volume
         _resources.at(VOLUME_DOWN)->drawTexture(560, 480, Raylib::Color::White());
-        Raylib::Text::drawText(std::to_string((int)musicVolume), 670, 490, 48, Raylib::Color::White());
+        Raylib::Text::drawText(std::to_string(static_cast<int>(musicVolume)), 670, 490, 48, Raylib::Color::White());
         _resources.at(VOLUME_UP)->drawTexture(765, 480, Raylib::Color::White());
 
         // Sfx volume
         _resources.at(VOLUME_DOWN)->drawTexture(560, 565, Raylib::Color::White());
-        Raylib::Text::drawText(std::to_string((int)sfxVolume), 670, 575, 48, Raylib::Color::White());
+        Raylib::Text::drawText(std::to_string(static_cast<int>(sfxVolume)), 670, 575, 48, Raylib::Color::White());
         _resources.at(VOLUME_UP)->drawTexture(765, 565, Raylib::Color::White());
 
         // Mods

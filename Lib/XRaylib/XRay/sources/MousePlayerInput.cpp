@@ -37,8 +37,8 @@ MousePlayerInput::~MousePlayerInput()
 bool MousePlayerInput::shouldGoToEast(void) const
 {
     bool mousePos;
-    int x = (int)Raylib::Mouse::getMouseX() - 1725;
-    int y = (int)Raylib::Mouse::getMouseY() - 165;
+    int x = static_cast<int>(Raylib::Mouse::getMouseX()) - 1725;
+    int y = static_cast<int>(Raylib::Mouse::getMouseY()) - 165;
 
     if ((Raylib::Mouse::getMouseX() < 1600 || Raylib::Mouse::getMouseX() > 1850) || (Raylib::Mouse::getMouseY() < 40 || Raylib::Mouse::getMouseY() > 290))
         mousePos = false;
@@ -52,8 +52,8 @@ bool MousePlayerInput::shouldGoToEast(void) const
 bool MousePlayerInput::shouldGoToWest(void) const
 {
     bool mousePos;
-    int x = (int)Raylib::Mouse::getMouseX() - 1725;
-    int y = (int)Raylib::Mouse::getMouseY() - 165;
+    int x = static_cast<int>(Raylib::Mouse::getMouseX()) - 1725;
+    int y = static_cast<int>(Raylib::Mouse::getMouseY()) - 165;
 
     if ((Raylib::Mouse::getMouseX() < 1600 || Raylib::Mouse::getMouseX() > 1850) || (Raylib::Mouse::getMouseY() < 40 || Raylib::Mouse::getMouseY() > 290))
         mousePos = false;
@@ -67,8 +67,8 @@ bool MousePlayerInput::shouldGoToWest(void) const
 bool MousePlayerInput::shouldGoToNorth(void) const
 {
     bool mousePos;
-    int x = (int)Raylib::Mouse::getMouseX() - 1725;
-    int y = (int)Raylib::Mouse::getMouseY() - 165;
+    int x = static_cast<int>(Raylib::Mouse::getMouseX()) - 1725;
+    int y = static_cast<int>(Raylib::Mouse::getMouseY()) - 165;
 
     if ((Raylib::Mouse::getMouseX() < 1600 || Raylib::Mouse::getMouseX() > 1850) || (Raylib::Mouse::getMouseY() < 40 || Raylib::Mouse::getMouseY() > 290))
         mousePos = false;
@@ -82,8 +82,8 @@ bool MousePlayerInput::shouldGoToNorth(void) const
 bool MousePlayerInput::shouldGoToSouth(void) const
 {
     bool mousePos;
-    int x = (int)Raylib::Mouse::getMouseX() - 1725;
-    int y = (int)Raylib::Mouse::getMouseY() - 165;
+    int x = static_cast<int>(Raylib::Mouse::getMouseX()) - 1725;
+    int y = static_cast<int>(Raylib::Mouse::getMouseY()) - 165;
 
     if ((Raylib::Mouse::getMouseX() < 1600 || Raylib::Mouse::getMouseX() > 1850) || (Raylib::Mouse::getMouseY() < 40 || Raylib::Mouse::getMouseY() > 290))
         mousePos = false;

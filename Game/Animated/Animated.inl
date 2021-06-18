@@ -26,10 +26,10 @@ inline void Game::Animated::drawEntity()
 
     _model.update();
     _model.getModel().transform = {
-        0, 0, 1, 0,
-        cosf(rad_rotation), sinf(rad_rotation), 0, 0,
-        -sinf(rad_rotation), cosf(rad_rotation), 0, 0,
-        0, 0, 0, 1
+            0, 0, 1, 0,
+            cosf(rad_rotation), sinf(rad_rotation), 0, 0,
+            -sinf(rad_rotation), cosf(rad_rotation), 0, 0,
+            0, 0, 0, 1
     };
     DrawModelEx(_model.getModel(), _positions.getCStruct(), {0, 0, 1}, _rotation, {_scalable, _scalable, _scalable}, _color.getCStruct());
 }
@@ -37,14 +37,18 @@ inline void Game::Animated::drawEntity()
 inline void Game::Bomb::drawEntity()
 {
     Raylib::Vector3 pos = Animated::getPositions();
+    static Raylib::Sound boom ("resources/Sound/boom.wav");
+    static Raylib::Texture fire ("resources/assets/fire.png");
 
     if (_bZoneX.first != 0 && _bZoneX.second != 0 && _bZoneY.first != 0 && _bZoneY.second != 0)
     {
         for (int i = 0; i < _bZoneX.second; i++)
-            DrawCubeTexture(LoadTexture("resources/assets/fire.png"), {(float)_bZoneX.first + i, pos.y, pos.z}, 1 , 1, 1, RED);
+            Raylib::Drawing::drawCubeTexture(fire.getCStruct(), {(float)_bZoneX.first + i, pos.y, pos.z}, 1 , 1, 1, Raylib::Color::Red());
         for (int i = 0; i < _bZoneY.second; i++)
-            DrawCubeTexture(LoadTexture("resources/assets/fire.png"), {pos.x, (float)_bZoneY.first - i, pos.z}, 1, 1, 1, RED);
-        DrawSphere(Animated::getPositions().getCStruct(), 0.9, RED);
+            Raylib::Drawing::drawCubeTexture(fire.getCStruct(), {pos.x, (float)_bZoneY.first - i, pos.z}, 1, 1, 1, Raylib::Color::Red());
+        Raylib::Drawing::drawSphere(Animated::getPositions(), 0.9, Raylib::Color::Red());
+        if (!boom.isPlaying())
+            boom.play();
     }
     Animated::drawEntity();
 }
@@ -57,15 +61,14 @@ inline void Game::Animated::setColor(const Raylib::Color &color)
 inline void Game::Animated::setColor(const std::string &color)
 {
     if (color.compare("Blue") == 0
-    || color.compare("Green") == 0
-    || color.compare("Yellow") == 0
-    || color.compare("Red") == 0)
-    {
+        || color.compare("Green") == 0
+        || color.compare("Yellow") == 0
+        || color.compare("Red") == 0) {
         std::map<std::string, Raylib::Color> colors = {
-            {"Blue", Raylib::Color::Blue()},
-            {"Green", Raylib::Color::Green()},
-            {"Yellow", Raylib::Color::Yellow()},
-            {"Red", Raylib::Color::Red()}
+                {"Blue",   Raylib::Color::Blue()},
+                {"Green",  Raylib::Color::Green()},
+                {"Yellow", Raylib::Color::Yellow()},
+                {"Red",    Raylib::Color::Red()}
         };
         setColor(colors[color]);
     }
@@ -114,12 +117,10 @@ inline std::string Game::Bomb::getType() const
 
 inline void Game::Bomb::update()
 {
-    if (clock.doesTimeElapsed(4, false))
-    {
+    if (clock.doesTimeElapsed(4, false)) {
         _explosing = false;
         _exploded = true;
-    }
-    else if (clock.doesTimeElapsed(3, false) && _bZoneX.first == 0 && _bZoneX.second == 0 && _bZoneY.first == 0 && _bZoneY.second == 0)
+    } else if (clock.doesTimeElapsed(3, false) && _bZoneX.first == 0 && _bZoneX.second == 0 && _bZoneY.first == 0 && _bZoneY.second == 0)
         _explosing = true;
 }
 
@@ -133,13 +134,10 @@ inline void Game::Bomb::setBombzone(std::vector<std::string> map)
 
     Raylib::Vector3 pos = Animated::getPositions();
 
-
     std::cout << "Position de la bombe {" << pos.x << ", " << pos.y << "}" << std::endl;
-
     pos.y = map.size() - pos.y;
 
-
-    _bZoneX.first = (int)pos.x;
+    _bZoneX.first = static_cast<int>(pos.x);
     _bZoneX.second = 0;
 
     for (int i = 1; map[pos.y][pos.x - i] == 'X'; i++)
@@ -147,7 +145,7 @@ inline void Game::Bomb::setBombzone(std::vector<std::string> map)
     for (int i = 0; map[pos.y][_bZoneX.first + i] == 'X'; i++)
         _bZoneX.second++;
 
-    _bZoneY.first = (int)pos.y;
+    _bZoneY.first = static_cast<int>(pos.y);
     _bZoneY.second = 0;
 
     for (int i = 1; map[pos.y - i][pos.x] == 'X'; i++)

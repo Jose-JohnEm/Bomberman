@@ -17,22 +17,18 @@ std::vector<std::vector<Texture>> findTexturesAvailable(int &nb_textures)
     {
         isThereThree = false;
 
-        if (dir.is_directory())
-        {
+        if (dir.is_directory()) {
             for (const auto &f : std::filesystem::directory_iterator(dir.path()))
-            {
                 files.push_back(f.path().filename().string());
-            }
 
             if (files.end() != find(files.begin(), files.end(), "wall.png") &&
                 files.end() != find(files.begin(), files.end(), "floor.png") &&
-                files.end() != find(files.begin(), files.end(), "box.png"))
-            {
+                files.end() != find(files.begin(), files.end(), "box.png")) {
                 res.push_back({
-                    Raylib::Texture(dir.path().string() + "/floor.png").getCStruct(),
-                    Raylib::Texture(dir.path().string() + "/wall.png").getCStruct(),
-                    Raylib::Texture(dir.path().string() + "/box.png").getCStruct()
-                });
+                                      Raylib::Texture(dir.path().string() + "/floor.png").getCStruct(),
+                                      Raylib::Texture(dir.path().string() + "/wall.png").getCStruct(),
+                                      Raylib::Texture(dir.path().string() + "/box.png").getCStruct()
+                              });
             }
         } else
             throw "ERROR : Wrong directory (Ressources - Map)";
@@ -42,13 +38,13 @@ std::vector<std::vector<Texture>> findTexturesAvailable(int &nb_textures)
 }
 
 PlayerSelector::Map::Map(std::vector<Player> models, std::vector<std::string> &asciiMap)
-: _textures(findTexturesAvailable(_nbTextures)),
-current(0),
-_COEF(0.3),
-_characters(models),
-_y(0),
-_x(0),
-_direction(0)
+        : _textures(findTexturesAvailable(_nbTextures)),
+          current(0),
+          _COEF(0.3),
+          _characters(models),
+          _y(0),
+          _x(0),
+          _direction(0)
 {
     if (models.size() >= 1)
         asciiMap[1][1] = '1';
@@ -148,24 +144,16 @@ void PlayerSelector::Map::draw()
     float y = 0;
     float scale;
 
-    for (const std::string &line : _charMap)
-    {
+    for (const std::string &line : _charMap) {
         x = 0;
-        for (const char &c : line)
-        {
+        for (const char &c : line) {
             if (c == '1' || c == '2' || c == '3' || c == '4')
-            {
                 drawHandlingCharacters(c - '1');
-            }
             if (c == 'W' || c == 'E')
-            {
-                DrawCubeTexture(_textures[current][WALL], {x * _COEF - (float)2.4, y * _COEF - (float)0.5, 0}, _COEF, _COEF, _COEF, Raylib::Color::White().getCStruct());
-            }
+                Raylib::Drawing::drawCubeTexture(_textures[current][WALL], {x * _COEF - (float)2.4, y * _COEF - (float)0.5, 0}, _COEF, _COEF, _COEF, Raylib::Color::White());
             if (c == 'M')
-            {
-                DrawCubeTexture(_textures[current][BOX], {x * _COEF - (float)2.4, y * _COEF - (float)0.5, 0}, _COEF, _COEF, _COEF, Raylib::Color::White().getCStruct());
-            }
-            DrawCubeTexture(_textures[current][FLOOR], {x * _COEF - (float)2.4, y * _COEF - (float)0.5, -_COEF}, _COEF, _COEF, _COEF, Raylib::Color::Gray().getCStruct());
+                Raylib::Drawing::drawCubeTexture(_textures[current][BOX], {x * _COEF - (float)2.4, y * _COEF - (float)0.5, 0}, _COEF, _COEF, _COEF, Raylib::Color::White());
+            Raylib::Drawing::drawCubeTexture(_textures[current][FLOOR], {x * _COEF - (float)2.4, y * _COEF - (float)0.5, -_COEF}, _COEF, _COEF, _COEF, Raylib::Color::Gray());
             x++;
         }
         y++;

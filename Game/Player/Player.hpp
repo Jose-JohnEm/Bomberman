@@ -77,7 +77,7 @@ namespace Game
             /**
              * @brief Get PowerUps gotten by the Player
              *
-             * @return An Array of 5 (int)
+             * @return An Array of 5 static_cast<int>
              */
             std::array<int, 5> getPowerUps(void) const;
 

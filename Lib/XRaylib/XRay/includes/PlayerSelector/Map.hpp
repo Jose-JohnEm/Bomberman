@@ -8,6 +8,7 @@
 #include <vector>
 #include <string>
 #include "Color/Color.hpp"
+#include "Drawing/Drawing.hpp"
 #include "Texture/Texture.hpp"
 #include <filesystem>
 #include "PlayerSelector/Player.hpp"
