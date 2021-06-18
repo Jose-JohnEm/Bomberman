@@ -78,6 +78,7 @@ void Game::Bomberman::eraseEntitiesOnBomb(const std::pair<int, int> &pos)
     {
         if ((int)entity->getPositions().x == pos.first && _map.size() - (int)entity->getPositions().y == pos.second)
         {
+            _entities.push_back(std::shared_ptr<IEntity>(new Game::Life(entity->getPositions().getCStruct())));
             _entities.erase(_entities.begin() + index);
             break;
         }
@@ -170,16 +171,29 @@ void Game::Bomberman::bombExplosion(Game::Bomb &bomb, const size_t &index)
     }
 }
 
+void Game::Bomberman::handleIfPlayerIsNearAnItem(Player &player)
+{
+    for (auto &entity : _entities)
+    {
+        if (entity->getType() == "Item" && CheckCollisionSpheres(player.getPositions().getCStruct(), 0.3, entity->getPositions().getCStruct(), 0.3))
+        {
+            dynamic_cast<Game::Powerups *>(entity.get())->applyPowerupTo(player);
+        }
+    }
+}
+
 void Game::Bomberman::updateEntities()
 {
     size_t index = 0;
     Game::Bomb *bomb = nullptr;
 
-    for (auto entity : _entities)
+    for (auto &entity : _entities)
     {
+        if (dynamic_cast<Game::Player *>(entity.get()) != nullptr)
+            handleIfPlayerIsNearAnItem(*dynamic_cast<Game::Player *>(entity.get()));
         if ((bomb = dynamic_cast<Game::Bomb *>(entity.get())) != nullptr)
         {
-            
+
             bomb->update();
             bombExplosion(*bomb, index);
         }

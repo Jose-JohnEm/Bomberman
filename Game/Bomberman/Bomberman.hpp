@@ -13,6 +13,7 @@
 #include <algorithm>
 #include <map>
 #include "Interfaces/IGame.hpp"
+#include "Powerups/Powerups.hpp"
 #include "../Map/Map.hpp"
 #include "../Save/Save.hpp"
 #include "../MotionlessEntity/MotionlessEntity.hpp"
@@ -197,6 +198,13 @@ namespace Game
              * @param action Action in a string ["goEast", "goNorth", "goSouth", "goWest", "dropBomb"]
              */
             void doPlayerAction(const size_t playerID, const std::string action) override;
+
+            /**
+             * @brief Verify and update when a player is on an item
+             *
+             * @param player the player
+             */
+            void handleIfPlayerIsNearAnItem(Player &player);
 
             /**
              * @brief
