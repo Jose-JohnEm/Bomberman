@@ -40,6 +40,16 @@ namespace Game
             }
 
             /**
+             * @brief Unequal operator
+             *
+             * @param point Point to compare
+             * @return true if the points are the different, false otherwise
+             */
+            bool operator!=(const Point &point) {
+                return (point._x != _x || point._y != _y);
+            }
+
+            /**
              * @brief Add operator
              *
              * @param point Point to add
@@ -112,6 +122,14 @@ namespace Game
              * @return true if the destination has been found, false otherwise
              */
             bool targetIsFound(void);
+
+            /**
+             * @brief Fill the path finding
+             *
+             * @param path A reference to the path (list of Points)
+             * @return int - The final heuristic cost
+             */
+            int fillPath(std::list<Point> &path);
 
         private:
             std::vector<std::string> _map; // The map

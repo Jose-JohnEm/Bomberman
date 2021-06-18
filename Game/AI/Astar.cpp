@@ -122,3 +122,29 @@ bool Game::Astar::isQualityNode(const Point &currentCell, const int &currentCost
     }
     return false;
 }
+
+int Game::Astar::fillPath(std::list<Point> &path)
+{
+    // Add the destination slot into the path
+    path.push_front(_target);
+    // Add the second to last point of the path finding
+    path.push_front(_close.back()._positions);
+
+    // Get the parent node positions
+    Point parentPositions = _close.back()._parentPositions;
+
+    // Add all path finding points into the path (loop from path finding end)
+    for (std::list<Node>::reverse_iterator itClose = _close.rbegin(); itClose != _close.rend(); itClose++)
+    {
+        if (((*itClose)._positions == parentPositions) && ((*itClose)._positions != _start))
+        {
+            path.push_front((*itClose)._positions);
+            parentPositions = (*itClose)._parentPositions;
+        }
+    }
+    // Finally, add the start position at the beginning of the path
+    path.push_front(_start);
+
+    // Return the last node cost
+    return _close.back()._g;
+}
