@@ -58,10 +58,10 @@ void Game::Animated::setModel(const std::string &model)
 void Game::Animated::move(const std::string &direction)
 {
     std::map<std::string, std::pair<float, float>> dict = {
-            {"goEast", {-0.01f, 0.f}},
-            {"goNorth", {0.f, 0.01f}},
-            {"goSouth", {0.f, -0.01f}},
-            {"goWest", {0.01f, 0.f}}
+            {"goEast", {-0.04f, 0.f}},
+            {"goNorth", {0.f, 0.04f}},
+            {"goSouth", {0.f, -0.04f}},
+            {"goWest", {0.04f, 0.f}}
     };
 
     std::map<std::string, float> rota = {
