@@ -31,7 +31,6 @@ void XRay::displayMenuScene(void)
     if (_scrollingBack <= -_resources.at(PARALLAX)->getCStruct().width/2) _scrollingBack = 0;
 
     // Draw scene
-    //FIXME: NICO, C CAST
     while (!_transitionManager[scene].second && scene != SETTINGS)
         scene = (Scene)((int)scene + 1);
     (!_transitionManager[scene].second) ? beginDrawing() : beginDrawing(false);

@@ -90,7 +90,7 @@ void XRay::displayCardsSettings(std::vector<std::pair<int, int>> &removeButtons,
     for (i = 0, (*x) = 100, b = 200; _allIntegers[2] < 5 && i < _allIntegers[2]; i++, (*x) += 450) {
         (_playerTab[i]) ? _resources.at((Resources)(_card[i]+i))->drawTexture((*x), b) : _resources.at(AI)->drawTexture((*x), b);
         if (_playerTab[i])
-            _resources.at((Resources)(size_t)((_controlsTab[i])+_card[i]-36))->drawTexture((*x)+109, b+9);
+            _resources.at((Resources)static_cast<size_t>((_controlsTab[i])+_card[i]-36))->drawTexture((*x)+109, b+9);
         if (i != 0)
             removeButtons.push_back(std::make_pair((*x)+307, b+9));
         if (_card[i] == 36) {

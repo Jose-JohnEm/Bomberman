@@ -8,7 +8,7 @@
 #include "Core.hpp"
 
 Engine::Core::Core()
-: _graphical{std::make_shared<XRay>()}, _game{std::make_shared<Game::Bomberman>()}, _userNames{{""}}
+        : _graphical{std::make_shared<XRay>()}, _game{std::make_shared<Game::Bomberman>()}, _userNames{{""}}
 {
     _graphical->setLoadFunc([this] (std::string filepath) {this->loadGame(filepath);});
     _graphical->setSaveFunc([this] (std::array<std::size_t, 9> settings, std::vector<std::string> playerControls) {this->saveGame(settings, playerControls);});
@@ -79,7 +79,7 @@ void Engine::Core::getBackupFiles(void)
     _backups.clear();
     for (const auto &file: itBackups)
         if (file.path().filename().extension() == ".backup")
-                _backups.push_back(file.path().filename().string());
+            _backups.push_back(file.path().filename().string());
 }
 
 void Engine::Core::saveBestScores(void)
