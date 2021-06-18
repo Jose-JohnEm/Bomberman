@@ -16,6 +16,7 @@
 #include "../Map/Map.hpp"
 #include "../Save/Save.hpp"
 #include "../MotionlessEntity/MotionlessEntity.hpp"
+#include "../Bomb/Bomb.hpp"
 
 namespace Game
 {
@@ -248,6 +249,14 @@ namespace Game
              * @param playersData Dictionary of the players' data
              */
             void setPlayers(const std::vector<CharDictionary> &playersData) override;
+
+            /**
+             * @brief Set the display of the player
+             *
+             * @param position index
+             */
+            void setPlayerShouldDisplay(size_t position);
+
 
         private:
             std::array<std::size_t, 9> _settings; // Game settings

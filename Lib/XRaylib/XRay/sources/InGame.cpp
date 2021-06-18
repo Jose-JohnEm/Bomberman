@@ -166,7 +166,8 @@ void XRay::displayInGameScene(void)
     Raylib::Drawing::clearBackground(Raylib::Color::Brown());
     _camera.beginMode3D();
     for (size_t o = 0; o < _gameInfos.size(); o++)
-        _gameInfos[o]->drawEntity();
+        if (_gameInfos[o]->getShouldDisplay())
+            _gameInfos[o]->drawEntity();
     _camera.endMode3D();
     displayPlayersPanels(panelPos);
     displayPauseScene();

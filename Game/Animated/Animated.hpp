@@ -5,6 +5,9 @@
 ** Animated.hpp
 */
 
+#ifndef ANIMATED_HPP_
+#define ANIMATED_HPP_
+
 #include "Interfaces/IEntity.hpp"
 #include "../Lib/XRaylib/Raylib/Vector3/Vector3.hpp"
 #include "../Lib/XRaylib/Raylib/Sound/Sound.hpp"
@@ -149,81 +152,8 @@ namespace Game
 
     };
 
-    class Bomb : public Animated
-    {
-    public:
-
-        /**
-         * @brief Construct a new Bomb object
-         *
-         * @param positions
-         * @param fire
-         */
-        Bomb(const Raylib::Vector3 &positions, const int &fire);
-
-        /**
-         * @brief Destroy the Bomb object
-         *
-         */
-        ~Bomb();
-
-        /**
-         * @brief Get the Type object
-         *
-         * @return A std::string
-         */
-        std::string getType() const override;
-
-        /**
-         * @brief Make the bomb explose
-         *
-         */
-        int makeExplode();
-
-        /**
-         * @brief
-         *
-         * @return true
-         * @return false
-         */
-        bool isExploding();
-
-        /**
-         * @brief
-         *
-         * @return true
-         * @return false
-         */
-        bool hasExplode();
-
-        /**
-         * @brief
-         *
-         */
-        void drawEntity() override;
-
-        /**
-         * @brief
-         *
-         */
-        void update();
-
-        /**
-         * @brief Set the Bombzone object
-         *
-         * @param map
-         */
-        void setBombzone(std::vector<std::string> map);
-
-    private:
-        Clock clock;
-        bool _explosing;
-        bool _exploded;
-        int _fire;
-        std::pair<int, int> _bZoneX;
-        std::pair<int, int> _bZoneY;
-    };
-
 #include "Animated.inl"
 
 } // namespace Game
+
+#endif /* !ANIMATED_HPP_ */
