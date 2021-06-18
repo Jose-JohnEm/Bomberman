@@ -55,6 +55,14 @@ XRay::XRay(void)
     // Display Intro (studio and introduction cinematic)
 	_intro = std::make_pair(true, std::vector<void (XRay::*)()>{&XRay::displayStudio, &XRay::displayTeamPresentation});
 
+    //Transition Manager
+    _transitionManager.insert(std::pair<Scene, std::pair<bool, bool>>(Scene::HELP, std::pair<bool, bool>(false, false)));
+    _transitionManager.insert(std::pair<Scene, std::pair<bool, bool>>(Scene::SETTINGS, std::pair<bool, bool>(false, false)));
+    _transitionManager.insert(std::pair<Scene, std::pair<bool, bool>>(Scene::GAME_MODE, std::pair<bool, bool>(false, false)));
+    _transitionManager.insert(std::pair<Scene, std::pair<bool, bool>>(Scene::PLAYER_CHOICE, std::pair<bool, bool>(false, false)));
+    _transitionManager.insert(std::pair<Scene, std::pair<bool, bool>>(Scene::LOAD_GAME, std::pair<bool, bool>(false, false)));
+    _transitionManager.insert(std::pair<Scene, std::pair<bool, bool>>(Scene::MAP_CHOICE, std::pair<bool, bool>(false, false)));
+
 	masterVolume = 50;
     musicVolume = 100;
     sfxVolume = 100;
