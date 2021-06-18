@@ -16,6 +16,7 @@
 #include "../Map/Map.hpp"
 #include "../Save/Save.hpp"
 #include "../MotionlessEntity/MotionlessEntity.hpp"
+#include "../AI/ArtificialIntelligence.hpp"
 
 namespace Game
 {
@@ -184,6 +185,11 @@ namespace Game
              * @param playersData Dictionary of the players' data
              */
             void setPlayers(const std::vector<CharDictionary> &playersData) override;
+
+            /**
+             * @brief Run the AIs
+             */
+            void runAI(void) override;
 
         private:
             std::array<std::size_t, 9> _settings; // Game settings

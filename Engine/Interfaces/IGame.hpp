@@ -146,6 +146,11 @@ class IGame {
          * @return A vector containing the player controls as a string
          */
         virtual const std::vector<std::string> &getPlayerControls(void) const = 0;
+
+        /**
+         * @brief Run the AIs
+         */
+        virtual void runAI(void) = 0;
 };
 
 #endif /* !IGAME_HPP_ */

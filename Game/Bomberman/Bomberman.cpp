@@ -70,10 +70,39 @@ void Game::Bomberman::initPlayersStats()
     }
 }
 
+void Game::Bomberman::runAI(void)
+{
+    // Get players entities
+    std::vector<Human> humans;
+    std::vector<AI> AIs;
+
+    for (const std::shared_ptr<IEntity> &entity : _entities)
+    {
+        if (entity->getType().compare("Human") == 0)
+        {
+            humans.push_back(*dynamic_cast<Game::Human *>(entity.get()));
+        }
+        else if (entity->getType().compare("AI") == 0)
+        {
+            AIs.push_back(*dynamic_cast<Game::AI *>(entity.get()));
+        }
+    }
+
+    // Run AI algorithm
+    try
+    {
+        ArtificialIntelligence AI(AIs, humans, _map);
+        AI.run();
+    }
+    catch(const std::invalid_argument &error)
+    {
+        std::cerr << error.what() << std::endl;
+    }
+}
+
 void Game::Bomberman::updateEntities()
 {
-    //TODO: AI
-    //doAction("string");
+    runAI();
 }
 
 void Game::Bomberman::updateScores()
