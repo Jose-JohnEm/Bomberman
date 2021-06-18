@@ -11,7 +11,7 @@ std::vector<std::vector<Texture>> findTexturesAvailable(int &nb_textures)
 {
     std::vector<std::vector<Texture>> res;
     std::vector<std::string> files;
-    bool isThereThree;
+    bool isThereThree; // FIXME: what is the use ???
 
     for (const auto & dir : std::filesystem::directory_iterator("resources/map"))
     {
