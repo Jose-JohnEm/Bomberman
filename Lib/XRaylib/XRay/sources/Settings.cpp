@@ -28,48 +28,55 @@ void XRay::displaySettingsScene(void)
     std::shared_ptr<Raylib::Texture> modsButton = _resources.at(_pSelector.isModsAvailable() ? ON : OFF);
 
     /// Draw scene
-    beginDrawing();
+    (!_transitionManager[MENU].second) ? beginDrawing() : beginDrawing(false);
+    fadeThisScene(MENU);
 
-    // Background
-    _resources.at(SETTING_BG)->drawTexture(0, 0, Raylib::Color::White());
+    if (!_transitionManager[MENU].second) {
+        // Background
+        _resources.at(SETTING_BG)->drawTexture(0, 0, Raylib::Color::White());
 
-    // Fullscreen
-    _resources.at(TEXT_FULLSCREEN)->drawTexture(1100, 310, Raylib::Color::White());
-    fullscreenButton->drawTexture(1150, 400, Raylib::Color::White());
+        // Fullscreen
+        _resources.at(TEXT_FULLSCREEN)->drawTexture(1100, 310, Raylib::Color::White());
+        fullscreenButton->drawTexture(1150, 400, Raylib::Color::White());
 
-    // VOLUME
-    _resources.at(TEXT_VOLUME)->drawTexture(440, 310, Raylib::Color::White());
-    _resources.at(TEXT_GENERAL)->drawTexture(200, 400, Raylib::Color::White());
-    _resources.at(TEXT_MUSIC)->drawTexture(285, 490, Raylib::Color::White());
-    _resources.at(TEXT_SFX)->drawTexture(375, 575, Raylib::Color::White());
+        // VOLUME
+        _resources.at(TEXT_VOLUME)->drawTexture(440, 310, Raylib::Color::White());
+        _resources.at(TEXT_GENERAL)->drawTexture(200, 400, Raylib::Color::White());
+        _resources.at(TEXT_MUSIC)->drawTexture(285, 490, Raylib::Color::White());
+        _resources.at(TEXT_SFX)->drawTexture(375, 575, Raylib::Color::White());
 
-    // Master Volume
-    _resources.at(VOLUME_DOWN)->drawTexture(560, 395, Raylib::Color::White());
-    Raylib::Text::drawText(std::to_string((int)masterVolume), 670, 405, 48, Raylib::Color::White());
-    _resources.at(VOLUME_UP)->drawTexture(765, 395, Raylib::Color::White());
+        // Master Volume
+        _resources.at(VOLUME_DOWN)->drawTexture(560, 395, Raylib::Color::White());
+        Raylib::Text::drawText(std::to_string((int)masterVolume), 670, 405, 48, Raylib::Color::White());
+        _resources.at(VOLUME_UP)->drawTexture(765, 395, Raylib::Color::White());
 
-    // Music volume
-    _resources.at(VOLUME_DOWN)->drawTexture(560, 480, Raylib::Color::White());
-    Raylib::Text::drawText(std::to_string((int)musicVolume), 670, 490, 48, Raylib::Color::White());
-    _resources.at(VOLUME_UP)->drawTexture(765, 480, Raylib::Color::White());
+        // Music volume
+        _resources.at(VOLUME_DOWN)->drawTexture(560, 480, Raylib::Color::White());
+        Raylib::Text::drawText(std::to_string((int)musicVolume), 670, 490, 48, Raylib::Color::White());
+        _resources.at(VOLUME_UP)->drawTexture(765, 480, Raylib::Color::White());
 
-    // Sfx volume
-    _resources.at(VOLUME_DOWN)->drawTexture(560, 565, Raylib::Color::White());
-    Raylib::Text::drawText(std::to_string((int)sfxVolume), 670, 575, 48, Raylib::Color::White());
-    _resources.at(VOLUME_UP)->drawTexture(765, 565, Raylib::Color::White());
+        // Sfx volume
+        _resources.at(VOLUME_DOWN)->drawTexture(560, 565, Raylib::Color::White());
+        Raylib::Text::drawText(std::to_string((int)sfxVolume), 670, 575, 48, Raylib::Color::White());
+        _resources.at(VOLUME_UP)->drawTexture(765, 565, Raylib::Color::White());
 
-    // Mods
-    _resources.at(TEXT_MODS)->drawTexture(1215, 550, Raylib::Color::White());
-    modsButton->drawTexture(1150, 620, Raylib::Color::White());
+        // Mods
+        _resources.at(TEXT_MODS)->drawTexture(1215, 550, Raylib::Color::White());
+        modsButton->drawTexture(1150, 620, Raylib::Color::White());
 
-    // Back button
-    (mouseIsInBox(createBox(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000, Raylib::Color::White());
-    displayMouse();
+        // Back button
+        (mouseIsInBox(createBox(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000, Raylib::Color::White());
+        displayMouse();
+
+        // Transition
+        fadeThisScene(_scene);
+    }
     endDrawing();
 
     // Go to another scene according to mouse position
     if (goBack && Raylib::Mouse::isButtonPressed(0)) {
         _sfx.at(SFX_HOME)->play();
+        updateTransitionManager(_scene, MENU);
         (this->*_scenesBack[_scene])();
         _scenesBack[SETTINGS] = _scenesBackBackup[SETTINGS];
     }
