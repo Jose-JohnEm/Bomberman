@@ -69,3 +69,8 @@ inline bool Game::Player::dropBomb()
 {
     return true;
 }
+
+inline void Game::Player::increasePowerUps(const int &id_power)
+{
+    _powerUps[id_power]++;
+}
