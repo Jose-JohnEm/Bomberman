@@ -6,6 +6,7 @@
 */
 
 #include "XRay.hpp"
+#include "../../../Engine/Exception/MyException.hpp"
 
 void XRay::displayMenuScene(void)
 {
@@ -32,7 +33,7 @@ void XRay::displayMenuScene(void)
 
     // Draw scene
     while (!_transitionManager[scene].second && scene != SETTINGS)
-        scene = (Scene)((int)scene + 1);
+        scene = static_cast<Scene>(static_cast<int>(scene) + 1);
     (!_transitionManager[scene].second) ? beginDrawing() : beginDrawing(false);
     fadeThisScene(scene);
     if (!_transitionManager[scene].second) {
@@ -69,4 +70,24 @@ void XRay::displayMenuScene(void)
         _sfx.at(SFX_ENTER)->play();
         quitGame();
     }
+}
+
+
+// STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
+// catch
+// throw
+// try
+
+int catchThrowTrydisplayMenuScene() {
+    try
+    {   XRay test;
+    	test.displayMenuScene();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
 }

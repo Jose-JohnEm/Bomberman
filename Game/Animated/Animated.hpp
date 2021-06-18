@@ -156,4 +156,4 @@ namespace Game
 
 } // namespace Game
 
-#endif /* !ANIMATED_HPP_ */
+#endif

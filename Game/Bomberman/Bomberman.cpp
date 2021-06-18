@@ -8,7 +8,7 @@
 #include "Bomberman.hpp"
 
 Game::Bomberman::Bomberman(void)
-        : _gameName{"Bomberman"}, _gameOver{false}
+: _gameName{"Bomberman"}, _gameOver{false}
 {
 }
 
@@ -25,6 +25,13 @@ void Game::Bomberman::initEntities()
 
     _entities.clear();
 
+    // Push back floor and borders
+    _entities.push_back(std::shared_ptr<IEntity>(new Game::Floor(Raylib::Vector3((y-1)/2, (y+1)/2, -1), _mapType, y-2, y-1, 1.0f)));
+    _entities.push_back(std::shared_ptr<IEntity>(new Game::SolidWall(Raylib::Vector3(0, (y+1)/2, 0), _mapType, 1.0f, y, 1.0f)));
+    _entities.push_back(std::shared_ptr<IEntity>(new Game::SolidWall(Raylib::Vector3((y-1)/2, y, 0), _mapType, y-2, 1.0f, 1.0f)));
+    _entities.push_back(std::shared_ptr<IEntity>(new Game::SolidWall(Raylib::Vector3((y-1)/2, 1, 0), _mapType, y-2, 1.0f, 1.0f)));
+    _entities.push_back(std::shared_ptr<IEntity>(new Game::SolidWall(Raylib::Vector3(_map.at(0).size()-1, (y+1)/2, 0), _mapType, 1.0f, y, 1.0f)));
+
     for (const std::string &line : _map) {
         x = 0;
         for (const char &c : line) {
@@ -36,11 +43,10 @@ void Game::Bomberman::initEntities()
                     _entities.push_back(std::shared_ptr<IEntity>(new Game::AI(_players[dic_index].name, dic_index, {x, y, 0}, _players[dic_index].obj, _players[dic_index].texture, _players[dic_index].animations, _players[dic_index].scalable, _players[dic_index].color)));
                 dic_index++;
             }
-            else if (c == 'W' || c == 'E')
+            else if (c == 'W')
                 _entities.push_back(std::shared_ptr<IEntity>(new Game::SolidWall(Raylib::Vector3(x, y, 0), _mapType)));
             else if (c == 'M')
                 _entities.push_back(std::shared_ptr<IEntity>(new Game::BreakableWall(Raylib::Vector3(x, y, 0), _mapType)));
-            _entities.push_back(std::shared_ptr<IEntity>(new Game::Floor(Raylib::Vector3(x, y, -1), _mapType)));
             x++;
         }
         y--;
@@ -100,6 +106,7 @@ void Game::Bomberman::eraseEntitiesOnBomb(const std::pair<int, int> &pos)
         }
         if (entity->getType() == "BreakableWall" && entity->getPositions().x == pos.first && _map.size() - entity->getPositions().y == pos.second)
         {
+            _entities.push_back(std::shared_ptr<IEntity>(new Game::Life(entity->getPositions().getCStruct())));
             _entities.erase(_entities.begin() + index);
             break;
         }
@@ -194,13 +201,26 @@ void Game::Bomberman::bombExplosion(Game::Bomb &bomb, const size_t &index)
     }
 }
 
+void Game::Bomberman::handleIfPlayerIsNearAnItem(Player &player)
+{
+    for (auto &entity : _entities)
+    {
+        if (entity->getType() == "Item" && CheckCollisionSpheres(player.getPositions().getCStruct(), 0.3, entity->getPositions().getCStruct(), 0.3))
+        {
+            dynamic_cast<Game::Powerups *>(entity.get())->applyPowerupTo(player);
+        }
+    }
+}
+
 void Game::Bomberman::updateEntities()
 {
     size_t index = 0;
     Game::Bomb *bomb = nullptr;
 
-    for (auto entity : _entities)
+    for (auto &entity : _entities)
     {
+        if (dynamic_cast<Game::Player *>(entity.get()) != nullptr)
+            handleIfPlayerIsNearAnItem(*dynamic_cast<Game::Player *>(entity.get()));
         if ((bomb = dynamic_cast<Game::Bomb *>(entity.get())) != nullptr)
         {
             bomb->update();

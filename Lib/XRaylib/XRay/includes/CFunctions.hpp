@@ -25,27 +25,27 @@
 #include <ctime>
 
 class CFunctions {
-    public:
-        /**
-         * @brief Construct a new CFunctions object
-         */
-        CFunctions() = default;
+public:
+    /**
+     * @brief Construct a new CFunctions object
+     */
+    CFunctions() = default;
 
-        /**
-         * @brief Destroy the CFunctions object
-         */
-        ~CFunctions() = default;
+    /**
+     * @brief Destroy the CFunctions object
+     */
+    ~CFunctions() = default;
 
-        /**
-         * @brief This function use c functions to generate a pair of random integers
-         *
-         * @param limitOfFirst A size_t
-         * @param limitOfSecond A size_t
-         * @return std::pair<size_t, size_t>
-         */
-        static std::pair<size_t, size_t> generatePairOfRandomIntegers(size_t limitOfFirst, size_t limitOfSecond);
+    /**
+     * @brief This function use c functions to generate a pair of random integers
+     *
+     * @param limitOfFirst A size_t
+     * @param limitOfSecond A size_t
+     * @return std::pair<size_t, size_t>
+     */
+    static std::pair<size_t, size_t> generatePairOfRandomIntegers(size_t limitOfFirst, size_t limitOfSecond);
 
-    private:
+private:
 };
 
 #include "CFunctions.inl"

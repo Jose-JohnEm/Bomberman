@@ -6,6 +6,7 @@
 */
 
 #include "MousePlayerInput.hpp"
+#include "../../../Engine/Exception/MyException.hpp"
 
 /*
     MOUSE_BUTTON_LEFT    = 0,
@@ -107,4 +108,110 @@ bool MousePlayerInput::shouldChangeToNext(void) const
 bool MousePlayerInput::shouldSimulateAClick(void) const
 {
     return Raylib::Mouse::isButtonPressed(1);
+}
+
+
+// STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
+// catch
+// throw
+// try
+
+
+
+int catchThrowTryshouldGoToEast() {
+    try
+    {   MousePlayerInput test;
+    	test.shouldGoToEast();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTryshouldGoToWest() {
+    try
+    {   MousePlayerInput test;
+    	test.shouldGoToWest();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTryshouldGoToNorth() {
+    try
+    {   MousePlayerInput test;
+    	test.shouldGoToNorth();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTryshouldGoToSouth() {
+    try
+    {   MousePlayerInput test;
+    	test.shouldGoToSouth();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTryshouldChangeToPrev() {
+    try
+    {   MousePlayerInput test;
+    	test.shouldChangeToPrev();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTryshouldChangeToNext() {
+    try
+    {   MousePlayerInput test;
+    	test.shouldChangeToNext();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTryshouldSimulateAClick() {
+    try
+    {   MousePlayerInput test;
+    	test.shouldSimulateAClick();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
 }

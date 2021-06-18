@@ -19,16 +19,11 @@ inline float Game::Score::getCoefficient(void) const
 {
     size_t percentage = (_settings[Settings::TIME_REMAINING] * 100) / _settings[TIME_GAME];
 
-    if (50 < percentage && percentage <= 100)
-    {
+    if (50 < percentage && percentage <= 100) {
         return 1.5;
-    }
-    else if (30 < percentage && percentage <= 50)
-    {
+    } else if (30 < percentage && percentage <= 50) {
         return 1.3;
-    }
-    else
-    {
+    } else {
         return 1;
     }
 }

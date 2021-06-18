@@ -17,7 +17,7 @@ namespace Raylib
 {
     class Window {
 
-        public:
+    public:
         /**
          * @brief Construct a new Window object
          * @param width Width of the Window
@@ -73,7 +73,7 @@ namespace Raylib
         static void toggleFullscreen();
     };
 
-    #include "Window.inl"
+#include "Window.inl"
 
 }
 

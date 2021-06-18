@@ -8,7 +8,7 @@
 #include "Score.hpp"
 
 Game::Score::Score(const std::array<std::size_t, 9> &settings, const std::shared_ptr<Game::Player> &player)
-    : _settings(settings)
+        : _settings(settings)
 {
     std::array<int, 5> powerUps = player->getPowerUps();
     // Calcul the total of powerUps

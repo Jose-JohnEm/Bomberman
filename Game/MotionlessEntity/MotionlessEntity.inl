@@ -27,17 +27,17 @@ inline bool Game::MotionlessEntity::getShouldDisplay(void) const
 
 inline void Game::SolidWall::drawEntity()
 {
-    Raylib::Drawing::drawCubeTexture(_textures[_mapType].getCStruct(), _positions.getCStruct(), 1.0f, 1.0f, 1.0f, Raylib::Color::White());
+    Raylib::Drawing::drawCubeTexture(_textures[_mapType].getCStruct(), _positions.getCStruct(), _width, _height, _length, Raylib::Color::White());
 }
 
 inline void Game::BreakableWall::drawEntity()
 {
-    Raylib::Drawing::drawCubeTexture(_textures[_mapType].getCStruct(), _positions.getCStruct(), 1.0f, 1.0f, 1.0f, Raylib::Color::White());
+    Raylib::Drawing::drawCubeTexture(_textures[_mapType].getCStruct(), _positions.getCStruct(), _width, _height, _length, Raylib::Color::White());
 }
 
 inline void Game::Floor::drawEntity()
 {
-    Raylib::Drawing::drawCubeTexture(_textures[_mapType].getCStruct(), _positions.getCStruct(), 1.0f, 1.0f, 1.0f, Raylib::Color::White());
+    Raylib::Drawing::drawCubeTexture(_textures[_mapType].getCStruct(), _positions.getCStruct(), _width, _height, _length, Raylib::Color::White());
 }
 
 inline std::string Game::SolidWall::getType() const

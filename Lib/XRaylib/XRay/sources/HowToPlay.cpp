@@ -6,6 +6,7 @@
 */
 
 #include "XRay.hpp"
+#include "../../../Engine/Exception/MyException.hpp"
 
 void XRay::displayHowToPlayScene(void)
 {
@@ -65,4 +66,23 @@ void XRay::displayHowToPlayScene(void)
         card.loadTexture("resources/howToCards/card" + std::to_string(cardId) + ".png");
         _sfx.at(SFX_KLICK)->play();
     }
+}
+
+// STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
+// catch
+// throw
+// try
+
+int catchThrowTrydisplayHowToPlayScene() {
+    try
+    {   XRay test;
+    	test.displayHowToPlayScene();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
 }

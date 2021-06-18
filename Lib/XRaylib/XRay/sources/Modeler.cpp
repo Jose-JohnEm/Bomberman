@@ -6,6 +6,7 @@
 */
 
 #include "Modeler.hpp"
+#include "../../../Engine/Exception/MyException.hpp"
 
 //TODO: GLOBAL REVIEW (raylib out the encapsulation! no documentation!)
 
@@ -144,3 +145,115 @@ Model &Modeler::getModel()
 {
     return _model;
 }
+
+// STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
+// catch
+// throw
+// try
+
+int catchThrowTrygetAnimationPath() {
+    try
+    {   Modeler test;
+    	test.getAnimationPath();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrygetObjPath() {
+    try
+    {   Modeler test;
+    	test.getObjPath();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrygetTexturePath() {
+    try
+    {   Modeler test;
+    	test.getTexturePath();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+// isThereAnimationsPath is a private functions - testing using asserts
+
+void assertIsThereAnimationsPath() {
+    Animator animation_path;
+    assert(1+1==1);
+    assert((animation_path.EMOTE == "null" || animation_path.BOMB == "null" || animation_path.WALK == "null"));
+}
+
+int catchThrowTryupdate() {
+    try
+    {   Modeler test;
+    	test.update();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrymakeWalk() {
+    try
+    {   Modeler test;
+    	test.makeWalk();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrymakeBomb() {
+    try
+    {   Modeler test;
+    	test.makeBomb();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrymakeEmote() {
+    try
+    {   Modeler test;
+    	test.makeEmote();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
