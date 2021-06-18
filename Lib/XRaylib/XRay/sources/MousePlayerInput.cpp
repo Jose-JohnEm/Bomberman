@@ -43,9 +43,9 @@ bool MousePlayerInput::shouldGoToEast(void) const
     if ((Raylib::Mouse::getMouseX() < 1600 || Raylib::Mouse::getMouseX() > 1850) || (Raylib::Mouse::getMouseY() < 40 || Raylib::Mouse::getMouseY() > 290))
         mousePos = false;
     else if (y >= 0)
-        mousePos = (x - y) >= 0 ? true : false;
+        mousePos = -(x + y) >= 0 ? true : false;
     else
-        mousePos = (x + y) >= 0 ? true : false;
+        mousePos = (y - x) >= 0 ? true : false;
     return Raylib::Mouse::isButtonDown(0) && mousePos;
 }
 
@@ -58,9 +58,9 @@ bool MousePlayerInput::shouldGoToWest(void) const
     if ((Raylib::Mouse::getMouseX() < 1600 || Raylib::Mouse::getMouseX() > 1850) || (Raylib::Mouse::getMouseY() < 40 || Raylib::Mouse::getMouseY() > 290))
         mousePos = false;
     else if (y >= 0)
-        mousePos = -(x + y) >= 0 ? true : false;
+        mousePos = (x - y) >= 0 ? true : false;
     else
-        mousePos = (y - x) >= 0 ? true : false;
+        mousePos = (x + y) >= 0 ? true : false;
     return Raylib::Mouse::isButtonDown(0) && mousePos;
 }
 
