@@ -84,20 +84,20 @@ namespace PlayerSelector
         std::pair<Model, float> getModel() const;
 
     private:
-        std::string _name; //TODO doc
-        int _idCharacter;
-        float _scalable;
-        Model _persoModel;
-        Raylib::Texture _persoTexture;
-        Raylib::Color _color;
-        std::vector<ModelAnimation> _animations;
+        std::string _name;                                      // The player name
+        int _idCharacter;                                       // Id of the skin
+        float _scalable;                                        // Size of the scale
+        Model _persoModel;                                      // Model of the player
+        Raylib::Texture _persoTexture;                          // Texture for the model of the player
+        Raylib::Color _color;                                   // Color of the player
+        std::vector<ModelAnimation> _animations;                // All the animation of the player
 
-        std::string _perso_path;
-        std::string _texture_path;
-        std::vector<std::string> _animations_path;
+        std::string _perso_path;                                // Path to the player model
+        std::string _texture_path;                              // Path to the texture
+        std::vector<std::string> _animations_path;              // List of path to the animations
 
-        Clock clock;
-        int counter;
+        Clock clock;                                            // The player clock
+        int counter;                                            // TODO what is this and correct other if necessary
     };
 
 } // namespace PlayerSelector
