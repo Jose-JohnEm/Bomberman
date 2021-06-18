@@ -8,9 +8,9 @@
 #include "Powerups.hpp"
 
 Game::Powerups::Powerups(const Raylib::Vector3 &position, const std::string &type)
-    : Animated(position, "resources/assets/3D/Items/item.glb", "resources/assets/3D/Items/" + type + ".png", {"resources/assets/3D/Items/item.glb", "resources/assets/3D/Items/item.glb", "resources/assets/3D/Items/item.glb"})
+    : Animated(position, "resources/assets/3D/Items/item.glb", "resources/assets/3D/Items/" + type + ".png", {"resources/assets/3D/Items/item.glb", "resources/assets/3D/Items/item.glb", "resources/assets/3D/Items/item.glb"}, 0.8)
 {
-
+    Animated::setRotation(270.f);
 }
 
 Game::Powerups::~Powerups()
