@@ -149,6 +149,7 @@ namespace Game
         float _scalable; // Player scalability
         float _rotation;
         bool _moving;
+        Clock _a_clock;
 
     };
 
