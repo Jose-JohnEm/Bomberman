@@ -15,11 +15,12 @@
 #include <map>
 #include "Interfaces/IGame.hpp"
 #include "Powerups/Powerups.hpp"
-#include "../Map/Map.hpp"
-#include "../Save/Save.hpp"
-#include "../MotionlessEntity/MotionlessEntity.hpp"
-#include "../Bomb/Bomb.hpp"
-#include "../AI/ArtificialIntelligence.hpp"
+#include "Map/Map.hpp"
+#include "Save/Save.hpp"
+#include "MotionlessEntity/MotionlessEntity.hpp"
+#include "Bomb/Bomb.hpp"
+#include "AI/ArtificialIntelligence.hpp"
+#include "AI/Astar.hpp"
 
 namespace Game
 {
@@ -287,6 +288,14 @@ namespace Game
          * @brief Run the AIs
          */
         void runAI(void) override;
+
+        /**
+         * @brief Get positions of all the entities with a specific type
+         *
+         * @return std::vector<Game::Point> - A vector containing the required entities positions
+         */
+        template<typename T>
+        std::vector<Point> getEntitiesPositions(void) const;
 
     private:
         std::array<std::size_t, 9> _settings; // Game settings

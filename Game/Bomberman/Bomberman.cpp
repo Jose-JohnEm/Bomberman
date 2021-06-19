@@ -220,6 +220,22 @@ void Game::Bomberman::handleIfPlayerIsNearAnItem(Player &player)
     }
 }
 
+template <typename T>
+std::vector<Game::Point> Game::Bomberman::getEntitiesPositions(void) const
+{
+    std::vector<Game::Point> entitiesPos;
+
+    for (const std::shared_ptr<IEntity> &entity : _entities)
+    {
+        if (dynamic_cast<T*>(entity.get()))
+        {
+            Raylib::Vector3 entityPos = entity->getPositions();
+            entitiesPos.push_back(Point(entityPos.x, _map.size() - entityPos.y));
+        }
+    }
+    return entitiesPos;
+}
+
 void Game::Bomberman::runAI(void)
 {
     // Get players entities
@@ -238,16 +254,6 @@ void Game::Bomberman::runAI(void)
         }
     }
 
-    // Run AI algorithm <--- Big Segfault de fou gg lucas !
-    // try
-    // {
-    //     ArtificialIntelligence AI(AIs, humans, _map);
-    //     AI.run();
-    // }
-    // catch(const std::invalid_argument &error)
-    // {
-    //     std::cerr << error.what() << std::endl;
-    // }
     // Run AI algorithm
     try
     {
