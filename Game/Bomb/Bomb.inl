@@ -9,6 +9,7 @@
 inline int Game::Bomb::makeExplode()
 {
     _explosing = false;
+    _reseter.resetABomb();
     return _fire;
 }
 
