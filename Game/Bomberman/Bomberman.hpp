@@ -304,6 +304,7 @@ namespace Game
         std::vector<std::string> _userNames;        // A vector of all the users names
         std::vector<CharDictionary> _players;
         std::vector<std::string> _playerControls; // A vector of all the players control as a string
+        Clock _aiClock; // AI clock to avoid too fast AIs (runtime...)
     };
 }
 

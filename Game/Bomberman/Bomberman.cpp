@@ -276,7 +276,12 @@ void Game::Bomberman::updateEntities()
         }
         index++;
     }
-    // runAI(); <-- on prend aucun risque chkl segfault aussi ici
+
+    // Run AI algorithm
+    if (_aiClock.doesTimeElapsed(0.03f))
+    {
+        runAI(); //<-- on prend aucun risque chkl segfault aussi ici
+    }
 }
 
 void Game::Bomberman::updateScores()

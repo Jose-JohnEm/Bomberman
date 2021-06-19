@@ -59,6 +59,9 @@ void Game::ArtificialIntelligence::run(void) const
         // Run Astar algorithm
         Astar astar(_map, Point(xAI, (_map.size() - yAI)), Point(xTarget, (_map.size() - yTarget)));
 
+        // Set the AI action
+        static std::string action = "dropBomb";
+
         if (astar.targetIsFound())
         {
             // Get the path finding
@@ -77,13 +80,17 @@ void Game::ArtificialIntelligence::run(void) const
             std::cout << "AI n°" << AI.getID() << " " << convertPointIntoAction(point) << std::endl;
 
             // Order the AI to do this action
-            _playerActionsFunc(AI.getID(), convertPointIntoAction(point));
+            action = convertPointIntoAction(point);
+            if (action.compare("dropBomb"))
+                _playerActionsFunc(AI.getID(), action);
 
             // Clear the path
             path.clear();
         }
         else
         {
+            if (action.compare("dropBomb"))
+                _playerActionsFunc(AI.getID(), action);
             // Drop a bomb
         }
     }
