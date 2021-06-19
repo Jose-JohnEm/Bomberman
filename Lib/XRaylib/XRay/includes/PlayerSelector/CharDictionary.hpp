@@ -13,13 +13,13 @@
 #include "Color/Color.hpp"
 
 struct CharDictionary
-{ //TODO: DOC
-    std::string obj;
-    std::string texture;
-    float scalable;
-    std::string name;
-    Raylib::Color color;
-    std::vector<std::string> animations;
+{
+    std::string obj;                                                            // The object
+    std::string texture;                                                        // Texture of the object
+    float scalable;                                                             // Scale of the object
+    std::string name;                                                           // Name
+    Raylib::Color color;                                                        // Color
+    std::vector<std::string> animations;                                        // List of the animation of the object
 };
 
 #endif /* !CHARDICTIONARY_HPP_ */
