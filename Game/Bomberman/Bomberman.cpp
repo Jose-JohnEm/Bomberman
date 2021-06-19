@@ -248,6 +248,16 @@ void Game::Bomberman::runAI(void)
     // {
     //     std::cerr << error.what() << std::endl;
     // }
+    // Run AI algorithm
+    try
+    {
+        ArtificialIntelligence AI([this] (const size_t playerID, const std::string action) {doPlayerAction(playerID, action);}, AIs, humans, _map);
+        AI.run();
+    }
+    catch(const std::invalid_argument &error)
+    {
+        std::cerr << error.what() << std::endl;
+    }
 }
 
 void Game::Bomberman::updateEntities()

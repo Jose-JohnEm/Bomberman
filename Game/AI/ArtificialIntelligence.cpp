@@ -7,8 +7,8 @@
 
 #include "ArtificialIntelligence.hpp"
 
-Game::ArtificialIntelligence::ArtificialIntelligence(const std::vector<AI> &AIs, const std::vector<Human> &humans, const std::vector<std::string> &map)
-    : _AIs(AIs), _humans(humans), _map(map)
+Game::ArtificialIntelligence::ArtificialIntelligence(std::function<void (const size_t pos, const std::string action)> playerActionsFunc, const std::vector<AI> &AIs, const std::vector<Human> &humans, const std::vector<std::string> &map)
+    : _playerActionsFunc(playerActionsFunc), _AIs(AIs), _humans(humans), _map(map)
 {
     if (AIs.empty())
     {
@@ -77,8 +77,7 @@ void Game::ArtificialIntelligence::run(void) const
             std::cout << "AI n°" << AI.getID() << " " << convertPointIntoAction(point) << std::endl;
 
             // Order the AI to do this action
-            // Bomberman game;
-            // game.doPlayerAction(AI.getID(), convertPointIntoDirection(point));
+            _playerActionsFunc(AI.getID(), convertPointIntoAction(point));
 
             // Clear the path
             path.clear();

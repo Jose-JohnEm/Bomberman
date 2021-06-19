@@ -20,11 +20,12 @@ namespace Game
             /**
              * @brief Construct a new ArtificialIntelligence object
              *
+             * @param playerActionsFunc A pointer to function that manage all players actions in the game (left, right...)
              * @param AIs A vector of AI objects
              * @param humans A vector of Human objects
              * @param map The game map
              */
-            ArtificialIntelligence(const std::vector<AI> &AIs, const std::vector<Human> &humans, const std::vector<std::string> &map);
+            ArtificialIntelligence(std::function<void (const size_t pos, const std::string action)> playerActionsFunc, const std::vector<AI> &AIs, const std::vector<Human> &humans, const std::vector<std::string> &map);
 
             /**
              * @brief Run the AI algorithm
@@ -35,6 +36,7 @@ namespace Game
             std::vector<AI> _AIs; // A vector of AI objects
             std::vector<Human> _humans; // A vector of Human objects
             std::vector<std::string> _map; // The game map
+            std::function<void (const size_t pos, const std::string action)> _playerActionsFunc; // Pointer to playerActionsFunc
 
             /**
              * @brief Calcul the heuristic distance between two points (Euclidean Distance)
