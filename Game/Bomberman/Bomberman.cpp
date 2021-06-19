@@ -88,16 +88,12 @@ void Game::Bomberman::randomDropItem(const Raylib::Vector3 &pos)
 {
     int r_value = rand() % 100;
 
-    if (0 <= r_value && r_value <= 9)
+    if (0 <= r_value && r_value <= 14)
         _entities.push_back(std::shared_ptr<IEntity>(new Game::BombUp(pos.getCStruct())));
-    else if (10 <= r_value && r_value <= 29)
+    else if (15 <= r_value && r_value <= 29)
         _entities.push_back(std::shared_ptr<IEntity>(new Game::Fire(pos.getCStruct())));
-    else if (30 <= r_value && r_value <= 34)
+    else if (30 <= r_value && r_value <= 39)
         _entities.push_back(std::shared_ptr<IEntity>(new Game::Speed(pos.getCStruct())));
-    else if (35 <= r_value && r_value <= 39)
-        _entities.push_back(std::shared_ptr<IEntity>(new Game::Life(pos.getCStruct())));
-    else if (40 <= r_value && r_value <= 44)
-        _entities.push_back(std::shared_ptr<IEntity>(new Game::Pass(pos.getCStruct())));
 
 }
 
