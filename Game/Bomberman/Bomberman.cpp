@@ -111,17 +111,6 @@ void Game::Bomberman::eraseEntitiesOnBomb(const std::pair<int, int> &pos)
 
     for (const auto &entity : _entities)
     {
-        //if (static_cast<int>(entity->getPositions().x) == pos.first && _map.size() - static_cast<int>(entity->getPositions().y) == pos.second)
-        if (playerGotHit(pos, entity->getPositions().x == pos.first, _map.size() - entity->getPositions().y == pos.second)) {
-            ///entity->setPositions(banned);
-            //_entities.erase(_entities.begin() + index);
-            // for (const std::shared_ptr<IEntity> &entity : _entities)
-            // {
-            //     if ((res = dynamic_cast<Game::Player *>(entity.get())) != nullptr && entity->getPositions().x == res->getPositions().x && entity->getPositions().y == res->getPositions().y)
-            //     res->setAlive(false);
-            // }
-            // break;
-        }
         if (entity->getType() == "BreakableWall" && entity->getPositions().x == pos.first && _map.size() - entity->getPositions().y == pos.second)
         {
             randomDropItem(entity->getPositions());
@@ -137,10 +126,8 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
     char current = _map[pos.second][pos.first];
 
     std::cout << "C ==>" << current << std::endl;
-    if (current == 'H' || current == 'A') {
-        std::cout << "zeuuubi" << std::endl;
+    if (current == 'H' || current == 'A')
         eraseEntitiesOnBomb({pos.first, pos.second});
-    }
     _map[pos.second][pos.first] = c;
 
     for (int i = 1; i <= rad; i++)

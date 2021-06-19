@@ -77,17 +77,18 @@ inline void Game::Bomberman::doDropBomb(const size_t &playerID, std::pair<int, i
 
 inline void Game::Bomberman::setPlayerShouldDisplay(size_t playerID)
 {
+    // --> Bomb Collision w/ Players
     for (size_t i = 0; i < _entities.size(); i++)
     {
         if (_entities[i]->getType().compare("Human") == 0)
         {
-            if ((std::make_shared<Game::Human>(*dynamic_cast<Game::Human *>(_entities[i].get())))->getID() == playerID)
-                _entities[i]->setShouldDisplay(false);
+            // if ((std::make_shared<Game::Human>(*dynamic_cast<Game::Human *>(_entities[i].get())))->getID() == playerID)
+            //     _entities[i]->setShouldDisplay(false);
         }
         else if (_entities[i]->getType().compare("AI") == 0)
         {
-            if ((std::make_shared<Game::AI>(*dynamic_cast<Game::AI *>(_entities[i].get())))->getID() == playerID)
-                _entities[i]->setShouldDisplay(false);
+            // if ((std::make_shared<Game::AI>(*dynamic_cast<Game::AI *>(_entities[i].get())))->getID() == playerID)
+            //     _entities[i]->setShouldDisplay(false);
         }
     }
 }
