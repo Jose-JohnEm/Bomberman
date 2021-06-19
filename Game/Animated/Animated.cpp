@@ -57,7 +57,7 @@ void Game::Animated::setModel(const std::string &model)
 
 void Game::Animated::move(const std::string &direction, const int &speed)
 {
-    float skate = (speed + 1) * 0.05f;
+    float skate = ((speed * 0.25) + 1) * 0.05f;
 
     std::map<std::string, std::pair<float, float>> dict = {
             {"goEast", {-skate, 0.f}},
