@@ -361,6 +361,13 @@ void Game::Bomberman::updateGame(void)
         initPlayersStats();
         _reinit++;
     }
+    _sharedPlayers.clear();
+    for (const std::shared_ptr<IEntity> &entity : _entities) {
+        if (entity->getType().compare("Human") == 0)
+            _sharedPlayers.push_back(std::make_shared<Game::Human>(*dynamic_cast<Game::Human *>(entity.get())));
+        else if (entity->getType().compare("AI") == 0)
+            _sharedPlayers.push_back(std::make_shared<Game::AI>(*dynamic_cast<Game::AI *>(entity.get())));
+    }
     if (!_gameOver) {
         updateEntities();
         updateScores();
