@@ -24,10 +24,12 @@ void XRay::goToAnotherSceneFromVictory()
     }
     if (nextlevel && Raylib::Mouse::isButtonPressed(0)) {
         // Do here all manipulations to increase level
+        _sfx.at(SFX_KLICK)->play();
         displayCinematic("loading", 0, 0);
         displayInGameScene();
     }
     if (restart && Raylib::Mouse::isButtonPressed(0)) {
+        _sfx.at(SFX_KLICK)->play();
         _isPaused = false;
         m_isPaused = 2;
         _pointerToRestartFunc();
@@ -35,6 +37,7 @@ void XRay::goToAnotherSceneFromVictory()
         displayInGameScene();
     }
     if (save && Raylib::Mouse::isButtonPressed(0)) {
+        _sfx.at(SFX_KLICK)->play();
         beginDrawing(false);
         _resources.at(SAVED)->drawTexture(650, 20);
         endDrawing();
@@ -42,6 +45,7 @@ void XRay::goToAnotherSceneFromVictory()
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
     if (home && Raylib::Mouse::isButtonPressed(0)) {
+        _sfx.at(SFX_HOME)->play();
         _isPaused = false;
         m_isPaused = 2;
         _pointerToRestartFunc();
