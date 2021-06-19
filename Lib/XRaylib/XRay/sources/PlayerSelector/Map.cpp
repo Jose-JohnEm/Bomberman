@@ -127,15 +127,15 @@ void PlayerSelector::Map::drawHandlingCharacters(const int &id)
     }
     if (id == 1)
     {
-        _characters[1].drawForMaps(rotation + 90, {4 - _y + 1, _x + 1, 0});
+        _characters[1].drawForMaps((rotation + 90) % 360, {4 - _y + 1, _x + 1, 0});
     }
     if (id == 2)
     {
-        _characters[2].drawForMaps(rotation + 180, {_y + 1, _x + 1, 0});
+        _characters[2].drawForMaps((rotation + 180) % 360, {4 - _x + 1, 4 - _y + 1, 0});
     }
     if (id == 3)
     {
-        _characters[3].drawForMaps(rotation + 270, {_x + 1, 4 - _y + 1, 0});
+        _characters[3].drawForMaps((rotation + 270) % 360, {_y + 1, 4 - _x + 1, 0});
     }
 }
 
