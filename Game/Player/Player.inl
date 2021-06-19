@@ -10,11 +10,6 @@ inline std::string Game::Player::getName(void) const
     return _name;
 }
 
-inline std::pair<float, float> Game::Player::getPositions(void) const
-{
-    return _positions;
-}
-
 inline size_t Game::Player::getBrokenWalls(void) const
 {
     return _brokenWalls;
@@ -25,19 +20,19 @@ inline size_t Game::Player::getKills(void) const
     return _kills;
 }
 
-inline std::array<size_t, 5> Game::Player::getPowerUps(void) const
+inline std::array<int, 5> Game::Player::getPowerUps(void) const
 {
     return _powerUps;
+}
+
+inline int Game::Player::getID(void) const
+{
+    return _ID;
 }
 
 inline void Game::Player::setName(const std::string &name)
 {
     _name = name;
-}
-
-inline void Game::Player::setPositions(const std::pair<float, float> &positions)
-{
-    _positions = positions;
 }
 
 inline void Game::Player::setBrokenWalls(const size_t &brokenWalls)
@@ -50,7 +45,42 @@ inline void Game::Player::setKills(const size_t &kills)
     _kills = kills;
 }
 
-inline void Game::Player::setPowerUps(const std::array<size_t, 5> &powerUps)
+inline void Game::Player::setPowerUps(const std::array<int, 5> &powerUps)
 {
     _powerUps = powerUps;
+}
+
+inline void Game::Player::setID(const int &ID)
+{
+    _ID = ID;
+}
+
+inline std::string Game::Human::getType() const
+{
+    return ("Human");
+}
+
+inline std::string Game::AI::getType() const
+{
+    return ("AI");
+}
+
+inline bool Game::Player::dropBomb()
+{
+    return true;
+}
+
+inline void Game::Player::increasePowerUps(const int &id_power)
+{
+    _powerUps[id_power]++;
+}
+
+inline void Game::Player::setAlive(const bool &alive)
+{
+    _alive = alive;
+}
+
+inline bool Game::Player::getAlive() const
+{
+    return _alive;
 }

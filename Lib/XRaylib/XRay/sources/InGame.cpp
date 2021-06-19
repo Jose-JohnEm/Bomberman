@@ -6,19 +6,49 @@
 */
 
 #include "XRay.hpp"
+#include "../../../Engine/Exception/MyException.hpp"
+
+std::string XRay::getTimeInFormat(void)
+{
+    int min = _gameSettings[4] / 60;
+    int secs = _gameSettings[4] % 60;
+    std::string time(std::string("0")+std::to_string(min)+std::string(":")
+    +((secs >= 10) ? std::string("") : std::string("0"))+std::to_string(secs));
+
+    return time;
+}
+
+void XRay::drawPlayersHead(size_t i, size_t x, size_t y)
+{
+    if (_userNames[i] == "Yellow")
+        _resources.at(YELLOWBOMBERMAN)->drawTexture(x, y);
+    if (_userNames[i] == "Red")
+        _resources.at(REDBOMBERMAN)->drawTexture(x, y);
+    if (_userNames[i] == "Blue")
+        _resources.at(BLUEBOMBERMAN)->drawTexture(x, y);
+    if (_userNames[i] == "Green")
+        _resources.at(GREENBOMBERMAN)->drawTexture(x, y);
+}
 
 void XRay::displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &panelPos)
 {
-    for (size_t u = 0; u < _allIntegers[2]; u++) {
+    for (size_t u = 0; u < (_gameSettings[7] + _gameSettings[5]); u++) {
         if (_controlsTab[u] == Resources::PLAYSTATIONYELLOW)
             _resources.at(PLAYSTATIONPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
         if (_controlsTab[u] == Resources::XBOXYELLOW)
             _resources.at(XBOXPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
-        if (_controlsTab[u] == Resources::MOUSEYELLOW)
+        if (_controlsTab[u] == Resources::MOUSEYELLOW) {
             _resources.at(MOUSEPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
+            _resources.at(MOUSERADAR)->drawTexture(1600, 40);
+        }
         if (_controlsTab[u] == Resources::KEYBOARDYELLOW)
             _resources.at(KEYBOARDPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
+        drawPlayersHead(u, panelPos[u].first-10, panelPos[u].second-180);
     }
+    _resources.at(CLOCKBAR)->drawTexture(600, 0);
+    _resources.at(CLOCKBAR)->drawTexture(1200, 0);
+    Raylib::Text::drawText(std::to_string(_gameSettings[2]), 720, 15, 60, Raylib::Color::White());
+    Raylib::Text::drawText(getTimeInFormat(), 1245, 15, 60, Raylib::Color::White());
 }
 
 void XRay::displayPauseScene(void)
@@ -46,31 +76,60 @@ void XRay::goToAnotherScene()
     bool home = mouseIsInBox(createBox(460, 885, 460+375, 885+65)) ? true : false;
 
     // Go to another scene according to mouse position
-    if (pauseButton && Raylib::Mouse::isButtonPressed(0))
+    if (pauseButton && Raylib::Mouse::isButtonPressed(0)) {
         _isPaused = true;
-    if (resume && Raylib::Mouse::isButtonPressed(0)) {
-        _isPaused = false;
+        _sfx.at(SFX_KLICK)->play();
+        _lastFrameTime = Raylib::Timing::getTime();
     }
-    if (restart && Raylib::Mouse::isButtonPressed(0)) {
+    if (_isPaused && resume && Raylib::Mouse::isButtonPressed(0)) {
+        _isPaused = false;
+        _sfx.at(SFX_KLICK)->play();
+        _startingTime += Raylib::Timing::getTime() - _lastFrameTime;
+    }
+    if (_isPaused && restart && Raylib::Mouse::isButtonPressed(0)) {
+        _sfx.at(SFX_KLICK)->play();
         _isPaused = false;
         m_isPaused = 2;
+        _pointerToRestartFunc();
         displayCinematic("loading", 0, 0);
         displayInGameScene();
     }
-    if (save && Raylib::Mouse::isButtonPressed(0)) {
+    if (_isPaused && save && Raylib::Mouse::isButtonPressed(0)) {
         beginDrawing(false);
+        _sfx.at(SFX_KLICK)->play();
         _resources.at(SAVED)->drawTexture(650, 20);
         endDrawing();
+        _pointerToSaveFunc(_gameSettings, getPlayerControls());
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
-    if (settings && Raylib::Mouse::isButtonPressed(0)) {
+    if (_isPaused && settings && Raylib::Mouse::isButtonPressed(0)) {
         _scenesBack[Scene::SETTINGS] = &XRay::displayInGameScene;
+        _sfx.at(SFX_SETTING)->play();
         displaySettingsScene();
     }
-    if (home && Raylib::Mouse::isButtonPressed(0)) {
+    if (_isPaused && home && Raylib::Mouse::isButtonPressed(0)) {
         _isPaused = false;
+        _sfx.at(SFX_HOME)->play();
         m_isPaused = 2;
+        _pointerToRestartFunc();
+        resetAll();
         displayMenuScene();
+    }
+}
+
+void XRay::managePlayersActions(void)
+{
+    for (size_t u = 0; u < _playersInput.size(); u++) {
+        if (_playersInput[u]->shouldGoToEast())
+            _playerActionsFunc(u, "goEast");
+        if (_playersInput[u]->shouldGoToNorth())
+            _playerActionsFunc(u, "goNorth");
+        if (_playersInput[u]->shouldGoToSouth())
+            _playerActionsFunc(u, "goSouth");
+        if (_playersInput[u]->shouldGoToWest())
+            _playerActionsFunc(u, "goWest");
+        if (_playersInput[u]->shouldSimulateAClick())
+            _playerActionsFunc(u, "dropBomb");
     }
 }
 
@@ -79,30 +138,43 @@ void XRay::displayInGameScene(void)
     // Set scene
     _scene = IN_GAME;
 
-    float size_m = ((float)_sizeMap+1) / 2;
-
-    static Raylib::Camera3D _camera(Vector3{0, 0, 30}, Vector3{size_m, size_m, 0}, Vector3{0, 1, 0}, 100, 0);
+    float size_m = (static_cast<float>(_sizeMap+1)) / 2;
 
     // Lambda for panel pos
     auto panelLambda = [](size_t a) { return (a <= 2) ? std::vector<std::pair<size_t, size_t>>{{20, 500}, {1500, 500}}
     : std::vector<std::pair<size_t, size_t>>{{20, 500}, {1500, 500}, {20, 950}, {1500, 950}}; };
 
     // Position of all Panels in a vector of pair (x, y)
-    static std::vector<std::pair<size_t, size_t>> panelPos = panelLambda(_allIntegers[2]);
+    static std::vector<std::pair<size_t, size_t>> panelPos = panelLambda(_gameSettings[7] + _gameSettings[5]);
 
     // Display Cinematic ready, 3, 2, 1, go
     if (m_isPaused == 2) {
+        _camera = Raylib::Camera3D(Vector3{size_m, size_m * -0.3f, size_m * 2.2f}, Vector3{size_m, size_m, 0}, Vector3{0, 1, 0}, 50, 0);
         displayCinematic("loading", 0, 0);
+        _resources.at(MAPCHOICEBG)->drawTexture(0, 0);
         displayCinematic("readygo", 0, 1000);
+        _startingTime = Raylib::Timing::getTime();
+        _lastFrameTime = Raylib::Timing::getTime();
+        _gameSettings[4] = _gameSettings[3];
+    }
+
+    // Next Set
+    if (_gameSettings[4] == 0 && _gameSettings[2] < _gameSettings[1]) {
+        _resources.at(MAPCHOICEBG)->drawTexture(0, 0);
+        displayCinematic("readygo", 0, 1000);
+        _startingTime = Raylib::Timing::getTime();
+        _lastFrameTime = Raylib::Timing::getTime();
+        _gameSettings[2] += 1;
+        _gameSettings[4] = _gameSettings[3];
     }
 
     // Draw scene
     beginDrawing();
     Raylib::Drawing::clearBackground(Raylib::Color::Brown());
-    _camera.updateCamera();
     _camera.beginMode3D();
     for (size_t o = 0; o < _gameInfos.size(); o++)
-        _gameInfos[o]->drawEntity();
+        if (_gameInfos[o]->getShouldDisplay())
+            _gameInfos[o]->drawEntity();
     _camera.endMode3D();
     displayPlayersPanels(panelPos);
     displayPauseScene();
@@ -110,7 +182,9 @@ void XRay::displayInGameScene(void)
     endDrawing();
 
     m_isPaused = _isPaused;
+    _gameSettings[4] = !_isPaused && _gameSettings[4] > 0 ? _gameSettings[3] - (Raylib::Timing::getTime() - _startingTime) : _gameSettings[4];
 
+    managePlayersActions();
     // Call function that check click on button
     goToAnotherScene();
 
@@ -118,4 +192,111 @@ void XRay::displayInGameScene(void)
         displayDefeatScene();
     if (Raylib::Keyboard::isKeyPressed(86))
         displayVictoryScene();
+}
+
+// STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
+// catch
+// throw
+// try
+
+int catchThrowTrygetTimeInFormat() {
+    try
+    {   XRay test;
+    	test.getTimeInFormat();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrydrawPlayersHead() {
+    try
+    {   XRay test;
+        size_t i;
+        size_t x;
+        size_t y;
+    	test.drawPlayersHead(i,x,y);
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrydisplayPlayersPanels() {
+    try
+    {   XRay test;
+        std::vector<std::pair<size_t, size_t>> panelPos;
+    	test.displayPlayersPanels(panelPos);
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrydisplayPauseScene() {
+    try
+    {   XRay test;
+    	test.displayPauseScene();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrydgoToAnotherScene() {
+    try
+    {   XRay test;
+    	test.goToAnotherScene();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrymanagePlayersActions() {
+    try
+    {   XRay test;
+    	test.managePlayersActions();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrydisplayInGameScene() {
+    try
+    {   XRay test;
+    	test.displayInGameScene();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
 }

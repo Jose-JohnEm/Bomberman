@@ -15,6 +15,55 @@ inline void XRay::closeWindow(void) const
     _window.closeWindow();
 }
 
+inline std::array<size_t, 9> XRay::getGameSettings()
+{
+    return _gameSettings;
+}
+
+inline void XRay::resetAll(void)
+{
+    _gameSettings = {0, 1, 1, 1, 60, 0, 1, 1, 0};
+    _sizeMap = 5;
+    _userNames.clear();
+    _playerTab = {true, false, false, false};
+    _controlsTab = {UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN};
+    _allIntegers = {50, 400, 1};
+    _card = {36, 36, 36, 36};
+    _isPaused = false;
+    m_isPaused = 2;
+    _scrollingBack = 0.0f;
+}
+
+inline void XRay::setMapSize(size_t size)
+{
+    _sizeMap = size;
+}
+
+inline void XRay::setPlayerActionsFunc(std::function<void (const size_t pos, const std::string action)> playerActionsFunc)
+{
+    _playerActionsFunc = playerActionsFunc;
+}
+
+inline void XRay::setRestartFunc(std::function<void ()> pointerToFunc)
+{
+    _pointerToRestartFunc = pointerToFunc;
+}
+
+inline void XRay::setLoadFunc(std::function<void (std::string)> pointerToFunc)
+{
+    _pointerToLoadFunc = pointerToFunc;
+}
+
+inline void XRay::setSaveFunc(std::function<void (std::array<std::size_t, 9>, std::vector<std::string>)> pointerToFunc)
+{
+    _pointerToSaveFunc = pointerToFunc;
+}
+
+inline void XRay::setSettingsFunc(std::function<void (std::array<std::size_t, 9>)> pointerToFunc)
+{
+    _pointerToSettingsFunc = pointerToFunc;
+}
+
 inline void XRay::setMap(std::vector<std::string> &map)
 {
     _map = map;
@@ -22,7 +71,7 @@ inline void XRay::setMap(std::vector<std::string> &map)
 
 inline std::pair<size_t, size_t> XRay::getMapSizeAndType()
 {
-    return std::make_pair(_sizeMap, _mapType);
+    return std::make_pair(_sizeMap, _gameSettings[8]);
 }
 
 inline void XRay::beginDrawing(void) const
@@ -48,7 +97,7 @@ inline void XRay::display(void)
     // Hide the cursor
     Raylib::Cursor::hideCursor();
 
-    (this->*_scenesFunc[(int)_scene])();
+    (this->*_scenesFunc[static_cast<int>(_scene)])();
 }
 
 inline void XRay::setPlayersStats(const std::vector<std::vector<std::pair<std::string, std::string>>> &info)
@@ -76,6 +125,11 @@ inline const std::vector<std::string> &XRay::getUserNames(void) const
     return _userNames;
 }
 
+inline void XRay::setUserNames(const std::vector<std::string> &userNames)
+{
+    _userNames = userNames;
+}
+
 inline IGraphical::Scene XRay::getScene(void) const
 {
     return _scene;
@@ -101,7 +155,7 @@ inline bool XRay::mouseIsInBox(const std::vector<size_t> &box) const
     std::pair<size_t, size_t> mousePosition = std::make_pair(Raylib::Mouse::getMouseX(), Raylib::Mouse::getMouseY());
 
     if (box[UPPER_LEFT] <= mousePosition.first && mousePosition.first <= box[LOW_RIGHT]
-    && box[LOW_LEFT] <= mousePosition.second && mousePosition.second <= box[UPPER_RIGHT])
+        && box[LOW_LEFT] <= mousePosition.second && mousePosition.second <= box[UPPER_RIGHT])
         return true;
     return false;
 }
@@ -126,4 +180,54 @@ inline void XRay::displayMouse(void) const
 inline size_t XRay::countFilesDirectory(const std::filesystem::path &path) const
 {
     return (std::size_t)std::distance(std::filesystem::directory_iterator{path}, std::filesystem::directory_iterator{});
+}
+
+inline std::vector<CharDictionary> XRay::getPlayersData()
+{
+    return _pSelector.getPlayerData();
+}
+
+inline void XRay::setGameSettings(const std::array<size_t, 9> &settings)
+{
+    _gameSettings = settings;
+}
+
+inline std::vector<std::string> XRay::getPlayerControls(void) const
+{
+    std::vector<std::string> controls;
+
+    for (size_t i = 0; i < _controlsTab.size(); i++) {
+        if (_controlsTab[i] == Resources::PLAYSTATIONYELLOW)
+            controls.push_back("PLAYSTATION");
+        if (_controlsTab[i] == Resources::XBOXYELLOW)
+            controls.push_back("XBOX");
+        if (_controlsTab[i] == Resources::MOUSEYELLOW)
+            controls.push_back("MOUSE");
+        if (_controlsTab[i] == Resources::KEYBOARDYELLOW)
+            controls.push_back("KEYBOARD");
+    }
+    return controls;
+}
+
+inline void XRay::setPlayerControls(const std::vector<std::string> &playerControls)
+{
+    // TODO: Prince
+    _playersInput.pop_back();
+    for (size_t y = 0; y < playerControls.size(); y++) {
+        if (!playerControls[y].compare("NONE"))
+            _controlsTab[y] = Resources::UNKNOWN;
+        else if (!playerControls[y].compare("XBOX")) {
+            _controlsTab[y] = Resources::XBOXYELLOW;
+            _playersInput.push_back(std::shared_ptr<IPlayerInput>(new GamepadPlayerInput(1)));
+        } else if (!playerControls[y].compare("PLAYSTATION")) {
+            _controlsTab[y] = Resources::PLAYSTATIONYELLOW;
+            _playersInput.push_back(std::shared_ptr<IPlayerInput>(new GamepadPlayerInput(0)));
+        } else if (!playerControls[y].compare("MOUSE")) {
+            _controlsTab[y] = Resources::MOUSEYELLOW;
+            _playersInput.push_back(std::shared_ptr<IPlayerInput>(new MousePlayerInput()));
+        } else if (!playerControls[y].compare("KEYBOARD")) {
+            _controlsTab[y] = Resources::KEYBOARDYELLOW;
+            _playersInput.push_back(std::shared_ptr<IPlayerInput>(new KeyboardPlayerInput()));
+        }
+    }
 }

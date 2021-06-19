@@ -1,0 +1,26 @@
+name: gtest actions
+
+on:
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: [ master, develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    ##- name: Install gtest manually
+    ##  run: sudo apt-get install libgtest-dev && cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make && sudo cp *.a /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
+
+    - uses: actions/checkout@v2
+
+    - name: configure
+      run: sudo apt-get install libglfw3-dev && sudo apt-get install libgtest-dev && sudo apt-get install xorg-dev libglu1-mesa-dev && sudo apt-get install libirrlicht1.8 libirrlicht-dev libirrlicht-doc && cmake -E env SKIP_RESOURCES_FETCHING="TRUE" cmake -B ${{ github.workspace}}/Tests/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+
+    - name: make
+      run: cmake --build ${{ github.workspace }}/Tests/build ##--config ${{env.BUILD_TYPE}}
+
+    - name: configure & Run Test
+      run: rm -r Tests/build  && cd Tests && mkdir build && cd build && cmake .. && cmake --build . && cp test_bomberman .. && export DISPLAY=:0.0 && ./test_bomberman
+

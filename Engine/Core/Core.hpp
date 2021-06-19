@@ -13,59 +13,80 @@
 #include <algorithm>
 #include "XRay.hpp"
 #include "Interfaces/IGraphical.hpp"
-#include "../../Game/includes/Bomberman.hpp"
+#include "../../Game/Bomberman/Bomberman.hpp"
 #include "Interfaces/IGame.hpp"
 
 namespace Engine
 {
     class Core {
 
-        public:
-            /**
-             * @brief Construct a new Core object
-             */
-            Core();
+    public:
+        /**
+         * @brief Construct a new Core object
+         */
+        Core();
 
-            /**
-             * @brief Destroy the Core object
-             */
-            ~Core();
+        /**
+         * @brief Destroy the Core object
+         */
+        ~Core();
 
-            /**
-             * @brief Run the core
-             */
-            void run(void);
+        /**
+         * @brief Run the core
+         */
+        void run(void);
 
-            /**
-             * @brief Break cleanly the game loop and save informations
-             *
-             * @return true or false
-             */
-            bool endGame(void);
+        /**
+         * @brief Break cleanly the game loop and save informations
+         *
+         * @return true or false
+         */
+        bool endGame(void);
 
-            /**
-             * @brief Save the best score(s) in a file
-             */
-            void saveBestScores(void);
+        /**
+         * @brief Save the best score(s) in a file
+         */
+        void saveBestScores(void);
 
-            /**
-             * @brief Get Backup Files
-             */
-            void getBackupFiles(void);
+        /**
+         * @brief Get Backup Files
+         */
+        void getBackupFiles(void);
 
-        private:
-            std::shared_ptr<IGraphical> _graphical;                             // Graphical instance
-            std::shared_ptr<IGame> _game;                                       // Game instance
+        /**
+         * @brief Save the game
+         *
+         * @param settings Backup Container containing the settings
+         * @param playerControls Backup Container containing the player controls
+         */
+        void saveGame(std::array<std::size_t, 9> settings, std::vector<std::string> playerControls);
 
-            std::string _currentGame = "bomberman";                             // Game name
+        /**
+         * @brief Load the game
+         *
+         * @param filepath Path to backup file
+         */
+        void loadGame(std::string filepath);
 
-            IGraphical::Scene _scene = IGraphical::MENU;                        // Current scene
+        /**
+         * @brief Restart the game
+         */
+        void restartGame();
 
-            std::vector<std::string> _userNames;                                // User names
-            std::vector<std::pair<std::string, std::string>> _gameHighScores;   // Game's high scores
-            std::vector<std::string> _backups;                                  // Paths of Backup Files
+    private:
+        std::shared_ptr<IGraphical> _graphical;                             // Graphical instance
+        std::shared_ptr<IGame> _game;                                       // Game instance
 
-            bool _isPaused = false;                                                     // Pause flag
+        std::string _currentGame = "bomberman";                             // Game name
+
+        IGraphical::Scene _scene = IGraphical::MENU;                        // Current scene
+
+        std::vector<std::string> _userNames;                                // User names
+        std::vector<std::pair<std::string, std::string>> _gameHighScores;   // Game's high scores
+        std::vector<std::string> _backups;                                  // Paths of Backup Files
+
+        bool _isPaused = false;                                                     // Pause flag
+        size_t _refreshFlag = 0;                                              // Refresh Flag
     };
 }
 

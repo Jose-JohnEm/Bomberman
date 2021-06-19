@@ -6,6 +6,7 @@
 */
 
 #include "XRay.hpp"
+#include "../../../Engine/Exception/MyException.hpp"
 
 void XRay::detectPlayerInput(void)
 {
@@ -17,10 +18,22 @@ void XRay::detectPlayerInput(void)
     _controlsTab[t] = (Raylib::Gamepad::isGamepadAvailable(0) && Raylib::Gamepad::isGamepadButtonPressed(0, 15)) ? PLAYSTATIONYELLOW : _controlsTab[t];
     _controlsTab[t] = (Raylib::Gamepad::isGamepadAvailable(1) && Raylib::Gamepad::isGamepadButtonPressed(1, 15)) ? XBOXYELLOW : _controlsTab[t];
     _controlsTab[t] = (Raylib::Keyboard::getKeyPressed()) ? KEYBOARDYELLOW : _controlsTab[t];
-    _controlsTab[t] = (Raylib::Mouse::isButtonPressed(0)) ? MOUSEYELLOW : _controlsTab[t];
+    _controlsTab[t] = (Raylib::Mouse::isButtonPressed(1) || (Raylib::Mouse::isButtonPressed(0) && t == 0)) ? MOUSEYELLOW : _controlsTab[t];
     for (size_t k = 0; k < t; k++)
         _controlsTab[t] = (_controlsTab[t] == _controlsTab[k]) ? tmp : _controlsTab[t];
     _playerTab[t] = (tmp != _controlsTab[t]) ? true : _playerTab[t];
+    if (tmp != _controlsTab[t]) {
+        if (_playersInput.size() > t)
+            _playersInput.pop_back();
+        if (_controlsTab[t] == PLAYSTATIONYELLOW)
+            _playersInput.push_back(std::shared_ptr<IPlayerInput>(new GamepadPlayerInput(0)));
+        if (_controlsTab[t] == XBOXYELLOW)
+            _playersInput.push_back(std::shared_ptr<IPlayerInput>(new GamepadPlayerInput(1)));
+        if (_controlsTab[t] == KEYBOARDYELLOW)
+            _playersInput.push_back(std::shared_ptr<IPlayerInput>(new KeyboardPlayerInput()));
+        if (_controlsTab[t] == MOUSEYELLOW)
+            _playersInput.push_back(std::shared_ptr<IPlayerInput>(new MousePlayerInput()));
+    }
 }
 
 void XRay::removePlayer(const std::vector<std::pair<int, int>> &removeButtons)
@@ -28,10 +41,13 @@ void XRay::removePlayer(const std::vector<std::pair<int, int>> &removeButtons)
     for (size_t u = 0; u < removeButtons.size(); u++) {
         if (mouseIsInBox(createBox(removeButtons[u].first, removeButtons[u].second, removeButtons[u].first+64, removeButtons[u].second+63)) && Raylib::Mouse::isButtonPressed(0)) {
             _allIntegers[2] -= 1;
-            if (_playerTab[u+1])
-                _controlsTab.erase(_controlsTab.begin() + u + 1);
+            if (_playerTab[u+1]) {
+                _controlsTab[u + 1] = UNKNOWN;
+                _playersInput.erase(_playersInput.begin() + u + 1);
+            }
             _playerTab.erase(_playerTab.begin() + u + 1);
             _pSelector.unload(u + 1);
+            _sfx.at(SFX_JIG1)->play();
         }
     }
 }
@@ -43,6 +59,7 @@ void XRay::addPlayer(void)
         _allIntegers[2] += 1;
         _playerTab.push_back(false);
         _pSelector.load();
+        _sfx.at(SFX_JIG)->play();
     }
 }
 
@@ -51,24 +68,20 @@ void XRay::manageNextOrPrev(void)
     auto glambda = [](size_t a) { return a == 40 ? 36 : 40; };
 
     _nextOrNot = 0;
-    for (size_t u = 0; u < _allIntegers[2]; u++) {
-        if (_controlsTab[u] == Resources::PLAYSTATIONYELLOW)
-            _card[u] = Raylib::Gamepad::isGamepadButtonPressed(0, 7) ? glambda(_card[u]) : _card[u];
-        if (_controlsTab[u] == Resources::XBOXYELLOW)
-            _card[u] = Raylib::Gamepad::isGamepadButtonPressed(1, 7) ? glambda(_card[u]) : _card[u];
-        if (_controlsTab[u] == Resources::MOUSEYELLOW)
-            _card[u] = Raylib::Mouse::isButtonPressed(1) ? glambda(_card[u]) : _card[u];
-        if (_controlsTab[u] == Resources::KEYBOARDYELLOW)
-            _card[u] = (Raylib::Keyboard::getKeyPressed() == 32) ? glambda(_card[u]) : _card[u];
-
-        if (Raylib::Mouse::isButtonPressed(0))
-        {
-            if (mouseIsInBox(createBox(100 + 450 * u, 580, 180 + 450 * u, 630)))
-                _pSelector.prev(u);
-            if (mouseIsInBox(createBox(400 + 450 * u, 580, 480 + 450 * u, 630)))
-                _pSelector.next(u);
+    for (size_t u = 0; u < _allIntegers[2] && u < _playersInput.size(); u++) {
+        if (_playerTab[u] && _playersInput[u]->shouldSimulateAClick()) {
+            _card[u] = glambda(_card[u]);
+            _sfx.at(SFX_BING)->play();
         }
-        _nextOrNot += _card[u];
+        if (_playerTab[u] && _playersInput[u]->shouldChangeToPrev() && _card[u] != 40) {
+            _sfx.at(SFX_KLICK)->play();
+            _pSelector.prev(u);
+        }
+        if (_playerTab[u] && _playersInput[u]->shouldChangeToNext() && _card[u] != 40) {
+            _sfx.at(SFX_KLICK)->play();
+            _pSelector.next(u);
+        }
+        _nextOrNot += _playerTab[u] ? _card[u] : 0;
     }
 }
 
@@ -78,7 +91,7 @@ void XRay::displayCardsSettings(std::vector<std::pair<int, int>> &removeButtons,
     for (i = 0, (*x) = 100, b = 200; _allIntegers[2] < 5 && i < _allIntegers[2]; i++, (*x) += 450) {
         (_playerTab[i]) ? _resources.at((Resources)(_card[i]+i))->drawTexture((*x), b) : _resources.at(AI)->drawTexture((*x), b);
         if (_playerTab[i])
-            _resources.at((Resources)(size_t)((_controlsTab[i])+_card[i]-36))->drawTexture((*x)+109, b+9);
+            _resources.at((Resources)static_cast<size_t>((_controlsTab[i])+_card[i]-36))->drawTexture((*x)+109, b+9);
         if (i != 0)
             removeButtons.push_back(std::make_pair((*x)+307, b+9));
         if (_card[i] == 36) {
@@ -103,9 +116,6 @@ void XRay::displayPlayerChoiceScene(void)
 {
     // Set scene
     _scene = PLAYER_CHOICE;
-
-    // Audio
-    _musics.at(MSC_BOMBERMAN)->update();
 
     // Check if mouse is on button spot
     bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
@@ -135,11 +145,11 @@ void XRay::displayPlayerChoiceScene(void)
     displayMouse();
     endDrawing();
 
-    // Check and Manage Click on buttons
-    addPlayer();
-    removePlayer(removeButtons);
-
     manageNextOrPrev();
+
+    // Check and Manage Click on buttons
+    removePlayer(removeButtons);
+    addPlayer();
 
     // Go to another scene according to mouse position
     if (goBack && Raylib::Mouse::isButtonPressed(0)) {
@@ -147,10 +157,133 @@ void XRay::displayPlayerChoiceScene(void)
         (this->*_scenesBack[_scene])();
         _scenesBack[PLAYER_CHOICE] = _scenesBackBackup[PLAYER_CHOICE];
     }
-    if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _allIntegers[2] * 40) {
+
+    // Update Game Settings
+    _gameSettings[5] = 0;
+    for (size_t t = 0; t < _allIntegers[2] && t <_playerTab.size(); t++)
+        _gameSettings[5] += (!_playerTab[t]) ? 1 : 0;
+    _gameSettings[7] = _allIntegers[2] - _gameSettings[5];
+
+    // Go to another scene according to mouse position
+    if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _gameSettings[7] * 40) {
         for (size_t o = 0; o < _allIntegers[2]; o++)
             _userNames.push_back(_pSelector[o].getName());
+        _sfx.at(SFX_NOCK)->play();
+        _pSelector.initMaps({
+            {"WWWWWWW"},
+            {"W*****W"},
+            {"W*WMW*W"},
+            {"W*MMM*W"},
+            {"W*WMW*W"},
+            {"W*****W"},
+            {"WWWWWWW"},
+        });
         displayMapChoiceScene();
-        // TODO: USERNAMES UPDATE
     }
+}
+
+// STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
+// catch
+// throw
+// try
+
+int catchThrowTrydetectPlayerInput() {
+    try
+    {   XRay test;
+    	test.detectPlayerInput();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTryremovePlayer() {
+    try
+    {   XRay test;
+        std::vector<std::pair<int, int>> removeButtons;
+    	test.removePlayer(removeButtons);
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTryaddPlayer() {
+    try
+    {   XRay test;
+    	test.addPlayer();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrymanageNextOrPrev() {
+    try
+    {   XRay test;
+    	test.manageNextOrPrev();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrydisplayCardsSettings() {
+    try
+    {   XRay test;
+    int x;
+        std::vector<std::pair<int, int>> removeButtons;
+    	test.displayCardsSettings(removeButtons,&x);
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrydisplayBack() {
+    try
+    {   XRay test;
+    	test.displayBack();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrydisplayPlayerChoiceScene() {
+    try
+    {   XRay test;
+    	test.displayPlayerChoiceScene();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
 }

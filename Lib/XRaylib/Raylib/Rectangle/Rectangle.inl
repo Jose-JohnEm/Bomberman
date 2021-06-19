@@ -26,7 +26,7 @@ inline ::Rectangle Raylib::Rectangle::getCStruct(void) const
     return _rectangle;
 }
 
-inline void Raylib::Rectangle::drawRectangle(int const &posX, int const &posY, int const &width, int const &height, Color const &color) const
+inline void Raylib::Rectangle::drawRectangle(int const &posX, int const &posY, int const &width, int const &height, Color const &color)
 {
     return ::DrawRectangle(posX, posY, width, height, color.getCStruct());
 }

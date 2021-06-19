@@ -13,6 +13,7 @@
 #include "raylib.h"
 #include "PlayerSelector/Player.hpp"
 #include "PlayerSelector/Map.hpp"
+#include "PlayerSelector/CharDictionary.hpp"
 #include <filesystem>
 
 #define POS_1 Raylib::Vector3(-3.25, -0.15, 0)
@@ -20,61 +21,200 @@
 #define POS_3 Raylib::Vector3(1.15, -0.15, 0)
 #define POS_4 Raylib::Vector3(3.35, -0.15, 0)
 
-
-
 namespace PlayerSelector
 {
-    struct CharDictionary
-    {
-        std::string obj;
-        std::string texture;
-        float scalable;
-        std::string name;
-    };
 
     class Selector
     {
-        public:
-            Selector();
-            ~Selector();
+    public:
+        /**
+         * @brief Construct a new Selector object
+         *
+         */
+        Selector();
 
-            void firstLoad();
-            void load();
-            void unload(const int &id);
-            std::vector<std::pair<Model, float>> getModels() const;
-            std::vector<Texture2D> getBlocTextures() const;
-            void unloadAll();
-            void drawPlayers();
+        /**
+         * @brief Destroy the Selector object
+         *
+         */
+        ~Selector();
 
-            void initMaps(std::vector<std::string> &asciiMap);
-            void drawMaps(std::vector<std::string> &asciiMap);
-            std::vector<std::string> getMap() const;
-            void endMaps();
+        /**
+         * @brief Toggle Mods Available
+         *
+         */
+        void toggleModsAvailable();
 
-            void nextMap();
-            void prevMap();
+        /**
+         * @brief Check if mods are available
+         *
+         * @return true if mods are available
+         * @return false otherwise
+         */
+        bool isModsAvailable();
 
-            void next(const int &player);
-            void prev(const int &player);
-            size_t getMapType() const;
+        /**
+         * @brief Load for the first time a character
+         *
+         */
+        void firstLoad();
 
-            std::vector<Raylib::Vector3> POS;
+        /**
+         * @brief Add a character
+         *
+         */
+        void load();
 
-            PlayerSelector::Player &operator[](const int &index);
-            const PlayerSelector::Player &operator[](const int &index) const;
+        /**
+         * @brief Remove a character
+         *
+         * @param id character's id to remove
+         */
+        void unload(const int &id);
 
-        private:
+        /**
+         * @brief Get characters Models
+         *
+         * @return a vector of pairs of Model withe their scalable value
+         */
+        std::vector<std::pair<Model, float>> getModels() const;
 
-            void updateRotationAxis();
+        /**
+         * @brief Get the Bloc Textures object
+         *
+         * @return a vector of textures
+         */
+        std::vector<Texture2D> getBlocTextures() const;
 
-            Raylib::Camera3D *camera;
-            std::vector<PlayerSelector::Player> _players;
-            int _nbCharacters;
-            std::vector<CharDictionary> _charaDictionary;
-            Map *_map;
-            std::vector<std::string> _asciiMap = {""};
+        /**
+         * @brief Remove all characters
+         *
+         */
+        void unloadAll();
 
-            float _rotationAxis;
+        /**
+         * @brief Display all the players
+         *
+         */
+        void drawPlayers();
+
+        /**
+         * @brief Init the 3D maps from the Ascii one
+         *
+         * @param asciiMap the ascii map
+         */
+        void initMaps(std::vector<std::string> asciiMap);
+
+        /**
+         * @brief Display the 3D map
+         *
+         * @param asciiMap a new ascii map
+         */
+        void drawMaps();
+
+        /**
+         * @brief Get the Ascii Map
+         *
+         * @return the ascii map
+         */
+        std::vector<std::string> getMap() const;
+
+        /**
+         * @brief Unload map
+         *
+         */
+        void endMaps();
+
+        /**
+         * @brief Select the next map textures
+         *
+         */
+        void nextMap();
+
+        /**
+         * @brief Select the previous map textures
+         *
+         */
+        void prevMap();
+
+        /**
+         * @brief Select the next character
+         *
+         * @param player id of player who want to change the character
+         */
+        void next(const int &player);
+
+        /**
+         * @brief Select the next character
+         *
+         * @param player id of player who want to change the character
+         */
+        void prev(const int &player);
+
+        /**
+         * @brief Get the Map Type
+         *
+         * @return map type (Floor, Wall, or Box)
+         */
+        size_t getMapType() const;
+
+        /**
+         *  //TODO: DOC
+         * @return
+         */
+        std::vector<CharDictionary> getPlayerData() const;
+
+        /**
+         * //TODO: DOC
+         */
+        std::vector<Raylib::Vector3> POS;
+
+        /**
+         * //TODO: DOC
+         * @param index
+         * @return
+         */
+        PlayerSelector::Player &operator[](const int &index);
+        /**
+         * //TODO: DOC
+         * @param index
+         * @return
+         */
+        const PlayerSelector::Player &operator[](const int &index) const;
+
+    private:
+
+        /**
+         * @brief Preload the 4 first characters
+         *
+         * @param dictionary the players available dictionary
+         */
+        void preloadBasicsCharacters();
+
+        /**
+         * @brief Find if some DLC characters are available and add them to the dictionary
+         *
+         * @param dictionary the players available dictionary
+         */
+        void findModsCharacters();
+
+        /**
+         * @brief update Characters z Rotation axis
+         *
+         */
+        void updateRotationAxis();
+
+        //TODO: DOC
+        Raylib::Camera3D *camera;
+        std::vector<PlayerSelector::Player> _players;
+        int _nbCharacters;
+        std::vector<CharDictionary> _charaDictionary;
+        Map *_map;
+        std::vector<std::string> _asciiMap = {""};
+
+        bool _modAvailable;
+
+        float _rotationAxis;
     };
 }
 

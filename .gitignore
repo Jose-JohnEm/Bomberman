@@ -7,3 +7,10 @@ bomberman
 bomberman.exe
 .DS_Store
 resources
+Tests/Lib
+Tests/Engine
+.backups/*.backup
+Tests/test_bomberman
+Tests/test_exec.sh
+Tests/test_clean.sh
+lol

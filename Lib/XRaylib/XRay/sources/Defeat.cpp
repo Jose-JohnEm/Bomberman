@@ -6,6 +6,7 @@
 */
 
 #include "XRay.hpp"
+#include "../../../Engine/Exception/MyException.hpp"
 
 void XRay::goToAnotherSceneFromDefeat()
 {
@@ -16,11 +17,18 @@ void XRay::goToAnotherSceneFromDefeat()
     // Call function that check click on button
     if (restart && Raylib::Mouse::isButtonPressed(0)) {
         _isPaused = false;
+        m_isPaused = 2;
+        _pointerToRestartFunc();
         displayCinematic("loading", 0, 0);
         displayInGameScene();
     }
-    if (home && Raylib::Mouse::isButtonPressed(0))
+    if (home && Raylib::Mouse::isButtonPressed(0)) {
+        _isPaused = false;
+        m_isPaused = 2;
+        _pointerToRestartFunc();
+        resetAll();
         displayMenuScene();
+    }
 }
 
 void XRay::displayDefeatScene()
@@ -39,4 +47,39 @@ void XRay::displayDefeatScene()
 
     // Call function that check click on button
     goToAnotherSceneFromDefeat();
+}
+
+
+// STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
+// catch
+// throw
+// try
+
+int catchThrowTrygoToAnotherSceneFromDefeat() {
+    try
+    {   XRay test;
+    	test.goToAnotherSceneFromDefeat();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+
+int catchThrowTrydisplayDefeatScenet() {
+    try
+    {   XRay test;
+    	test.displayDefeatScene();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
 }

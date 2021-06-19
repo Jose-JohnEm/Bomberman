@@ -20,8 +20,8 @@ FIND_PACKAGE(raylib 3.7) # Let CMake search for a raylib-config.cmake
 
 # Find globaly and recursively all source files required to compile the project
 FILE(GLOB_RECURSE RAYLIB_SRCS CONFIGURE_DEPENDS
-    "${PROJECT_SOURCE_DIR}/*.cpp"
-)
+        "${PROJECT_SOURCE_DIR}/*.cpp"
+        )
 
 # Set Raylib Headers path
 SET(RAYLIB_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/")
@@ -34,8 +34,8 @@ TARGET_LINK_LIBRARIES(${PROJECT_NAME} raylib)
 
 # Add Raylib headers path to our project
 TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PRIVATE
-    ${RAYLIB_HEADERS_PATH}
-)
+        ${RAYLIB_HEADERS_PATH}
+        )
 
 # Active in debug environment or hidden in release
 #TARGET_COMPILE_OPTIONS(raylibCPP PRIVATE -g3)

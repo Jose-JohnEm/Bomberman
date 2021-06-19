@@ -100,13 +100,55 @@ typedef enum {
     ON,
     OFF,
     SETTING_BG,
+    HOWTO_BG,
     VOLUME_UP,
     VOLUME_DOWN,
-    LOADINGFRAMEO
+    LOADINGFRAMEO,
+    S7X7S,
+    S9X9S,
+    S11X11S,
+    S13X13S,
+    S15X15S,
+    S17X17S,
+    S19X19S,
+    MIN1MIN,
+    MIN2MIN,
+    MIN3MIN,
+    MIN4MIN,
+    MIN5MIN,
+    SET1SET,
+    SET2SET,
+    SET3SET,
+    SET4SET,
+    SET5SET,
+    EASY,
+    MEDIUM,
+    DIFFICULT,
+    TEXT_VOLUME,
+    TEXT_SFX,
+    TEXT_FULLSCREEN,
+    TEXT_MUSIC,
+    TEXT_GENERAL,
+    TEXT_MODS,
+    CLOCKBAR,
+    YELLOWBOMBERMAN,
+    REDBOMBERMAN,
+    BLUEBOMBERMAN,
+    GREENBOMBERMAN,
+    MOUSERADAR,
+    BACKUPERROR,
+    PRINCE,
+    LUCAS,
+    JONATHAN,
+    NICO,
+    MEHDI,
+    CHARLES,
+    TEAMTITLE
 } Resources;
 
 typedef enum {
-    MSC_BOMBERMAN
+    MSC_BOMBERMAN,
+    MSC_OPENNING
 } MusicResources;
 
 typedef enum {
@@ -116,7 +158,14 @@ typedef enum {
     SFX_HOME,
     SFX_NOCK,
     SFX_TURN_OFF,
-    SFX_TURN_ON
+    SFX_TURN_ON,
+    SFX_JIG,
+    SFX_JIG1,
+    SFX_BING,
+    SFX_OPENNING,
+    SFX_WEEE,
+    SFX_BOOM,
+    SFX_TUDUM
 } SfxResources;
 
 #endif /* !RESOURCES_HPP_ */

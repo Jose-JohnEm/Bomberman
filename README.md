@@ -74,7 +74,7 @@ $ ./bomberman
 
 OR
 
-$ cd build && cmake .. && cmake --build . && cp bomberman ../ && cd ../; ./bomberman
+$ cd build && cmake .. && cmake --build . -j && cp bomberman ../ && cd ../; ./bomberman
 ```
 
 ## Usage
@@ -107,6 +107,24 @@ Here’s the required features :
 The goal of this project is not only to code a video game, but it’s to code a fully finished video game. This means that the efforts you make to polish your game will count as much as the technical aspect.
 
 Do your best to avoid clunky animations or graphical glitches, manage your camera in a way that the “outside” of the game is never visible, pay attention to game design, level design and sound design, add variations in ennemies and environnements, etc.
+
+## TESTS
+
+We have implemented tests with Google Tests, to use them you must compile the project like its explain in the compilation section.
+
+Once this done, use these commands (at root of the project):
+
+```
+$ cd Tests
+$ mkdir build && cd build
+$ cmake .. && cmake --build .
+$ cp test_bomberman .. && cd ../
+$ ./test_bomberman
+
+OR
+
+$ cd Tests && cd build && cmake .. && cmake --build . && cp test_bomberman .. && cd ../; ./test_bomberman
+```
 
 ## DOCUMENTATION
 

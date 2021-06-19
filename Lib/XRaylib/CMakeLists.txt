@@ -14,8 +14,8 @@ SET(CMAKE_CXX_STANDARD 17)
 
 # Find globaly and recursively all source files required to compile the project
 FILE(GLOB_RECURSE XRAY_SRCS CONFIGURE_DEPENDS
-    "${PROJECT_SOURCE_DIR}/XRay/sources/*.cpp"
-)
+        "${PROJECT_SOURCE_DIR}/XRay/sources/*.cpp"
+        )
 
 # Make Raylib CMakeList meta-compile raylib-cpp library
 # It will be linked with our XRay library project
@@ -34,10 +34,10 @@ TARGET_LINK_LIBRARIES(${PROJECT_NAME} raylibCPP)
 
 # Add headers path to our project
 TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PRIVATE
-    ${RAYLIB_HEADERS_PATH}
-    ${ENGINE_HEADERS_PATH}
-    ${XRAY_HEADERS_PATH}
-)
+        ${RAYLIB_HEADERS_PATH}
+        ${ENGINE_HEADERS_PATH}
+        ${XRAY_HEADERS_PATH}
+        )
 
 # Active in debug environment or hidden in release
 #TARGET_COMPILE_OPTIONS(xray PRIVATE -g3 -lstdc++fs)

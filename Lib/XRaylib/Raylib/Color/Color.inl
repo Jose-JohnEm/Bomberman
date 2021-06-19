@@ -31,7 +31,7 @@ inline Raylib::Color Raylib::Color::getColor(const std::string &color)
     return _colorFactory[color]();
 }
 
-inline Raylib::Color Raylib::Color::fade(Raylib::Color color, const float &alpha) const
+inline Raylib::Color Raylib::Color::fade(Raylib::Color color, const float &alpha)
 {
     Raylib::Color col;
 
