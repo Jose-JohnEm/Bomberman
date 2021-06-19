@@ -131,6 +131,13 @@ namespace Game
         void increasePowerUps(const int &id_power);
 
         /**
+         * @brief Set the powerUps of the player
+         *
+         * @param powerUps A const reference to an array of 5 int
+         */
+        void decreasePowerUps(const int &id_power);
+
+        /**
          * @brief Set the ID of the player
          */
         void setID(const int &ID);

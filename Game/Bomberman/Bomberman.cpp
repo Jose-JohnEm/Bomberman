@@ -79,10 +79,8 @@ void Game::Bomberman::initPlayersStats()
 
 bool Game::Bomberman::playerGotHit(const std::pair<int, int> &pos, const float &posX, const float &posY) const
 {
-    if (pos.first >= posX && pos.first <= posX + 1 && pos.second >= posY && pos.second <= posY + 1) {
-        std::cout << "AAAAAAAAAA" << std::endl;
+    if (pos.first >= posX && pos.first <= posX + 1 && pos.second >= posY && pos.second <= posY + 1)
         return true;
-    }
     return false;
 }
 
@@ -135,7 +133,7 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
         current = _map[pos.second][pos.first + i];
         if (current == 'W' || current == 'X' || current == 'E')
             break;
-        if (current == 'M' || current == 'H' || current == 'A') {
+        if (current == 'M') {
             _map[pos.second][pos.first + i] = c;
             eraseEntitiesOnBomb({pos.first + i, pos.second});
             break;
@@ -147,7 +145,7 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
         current = _map[pos.second][pos.first - i];
         if (current == 'W' || current == 'X' || current == 'E')
             break;
-        if (current == 'M' || current == 'H' || current == 'A') {
+        if (current == 'M') {
             _map[pos.second][pos.first - i] = c;
             eraseEntitiesOnBomb({pos.first - i, pos.second});
             break;
@@ -159,7 +157,7 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
         current = _map[pos.second + i][pos.first];
         if (current == 'W' || current == 'X' || current == 'E')
             break;
-        if (current == 'M' || current == 'H' || current == 'A') {
+        if (current == 'M') {
             _map[pos.second + i][pos.first] = c;
             eraseEntitiesOnBomb({pos.first, pos.second + i});
             break;
@@ -171,7 +169,7 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
         current = _map[pos.second - i][pos.first];
         if (current == 'W' || current == 'X' || current == 'E')
             break;
-        if (current == 'M' || current == 'H' || current == 'A') {
+        if (current == 'M') {
             _map[pos.second - i][pos.first] = c;
             eraseEntitiesOnBomb({pos.first, pos.second - i});
             break;
@@ -199,9 +197,11 @@ void Game::Bomberman::bombExplosion(Game::Bomb &bomb, const size_t &index)
         {
             for (int x = 0; x < _map[0].size(); x++)
             {
+                std::cout << _map[y][x];
                 if (_map[y][x] == 'X')
-                    _map[y][x] = 42;
+                    _map[y][x] = '*';
             }
+            std::cout << std::endl;
         }
     }
 }
@@ -209,15 +209,16 @@ void Game::Bomberman::bombExplosion(Game::Bomb &bomb, const size_t &index)
 void Game::Bomberman::handleIfPlayerIsNearAnItem(Player &player)
 {
     size_t index = 0;
-    static Raylib::Sound sound ("resources/Sound/tudum.wav");
 
-    for (const std::shared_ptr<IEntity> &entity : _entities)
+    for (auto &entity : _entities)
     {
-        if (dynamic_cast<Game::Powerups *>(entity.get()) != nullptr && CheckCollisionSpheres(player.getPositions().getCStruct(), 0.3, entity->getPositions().getCStruct(), 0.3))
+        if (entity->getType() == "Item" && CheckCollisionSpheres(player.getPositions().getCStruct(), 0.3, entity->getPositions().getCStruct(), 0.3))
         {
             dynamic_cast<Game::Powerups *>(entity.get())->applyPowerupTo(player);
-            sound.play();
+            //sound.play();
+            std::cout << "<<<< Got the..." << std::endl;
             _entities.erase(_entities.begin() + index);
+            std::cout << "<<<< Item" << std::endl;
         }
         index++;
     }
@@ -359,13 +360,6 @@ void Game::Bomberman::updateGame(void)
         initEntities();
         initPlayersStats();
         _reinit++;
-    }
-    _sharedPlayers.clear();
-    for (const std::shared_ptr<IEntity> &entity : _entities) {
-        if (entity->getType().compare("Human") == 0)
-            _sharedPlayers.push_back(std::make_shared<Game::Human>(*dynamic_cast<Game::Human *>(entity.get())));
-        else if (entity->getType().compare("AI") == 0)
-            _sharedPlayers.push_back(std::make_shared<Game::AI>(*dynamic_cast<Game::AI *>(entity.get())));
     }
     if (!_gameOver) {
         updateEntities();
