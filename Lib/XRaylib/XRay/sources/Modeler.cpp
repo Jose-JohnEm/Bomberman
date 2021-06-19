@@ -8,8 +8,6 @@
 #include "Modeler.hpp"
 #include "../../../Engine/Exception/MyException.hpp"
 
-//TODO: GLOBAL REVIEW (raylib out the encapsulation! no documentation!)
-
 Modeler::Modeler(const std::string &obj_path, const std::string &texture_path, const Animator &animation_path)
         : _model(LoadModel(obj_path.c_str())),
           _isAnimated(isThereAnimationsPath(animation_path)),
