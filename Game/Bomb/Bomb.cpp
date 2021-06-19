@@ -7,7 +7,7 @@
 
 #include "Bomb.hpp"
 
-Game::Bomb::Bomb(const Raylib::Vector3 &positions, const int &fire, std::vector<std::shared_ptr<Game::Player>> players, std::function<void (size_t)> function, Game::Player &player)
+Game::Bomb::Bomb(const Raylib::Vector3 &positions, const int &fire, std::vector<std::shared_ptr<Game::Player>> &players, std::function<void (size_t)> function, Game::Player &player)
         : Animated(positions, "resources/assets/3D/Bombs/Animated/bomb.glb", "resources/assets/3D/Bombs/Animated/texture.png", {"resources/assets/3D/Bombs/Animated/bomb.glb", "resources/assets/3D/Bombs/Animated/bomb.glb", "resources/assets/3D/Bombs/Animated/bomb.glb"}),
           _fire(fire),
           _exploded(false),

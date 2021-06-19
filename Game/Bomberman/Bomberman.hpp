@@ -295,6 +295,7 @@ namespace Game
         std::vector<std::vector<std::pair<std::string, std::string>>> _playersStats; // A vector of vector all the stats [Player -- (NameOfStat, Value)]...
         std::vector<std::pair<std::string, std::string>> _scores;                 // A vector of pair (username, score)
         std::vector<std::shared_ptr<IEntity>> _entities;                         // A vector of shared pointer that represent all the entities to display. Ex : Map, Score, UserInfo, Button
+        std::vector<std::shared_ptr<Game::Player>> _sharedPlayers;                     // A vector of a shared pointer for Players
 
         int _reinit = 0;                            // A int to know if we should reinit entities
         bool _gameOver = false;                             // A boolean to know if the game is over or not

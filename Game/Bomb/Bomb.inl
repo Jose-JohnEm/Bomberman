@@ -82,7 +82,7 @@ inline void Game::Bomb::drawEntity()
         }
         for (int i = 0; i < _bZoneY.second; i++) {
             Raylib::Drawing::drawCubeTexture(fire.getCStruct(), {pos.x, (float)_bZoneY.first - i, pos.z}, 1, 1, 1, Raylib::Color::Red());
-            explosion.push_back({(float)_bZoneX.first + i, pos.y, pos.z});
+            explosion.push_back({pos.x, (float)_bZoneY.first - i, pos.z});
         }
         Raylib::Drawing::drawSphere(Animated::getPositions(), 0.9, Raylib::Color::Red());
         explosion.push_back(Animated::getPositions());
@@ -91,15 +91,11 @@ inline void Game::Bomb::drawEntity()
     }
     for (const Raylib::Vector3 &explosionCollision : explosion) {
         for (size_t t = 0; t < _players.size(); t++) {
-            if (_players[t]->getPositions().x >= explosionCollision.x
-            && _players[t]->getPositions().y >= explosionCollision.y
-            && _players[t]->getPositions().z >= explosionCollision.z
-            && _players[t]->getPositions().x <= explosionCollision.x + 1
-            && _players[t]->getPositions().y <= explosionCollision.y + 1
-            && _players[t]->getPositions().z <= explosionCollision.z + 1) {
-                _players[t]->setShouldDisplay(false);
+            if (_players[t]->getPositions().x >= explosionCollision.x - 0.5
+            && _players[t]->getPositions().y >= explosionCollision.y - 0.5
+            && _players[t]->getPositions().x <= explosionCollision.x + 0.5
+            && _players[t]->getPositions().y <= explosionCollision.y + 0.5)
                 _pointerToSetPlayer(_players[t]->getID());
-            }
         }
     }
     Animated::drawEntity();
