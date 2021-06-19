@@ -129,7 +129,7 @@ inline bool Game::Bomberman::checkPlayerPosition(const std::string action, Playe
             {"goWest", {1, 0}}
     };
 
-    bool collision = CheckCollisionSpheres(pos3D.getCStruct(), 0.46,  {(float)positions.first + direction[action].first, (float)positions.second + direction[action].second, 0}, 0.46);
+    bool collision = CheckCollisionSpheres(pos3D.getCStruct(), 0.46,  {static_cast<float>(positions.first) + direction[action].first, static_cast<float>(positions.second) + direction[action].second, 0}, 0.46);
 
     if (collision && _map[direction[action].second + positions.second][direction[action].first + positions.first] != '*')
     {

@@ -77,12 +77,12 @@ inline void Game::Bomb::drawEntity()
     if (_bZoneX.first != 0 && _bZoneX.second != 0 && _bZoneY.first != 0 && _bZoneY.second != 0)
     {
         for (int i = 0; i < _bZoneX.second; i++) {
-            Raylib::Drawing::drawCubeTexture(fire.getCStruct(), {(float)_bZoneX.first + i, pos.y, pos.z}, 1 , 1, 1, Raylib::Color::Red());
-            explosion.push_back({(float)_bZoneX.first + i, pos.y, pos.z});
+            Raylib::Drawing::drawCubeTexture(fire.getCStruct(), {static_cast<float>(_bZoneX.first) + i, pos.y, pos.z}, 1 , 1, 1, Raylib::Color::Red());
+            explosion.push_back({static_cast<float>(_bZoneX.first) + i, pos.y, pos.z});
         }
         for (int i = 0; i < _bZoneY.second; i++) {
-            Raylib::Drawing::drawCubeTexture(fire.getCStruct(), {pos.x, (float)_bZoneY.first - i, pos.z}, 1, 1, 1, Raylib::Color::Red());
-            explosion.push_back({pos.x, (float)_bZoneY.first - i, pos.z});
+            Raylib::Drawing::drawCubeTexture(fire.getCStruct(), {pos.x, static_cast<float>(_bZoneY.first) - i, pos.z}, 1, 1, 1, Raylib::Color::Red());
+            explosion.push_back({pos.x, static_cast<float>(_bZoneY.first) - i, pos.z});
         }
         Raylib::Drawing::drawSphere(Animated::getPositions(), 0.9, Raylib::Color::Red());
         explosion.push_back(Animated::getPositions());
