@@ -82,11 +82,15 @@ void Game::ArtificialIntelligence::run(void) const
             std::cout << "AI n°" << AI.getID() << " " << convertPointIntoAction(point) << std::endl;
 
             // Order the AI to do this action
+<<<<<<< HEAD
             action = convertPointIntoAction(point);
             if (!(action.compare("dropBomb") == 0 && isPowerUp))
             {
                 _playerActionsFunc(AI.getID(), action);
             }
+=======
+            _playerActionsFunc(AI.getID(), convertPointIntoAction(point));
+>>>>>>> a3b8f41 (Added function pointer in ArtificialIntelligence to use doPlayerAction function from Bomberman class)
 
             // Clear the path
             path.clear();
