@@ -15,8 +15,8 @@ inline std::string Game::ArtificialIntelligence::convertPointIntoAction(const st
     std::map<std::pair<int, int>, std::string> actions = {
         {std::make_pair(0, 1), "goSouth"},
         {std::make_pair(0, -1), "goNorth"},
-        {std::make_pair(-1, 0), "goWest"},
-        {std::make_pair(1, 0), "goEast"},
+        {std::make_pair(-1, 0), "goEast"},
+        {std::make_pair(1, 0), "goWest"},
         {std::make_pair(0, 0), "dropBomb"}
     };
 
