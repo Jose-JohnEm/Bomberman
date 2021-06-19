@@ -60,7 +60,7 @@ inline Game::Player &Game::Bomberman::findPlayer(const size_t &id)
 inline void Game::Bomberman::doDropBomb(const size_t &playerID, std::pair<int, int> position)
 {
     //_map[position.second][position.first] = 'B'; <-- need to be checked
-    _entities.push_back(std::shared_ptr<IEntity>( (new Game::Bomb({static_cast<float>(position.first), static_cast<float>(position.second), 0}, 1, _sharedPlayers, [this] (size_t i){setPlayerShouldDisplay(i);}, findPlayer(playerID)))));
+    _entities.push_back(std::shared_ptr<IEntity>(new Game::Bomb({static_cast<float>(position.first), static_cast<float>(position.second), 0}, findPlayer(playerID).getPowerUps()[P_FIRE], _sharedPlayers, [this] (size_t i){setPlayerShouldDisplay(i);}, findPlayer(playerID))));
 }
 
 
