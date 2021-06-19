@@ -72,7 +72,7 @@ inline void Game::Bomberman::doDropBomb(const size_t &playerID, std::pair<int, i
             players.push_back(std::make_shared<Game::AI>(*dynamic_cast<Game::AI *>(entity.get())));
         }
     }
-    _entities.push_back(std::shared_ptr<IEntity>( (new Game::Bomb({(float)position.first, (float)position.second, 0}, 1, players, [this] (size_t i){setPlayerShouldDisplay(i);}))));
+    _entities.push_back(std::shared_ptr<IEntity>(new Game::Bomb({(float)position.first, (float)position.second, 0}, players[playerID]->getPowerUps()[P_FIRE] + 1, players, [this] (size_t i){setPlayerShouldDisplay(i);})));
 }
 
 inline void Game::Bomberman::setPlayerShouldDisplay(size_t playerID)

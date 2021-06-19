@@ -208,12 +208,16 @@ void Game::Bomberman::bombExplosion(Game::Bomb &bomb, const size_t &index)
 
 void Game::Bomberman::handleIfPlayerIsNearAnItem(Player &player)
 {
-    for (auto &entity : _entities)
+    size_t index = 0;
+
+    for (const std::shared_ptr<IEntity> &entity : _entities)
     {
         if (entity->getType() == "Item" && CheckCollisionSpheres(player.getPositions().getCStruct(), 0.3, entity->getPositions().getCStruct(), 0.3))
         {
             dynamic_cast<Game::Powerups *>(entity.get())->applyPowerupTo(player);
+            _entities.erase(_entities.begin() + index);
         }
+        index++;
     }
 }
 
