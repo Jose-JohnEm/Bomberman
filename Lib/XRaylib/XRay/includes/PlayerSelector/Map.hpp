@@ -87,21 +87,21 @@ namespace PlayerSelector
          */
         std::vector<Texture2D> getTextures() const;
 
-    private: //TODO: DOC
+    private:
         void drawHandlingCharacters(const int &id);
 
-        std::vector<std::vector<Texture2D>> _textures;
-        std::vector<std::string> _charMap;
-        std::vector<Player> _characters;
+        std::vector<std::vector<Texture2D>> _textures;                          // Texture
+        std::vector<std::string> _charMap;                                      // The map
+        std::vector<Player> _characters;                                        // Character
 
-        Clock _clock;
+        Clock _clock;                                                           // The clock
 
-        int _nbTextures;
-        int current;
-        float _COEF;
-        float _direction;
-        float _x = 0;
-        float _y = 0;
+        int _nbTextures;                                                        // Number of textures
+        int current;                                                            // Curent texture
+        float _COEF;                                                            // COEF
+        float _direction;                                                       // Direction
+        float _x = 0;                                                           // x position
+        float _y = 0;                                                           // y position
 
     };
 }
