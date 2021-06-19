@@ -35,6 +35,14 @@ namespace PlayerSelector
         ~Map();
 
         /**
+         * @brief Find dynamically all availables textures
+         *
+         * @param nb_textures a counter of all available textures
+         * @return A map of all textures available
+         */
+        std::vector<std::vector<Texture>> findTexturesAvailable(int &nb_textures);
+
+        /**
          * @brief Set the next map texture
          *
          */
