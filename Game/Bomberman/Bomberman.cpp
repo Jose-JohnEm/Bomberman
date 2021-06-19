@@ -238,16 +238,16 @@ void Game::Bomberman::runAI(void)
         }
     }
 
-    // Run AI algorithm
-    try
-    {
-        ArtificialIntelligence AI(AIs, humans, _map);
-        AI.run();
-    }
-    catch(const std::invalid_argument &error)
-    {
-        std::cerr << error.what() << std::endl;
-    }
+    // Run AI algorithm <--- Big Segfault de fou gg lucas !
+    // try
+    // {
+    //     ArtificialIntelligence AI(AIs, humans, _map);
+    //     AI.run();
+    // }
+    // catch(const std::invalid_argument &error)
+    // {
+    //     std::cerr << error.what() << std::endl;
+    // }
 }
 
 void Game::Bomberman::updateEntities()
@@ -266,7 +266,7 @@ void Game::Bomberman::updateEntities()
         }
         index++;
     }
-    runAI();
+    // runAI(); <-- on prend aucun risque chkl segfault aussi ici
 }
 
 void Game::Bomberman::updateScores()
