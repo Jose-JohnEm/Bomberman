@@ -85,6 +85,11 @@ inline void Game::Player::increasePowerUps(const int &id_power)
     _powerUps[id_power]++;
 }
 
+inline void Game::Player::decreasePowerUps(const int &id_power)
+{
+    _powerUps[id_power]--;
+}
+
 inline void Game::Player::setAlive(const bool &alive)
 {
     _alive = alive;

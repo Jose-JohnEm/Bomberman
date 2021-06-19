@@ -135,7 +135,7 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
         current = _map[pos.second][pos.first + i];
         if (current == 'W' || current == 'X' || current == 'E')
             break;
-        if (current == 'M' || current == 'H' || current == 'A') {
+        if (current == 'M') {
             _map[pos.second][pos.first + i] = c;
             eraseEntitiesOnBomb({pos.first + i, pos.second});
             break;
@@ -147,7 +147,7 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
         current = _map[pos.second][pos.first - i];
         if (current == 'W' || current == 'X' || current == 'E')
             break;
-        if (current == 'M' || current == 'H' || current == 'A') {
+        if (current == 'M') {
             _map[pos.second][pos.first - i] = c;
             eraseEntitiesOnBomb({pos.first - i, pos.second});
             break;
@@ -159,7 +159,7 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
         current = _map[pos.second + i][pos.first];
         if (current == 'W' || current == 'X' || current == 'E')
             break;
-        if (current == 'M' || current == 'H' || current == 'A') {
+        if (current == 'M') {
             _map[pos.second + i][pos.first] = c;
             eraseEntitiesOnBomb({pos.first, pos.second + i});
             break;
@@ -171,7 +171,7 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
         current = _map[pos.second - i][pos.first];
         if (current == 'W' || current == 'X' || current == 'E')
             break;
-        if (current == 'M' || current == 'H' || current == 'A') {
+        if (current == 'M') {
             _map[pos.second - i][pos.first] = c;
             eraseEntitiesOnBomb({pos.first, pos.second - i});
             break;
@@ -199,9 +199,11 @@ void Game::Bomberman::bombExplosion(Game::Bomb &bomb, const size_t &index)
         {
             for (int x = 0; x < _map[0].size(); x++)
             {
+                std::cout << _map[y][x];
                 if (_map[y][x] == 'X')
-                    _map[y][x] = 42;
+                    _map[y][x] = '*';
             }
+            std::cout << std::endl;
         }
     }
 }
@@ -217,7 +219,9 @@ void Game::Bomberman::handleIfPlayerIsNearAnItem(Player &player)
         {
             dynamic_cast<Game::Powerups *>(entity.get())->applyPowerupTo(player);
             sound.play();
+            std::cout << "<<<< Got the..." << std::endl;
             _entities.erase(_entities.begin() + index);
+            std::cout << "<<<< Item" << std::endl;
         }
         index++;
     }

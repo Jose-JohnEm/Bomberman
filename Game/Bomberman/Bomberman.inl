@@ -166,6 +166,7 @@ inline bool Game::Bomberman::checkPlayerPosition(const std::string action, Playe
         return true;
     } else if (player.getPowerUps()[P_PASS] > 0 && checkPlayerPositionPass(action, direction[action].second * 2 + positions.second, direction[action].first * 2 + positions.first) == true) {
         updateMap(positions, direction[action].second * 2 + positions.second, direction[action].first * 2 + positions.first);
+        player.decreasePowerUps(P_PASS);
         return true;
     }
     if ((!round90(pos3D.x, positions.first) && (action == "goEast" || action == "goWest")) || (!round90(pos3D.y, player.getPositions2D().second) && (action == "goNorth" || action == "goSouth")))
