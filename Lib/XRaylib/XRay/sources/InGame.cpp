@@ -166,7 +166,13 @@ void XRay::displayInGameScene(void)
         _lastFrameTime = Raylib::Timing::getTime();
         _gameSettings[2] += 1;
         _gameSettings[4] = _gameSettings[3];
+
     }
+    // Stop bomberman music
+    if (_musics.at(MSC_BOMBERMAN)->isPlaying())
+        _musics.at(MSC_BOMBERMAN)->stop();
+    // Play music
+    playMusic(MSC_GAME);
 
     // Draw scene
     beginDrawing();
@@ -188,10 +194,14 @@ void XRay::displayInGameScene(void)
     // Call function that check click on button
     goToAnotherScene();
 
-    if (Raylib::Keyboard::isKeyPressed(68))
+    if (Raylib::Keyboard::isKeyPressed(68)) {
+        _musics.at(MSC_GAME)->stop();
         displayDefeatScene();
-    if (Raylib::Keyboard::isKeyPressed(86))
+    }
+    if (Raylib::Keyboard::isKeyPressed(86)) {
+        _musics.at(MSC_GAME)->stop();
         displayVictoryScene();
+    }
 }
 
 // STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.

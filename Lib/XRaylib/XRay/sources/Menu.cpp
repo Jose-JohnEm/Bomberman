@@ -24,7 +24,10 @@ void XRay::displayMenuScene(void)
     if (_intro.first == true)
         (this->*_intro.second[CFunctions::generatePairOfRandomIntegers(2, 1).first])();
 
-    // Launch
+    // Stop game music
+    if (_musics.at(MSC_GAME)->isPlaying())
+        _musics.at(MSC_GAME)->stop();
+    // Play bomberma music
     playMusic(MSC_BOMBERMAN);
 
     // Parallax update

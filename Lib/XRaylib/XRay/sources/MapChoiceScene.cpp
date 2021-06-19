@@ -56,6 +56,9 @@ void XRay::displayMapChoiceScene(void)
     bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
     bool goNext = mouseIsInBox(createBox(1700, 1000, 1918, 1061)) ? true : false;
 
+    // Play music
+    playMusic(MSC_BOMBERMAN);
+
     // Draw scene
     beginDrawing();
     displayBack();

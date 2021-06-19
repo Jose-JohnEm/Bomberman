@@ -148,7 +148,8 @@ typedef enum {
 
 typedef enum {
     MSC_BOMBERMAN,
-    MSC_OPENNING
+    MSC_OPENNING,
+    MSC_GAME
 } MusicResources;
 
 typedef enum {

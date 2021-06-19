@@ -218,7 +218,7 @@ void XRay::setAudioResources(void)
 {
     // Music
     _musics.insert(std::pair<MusicResources, std::shared_ptr<Raylib::Music>>(MusicResources::MSC_BOMBERMAN, std::make_shared<Raylib::Music>(*(new Raylib::Music("resources/music/Bomberman.mp3")))));
-    //_musics.insert(std::pair<MusicResources, std::shared_ptr<Raylib::Music>>(MusicResources::MSC_OPENNING, std::make_shared<Raylib::Music>(*(new Raylib::Music("resources/music/opening.mp3")))));
+    _musics.insert(std::pair<MusicResources, std::shared_ptr<Raylib::Music>>(MusicResources::MSC_GAME, std::make_shared<Raylib::Music>(*(new Raylib::Music("resources/music/bmgame.ogg")))));
 
     // Sound
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_OPENNING, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/music/opening.mp3")))));

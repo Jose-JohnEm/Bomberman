@@ -132,6 +132,9 @@ void XRay::displayPlayerChoiceScene(void)
     // Detect Keyboard, Mouse, and Gamepad
     detectPlayerInput();
 
+    // Play music
+    playMusic(MSC_BOMBERMAN);
+
     // Draw scene
     beginDrawing();
     displayBack();
