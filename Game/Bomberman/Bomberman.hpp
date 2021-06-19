@@ -18,6 +18,7 @@
 #include "../Save/Save.hpp"
 #include "../MotionlessEntity/MotionlessEntity.hpp"
 #include "../Bomb/Bomb.hpp"
+#include "../AI/ArtificialIntelligence.hpp"
 
 namespace Game
 {
@@ -265,6 +266,10 @@ namespace Game
          */
         void setPlayerShouldDisplay(size_t position);
 
+        /**
+         * @brief Run the AIs
+         */
+        void runAI(void) override;
 
     private:
         std::array<std::size_t, 9> _settings; // Game settings

@@ -212,6 +212,36 @@ void Game::Bomberman::handleIfPlayerIsNearAnItem(Player &player)
     }
 }
 
+void Game::Bomberman::runAI(void)
+{
+    // Get players entities
+    std::vector<Human> humans;
+    std::vector<AI> AIs;
+
+    for (const std::shared_ptr<IEntity> &entity : _entities)
+    {
+        if (entity->getType().compare("Human") == 0)
+        {
+            humans.push_back(*dynamic_cast<Game::Human *>(entity.get()));
+        }
+        else if (entity->getType().compare("AI") == 0)
+        {
+            AIs.push_back(*dynamic_cast<Game::AI *>(entity.get()));
+        }
+    }
+
+    // Run AI algorithm
+    try
+    {
+        ArtificialIntelligence AI(AIs, humans, _map);
+        AI.run();
+    }
+    catch(const std::invalid_argument &error)
+    {
+        std::cerr << error.what() << std::endl;
+    }
+}
+
 void Game::Bomberman::updateEntities()
 {
     size_t index = 0;
@@ -228,6 +258,7 @@ void Game::Bomberman::updateEntities()
         }
         index++;
     }
+    runAI();
 }
 
 void Game::Bomberman::updateScores()
@@ -318,8 +349,8 @@ void Game::Bomberman::updateGame(void)
         initPlayersStats();
         _reinit++;
     }
-    updateEntities();
-    if (_gameOver) {
+    if (!_gameOver) {
+        updateEntities();
         updateScores();
         updatePlayersStats();
     }
