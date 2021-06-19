@@ -16,32 +16,57 @@
 #include <assert.h>
 
 #ifndef MYEXCEPTION_HPP_
-# define MYEXCEPTION_HPP_
+#define MYEXCEPTION_HPP_
 
 namespace Engine
 {
-    class MyException : public std::exception {
-	const char* file;
-    int line;
-    const char* func;
-    const char* info;
-    
+    class MyException : public std::exception
+    {
+
     public:
-    	MyException(const char* msg, const char* file_, int line_, const char* func_, const char* info_ = "") : std::exception(),
-        	file (file_),
-        	line (line_),
-        	func (func_),
-        	info (info_)
+        /**
+         * @brief Detect if a certain functions hits and exception
+         *
+         * @param file
+         * @param line
+         * @param func
+         * @param info
+         * @return info // about the type of exception that occured
+         * @return func // the name of the aforomentioned function
+         */
+        MyException(const char *msg, const char *file_, int line_, const char *func_, const char *info_ = "") : std::exception(),
+        file(file_),line(line_),func(func_),info(info_)
         {
         }
-        
-        const char* get_file() const { return file; }
-        int get_line() const { return line; }
-		const char* get_func() const { return func; }
-        const char* get_info() const { return info; }
-       
-};
 
-}
+         /**
+         * @brief gzt the file
+         */
+        const char *get_file() const { return file; }
+
+        /**
+         * @brief gt the line
+         */
+        int get_line() const { return line; }
+
+        /**
+         * @brief gt the function
+         */
+        const char *get_func() const { return func; }
+
+        /**
+         * @brief gt the type of exceptions
+         */
+
+        const char *get_info() const { return info; }
+
+    private:
+        const char *file;
+        int line;
+        const char *func;
+        const char *info;
+    };
+
+} // namespace Engine
 
 #endif /* !MYEXCEPTION_HPP_ */

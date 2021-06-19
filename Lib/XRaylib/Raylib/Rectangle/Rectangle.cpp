@@ -6,6 +6,7 @@
 */
 
 #include "Rectangle.hpp"
+#include "../../../Engine/Exception/MyException.hpp"
 
 Raylib::Rectangle::Rectangle(float x, float y, float width, float height)
         : _rectangle({x, y, width, height})
@@ -34,4 +35,63 @@ Raylib::Rectangle::Rectangle(::Rectangle rec)
 Raylib::Rectangle::~Rectangle()
 {
 
+}
+
+// STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
+// catch
+// throw
+// try
+
+
+int catchThrowTryRectangle() {
+    try
+    {   Raylib::Rectangle test;
+        Raylib::Color color;
+        auto grey = color.Gray();
+    	test.drawRectangle(1,1,1,1,grey);
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrydrawRectangleV() {
+    try
+    {   Raylib::Rectangle test;
+        Vector2 position;
+        Vector2 size;
+        Raylib::Color color;
+        auto grey = color.Gray();
+    	test.drawRectangleV(position, size,grey);
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
+}
+
+int catchThrowTrydrawRectanglePro() {
+    try
+    {   Raylib::Rectangle test;
+        Raylib::Rectangle rec;
+        Vector2 origin;
+        float rotation = 1.0;
+        Raylib::Color color;
+        auto grey = color.Gray();
+    	test.drawRectanglePro(rec,origin,rotation,color);
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
 }
