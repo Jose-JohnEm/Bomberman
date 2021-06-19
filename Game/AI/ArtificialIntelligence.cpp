@@ -49,14 +49,21 @@ void Game::ArtificialIntelligence::run(void) const
 
         if (astar.targetIsFound())
         {
-            std::cout << "Path finding" << std::endl;
+            // Get the path finding
+            std::list<Point> path;
+            astar.fillPath(path);
+
+            // Get the next direction
+            std::pair<int, int> point = std::make_pair((*path.begin() + 1)._x - AIPositions.x,  (*path.begin() + 1)._y - AIPositions.y);
+            std::cout << "AI n°" << AI.getID() << " " << convertPointIntoDirection(point) << std::endl;
+
+            // Move the AI to this direction
+            // Bomberman game;
+            // game.doPlayerAction(AI.getID(), convertPointIntoDirection(point));
         }
         else
         {
-            std::cerr << "ERROR: No path finding" << std::endl;
+            // Drop a bomb
         }
     }
 }
-
-//TODO: Pas de diagonales
-//TODO: Convertir liste de points en directions

@@ -44,6 +44,14 @@ namespace Game
              * @return float - The Euclidean distance between the 2 points
              */
             float calculateDistance(const Point &start, const Point &end) const;
+
+            /**
+             * @brief Convert a point into a direction ("goEast", "goNorth", "goSouth", "goWest")
+             *
+             * @param point The point to convert
+             * @return std::string - The direction
+             */
+            std::string convertPointIntoDirection(const std::pair<int, int> &point) const;
     };
 
     #include "ArtificialIntelligence.inl"
