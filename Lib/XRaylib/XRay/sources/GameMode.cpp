@@ -14,9 +14,9 @@ void XRay::displayGameModeScene(void)
     _scene = GAME_MODE;
 
     // Check if mouse is on button spot
-    bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
-    bool goNewGame = mouseIsInBox(createBox(180, 500, 738+180, 500+109)) ? true : false;
-    bool goLoadGame = mouseIsInBox(createBox(1140, 500, 1140+738, 500+109)) ? true : false;
+    bool goBack = mouseIsInBox(createBox<size_t>(20, 1000, 280, 1065)) ? true : false;
+    bool goNewGame = mouseIsInBox(createBox<size_t>(180, 500, 738+180, 500+109)) ? true : false;
+    bool goLoadGame = mouseIsInBox(createBox<size_t>(1140, 500, 1140+738, 500+109)) ? true : false;
 
     // Draw scene
     (!_transitionManager[MENU].second) ? beginDrawing() : beginDrawing(false);

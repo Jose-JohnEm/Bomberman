@@ -17,9 +17,9 @@ void XRay::displayHowToPlayScene(void)
     static Raylib::Texture card(Raylib::Image("resources/howToCards/card" + std::to_string(cardId) + ".png"));
 
     // Check if mouse is on button spot
-    bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
-    bool onPrev = mouseIsInBox(createBox(50, 500, 166, 620)) ? true : false;
-    bool onNext = mouseIsInBox(createBox(1754, 500, 1870, 620)) ? true : false;
+    bool goBack = mouseIsInBox(createBox<size_t>(20, 1000, 280, 1065)) ? true : false;
+    bool onPrev = mouseIsInBox(createBox<size_t>(50, 500, 166, 620)) ? true : false;
+    bool onNext = mouseIsInBox(createBox<size_t>(1754, 500, 1870, 620)) ? true : false;
 
     // Draw scene
     (!_transitionManager[MENU].second) ? beginDrawing() : beginDrawing(false);

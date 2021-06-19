@@ -14,15 +14,15 @@ void XRay::displaySettingsScene(void)
     _scene = SETTINGS;
 
     // Check if mouse is on button spot
-    bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
-    bool onFullscreen = mouseIsInBox(createBox(1150, 400, 1510, 509)) ? true : false;
-    bool onMasterVolumeDown = mouseIsInBox(createBox(560, 395, 624, 459)) ? true : false;
-    bool onMasterVolumeUp = mouseIsInBox(createBox(765, 395, 829, 459)) ? true : false;
-    bool onMusicVolumeDown = mouseIsInBox(createBox(560, 480, 624, 544)) ? true : false;
-    bool onMusicVolumeUp = mouseIsInBox(createBox(765, 480, 829, 544)) ? true : false;
-    bool onSfxVolumeDown = mouseIsInBox(createBox(560, 565, 624, 629)) ? true : false;
-    bool onSfxVolumeUp = mouseIsInBox(createBox(765, 565, 829, 629)) ? true : false;
-    bool onMods = mouseIsInBox(createBox(1150, 620, 1510, 729)) ? true : false;
+    bool goBack = mouseIsInBox(createBox<float>(20, 1000, 280, 1065)) ? true : false;
+    bool onFullscreen = mouseIsInBox(createBox<float>(1150, 400, 1510, 509)) ? true : false;
+    bool onMasterVolumeDown = mouseIsInBox(createBox<float>(560, 395, 624, 459)) ? true : false;
+    bool onMasterVolumeUp = mouseIsInBox(createBox<float>(765, 395, 829, 459)) ? true : false;
+    bool onMusicVolumeDown = mouseIsInBox(createBox<float>(560, 480, 624, 544)) ? true : false;
+    bool onMusicVolumeUp = mouseIsInBox(createBox<float>(765, 480, 829, 544)) ? true : false;
+    bool onSfxVolumeDown = mouseIsInBox(createBox<float>(560, 565, 624, 629)) ? true : false;
+    bool onSfxVolumeUp = mouseIsInBox(createBox<float>(765, 565, 829, 629)) ? true : false;
+    bool onMods = mouseIsInBox(createBox<float>(1150, 620, 1510, 729)) ? true : false;
 
     // On / off buton for fullscreen button
     std::shared_ptr<Raylib::Texture> fullscreenButton = _resources.at(Raylib::Window::isWindowFullscreen() ? ON : OFF);
@@ -66,7 +66,7 @@ void XRay::displaySettingsScene(void)
         modsButton->drawTexture(1150, 620, Raylib::Color::White());
 
         // Back button
-        (mouseIsInBox(createBox(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000, Raylib::Color::White());
+        (mouseIsInBox(createBox<float>(20, 1000, 280, 1065)) ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000, Raylib::Color::White());
         displayMouse();
 
         // Transition

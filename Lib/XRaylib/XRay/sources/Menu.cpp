@@ -15,10 +15,10 @@ void XRay::displayMenuScene(void)
     Scene scene = MENU;
 
     // Check if mouse is on button spot
-    bool goPlay = mouseIsInBox(createBox(1160, 245, 1160+755, 245+132)) ? true : false;
-    bool goHowToPlay = mouseIsInBox(createBox(1160, 455, 1160+755, 455+132)) ? true : false;
-    bool goSettings = mouseIsInBox(createBox(1160, 665, 1160+755, 665+132)) ? true : false;
-    bool quit = mouseIsInBox(createBox(1160, 875, 1160+755, 875+132)) ? true : false;
+    bool goPlay = mouseIsInBox(createBox<size_t>(1160, 245, 1160+755, 245+132)) ? true : false;
+    bool goHowToPlay = mouseIsInBox(createBox<size_t>(1160, 455, 1160+755, 455+132)) ? true : false;
+    bool goSettings = mouseIsInBox(createBox<size_t>(1160, 665, 1160+755, 665+132)) ? true : false;
+    bool quit = mouseIsInBox(createBox<size_t>(1160, 875, 1160+755, 875+132)) ? true : false;
 
     // Display INDIE STUDIO
     if (_intro.first == true)
