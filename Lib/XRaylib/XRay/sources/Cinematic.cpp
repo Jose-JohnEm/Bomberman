@@ -12,8 +12,6 @@ void XRay::displayCinematic(const Cinematic &cinematic)
 {
     switch (cinematic) {
         case INTRO:
-            if (!_sfx.at(SFX_OPENNING)->isPlaying())
-                _sfx.at(SFX_OPENNING)->play();
             displayCinematic(CFunctions::generatePairOfRandomIntegers(2, 1).first ? "intro1" : "intro2", 300, 1);
             if (_sfx.at(SFX_OPENNING)->isPlaying())
                 _sfx.at(SFX_OPENNING)->stop();
@@ -31,7 +29,9 @@ void XRay::displayCinematic(const std::string &cinematicPathDirectory, const siz
     // Launch cinematic
     size_t i = 0;
 
-//    for (size_t i = 0; i < filesNumber && !(i < hideSkip && Raylib::Mouse::isButtonPressed(0) && mouseIsInBox(createBox<size_t>(1760, 950, 1883, 1005))) && clock.doesTimeElapsed(0.01); i++)
+    if (!_sfx.at(SFX_OPENNING)->isPlaying() && cinematicPathDirectory == "intro1")
+        _sfx.at(SFX_OPENNING)->play();
+
     while (i < filesNumber && !(i < hideSkip && Raylib::Mouse::isButtonPressed(0) && mouseIsInBox(createBox<size_t>(1760, 950, 1883, 1005)))) {
 
         if (clock.doesTimeElapsed(0.001)) {
@@ -60,14 +60,13 @@ void XRay::displayCinematic(const std::string &cinematicPathDirectory, const siz
 // try
 
 int catchThrowTrydisplayCinematic() {
-    try
-    {   XRay test;
+    try {
+        XRay test;
         Cinematic cinematic;
-    	test.displayCinematic(cinematic);
+        test.displayCinematic(cinematic);
     }
-    catch (Engine::MyException& ex)
-    {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+    catch (Engine::MyException &ex) {
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
