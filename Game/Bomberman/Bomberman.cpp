@@ -212,7 +212,7 @@ void Game::Bomberman::handleIfPlayerIsNearAnItem(Player &player)
 
     for (auto &entity : _entities)
     {
-        if (entity->getType() == "Item" && CheckCollisionSpheres(player.getPositions().getCStruct(), 0.3, entity->getPositions().getCStruct(), 0.3))
+        if (dynamic_cast<Game::Powerups *>(entity.get()) != nullptr && CheckCollisionSpheres(player.getPositions().getCStruct(), 0.3, entity->getPositions().getCStruct(), 0.3))
         {
             dynamic_cast<Game::Powerups *>(entity.get())->applyPowerupTo(player);
             //sound.play();
