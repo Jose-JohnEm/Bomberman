@@ -67,7 +67,17 @@ inline std::string Game::AI::getType() const
 
 inline bool Game::Player::dropBomb()
 {
-    return true;
+    if (_powerUps[P_BOMB] - _bomb_droped >= 0)
+    {
+        _bomb_droped++;
+        return true;
+    }
+    return false;
+}
+
+inline void Game::Player::resetABomb()
+{
+    _bomb_droped--;
 }
 
 inline void Game::Player::increasePowerUps(const int &id_power)

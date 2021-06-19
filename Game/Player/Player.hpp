@@ -154,14 +154,22 @@ namespace Game
          */
         bool dropBomb(void);
 
+        /**
+         * @brief Reset a bomb
+         *
+         */
+        void resetABomb();
+
     private:
 
         std::string _name = "Name"; // Name of the player entitiy
         size_t _brokenWalls = 0; // Amount of broken walls
         size_t _kills = 0; // Amount of kills
+        int _bomb_droped;
         std::array<int, 5> _powerUps{0, 0, 0, 0, 0}; // Amount of powerUps
         int _ID; // ID of the player
         bool _alive = true; //Is alive ?
+        Clock clock;
     };
 
     class Human : public virtual Player {

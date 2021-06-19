@@ -11,7 +11,8 @@ Game::Player::Player()
         : Animated({0, 0, 0}, "resources/players/3D/Bombermans/white_tpose.glb", "resources/players/3D/Bombermans/texture.png"),
           _kills{0},
           _brokenWalls{0},
-          _powerUps{0}
+          _powerUps{0},
+          _bomb_droped(0)
 {
 }
 
@@ -20,7 +21,8 @@ Game::Player::Player(const std::string &name, const Raylib::Vector3 &positions, 
           _kills{kills},
           _brokenWalls{brokenWalls},
           _powerUps{powerUps},
-          _ID(0)
+          _ID(0),
+          _bomb_droped(0)
 {
 }
 
@@ -30,7 +32,8 @@ Game::Player::Player(const std::string &name, const int &id, const Raylib::Vecto
           _kills{0},
           _brokenWalls{0},
           _powerUps{0},
-          _ID(id)
+          _ID(id),
+          _bomb_droped(0)
 {
 }
 
