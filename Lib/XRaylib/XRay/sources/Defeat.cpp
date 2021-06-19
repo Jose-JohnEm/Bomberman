@@ -15,6 +15,10 @@ void XRay::goToAnotherSceneFromDefeat()
     bool restart = mouseIsInBox(createBox<size_t>(380, 440, 380+375, 440+65)) ? true : false;
 
     // Call function that check click on button
+    if ((restart || home) && Raylib::Mouse::isButtonPressed(0)) {
+        if (_sfx.at(SFX_DEFEAT)->isPlaying())
+            _sfx.at(SFX_DEFEAT)->stop();
+    }
     if (restart && Raylib::Mouse::isButtonPressed(0)) {
         _sfx.at(SFX_KLICK)->play();
         _isPaused = false;
@@ -38,7 +42,8 @@ void XRay::displayDefeatScene()
     // Set scene
     _scene = DEFEAT;
 
-    playMusic(MSC_BOMBERMAN);
+    if (!_sfx.at(SFX_DEFEAT)->isPlaying())
+        _sfx.at(SFX_DEFEAT)->play();
 
     // Draw scene
     beginDrawing();
