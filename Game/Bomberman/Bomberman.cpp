@@ -221,19 +221,39 @@ void Game::Bomberman::handleIfPlayerIsNearAnItem(Player &player)
 }
 
 template <typename T>
-std::vector<Game::Point> Game::Bomberman::getEntitiesPositions(void) const
+std::vector<std::pair<int, int>> Game::Bomberman::getEntitiesPositions(void) const
 {
-    std::vector<Game::Point> entitiesPos;
+    std::vector<std::pair<int, int>> entitiesPos;
+    int x = 0, y = 0;
 
     for (const std::shared_ptr<IEntity> &entity : _entities)
     {
         if (dynamic_cast<T*>(entity.get()))
         {
             Raylib::Vector3 entityPos = entity->getPositions();
-            entitiesPos.push_back(Point(entityPos.x, _map.size() - entityPos.y));
+            x = static_cast<int>(entityPos.x);
+            y = static_cast<int>(_map.size() - entityPos.y);
+            entitiesPos.push_back(std::make_pair(x, y));
         }
     }
     return entitiesPos;
+}
+
+std::vector<std::string> Game::Bomberman::placeEntitiesOnMap(const std::vector<std::pair<int, int>> &entitiesPos, const char &c) const
+{
+    std::vector<std::string> map = _map;
+
+    for (int y = 0; y < map.size(); y++)
+    {
+        for (int x = 0; x < map[0].size(); x++)
+        {
+            if (std::find(entitiesPos.begin(), entitiesPos.end(), std::make_pair(x, y)) != entitiesPos.end())
+            {
+                map[y][x] = c;
+            }
+        }
+    }
+    return map;
 }
 
 void Game::Bomberman::runAI(void)
@@ -257,7 +277,12 @@ void Game::Bomberman::runAI(void)
     // Run AI algorithm
     try
     {
-        ArtificialIntelligence AI([this] (const size_t playerID, const std::string action) {doPlayerAction(playerID, action);}, AIs, humans, _map);
+        ArtificialIntelligence AI(
+            [this] (const size_t playerID, const std::string action) {doPlayerAction(playerID, action);},
+            AIs,
+            humans,
+            placeEntitiesOnMap(getEntitiesPositions<Game::Bomb>(), 'B')
+        );
         AI.run();
     }
     catch(const std::invalid_argument &error)

@@ -295,7 +295,16 @@ namespace Game
          * @return std::vector<Game::Point> - A vector containing the required entities positions
          */
         template<typename T>
-        std::vector<Point> getEntitiesPositions(void) const;
+        std::vector<std::pair<int, int>> getEntitiesPositions(void) const;
+
+        /**
+         * @brief Place entities in the map
+         *
+         * @param entitiesPos A vector of the required entities positions
+         * @param c The character to place at entities slots
+         * @return std::vector<std::string> - The new map containing the entities representing by c
+         */
+        std::vector<std::string> placeEntitiesOnMap(const std::vector<std::pair<int, int>> &entitiesPos, const char &c) const;
 
     private:
         std::array<std::size_t, 9> _settings; // Game settings
