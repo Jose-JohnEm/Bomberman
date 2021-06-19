@@ -17,6 +17,11 @@ void XRay::goToAnotherSceneFromVictory()
     bool nextlevel = (_gameSettings[7] + _gameSettings[5] < 2) && mouseIsInBox(createBox(380, 660, 380+375, 660+65)) ? true : false;
 
     // Call function that check click on button
+    if ((home || restart || save || nextlevel) && Raylib::Mouse::isButtonPressed(0)) {
+        if (_sfx.at(SFX_WEEE)->isPlaying())
+            _sfx.at(SFX_WEEE)->stop();
+
+    }
     if (nextlevel && Raylib::Mouse::isButtonPressed(0)) {
         // Do here all manipulations to increase level
         displayCinematic("loading", 0, 0);
@@ -50,6 +55,9 @@ void XRay::displayVictoryScene()
     // Set scene
     _scene = VICTORY;
 
+    //play wee sound
+    if (!_sfx.at(SFX_WEEE)->isPlaying())
+        _sfx.at(SFX_WEEE)->play();
     // Draw scene
     beginDrawing();
     _resources.at(VICTORYBG)->drawTexture(0, 0);
