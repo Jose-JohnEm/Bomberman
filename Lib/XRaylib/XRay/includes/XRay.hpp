@@ -203,7 +203,8 @@ public:
      * @param box Vector contains Box positions
      * @return true or false
      */
-    bool mouseIsInBox(const std::vector<size_t> &box) const;
+    template <typename T>
+    bool mouseIsInBox(const std::vector<T> &box) const;
 
     /**
      * @brief Return a size_t vector contains the four corners values of a box
@@ -214,7 +215,8 @@ public:
      * @param box size_t represents lowerRightCorner
      * @return size_t vector
      */
-    std::vector<size_t> createBox(const size_t &upperLeftCorner, const size_t &upperRightCorner, const size_t &lowerLeftCorner, const size_t &lowerRightCorner) const;
+    template <typename T>
+    std::vector<T> createBox(const T &upperLeftCorner, const T &upperRightCorner, const T &lowerLeftCorner, const T &lowerRightCorner) const;
 
     /**
      * @brief Update Transition Manager

@@ -26,7 +26,7 @@ void XRay::displayLoadGameScene(void)
     _scene = LOAD_GAME;
 
     // Check if mouse is on button spot
-    bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
+    bool goBack = mouseIsInBox(createBox<size_t>(20, 1000, 280, 1065)) ? true : false;
 
     // Vertical axis
     size_t ordinate = 300;
@@ -37,7 +37,7 @@ void XRay::displayLoadGameScene(void)
     _resources.at(LOADSCENE)->drawTexture(0, 0);
     Raylib::Text::drawText("BACKUPS", 230, 210, 65, Raylib::Color::Black());
     for (; u < _backups.size(); u++) {
-        if (mouseIsInBox(createBox(300, ordinate + 20, 1100, ordinate + 85)))
+        if (mouseIsInBox(createBox<size_t>(300, ordinate + 20, 1100, ordinate + 85)))
             _resources.at(BACKUPBAR)->drawTexture(295, ordinate + 10);
         _resources.at(BRANCH)->drawTexture(150, ordinate);
         Raylib::Text::drawText(_backups[u].substr(0, _backups[u].find('.')), 300, ordinate + 20, 65, Raylib::Color::Black());
@@ -49,7 +49,7 @@ void XRay::displayLoadGameScene(void)
 
     // If backup file is valid go to load scene
     for (u = 0, ordinate = 300; u < _backups.size(); u++, ordinate += 100)
-        if (Raylib::Mouse::isButtonDown(0) && mouseIsInBox(createBox(300, ordinate + 20, 1100, ordinate + 85))) {
+        if (Raylib::Mouse::isButtonDown(0) && mouseIsInBox(createBox<size_t>(300, ordinate + 20, 1100, ordinate + 85))) {
             try {
                 loadThisBackup(_backups[u]);
             } catch (const std::logic_error &exception) {

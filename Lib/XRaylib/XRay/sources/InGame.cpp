@@ -56,11 +56,11 @@ void XRay::displayPauseScene(void)
     if (_isPaused) {
         _resources.at(DEPAUSE)->drawTexture(10, 5);
         _resources.at(PAUSEBACK)->drawTexture(0, 0);
-        (mouseIsInBox(createBox(460, 445, 460+375, 445+65)) ? _resources.at(RESUMEHOVER) : _resources.at(RESUME))->drawTexture(460, 445);
-        (mouseIsInBox(createBox(460, 555, 460+375, 555+65)) ? _resources.at(RESTARTHOVER) : _resources.at(Resources::RESTART))->drawTexture(460, 555);
-        (mouseIsInBox(createBox(460, 665, 460+375, 665+65)) ? _resources.at(SAVEHOVER) : _resources.at(Resources::SAVE))->drawTexture(460, 665);
-        (mouseIsInBox(createBox(460, 775, 460+375, 775+65)) ? _resources.at(SETTINGSHOVER) : _resources.at(Resources::SETTING))->drawTexture(460, 775);
-        (mouseIsInBox(createBox(460, 885, 460+375, 885+65)) ? _resources.at(HOMEHOVER) : _resources.at(Resources::HOME))->drawTexture(460, 885);
+        (mouseIsInBox(createBox<size_t>(460, 445, 460+375, 445+65)) ? _resources.at(RESUMEHOVER) : _resources.at(RESUME))->drawTexture(460, 445);
+        (mouseIsInBox(createBox<size_t>(460, 555, 460+375, 555+65)) ? _resources.at(RESTARTHOVER) : _resources.at(Resources::RESTART))->drawTexture(460, 555);
+        (mouseIsInBox(createBox<size_t>(460, 665, 460+375, 665+65)) ? _resources.at(SAVEHOVER) : _resources.at(Resources::SAVE))->drawTexture(460, 665);
+        (mouseIsInBox(createBox<size_t>(460, 775, 460+375, 775+65)) ? _resources.at(SETTINGSHOVER) : _resources.at(Resources::SETTING))->drawTexture(460, 775);
+        (mouseIsInBox(createBox<size_t>(460, 885, 460+375, 885+65)) ? _resources.at(HOMEHOVER) : _resources.at(Resources::HOME))->drawTexture(460, 885);
     } else
         _resources.at(PAUSE)->drawTexture(10, 5);
 }
@@ -68,12 +68,12 @@ void XRay::displayPauseScene(void)
 void XRay::goToAnotherScene()
 {
     // Check if mouse is on button spot
-    bool pauseButton = mouseIsInBox(createBox(10, 5, 122, 127)) ? true : false;
-    bool resume = mouseIsInBox(createBox(460, 445, 460+375, 445+65)) ? true : false;
-    bool restart = mouseIsInBox(createBox(460, 555, 460+375, 555+65)) ? true : false;
-    bool save = mouseIsInBox(createBox(460, 665, 460+375, 665+65)) ? true : false;
-    bool settings = mouseIsInBox(createBox(460, 775, 460+375, 775+65)) ? true : false;
-    bool home = mouseIsInBox(createBox(460, 885, 460+375, 885+65)) ? true : false;
+    bool pauseButton = mouseIsInBox(createBox<size_t>(10, 5, 122, 127)) ? true : false;
+    bool resume = mouseIsInBox(createBox<size_t>(460, 445, 460+375, 445+65)) ? true : false;
+    bool restart = mouseIsInBox(createBox<size_t>(460, 555, 460+375, 555+65)) ? true : false;
+    bool save = mouseIsInBox(createBox<size_t>(460, 665, 460+375, 665+65)) ? true : false;
+    bool settings = mouseIsInBox(createBox<size_t>(460, 775, 460+375, 775+65)) ? true : false;
+    bool home = mouseIsInBox(createBox<size_t>(460, 885, 460+375, 885+65)) ? true : false;
 
     // Go to another scene according to mouse position
     if (pauseButton && Raylib::Mouse::isButtonPressed(0)) {

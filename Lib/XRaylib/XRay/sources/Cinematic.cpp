@@ -31,8 +31,8 @@ void XRay::displayCinematic(const std::string &cinematicPathDirectory, const siz
     // Launch cinematic
     size_t i = 0;
 
-//    for (size_t i = 0; i < filesNumber && !(i < hideSkip && Raylib::Mouse::isButtonPressed(0) && mouseIsInBox(createBox(1760, 950, 1883, 1005))) && clock.doesTimeElapsed(0.01); i++)
-    while (i < filesNumber && !(i < hideSkip && Raylib::Mouse::isButtonPressed(0) && mouseIsInBox(createBox(1760, 950, 1883, 1005)))) {
+//    for (size_t i = 0; i < filesNumber && !(i < hideSkip && Raylib::Mouse::isButtonPressed(0) && mouseIsInBox(createBox<size_t>(1760, 950, 1883, 1005))) && clock.doesTimeElapsed(0.01); i++)
+    while (i < filesNumber && !(i < hideSkip && Raylib::Mouse::isButtonPressed(0) && mouseIsInBox(createBox<size_t>(1760, 950, 1883, 1005)))) {
 
         if (clock.doesTimeElapsed(0.001)) {
             // Set Textures
@@ -43,7 +43,7 @@ void XRay::displayCinematic(const std::string &cinematicPathDirectory, const siz
             Raylib::Drawing::clearBackground(Raylib::Color::Black());
             frame.drawTexture(0, 0);
             if (i < hideSkip) {
-                (mouseIsInBox(createBox(1760, 950, 1883, 1005)) ? _resources.at(SKIP_HOVER) : _resources.at(SKIP))->drawTexture(1760, 950);
+                (mouseIsInBox(createBox<size_t>(1760, 950, 1883, 1005)) ? _resources.at(SKIP_HOVER) : _resources.at(SKIP))->drawTexture(1760, 950);
                 displayMouse();
             }
             if (gap > 0)

@@ -150,9 +150,10 @@ inline void XRay::setBackups(const std::vector<std::string> &backups)
     _backups = backups;
 }
 
-inline bool XRay::mouseIsInBox(const std::vector<size_t> &box) const
+template <typename T>
+inline bool XRay::mouseIsInBox(const std::vector<T> &box) const
 {
-    std::pair<size_t, size_t> mousePosition = std::make_pair(Raylib::Mouse::getMouseX(), Raylib::Mouse::getMouseY());
+    std::pair<T, T> mousePosition = std::make_pair(Raylib::Mouse::getMouseX(), Raylib::Mouse::getMouseY());
 
     if (box[UPPER_LEFT] <= mousePosition.first && mousePosition.first <= box[LOW_RIGHT]
         && box[LOW_LEFT] <= mousePosition.second && mousePosition.second <= box[UPPER_RIGHT])
@@ -160,9 +161,10 @@ inline bool XRay::mouseIsInBox(const std::vector<size_t> &box) const
     return false;
 }
 
-inline std::vector<size_t> XRay::createBox(const size_t &upperLeftCorner, const size_t &upperRightCorner, const size_t &lowerLeftCorner, const size_t &lowerRightCorner) const
+template <typename T>
+inline std::vector<T> XRay::createBox(const T &upperLeftCorner, const T &upperRightCorner, const T &lowerLeftCorner, const T &lowerRightCorner) const
 {
-    std::vector<size_t> box;
+    std::vector<T> box;
 
     box.reserve(4);
     box.push_back(upperLeftCorner);

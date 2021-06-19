@@ -11,10 +11,10 @@
 void XRay::goToAnotherSceneFromVictory()
 {
     // Check if mouse is on button spot
-    bool home = mouseIsInBox(createBox(380, 330, 380+375, 330+65)) ? true : false;
-    bool restart = mouseIsInBox(createBox(380, 440, 380+375, 440+65)) ? true : false;
-    bool save = (_gameSettings[7] + _gameSettings[5] < 2) && mouseIsInBox(createBox(380, 550, 380+375, 550+65)) ? true : false;
-    bool nextlevel = (_gameSettings[7] + _gameSettings[5] < 2) && mouseIsInBox(createBox(380, 660, 380+375, 660+65)) ? true : false;
+    bool home = mouseIsInBox(createBox<float>(380, 330, 380+375, 330+65)) ? true : false;
+    bool restart = mouseIsInBox(createBox<float>(380, 440, 380+375, 440+65)) ? true : false;
+    bool save = (_gameSettings[7] + _gameSettings[5] < 2) && mouseIsInBox(createBox<float>(380, 550, 380+375, 550+65)) ? true : false;
+    bool nextlevel = (_gameSettings[7] + _gameSettings[5] < 2) && mouseIsInBox(createBox<float>(380, 660, 380+375, 660+65)) ? true : false;
 
     // Call function that check click on button
     if ((home || restart || save || nextlevel) && Raylib::Mouse::isButtonPressed(0)) {
@@ -65,11 +65,11 @@ void XRay::displayVictoryScene()
     // Draw scene
     beginDrawing();
     _resources.at(VICTORYBG)->drawTexture(0, 0);
-    (mouseIsInBox(createBox(380, 330, 380+375, 330+65)) ? _resources.at(HOMEHOVER) : _resources.at(HOME))->drawTexture(380, 330);
-    (mouseIsInBox(createBox(380, 440, 380+375, 440+65)) ? _resources.at(RESTARTHOVER) : _resources.at(Resources::RESTART))->drawTexture(380, 440);
+    (mouseIsInBox(createBox<float>(380, 330, 380+375, 330+65)) ? _resources.at(HOMEHOVER) : _resources.at(HOME))->drawTexture(380, 330);
+    (mouseIsInBox(createBox<float>(380, 440, 380+375, 440+65)) ? _resources.at(RESTARTHOVER) : _resources.at(Resources::RESTART))->drawTexture(380, 440);
     if (_gameSettings[7] + _gameSettings[5] < 2) {
-        (mouseIsInBox(createBox(380, 550, 380+375, 550+65)) ? _resources.at(SAVEHOVER) : _resources.at(Resources::SAVE))->drawTexture(380, 550);
-        (mouseIsInBox(createBox(380, 660, 380+375, 660+65)) ? _resources.at(NEXTLEVELHOVER) : _resources.at(Resources::NEXTLEVEL))->drawTexture(380, 660);
+        (mouseIsInBox(createBox<float>(380, 550, 380+375, 550+65)) ? _resources.at(SAVEHOVER) : _resources.at(Resources::SAVE))->drawTexture(380, 550);
+        (mouseIsInBox(createBox<float>(380, 660, 380+375, 660+65)) ? _resources.at(NEXTLEVELHOVER) : _resources.at(Resources::NEXTLEVEL))->drawTexture(380, 660);
     }
     _resources.at(RANKING)->drawTexture(1030, 350);
     displayMouse();

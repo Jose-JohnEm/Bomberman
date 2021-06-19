@@ -39,7 +39,7 @@ void XRay::detectPlayerInput(void)
 void XRay::removePlayer(const std::vector<std::pair<int, int>> &removeButtons)
 {
     for (size_t u = 0; u < removeButtons.size(); u++) {
-        if (mouseIsInBox(createBox(removeButtons[u].first, removeButtons[u].second, removeButtons[u].first+64, removeButtons[u].second+63)) && Raylib::Mouse::isButtonPressed(0)) {
+        if (mouseIsInBox(createBox<float>(removeButtons[u].first, removeButtons[u].second, removeButtons[u].first+64, removeButtons[u].second+63)) && Raylib::Mouse::isButtonPressed(0)) {
             _allIntegers[2] -= 1;
             if (_playerTab[u+1]) {
                 _controlsTab[u + 1] = UNKNOWN;
@@ -55,7 +55,7 @@ void XRay::removePlayer(const std::vector<std::pair<int, int>> &removeButtons)
 void XRay::addPlayer(void)
 {
     float a = 100 + (_allIntegers[2]*450);
-    if (_allIntegers[2] != 4 && mouseIsInBox(createBox(_allIntegers[0]+a, _allIntegers[1], _allIntegers[0]+a+150, _allIntegers[1]+150)) && Raylib::Mouse::isButtonPressed(0)) {
+    if (_allIntegers[2] != 4 && mouseIsInBox(createBox<float>(_allIntegers[0]+a, _allIntegers[1], _allIntegers[0]+a+150, _allIntegers[1]+150)) && Raylib::Mouse::isButtonPressed(0)) {
         _allIntegers[2] += 1;
         _playerTab.push_back(false);
         _pSelector.load();
@@ -118,8 +118,8 @@ void XRay::displayPlayerChoiceScene(void)
     _scene = PLAYER_CHOICE;
 
     // Check if mouse is on button spot
-    bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
-    bool goNext = mouseIsInBox(createBox(1700, 1000, 1918, 1061)) ? true : false;
+    bool goBack = mouseIsInBox(createBox<float>(20, 1000, 280, 1065)) ? true : false;
+    bool goNext = mouseIsInBox(createBox<float>(1700, 1000, 1918, 1061)) ? true : false;
 
     // Create containers
     std::vector<std::pair<int, int>> removeButtons;     // A vector of all remove buttons coordinates
