@@ -59,38 +59,24 @@ inline Game::Player &Game::Bomberman::findPlayer(const size_t &id)
 
 inline void Game::Bomberman::doDropBomb(const size_t &playerID, std::pair<int, int> position)
 {
-    std::vector<std::shared_ptr<Game::Player>> players;
-
-    for (const std::shared_ptr<IEntity> &entity : _entities)
-    {
-        if (entity->getType().compare("Human") == 0)
-        {
-            players.push_back(std::make_shared<Game::Human>(*dynamic_cast<Game::Human *>(entity.get())));
-        }
-        else if (entity->getType().compare("AI") == 0)
-        {
-            players.push_back(std::make_shared<Game::AI>(*dynamic_cast<Game::AI *>(entity.get())));
-        }
-    }
-
-    _entities.push_back(std::shared_ptr<IEntity>(new Game::Bomb({(float)position.first, (float)position.second, 0}, findPlayer(playerID).getPowerUps()[P_FIRE] + 1, players, [this] (size_t i){setPlayerShouldDisplay(i);}, findPlayer(playerID))));
-    _map[position.second][position.first] = 'B';
+    //_map[position.second][position.first] = 'B'; <-- need to be checked
+    _entities.push_back(std::shared_ptr<IEntity>( (new Game::Bomb({static_cast<float>(position.first), static_cast<float>(position.second), 0}, 1, _sharedPlayers, [this] (size_t i){setPlayerShouldDisplay(i);}, findPlayer(playerID)))));
 }
+
 
 inline void Game::Bomberman::setPlayerShouldDisplay(size_t playerID)
 {
-    // --> Bomb Collision w/ Players
     for (size_t i = 0; i < _entities.size(); i++)
     {
         if (_entities[i]->getType().compare("Human") == 0)
         {
-            // if ((std::make_shared<Game::Human>(*dynamic_cast<Game::Human *>(_entities[i].get())))->getID() == playerID)
-            //     _entities[i]->setShouldDisplay(false);
+            if ((std::make_shared<Game::Human>(*dynamic_cast<Game::Human *>(_entities[i].get())))->getID() == playerID)
+                _entities[i]->setShouldDisplay(false);
         }
         else if (_entities[i]->getType().compare("AI") == 0)
         {
-            // if ((std::make_shared<Game::AI>(*dynamic_cast<Game::AI *>(_entities[i].get())))->getID() == playerID)
-            //     _entities[i]->setShouldDisplay(false);
+            if ((std::make_shared<Game::AI>(*dynamic_cast<Game::AI *>(_entities[i].get())))->getID() == playerID)
+                _entities[i]->setShouldDisplay(false);
         }
     }
 }
@@ -143,7 +129,7 @@ inline bool Game::Bomberman::checkPlayerPosition(const std::string action, Playe
             {"goWest", {1, 0}}
     };
 
-    bool collision = CheckCollisionSpheres(pos3D.getCStruct(), 0.46,  {(float)positions.first + direction[action].first, (float)positions.second + direction[action].second, 0}, 0.46);
+    bool collision = CheckCollisionSpheres(pos3D.getCStruct(), 0.46,  {static_cast<float>(positions.first) + direction[action].first, static_cast<float>(positions.second) + direction[action].second, 0}, 0.46);
 
     if (collision && _map[direction[action].second + positions.second][direction[action].first + positions.first] != '*')
     {

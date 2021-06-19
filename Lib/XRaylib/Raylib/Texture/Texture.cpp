@@ -6,6 +6,7 @@
 */
 
 #include "Texture.hpp"
+#include "../../../Engine/Exception/MyException.hpp"
 
 Raylib::Texture::Texture(const std::string &fileName)
 {
@@ -22,3 +23,9 @@ Raylib::Texture::~Texture()
     //TODO: try it
 //    unloadTexture(*this);
 }
+
+
+// STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
+// catch
+// throw
+// try

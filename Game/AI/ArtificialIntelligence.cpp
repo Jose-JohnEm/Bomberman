@@ -55,7 +55,6 @@ void Game::ArtificialIntelligence::run(void) const
 
             // Get the next direction
             std::pair<int, int> point = std::make_pair((*path.begin() + 1)._x - AIPositions.x,  (*path.begin() + 1)._y - AIPositions.y);
-            std::cout << "AI n°" << AI.getID() << " " << convertPointIntoDirection(point) << std::endl;
 
             // Move the AI to this direction
             // Bomberman game;

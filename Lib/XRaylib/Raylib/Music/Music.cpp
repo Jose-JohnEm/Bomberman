@@ -6,6 +6,7 @@
 */
 
 #include "Music.hpp"
+#include "../../../Engine/Exception/MyException.hpp"
 
 Raylib::Music::Music()
 {
@@ -29,4 +30,24 @@ Raylib::Music::Music(const std::string &fileType, const std::string &data, const
 Raylib::Music::~Music()
 {
     ::UnloadMusicStream(_music);
+}
+
+// STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
+// catch
+// throw
+// try
+
+
+int catchThrowTryunloadMusic() {
+    try
+    {   Raylib::Music test;
+    	test.unloadMusic();
+    }
+    catch (Engine::MyException& ex)
+    {
+    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << "Function: " << ex.get_func() << std::endl;
+        return EXIT_FAILURE;
+    }
+    return 0;
 }
