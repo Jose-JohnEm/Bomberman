@@ -107,24 +107,33 @@ namespace Game
         void randomDropItem(const Raylib::Vector3 &pos);
 
         /**
-         * @brief
+         * @brief Erase all entities on the scope of a bomb explosion
          *
          */
         void eraseEntitiesOnBomb(const std::pair<int, int> &pos);
 
+        /**
+         * @brief Check if a player is hit by a bomb
+         *
+         * @param pos position of the bomb
+         * @param posX x position of the player
+         * @param posY y position of the player
+         * @return true if the player is hit
+         * @return false otherwise
+         */
         bool playerGotHit(const std::pair<int, int> &pos, const float &posX, const float &posY) const;
 
         /**
          * @brief
          *
-         * @param c
-         * @param rad
-         * @param pos
+         * @param c character to set
+         * @param rad reach of fire
+         * @param pos position of the bomb
          */
         void setCharOnRadius(const char &c, const int &rad, std::pair<int, int> pos);
 
         /**
-         * @brief
+         * @brief Manage the bomb explosion
          *
          */
         void bombExplosion(Game::Bomb &bomb, const size_t &index);
