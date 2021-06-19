@@ -55,13 +55,15 @@ void Game::Animated::setModel(const std::string &model)
     }
 }
 
-void Game::Animated::move(const std::string &direction)
+void Game::Animated::move(const std::string &direction, const int &speed)
 {
+    float skate = (speed + 1) * 0.05f;
+
     std::map<std::string, std::pair<float, float>> dict = {
-            {"goEast", {-0.05f, 0.f}},
-            {"goNorth", {0.f, 0.05f}},
-            {"goSouth", {0.f, -0.05f}},
-            {"goWest", {0.05f, 0.f}}
+            {"goEast", {-skate, 0.f}},
+            {"goNorth", {0.f, skate}},
+            {"goSouth", {0.f, -skate}},
+            {"goWest", {skate, 0.f}}
     };
 
     std::map<std::string, float> rota = {

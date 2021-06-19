@@ -8,6 +8,7 @@
 #ifndef BOMBERMAN_HPP_
 #define BOMBERMAN_HPP_
 
+#include <cstdlib> // For srand and rand functions only !
 #include <vector>
 #include <istream>
 #include <algorithm>
@@ -97,6 +98,13 @@ namespace Game
          * @return All the stats [PlayerName -- (NameOfStat, Value)] in a vector of vector
          */
         const std::vector<std::vector<std::pair<std::string, std::string>>> &getPlayersStats(void) const override;
+
+        /**
+         * @brief Operates randomly a drop of an item when a block is break
+         *
+         * @param pos position where to display the item
+         */
+        void Game::Bomberman::randomDropItem(const Raylib::Vector3 &pos);
 
         /**
          * @brief

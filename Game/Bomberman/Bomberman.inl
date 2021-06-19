@@ -114,7 +114,7 @@ inline void Game::Bomberman::doPlayerAction(const size_t playerID, const std::st
     if (action == "goEast" || action == "goNorth" || action == "goSouth" || action == "goWest") {
         if (findPlayer(playerID).getAlive() && checkPlayerPosition(action, findPlayer(playerID)))
         {
-            findPlayer(playerID).move(action);
+            findPlayer(playerID).move(action, findPlayer(playerID).getPowerUps()[P_SKATE]);
         }
     }
     if (action == "dropBomb")

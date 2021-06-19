@@ -7,35 +7,6 @@
 
 #include "PlayerSelector/Map.hpp"
 
-std::vector<std::vector<Texture>> findTexturesAvailable(int &nb_textures)
-{
-    std::vector<std::vector<Texture>> res;
-    std::vector<std::string> files;
-    bool isThereThree; // FIXME: what is the use ???
-
-    for (const auto & dir : std::filesystem::directory_iterator("resources/map"))
-    {
-        isThereThree = false;
-
-        if (dir.is_directory()) {
-            for (const auto &f : std::filesystem::directory_iterator(dir.path()))
-                files.push_back(f.path().filename().string());
-
-            if (files.end() != find(files.begin(), files.end(), "wall.png") &&
-                files.end() != find(files.begin(), files.end(), "floor.png") &&
-                files.end() != find(files.begin(), files.end(), "box.png")) {
-                res.push_back({
-                                      Raylib::Texture(dir.path().string() + "/floor.png").getCStruct(),
-                                      Raylib::Texture(dir.path().string() + "/wall.png").getCStruct(),
-                                      Raylib::Texture(dir.path().string() + "/box.png").getCStruct()
-                              });
-            }
-        } else
-            throw "ERROR : Wrong directory (Ressources - Map)";
-    }
-    nb_textures = res.size();
-    return res;
-}
 
 PlayerSelector::Map::Map(std::vector<Player> models, std::vector<std::string> &asciiMap)
         : _textures(findTexturesAvailable(_nbTextures)),
@@ -66,6 +37,36 @@ PlayerSelector::Map::Map(std::vector<Player> models, std::vector<std::string> &a
 
 PlayerSelector::Map::~Map()
 {
+}
+
+std::vector<std::vector<Texture>> PlayerSelector::Map::findTexturesAvailable(int &nb_textures)
+{
+    std::vector<std::vector<Texture>> res;
+    std::vector<std::string> files;
+    bool isThereThree; // FIXME: what is the use ???
+
+    for (const auto & dir : std::filesystem::directory_iterator("resources/map"))
+    {
+        isThereThree = false;
+
+        if (dir.is_directory()) {
+            for (const auto &f : std::filesystem::directory_iterator(dir.path()))
+                files.push_back(f.path().filename().string());
+
+            if (files.end() != find(files.begin(), files.end(), "wall.png") &&
+                files.end() != find(files.begin(), files.end(), "floor.png") &&
+                files.end() != find(files.begin(), files.end(), "box.png")) {
+                res.push_back({
+                                      Raylib::Texture(dir.path().string() + "/floor.png").getCStruct(),
+                                      Raylib::Texture(dir.path().string() + "/wall.png").getCStruct(),
+                                      Raylib::Texture(dir.path().string() + "/box.png").getCStruct()
+                              });
+            }
+        } else
+            throw "ERROR : Wrong directory (Ressources - Map)";
+    }
+    nb_textures = res.size();
+    return res;
 }
 
 std::vector<std::string> PlayerSelector::Map::getMap() const

@@ -10,6 +10,7 @@
 Game::Bomberman::Bomberman(void)
 : _gameName{"Bomberman"}, _gameOver{false}
 {
+    std::srand(static_cast<unsigned>(time(0)));
 }
 
 Game::Bomberman::~Bomberman(void)
@@ -85,6 +86,23 @@ bool Game::Bomberman::playerGotHit(const std::pair<int, int> &pos, const float &
     return false;
 }
 
+void Game::Bomberman::randomDropItem(const Raylib::Vector3 &pos)
+{
+    int r_value = rand() % 100;
+
+    if (0 <= r_value && r_value <= 9)
+        _entities.push_back(std::shared_ptr<IEntity>(new Game::BombUp(pos.getCStruct())));
+    else if (10 <= r_value && r_value <= 29)
+        _entities.push_back(std::shared_ptr<IEntity>(new Game::Fire(pos.getCStruct())));
+    else if (30 <= r_value && r_value <= 34)
+        _entities.push_back(std::shared_ptr<IEntity>(new Game::Speed(pos.getCStruct())));
+    else if (35 <= r_value && r_value <= 39)
+        _entities.push_back(std::shared_ptr<IEntity>(new Game::Life(pos.getCStruct())));
+    else if (40 <= r_value && r_value <= 44)
+        _entities.push_back(std::shared_ptr<IEntity>(new Game::Pass(pos.getCStruct())));
+
+}
+
 void Game::Bomberman::eraseEntitiesOnBomb(const std::pair<int, int> &pos)
 {
     size_t index = 0;
@@ -106,7 +124,7 @@ void Game::Bomberman::eraseEntitiesOnBomb(const std::pair<int, int> &pos)
         }
         if (entity->getType() == "BreakableWall" && entity->getPositions().x == pos.first && _map.size() - entity->getPositions().y == pos.second)
         {
-            _entities.push_back(std::shared_ptr<IEntity>(new Game::Life(entity->getPositions().getCStruct())));
+            randomDropItem(entity->getPositions());
             _entities.erase(_entities.begin() + index);
             break;
         }
