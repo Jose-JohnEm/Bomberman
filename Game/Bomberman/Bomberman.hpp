@@ -104,7 +104,7 @@ namespace Game
          *
          * @param pos position where to display the item
          */
-        void Game::Bomberman::randomDropItem(const Raylib::Vector3 &pos);
+        void randomDropItem(const Raylib::Vector3 &pos);
 
         /**
          * @brief
