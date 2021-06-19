@@ -46,12 +46,12 @@ namespace Game
             float calculateDistance(const Point &start, const Point &end) const;
 
             /**
-             * @brief Convert a point into a direction ("goEast", "goNorth", "goSouth", "goWest")
+             * @brief Convert a point into an action ("goEast", "goNorth", "goSouth", "goWest", "dropBomb")
              *
              * @param point The point to convert
-             * @return std::string - The direction
+             * @return std::string - The action
              */
-            std::string convertPointIntoDirection(const std::pair<int, int> &point) const;
+            std::string convertPointIntoAction(const std::pair<int, int> &point) const;
     };
 
     #include "ArtificialIntelligence.inl"

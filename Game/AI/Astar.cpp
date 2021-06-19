@@ -63,7 +63,8 @@ bool Game::Astar::targetIsReached(Node &openHead)
     Point neighbor;
     int h = 0, g = 0;
 
-    for (int i = 0; i < _neighbors.size(); i++)
+    // Set i to 0 to take diagonals into account, 4 to avoid these diagonal paths
+    for (int i = 4; i < _neighbors.size(); i++)
     {
         // Select a specific slot
         neighbor = openHead._positions + _neighbors[i];
@@ -141,7 +142,7 @@ int Game::Astar::fillPath(std::list<Point> &path)
         }
     }
     // Finally, add the start position at the beginning of the path
-    path.push_front(_start);
+    // path.push_front(_start);
 
     // Return the last node cost
     return _close.back()._g + 1;

@@ -7,7 +7,10 @@
 
 inline float Game::Astar::calculateHValue(const Point &currentCell) const
 {
-    return std::sqrt(std::pow(_target._x - currentCell._x, 2) + std::pow(_target._y - currentCell._y, 2));
+    // For diagonals (Euclidean Distance)
+    // return std::sqrt(std::pow(_target._x - currentCell._x, 2) + std::pow(_target._y - currentCell._y, 2));
+    // Without diagonals (Manhattan Distance)
+    return std::abs(currentCell._x - _target._x) + std::abs(currentCell._y - _target._y);
 }
 
 inline bool Game::Astar::isInMap(const Point &currentCell) const

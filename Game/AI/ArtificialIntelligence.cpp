@@ -53,19 +53,30 @@ void Game::ArtificialIntelligence::run(void) const
             }
         }
 
+        // Display the target
+        std::cout << "AI n°" << AI.getID() << " Target " << xTarget << "," << (_map.size() - yTarget) << std::endl;
+
         // Run Astar algorithm
-        Astar astar(_map, Point(xAI, yAI), Point(xTarget, yTarget));
+        Astar astar(_map, Point(xAI, (_map.size() - yAI)), Point(xTarget, (_map.size() - yTarget)));
 
         if (astar.targetIsFound())
         {
             // Get the path finding
             astar.fillPath(path);
+            std::cout << "AI n°" << AI.getID();
+            for(const Point &point : path)
+            {
+                std::cout << " (" << point._x << "," << point._y << ")";
+            }
+            std::cout << std::endl;
 
-            // Get the next direction
-            point = std::make_pair((*path.begin() + 1)._x - xAI,  (*path.begin() + 1)._y - yAI);
-            std::cout << "AI n°" << AI.getID() << " " << convertPointIntoDirection(point) << std::endl;
+            // Get the next destination
+            std::cout << "AI n°" << AI.getID() << " Next destination " << path.front()._x << "," << path.front()._y << std::endl;
+            std::cout << "AI n°" << AI.getID() << " Positions " << xAI << "," << (_map.size() - yAI) << std::endl;
+            point = std::make_pair(path.front()._x - xAI, path.front()._y - (_map.size() - yAI));
+            std::cout << "AI n°" << AI.getID() << " " << convertPointIntoAction(point) << std::endl;
 
-            // Move the AI to this direction
+            // Order the AI to do this action
             // Bomberman game;
             // game.doPlayerAction(AI.getID(), convertPointIntoDirection(point));
 
