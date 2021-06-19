@@ -123,7 +123,7 @@ namespace Game
          *
          * @param direction
          */
-        void move(const std::string &direction);
+        void move(const std::string &direction, const int &speed);
 
         /**
          * @brief

@@ -55,7 +55,7 @@ void Game::Animated::setModel(const std::string &model)
     }
 }
 
-void Game::Animated::move(const std::string &direction)
+void Game::Animated::move(const std::string &direction, const int &speed)
 {
     std::map<std::string, std::pair<float, float>> dict = {
             {"goEast", {-0.05f, 0.f}},
