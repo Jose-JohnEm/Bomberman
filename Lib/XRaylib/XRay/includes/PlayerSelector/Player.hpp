@@ -97,7 +97,7 @@ namespace PlayerSelector
         std::vector<std::string> _animations_path;              // List of path to the animations
 
         Clock clock;                                            // The player clock
-        int counter;                                            // TODO what is this and correct other if necessary
+        int counter;                                            // Counter
     };
 
 } // namespace PlayerSelector
