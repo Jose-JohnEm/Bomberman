@@ -212,13 +212,14 @@ void Game::Bomberman::bombExplosion(Game::Bomb &bomb, const size_t &index)
 void Game::Bomberman::handleIfPlayerIsNearAnItem(Player &player)
 {
     size_t index = 0;
+    static Raylib::Sound sound ("resources/Sound/tudum.wav");
 
     for (auto &entity : _entities)
     {
         if (dynamic_cast<Game::Powerups *>(entity.get()) != nullptr && CheckCollisionSpheres(player.getPositions().getCStruct(), 0.3, entity->getPositions().getCStruct(), 0.3))
         {
             dynamic_cast<Game::Powerups *>(entity.get())->applyPowerupTo(player);
-            //sound.play();
+            sound.play();
             std::cout << "<<<< Got the..." << std::endl;
             _entities.erase(_entities.begin() + index);
             std::cout << "<<<< Item" << std::endl;
