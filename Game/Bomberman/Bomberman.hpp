@@ -8,18 +8,20 @@
 #ifndef BOMBERMAN_HPP_
 #define BOMBERMAN_HPP_
 
-#include <cstdlib> // For srand and rand functions only !
 #include <vector>
 #include <istream>
 #include <algorithm>
 #include <map>
 #include "Interfaces/IGame.hpp"
 #include "Powerups/Powerups.hpp"
-#include "../Map/Map.hpp"
-#include "../Save/Save.hpp"
-#include "../MotionlessEntity/MotionlessEntity.hpp"
-#include "../Bomb/Bomb.hpp"
-#include "../AI/ArtificialIntelligence.hpp"
+#include "Map/Map.hpp"
+#include "Save/Save.hpp"
+#include "MotionlessEntity/MotionlessEntity.hpp"
+#include "Bomb/Bomb.hpp"
+#include "AI/ArtificialIntelligence.hpp"
+#include "AI/Astar.hpp"
+#include "CFunctions.hpp"
+#include "Score/Score.hpp"
 
 namespace Game
 {
@@ -83,7 +85,7 @@ namespace Game
          *
          * @return A array of pair (Player, Score) of the current game
          */
-        const std::vector<std::pair<std::string, std::string>> &getScores(void) const override;
+        const std::vector<std::pair<std::string, std::string>> &getScores(void) override;
 
         /**
          * @brief Get the Entities
@@ -97,7 +99,7 @@ namespace Game
          *
          * @return All the stats [PlayerName -- (NameOfStat, Value)] in a vector of vector
          */
-        const std::vector<std::vector<std::pair<std::string, std::string>>> &getPlayersStats(void) const override;
+        const std::vector<std::vector<std::pair<std::string, std::string>>> &getPlayersStats(void) override;
 
         /**
          * @brief Operates randomly a drop of an item when a block is break
@@ -107,24 +109,33 @@ namespace Game
         void randomDropItem(const Raylib::Vector3 &pos);
 
         /**
-         * @brief
+         * @brief Erase all entities on the scope of a bomb explosion
          *
          */
         void eraseEntitiesOnBomb(const std::pair<int, int> &pos);
 
+        /**
+         * @brief Check if a player is hit by a bomb
+         *
+         * @param pos position of the bomb
+         * @param posX x position of the player
+         * @param posY y position of the player
+         * @return true if the player is hit
+         * @return false otherwise
+         */
         bool playerGotHit(const std::pair<int, int> &pos, const float &posX, const float &posY) const;
 
         /**
          * @brief
          *
-         * @param c
-         * @param rad
-         * @param pos
+         * @param c character to set
+         * @param rad reach of fire
+         * @param pos position of the bomb
          */
-        void setCharOnRadius(const char &c, const int &rad, std::pair<int, int> pos);
+        void setCharOnRadius(const char &c, const int &rad, std::pair<int, int> pos, Game::Bomb &bomb);
 
         /**
-         * @brief
+         * @brief Manage the bomb explosion
          *
          */
         void bombExplosion(Game::Bomb &bomb, const size_t &index);
@@ -219,19 +230,19 @@ namespace Game
         void handleIfPlayerIsNearAnItem(Player &player);
 
         /**
-         * @brief
+         * @brief drop bombs on command
          *
          */
         void doDropBomb(const size_t &playerID, std::pair<int, int> position);
 
         /**
-         * @brief
+         * @brief find the player
          *
          */
         Game::Player &findPlayer(const size_t &id);
 
         /**
-         * @brief
+         * @brief check the current position of player
          *
          * @param action
          * @param player
@@ -241,7 +252,7 @@ namespace Game
         bool checkPlayerPosition(const std::string action, Player &player);
 
         /**
-         * @brief
+         * @brief check if the current player position passes
          *
          * @param action
          * @param y
@@ -252,7 +263,7 @@ namespace Game
         bool checkPlayerPositionPass(const std::string action, const int &y, const int &x);
 
         /**
-         * @brief
+         * @brief updates the map
          *
          * @param playerPos
          * @param y
@@ -279,6 +290,39 @@ namespace Game
          */
         void runAI(void) override;
 
+        /**
+         * @brief Get positions of all the entities with a specific type
+         *
+         * @return std::vector<Game::Point> - A vector containing the required entities positions
+         */
+        template<typename T>
+        std::vector<std::pair<int, int>> getEntitiesPositions(void) const;
+
+        /**
+         * @brief Get positions of all the entities with a specific type
+         *
+         * @return std::vector<Game::Point> - A vector containing the required entities positions
+         */
+        template<typename T>
+        std::vector<T*> getEntitiesData(void) const;
+
+        /**
+         * @brief Place entities in the map
+         *
+         * @param entitiesPos A vector of the required entities positions
+         * @param c The character to place at entities slots
+         * @return std::vector<std::string> - The new map containing the entities representing by c
+         */
+        std::vector<std::string> placeEntitiesOnMap(const std::vector<std::pair<int, int>> &entitiesPos, const char &c) const;
+
+        /**
+         * @brief Check if the camera should shake
+         *
+         * @return true if should
+         * @return false otherwise
+         */
+        bool isCameraShaking() override;
+
     private:
         std::array<std::size_t, 9> _settings; // Game settings
         std::vector<std::string> _map; // Game map
@@ -286,6 +330,7 @@ namespace Game
         std::vector<std::vector<std::pair<std::string, std::string>>> _playersStats; // A vector of vector all the stats [Player -- (NameOfStat, Value)]...
         std::vector<std::pair<std::string, std::string>> _scores;                 // A vector of pair (username, score)
         std::vector<std::shared_ptr<IEntity>> _entities;                         // A vector of shared pointer that represent all the entities to display. Ex : Map, Score, UserInfo, Button
+        std::vector<std::shared_ptr<Game::Player>> _sharedPlayers;                     // A vector of a shared pointer for Players
 
         int _reinit = 0;                            // A int to know if we should reinit entities
         bool _gameOver = false;                             // A boolean to know if the game is over or not
@@ -294,6 +339,9 @@ namespace Game
         std::vector<std::string> _userNames;        // A vector of all the users names
         std::vector<CharDictionary> _players;
         std::vector<std::string> _playerControls; // A vector of all the players control as a string
+        Clock _aiClock; // AI clock to avoid too fast AIs (runtime...)
+        bool _isCameraShaking = false;
+        Clock _CamShakeClock;
     };
 }
 

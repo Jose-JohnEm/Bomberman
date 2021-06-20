@@ -143,12 +143,17 @@ typedef enum {
     NICO,
     MEHDI,
     CHARLES,
-    TEAMTITLE
+    TEAMTITLE,
+    SKATE,
+    FIRE,
+    IBOMB,
+    AIPANEL
 } Resources;
 
 typedef enum {
     MSC_BOMBERMAN,
-    MSC_OPENNING
+    MSC_OPENNING,
+    MSC_GAME
 } MusicResources;
 
 typedef enum {
@@ -165,7 +170,9 @@ typedef enum {
     SFX_OPENNING,
     SFX_WEEE,
     SFX_BOOM,
-    SFX_TUDUM
+    SFX_TUDUM,
+    SFX_DEFEAT,
+    SFX_COUNTDOWN
 } SfxResources;
 
 #endif /* !RESOURCES_HPP_ */

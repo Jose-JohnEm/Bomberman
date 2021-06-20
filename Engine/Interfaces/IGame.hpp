@@ -69,7 +69,7 @@ public:
      * @return A array of pair (Player, Score) of the current game
      */
     virtual const std::vector<std::pair<std::string, std::string>> &
-    getScores(void) const = 0;
+    getScores(void) = 0;
 
     /**
      * @brief Get the Entities
@@ -85,7 +85,7 @@ public:
      * @return A vector of a vector all the stats by player [Player -- (NameOfStat, Value)]...
      */
     virtual const std::vector<std::vector<std::pair<std::string, std::string>>> &
-    getPlayersStats(void) const = 0;
+    getPlayersStats(void) = 0;
 
     /**
      * @brief updateGame function should be called in a loop. It's used to advance the game and update all logic.
@@ -156,6 +156,14 @@ public:
      * @brief Run the AIs
      */
     virtual void runAI(void) = 0;
+
+    /**
+     * @brief Check if the camera should shake
+     *
+     * @return true if should
+     * @return false otherwise
+     */
+    virtual bool isCameraShaking() = 0;
 };
 
 #endif /* !IGAME_HPP_ */

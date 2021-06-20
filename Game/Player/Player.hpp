@@ -131,6 +131,13 @@ namespace Game
         void increasePowerUps(const int &id_power);
 
         /**
+         * @brief Set the powerUps of the player
+         *
+         * @param powerUps A const reference to an array of 5 int
+         */
+        void decreasePowerUps(const int &id_power);
+
+        /**
          * @brief Set the ID of the player
          */
         void setID(const int &ID);
@@ -154,14 +161,22 @@ namespace Game
          */
         bool dropBomb(void);
 
+        /**
+         * @brief Reset a bomb
+         *
+         */
+        void resetABomb();
+
     private:
 
         std::string _name = "Name"; // Name of the player entitiy
         size_t _brokenWalls = 0; // Amount of broken walls
         size_t _kills = 0; // Amount of kills
+        int _bomb_droped;
         std::array<int, 5> _powerUps{0, 0, 0, 0, 0}; // Amount of powerUps
         int _ID; // ID of the player
         bool _alive = true; //Is alive ?
+        Clock clock;
     };
 
     class Human : public virtual Player {
@@ -216,5 +231,23 @@ namespace Game
 
 #include "Player.inl"
 }
+
+/**
+ * @brief Display Player content
+ *
+ * @param os ostream (std::cout)
+ * @param obj the player
+ * @return std::ostream& (std::cout)
+ */
+std::ostream& operator<<(std::ostream& os, const Game::Player* obj);
+
+/**
+ * @brief
+ *
+ * @param os ostream (std::cout)
+ * @param objs the players
+ * @return std::ostream& (std::cout)
+ */
+std::ostream& operator<<(std::ostream& os, const std::vector<Game::Player *>& objs);
 
 #endif /* !PLAYER_HPP_ */

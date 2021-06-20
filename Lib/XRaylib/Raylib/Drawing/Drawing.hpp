@@ -8,9 +8,9 @@
 #ifndef DRAWING_HPP_
 #define DRAWING_HPP_
 
-#include "../Color/Color.hpp"
-#include "../Vector3/Vector3.hpp"
-#include "../Texture/Texture.hpp"
+#include "Color/Color.hpp"
+#include "Vector3/Vector3.hpp"
+#include "Texture/Texture.hpp"
 
 namespace Raylib
 {

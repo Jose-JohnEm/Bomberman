@@ -6,7 +6,7 @@
 */
 
 #include "Input.hpp"
-#include "../../../Engine/Exception/MyException.hpp"
+#include "Exception/Exception.hpp"
 Input::Input()
 {
     _inputs[UP] = 1;
@@ -50,12 +50,12 @@ void updateGamepad()
 int catchThrowTryupdateGamepad() {
     try
     {   Input test;
-    	test.updateGamepad();
+        test.updateGamepad();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;

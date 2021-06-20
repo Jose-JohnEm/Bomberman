@@ -6,7 +6,7 @@
 */
 
 #include "XRay.hpp"
-#include "../../../Engine/Exception/MyException.hpp"
+#include "Exception/Exception.hpp"
 
 void XRay::detectPlayerInput(void)
 {
@@ -39,7 +39,7 @@ void XRay::detectPlayerInput(void)
 void XRay::removePlayer(const std::vector<std::pair<int, int>> &removeButtons)
 {
     for (size_t u = 0; u < removeButtons.size(); u++) {
-        if (mouseIsInBox(createBox(removeButtons[u].first, removeButtons[u].second, removeButtons[u].first+64, removeButtons[u].second+63)) && Raylib::Mouse::isButtonPressed(0)) {
+        if (mouseIsInBox(createBox<float>(removeButtons[u].first, removeButtons[u].second, removeButtons[u].first+64, removeButtons[u].second+63)) && Raylib::Mouse::isButtonPressed(0)) {
             _allIntegers[2] -= 1;
             if (_playerTab[u+1]) {
                 _controlsTab[u + 1] = UNKNOWN;
@@ -55,7 +55,7 @@ void XRay::removePlayer(const std::vector<std::pair<int, int>> &removeButtons)
 void XRay::addPlayer(void)
 {
     float a = 100 + (_allIntegers[2]*450);
-    if (_allIntegers[2] != 4 && mouseIsInBox(createBox(_allIntegers[0]+a, _allIntegers[1], _allIntegers[0]+a+150, _allIntegers[1]+150)) && Raylib::Mouse::isButtonPressed(0)) {
+    if (_allIntegers[2] != 4 && mouseIsInBox(createBox<float>(_allIntegers[0]+a, _allIntegers[1], _allIntegers[0]+a+150, _allIntegers[1]+150)) && Raylib::Mouse::isButtonPressed(0)) {
         _allIntegers[2] += 1;
         _playerTab.push_back(false);
         _pSelector.load();
@@ -118,8 +118,8 @@ void XRay::displayPlayerChoiceScene(void)
     _scene = PLAYER_CHOICE;
 
     // Check if mouse is on button spot
-    bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
-    bool goNext = mouseIsInBox(createBox(1700, 1000, 1918, 1061)) ? true : false;
+    bool goBack = mouseIsInBox(createBox<float>(20, 1000, 280, 1065)) ? true : false;
+    bool goNext = mouseIsInBox(createBox<float>(1700, 1000, 1918, 1061)) ? true : false;
 
     // Create containers
     std::vector<std::pair<int, int>> removeButtons;     // A vector of all remove buttons coordinates
@@ -131,6 +131,9 @@ void XRay::displayPlayerChoiceScene(void)
 
     // Detect Keyboard, Mouse, and Gamepad
     detectPlayerInput();
+
+    // Play music
+    playMusic(MSC_BOMBERMAN);
 
     // Draw scene
     beginDrawing();
@@ -165,19 +168,19 @@ void XRay::displayPlayerChoiceScene(void)
     _gameSettings[7] = _allIntegers[2] - _gameSettings[5];
 
     // Go to another scene according to mouse position
-    if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _gameSettings[7] * 40) {
+    if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _gameSettings[7] * 40 && _allIntegers[2] > 1) {
         for (size_t o = 0; o < _allIntegers[2]; o++)
             _userNames.push_back(_pSelector[o].getName());
         _sfx.at(SFX_NOCK)->play();
         _pSelector.initMaps({
-            {"WWWWWWW"},
-            {"W*****W"},
-            {"W*WMW*W"},
-            {"W*MMM*W"},
-            {"W*WMW*W"},
-            {"W*****W"},
-            {"WWWWWWW"},
-        });
+                                    {"WWWWWWW"},
+                                    {"W*****W"},
+                                    {"W*WMW*W"},
+                                    {"W*MMM*W"},
+                                    {"W*WMW*W"},
+                                    {"W*****W"},
+                                    {"WWWWWWW"},
+                            });
         displayMapChoiceScene();
     }
 }
@@ -190,12 +193,12 @@ void XRay::displayPlayerChoiceScene(void)
 int catchThrowTrydetectPlayerInput() {
     try
     {   XRay test;
-    	test.detectPlayerInput();
+        test.detectPlayerInput();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -205,12 +208,12 @@ int catchThrowTryremovePlayer() {
     try
     {   XRay test;
         std::vector<std::pair<int, int>> removeButtons;
-    	test.removePlayer(removeButtons);
+        test.removePlayer(removeButtons);
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -219,12 +222,12 @@ int catchThrowTryremovePlayer() {
 int catchThrowTryaddPlayer() {
     try
     {   XRay test;
-    	test.addPlayer();
+        test.addPlayer();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -233,12 +236,12 @@ int catchThrowTryaddPlayer() {
 int catchThrowTrymanageNextOrPrev() {
     try
     {   XRay test;
-    	test.manageNextOrPrev();
+        test.manageNextOrPrev();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -247,14 +250,14 @@ int catchThrowTrymanageNextOrPrev() {
 int catchThrowTrydisplayCardsSettings() {
     try
     {   XRay test;
-    int x;
+        int x;
         std::vector<std::pair<int, int>> removeButtons;
-    	test.displayCardsSettings(removeButtons,&x);
+        test.displayCardsSettings(removeButtons,&x);
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -263,12 +266,12 @@ int catchThrowTrydisplayCardsSettings() {
 int catchThrowTrydisplayBack() {
     try
     {   XRay test;
-    	test.displayBack();
+        test.displayBack();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -277,12 +280,12 @@ int catchThrowTrydisplayBack() {
 int catchThrowTrydisplayPlayerChoiceScene() {
     try
     {   XRay test;
-    	test.displayPlayerChoiceScene();
+        test.displayPlayerChoiceScene();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;

@@ -6,7 +6,7 @@
 */
 
 #include "MousePlayerInput.hpp"
-#include "../../../Engine/Exception/MyException.hpp"
+#include "Exception/Exception.hpp"
 
 /*
     MOUSE_BUTTON_LEFT    = 0,
@@ -121,12 +121,12 @@ bool MousePlayerInput::shouldSimulateAClick(void) const
 int catchThrowTryshouldGoToEast() {
     try
     {   MousePlayerInput test;
-    	test.shouldGoToEast();
+        test.shouldGoToEast();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -135,12 +135,12 @@ int catchThrowTryshouldGoToEast() {
 int catchThrowTryshouldGoToWest() {
     try
     {   MousePlayerInput test;
-    	test.shouldGoToWest();
+        test.shouldGoToWest();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -149,12 +149,12 @@ int catchThrowTryshouldGoToWest() {
 int catchThrowTryshouldGoToNorth() {
     try
     {   MousePlayerInput test;
-    	test.shouldGoToNorth();
+        test.shouldGoToNorth();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -163,12 +163,12 @@ int catchThrowTryshouldGoToNorth() {
 int catchThrowTryshouldGoToSouth() {
     try
     {   MousePlayerInput test;
-    	test.shouldGoToSouth();
+        test.shouldGoToSouth();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -177,12 +177,12 @@ int catchThrowTryshouldGoToSouth() {
 int catchThrowTryshouldChangeToPrev() {
     try
     {   MousePlayerInput test;
-    	test.shouldChangeToPrev();
+        test.shouldChangeToPrev();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -191,12 +191,12 @@ int catchThrowTryshouldChangeToPrev() {
 int catchThrowTryshouldChangeToNext() {
     try
     {   MousePlayerInput test;
-    	test.shouldChangeToNext();
+        test.shouldChangeToNext();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -205,12 +205,12 @@ int catchThrowTryshouldChangeToNext() {
 int catchThrowTryshouldSimulateAClick() {
     try
     {   MousePlayerInput test;
-    	test.shouldSimulateAClick();
+        test.shouldSimulateAClick();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;

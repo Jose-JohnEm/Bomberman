@@ -10,8 +10,14 @@ inline void Game::Bomberman::setMapType(const std::size_t &mapType)
     _mapType = mapType;
 }
 
-inline const std::vector<std::pair<std::string, std::string>> &Game::Bomberman::getScores(void) const
+inline const std::vector<std::pair<std::string, std::string>> &Game::Bomberman::getScores(void)
 {
+    std::vector<Game::Player *> players = getEntitiesData<Game::Player>();
+
+    _scores.clear();
+    for (Game::Player *p : players) {
+        _scores.push_back({std::to_string(p->getID() + 1), std::to_string(Score(_settings, p).getScore())});
+    }
     return _scores;
 }
 
@@ -20,14 +26,35 @@ inline const std::vector<std::shared_ptr<IEntity>> &Game::Bomberman::getEntities
     return _entities;
 }
 
-inline const std::vector<std::vector<std::pair<std::string, std::string>>> &Game::Bomberman::getPlayersStats(void) const
+inline const std::vector<std::vector<std::pair<std::string, std::string>>> &Game::Bomberman::getPlayersStats(void)
 {
+    std::vector<Game::Player *> players = getEntitiesData<Game::Player>();
+    std::vector<std::pair<std::string, std::string>> pData;
+    size_t i = 0;
+
+    _playersStats.clear();
+    for (Game::Player *p : players)
+    {
+        pData.push_back({"SPEED", std::to_string(p->getPowerUps()[P_SKATE])});
+        pData.push_back({"FIRE", std::to_string(p->getPowerUps()[P_FIRE])});
+        pData.push_back({"BOMB", std::to_string(p->getPowerUps()[P_BOMB])});
+        pData.push_back({"ISALIVE", (_sharedPlayers[i]->getShouldDisplay() ? "1" : "0")});
+
+        _playersStats.push_back(pData);
+        pData.clear();
+        i++;
+    }
     return _playersStats;
 }
 
 inline bool Game::Bomberman::isGameOver(void) const
 {
     return _gameOver;
+}
+
+inline bool Game::Bomberman::isCameraShaking()
+{
+    return _isCameraShaking;
 }
 
 inline const std::string &Game::Bomberman::getGameName(void) const
@@ -59,21 +86,10 @@ inline Game::Player &Game::Bomberman::findPlayer(const size_t &id)
 
 inline void Game::Bomberman::doDropBomb(const size_t &playerID, std::pair<int, int> position)
 {
-    std::vector<std::shared_ptr<Game::Player>> players;
-
-    for (const std::shared_ptr<IEntity> &entity : _entities)
-    {
-        if (entity->getType().compare("Human") == 0)
-        {
-            players.push_back(std::make_shared<Game::Human>(*dynamic_cast<Game::Human *>(entity.get())));
-        }
-        else if (entity->getType().compare("AI") == 0)
-        {
-            players.push_back(std::make_shared<Game::AI>(*dynamic_cast<Game::AI *>(entity.get())));
-        }
-    }
-    _entities.push_back(std::shared_ptr<IEntity>( (new Game::Bomb({(float)position.first, (float)position.second, 0}, 1, players, [this] (size_t i){setPlayerShouldDisplay(i);}))));
+    //_map[position.second][position.first] = 'B'; <-- need to be checked
+    _entities.push_back(std::shared_ptr<IEntity>(new Game::Bomb({static_cast<float>(position.first), static_cast<float>(position.second), 0}, findPlayer(playerID).getPowerUps()[P_FIRE] + 1, _sharedPlayers, [this] (size_t i){setPlayerShouldDisplay(i);}, findPlayer(playerID))));
 }
+
 
 inline void Game::Bomberman::setPlayerShouldDisplay(size_t playerID)
 {
@@ -109,7 +125,7 @@ inline void Game::Bomberman::doPlayerAction(const size_t playerID, const std::st
                 break;
         }
     }
-    if (!_entities[i]->getShouldDisplay())
+    if ((!(i < _entities.size())) || !_entities[i]->getShouldDisplay())
         return;
     if (action == "goEast" || action == "goNorth" || action == "goSouth" || action == "goWest") {
         if (findPlayer(playerID).getAlive() && checkPlayerPosition(action, findPlayer(playerID)))
@@ -140,7 +156,7 @@ inline bool Game::Bomberman::checkPlayerPosition(const std::string action, Playe
             {"goWest", {1, 0}}
     };
 
-    bool collision = CheckCollisionSpheres(pos3D.getCStruct(), 0.46,  {(float)positions.first + direction[action].first, (float)positions.second + direction[action].second, 0}, 0.46);
+    bool collision = CheckCollisionSpheres(pos3D.getCStruct(), 0.46,  {static_cast<float>(positions.first) + direction[action].first, static_cast<float>(positions.second) + direction[action].second, 0}, 0.46);
 
     if (collision && _map[direction[action].second + positions.second][direction[action].first + positions.first] != '*')
     {
@@ -154,11 +170,12 @@ inline bool Game::Bomberman::checkPlayerPosition(const std::string action, Playe
     }
 
     positions.second = _map.size() - positions.second;
-    if (_map[direction[action].second + positions.second][direction[action].first + positions.first] != 'W' && _map[direction[action].second + positions.second][direction[action].first + positions.first] != 'M' && _map[direction[action].second + positions.second][direction[action].first + positions.first] != 'E') {
+    if (_map[direction[action].second + positions.second][direction[action].first + positions.first] != 'W'
+        && _map[direction[action].second + positions.second][direction[action].first + positions.first] != 'M'
+        && _map[direction[action].second + positions.second][direction[action].first + positions.first] != 'E'
+        && _map[direction[action].second + positions.second][direction[action].first + positions.first] != 'B')
+    {
         updateMap(positions, direction[action].second + positions.second, direction[action].first + positions.first);
-        return true;
-    } else if (player.getPowerUps()[P_PASS] > 0 && checkPlayerPositionPass(action, direction[action].second * 2 + positions.second, direction[action].first * 2 + positions.first) == true) {
-        updateMap(positions, direction[action].second * 2 + positions.second, direction[action].first * 2 + positions.first);
         return true;
     }
     if ((!round90(pos3D.x, positions.first) && (action == "goEast" || action == "goWest")) || (!round90(pos3D.y, player.getPositions2D().second) && (action == "goNorth" || action == "goSouth")))
@@ -169,7 +186,8 @@ inline bool Game::Bomberman::checkPlayerPosition(const std::string action, Playe
 inline void Game::Bomberman::updateMap(const std::pair<int, int> &playerPos, const int &y, const int &x)
 {
     _map[y][x] = 'H';
-    _map[playerPos.second][playerPos.first] = '*';
+    if (_map[playerPos.second][playerPos.first] == 'H')
+        _map[playerPos.second][playerPos.first] = '*';
 }
 
 inline bool Game::Bomberman::checkPlayerPositionPass(const std::string action, const int &y, const int &x)

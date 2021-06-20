@@ -11,21 +11,21 @@
 TEST(ClockTest, ElapsedTimepassResetfalse)
 {
 
-     Clock clock;
+    Clock clock;
 
     EXPECT_EQ(true, clock.doesTimeElapsed(0, false));
 }
 
 TEST(ClockTest, ElapsedTimepassReseTtrue)
 {
-     Clock clock;
+    Clock clock;
 
     EXPECT_EQ(true, clock.doesTimeElapsed(0, true));
 }
 
 TEST(ClockTest, getElapsedTimePassTrue)
 {
-     Clock clock;
+    Clock clock;
 
     EXPECT_EQ(false, clock.doesTimeElapsed(100, true));
 }

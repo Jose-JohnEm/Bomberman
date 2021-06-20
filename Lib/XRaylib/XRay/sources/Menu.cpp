@@ -6,7 +6,7 @@
 */
 
 #include "XRay.hpp"
-#include "../../../Engine/Exception/MyException.hpp"
+#include "Exception/Exception.hpp"
 
 void XRay::displayMenuScene(void)
 {
@@ -15,16 +15,19 @@ void XRay::displayMenuScene(void)
     Scene scene = MENU;
 
     // Check if mouse is on button spot
-    bool goPlay = mouseIsInBox(createBox(1160, 245, 1160+755, 245+132)) ? true : false;
-    bool goHowToPlay = mouseIsInBox(createBox(1160, 455, 1160+755, 455+132)) ? true : false;
-    bool goSettings = mouseIsInBox(createBox(1160, 665, 1160+755, 665+132)) ? true : false;
-    bool quit = mouseIsInBox(createBox(1160, 875, 1160+755, 875+132)) ? true : false;
+    bool goPlay = mouseIsInBox(createBox<size_t>(1160, 245, 1160+755, 245+132)) ? true : false;
+    bool goHowToPlay = mouseIsInBox(createBox<size_t>(1160, 455, 1160+755, 455+132)) ? true : false;
+    bool goSettings = mouseIsInBox(createBox<size_t>(1160, 665, 1160+755, 665+132)) ? true : false;
+    bool quit = mouseIsInBox(createBox<size_t>(1160, 875, 1160+755, 875+132)) ? true : false;
 
     // Display INDIE STUDIO
     if (_intro.first == true)
         (this->*_intro.second[CFunctions::generatePairOfRandomIntegers(2, 1).first])();
 
-    // Launch
+    // Stop game music
+    if (_musics.at(MSC_GAME)->isPlaying())
+        _musics.at(MSC_GAME)->stop();
+    // Play bomberma music
     playMusic(MSC_BOMBERMAN);
 
     // Parallax update
@@ -81,12 +84,12 @@ void XRay::displayMenuScene(void)
 int catchThrowTrydisplayMenuScene() {
     try
     {   XRay test;
-    	test.displayMenuScene();
+        test.displayMenuScene();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;

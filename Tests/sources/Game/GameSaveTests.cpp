@@ -6,7 +6,7 @@
 */
 
 #include <gtest/gtest.h>
-#include "../Game/Save/Save.hpp"
+#include "Save/Save.hpp"
 
 Game::Save initSaveTests()
 {

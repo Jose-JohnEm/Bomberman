@@ -8,32 +8,32 @@
 #include "Astar.hpp"
 
 Game::Point::Point(const int &x, const int &y)
-    : _x{x}, _y{y}
+        : _x{x}, _y{y}
 {
 }
 
 Game::Astar::Astar(const std::vector<std::string> &map, const Point &start, const Point &target)
-    : _map(map),
-    _mapDimensions(std::make_pair(map[0].size(), map.size())),
-    _start(start),
-    _target(target),
-    _neighbors(
-        {
-            Point(-1, -1),
-            Point(1, -1),
-            Point(-1, 1),
-            Point(1, 1),
-            Point(0, -1),
-            Point(-1, 0),
-            Point(0, 1),
-            Point(1, 0)
-        }
-    )
+        : _map(map),
+          _mapDimensions(std::make_pair(map[0].size(), map.size())),
+          _start(start),
+          _target(target),
+          _neighbors(
+                  {
+                          Point(-1, -1),
+                          Point(1, -1),
+                          Point(-1, 1),
+                          Point(1, 1),
+                          Point(0, -1),
+                          Point(-1, 0),
+                          Point(0, 1),
+                          Point(1, 0)
+                  }
+          )
 {
 }
 
 Game::Node::Node(const Point &positions, const Point &parentPositions, const int &g, const int &h)
-    : _positions(positions), _parentPositions(parentPositions), _g(g), _h(h)
+        : _positions(positions), _parentPositions(parentPositions), _g(g), _h(h)
 {
 }
 
@@ -63,7 +63,8 @@ bool Game::Astar::targetIsReached(Node &openHead)
     Point neighbor;
     int h = 0, g = 0;
 
-    for (int i = 0; i < _neighbors.size(); i++)
+    // Set i to 0 to take diagonals into account, 4 to avoid these diagonal paths
+    for (int i = 4; i < _neighbors.size(); i++)
     {
         // Select a specific slot
         neighbor = openHead._positions + _neighbors[i];
@@ -141,7 +142,7 @@ int Game::Astar::fillPath(std::list<Point> &path)
         }
     }
     // Finally, add the start position at the beginning of the path
-    path.push_front(_start);
+    // path.push_front(_start);
 
     // Return the last node cost
     return _close.back()._g + 1;

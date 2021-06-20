@@ -9,10 +9,15 @@ inline std::pair<size_t, size_t> CFunctions::generatePairOfRandomIntegers(size_t
 {
     int i = 0, j = 0;
 
-    srand((unsigned)time(0));
+    srand(static_cast<unsigned>(time(0)));
     i = (rand()%limitOfFirst)+0;
-    srand((unsigned)time(0));
+    srand(static_cast<unsigned>(time(0)));
     j = (rand()%limitOfSecond)+0;
 
     return std::make_pair(i, j);
+}
+
+inline size_t CFunctions::generateRandomInteger(size_t limit)
+{
+    return rand() % limit;
 }

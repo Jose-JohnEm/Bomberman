@@ -203,7 +203,8 @@ public:
      * @param box Vector contains Box positions
      * @return true or false
      */
-    bool mouseIsInBox(const std::vector<size_t> &box) const;
+    template <typename T>
+    bool mouseIsInBox(const std::vector<T> &box) const;
 
     /**
      * @brief Return a size_t vector contains the four corners values of a box
@@ -214,7 +215,8 @@ public:
      * @param box size_t represents lowerRightCorner
      * @return size_t vector
      */
-    std::vector<size_t> createBox(const size_t &upperLeftCorner, const size_t &upperRightCorner, const size_t &lowerLeftCorner, const size_t &lowerRightCorner) const;
+    template <typename T>
+    std::vector<T> createBox(const T &upperLeftCorner, const T &upperRightCorner, const T &lowerLeftCorner, const T &lowerRightCorner) const;
 
     /**
      * @brief Update Transition Manager
@@ -274,7 +276,7 @@ public:
     /**
      * @brief Scene for Modes
      */
-    void displayPlayerChoiceScene();
+    void displayPlayerChoiceScene(void);
 
     /**
      * @brief Scene for Game
@@ -299,17 +301,17 @@ public:
     /**
      * @brief Go to Another Scene
      */
-    void goToAnotherScene();
+    void goToAnotherScene(void);
 
     /**
      * @brief Go to Another Scene
      */
-    void goToAnotherSceneFromVictory();
+    void goToAnotherSceneFromVictory(void);
 
     /**
      * @brief Go to Another Scene
      */
-    void goToAnotherSceneFromDefeat();
+    void goToAnotherSceneFromDefeat(void);
 
     /**
      * @brief Display specific cinematic
@@ -324,8 +326,10 @@ public:
      * @param cinematicPathDirectory A string related to the specific cinematic directory
      * @param hideSkip A size_t corresponding to the cinematic frame when you must hide the skip button
      * @param gap Duration between each frame
+     * @param clearOrNot Boolean to kwow if screen should be clear or not
+     * @param posX Pos X of frame
      */
-    void displayCinematic(const std::string &cinematicPathDirectory, const size_t &hideSkip = 0, const size_t &gap = 0) const;
+    void displayCinematic(const std::string &cinematicPathDirectory, const size_t &hideSkip = 0, const size_t &gap = 0, const bool &clearOrNot = true, const int &posX = 0);
 
     /**
      * @brief This function must display the current scene. It is used in the game loop
@@ -402,21 +406,26 @@ public:
     void loadThisBackup(const std::string &_pathToBackupFile);
 
     /**
+     * @brief Check End Scenario of the game
+     */
+    void checkEndScenario(void);
+
+    /**
      * @brief Display Victory Scene
      */
-    void displayVictoryScene();
+    void displayVictoryScene(void);
 
     /**
      * @brief Display Defeat Scene
      */
-    void displayDefeatScene();
+    void displayDefeatScene(void);
 
     /**
      * @brief Display Players Panels in the scene InGame
      *
-     * @param panelPos Position of all Panels in a vector of pair (x, y)
+     * @param _panelPos Position of all Panels in a vector of pair (x, y)
      */
-    void displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &panelPos);
+    void displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &_panelPos);
 
     /**
      * @brief This function displays all cards and their parameters
@@ -546,6 +555,17 @@ public:
      */
     void setPlayerControls(const std::vector<std::string> &playerControls) override;
 
+    /**
+     * @brief Shake the camera
+     *
+     */
+    void cameraShake() override;
+
+    /**
+     * @brief Displaying the scores in end scenes
+     */
+    void displayEndScores();
+
 private:
     Raylib::Window _window;                     // Game window
 
@@ -563,6 +583,7 @@ private:
      * [8] -- _mapType
      */
     std::array<size_t, 9> _gameSettings = {0, 1, 1, 1, 60, 0, 1, 1, 0};
+    std::array<size_t, 9> _gameSettingsBackup;          // GameSettings Backup
     size_t _sizeMap = 5;                                                        // Size of Map
     double _startingTime;                                                       // Get Time from raylib
     double _lastFrameTime;                                                      // Get Time every frame from raylib
@@ -570,6 +591,10 @@ private:
     float masterVolume;                                                         // Master volume
     float musicVolume;                                                          // Master volume
     float sfxVolume;                                                            // Master volume
+    size_t _deadPlayers = 0;                                                         // A size_t
+    size_t _deadAi = 0;                                                          // A size_t
+    size_t _humanPlayers = 0;                                                            // A size_t
+    size_t _aiPlayers = 0;                                                           // A size_t
     std::vector<std::string> _userNames;                                        // A vector of all the users names
     std::pair<bool, std::vector<void (XRay::*)()>> _intro;                      // Intro pointer to member function
     Scene _scene = MENU;                                                        // Current scene
@@ -580,6 +605,7 @@ private:
     std::function<void (std::string)> _pointerToLoadFunc;                                                   // Pointer to Load Func
     std::function<void (const size_t pos, const std::string action)> _playerActionsFunc;                    // Pointer to playerActionsFunc
     Raylib::Camera3D _camera;                                                   // The camera
+    std::vector<std::pair<size_t, size_t>> _panelPos;                                // Position of all Panels in a vector of pair (x, y)
 
     std::vector<bool> _playerTab{true, false, false, false};                    // A vector of boolean that represents if the player is an AI or not
     std::vector<Resources> _controlsTab{UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN};                    // A vector of resources (See in Resources.hpp) that represents if the controls
@@ -605,6 +631,9 @@ private:
     std::map<SfxResources, std::shared_ptr<Raylib::Sound>> _sfx;                // SFX dictionary
     std::vector<std::shared_ptr<IPlayerInput>> _playersInput{std::shared_ptr<IPlayerInput>(new MousePlayerInput())};    // Player input
     PlayerSelector::Selector _pSelector;                                        // 3D Camera
+    Clock _cameraShakeClock;
+    float _cameraShakeFrame;
+    float _yCameraAxis;
 };
 
 #include "XRay.inl"

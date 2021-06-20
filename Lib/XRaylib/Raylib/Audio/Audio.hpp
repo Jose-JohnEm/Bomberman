@@ -12,10 +12,8 @@
 #include <iostream>
 #include "raylib.h"
 
-namespace Raylib
-{
+namespace Raylib {
     class Audio {
-
         /// Audio device management functions
     public:
         /**
@@ -55,6 +53,7 @@ namespace Raylib
     };
 
 #include "Audio.inl"
+
 }
 
 #endif /* !AUDIO_HPP_ */

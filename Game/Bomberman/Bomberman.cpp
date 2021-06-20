@@ -8,7 +8,7 @@
 #include "Bomberman.hpp"
 
 Game::Bomberman::Bomberman(void)
-: _gameName{"Bomberman"}, _gameOver{false}
+        : _gameName{"Bomberman"}, _gameOver{false}
 {
     std::srand(static_cast<unsigned>(time(0)));
 }
@@ -79,27 +79,21 @@ void Game::Bomberman::initPlayersStats()
 
 bool Game::Bomberman::playerGotHit(const std::pair<int, int> &pos, const float &posX, const float &posY) const
 {
-    if (pos.first >= posX && pos.first <= posX + 1 && pos.second >= posY && pos.second <= posY + 1) {
-        std::cout << "AAAAAAAAAA" << std::endl;
+    if (pos.first >= posX && pos.first <= posX + 1 && pos.second >= posY && pos.second <= posY + 1)
         return true;
-    }
     return false;
 }
 
 void Game::Bomberman::randomDropItem(const Raylib::Vector3 &pos)
 {
-    int r_value = rand() % 100;
+    int r_value = CFunctions::generateRandomInteger(100);
 
-    if (0 <= r_value && r_value <= 9)
+    if (0 <= r_value && r_value <= 14)
         _entities.push_back(std::shared_ptr<IEntity>(new Game::BombUp(pos.getCStruct())));
-    else if (10 <= r_value && r_value <= 29)
+    else if (15 <= r_value && r_value <= 29)
         _entities.push_back(std::shared_ptr<IEntity>(new Game::Fire(pos.getCStruct())));
-    else if (30 <= r_value && r_value <= 34)
+    else if (30 <= r_value && r_value <= 39)
         _entities.push_back(std::shared_ptr<IEntity>(new Game::Speed(pos.getCStruct())));
-    else if (35 <= r_value && r_value <= 39)
-        _entities.push_back(std::shared_ptr<IEntity>(new Game::Life(pos.getCStruct())));
-    else if (40 <= r_value && r_value <= 44)
-        _entities.push_back(std::shared_ptr<IEntity>(new Game::Pass(pos.getCStruct())));
 
 }
 
@@ -121,14 +115,13 @@ void Game::Bomberman::eraseEntitiesOnBomb(const std::pair<int, int> &pos)
     }
 }
 
-void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<int, int> pos)
+void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<int, int> pos, Game::Bomb &bomb)
 {
     char current = _map[pos.second][pos.first];
 
     std::cout << "C ==>" << current << std::endl;
-    if (current == 'H' || current == 'A') {
+    if (current == 'H' || current == 'A')
         eraseEntitiesOnBomb({pos.first, pos.second});
-    }
     _map[pos.second][pos.first] = c;
 
     for (int i = 1; i <= rad; i++)
@@ -136,8 +129,10 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
         current = _map[pos.second][pos.first + i];
         if (current == 'W' || current == 'X' || current == 'E')
             break;
-        if (current == 'M' || current == 'H' || current == 'A') {
+        if (current == 'M')
+        {
             _map[pos.second][pos.first + i] = c;
+            bomb.increasePlayerWall();
             eraseEntitiesOnBomb({pos.first + i, pos.second});
             break;
         }
@@ -148,8 +143,10 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
         current = _map[pos.second][pos.first - i];
         if (current == 'W' || current == 'X' || current == 'E')
             break;
-        if (current == 'M' || current == 'H' || current == 'A') {
+        if (current == 'M')
+        {
             _map[pos.second][pos.first - i] = c;
+            bomb.increasePlayerWall();
             eraseEntitiesOnBomb({pos.first - i, pos.second});
             break;
         }
@@ -160,8 +157,10 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
         current = _map[pos.second + i][pos.first];
         if (current == 'W' || current == 'X' || current == 'E')
             break;
-        if (current == 'M' || current == 'H' || current == 'A') {
+        if (current == 'M')
+        {
             _map[pos.second + i][pos.first] = c;
+            bomb.increasePlayerWall();
             eraseEntitiesOnBomb({pos.first, pos.second + i});
             break;
         }
@@ -172,8 +171,9 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
         current = _map[pos.second - i][pos.first];
         if (current == 'W' || current == 'X' || current == 'E')
             break;
-        if (current == 'M' || current == 'H' || current == 'A') {
+        if (current == 'M') {
             _map[pos.second - i][pos.first] = c;
+            bomb.increasePlayerWall();
             eraseEntitiesOnBomb({pos.first, pos.second - i});
             break;
         }
@@ -190,47 +190,125 @@ void Game::Bomberman::bombExplosion(Game::Bomb &bomb, const size_t &index)
     if (bomb.hasExplode())
     {
         _entities.erase(_entities.begin() + index);
+        _isCameraShaking = false;
     }
     else if (bomb.isExploding())
     {
+        _isCameraShaking = true;
         rad = bomb.makeExplode();
-        setCharOnRadius('X', rad, pos);
+        setCharOnRadius('X', rad, pos, bomb);
         bomb.setBombzone(_map);
         for (int y = 0;  y < _map.size(); y++)
         {
             for (int x = 0; x < _map[0].size(); x++)
             {
+                std::cout << _map[y][x];
                 if (_map[y][x] == 'X')
-                    _map[y][x] = 42;
+                    _map[y][x] = '*';
             }
+            std::cout << std::endl;
         }
     }
 }
 
 void Game::Bomberman::handleIfPlayerIsNearAnItem(Player &player)
 {
+    size_t index = 0;
+    static Raylib::Sound sound ("resources/Sound/tudum.wav");
+
     for (auto &entity : _entities)
     {
-        if (entity->getType() == "Item" && CheckCollisionSpheres(player.getPositions().getCStruct(), 0.3, entity->getPositions().getCStruct(), 0.3))
+        if (dynamic_cast<Game::Powerups *>(entity.get()) != nullptr && CheckCollisionSpheres(player.getPositions().getCStruct(), 0.3, entity->getPositions().getCStruct(), 0.3))
         {
             dynamic_cast<Game::Powerups *>(entity.get())->applyPowerupTo(player);
+            sound.play();
+            std::cout << "<<<< Got the..." << std::endl;
+            _entities.erase(_entities.begin() + index);
+            std::cout << "<<<< Item" << std::endl;
+        }
+        index++;
+    }
+}
+
+template <typename T>
+std::vector<std::pair<int, int>> Game::Bomberman::getEntitiesPositions(void) const
+{
+    std::vector<std::pair<int, int>> entitiesPos;
+    int x = 0, y = 0;
+
+    for (const std::shared_ptr<IEntity> &entity : _entities)
+    {
+        if (dynamic_cast<T*>(entity.get()))
+        {
+            Raylib::Vector3 entityPos = entity->getPositions();
+            x = static_cast<int>(entityPos.x);
+            y = static_cast<int>(_map.size() - entityPos.y);
+            entitiesPos.push_back(std::make_pair(x, y));
         }
     }
+    return entitiesPos;
+}
+
+template<typename T>
+std::vector<T*> Game::Bomberman::getEntitiesData(void) const
+{
+    std::vector<T*> entities;
+    size_t i = 0;
+
+    for (const std::shared_ptr<IEntity> &entity : _entities)
+    {
+        if (dynamic_cast<T*>(entity.get()))
+        {
+            entities.push_back(dynamic_cast<T*>(entity.get()));
+        }
+        i++;
+    }
+    std::cout << "Found " << i << " Players";
+    return entities;
+}
+
+std::vector<std::string> Game::Bomberman::placeEntitiesOnMap(const std::vector<std::pair<int, int>> &entitiesPos, const char &c) const
+{
+    std::vector<std::string> map = _map;
+
+    for (int y = 0; y < map.size(); y++)
+    {
+        for (int x = 0; x < map[0].size(); x++)
+        {
+            if (std::find(entitiesPos.begin(), entitiesPos.end(), std::make_pair(x, y)) != entitiesPos.end())
+            {
+                map[y][x] = c;
+            }
+        }
+    }
+    return map;
 }
 
 void Game::Bomberman::runAI(void)
 {
-    // Get players entities
-    std::vector<Human> humans;
+    // Get AIs and targets entities
+    std::vector<std::shared_ptr<IEntity>> targets;
     std::vector<AI> AIs;
 
     for (const std::shared_ptr<IEntity> &entity : _entities)
     {
-        if (entity->getType().compare("Human") == 0)
+        if (dynamic_cast<Game::Human*>(entity.get()))
         {
-            humans.push_back(*dynamic_cast<Game::Human *>(entity.get()));
+            targets.push_back(std::make_shared<Game::Human>(*dynamic_cast<Game::Human *>(entity.get())));
         }
-        else if (entity->getType().compare("AI") == 0)
+        else if (dynamic_cast<Game::Fire*>(entity.get()) && _settings[AI_LVL] == 3)
+        {
+            targets.push_back(std::make_shared<Game::Fire>(*dynamic_cast<Game::Fire*>(entity.get())));
+        }
+        else if (dynamic_cast<Game::Speed*>(entity.get()) && _settings[AI_LVL] == 3)
+        {
+            targets.push_back(std::make_shared<Game::Speed>(*dynamic_cast<Game::Speed*>(entity.get())));
+        }
+        else if (dynamic_cast<Game::BombUp*>(entity.get()) && _settings[AI_LVL] == 3)
+        {
+            targets.push_back(std::make_shared<Game::BombUp>(*dynamic_cast<Game::BombUp*>(entity.get())));
+        }
+        else if (dynamic_cast<Game::AI*>(entity.get()))
         {
             AIs.push_back(*dynamic_cast<Game::AI *>(entity.get()));
         }
@@ -239,7 +317,13 @@ void Game::Bomberman::runAI(void)
     // Run AI algorithm
     try
     {
-        ArtificialIntelligence AI(AIs, humans, _map);
+        ArtificialIntelligence AI(
+                [this] (const size_t playerID, const std::string action) {doPlayerAction(playerID, action);},
+                AIs,
+                targets,
+                placeEntitiesOnMap(getEntitiesPositions<Game::Bomb>(), 'B'),
+                _settings[AI_LVL]
+        );
         AI.run();
     }
     catch(const std::invalid_argument &error)
@@ -264,7 +348,12 @@ void Game::Bomberman::updateEntities()
         }
         index++;
     }
-    runAI();
+
+    // Run AI algorithm
+    if (_aiClock.doesTimeElapsed(0.03f))
+    {
+        runAI(); //<-- on prend aucun risque chkl segfault aussi ici
+    }
 }
 
 void Game::Bomberman::updateScores()
@@ -277,9 +366,12 @@ void Game::Bomberman::updatePlayersStats()
 
 void Game::Bomberman::restart(void)
 {
+    size_t y = _map.size()-2;
     // Reset Scores
     // TODO: TO IMPLEMENT
     _reinit = 0;
+    _map.clear();
+    getMap(y);
 /*    for (size_t i = 0; i < _scores.size(); i++) {
         _scores[i].second = "0";
         for (size_t j = 0; j < _playersStats[i].size(); j++)
@@ -330,6 +422,7 @@ void Game::Bomberman::loadGame(const std::string &backupFilePath)
         _entities.push_back(player);
     }
 
+    std::cout << getEntitiesData<Game::Player>() << std::endl;
     // Load the user names
     _userNames = load.getUserNames();
 
@@ -354,6 +447,13 @@ void Game::Bomberman::updateGame(void)
         initEntities();
         initPlayersStats();
         _reinit++;
+    }
+    _sharedPlayers.clear();
+    for (const std::shared_ptr<IEntity> &entity : _entities) {
+        if (entity->getType().compare("Human") == 0)
+            _sharedPlayers.push_back(std::make_shared<Game::Human>(*dynamic_cast<Game::Human *>(entity.get())));
+        else if (entity->getType().compare("AI") == 0)
+            _sharedPlayers.push_back(std::make_shared<Game::AI>(*dynamic_cast<Game::AI *>(entity.get())));
     }
     if (!_gameOver) {
         updateEntities();

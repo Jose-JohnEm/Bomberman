@@ -6,10 +6,10 @@
 */
 
 #include "XRay.hpp"
-#include "../../../Engine/Exception/MyException.hpp"
+#include "Exception/Exception.hpp"
 
 XRay::XRay(void)
-    : _window(1920, 1080, "Bomberman")
+        : _window(1920, 1080, "Bomberman")
 {
     // Set icon for window
     Raylib::Window::setWindowIcon(Raylib::Image("resources/assets/head.png"));
@@ -54,7 +54,7 @@ XRay::XRay(void)
     _scenesBackBackup.insert(std::pair<Scene, void (XRay::*)()>(Scene::MAP_CHOICE, &XRay::displayPlayerChoiceScene));
 
     // Display Intro (studio and introduction cinematic)
-	_intro = std::make_pair(true, std::vector<void (XRay::*)()>{&XRay::displayStudio, &XRay::displayTeamPresentation});
+    _intro = std::make_pair(true, std::vector<void (XRay::*)()>{&XRay::displayStudio, &XRay::displayTeamPresentation});
 
     //Transition Manager
     _transitionManager.insert(std::pair<Scene, std::pair<bool, bool>>(Scene::HELP, std::pair<bool, bool>(false, false)));
@@ -64,7 +64,7 @@ XRay::XRay(void)
     _transitionManager.insert(std::pair<Scene, std::pair<bool, bool>>(Scene::LOAD_GAME, std::pair<bool, bool>(false, false)));
     _transitionManager.insert(std::pair<Scene, std::pair<bool, bool>>(Scene::MAP_CHOICE, std::pair<bool, bool>(false, false)));
 
-	masterVolume = 50;
+    masterVolume = 50;
     musicVolume = 100;
     sfxVolume = 100;
     Raylib::Audio::setMasterVolume(masterVolume / 100);
@@ -212,13 +212,17 @@ void XRay::setResources(void)
     _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::MEHDI, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/mehdi.png"))));
     _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::CHARLES, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/charles.png"))));
     _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::TEAMTITLE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/teamAndTitle.png"))));
+    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SKATE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/3D/Items/skate.png"))));
+    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::FIRE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/3D/Items/fire.png"))));
+    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::IBOMB, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/3D/Items/bomb.png"))));
+    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::AIPANEL, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/aiPanel.png"))));
 }
 
 void XRay::setAudioResources(void)
 {
     // Music
     _musics.insert(std::pair<MusicResources, std::shared_ptr<Raylib::Music>>(MusicResources::MSC_BOMBERMAN, std::make_shared<Raylib::Music>(*(new Raylib::Music("resources/music/Bomberman.mp3")))));
-    //_musics.insert(std::pair<MusicResources, std::shared_ptr<Raylib::Music>>(MusicResources::MSC_OPENNING, std::make_shared<Raylib::Music>(*(new Raylib::Music("resources/music/opening.mp3")))));
+    _musics.insert(std::pair<MusicResources, std::shared_ptr<Raylib::Music>>(MusicResources::MSC_GAME, std::make_shared<Raylib::Music>(*(new Raylib::Music("resources/music/bmgame.ogg")))));
 
     // Sound
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_OPENNING, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/music/opening.mp3")))));
@@ -235,6 +239,8 @@ void XRay::setAudioResources(void)
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_WEEE, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/wee.wav")))));
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_BOOM, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/boom.wav")))));
     _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_TUDUM, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/tudum.wav")))));
+    _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_DEFEAT, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/bmlose.ogg")))));
+    _sfx.insert(std::pair<SfxResources, std::shared_ptr<Raylib::Sound>>(SfxResources::SFX_COUNTDOWN, std::make_shared<Raylib::Sound>(*(new Raylib::Sound("resources/Sound/countdown.wav")))));
 }
 
 void XRay::quitGame(void)
@@ -269,27 +275,27 @@ void XRay::displayTeamPresentation(void)
     for (int f = 0, x = 0; x < 480; f += 1) {
         x = -100 + f;
         beginDrawing();
-		std::this_thread::sleep_for(std::chrono::milliseconds(3));
-		_resources.at(PRINCE)->drawTexture(x, CFunctions::generatePairOfRandomIntegers(1, 780).second);
-		_resources.at(LUCAS)->drawTexture(CFunctions::generatePairOfRandomIntegers(1080, 1080).first, CFunctions::generatePairOfRandomIntegers(1980, 1080).second);
-		_resources.at(JONATHAN)->drawTexture(CFunctions::generatePairOfRandomIntegers(780, 1080).first, x);
-		_resources.at(NICO)->drawTexture(x, CFunctions::generatePairOfRandomIntegers(1980, 580).second);
-		_resources.at(MEHDI)->drawTexture(CFunctions::generatePairOfRandomIntegers(1980, 1080).first, CFunctions::generatePairOfRandomIntegers(1980, 1080).second);
-		_resources.at(CHARLES)->drawTexture(CFunctions::generatePairOfRandomIntegers(500, 500).first, CFunctions::generatePairOfRandomIntegers(500, 500).second);
+        std::this_thread::sleep_for(std::chrono::milliseconds(3));
+        _resources.at(PRINCE)->drawTexture(x, CFunctions::generatePairOfRandomIntegers(1, 780).second);
+        _resources.at(LUCAS)->drawTexture(CFunctions::generatePairOfRandomIntegers(1080, 1080).first, CFunctions::generatePairOfRandomIntegers(1980, 1080).second);
+        _resources.at(JONATHAN)->drawTexture(CFunctions::generatePairOfRandomIntegers(780, 1080).first, x);
+        _resources.at(NICO)->drawTexture(x, CFunctions::generatePairOfRandomIntegers(1980, 580).second);
+        _resources.at(MEHDI)->drawTexture(CFunctions::generatePairOfRandomIntegers(1980, 1080).first, CFunctions::generatePairOfRandomIntegers(1980, 1080).second);
+        _resources.at(CHARLES)->drawTexture(CFunctions::generatePairOfRandomIntegers(500, 500).first, CFunctions::generatePairOfRandomIntegers(500, 500).second);
         endDrawing();
     }
 
-	std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+    std::this_thread::sleep_for(std::chrono::milliseconds(2000));
 
-	beginDrawing();
-	_resources.at(TEAMTITLE)->drawTexture(0, 0);
-	endDrawing();
+    beginDrawing();
+    _resources.at(TEAMTITLE)->drawTexture(0, 0);
+    endDrawing();
 
-	std::this_thread::sleep_for(std::chrono::milliseconds(4000));
+    std::this_thread::sleep_for(std::chrono::milliseconds(4000));
 
-	// Intro is done, so update its status flag
-	_intro.first = false;
-	displayCinematic(Cinematic::INTRO);
+    // Intro is done, so update its status flag
+    _intro.first = false;
+    displayCinematic(Cinematic::INTRO);
 }
 
 void XRay::playMusic(MusicResources music) {
@@ -317,12 +323,12 @@ void XRay::playAndUpdateMusic(MusicResources music) {
 int catchThrowTrydisplayStudio() {
     try
     {   XRay test;
-    	test.displayStudio();
+        test.displayStudio();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -331,12 +337,12 @@ int catchThrowTrydisplayStudio() {
 int catchThrowTrydisplayTeamPresentation() {
     try
     {   XRay test;
-    	test.displayTeamPresentation();
+        test.displayTeamPresentation();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -346,12 +352,12 @@ int catchThrowTryplayMusic() {
     try
     {   XRay test;
         MusicResources music;
-    	test.playMusic(music);
+        test.playMusic(music);
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -361,12 +367,12 @@ int catchThrowTryplayAndUpdateMusic() {
     try
     {   XRay test;
         MusicResources music;
-    	test.playAndUpdateMusic(music);
+        test.playAndUpdateMusic(music);
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;

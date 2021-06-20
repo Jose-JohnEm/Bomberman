@@ -6,7 +6,7 @@
 */
 
 #include "XRay.hpp"
-#include "../../../Engine/Exception/MyException.hpp"
+#include "Exception/Exception.hpp"
 
 void XRay::displayHowToPlayScene(void)
 {
@@ -17,9 +17,9 @@ void XRay::displayHowToPlayScene(void)
     static Raylib::Texture card(Raylib::Image("resources/howToCards/card" + std::to_string(cardId) + ".png"));
 
     // Check if mouse is on button spot
-    bool goBack = mouseIsInBox(createBox(20, 1000, 280, 1065)) ? true : false;
-    bool onPrev = mouseIsInBox(createBox(50, 500, 166, 620)) ? true : false;
-    bool onNext = mouseIsInBox(createBox(1754, 500, 1870, 620)) ? true : false;
+    bool goBack = mouseIsInBox(createBox<size_t>(20, 1000, 280, 1065)) ? true : false;
+    bool onPrev = mouseIsInBox(createBox<size_t>(50, 500, 166, 620)) ? true : false;
+    bool onNext = mouseIsInBox(createBox<size_t>(1754, 500, 1870, 620)) ? true : false;
 
     // Draw scene
     (!_transitionManager[MENU].second) ? beginDrawing() : beginDrawing(false);
@@ -76,12 +76,12 @@ void XRay::displayHowToPlayScene(void)
 int catchThrowTrydisplayHowToPlayScene() {
     try
     {   XRay test;
-    	test.displayHowToPlayScene();
+        test.displayHowToPlayScene();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;

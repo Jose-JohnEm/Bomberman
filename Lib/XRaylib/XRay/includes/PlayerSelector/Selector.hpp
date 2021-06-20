@@ -204,17 +204,16 @@ namespace PlayerSelector
          */
         void updateRotationAxis();
 
-        //TODO: DOC
-        Raylib::Camera3D *camera;
-        std::vector<PlayerSelector::Player> _players;
-        int _nbCharacters;
-        std::vector<CharDictionary> _charaDictionary;
-        Map *_map;
-        std::vector<std::string> _asciiMap = {""};
+        Raylib::Camera3D *camera;                                               // The camera
+        std::vector<PlayerSelector::Player> _players;                           // Players
+        int _nbCharacters;                                                      // Number of character
+        std::vector<CharDictionary> _charaDictionary;                           // Character dictionnary
+        Map *_map;                                                              // Map
+        std::vector<std::string> _asciiMap = {""};                              // asciiMap
 
-        bool _modAvailable;
+        bool _modAvailable;                                                     // Is mod available
 
-        float _rotationAxis;
+        float _rotationAxis;                                                    // Degree of rotation
     };
 }
 

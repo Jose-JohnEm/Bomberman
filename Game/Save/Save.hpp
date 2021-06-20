@@ -14,10 +14,10 @@
 #include <sstream>
 #include <algorithm>
 #include <utility>
-#include "../includes/Settings.hpp"
-#include "../Player/Player.hpp"
-#include "../Map/Map.hpp"
-#include "../Lib/XRaylib/Raylib/Vector3/Vector3.hpp"
+#include "includes/Settings.hpp"
+#include "Player/Player.hpp"
+#include "Map/Map.hpp"
+#include "Vector3/Vector3.hpp"
 
 namespace Game
 {

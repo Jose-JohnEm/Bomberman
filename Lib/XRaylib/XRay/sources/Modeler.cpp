@@ -6,9 +6,7 @@
 */
 
 #include "Modeler.hpp"
-#include "../../../Engine/Exception/MyException.hpp"
-
-//TODO: GLOBAL REVIEW (raylib out the encapsulation! no documentation!)
+#include "Exception/Exception.hpp"
 
 Modeler::Modeler(const std::string &obj_path, const std::string &texture_path, const Animator &animation_path)
         : _model(LoadModel(obj_path.c_str())),
@@ -154,12 +152,12 @@ Model &Modeler::getModel()
 int catchThrowTrygetAnimationPath() {
     try
     {   Modeler test;
-    	test.getAnimationPath();
+        test.getAnimationPath();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -168,12 +166,12 @@ int catchThrowTrygetAnimationPath() {
 int catchThrowTrygetObjPath() {
     try
     {   Modeler test;
-    	test.getObjPath();
+        test.getObjPath();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -182,12 +180,12 @@ int catchThrowTrygetObjPath() {
 int catchThrowTrygetTexturePath() {
     try
     {   Modeler test;
-    	test.getTexturePath();
+        test.getTexturePath();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -204,12 +202,12 @@ void assertIsThereAnimationsPath() {
 int catchThrowTryupdate() {
     try
     {   Modeler test;
-    	test.update();
+        test.update();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -218,12 +216,12 @@ int catchThrowTryupdate() {
 int catchThrowTrymakeWalk() {
     try
     {   Modeler test;
-    	test.makeWalk();
+        test.makeWalk();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -232,12 +230,12 @@ int catchThrowTrymakeWalk() {
 int catchThrowTrymakeBomb() {
     try
     {   Modeler test;
-    	test.makeBomb();
+        test.makeBomb();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -246,12 +244,12 @@ int catchThrowTrymakeBomb() {
 int catchThrowTrymakeEmote() {
     try
     {   Modeler test;
-    	test.makeEmote();
+        test.makeEmote();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;

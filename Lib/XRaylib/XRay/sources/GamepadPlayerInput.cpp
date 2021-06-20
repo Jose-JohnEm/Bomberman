@@ -6,7 +6,7 @@
 */
 
 #include "GamepadPlayerInput.hpp"
-#include "../../../Engine/Exception/MyException.hpp"
+#include "Exception/Exception.hpp"
 
 GamepadPlayerInput::GamepadPlayerInput(size_t pos)
 {
@@ -19,12 +19,12 @@ GamepadPlayerInput::~GamepadPlayerInput()
 
 bool GamepadPlayerInput::shouldGoToEast(void) const
 {
-    return Raylib::Gamepad::isGamepadButtonDown(_pos, 2);
+    return Raylib::Gamepad::isGamepadButtonDown(_pos, 4);
 }
 
 bool GamepadPlayerInput::shouldGoToWest(void) const
 {
-    return Raylib::Gamepad::isGamepadButtonDown(_pos, 4);
+    return Raylib::Gamepad::isGamepadButtonDown(_pos, 2);
 }
 
 bool GamepadPlayerInput::shouldGoToNorth(void) const
@@ -60,79 +60,79 @@ bool GamepadPlayerInput::shouldSimulateAClick(void) const
 int catchThrowTryGamepadException() {
     try
     {   GamepadPlayerInput test;
-    	test.shouldGoToEast();
-        
+        test.shouldGoToEast();
+
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     try
     {   GamepadPlayerInput test;
-    	test.shouldGoToWest();
-        
+        test.shouldGoToWest();
+
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     try
     {   GamepadPlayerInput test;
-    	test.shouldGoToNorth();
-        
+        test.shouldGoToNorth();
+
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     try
     {   GamepadPlayerInput test;
-    	test.shouldGoToSouth();
-        
+        test.shouldGoToSouth();
+
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     try
     {   GamepadPlayerInput test;
-    	test.shouldChangeToPrev();
-        
+        test.shouldChangeToPrev();
+
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     try
     {   GamepadPlayerInput test;
-    	test.shouldChangeToNext();
-        
+        test.shouldChangeToNext();
+
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     try
     {   GamepadPlayerInput test;
-    	test.shouldSimulateAClick();
-        
+        test.shouldSimulateAClick();
+
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
