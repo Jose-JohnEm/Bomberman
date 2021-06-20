@@ -6,7 +6,7 @@
 */
 
 #include "MousePlayerInput.hpp"
-#include "../../../Engine/Exception/Exception.hpp"
+#include "Exception/Exception.hpp"
 
 /*
     MOUSE_BUTTON_LEFT    = 0,

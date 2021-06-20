@@ -6,7 +6,6 @@
 */
 
 #include "Keyboard.hpp"
-#include "../../../Engine/Exception/Exception.hpp"
 
 Raylib::Keyboard::Keyboard()
 {

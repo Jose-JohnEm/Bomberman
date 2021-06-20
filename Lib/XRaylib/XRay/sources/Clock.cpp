@@ -6,7 +6,7 @@
 */
 
 #include "Clock.hpp"
-#include "../../../Engine/Exception/Exception.hpp"
+#include "Exception/Exception.hpp"
 
 Clock::Clock()
         :_start(clock())

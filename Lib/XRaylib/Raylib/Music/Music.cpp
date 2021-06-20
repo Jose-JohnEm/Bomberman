@@ -6,7 +6,7 @@
 */
 
 #include "Music.hpp"
-#include "../../../Engine/Exception/Exception.hpp"
+#include "Exception/Exception.hpp"
 
 Raylib::Music::Music()
 {

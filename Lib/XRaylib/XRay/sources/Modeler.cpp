@@ -6,7 +6,7 @@
 */
 
 #include "Modeler.hpp"
-#include "../../../Engine/Exception/Exception.hpp"
+#include "Exception/Exception.hpp"
 
 Modeler::Modeler(const std::string &obj_path, const std::string &texture_path, const Animator &animation_path)
         : _model(LoadModel(obj_path.c_str())),

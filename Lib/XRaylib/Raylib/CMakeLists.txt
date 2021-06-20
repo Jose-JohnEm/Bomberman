@@ -25,6 +25,7 @@ FILE(GLOB_RECURSE RAYLIB_SRCS CONFIGURE_DEPENDS
 
 # Set Raylib Headers path
 SET(RAYLIB_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/")
+SET(ENGINE_HEADERS_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../../Engine/")
 
 # Create our static library target
 ADD_LIBRARY(${PROJECT_NAME} STATIC ${RAYLIB_SRCS})
@@ -35,6 +36,7 @@ TARGET_LINK_LIBRARIES(${PROJECT_NAME} raylib)
 # Add Raylib headers path to our project
 TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PRIVATE
         ${RAYLIB_HEADERS_PATH}
+        ${ENGINE_HEADERS_PATH}
         )
 
 # Active in debug environment or hidden in release

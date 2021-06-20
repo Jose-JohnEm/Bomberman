@@ -8,8 +8,8 @@
 #ifndef ARTIFICIALINTELLIGENCE_HPP_
 #define ARTIFICIALINTELLIGENCE_HPP_
 
-#include "../Player/Player.hpp"
-#include "../Bomberman/Bomberman.hpp"
+#include "Player/Player.hpp"
+#include "Bomberman/Bomberman.hpp"
 #include "Astar.hpp"
 
 namespace Game

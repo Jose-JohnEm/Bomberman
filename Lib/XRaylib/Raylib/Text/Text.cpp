@@ -6,7 +6,7 @@
 */
 
 #include "Text.hpp"
-#include "../../../Engine/Exception/Exception.hpp"
+#include "Exception/Exception.hpp"
 
 Raylib::Text::Text()
 {

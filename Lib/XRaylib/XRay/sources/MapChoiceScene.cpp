@@ -8,7 +8,7 @@
 */
 
 #include "XRay.hpp"
-#include "../../../Engine/Exception/Exception.hpp"
+#include "Exception/Exception.hpp"
 
 void XRay::displayGameSettings(void)
 {

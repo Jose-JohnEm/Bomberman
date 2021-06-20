@@ -6,7 +6,7 @@
 */
 
 #include "Mouse.hpp"
-#include "../../../Engine/Exception/Exception.hpp"
+#include "Exception/Exception.hpp"
 
 Raylib::Mouse::Mouse()
 {
