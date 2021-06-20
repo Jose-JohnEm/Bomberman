@@ -25,25 +25,25 @@ void XRay::drawPlayersHead(size_t i, size_t x, size_t y)
         _resources.at(YELLOWBOMBERMAN)->drawTexture(x, y);
         Raylib::Text::drawText(_scores[i].second, _panelPos[i].first + 150, _panelPos[i].second + 76, 50, Raylib::Color::Yellow());
         if (_playersStats[i][3].second == "0")
-            Raylib::Rectangle::drawRectangle(_panelPos[i].first, _panelPos[i].second - 230, 360, 400, Raylib::Color::fade(Raylib::Color::Yellow(), 0.4f));
+            Raylib::Rectangle::drawRectangle(_panelPos[i].first - 5, _panelPos[i].second - 230, 360, 400, Raylib::Color::fade(Raylib::Color::Yellow(), 0.4f));
     }
     if (_userNames[i] == "Red") {
         _resources.at(REDBOMBERMAN)->drawTexture(x, y);
         Raylib::Text::drawText(_scores[i].second, _panelPos[i].first + 150, _panelPos[i].second + 76, 50, Raylib::Color::Red());
         if (_playersStats[i][3].second == "0")
-            Raylib::Rectangle::drawRectangle(_panelPos[i].first, _panelPos[i].second - 230, 360, 400, Raylib::Color::fade(Raylib::Color::Red(), 0.4f));
+            Raylib::Rectangle::drawRectangle(_panelPos[i].first - 5, _panelPos[i].second - 230, 360, 400, Raylib::Color::fade(Raylib::Color::Red(), 0.4f));
     }
     if (_userNames[i] == "Blue") {
         _resources.at(BLUEBOMBERMAN)->drawTexture(x, y);
         Raylib::Text::drawText(_scores[i].second, _panelPos[i].first + 150, _panelPos[i].second + 76, 50, Raylib::Color::Blue());
         if (_playersStats[i][3].second == "0")
-            Raylib::Rectangle::drawRectangle(_panelPos[i].first, _panelPos[i].second - 230, 360, 400, Raylib::Color::fade(Raylib::Color::Blue(), 0.4f));
+            Raylib::Rectangle::drawRectangle(_panelPos[i].first - 5, _panelPos[i].second - 230, 360, 400, Raylib::Color::fade(Raylib::Color::Blue(), 0.4f));
     }
     if (_userNames[i] == "Green") {
         _resources.at(GREENBOMBERMAN)->drawTexture(x, y);
         Raylib::Text::drawText(_scores[i].second, _panelPos[i].first + 150, _panelPos[i].second + 76, 50, Raylib::Color::Green());
         if (_playersStats[i][3].second == "0")
-            Raylib::Rectangle::drawRectangle(_panelPos[i].first, _panelPos[i].second - 230, 360, 400, Raylib::Color::fade(Raylib::Color::Green(), 0.4f));
+            Raylib::Rectangle::drawRectangle(_panelPos[i].first - 5, _panelPos[i].second - 230, 360, 400, Raylib::Color::fade(Raylib::Color::Green(), 0.4f));
     }
 }
 
@@ -52,15 +52,15 @@ void XRay::displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &_panelPo
     for (size_t u = 0; u < (_gameSettings[7] + _gameSettings[5]); u++) {
         if (_controlsTab[u] == Resources::PLAYSTATIONYELLOW)
             _resources.at(PLAYSTATIONPANEL)->drawTexture(_panelPos[u].first, _panelPos[u].second);
-        if (_controlsTab[u] == Resources::XBOXYELLOW)
+        else if (_controlsTab[u] == Resources::XBOXYELLOW)
             _resources.at(XBOXPANEL)->drawTexture(_panelPos[u].first, _panelPos[u].second);
-        if (_controlsTab[u] == Resources::MOUSEYELLOW) {
+        else if (_controlsTab[u] == Resources::MOUSEYELLOW) {
             _resources.at(MOUSEPANEL)->drawTexture(_panelPos[u].first, _panelPos[u].second);
             _resources.at(MOUSERADAR)->drawTexture(1600, 40);
-        }
-        if (_controlsTab[u] == Resources::KEYBOARDYELLOW)
+        } else if (_controlsTab[u] == Resources::KEYBOARDYELLOW)
             _resources.at(KEYBOARDPANEL)->drawTexture(_panelPos[u].first, _panelPos[u].second);
-        drawPlayersHead(u, _panelPos[u].first-10, _panelPos[u].second-180);
+        else
+            _resources.at(AIPANEL)->drawTexture(_panelPos[u].first, _panelPos[u].second);
         _resources.at(SKATE)->drawTexture(_panelPos[u].first + 200, _panelPos[u].second - 15 - 64);
         Raylib::Text::drawText("x", _panelPos[u].first + 285, _panelPos[u].second - 15 - 64, 60, Raylib::Color::White());
         Raylib::Text::drawText(_playersStats[u][0].second, _panelPos[u].first + 325, _panelPos[u].second - 15 - 64, 60, Raylib::Color::White());
@@ -70,6 +70,7 @@ void XRay::displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &_panelPo
         _resources.at(IBOMB)->drawTexture(_panelPos[u].first + 200, _panelPos[u].second - 15 - 128 - 64 - 20);
         Raylib::Text::drawText("x", _panelPos[u].first + 285, _panelPos[u].second - 15 - 128 - 64 - 20, 60, Raylib::Color::White());
         Raylib::Text::drawText(_playersStats[u][2].second, _panelPos[u].first + 325, _panelPos[u].second - 15 - 128 - 64 - 20, 60, Raylib::Color::White());
+        drawPlayersHead(u, _panelPos[u].first-10, _panelPos[u].second-180);
     }
     _resources.at(CLOCKBAR)->drawTexture(600, 0);
     _resources.at(CLOCKBAR)->drawTexture(1200, 0);
