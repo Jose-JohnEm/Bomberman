@@ -133,20 +133,27 @@ void XRay::managePlayersActions(void)
     }
 }
 
-void XRay::checkEndScenario(void)
+void XRay::checkEndScenario(size_t deadPlayers)
 {
     size_t i = 0;
 
     while (i < _gameInfos.size() && _gameInfos[i]->getType().compare("Human") != 0)
         i++;
     if (_gameSettings[7] == 1) {
-        _musics.at(MSC_GAME)->stop();
+        if (_musics.at(MSC_GAME)->isPlaying())
+            _musics.at(MSC_GAME)->stop();
         if (_gameInfos[i]->getShouldDisplay())
             displayVictoryScene();
         else
             displayDefeatScene();
-    } else
-        displayVictoryScene();
+    } else {
+        if (_musics.at(MSC_GAME)->isPlaying())
+            _musics.at(MSC_GAME)->stop();
+        if (deadPlayers == _gameSettings[7])
+            displayDefeatScene();
+        else
+            displayVictoryScene();
+    }
 }
 
 void XRay::displayInGameScene(void)
@@ -213,12 +220,12 @@ void XRay::displayInGameScene(void)
     goToAnotherScene();
 
     // End Scenario
-/*    for (size_t i = 0; i < _gameInfos.size(); i++)
+    for (size_t i = 0; i < _gameInfos.size(); i++)
         if (!_gameInfos[i]->getType().compare("Human"))
             deadPlayers += _gameInfos[i]->getShouldDisplay() ? 0 : 1;
 
     if (deadPlayers == _gameSettings[7] || (_gameSettings[2] >= _gameSettings[1] && _gameSettings[4] == 0))
-        checkEndScenario();*/
+        checkEndScenario(deadPlayers);
 }
 
 // STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.

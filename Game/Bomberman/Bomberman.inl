@@ -10,8 +10,14 @@ inline void Game::Bomberman::setMapType(const std::size_t &mapType)
     _mapType = mapType;
 }
 
-inline const std::vector<std::pair<std::string, std::string>> &Game::Bomberman::getScores(void) const
+inline const std::vector<std::pair<std::string, std::string>> &Game::Bomberman::getScores(void)
 {
+    std::vector<Game::Player *> players = getEntitiesData<Game::Player>();
+
+    for (Game::Player *p : players)
+    {
+        _scores.push_back({p->getName(), std::to_string(Score(_settings, p).getScore())});
+    }
     return _scores;
 }
 
@@ -20,8 +26,23 @@ inline const std::vector<std::shared_ptr<IEntity>> &Game::Bomberman::getEntities
     return _entities;
 }
 
-inline const std::vector<std::vector<std::pair<std::string, std::string>>> &Game::Bomberman::getPlayersStats(void) const
+inline const std::vector<std::vector<std::pair<std::string, std::string>>> &Game::Bomberman::getPlayersStats(void)
 {
+    std::vector<Game::Player *> players = getEntitiesData<Game::Player>();
+    std::vector<std::pair<std::string, std::string>> pData;
+
+    _playersStats.clear();
+    for (Game::Player *p : players)
+    {
+        pData.push_back({"SPEED", std::to_string(p->getPowerUps()[P_SKATE])});
+        pData.push_back({"FIRE", std::to_string(p->getPowerUps()[P_FIRE])});
+        pData.push_back({"BOMB", std::to_string(p->getPowerUps()[P_BOMB])});
+
+        std::cout << p->getName() << std::endl;
+
+        _playersStats.push_back(pData);
+        pData.clear();
+    }
     return _playersStats;
 }
 
@@ -98,7 +119,7 @@ inline void Game::Bomberman::doPlayerAction(const size_t playerID, const std::st
                 break;
         }
     }
-    if (!_entities[i]->getShouldDisplay())
+    if ((!(i < _entities.size())) || !_entities[i]->getShouldDisplay())
         return;
     if (action == "goEast" || action == "goNorth" || action == "goSouth" || action == "goWest") {
         if (findPlayer(playerID).getAlive() && checkPlayerPosition(action, findPlayer(playerID)))
@@ -111,7 +132,7 @@ inline void Game::Bomberman::doPlayerAction(const size_t playerID, const std::st
         if (findPlayer(playerID).getAlive() && findPlayer(playerID).dropBomb())
             doDropBomb(playerID, findPlayer(playerID).getPositions2D());
     }
-}
+ }
 
 inline bool round90(float x, float y)
 {
