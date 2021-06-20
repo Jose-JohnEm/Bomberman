@@ -8,7 +8,6 @@
 #ifndef BOMBERMAN_HPP_
 #define BOMBERMAN_HPP_
 
-#include <cstdlib> // For srand and rand functions only !
 #include <vector>
 #include <istream>
 #include <algorithm>
