@@ -24,25 +24,25 @@ void XRay::drawPlayersHead(size_t i, size_t x, size_t y)
     if (_userNames[i] == "Yellow") {
         _resources.at(YELLOWBOMBERMAN)->drawTexture(x, y);
         Raylib::Text::drawText(_scores[i].second, _panelPos[i].first + 150, _panelPos[i].second + 76, 50, Raylib::Color::Yellow());
-        if (_playersStats[i][3].second == "0")
+        if (_playersStats.at(i).at(3).second == "0")
             Raylib::Rectangle::drawRectangle(_panelPos[i].first - 5, _panelPos[i].second - 230, 360, 400, Raylib::Color::fade(Raylib::Color::Yellow(), 0.4f));
     }
     if (_userNames[i] == "Red") {
         _resources.at(REDBOMBERMAN)->drawTexture(x, y);
         Raylib::Text::drawText(_scores[i].second, _panelPos[i].first + 150, _panelPos[i].second + 76, 50, Raylib::Color::Red());
-        if (_playersStats[i][3].second == "0")
+        if (_playersStats.at(i).at(3).second == "0")
             Raylib::Rectangle::drawRectangle(_panelPos[i].first - 5, _panelPos[i].second - 230, 360, 400, Raylib::Color::fade(Raylib::Color::Red(), 0.4f));
     }
     if (_userNames[i] == "Blue") {
         _resources.at(BLUEBOMBERMAN)->drawTexture(x, y);
         Raylib::Text::drawText(_scores[i].second, _panelPos[i].first + 150, _panelPos[i].second + 76, 50, Raylib::Color::Blue());
-        if (_playersStats[i][3].second == "0")
+        if (_playersStats.at(i).at(3).second == "0")
             Raylib::Rectangle::drawRectangle(_panelPos[i].first - 5, _panelPos[i].second - 230, 360, 400, Raylib::Color::fade(Raylib::Color::Blue(), 0.4f));
     }
     if (_userNames[i] == "Green") {
         _resources.at(GREENBOMBERMAN)->drawTexture(x, y);
         Raylib::Text::drawText(_scores[i].second, _panelPos[i].first + 150, _panelPos[i].second + 76, 50, Raylib::Color::Green());
-        if (_playersStats[i][3].second == "0")
+        if (_playersStats.at(i).at(3).second == "0")
             Raylib::Rectangle::drawRectangle(_panelPos[i].first - 5, _panelPos[i].second - 230, 360, 400, Raylib::Color::fade(Raylib::Color::Green(), 0.4f));
     }
 }
@@ -50,27 +50,27 @@ void XRay::drawPlayersHead(size_t i, size_t x, size_t y)
 void XRay::displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &_panelPos)
 {
     for (size_t u = 0; u < (_gameSettings[7] + _gameSettings[5]); u++) {
-        if (_controlsTab[u] == Resources::PLAYSTATIONYELLOW)
-            _resources.at(PLAYSTATIONPANEL)->drawTexture(_panelPos[u].first, _panelPos[u].second);
-        else if (_controlsTab[u] == Resources::XBOXYELLOW)
-            _resources.at(XBOXPANEL)->drawTexture(_panelPos[u].first, _panelPos[u].second);
-        else if (_controlsTab[u] == Resources::MOUSEYELLOW) {
-            _resources.at(MOUSEPANEL)->drawTexture(_panelPos[u].first, _panelPos[u].second);
+        if (_controlsTab.at(u) == Resources::PLAYSTATIONYELLOW)
+            _resources.at(PLAYSTATIONPANEL)->drawTexture(_panelPos.at(u).first, _panelPos.at(u).second);
+        else if (_controlsTab.at(u) == Resources::XBOXYELLOW)
+            _resources.at(XBOXPANEL)->drawTexture(_panelPos.at(u).first, _panelPos.at(u).second);
+        else if (_controlsTab.at(u) == Resources::MOUSEYELLOW) {
+            _resources.at(MOUSEPANEL)->drawTexture(_panelPos.at(u).first, _panelPos.at(u).second);
             _resources.at(MOUSERADAR)->drawTexture(1600, 40);
-        } else if (_controlsTab[u] == Resources::KEYBOARDYELLOW)
-            _resources.at(KEYBOARDPANEL)->drawTexture(_panelPos[u].first, _panelPos[u].second);
+        } else if (_controlsTab.at(u) == Resources::KEYBOARDYELLOW)
+            _resources.at(KEYBOARDPANEL)->drawTexture(_panelPos.at(u).first, _panelPos.at(u).second);
         else
-            _resources.at(AIPANEL)->drawTexture(_panelPos[u].first, _panelPos[u].second);
-        _resources.at(SKATE)->drawTexture(_panelPos[u].first + 200, _panelPos[u].second - 15 - 64);
-        Raylib::Text::drawText("x", _panelPos[u].first + 285, _panelPos[u].second - 15 - 64, 60, Raylib::Color::White());
-        Raylib::Text::drawText(_playersStats[u][0].second, _panelPos[u].first + 325, _panelPos[u].second - 15 - 64, 60, Raylib::Color::White());
-        _resources.at(FIRE)->drawTexture(_panelPos[u].first + 200, _panelPos[u].second - 15 - 128 - 10);
-        Raylib::Text::drawText("x", _panelPos[u].first + 285, _panelPos[u].second - 15 - 128 - 10, 60, Raylib::Color::White());
-        Raylib::Text::drawText(_playersStats[u][1].second, _panelPos[u].first + 325, _panelPos[u].second - 15 - 128 - 10, 60, Raylib::Color::White());
-        _resources.at(IBOMB)->drawTexture(_panelPos[u].first + 200, _panelPos[u].second - 15 - 128 - 64 - 20);
-        Raylib::Text::drawText("x", _panelPos[u].first + 285, _panelPos[u].second - 15 - 128 - 64 - 20, 60, Raylib::Color::White());
-        Raylib::Text::drawText(_playersStats[u][2].second, _panelPos[u].first + 325, _panelPos[u].second - 15 - 128 - 64 - 20, 60, Raylib::Color::White());
-        drawPlayersHead(u, _panelPos[u].first-10, _panelPos[u].second-180);
+            _resources.at(AIPANEL)->drawTexture(_panelPos.at(u).first, _panelPos.at(u).second);
+        _resources.at(SKATE)->drawTexture(_panelPos.at(u).first + 200, _panelPos.at(u).second - 15 - 64);
+        Raylib::Text::drawText("x", _panelPos.at(u).first + 285, _panelPos.at(u).second - 15 - 64, 60, Raylib::Color::White());
+        Raylib::Text::drawText(_playersStats.at(u).at(0).second, _panelPos.at(u).first + 325, _panelPos.at(u).second - 15 - 64, 60, Raylib::Color::White());
+        _resources.at(FIRE)->drawTexture(_panelPos.at(u).first + 200, _panelPos.at(u).second - 15 - 128 - 10);
+        Raylib::Text::drawText("x", _panelPos.at(u).first + 285, _panelPos.at(u).second - 15 - 128 - 10, 60, Raylib::Color::White());
+        Raylib::Text::drawText(_playersStats.at(u).at(1).second, _panelPos.at(u).first + 325, _panelPos.at(u).second - 15 - 128 - 10, 60, Raylib::Color::White());
+        _resources.at(IBOMB)->drawTexture(_panelPos.at(u).first + 200, _panelPos.at(u).second - 15 - 128 - 64 - 20);
+        Raylib::Text::drawText("x", _panelPos.at(u).first + 285, _panelPos.at(u).second - 15 - 128 - 64 - 20, 60, Raylib::Color::White());
+        Raylib::Text::drawText(_playersStats.at(u).at(2).second, _panelPos.at(u).first + 325, _panelPos.at(u).second - 15 - 128 - 64 - 20, 60, Raylib::Color::White());
+        drawPlayersHead(u, _panelPos.at(u).first-10, _panelPos.at(u).second-180);
     }
     _resources.at(CLOCKBAR)->drawTexture(600, 0);
     _resources.at(CLOCKBAR)->drawTexture(1200, 0);
@@ -147,15 +147,15 @@ void XRay::goToAnotherScene()
 void XRay::managePlayersActions(void)
 {
     for (size_t u = 0; u < _playersInput.size(); u++) {
-        if (_playersInput[u]->shouldGoToEast())
+        if (_playersInput.at(u)->shouldGoToEast())
             _playerActionsFunc(u, "goEast");
-        if (_playersInput[u]->shouldGoToNorth())
+        if (_playersInput.at(u)->shouldGoToNorth())
             _playerActionsFunc(u, "goNorth");
-        if (_playersInput[u]->shouldGoToSouth())
+        if (_playersInput.at(u)->shouldGoToSouth())
             _playerActionsFunc(u, "goSouth");
-        if (_playersInput[u]->shouldGoToWest())
+        if (_playersInput.at(u)->shouldGoToWest())
             _playerActionsFunc(u, "goWest");
-        if (_playersInput[u]->shouldSimulateAClick())
+        if (_playersInput.at(u)->shouldSimulateAClick())
             _playerActionsFunc(u, "dropBomb");
     }
 }
@@ -238,7 +238,7 @@ void XRay::displayInGameScene(void)
 
     // Next Set
     // End Scenario
-    if (((_deadAi == _aiPlayers && _humanPlayers - _deadPlayers == 1) || _deadPlayers == _humanPlayers || _gameSettings[4] == 0) && (_gameSettings[2] < _gameSettings[1])) {
+     if (((_deadAi == _aiPlayers && _humanPlayers - _deadPlayers == 1) || _deadPlayers == _humanPlayers || _gameSettings[4] == 0) && (_gameSettings[2] < _gameSettings[1])) {
         displayCinematic("readygo", 0, 1000);
         _startingTime = Raylib::Timing::getTime();
         _lastFrameTime = Raylib::Timing::getTime();
