@@ -28,11 +28,11 @@ Raylib::Window::~Window()
 int catchThrowTrywindowShouldClose() {
     try
     {   Raylib::Window test;
-    	test.windowShouldClose();
+        test.windowShouldClose();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -42,11 +42,11 @@ int catchThrowTrywindowShouldClose() {
 int catchThrowTrycloseWindow() {
     try
     {   Raylib::Window test;
-    	test.closeWindow();
+        test.closeWindow();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -57,11 +57,11 @@ int catchThrowTrysetWindowIcon() {
     try
     {   Raylib::Window test;
         Raylib::Image image;
-    	test.setWindowIcon(image);
+        test.setWindowIcon(image);
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -71,11 +71,11 @@ int catchThrowTrysetWindowIcon() {
 int catchThrowTryisWindowFullscreen() {
     try
     {   Raylib::Window test;
-    	test.isWindowFullscreen();
+        test.isWindowFullscreen();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -85,11 +85,11 @@ int catchThrowTryisWindowFullscreen() {
 int catchThrowTrytoggleFullscreen() {
     try
     {   Raylib::Window test;
-    	test.toggleFullscreen();
+        test.toggleFullscreen();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }

@@ -26,11 +26,11 @@ int catchThrowTrysetTargetFPS() {
     try
     {   Raylib::Timing test;
         int fps;
-    	test.setTargetFPS(fps);
+        test.setTargetFPS(fps);
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -40,11 +40,11 @@ int catchThrowTrysetTargetFPS() {
 int catchThrowTrygetFPSS() {
     try
     {   Raylib::Timing test;
-    	test.getFPS();
+        test.getFPS();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -54,11 +54,11 @@ int catchThrowTrygetFPSS() {
 int catchThrowTrygetFrameTime() {
     try
     {   Raylib::Timing test;
-    	test.getFrameTime();
+        test.getFrameTime();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -68,11 +68,11 @@ int catchThrowTrygetFrameTime() {
 int catchThrowTrygetTime() {
     try
     {   Raylib::Timing test;
-    	test.getTime();
+        test.getTime();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }

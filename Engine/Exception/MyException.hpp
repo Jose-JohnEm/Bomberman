@@ -35,13 +35,13 @@ namespace Engine
          * @return func // the name of the aforomentioned function
          */
         MyException(const char *msg, const char *file_, int line_, const char *func_, const char *info_ = "") : std::exception(),
-        file(file_),line(line_),func(func_),info(info_)
+                                                                                                                file(file_),line(line_),func(func_),info(info_)
         {
         }
 
-         /**
-         * @brief gzt the file
-         */
+        /**
+        * @brief gzt the file
+        */
         const char *get_file() const { return file; }
 
         /**

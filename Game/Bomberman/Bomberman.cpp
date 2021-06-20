@@ -8,7 +8,7 @@
 #include "Bomberman.hpp"
 
 Game::Bomberman::Bomberman(void)
-: _gameName{"Bomberman"}, _gameOver{false}
+        : _gameName{"Bomberman"}, _gameOver{false}
 {
     std::srand(static_cast<unsigned>(time(0)));
 }
@@ -212,13 +212,14 @@ void Game::Bomberman::bombExplosion(Game::Bomb &bomb, const size_t &index)
 void Game::Bomberman::handleIfPlayerIsNearAnItem(Player &player)
 {
     size_t index = 0;
+    static Raylib::Sound sound ("resources/Sound/tudum.wav");
 
     for (auto &entity : _entities)
     {
         if (dynamic_cast<Game::Powerups *>(entity.get()) != nullptr && CheckCollisionSpheres(player.getPositions().getCStruct(), 0.3, entity->getPositions().getCStruct(), 0.3))
         {
             dynamic_cast<Game::Powerups *>(entity.get())->applyPowerupTo(player);
-            //sound.play();
+            sound.play();
             std::cout << "<<<< Got the..." << std::endl;
             _entities.erase(_entities.begin() + index);
             std::cout << "<<<< Item" << std::endl;
@@ -315,11 +316,11 @@ void Game::Bomberman::runAI(void)
     try
     {
         ArtificialIntelligence AI(
-            [this] (const size_t playerID, const std::string action) {doPlayerAction(playerID, action);},
-            AIs,
-            targets,
-            placeEntitiesOnMap(getEntitiesPositions<Game::Bomb>(), 'B'),
-            _settings[AI_LVL]
+                [this] (const size_t playerID, const std::string action) {doPlayerAction(playerID, action);},
+                AIs,
+                targets,
+                placeEntitiesOnMap(getEntitiesPositions<Game::Bomb>(), 'B'),
+                _settings[AI_LVL]
         );
         AI.run();
     }
