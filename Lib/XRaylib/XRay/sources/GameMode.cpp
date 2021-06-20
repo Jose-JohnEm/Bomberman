@@ -15,8 +15,8 @@ void XRay::displayGameModeScene(void)
 
     // Check if mouse is on button spot
     bool goBack = mouseIsInBox(createBox<size_t>(20, 1000, 280, 1065)) ? true : false;
-    bool goNewGame = mouseIsInBox(createBox<size_t>(180, 500, 738+180, 500+109)) ? true : false;
-    bool goLoadGame = mouseIsInBox(createBox<size_t>(1140, 500, 1140+738, 500+109)) ? true : false;
+    bool goNewGame = mouseIsInBox(createBox<size_t>(0, 0, 960, 1080)) ? true : false;
+    bool goLoadGame = mouseIsInBox(createBox<size_t>(960, 0, 1920, 1080)) ? true : false;
 
     // Draw scene
     (!_transitionManager[MENU].second) ? beginDrawing() : beginDrawing(false);
@@ -27,8 +27,8 @@ void XRay::displayGameModeScene(void)
         else
             _resources.at(LOADGAME_BG)->drawTexture(0, 0);
         (goBack ? _resources.at(BACK_HOVER) : _resources.at(BACK))->drawTexture(20, 1000);
-        (goNewGame ? _resources.at(NEWGAME_HOVER) : _resources.at(NEWGAME))->drawTexture(180, 500);
-        (goLoadGame ? _resources.at(LOADGAME_HOVER) : _resources.at(LOADGAME))->drawTexture(1140, 500);
+        _resources.at(NEWGAME)->drawTexture(180, 500);
+        _resources.at(LOADGAME)->drawTexture(1140, 500);
         displayMouse();
 
         // Transition
