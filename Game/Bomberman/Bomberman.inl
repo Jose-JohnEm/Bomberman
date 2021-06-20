@@ -98,7 +98,7 @@ inline void Game::Bomberman::doPlayerAction(const size_t playerID, const std::st
                 break;
         }
     }
-    if (!_entities[i]->getShouldDisplay())
+    if ((!(i < _entities.size())) || !_entities[i]->getShouldDisplay())
         return;
     if (action == "goEast" || action == "goNorth" || action == "goSouth" || action == "goWest") {
         if (findPlayer(playerID).getAlive() && checkPlayerPosition(action, findPlayer(playerID)))
@@ -111,7 +111,7 @@ inline void Game::Bomberman::doPlayerAction(const size_t playerID, const std::st
         if (findPlayer(playerID).getAlive() && findPlayer(playerID).dropBomb())
             doDropBomb(playerID, findPlayer(playerID).getPositions2D());
     }
-}
+ }
 
 inline bool round90(float x, float y)
 {
