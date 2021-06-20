@@ -50,6 +50,11 @@ inline bool Game::Bomberman::isGameOver(void) const
     return _gameOver;
 }
 
+inline bool Game::Bomberman::isCameraShaking()
+{
+    return _isCameraShaking;
+}
+
 inline const std::string &Game::Bomberman::getGameName(void) const
 {
     return _gameName;

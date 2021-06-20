@@ -6,7 +6,7 @@
 */
 
 #include "Texture.hpp"
-#include "../../../Engine/Exception/MyException.hpp"
+#include "../../../Engine/Exception/Exception.hpp"
 
 Raylib::Texture::Texture(const std::string &fileName)
 {

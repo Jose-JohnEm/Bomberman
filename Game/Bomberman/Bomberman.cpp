@@ -190,9 +190,11 @@ void Game::Bomberman::bombExplosion(Game::Bomb &bomb, const size_t &index)
     if (bomb.hasExplode())
     {
         _entities.erase(_entities.begin() + index);
+        _isCameraShaking = false;
     }
     else if (bomb.isExploding())
     {
+        _isCameraShaking = true;
         rad = bomb.makeExplode();
         setCharOnRadius('X', rad, pos, bomb);
         bomb.setBombzone(_map);

@@ -6,7 +6,7 @@
 */
 
 #include "Window.hpp"
-#include "../../../Engine/Exception/MyException.hpp"
+#include "../../../Engine/Exception/Exception.hpp"
 
 
 Raylib::Window::Window(const int &width, const int &height, const std::string &title, const bool &lateInit)
@@ -30,10 +30,10 @@ int catchThrowTrywindowShouldClose() {
     {   Raylib::Window test;
         test.windowShouldClose();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -44,10 +44,10 @@ int catchThrowTrycloseWindow() {
     {   Raylib::Window test;
         test.closeWindow();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -59,10 +59,10 @@ int catchThrowTrysetWindowIcon() {
         Raylib::Image image;
         test.setWindowIcon(image);
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -73,10 +73,10 @@ int catchThrowTryisWindowFullscreen() {
     {   Raylib::Window test;
         test.isWindowFullscreen();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -87,10 +87,10 @@ int catchThrowTrytoggleFullscreen() {
     {   Raylib::Window test;
         test.toggleFullscreen();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;

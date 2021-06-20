@@ -6,7 +6,7 @@
 */
 
 #include "XRay.hpp"
-#include "../../../Engine/Exception/MyException.hpp"
+#include "../../../Engine/Exception/Exception.hpp"
 
 std::string XRay::getTimeInFormat(void)
 {
@@ -165,6 +165,16 @@ void XRay::checkEndScenario(void)
     }
 }
 
+void XRay::cameraShake(void)
+{
+    if (_cameraShakeClock.doesTimeElapsed(0.05f))
+        _cameraShakeFrame -= 0.55f;
+    if (_cameraShakeFrame < 0)
+        _cameraShakeFrame = 11;
+    _camera.setPosition(Raylib::Vector3(_camera.getCStruct().position.x, _yCameraAxis + static_cast<float>((cos(_cameraShakeFrame) * 0.2)), _camera.getCStruct().position.z));
+    //_camera.updateCamera();
+}
+
 void XRay::displayInGameScene(void)
 {
     // Set scene
@@ -200,6 +210,7 @@ void XRay::displayInGameScene(void)
     if (m_isPaused == 2) {
         _panelPos = panelLambda(_gameSettings[7] + _gameSettings[5]);
         _camera = Raylib::Camera3D(Vector3{size_m, size_m * -0.3f, size_m * 2.2f}, Vector3{size_m, size_m, 0}, Vector3{0, 1, 0}, 50, 0);
+        _yCameraAxis = _camera.getCStruct().position.y;
         displayCinematic("loading", 0, 0);
         displayCinematic("readygo", 0, 1000);
         _startingTime = Raylib::Timing::getTime();
@@ -260,10 +271,10 @@ int catchThrowTrygetTimeInFormat() {
     {   XRay test;
         test.getTimeInFormat();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -277,10 +288,10 @@ int catchThrowTrydrawPlayersHead() {
         size_t y;
         test.drawPlayersHead(i,x,y);
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -292,10 +303,10 @@ int catchThrowTrydisplayPlayersPanels() {
         std::vector<std::pair<size_t, size_t>> _panelPos;
         test.displayPlayersPanels(_panelPos);
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -306,10 +317,10 @@ int catchThrowTrydisplayPauseScene() {
     {   XRay test;
         test.displayPauseScene();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -320,10 +331,10 @@ int catchThrowTrydgoToAnotherScene() {
     {   XRay test;
         test.goToAnotherScene();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -334,10 +345,10 @@ int catchThrowTrymanagePlayersActions() {
     {   XRay test;
         test.managePlayersActions();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -348,10 +359,10 @@ int catchThrowTrydisplayInGameScene() {
     {   XRay test;
         test.displayInGameScene();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;

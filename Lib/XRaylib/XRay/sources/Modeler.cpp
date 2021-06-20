@@ -6,7 +6,7 @@
 */
 
 #include "Modeler.hpp"
-#include "../../../Engine/Exception/MyException.hpp"
+#include "../../../Engine/Exception/Exception.hpp"
 
 Modeler::Modeler(const std::string &obj_path, const std::string &texture_path, const Animator &animation_path)
         : _model(LoadModel(obj_path.c_str())),
@@ -154,10 +154,10 @@ int catchThrowTrygetAnimationPath() {
     {   Modeler test;
         test.getAnimationPath();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -168,10 +168,10 @@ int catchThrowTrygetObjPath() {
     {   Modeler test;
         test.getObjPath();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -182,10 +182,10 @@ int catchThrowTrygetTexturePath() {
     {   Modeler test;
         test.getTexturePath();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -204,10 +204,10 @@ int catchThrowTryupdate() {
     {   Modeler test;
         test.update();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -218,10 +218,10 @@ int catchThrowTrymakeWalk() {
     {   Modeler test;
         test.makeWalk();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -232,10 +232,10 @@ int catchThrowTrymakeBomb() {
     {   Modeler test;
         test.makeBomb();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -246,10 +246,10 @@ int catchThrowTrymakeEmote() {
     {   Modeler test;
         test.makeEmote();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;

@@ -8,7 +8,7 @@
 */
 
 #include "XRay.hpp"
-#include "../../../Engine/Exception/MyException.hpp"
+#include "../../../Engine/Exception/Exception.hpp"
 
 void XRay::displayGameSettings(void)
 {
@@ -114,10 +114,10 @@ int catchThrowTrydisplayGameSettings() {
     {   XRay test;
         test.displayGameSettings();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -128,10 +128,10 @@ int catchThrowTrycheckClickOnMapChoiceScene() {
     {   XRay test;
         test.checkClickOnMapChoiceScene();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -143,10 +143,10 @@ int catchThrowTrydisplayMapChoiceScene() {
     {
         test.displayMapChoiceScene();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
