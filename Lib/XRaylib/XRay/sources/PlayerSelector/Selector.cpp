@@ -163,6 +163,11 @@ void PlayerSelector::Selector::firstLoad()
 {
     if (_players.size() == 0)
         load();
+    else
+    {
+        unloadAll();
+        load();
+    }
 }
 
 std::vector<CharDictionary> PlayerSelector::Selector::getPlayerData() const
@@ -221,8 +226,6 @@ void PlayerSelector::Selector::unloadAll()
 {
     for (PlayerSelector::Player &player : _players)
         _players.pop_back();
-
-    delete camera;
 }
 
 void PlayerSelector::Selector::updateRotationAxis()
