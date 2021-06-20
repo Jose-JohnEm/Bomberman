@@ -21,6 +21,7 @@
 #include "AI/ArtificialIntelligence.hpp"
 #include "AI/Astar.hpp"
 #include "CFunctions.hpp"
+#include "Score/Score.hpp"
 
 namespace Game
 {
@@ -131,7 +132,7 @@ namespace Game
          * @param rad reach of fire
          * @param pos position of the bomb
          */
-        void setCharOnRadius(const char &c, const int &rad, std::pair<int, int> pos);
+        void setCharOnRadius(const char &c, const int &rad, std::pair<int, int> pos, Game::Bomb &bomb);
 
         /**
          * @brief Manage the bomb explosion

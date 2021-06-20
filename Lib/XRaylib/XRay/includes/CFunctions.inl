@@ -19,6 +19,5 @@ inline std::pair<size_t, size_t> CFunctions::generatePairOfRandomIntegers(size_t
 
 inline size_t CFunctions::generateRandomInteger(size_t limit)
 {
-    srand(static_cast<unsigned>(0));
     return rand() % limit;
 }

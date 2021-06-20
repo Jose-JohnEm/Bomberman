@@ -26,7 +26,7 @@ namespace Game
         * @param settings A const reference to an array of 9 size_t
         * @param player A const reference to Class Player
         */
-        Score(const std::array<std::size_t, 9> &settings, const std::shared_ptr<Game::Player> &player);
+        Score(const std::array<std::size_t, 9> &settings, const Game::Player *player);
 
         /**
         * @brief Destroy the Score object

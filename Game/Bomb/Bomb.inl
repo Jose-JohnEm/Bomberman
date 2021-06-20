@@ -13,6 +13,11 @@ inline int Game::Bomb::makeExplode()
     return _fire;
 }
 
+inline void Game::Bomb::increasePlayerWall()
+{
+    _reseter.setBrokenWalls(_reseter.getBrokenWalls() + 1);
+}
+
 inline bool Game::Bomb::isExploding()
 {
     return _explosing;
@@ -95,7 +100,10 @@ inline void Game::Bomb::drawEntity()
             && _players[t]->getPositions().y >= explosionCollision.y - 0.5
             && _players[t]->getPositions().x <= explosionCollision.x + 0.5
             && _players[t]->getPositions().y <= explosionCollision.y + 0.5)
+            {
                 _pointerToSetPlayer(_players[t]->getID());
+                _reseter.setKills(_reseter.getKills() + 1);
+            }
         }
     }
     Animated::drawEntity();
