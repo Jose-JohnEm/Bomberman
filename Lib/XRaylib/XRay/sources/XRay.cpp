@@ -215,6 +215,7 @@ void XRay::setResources(void)
     _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SKATE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/3D/Items/skate.png"))));
     _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::FIRE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/3D/Items/fire.png"))));
     _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::IBOMB, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/3D/Items/bomb.png"))));
+    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::AIPANEL, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/aiPanel.png"))));
 }
 
 void XRay::setAudioResources(void)
