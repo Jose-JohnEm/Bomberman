@@ -13,8 +13,8 @@ void XRay::goToAnotherSceneFromVictory()
     // Check if mouse is on button spot
     bool home = mouseIsInBox(createBox<float>(380, 330, 380+375, 330+65)) ? true : false;
     bool restart = mouseIsInBox(createBox<float>(380, 440, 380+375, 440+65)) ? true : false;
-    bool save = (_gameSettings[7] + _gameSettings[5] < 2) && mouseIsInBox(createBox<float>(380, 550, 380+375, 550+65)) ? true : false;
-    bool nextlevel = (_gameSettings[7] + _gameSettings[5] < 2) && mouseIsInBox(createBox<float>(380, 660, 380+375, 660+65)) ? true : false;
+    bool save = (_humanPlayers + _aiPlayers < 2) && mouseIsInBox(createBox<float>(380, 550, 380+375, 550+65)) ? true : false;
+    bool nextlevel = (_humanPlayers + _aiPlayers < 2) && mouseIsInBox(createBox<float>(380, 660, 380+375, 660+65)) ? true : false;
 
     // Call function that check click on button
     if ((home || restart || save || nextlevel) && Raylib::Mouse::isButtonPressed(0)) {
@@ -25,15 +25,17 @@ void XRay::goToAnotherSceneFromVictory()
         // Do here all manipulations to increase level
         _sfx.at(SFX_KLICK)->play();
         displayCinematic("loading", 0, 0);
-        displayInGameScene();
+        _gameSettings = _gameSettingsBackup;
+        _scene = IN_GAME;
     }
     if (restart && Raylib::Mouse::isButtonPressed(0)) {
         _sfx.at(SFX_KLICK)->play();
         _isPaused = false;
         m_isPaused = 2;
         _pointerToRestartFunc();
+        _gameSettings = _gameSettingsBackup;
         displayCinematic("loading", 0, 0);
-        displayInGameScene();
+        _scene = IN_GAME;
     }
     if (save && Raylib::Mouse::isButtonPressed(0)) {
         _sfx.at(SFX_KLICK)->play();
