@@ -147,7 +147,7 @@ namespace Engine
     private:
         /// This stores the file name
         const char *file;
-        /// This stores the actiual line 
+        /// This stores the actiual line
         int line;
         /// This stores the function
         const char *func;
