@@ -407,8 +407,10 @@ public:
 
     /**
      * @brief Check End Scenario of the game
+     *
+     * @param deadPlayers A size_t
      */
-    void checkEndScenario(void);
+    void checkEndScenario(size_t deadPlayers);
 
     /**
      * @brief Display Victory Scene
