@@ -16,7 +16,7 @@ inline float Game::Astar::calculateHValue(const Point &currentCell) const
 inline bool Game::Astar::isInMap(const Point &currentCell) const
 {
     return currentCell._x >= 0 && currentCell._x < _mapDimensions.first
-            && currentCell._y >= 0 && currentCell._y < _mapDimensions.second;
+           && currentCell._y >= 0 && currentCell._y < _mapDimensions.second;
 }
 
 inline bool Game::Astar::isUnBlocked(const Point &currentCell) const

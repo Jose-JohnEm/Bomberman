@@ -15,7 +15,7 @@ namespace Game
 {
     class Bomb : public Animated
     {
-        public:
+    public:
 
         /**
          * @brief Construct a new Bomb object
@@ -106,7 +106,7 @@ namespace Game
         Game::Player& _reseter; //pointer to reset bomb to the player who drops this bomb
     };
 
-    #include "Bomb.inl"
+#include "Bomb.inl"
 }
 
 #endif /* !BOMB_HPP_ */

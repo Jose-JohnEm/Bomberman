@@ -8,32 +8,32 @@
 #include "Astar.hpp"
 
 Game::Point::Point(const int &x, const int &y)
-    : _x{x}, _y{y}
+        : _x{x}, _y{y}
 {
 }
 
 Game::Astar::Astar(const std::vector<std::string> &map, const Point &start, const Point &target)
-    : _map(map),
-    _mapDimensions(std::make_pair(map[0].size(), map.size())),
-    _start(start),
-    _target(target),
-    _neighbors(
-        {
-            Point(-1, -1),
-            Point(1, -1),
-            Point(-1, 1),
-            Point(1, 1),
-            Point(0, -1),
-            Point(-1, 0),
-            Point(0, 1),
-            Point(1, 0)
-        }
-    )
+        : _map(map),
+          _mapDimensions(std::make_pair(map[0].size(), map.size())),
+          _start(start),
+          _target(target),
+          _neighbors(
+                  {
+                          Point(-1, -1),
+                          Point(1, -1),
+                          Point(-1, 1),
+                          Point(1, 1),
+                          Point(0, -1),
+                          Point(-1, 0),
+                          Point(0, 1),
+                          Point(1, 0)
+                  }
+          )
 {
 }
 
 Game::Node::Node(const Point &positions, const Point &parentPositions, const int &g, const int &h)
-    : _positions(positions), _parentPositions(parentPositions), _g(g), _h(h)
+        : _positions(positions), _parentPositions(parentPositions), _g(g), _h(h)
 {
 }
 

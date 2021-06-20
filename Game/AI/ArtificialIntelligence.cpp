@@ -8,7 +8,7 @@
 #include "ArtificialIntelligence.hpp"
 
 Game::ArtificialIntelligence::ArtificialIntelligence(std::function<void (const size_t pos, const std::string action)> playerActionsFunc, const std::vector<AI> &AIs, std::vector<std::shared_ptr<IEntity>> entities, const std::vector<std::string> &map, const size_t &level)
-    : _playerActionsFunc(playerActionsFunc), _AIs(AIs), _entities(entities), _map(map), _level{level}
+        : _playerActionsFunc(playerActionsFunc), _AIs(AIs), _entities(entities), _map(map), _level{level}
 {
     if (AIs.empty())
     {
