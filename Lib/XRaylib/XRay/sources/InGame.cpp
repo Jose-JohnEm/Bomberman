@@ -44,6 +44,15 @@ void XRay::displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &_panelPo
         if (_controlsTab[u] == Resources::KEYBOARDYELLOW)
             _resources.at(KEYBOARDPANEL)->drawTexture(_panelPos[u].first, _panelPos[u].second);
         drawPlayersHead(u, _panelPos[u].first-10, _panelPos[u].second-180);
+        _resources.at(SKATE)->drawTexture(_panelPos[u].first + 200, _panelPos[u].second - 15 - 64);
+        Raylib::Text::drawText("x", _panelPos[u].first + 285, _panelPos[u].second - 15 - 64, 60, Raylib::Color::White());
+        Raylib::Text::drawText(_playersStats[u][0].second, _panelPos[u].first + 325, _panelPos[u].second - 15 - 64, 60, Raylib::Color::White());
+        _resources.at(FIRE)->drawTexture(_panelPos[u].first + 200, _panelPos[u].second - 15 - 128 - 10);
+        Raylib::Text::drawText("x", _panelPos[u].first + 285, _panelPos[u].second - 15 - 128 - 10, 60, Raylib::Color::White());
+        Raylib::Text::drawText(_playersStats[u][1].second, _panelPos[u].first + 325, _panelPos[u].second - 15 - 128 - 10, 60, Raylib::Color::White());
+        _resources.at(IBOMB)->drawTexture(_panelPos[u].first + 200, _panelPos[u].second - 15 - 128 - 64 - 20);
+        Raylib::Text::drawText("x", _panelPos[u].first + 285, _panelPos[u].second - 15 - 128 - 64 - 20, 60, Raylib::Color::White());
+        Raylib::Text::drawText(_playersStats[u][2].second, _panelPos[u].first + 325, _panelPos[u].second - 15 - 128 - 64 - 20, 60, Raylib::Color::White());
     }
     _resources.at(CLOCKBAR)->drawTexture(600, 0);
     _resources.at(CLOCKBAR)->drawTexture(1200, 0);
@@ -166,8 +175,8 @@ void XRay::displayInGameScene(void)
     bool canCheckScenario = true;
 
     // Lambda for panel pos
-    auto panelLambda = [](size_t a) { return (a <= 2) ? std::vector<std::pair<size_t, size_t>>{{20, 500}, {1500, 500}}
-                                                      : std::vector<std::pair<size_t, size_t>>{{20, 500}, {1500, 500}, {20, 950}, {1500, 950}}; };
+    auto panelLambda = [](size_t a) { return (a <= 2) ? std::vector<std::pair<size_t, size_t>>{{20, 500}, {1550, 500}}
+                                                      : std::vector<std::pair<size_t, size_t>>{{20, 500}, {1550, 500}, {20, 950}, {1550, 950}}; };
 
     // Set local variables at 0
     _deadPlayers = 0;
@@ -199,7 +208,8 @@ void XRay::displayInGameScene(void)
     }
 
     // Next Set
-    if (((_deadAi == _aiPlayers && _gameSettings[7] == 1) || _deadPlayers == _humanPlayers || _gameSettings[4] == 0) && (_gameSettings[2] < _gameSettings[1])) {
+    // End Scenario
+    if (((_deadAi == _aiPlayers && _humanPlayers - _deadPlayers == 1) || _deadPlayers == _humanPlayers || _gameSettings[4] == 0) && (_gameSettings[2] < _gameSettings[1])) {
         displayCinematic("readygo", 0, 1000);
         _startingTime = Raylib::Timing::getTime();
         _lastFrameTime = Raylib::Timing::getTime();
@@ -207,9 +217,8 @@ void XRay::displayInGameScene(void)
         _gameSettings[2] += 1;
         _gameSettings[4] = _gameSettings[3];
         canCheckScenario = false;
-    } else if ((_gameSettings[2] >= _gameSettings[1] && _gameSettings[3] != _gameSettings[4] && ((_deadAi == _aiPlayers && _gameSettings[7] == 1) || _deadPlayers == _humanPlayers || _gameSettings[4] == 0)))
+    } else if ((_gameSettings[2] >= _gameSettings[1] && _gameSettings[3] != _gameSettings[4] && ((_deadAi == _aiPlayers && _humanPlayers - _deadPlayers == 1) || (_humanPlayers - _deadPlayers == 1 && (_aiPlayers - _deadAi + _humanPlayers - _deadPlayers) == 1) || _deadPlayers == _humanPlayers || _gameSettings[4] == 0)))
         checkEndScenario();
-    // End Scenario
 
     // Stop bomberman music
     if (_musics.at(MSC_BOMBERMAN)->isPlaying())
