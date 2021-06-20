@@ -14,7 +14,9 @@ inline const std::vector<std::pair<std::string, std::string>> &Game::Bomberman::
 {
     std::vector<Game::Player *> players = getEntitiesData<Game::Player>();
 
-    _scores.clear();
+    std::cout << " LUCAS " << std::endl;
+    if (players.size() > 0)
+        _scores.clear();
     for (Game::Player *p : players) {
         _scores.push_back({std::to_string(p->getID() + 1), std::to_string(Score(_settings, p).getScore())});
     }
@@ -32,7 +34,9 @@ inline const std::vector<std::vector<std::pair<std::string, std::string>>> &Game
     std::vector<std::pair<std::string, std::string>> pData;
     size_t i = 0;
 
-    _playersStats.clear();
+    std::cout << " PRINCE " << std::endl;
+    if (players.size() > 0)
+        _playersStats.clear();
     for (Game::Player *p : players)
     {
         pData.push_back({"SPEED", std::to_string(p->getPowerUps()[P_SKATE])});
