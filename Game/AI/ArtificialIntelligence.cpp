@@ -93,10 +93,12 @@ void Game::ArtificialIntelligence::run(void) const
                     }
                     break;
                 case 2:
+                case 3:
                     if (!(action.compare("dropBomb") == 0 && isPowerUp))
                     {
                         _playerActionsFunc(AI.getID(), action);
                     }
+                    break;
                 default:
                     break;
             }
