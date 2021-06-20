@@ -21,6 +21,7 @@
 #include "Bomb/Bomb.hpp"
 #include "AI/ArtificialIntelligence.hpp"
 #include "AI/Astar.hpp"
+#include "CFunctions.hpp"
 
 namespace Game
 {

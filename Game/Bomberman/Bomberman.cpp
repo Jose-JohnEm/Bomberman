@@ -86,7 +86,7 @@ bool Game::Bomberman::playerGotHit(const std::pair<int, int> &pos, const float &
 
 void Game::Bomberman::randomDropItem(const Raylib::Vector3 &pos)
 {
-    int r_value = rand() % 100;
+    int r_value = CFunctions::generateRandomInteger(100);
 
     if (0 <= r_value && r_value <= 14)
         _entities.push_back(std::shared_ptr<IEntity>(new Game::BombUp(pos.getCStruct())));

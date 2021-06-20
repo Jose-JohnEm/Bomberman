@@ -45,6 +45,14 @@ public:
      */
     static std::pair<size_t, size_t> generatePairOfRandomIntegers(size_t limitOfFirst, size_t limitOfSecond);
 
+    /**
+     * @brief
+     *
+     * @param limit limit value
+     * @return size_t the number generated
+     */
+    static size_t generateRandomInteger(size_t limit);
+
 private:
 };
 
