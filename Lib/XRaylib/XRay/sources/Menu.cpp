@@ -84,11 +84,11 @@ void XRay::displayMenuScene(void)
 int catchThrowTrydisplayMenuScene() {
     try
     {   XRay test;
-    	test.displayMenuScene();
+        test.displayMenuScene();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }

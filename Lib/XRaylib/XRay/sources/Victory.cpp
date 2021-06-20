@@ -20,7 +20,6 @@ void XRay::goToAnotherSceneFromVictory()
     if ((home || restart || save || nextlevel) && Raylib::Mouse::isButtonPressed(0)) {
         if (_sfx.at(SFX_WEEE)->isPlaying())
             _sfx.at(SFX_WEEE)->stop();
-
     }
     if (nextlevel && Raylib::Mouse::isButtonPressed(0)) {
         // Do here all manipulations to increase level
@@ -88,11 +87,11 @@ void XRay::displayVictoryScene()
 int catchThrowTrygoToAnotherSceneFromVictory() {
     try
     {   XRay test;
-    	test.goToAnotherSceneFromVictory();
+        test.goToAnotherSceneFromVictory();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -102,11 +101,11 @@ int catchThrowTrygoToAnotherSceneFromVictory() {
 int catchThrowTrydisplayVictoryScene() {
     try
     {   XRay test;
-    	test.displayVictoryScene();
+        test.displayVictoryScene();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }

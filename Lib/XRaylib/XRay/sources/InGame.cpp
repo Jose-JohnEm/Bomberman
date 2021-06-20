@@ -13,7 +13,7 @@ std::string XRay::getTimeInFormat(void)
     int min = _gameSettings[4] / 60;
     int secs = _gameSettings[4] % 60;
     std::string time(std::string("0")+std::to_string(min)+std::string(":")
-    +((secs >= 10) ? std::string("") : std::string("0"))+std::to_string(secs));
+                     +((secs >= 10) ? std::string("") : std::string("0"))+std::to_string(secs));
 
     return time;
 }
@@ -142,7 +142,7 @@ void XRay::displayInGameScene(void)
 
     // Lambda for panel pos
     auto panelLambda = [](size_t a) { return (a <= 2) ? std::vector<std::pair<size_t, size_t>>{{20, 500}, {1500, 500}}
-    : std::vector<std::pair<size_t, size_t>>{{20, 500}, {1500, 500}, {20, 950}, {1500, 950}}; };
+                                                      : std::vector<std::pair<size_t, size_t>>{{20, 500}, {1500, 500}, {20, 950}, {1500, 950}}; };
 
     // Position of all Panels in a vector of pair (x, y)
     static std::vector<std::pair<size_t, size_t>> panelPos = panelLambda(_gameSettings[7] + _gameSettings[5]);
@@ -212,11 +212,11 @@ void XRay::displayInGameScene(void)
 int catchThrowTrygetTimeInFormat() {
     try
     {   XRay test;
-    	test.getTimeInFormat();
+        test.getTimeInFormat();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -229,11 +229,11 @@ int catchThrowTrydrawPlayersHead() {
         size_t i;
         size_t x;
         size_t y;
-    	test.drawPlayersHead(i,x,y);
+        test.drawPlayersHead(i,x,y);
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -244,11 +244,11 @@ int catchThrowTrydisplayPlayersPanels() {
     try
     {   XRay test;
         std::vector<std::pair<size_t, size_t>> panelPos;
-    	test.displayPlayersPanels(panelPos);
+        test.displayPlayersPanels(panelPos);
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -258,11 +258,11 @@ int catchThrowTrydisplayPlayersPanels() {
 int catchThrowTrydisplayPauseScene() {
     try
     {   XRay test;
-    	test.displayPauseScene();
+        test.displayPauseScene();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -272,11 +272,11 @@ int catchThrowTrydisplayPauseScene() {
 int catchThrowTrydgoToAnotherScene() {
     try
     {   XRay test;
-    	test.goToAnotherScene();
+        test.goToAnotherScene();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -286,11 +286,11 @@ int catchThrowTrydgoToAnotherScene() {
 int catchThrowTrymanagePlayersActions() {
     try
     {   XRay test;
-    	test.managePlayersActions();
+        test.managePlayersActions();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -300,11 +300,11 @@ int catchThrowTrymanagePlayersActions() {
 int catchThrowTrydisplayInGameScene() {
     try
     {   XRay test;
-    	test.displayInGameScene();
+        test.displayInGameScene();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }

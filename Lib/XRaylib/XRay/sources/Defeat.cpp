@@ -67,11 +67,11 @@ void XRay::displayDefeatScene()
 int catchThrowTrygoToAnotherSceneFromDefeat() {
     try
     {   XRay test;
-    	test.goToAnotherSceneFromDefeat();
+        test.goToAnotherSceneFromDefeat();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -82,11 +82,11 @@ int catchThrowTrygoToAnotherSceneFromDefeat() {
 int catchThrowTrydisplayDefeatScenet() {
     try
     {   XRay test;
-    	test.displayDefeatScene();
+        test.displayDefeatScene();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
