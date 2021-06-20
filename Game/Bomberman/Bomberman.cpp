@@ -318,7 +318,8 @@ void Game::Bomberman::runAI(void)
             [this] (const size_t playerID, const std::string action) {doPlayerAction(playerID, action);},
             AIs,
             targets,
-            placeEntitiesOnMap(getEntitiesPositions<Game::Bomb>(), 'B')
+            placeEntitiesOnMap(getEntitiesPositions<Game::Bomb>(), 'B'),
+            _settings[AI_LVL]
         );
         AI.run();
     }
