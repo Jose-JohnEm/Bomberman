@@ -13,7 +13,7 @@
 ## EARTH KINGDOM
 
 <p align="center">
-    <a><img src="./img/grassLand.jpg" alt="[002]"></a>
+    <a><img src="../img/grassLand.jpg" alt="[002]"></a>
 </p>
 
 The prosperous land of the bombermen filled with sunshine and love
@@ -21,7 +21,7 @@ The prosperous land of the bombermen filled with sunshine and love
 ## STONE WORLD
 
 <p align="center">
-    <a><img src="./img/stoneWorld.jpg" alt="[002]"></a>
+    <a><img src="../img/stoneWorld.jpg" alt="[002]"></a>
 </p>
 
 The world inhabited by the evil profesor
@@ -29,7 +29,7 @@ The world inhabited by the evil profesor
 ## CIVIL WARSHIP BASE
 
 <p align="center">
-    <a><img src="./img/ironWorld.jpg" alt="[002]"></a>
+    <a><img src="../img/ironWorld.jpg" alt="[002]"></a>
 </p>
 
 The human bomberman allince ship which houses the potential to destroy the bomb world
@@ -37,7 +37,7 @@ The human bomberman allince ship which houses the potential to destroy the bomb 
 ## ICE NEBULA NEXUS
 
 <p align="center">
-    <a><img src="./img/giceWorld.jpg" alt="[002]"></a>
+    <a><img src="../img/giceWorld.jpg" alt="[002]"></a>
 </p>
 
 A piece of the bomb of the orging is said to be frozen somewhere under ths ice of the ice nebule nexus
