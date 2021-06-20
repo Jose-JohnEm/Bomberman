@@ -84,7 +84,7 @@ inline void XRay::beginDrawing(const bool &mustBeClear) const
 {
     Raylib::Drawing::beginDrawing();
     if (mustBeClear)
-        Raylib::Drawing::clearBackground(Raylib::Color::White());
+        Raylib::Drawing::clearBackground(Raylib::Color::Black());
 }
 
 inline void XRay::endDrawing(void) const

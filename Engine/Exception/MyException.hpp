@@ -60,6 +60,90 @@ namespace Engine
 
         const char *get_info() const { return info; }
 
+        // all the functions taht test here in static with comments
+        //XRAY
+        static int catchThrowTrydisplayStudio();
+        static int catchThrowTrydisplayTeamPresentation();
+        static int catchThrowTryplayMusic();
+        static int catchThrowTryplayAndUpdateMusic();
+        static int catchThrowTrygoToAnotherSceneFromVictory();
+        static int catchThrowTrydisplayVictoryScene();
+        static int catchThrowTryupdateTransitionManager();
+        static int catchThrowTrydisplaySettingsScene();
+        static int catchThrowTrychangeMusicVolume();
+        static int catchThrowTrychangeSfxVolume();
+        static int catchThrowTrydetectPlayerInput();
+        static int catchThrowTryremovePlayer();
+        static int catchThrowTryaddPlayer();
+        static int catchThrowTrymanageNextOrPrev();
+        static int catchThrowTrydisplayCardsSettings();
+        static int catchThrowTrydisplayBack();
+        static int catchThrowTrydisplayPlayerChoiceScene();
+        static int catchThrowTryshouldGoToEast();
+        static int catchThrowTryshouldGoToWest();
+        static int catchThrowTryshouldGoToNorth();
+        static int catchThrowTryshouldGoToSouth();
+        static int catchThrowTryshouldChangeToPrev();
+        static int catchThrowTryshouldChangeToNext();
+        static int catchThrowTryshouldSimulateAClick();
+        static int catchThrowTryupdate();
+        static int catchThrowTrymakeWalk();
+        static int catchThrowTrymakeBomb();
+        static int catchThrowTrymakeEmote();
+        static int catchThrowTrydisplayMenuScene();
+        static int catchThrowTrydisplayGameSettings();
+        static int catchThrowTrycheckClickOnMapChoiceScene();
+        static int catchThrowTrydisplayMapChoiceScene();
+        static int catchThrowTryloadThisBackup();
+        static int catchThrowTrydisplayLoadGameScene();
+        static int catchThrowTryKeyboardException();
+        static int catchThrowTryupdateGamepad();
+        static int catchThrowTrygetTimeInFormat();
+        static int catchThrowTrydrawPlayersHead();
+        static int catchThrowTrydisplayPlayersPanels();
+        static int catchThrowTrydisplayPauseScene();
+        static int catchThrowTrydgoToAnotherScene();
+        static int catchThrowTrymanagePlayersActions();
+        static int catchThrowTrydisplayInGameScene();
+        static int catchThrowTrydisplayHowToPlayScene();
+        static int catchThrowTryGamepadException();
+        static int catchThrowTrygoToAnotherSceneFromDefeat();
+        static int catchThrowTrydisplayDefeatScenet();
+        static int catchThrowTrydoesTimeElapsed();
+        static int catchThrowTrygetElapsedTime();
+        static int catchThrowTrydisplayCinematic();
+
+        // RAYLIB_SRCS
+        static int catchThrowTrywindowShouldClose();
+        static int catchThrowTrycloseWindow();
+        static int catchThrowTrysetWindowIcon();
+        static int catchThrowTryisWindowFullscreen();
+        static int catchThrowTrytoggleFullscreen();
+        static int catchThrowTrysetTargetFPS();
+        static int catchThrowTrygetFPSS();
+        static int catchThrowTrygetFrameTime();
+        static int catchThrowTrygetTime();
+        static int catchThrowTrydrawText();
+        static int catchThrowTrymeasureText();
+        static int catchThrowTrytextIsEqual();
+        static int catchThrowTrytextLength();
+        static int catchThrowTryRectangle();
+        static int catchThrowTrydrawRectangleV();
+        static int catchThrowTrydrawRectanglePro();
+        static int catchThrowTryunloadMusic();
+        static int catchThrowTryisButtonPressed();
+        static int catchThrowTryisButtonDown();
+        static int catchThrowTryisButtonReleased();
+        static int catchThrowTryisButtonUp();
+        static int catchThrowTrygetMouseX();
+        static int catchThrowTrygetMouseY();
+        static int catchThrowTryisKeyPressed();
+        static int catchThrowTryisKeyDown();
+        static int catchThrowTryisKeyReleased();
+        static int catchThrowTryisKeyUp();
+        static int catchThrowTrygetKeyPressed();
+        static int catchThrowTrygetCharPressed();
+
     private:
         /// This stores the file name
         const char *file;
