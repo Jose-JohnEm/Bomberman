@@ -48,11 +48,11 @@ int catchThrowTryRectangle() {
     {   Raylib::Rectangle test;
         Raylib::Color color;
         auto grey = color.Gray();
-    	test.drawRectangle(1,1,1,1,grey);
+        test.drawRectangle(1,1,1,1,grey);
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -66,11 +66,11 @@ int catchThrowTrydrawRectangleV() {
         Vector2 size;
         Raylib::Color color;
         auto grey = color.Gray();
-    	test.drawRectangleV(position, size,grey);
+        test.drawRectangleV(position, size,grey);
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -85,11 +85,11 @@ int catchThrowTrydrawRectanglePro() {
         float rotation = 1.0;
         Raylib::Color color;
         auto grey = color.Gray();
-    	test.drawRectanglePro(rec,origin,rotation,color);
+        test.drawRectanglePro(rec,origin,rotation,color);
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
