@@ -111,8 +111,8 @@ void XRay::goToAnotherScene()
         _isPaused = false;
         _sfx.at(SFX_HOME)->play();
         m_isPaused = 2;
-        _pointerToRestartFunc();
         resetAll();
+        _pointerToRestartFunc();
         displayMenuScene();
     }
 }
@@ -133,13 +133,13 @@ void XRay::managePlayersActions(void)
     }
 }
 
-void XRay::checkEndScenario(size_t deadPlayers)
+void XRay::checkEndScenario(void)
 {
     size_t i = 0;
 
     while (i < _gameInfos.size() && _gameInfos[i]->getType().compare("Human") != 0)
         i++;
-    if (_gameSettings[7] == 1) {
+    if (_humanPlayers == 1) {
         if (_musics.at(MSC_GAME)->isPlaying())
             _musics.at(MSC_GAME)->stop();
         if (_gameInfos[i]->getShouldDisplay())
@@ -149,7 +149,7 @@ void XRay::checkEndScenario(size_t deadPlayers)
     } else {
         if (_musics.at(MSC_GAME)->isPlaying())
             _musics.at(MSC_GAME)->stop();
-        if (deadPlayers == _gameSettings[7])
+        if (_deadPlayers == _humanPlayers)
             displayDefeatScene();
         else
             displayVictoryScene();
@@ -163,11 +163,29 @@ void XRay::displayInGameScene(void)
 
     // Declaration of two variables
     float size_m = (static_cast<float>(_sizeMap+1)) / 2;
-    size_t deadPlayers = 0;
+    bool canCheckScenario = true;
 
     // Lambda for panel pos
     auto panelLambda = [](size_t a) { return (a <= 2) ? std::vector<std::pair<size_t, size_t>>{{20, 500}, {1500, 500}}
                                                       : std::vector<std::pair<size_t, size_t>>{{20, 500}, {1500, 500}, {20, 950}, {1500, 950}}; };
+
+    // Set local variables at 0
+    _deadPlayers = 0;
+    _deadAi = 0;
+    _humanPlayers = 0;
+    _aiPlayers = 0;
+
+    // Check dead players
+    for (size_t i = 0; i < _gameInfos.size(); i++) {
+        if (_gameInfos[i]->getType().compare("Human") == 0) {
+            _deadPlayers += _gameInfos[i]->getShouldDisplay() ? 0 : 1;
+            _humanPlayers++;
+        }
+        if (_gameInfos[i]->getType().compare("AI") == 0) {
+            _deadAi += _gameInfos[i]->getShouldDisplay() ? 0 : 1;
+            _aiPlayers++;
+        }
+    }
 
     // Display Cinematic ready, 3, 2, 1, go
     if (m_isPaused == 2) {
@@ -181,15 +199,17 @@ void XRay::displayInGameScene(void)
     }
 
     // Next Set
-    if (_gameSettings[4] == 0 && _gameSettings[2] < _gameSettings[1]) {
+    if (((_deadAi == _aiPlayers && _gameSettings[7] == 1) || _deadPlayers == _humanPlayers || _gameSettings[4] == 0) && (_gameSettings[2] < _gameSettings[1])) {
         displayCinematic("readygo", 0, 1000);
         _startingTime = Raylib::Timing::getTime();
         _lastFrameTime = Raylib::Timing::getTime();
         _pointerToRestartFunc();
         _gameSettings[2] += 1;
         _gameSettings[4] = _gameSettings[3];
-
-    }
+        canCheckScenario = false;
+    } else if ((_gameSettings[2] >= _gameSettings[1] && _gameSettings[3] != _gameSettings[4] && ((_deadAi == _aiPlayers && _gameSettings[7] == 1) || _deadPlayers == _humanPlayers || _gameSettings[4] == 0)))
+        checkEndScenario();
+    // End Scenario
 
     // Stop bomberman music
     if (_musics.at(MSC_BOMBERMAN)->isPlaying())
@@ -219,13 +239,6 @@ void XRay::displayInGameScene(void)
     // Call function that check click on button
     goToAnotherScene();
 
-    // End Scenario
-    for (size_t i = 0; i < _gameInfos.size(); i++)
-        if (!_gameInfos[i]->getType().compare("Human"))
-            deadPlayers += _gameInfos[i]->getShouldDisplay() ? 0 : 1;
-
-    if (deadPlayers == _gameSettings[7] || (_gameSettings[2] >= _gameSettings[1] && _gameSettings[4] == 0))
-        checkEndScenario(deadPlayers);
 }
 
 // STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
