@@ -85,7 +85,7 @@ namespace Game
          *
          * @return A array of pair (Player, Score) of the current game
          */
-        const std::vector<std::pair<std::string, std::string>> &getScores(void) const override;
+        const std::vector<std::pair<std::string, std::string>> &getScores(void) override;
 
         /**
          * @brief Get the Entities
@@ -99,7 +99,7 @@ namespace Game
          *
          * @return All the stats [PlayerName -- (NameOfStat, Value)] in a vector of vector
          */
-        const std::vector<std::vector<std::pair<std::string, std::string>>> &getPlayersStats(void) const override;
+        const std::vector<std::vector<std::pair<std::string, std::string>>> &getPlayersStats(void) override;
 
         /**
          * @brief Operates randomly a drop of an item when a block is break

@@ -10,16 +10,15 @@ inline void Game::Bomberman::setMapType(const std::size_t &mapType)
     _mapType = mapType;
 }
 
-inline const std::vector<std::pair<std::string, std::string>> &Game::Bomberman::getScores(void) const
+inline const std::vector<std::pair<std::string, std::string>> &Game::Bomberman::getScores(void)
 {
-    std::vector<std::pair<std::string, std::string>> res;
     std::vector<Game::Player *> players = getEntitiesData<Game::Player>();
 
     for (Game::Player *p : players)
     {
-        res.push_back({p->getName(), std::to_string(Score(_settings, p).getScore())});
+        _scores.push_back({p->getName(), std::to_string(Score(_settings, p).getScore())});
     }
-    return res;
+    return _scores;
 }
 
 inline const std::vector<std::shared_ptr<IEntity>> &Game::Bomberman::getEntities(void) const
@@ -27,12 +26,12 @@ inline const std::vector<std::shared_ptr<IEntity>> &Game::Bomberman::getEntities
     return _entities;
 }
 
-inline const std::vector<std::vector<std::pair<std::string, std::string>>> &Game::Bomberman::getPlayersStats(void) const
+inline const std::vector<std::vector<std::pair<std::string, std::string>>> &Game::Bomberman::getPlayersStats(void)
 {
-    std::vector<std::vector<std::pair<std::string, std::string>>> res;
     std::vector<Game::Player *> players = getEntitiesData<Game::Player>();
     std::vector<std::pair<std::string, std::string>> pData;
 
+    _playersStats.clear();
     for (Game::Player *p : players)
     {
         pData.push_back({"SPEED", std::to_string(p->getPowerUps()[P_SKATE])});
@@ -41,10 +40,10 @@ inline const std::vector<std::vector<std::pair<std::string, std::string>>> &Game
 
         std::cout << p->getName() << std::endl;
 
-        res.push_back(pData);
+        _playersStats.push_back(pData);
         pData.clear();
     }
-    return res;
+    return _playersStats;
 }
 
 inline bool Game::Bomberman::isGameOver(void) const
