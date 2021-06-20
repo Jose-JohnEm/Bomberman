@@ -362,9 +362,12 @@ void Game::Bomberman::updatePlayersStats()
 
 void Game::Bomberman::restart(void)
 {
+    size_t y = _map.size()-2;
     // Reset Scores
     // TODO: TO IMPLEMENT
     _reinit = 0;
+    _map.clear();
+    getMap(y);
 /*    for (size_t i = 0; i < _scores.size(); i++) {
         _scores[i].second = "0";
         for (size_t j = 0; j < _playersStats[i].size(); j++)
