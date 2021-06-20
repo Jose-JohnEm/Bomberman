@@ -217,12 +217,12 @@ void XRay::displayInGameScene(void)
     goToAnotherScene();
 
     // End Scenario
-/*    for (size_t i = 0; i < _gameInfos.size(); i++)
+    for (size_t i = 0; i < _gameInfos.size(); i++)
         if (!_gameInfos[i]->getType().compare("Human"))
             deadPlayers += _gameInfos[i]->getShouldDisplay() ? 0 : 1;
 
     if (deadPlayers == _gameSettings[7] || (_gameSettings[2] >= _gameSettings[1] && _gameSettings[4] == 0))
-        checkEndScenario();*/
+        checkEndScenario();
 }
 
 // STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
