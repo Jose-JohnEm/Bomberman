@@ -407,10 +407,8 @@ public:
 
     /**
      * @brief Check End Scenario of the game
-     *
-     * @param deadPlayers A size_t
      */
-    void checkEndScenario(size_t deadPlayers);
+    void checkEndScenario(void);
 
     /**
      * @brief Display Victory Scene
@@ -574,6 +572,7 @@ private:
      * [8] -- _mapType
      */
     std::array<size_t, 9> _gameSettings = {0, 1, 1, 1, 60, 0, 1, 1, 0};
+    std::array<size_t, 9> _gameSettingsBackup;          // GameSettings Backup
     size_t _sizeMap = 5;                                                        // Size of Map
     double _startingTime;                                                       // Get Time from raylib
     double _lastFrameTime;                                                      // Get Time every frame from raylib
@@ -581,6 +580,10 @@ private:
     float masterVolume;                                                         // Master volume
     float musicVolume;                                                          // Master volume
     float sfxVolume;                                                            // Master volume
+    size_t _deadPlayers = 0;                                                         // A size_t
+    size_t _deadAi = 0;                                                          // A size_t
+    size_t _humanPlayers = 0;                                                            // A size_t
+    size_t _aiPlayers = 0;                                                           // A size_t
     std::vector<std::string> _userNames;                                        // A vector of all the users names
     std::pair<bool, std::vector<void (XRay::*)()>> _intro;                      // Intro pointer to member function
     Scene _scene = MENU;                                                        // Current scene
