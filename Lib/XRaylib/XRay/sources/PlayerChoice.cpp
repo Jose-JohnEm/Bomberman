@@ -168,7 +168,7 @@ void XRay::displayPlayerChoiceScene(void)
     _gameSettings[7] = _allIntegers[2] - _gameSettings[5];
 
     // Go to another scene according to mouse position
-    if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _gameSettings[7] * 40) {
+    if (goNext && Raylib::Mouse::isButtonPressed(0) && _nextOrNot == _gameSettings[7] * 40 && _allIntegers[2] > 1) {
         for (size_t o = 0; o < _allIntegers[2]; o++)
             _userNames.push_back(_pSelector[o].getName());
         _sfx.at(SFX_NOCK)->play();

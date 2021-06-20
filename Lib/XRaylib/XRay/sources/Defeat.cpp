@@ -24,8 +24,9 @@ void XRay::goToAnotherSceneFromDefeat()
         _isPaused = false;
         m_isPaused = 2;
         _pointerToRestartFunc();
+        _gameSettings = _gameSettingsBackup;
         displayCinematic("loading", 0, 0);
-        displayInGameScene();
+        _scene = IN_GAME;
     }
     if (home && Raylib::Mouse::isButtonPressed(0)) {
         _sfx.at(SFX_KLICK)->play();

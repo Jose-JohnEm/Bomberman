@@ -14,8 +14,7 @@ inline const std::vector<std::pair<std::string, std::string>> &Game::Bomberman::
 {
     std::vector<Game::Player *> players = getEntitiesData<Game::Player>();
 
-    for (Game::Player *p : players)
-    {
+    for (Game::Player *p : players) {
         _scores.push_back({p->getName(), std::to_string(Score(_settings, p).getScore())});
     }
     return _scores;
@@ -137,7 +136,7 @@ inline void Game::Bomberman::doPlayerAction(const size_t playerID, const std::st
         if (findPlayer(playerID).getAlive() && findPlayer(playerID).dropBomb())
             doDropBomb(playerID, findPlayer(playerID).getPositions2D());
     }
- }
+}
 
 inline bool round90(float x, float y)
 {

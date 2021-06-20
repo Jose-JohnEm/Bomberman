@@ -76,11 +76,11 @@ void XRay::displayHowToPlayScene(void)
 int catchThrowTrydisplayHowToPlayScene() {
     try
     {   XRay test;
-    	test.displayHowToPlayScene();
+        test.displayHowToPlayScene();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
