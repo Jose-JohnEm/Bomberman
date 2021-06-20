@@ -298,6 +298,14 @@ namespace Game
         std::vector<std::pair<int, int>> getEntitiesPositions(void) const;
 
         /**
+         * @brief Get positions of all the entities with a specific type
+         *
+         * @return std::vector<Game::Point> - A vector containing the required entities positions
+         */
+        template<typename T>
+        std::vector<T*> getEntitiesData(void) const;
+
+        /**
          * @brief Place entities in the map
          *
          * @param entitiesPos A vector of the required entities positions

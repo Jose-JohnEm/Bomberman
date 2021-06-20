@@ -232,4 +232,22 @@ namespace Game
 #include "Player.inl"
 }
 
+/**
+ * @brief Display Player content
+ *
+ * @param os ostream (std::cout)
+ * @param obj the player
+ * @return std::ostream& (std::cout)
+ */
+std::ostream& operator<<(std::ostream& os, const Game::Player* obj);
+
+/**
+ * @brief
+ *
+ * @param os ostream (std::cout)
+ * @param objs the players
+ * @return std::ostream& (std::cout)
+ */
+std::ostream& operator<<(std::ostream& os, const std::vector<Game::Player *>& objs);
+
 #endif /* !PLAYER_HPP_ */

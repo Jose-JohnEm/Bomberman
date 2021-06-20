@@ -46,3 +46,28 @@ Game::Human::Human(const std::string &name, const int ID, const Raylib::Vector3 
         : Player(name, ID, positions, obj_path, texture_path, animation_path, scalable, color)
 {
 }
+
+std::ostream& operator<<(std::ostream& os, const Game::Player *obj)
+{
+    os << "--------------------------------------" << std::endl;
+    os << "Type : " << obj->getType() << std::endl;
+    os << "Name : " << obj->getName() << std::endl;
+    os << "ID : " << obj->getID() << std::endl;
+    os << "Positions : (" << obj->getPositions().x << ", " << obj->getPositions().x << ", " << obj->getPositions().z << ")" << std::endl;
+    os << "Power-ups :" << std::endl;
+    os << '\t' << "Speed : " << obj->getPowerUps()[0] << std::endl;
+    os << '\t' << "Bombup : " << obj->getPowerUps()[1] << std::endl;
+    os << '\t' << "Pass : " << obj->getPowerUps()[2] << std::endl;
+    os << '\t' << "Fire : " << obj->getPowerUps()[3] << std::endl;
+    os << '\t' << "Life : " << obj->getPowerUps()[4] << std::endl;
+
+    return os;
+
+}
+
+std::ostream& operator<<(std::ostream& os, const std::vector<Game::Player *>& objs)
+{
+    for (const Game::Player *player : objs)
+        os << player;
+    return os;
+}

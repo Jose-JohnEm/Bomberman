@@ -239,6 +239,24 @@ std::vector<std::pair<int, int>> Game::Bomberman::getEntitiesPositions(void) con
     return entitiesPos;
 }
 
+template<typename T>
+std::vector<T*> Game::Bomberman::getEntitiesData(void) const
+{
+    std::vector<T*> entities;
+    size_t i = 0;
+
+    for (const std::shared_ptr<IEntity> &entity : _entities)
+    {
+        if (dynamic_cast<T*>(entity.get()))
+        {
+            entities.push_back(dynamic_cast<T*>(entity.get()));
+        }
+        i++;
+    }
+    std::cout << "Found " << i << " Players";
+    return entities;
+}
+
 std::vector<std::string> Game::Bomberman::placeEntitiesOnMap(const std::vector<std::pair<int, int>> &entitiesPos, const char &c) const
 {
     std::vector<std::string> map = _map;
@@ -390,6 +408,7 @@ void Game::Bomberman::loadGame(const std::string &backupFilePath)
         _entities.push_back(player);
     }
 
+    std::cout << getEntitiesData<Game::Player>() << std::endl;
     // Load the user names
     _userNames = load.getUserNames();
 
