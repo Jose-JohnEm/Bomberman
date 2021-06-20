@@ -111,11 +111,11 @@ void XRay::displayMapChoiceScene(void)
 int catchThrowTrydisplayGameSettings() {
     try
     {   XRay test;
-    	test.displayGameSettings();
+        test.displayGameSettings();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -129,7 +129,7 @@ int catchThrowTrycheckClickOnMapChoiceScene() {
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -139,12 +139,12 @@ int catchThrowTrycheckClickOnMapChoiceScene() {
 int catchThrowTrydisplayMapChoiceScene() {
     XRay test;
     try
-    { 
+    {
         test.displayMapChoiceScene();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }

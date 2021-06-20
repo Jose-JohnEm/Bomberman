@@ -1,5 +1,5 @@
 <p align="center">
-    <a><img src="./img/bomberman.gif" alt="[002]"></a>
+    <a><img src="../img/bomberman.gif" alt="[002]"></a>
 </p>
 
 # Indie Studio - Time to go cross-platform
@@ -15,15 +15,15 @@
 kill as many players as possible and earn the higest number of points 
 
 
-### with keyboards
+### With keyboards
 
-move your character with your directions and place a bomb by pressind on the tab bar
+Move your character with your directions and place a bomb by pressind on the tab bar
 
-### with mouse
+### With mouse
 
-move your character using the mouse controler on top of the screen and deop a bomb by leftclicking on the mouse button
+Move your character using the mouse controler on top of the screen and deop a bomb by leftclicking on the mouse button
 
 
-### with a controler
+### With a controler
 
-move your character with your directions and place a bomb by pressind X
+Move your character with your directions and place a bomb by pressind X

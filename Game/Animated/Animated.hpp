@@ -119,14 +119,14 @@ namespace Game
         void setColor(const std::string &color);
 
         /**
-         * @brief
+         * @brief move position
          *
          * @param direction
          */
         void move(const std::string &direction, const int &speed);
 
         /**
-         * @brief
+         * @brief get position in 2d
          *
          * @return std::pair<int, int>
          */

@@ -162,11 +162,11 @@ void XRay::changeSfxVolume() {
 int catchThrowTrydisplaySettingsScene() {
     try
     {   XRay test;
-    	test.displaySettingsScene();
+        test.displaySettingsScene();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -176,11 +176,11 @@ int catchThrowTrydisplaySettingsScene() {
 int catchThrowTrychangeMusicVolume() {
     try
     {   XRay test;
-    	test.changeMusicVolume();
+        test.changeMusicVolume();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -190,11 +190,11 @@ int catchThrowTrychangeMusicVolume() {
 int catchThrowTrychangeSfxVolume() {
     try
     {   XRay test;
-    	test.changeSfxVolume();
+        test.changeSfxVolume();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }

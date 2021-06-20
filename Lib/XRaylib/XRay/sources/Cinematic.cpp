@@ -21,8 +21,7 @@ void XRay::displayCinematic(const Cinematic &cinematic)
     }
 }
 
-void XRay::displayCinematic(const std::string &cinematicPathDirectory, const size_t &hideSkip, const size_t &gap) const
-{
+void XRay::displayCinematic(const std::string &cinematicPathDirectory, const size_t &hideSkip, const size_t &gap) {
     size_t filesNumber = countFilesDirectory("resources/cinematic/" + cinematicPathDirectory);
     Clock clock;
 
@@ -31,6 +30,8 @@ void XRay::displayCinematic(const std::string &cinematicPathDirectory, const siz
 
     if (!_sfx.at(SFX_OPENNING)->isPlaying() && cinematicPathDirectory == "intro1")
         _sfx.at(SFX_OPENNING)->play();
+    if (!_musics.at(MSC_BOMBERMAN)->isPlaying() && cinematicPathDirectory == "intro2")
+        playMusic(MSC_BOMBERMAN);
 
     while (i < filesNumber && !(i < hideSkip && Raylib::Mouse::isButtonPressed(0) && mouseIsInBox(createBox<size_t>(1760, 950, 1883, 1005)))) {
 

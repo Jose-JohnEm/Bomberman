@@ -47,7 +47,7 @@ namespace Game
         int makeExplode();
 
         /**
-         * @brief
+         * @brief check if bomb is exploding
          *
          * @return true
          * @return false
@@ -55,7 +55,7 @@ namespace Game
         bool isExploding();
 
         /**
-         * @brief
+         * @brief check if bomb has exploded
          *
          * @return true
          * @return false
@@ -63,13 +63,13 @@ namespace Game
         bool hasExplode();
 
         /**
-         * @brief
+         * @brief draw the bomb entity
          *
          */
         void drawEntity() override;
 
         /**
-         * @brief
+         * @brief update the bom status
          *
          */
         void update();

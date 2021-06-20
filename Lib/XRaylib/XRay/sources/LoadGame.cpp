@@ -76,12 +76,12 @@ int catchThrowTryloadThisBackup() {
     XRay test;
     const std::string _pathToBackupFile;
     try
-    { 
+    {
         test.loadThisBackup(_pathToBackupFile);
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -92,12 +92,12 @@ int catchThrowTrydisplayLoadGameScene() {
     XRay test;
     const std::string _pathToBackupFile;
     try
-    { 
+    {
         test.displayLoadGameScene();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }

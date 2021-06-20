@@ -1,5 +1,5 @@
 <p align="center">
-    <a><img src="./img/bomberman.gif" alt="[002]"></a>
+    <a><img src="../img/bomberman.gif" alt="[002]"></a>
 </p>
 
 # Indie Studio - Time to go cross-platform
@@ -12,16 +12,32 @@
 
 ## EARTH KINGDOM
 
-the prosperous land of the bombermen filled with sunshine and love
+<p align="center">
+    <a><img src="../img/grassLand.jpg" alt="[002]"></a>
+</p>
+
+The prosperous land of the bombermen filled with sunshine and love
 
 ## STONE WORLD
 
-the world inhabited by the evil profesor
+<p align="center">
+    <a><img src="../img/stoneWorld.jpg" alt="[002]"></a>
+</p>
+
+The world inhabited by the evil profesor
 
 ## CIVIL WARSHIP BASE
 
-the human bomberman allince ship which houses the potential to destroy the bomb world
+<p align="center">
+    <a><img src="../img/IronWorld.jpg" alt="[002]"></a>
+</p>
+
+The human bomberman allince ship which houses the potential to destroy the bomb world
 
 ## ICE NEBULA NEXUS
 
-a piece of the bomb of the orging is said to be frozen somewhere under ths ice of the ice nebule nexus
+<p align="center">
+    <a><img src="../img/iceWorld.jpg" alt="[002]"></a>
+</p>
+
+A piece of the bomb of the orging is said to be frozen somewhere under ths ice of the ice nebule nexus

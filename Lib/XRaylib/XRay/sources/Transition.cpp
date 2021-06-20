@@ -44,11 +44,11 @@ int catchThrowTryupdateTransitionManager() {
     {   XRay test;
         IGraphical::Scene toFadeOut;
         IGraphical::Scene toFadeIn;
-    	test.updateTransitionManager(toFadeOut, toFadeIn);
+        test.updateTransitionManager(toFadeOut, toFadeIn);
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }

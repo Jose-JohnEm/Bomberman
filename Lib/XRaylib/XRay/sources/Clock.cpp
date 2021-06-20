@@ -9,7 +9,7 @@
 #include "../../../Engine/Exception/MyException.hpp"
 
 Clock::Clock()
-:_start(clock())
+        :_start(clock())
 {
 
 }
@@ -47,11 +47,11 @@ int catchThrowTrydoesTimeElapsed() {
     {   Clock test;
         float time;
         bool reset;
-    	test.doesTimeElapsed(time,reset);
+        test.doesTimeElapsed(time,reset);
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -61,11 +61,11 @@ int catchThrowTrydoesTimeElapsed() {
 int catchThrowTrygetElapsedTime() {
     try
     {   Clock test;
-    	test.getElapsedTime();
+        test.getElapsedTime();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }

@@ -77,7 +77,7 @@ public:
     bool shouldSimulateAClick(void) const override;
 
 private:
-    int _pos = 0; //TODO: DOC
+    int _pos = 0;           // Position
 };
 
 #endif /* !GAMEPADINPUT_HPP_ */

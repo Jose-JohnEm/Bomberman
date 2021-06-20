@@ -61,9 +61,13 @@ namespace Engine
         const char *get_info() const { return info; }
 
     private:
+        /// This stores the file name
         const char *file;
+        /// This stores the actiual line 
         int line;
+        /// This stores the function
         const char *func;
+        /// This stores  the exception info
         const char *info;
     };
 

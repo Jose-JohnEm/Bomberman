@@ -8,16 +8,16 @@
 #include "PlayerSelector/Player.hpp"
 
 PlayerSelector::Player::Player(const std::string &obj, const std::string &texture, const float &scalable, const int &idCharacter, const std::string &name, const Raylib::Color &color, const std::vector<std::string> &animations)
-    : counter(0),
-    _persoModel(LoadModel(obj.c_str())),
-    _persoTexture(Raylib::Texture(texture)),
-    _idCharacter(idCharacter),
-    _scalable(scalable),
-    _name(name),
-    _color(color),
-    _perso_path(obj),
-    _texture_path(texture),
-    _animations_path(animations)
+        : counter(0),
+          _persoModel(LoadModel(obj.c_str())),
+          _persoTexture(Raylib::Texture(texture)),
+          _idCharacter(idCharacter),
+          _scalable(scalable),
+          _name(name),
+          _color(color),
+          _perso_path(obj),
+          _texture_path(texture),
+          _animations_path(animations)
 {
     if (animations.size() == 3)
     {
@@ -58,10 +58,10 @@ void PlayerSelector::Player::drawForMaps(const float &rotation, const Raylib::Ve
     float rad_rotation = (0 * PI) / 180;
 
     _persoModel.transform = {
-        0, 0, 1, 0,
-        cosf(rad_rotation), sinf(rad_rotation), 0, 0,
-        -sinf(rad_rotation), cosf(rad_rotation), 0, 0,
-        0, 0, 0, 1
+            0, 0, 1, 0,
+            cosf(rad_rotation), sinf(rad_rotation), 0, 0,
+            -sinf(rad_rotation), cosf(rad_rotation), 0, 0,
+            0, 0, 0, 1
     };
     if (_animations.size() == 3)
     {
@@ -92,12 +92,12 @@ const std::string PlayerSelector::Player::getName(void) const
 const CharDictionary PlayerSelector::Player::getCharDictionary() const
 {
     return {
-        _perso_path,
-        _texture_path,
-        _scalable,
-        _name,
-        _color,
-        _animations_path
+            _perso_path,
+            _texture_path,
+            _scalable,
+            _name,
+            _color,
+            _animations_path
     };
 }
 
