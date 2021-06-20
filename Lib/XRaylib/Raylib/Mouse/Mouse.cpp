@@ -25,11 +25,11 @@ int catchThrowTryisButtonPressed() {
     try
     {   Raylib::Mouse test;
         size_t button;
-    	test.isButtonPressed(button);
+        test.isButtonPressed(button);
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -40,11 +40,11 @@ int catchThrowTryisButtonDown() {
     try
     {   Raylib::Mouse test;
         size_t button;
-    	test.isButtonDown(button);
+        test.isButtonDown(button);
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -55,11 +55,11 @@ int catchThrowTryisButtonReleased() {
     try
     {   Raylib::Mouse test;
         size_t button;
-    	test.isButtonReleased(button);
+        test.isButtonReleased(button);
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -70,11 +70,11 @@ int catchThrowTryisButtonUp() {
     try
     {   Raylib::Mouse test;
         size_t button;
-    	test.isButtonUp(button);
+        test.isButtonUp(button);
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -84,11 +84,11 @@ int catchThrowTryisButtonUp() {
 int catchThrowTrygetMouseX() {
     try
     {   Raylib::Mouse test;
-    	test.getMouseX();
+        test.getMouseX();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -98,11 +98,11 @@ int catchThrowTrygetMouseX() {
 int catchThrowTrygetMouseY() {
     try
     {   Raylib::Mouse test;
-    	test.getMouseY();
+        test.getMouseY();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }

@@ -97,9 +97,9 @@ inline void Game::Bomb::drawEntity()
     for (const Raylib::Vector3 &explosionCollision : explosion) {
         for (size_t t = 0; t < _players.size(); t++) {
             if (_players[t]->getPositions().x >= explosionCollision.x - 0.5
-            && _players[t]->getPositions().y >= explosionCollision.y - 0.5
-            && _players[t]->getPositions().x <= explosionCollision.x + 0.5
-            && _players[t]->getPositions().y <= explosionCollision.y + 0.5)
+                && _players[t]->getPositions().y >= explosionCollision.y - 0.5
+                && _players[t]->getPositions().x <= explosionCollision.x + 0.5
+                && _players[t]->getPositions().y <= explosionCollision.y + 0.5)
             {
                 _pointerToSetPlayer(_players[t]->getID());
                 _reseter.setKills(_reseter.getKills() + 1);

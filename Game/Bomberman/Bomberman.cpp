@@ -8,7 +8,7 @@
 #include "Bomberman.hpp"
 
 Game::Bomberman::Bomberman(void)
-: _gameName{"Bomberman"}, _gameOver{false}
+        : _gameName{"Bomberman"}, _gameOver{false}
 {
     std::srand(static_cast<unsigned>(time(0)));
 }
@@ -212,13 +212,14 @@ void Game::Bomberman::bombExplosion(Game::Bomb &bomb, const size_t &index)
 void Game::Bomberman::handleIfPlayerIsNearAnItem(Player &player)
 {
     size_t index = 0;
+    static Raylib::Sound sound ("resources/Sound/tudum.wav");
 
     for (auto &entity : _entities)
     {
         if (dynamic_cast<Game::Powerups *>(entity.get()) != nullptr && CheckCollisionSpheres(player.getPositions().getCStruct(), 0.3, entity->getPositions().getCStruct(), 0.3))
         {
             dynamic_cast<Game::Powerups *>(entity.get())->applyPowerupTo(player);
-            //sound.play();
+            sound.play();
             std::cout << "<<<< Got the..." << std::endl;
             _entities.erase(_entities.begin() + index);
             std::cout << "<<<< Item" << std::endl;
@@ -293,15 +294,15 @@ void Game::Bomberman::runAI(void)
         {
             targets.push_back(std::make_shared<Game::Human>(*dynamic_cast<Game::Human *>(entity.get())));
         }
-        else if (dynamic_cast<Game::Fire*>(entity.get()))
+        else if (dynamic_cast<Game::Fire*>(entity.get()) && _settings[AI_LVL] == 3)
         {
             targets.push_back(std::make_shared<Game::Fire>(*dynamic_cast<Game::Fire*>(entity.get())));
         }
-        else if (dynamic_cast<Game::Speed*>(entity.get()))
+        else if (dynamic_cast<Game::Speed*>(entity.get()) && _settings[AI_LVL] == 3)
         {
             targets.push_back(std::make_shared<Game::Speed>(*dynamic_cast<Game::Speed*>(entity.get())));
         }
-        else if (dynamic_cast<Game::BombUp*>(entity.get()))
+        else if (dynamic_cast<Game::BombUp*>(entity.get()) && _settings[AI_LVL] == 3)
         {
             targets.push_back(std::make_shared<Game::BombUp>(*dynamic_cast<Game::BombUp*>(entity.get())));
         }
@@ -315,10 +316,11 @@ void Game::Bomberman::runAI(void)
     try
     {
         ArtificialIntelligence AI(
-            [this] (const size_t playerID, const std::string action) {doPlayerAction(playerID, action);},
-            AIs,
-            targets,
-            placeEntitiesOnMap(getEntitiesPositions<Game::Bomb>(), 'B')
+                [this] (const size_t playerID, const std::string action) {doPlayerAction(playerID, action);},
+                AIs,
+                targets,
+                placeEntitiesOnMap(getEntitiesPositions<Game::Bomb>(), 'B'),
+                _settings[AI_LVL]
         );
         AI.run();
     }

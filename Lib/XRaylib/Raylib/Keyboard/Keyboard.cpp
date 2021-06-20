@@ -25,11 +25,11 @@ int catchThrowTryisKeyPressed() {
     try
     {   Raylib::Keyboard test;
         size_t key;
-    	test.isKeyPressed(key);
+        test.isKeyPressed(key);
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -40,11 +40,11 @@ int catchThrowTryisKeyDown() {
     try
     {   Raylib::Keyboard test;
         size_t key;
-    	test.isKeyDown(key);
+        test.isKeyDown(key);
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -55,11 +55,11 @@ int catchThrowTryisKeyReleased() {
     try
     {   Raylib::Keyboard test;
         size_t key;
-    	test.isKeyReleased(key);
+        test.isKeyReleased(key);
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -70,11 +70,11 @@ int catchThrowTryisKeyUp() {
     try
     {   Raylib::Keyboard test;
         size_t key;
-    	test.isKeyUp(key);
+        test.isKeyUp(key);
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -84,11 +84,11 @@ int catchThrowTryisKeyUp() {
 int catchThrowTrygetKeyPressed() {
     try
     {   Raylib::Keyboard test;
-    	test.getKeyPressed();
+        test.getKeyPressed();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -98,11 +98,11 @@ int catchThrowTrygetKeyPressed() {
 int catchThrowTrygetCharPressed() {
     try
     {   Raylib::Keyboard test;
-    	test.getCharPressed();
+        test.getCharPressed();
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }

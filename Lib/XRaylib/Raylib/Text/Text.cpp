@@ -25,11 +25,11 @@ int catchThrowTrydrawText() {
     try
     {   Raylib::Text test;
         Raylib::Color color;
-    	test.drawText("test", 0, 0, 1,color);
+        test.drawText("test", 0, 0, 1,color);
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -39,11 +39,11 @@ int catchThrowTrydrawText() {
 int catchThrowTrymeasureText() {
     try
     {   Raylib::Text test;
-    	test.measureText("test", 1);
+        test.measureText("test", 1);
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -53,11 +53,11 @@ int catchThrowTrymeasureText() {
 int catchThrowTrytextIsEqual() {
     try
     {   Raylib::Text test;
-    	test.textIsEqual("test","test");
+        test.textIsEqual("test","test");
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
@@ -67,11 +67,11 @@ int catchThrowTrytextIsEqual() {
 int catchThrowTrytextLength() {
     try
     {   Raylib::Text test;
-    	test.textLength("test");
+        test.textLength("test");
     }
     catch (Engine::MyException& ex)
     {
-    	std::cout << ex.what() << ex.get_info() << std::endl;
+        std::cout << ex.what() << ex.get_info() << std::endl;
         std::cout << "Function: " << ex.get_func() << std::endl;
         return EXIT_FAILURE;
     }
