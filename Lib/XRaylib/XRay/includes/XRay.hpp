@@ -327,7 +327,7 @@ public:
      * @param hideSkip A size_t corresponding to the cinematic frame when you must hide the skip button
      * @param gap Duration between each frame
      */
-    void displayCinematic(const std::string &cinematicPathDirectory, const size_t &hideSkip = 0, const size_t &gap = 0) const;
+    void displayCinematic(const std::string &cinematicPathDirectory, const size_t &hideSkip = 0, const size_t &gap = 0);
 
     /**
      * @brief This function must display the current scene. It is used in the game loop
