@@ -276,7 +276,7 @@ public:
     /**
      * @brief Scene for Modes
      */
-    void displayPlayerChoiceScene();
+    void displayPlayerChoiceScene(void);
 
     /**
      * @brief Scene for Game
@@ -301,17 +301,17 @@ public:
     /**
      * @brief Go to Another Scene
      */
-    void goToAnotherScene();
+    void goToAnotherScene(void);
 
     /**
      * @brief Go to Another Scene
      */
-    void goToAnotherSceneFromVictory();
+    void goToAnotherSceneFromVictory(void);
 
     /**
      * @brief Go to Another Scene
      */
-    void goToAnotherSceneFromDefeat();
+    void goToAnotherSceneFromDefeat(void);
 
     /**
      * @brief Display specific cinematic
@@ -326,8 +326,10 @@ public:
      * @param cinematicPathDirectory A string related to the specific cinematic directory
      * @param hideSkip A size_t corresponding to the cinematic frame when you must hide the skip button
      * @param gap Duration between each frame
+     * @param clearOrNot Boolean to kwow if screen should be clear or not
+     * @param posX Pos X of frame
      */
-    void displayCinematic(const std::string &cinematicPathDirectory, const size_t &hideSkip = 0, const size_t &gap = 0);
+    void displayCinematic(const std::string &cinematicPathDirectory, const size_t &hideSkip = 0, const size_t &gap = 0, const bool &clearOrNot = true, const int &posX = 0);
 
     /**
      * @brief This function must display the current scene. It is used in the game loop
@@ -404,21 +406,26 @@ public:
     void loadThisBackup(const std::string &_pathToBackupFile);
 
     /**
+     * @brief Check End Scenario of the game
+     */
+    void checkEndScenario(void);
+
+    /**
      * @brief Display Victory Scene
      */
-    void displayVictoryScene();
+    void displayVictoryScene(void);
 
     /**
      * @brief Display Defeat Scene
      */
-    void displayDefeatScene();
+    void displayDefeatScene(void);
 
     /**
      * @brief Display Players Panels in the scene InGame
      *
-     * @param panelPos Position of all Panels in a vector of pair (x, y)
+     * @param _panelPos Position of all Panels in a vector of pair (x, y)
      */
-    void displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &panelPos);
+    void displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &_panelPos);
 
     /**
      * @brief This function displays all cards and their parameters
@@ -582,6 +589,7 @@ private:
     std::function<void (std::string)> _pointerToLoadFunc;                                                   // Pointer to Load Func
     std::function<void (const size_t pos, const std::string action)> _playerActionsFunc;                    // Pointer to playerActionsFunc
     Raylib::Camera3D _camera;                                                   // The camera
+    std::vector<std::pair<size_t, size_t>> _panelPos;                                // Position of all Panels in a vector of pair (x, y)
 
     std::vector<bool> _playerTab{true, false, false, false};                    // A vector of boolean that represents if the player is an AI or not
     std::vector<Resources> _controlsTab{UNKNOWN, UNKNOWN, UNKNOWN, UNKNOWN};                    // A vector of resources (See in Resources.hpp) that represents if the controls

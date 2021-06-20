@@ -8,7 +8,6 @@
 #ifndef BOMBERMAN_HPP_
 #define BOMBERMAN_HPP_
 
-#include <cstdlib> // For srand and rand functions only !
 #include <vector>
 #include <istream>
 #include <algorithm>
@@ -21,6 +20,7 @@
 #include "Bomb/Bomb.hpp"
 #include "AI/ArtificialIntelligence.hpp"
 #include "AI/Astar.hpp"
+#include "CFunctions.hpp"
 
 namespace Game
 {
@@ -296,6 +296,14 @@ namespace Game
          */
         template<typename T>
         std::vector<std::pair<int, int>> getEntitiesPositions(void) const;
+
+        /**
+         * @brief Get positions of all the entities with a specific type
+         *
+         * @return std::vector<Game::Point> - A vector containing the required entities positions
+         */
+        template<typename T>
+        std::vector<T*> getEntitiesData(void) const;
 
         /**
          * @brief Place entities in the map
