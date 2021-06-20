@@ -143,7 +143,10 @@ typedef enum {
     NICO,
     MEHDI,
     CHARLES,
-    TEAMTITLE
+    TEAMTITLE,
+    SKATE,
+    FIRE,
+    IBOMB
 } Resources;
 
 typedef enum {
