@@ -46,7 +46,7 @@ public:
     static std::pair<size_t, size_t> generatePairOfRandomIntegers(size_t limitOfFirst, size_t limitOfSecond);
 
     /**
-     * @brief
+     * @brief generates a random number
      *
      * @param limit limit value
      * @return size_t the number generated
