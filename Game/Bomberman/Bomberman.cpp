@@ -293,15 +293,15 @@ void Game::Bomberman::runAI(void)
         {
             targets.push_back(std::make_shared<Game::Human>(*dynamic_cast<Game::Human *>(entity.get())));
         }
-        else if (dynamic_cast<Game::Fire*>(entity.get()))
+        else if (dynamic_cast<Game::Fire*>(entity.get()) && _settings[AI_LVL] == 3)
         {
             targets.push_back(std::make_shared<Game::Fire>(*dynamic_cast<Game::Fire*>(entity.get())));
         }
-        else if (dynamic_cast<Game::Speed*>(entity.get()))
+        else if (dynamic_cast<Game::Speed*>(entity.get()) && _settings[AI_LVL] == 3)
         {
             targets.push_back(std::make_shared<Game::Speed>(*dynamic_cast<Game::Speed*>(entity.get())));
         }
-        else if (dynamic_cast<Game::BombUp*>(entity.get()))
+        else if (dynamic_cast<Game::BombUp*>(entity.get()) && _settings[AI_LVL] == 3)
         {
             targets.push_back(std::make_shared<Game::BombUp>(*dynamic_cast<Game::BombUp*>(entity.get())));
         }
@@ -318,7 +318,8 @@ void Game::Bomberman::runAI(void)
             [this] (const size_t playerID, const std::string action) {doPlayerAction(playerID, action);},
             AIs,
             targets,
-            placeEntitiesOnMap(getEntitiesPositions<Game::Bomb>(), 'B')
+            placeEntitiesOnMap(getEntitiesPositions<Game::Bomb>(), 'B'),
+            _settings[AI_LVL]
         );
         AI.run();
     }

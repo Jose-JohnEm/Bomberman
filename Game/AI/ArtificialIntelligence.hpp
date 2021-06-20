@@ -24,8 +24,9 @@ namespace Game
              * @param AIs A vector of AI objects
              * @param entities A vector of targets entities objects
              * @param map The game map
+             * @param level The AI level
              */
-            ArtificialIntelligence(std::function<void (const size_t pos, const std::string action)> playerActionsFunc, const std::vector<AI> &AIs, std::vector<std::shared_ptr<IEntity>> entities, const std::vector<std::string> &map);
+            ArtificialIntelligence(std::function<void (const size_t pos, const std::string action)> playerActionsFunc, const std::vector<AI> &AIs, std::vector<std::shared_ptr<IEntity>> entities, const std::vector<std::string> &map, const size_t &level);
 
             /**
              * @brief Run the AI algorithm
@@ -36,6 +37,7 @@ namespace Game
             std::vector<AI> _AIs; // A vector of AI objects
             std::vector<std::shared_ptr<IEntity>> _entities; // A vector of entities targets objects
             std::vector<std::string> _map; // The game map
+            size_t _level; // The AI level
             std::function<void (const size_t pos, const std::string action)> _playerActionsFunc; // Pointer to playerActionsFunc
 
             /**

@@ -7,8 +7,8 @@
 
 #include "ArtificialIntelligence.hpp"
 
-Game::ArtificialIntelligence::ArtificialIntelligence(std::function<void (const size_t pos, const std::string action)> playerActionsFunc, const std::vector<AI> &AIs, std::vector<std::shared_ptr<IEntity>> entities, const std::vector<std::string> &map)
-    : _playerActionsFunc(playerActionsFunc), _AIs(AIs), _entities(entities), _map(map)
+Game::ArtificialIntelligence::ArtificialIntelligence(std::function<void (const size_t pos, const std::string action)> playerActionsFunc, const std::vector<AI> &AIs, std::vector<std::shared_ptr<IEntity>> entities, const std::vector<std::string> &map, const size_t &level)
+    : _playerActionsFunc(playerActionsFunc), _AIs(AIs), _entities(entities), _map(map), _level{level}
 {
     if (AIs.empty())
     {
@@ -83,9 +83,24 @@ void Game::ArtificialIntelligence::run(void) const
 
             // Order the AI to do this action
             action = convertPointIntoAction(point);
-            if (!(action.compare("dropBomb") == 0 && isPowerUp))
-            {
-                _playerActionsFunc(AI.getID(), action);
+
+            // Switch in relation to AI level
+            switch (_level) {
+                case 1:
+                    if (action.compare("dropBomb"))
+                    {
+                        _playerActionsFunc(AI.getID(), action);
+                    }
+                    break;
+                case 2:
+                case 3:
+                    if (!(action.compare("dropBomb") == 0 && isPowerUp))
+                    {
+                        _playerActionsFunc(AI.getID(), action);
+                    }
+                    break;
+                default:
+                    break;
             }
 
             // Clear the path
