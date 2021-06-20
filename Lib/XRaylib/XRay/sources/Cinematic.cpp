@@ -10,9 +10,10 @@
 
 void XRay::displayCinematic(const Cinematic &cinematic)
 {
+    size_t a = CFunctions::generatePairOfRandomIntegers(2, 1).first;
     switch (cinematic) {
         case INTRO:
-            displayCinematic(CFunctions::generatePairOfRandomIntegers(2, 1).first ? "intro1" : "intro2", 300, 1);
+            displayCinematic(a ? "intro1" : "intro2", 300, 1, true, a ? 0 : 240);
             if (_sfx.at(SFX_OPENNING)->isPlaying())
                 _sfx.at(SFX_OPENNING)->stop();
             break;
@@ -21,7 +22,8 @@ void XRay::displayCinematic(const Cinematic &cinematic)
     }
 }
 
-void XRay::displayCinematic(const std::string &cinematicPathDirectory, const size_t &hideSkip, const size_t &gap) {
+void XRay::displayCinematic(const std::string &cinematicPathDirectory, const size_t &hideSkip, const size_t &gap, const bool &clearOrNot, const int &posX)
+{
     size_t filesNumber = countFilesDirectory("resources/cinematic/" + cinematicPathDirectory);
     Clock clock;
 
@@ -40,9 +42,8 @@ void XRay::displayCinematic(const std::string &cinematicPathDirectory, const siz
             Raylib::Texture frame(Raylib::Image("resources/cinematic/" + cinematicPathDirectory + "/frame" + std::to_string(i) + ".png"));
 
             // Draw cinematic
-            beginDrawing();
-            Raylib::Drawing::clearBackground(Raylib::Color::Black());
-            frame.drawTexture(0, 0);
+            beginDrawing(clearOrNot);
+            frame.drawTexture(posX, 0);
             if (i < hideSkip) {
                 (mouseIsInBox(createBox<size_t>(1760, 950, 1883, 1005)) ? _resources.at(SKIP_HOVER) : _resources.at(SKIP))->drawTexture(1760, 950);
                 displayMouse();

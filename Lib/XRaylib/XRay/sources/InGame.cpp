@@ -30,20 +30,20 @@ void XRay::drawPlayersHead(size_t i, size_t x, size_t y)
         _resources.at(GREENBOMBERMAN)->drawTexture(x, y);
 }
 
-void XRay::displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &panelPos)
+void XRay::displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &_panelPos)
 {
     for (size_t u = 0; u < (_gameSettings[7] + _gameSettings[5]); u++) {
         if (_controlsTab[u] == Resources::PLAYSTATIONYELLOW)
-            _resources.at(PLAYSTATIONPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
+            _resources.at(PLAYSTATIONPANEL)->drawTexture(_panelPos[u].first, _panelPos[u].second);
         if (_controlsTab[u] == Resources::XBOXYELLOW)
-            _resources.at(XBOXPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
+            _resources.at(XBOXPANEL)->drawTexture(_panelPos[u].first, _panelPos[u].second);
         if (_controlsTab[u] == Resources::MOUSEYELLOW) {
-            _resources.at(MOUSEPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
+            _resources.at(MOUSEPANEL)->drawTexture(_panelPos[u].first, _panelPos[u].second);
             _resources.at(MOUSERADAR)->drawTexture(1600, 40);
         }
         if (_controlsTab[u] == Resources::KEYBOARDYELLOW)
-            _resources.at(KEYBOARDPANEL)->drawTexture(panelPos[u].first, panelPos[u].second);
-        drawPlayersHead(u, panelPos[u].first-10, panelPos[u].second-180);
+            _resources.at(KEYBOARDPANEL)->drawTexture(_panelPos[u].first, _panelPos[u].second);
+        drawPlayersHead(u, _panelPos[u].first-10, _panelPos[u].second-180);
     }
     _resources.at(CLOCKBAR)->drawTexture(600, 0);
     _resources.at(CLOCKBAR)->drawTexture(1200, 0);
@@ -133,25 +133,40 @@ void XRay::managePlayersActions(void)
     }
 }
 
+void XRay::checkEndScenario(void)
+{
+    size_t i = 0;
+
+    while (i < _gameInfos.size() && _gameInfos[i]->getType().compare("Human") != 0)
+        i++;
+    if (_gameSettings[7] == 1) {
+        _musics.at(MSC_GAME)->stop();
+        if (_gameInfos[i]->getShouldDisplay())
+            displayVictoryScene();
+        else
+            displayDefeatScene();
+    } else
+        displayVictoryScene();
+}
+
 void XRay::displayInGameScene(void)
 {
     // Set scene
     _scene = IN_GAME;
 
+    // Declaration of two variables
     float size_m = (static_cast<float>(_sizeMap+1)) / 2;
+    size_t deadPlayers = 0;
 
     // Lambda for panel pos
     auto panelLambda = [](size_t a) { return (a <= 2) ? std::vector<std::pair<size_t, size_t>>{{20, 500}, {1500, 500}}
                                                       : std::vector<std::pair<size_t, size_t>>{{20, 500}, {1500, 500}, {20, 950}, {1500, 950}}; };
 
-    // Position of all Panels in a vector of pair (x, y)
-    static std::vector<std::pair<size_t, size_t>> panelPos = panelLambda(_gameSettings[7] + _gameSettings[5]);
-
     // Display Cinematic ready, 3, 2, 1, go
     if (m_isPaused == 2) {
+        _panelPos = panelLambda(_gameSettings[7] + _gameSettings[5]);
         _camera = Raylib::Camera3D(Vector3{size_m, size_m * -0.3f, size_m * 2.2f}, Vector3{size_m, size_m, 0}, Vector3{0, 1, 0}, 50, 0);
         displayCinematic("loading", 0, 0);
-        _resources.at(MAPCHOICEBG)->drawTexture(0, 0);
         displayCinematic("readygo", 0, 1000);
         _startingTime = Raylib::Timing::getTime();
         _lastFrameTime = Raylib::Timing::getTime();
@@ -160,14 +175,15 @@ void XRay::displayInGameScene(void)
 
     // Next Set
     if (_gameSettings[4] == 0 && _gameSettings[2] < _gameSettings[1]) {
-        _resources.at(MAPCHOICEBG)->drawTexture(0, 0);
         displayCinematic("readygo", 0, 1000);
         _startingTime = Raylib::Timing::getTime();
         _lastFrameTime = Raylib::Timing::getTime();
+        _pointerToRestartFunc();
         _gameSettings[2] += 1;
         _gameSettings[4] = _gameSettings[3];
 
     }
+
     // Stop bomberman music
     if (_musics.at(MSC_BOMBERMAN)->isPlaying())
         _musics.at(MSC_BOMBERMAN)->stop();
@@ -182,7 +198,7 @@ void XRay::displayInGameScene(void)
         if (_gameInfos[o]->getShouldDisplay())
             _gameInfos[o]->drawEntity();
     _camera.endMode3D();
-    displayPlayersPanels(panelPos);
+    displayPlayersPanels(_panelPos);
     displayPauseScene();
     displayMouse();
     endDrawing();
@@ -190,18 +206,19 @@ void XRay::displayInGameScene(void)
     m_isPaused = _isPaused;
     _gameSettings[4] = !_isPaused && _gameSettings[4] > 0 ? _gameSettings[3] - (Raylib::Timing::getTime() - _startingTime) : _gameSettings[4];
 
+    // Call function that check players input
     managePlayersActions();
+
     // Call function that check click on button
     goToAnotherScene();
 
-    if (Raylib::Keyboard::isKeyPressed(68)) {
-        _musics.at(MSC_GAME)->stop();
-        displayDefeatScene();
-    }
-    if (Raylib::Keyboard::isKeyPressed(86)) {
-        _musics.at(MSC_GAME)->stop();
-        displayVictoryScene();
-    }
+    // End Scenario
+    for (size_t i = 0; i < _gameInfos.size(); i++)
+        if (!_gameInfos[i]->getType().compare("Human"))
+            deadPlayers += _gameInfos[i]->getShouldDisplay() ? 0 : 1;
+
+    if (deadPlayers == _gameSettings[7] || (_gameSettings[2] >= _gameSettings[1] && _gameSettings[4] == 0))
+        checkEndScenario();
 }
 
 // STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
@@ -243,8 +260,8 @@ int catchThrowTrydrawPlayersHead() {
 int catchThrowTrydisplayPlayersPanels() {
     try
     {   XRay test;
-        std::vector<std::pair<size_t, size_t>> panelPos;
-        test.displayPlayersPanels(panelPos);
+        std::vector<std::pair<size_t, size_t>> _panelPos;
+        test.displayPlayersPanels(_panelPos);
     }
     catch (Engine::MyException& ex)
     {
