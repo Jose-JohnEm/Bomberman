@@ -7,8 +7,8 @@
 
 #include "ArtificialIntelligence.hpp"
 
-Game::ArtificialIntelligence::ArtificialIntelligence(std::function<void (const size_t pos, const std::string action)> playerActionsFunc, const std::vector<AI> &AIs, const std::vector<Human> &humans, const std::vector<std::string> &map)
-    : _playerActionsFunc(playerActionsFunc), _AIs(AIs), _humans(humans), _map(map)
+Game::ArtificialIntelligence::ArtificialIntelligence(std::function<void (const size_t pos, const std::string action)> playerActionsFunc, const std::vector<AI> &AIs, std::vector<std::shared_ptr<IEntity>> entities, const std::vector<std::string> &map)
+    : _playerActionsFunc(playerActionsFunc), _AIs(AIs), _entities(entities), _map(map)
 {
     if (AIs.empty())
     {
@@ -22,7 +22,8 @@ void Game::ArtificialIntelligence::run(void) const
     Raylib::Vector3 targetPositions = {0, 0, 0};
     std::list<Point> path;
     std::pair<int, int> point;
-    int xAI = 0, yAI = 0, xHuman = 0, yHuman = 0, xTarget = 0, yTarget = 0, currentDistance = 0;
+    int xAI = 0, yAI = 0, xEntity = 0, yEntity = 0, xTarget = 0, yTarget = 0, currentDistance = 0;
+    bool isPowerUp = false;
 
     for (const Game::AI &AI : _AIs)
     {
@@ -31,15 +32,15 @@ void Game::ArtificialIntelligence::run(void) const
         xAI = static_cast<int>(std::round(AIPositions.x));
         yAI = static_cast<int>(std::round(AIPositions.y));
 
-        for (const Game::Human &human : _humans)
+        for (const std::shared_ptr<IEntity> &entity : _entities)
         {
-            // Get human positions
-            Raylib::Vector3 humanPositions = human.getPositions();
-            xHuman = static_cast<int>(std::round(humanPositions.x));
-            yHuman = static_cast<int>(std::round(humanPositions.y));
+            // Get entity positions
+            Raylib::Vector3 entityPositions = entity->getPositions();
+            xEntity = static_cast<int>(std::round(entityPositions.x));
+            yEntity = static_cast<int>(std::round(entityPositions.y));
 
             // Calcul euclidean distance
-            currentDistance = calculateDistance(Point(xAI, yAI), Point(xHuman, yHuman));
+            currentDistance = calculateDistance(Point(xAI, yAI), Point(xEntity, yEntity));
 
             // Set the smallest distance
             smallestDistance = (currentDistance < smallestDistance) ? currentDistance : smallestDistance;
@@ -47,7 +48,8 @@ void Game::ArtificialIntelligence::run(void) const
             // Set the target positions
             if (smallestDistance == currentDistance)
             {
-                targetPositions = humanPositions;
+                isPowerUp = (dynamic_cast<Game::Powerups*>(entity.get())) ? true : false;
+                targetPositions = entityPositions;
                 xTarget = static_cast<int>(std::round(targetPositions.x));
                 yTarget = static_cast<int>(std::round(targetPositions.y));
             }
@@ -81,7 +83,10 @@ void Game::ArtificialIntelligence::run(void) const
 
             // Order the AI to do this action
             action = convertPointIntoAction(point);
-            _playerActionsFunc(AI.getID(), action);
+            if (!(action.compare("dropBomb") == 0 && isPowerUp))
+            {
+                _playerActionsFunc(AI.getID(), action);
+            }
 
             // Clear the path
             path.clear();

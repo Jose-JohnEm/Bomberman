@@ -258,17 +258,29 @@ std::vector<std::string> Game::Bomberman::placeEntitiesOnMap(const std::vector<s
 
 void Game::Bomberman::runAI(void)
 {
-    // Get players entities
-    std::vector<Human> humans;
+    // Get AIs and targets entities
+    std::vector<std::shared_ptr<IEntity>> targets;
     std::vector<AI> AIs;
 
     for (const std::shared_ptr<IEntity> &entity : _entities)
     {
-        if (entity->getType().compare("Human") == 0)
+        if (dynamic_cast<Game::Human*>(entity.get()))
         {
-            humans.push_back(*dynamic_cast<Game::Human *>(entity.get()));
+            targets.push_back(std::make_shared<Game::Human>(*dynamic_cast<Game::Human *>(entity.get())));
         }
-        else if (entity->getType().compare("AI") == 0)
+        else if (dynamic_cast<Game::Fire*>(entity.get()))
+        {
+            targets.push_back(std::make_shared<Game::Fire>(*dynamic_cast<Game::Fire*>(entity.get())));
+        }
+        else if (dynamic_cast<Game::Speed*>(entity.get()))
+        {
+            targets.push_back(std::make_shared<Game::Speed>(*dynamic_cast<Game::Speed*>(entity.get())));
+        }
+        else if (dynamic_cast<Game::BombUp*>(entity.get()))
+        {
+            targets.push_back(std::make_shared<Game::BombUp>(*dynamic_cast<Game::BombUp*>(entity.get())));
+        }
+        else if (dynamic_cast<Game::AI*>(entity.get()))
         {
             AIs.push_back(*dynamic_cast<Game::AI *>(entity.get()));
         }
@@ -280,7 +292,7 @@ void Game::Bomberman::runAI(void)
         ArtificialIntelligence AI(
             [this] (const size_t playerID, const std::string action) {doPlayerAction(playerID, action);},
             AIs,
-            humans,
+            targets,
             placeEntitiesOnMap(getEntitiesPositions<Game::Bomb>(), 'B')
         );
         AI.run();
