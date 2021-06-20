@@ -1,5 +1,5 @@
 <p align="center">
-    <a><img src="./img/bomberman.gif" alt="[002]"></a>
+    <a><img src="../img/bomberman.gif" alt="[002]"></a>
 </p>
 
 # Indie Studio - Time to go cross-platform
@@ -29,7 +29,7 @@ The world inhabited by the evil profesor
 ## CIVIL WARSHIP BASE
 
 <p align="center">
-    <a><img src="../img/ironWorld.jpg" alt="[002]"></a>
+    <a><img src="../img/IronWorld.jpg" alt="[002]"></a>
 </p>
 
 The human bomberman allince ship which houses the potential to destroy the bomb world
@@ -37,7 +37,7 @@ The human bomberman allince ship which houses the potential to destroy the bomb 
 ## ICE NEBULA NEXUS
 
 <p align="center">
-    <a><img src="../img/giceWorld.jpg" alt="[002]"></a>
+    <a><img src="../img/iceWorld.jpg" alt="[002]"></a>
 </p>
 
 A piece of the bomb of the orging is said to be frozen somewhere under ths ice of the ice nebule nexus
