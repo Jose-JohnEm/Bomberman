@@ -9,8 +9,8 @@
 #define IENTITY_HPP_
 
 #include <iostream>
-#include "../Lib/XRaylib/Raylib/Texture/Texture.hpp"
-#include "../Lib/XRaylib/Raylib/Vector3/Vector3.hpp"
+#include "Texture/Texture.hpp"
+#include "Vector3/Vector3.hpp"
 
 class IEntity {
 

@@ -6,7 +6,7 @@
 */
 
 #include "XRay.hpp"
-#include "../../../Engine/Exception/MyException.hpp"
+#include "Exception/Exception.hpp"
 
 void XRay::displayCinematic(const Cinematic &cinematic)
 {
@@ -72,9 +72,9 @@ int catchThrowTrydisplayCinematic() {
         Cinematic cinematic;
         test.displayCinematic(cinematic);
     }
-    catch (Engine::MyException &ex) {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+    catch (Engine::Exception &ex) {
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;

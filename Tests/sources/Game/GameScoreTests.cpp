@@ -6,7 +6,7 @@
 */
 
 #include <gtest/gtest.h>
-#include "../Game/Score/Score.hpp"
+#include "Score/Score.hpp"
 
 Game::Score initScore()
 {

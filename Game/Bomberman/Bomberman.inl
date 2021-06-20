@@ -30,6 +30,7 @@ inline const std::vector<std::vector<std::pair<std::string, std::string>>> &Game
 {
     std::vector<Game::Player *> players = getEntitiesData<Game::Player>();
     std::vector<std::pair<std::string, std::string>> pData;
+    size_t i = 0;
 
     _playersStats.clear();
     for (Game::Player *p : players)
@@ -37,11 +38,11 @@ inline const std::vector<std::vector<std::pair<std::string, std::string>>> &Game
         pData.push_back({"SPEED", std::to_string(p->getPowerUps()[P_SKATE])});
         pData.push_back({"FIRE", std::to_string(p->getPowerUps()[P_FIRE])});
         pData.push_back({"BOMB", std::to_string(p->getPowerUps()[P_BOMB])});
-
-        std::cout << p->getName() << std::endl;
+        pData.push_back({"ISALIVE", (_sharedPlayers[i]->getShouldDisplay() ? "1" : "0")});
 
         _playersStats.push_back(pData);
         pData.clear();
+        i++;
     }
     return _playersStats;
 }

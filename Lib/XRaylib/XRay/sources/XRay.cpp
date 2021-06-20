@@ -6,7 +6,7 @@
 */
 
 #include "XRay.hpp"
-#include "../../../Engine/Exception/MyException.hpp"
+#include "Exception/Exception.hpp"
 
 XRay::XRay(void)
         : _window(1920, 1080, "Bomberman")
@@ -212,6 +212,10 @@ void XRay::setResources(void)
     _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::MEHDI, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/mehdi.png"))));
     _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::CHARLES, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/charles.png"))));
     _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::TEAMTITLE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/teamAndTitle.png"))));
+    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::SKATE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/3D/Items/skate.png"))));
+    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::FIRE, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/3D/Items/fire.png"))));
+    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::IBOMB, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/3D/Items/bomb.png"))));
+    _resources.insert(std::pair<Resources, std::shared_ptr<Raylib::Texture>>(Resources::AIPANEL, std::make_shared<Raylib::Texture>(Raylib::Image("resources/assets/aiPanel.png"))));
 }
 
 void XRay::setAudioResources(void)
@@ -321,10 +325,10 @@ int catchThrowTrydisplayStudio() {
     {   XRay test;
         test.displayStudio();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -335,10 +339,10 @@ int catchThrowTrydisplayTeamPresentation() {
     {   XRay test;
         test.displayTeamPresentation();
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -350,10 +354,10 @@ int catchThrowTryplayMusic() {
         MusicResources music;
         test.playMusic(music);
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;
@@ -365,10 +369,10 @@ int catchThrowTryplayAndUpdateMusic() {
         MusicResources music;
         test.playAndUpdateMusic(music);
     }
-    catch (Engine::MyException& ex)
+    catch (Engine::Exception& ex)
     {
-        std::cout << ex.what() << ex.get_info() << std::endl;
-        std::cout << "Function: " << ex.get_func() << std::endl;
+        std::cout << ex.what() << ex.getInfo() << std::endl;
+        std::cout << "Function: " << ex.getFunction() << std::endl;
         return EXIT_FAILURE;
     }
     return 0;

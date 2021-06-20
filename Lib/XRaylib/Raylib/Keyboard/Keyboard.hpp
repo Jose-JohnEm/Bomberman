@@ -10,6 +10,7 @@
 
 #include <string>
 #include <iostream>
+#include "Exception/Exception.hpp"
 #include "raylib.h"
 
 namespace Raylib
