@@ -146,7 +146,8 @@ typedef enum {
     TEAMTITLE,
     SKATE,
     FIRE,
-    IBOMB
+    IBOMB,
+    AIPANEL
 } Resources;
 
 typedef enum {
