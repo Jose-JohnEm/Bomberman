@@ -12,21 +12,34 @@
 
 ## RED
 
-blablabla
+<p align="center">
+    <a><img src="./resources/players/bioRed.png" alt="[002]"></a>
+</p>
+
+The fiery leader of the bombermen , Red has a fiery temperament and always follow justice
 
 ## BLUE
 
-blablabla
+<p align="center">
+    <a><img src="./resources/players/bioBlue.png" alt="[002]"></a>
+</p>
+
+The brains of the team , Blue is always lazy but always rises up to the cvhallenges 
 
 ## YELLOW
 
-blablabla
+<p align="center">
+    <a><img src="./resources/players/bioYellow.png" alt="[002]"></a>
+</p>
+
+Yellow has a tragic backstory but due to that always strives to make his fellow bombermen happy
 
 ## GREEN
 
-blablabla
+<p align="center">
+    <a><img src="./resources/players/bioGreen.png" alt="[002]"></a>
+</p>
 
-## WHITE
+Green is a traitor and secretly works for the evil doctor 
 
-blablabla
 

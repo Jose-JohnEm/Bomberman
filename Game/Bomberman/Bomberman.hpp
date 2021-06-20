@@ -229,19 +229,19 @@ namespace Game
         void handleIfPlayerIsNearAnItem(Player &player);
 
         /**
-         * @brief
+         * @brief drop bombs on command
          *
          */
         void doDropBomb(const size_t &playerID, std::pair<int, int> position);
 
         /**
-         * @brief
+         * @brief find the player
          *
          */
         Game::Player &findPlayer(const size_t &id);
 
         /**
-         * @brief
+         * @brief check the current position of player
          *
          * @param action
          * @param player
@@ -251,7 +251,7 @@ namespace Game
         bool checkPlayerPosition(const std::string action, Player &player);
 
         /**
-         * @brief
+         * @brief check if the current player position passes
          *
          * @param action
          * @param y
@@ -262,7 +262,7 @@ namespace Game
         bool checkPlayerPositionPass(const std::string action, const int &y, const int &x);
 
         /**
-         * @brief
+         * @brief updates the map
          *
          * @param playerPos
          * @param y
