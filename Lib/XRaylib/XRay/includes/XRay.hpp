@@ -555,6 +555,12 @@ public:
      */
     void setPlayerControls(const std::vector<std::string> &playerControls) override;
 
+    /**
+     * @brief Shake the camera
+     *
+     */
+    void cameraShake() override;
+
 private:
     Raylib::Window _window;                     // Game window
 
@@ -615,6 +621,9 @@ private:
     std::map<SfxResources, std::shared_ptr<Raylib::Sound>> _sfx;                // SFX dictionary
     std::vector<std::shared_ptr<IPlayerInput>> _playersInput{std::shared_ptr<IPlayerInput>(new MousePlayerInput())};    // Player input
     PlayerSelector::Selector _pSelector;                                        // 3D Camera
+    Clock _cameraShakeClock;
+    float _cameraShakeFrame;
+    float _yCameraAxis;
 };
 
 #include "XRay.inl"

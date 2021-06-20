@@ -153,6 +153,16 @@ void XRay::checkEndScenario(void)
     }
 }
 
+void XRay::cameraShake(void)
+{
+    if (_cameraShakeClock.doesTimeElapsed(0.05f))
+        _cameraShakeFrame -= 0.55f;
+    if (_cameraShakeFrame < 0)
+        _cameraShakeFrame = 11;
+    _camera.setPosition(Raylib::Vector3({_camera.getCStruct().position.x, _yCameraAxis + static_cast<float>((cos(_cameraShakeFrame) * 0.2/* * _cameraShakeFrame * 0.02f*/)), _camera.getCStruct().position.z}));
+    //_camera.updateCamera();
+}
+
 void XRay::displayInGameScene(void)
 {
     // Set scene
@@ -170,6 +180,7 @@ void XRay::displayInGameScene(void)
     if (m_isPaused == 2) {
         _panelPos = panelLambda(_gameSettings[7] + _gameSettings[5]);
         _camera = Raylib::Camera3D(Vector3{size_m, size_m * -0.3f, size_m * 2.2f}, Vector3{size_m, size_m, 0}, Vector3{0, 1, 0}, 50, 0);
+        _yCameraAxis = _camera.getCStruct().position.y;
         displayCinematic("loading", 0, 0);
         displayCinematic("readygo", 0, 1000);
         _startingTime = Raylib::Timing::getTime();

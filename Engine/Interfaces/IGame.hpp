@@ -156,6 +156,14 @@ public:
      * @brief Run the AIs
      */
     virtual void runAI(void) = 0;
+
+    /**
+     * @brief Check if the camera should shake
+     *
+     * @return true if should
+     * @return false otherwise
+     */
+    virtual bool isCameraShaking() = 0;
 };
 
 #endif /* !IGAME_HPP_ */

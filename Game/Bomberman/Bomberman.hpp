@@ -315,6 +315,14 @@ namespace Game
          */
         std::vector<std::string> placeEntitiesOnMap(const std::vector<std::pair<int, int>> &entitiesPos, const char &c) const;
 
+        /**
+         * @brief Check if the camera should shake
+         *
+         * @return true if should
+         * @return false otherwise
+         */
+        bool isCameraShaking() override;
+
     private:
         std::array<std::size_t, 9> _settings; // Game settings
         std::vector<std::string> _map; // Game map
@@ -332,6 +340,8 @@ namespace Game
         std::vector<CharDictionary> _players;
         std::vector<std::string> _playerControls; // A vector of all the players control as a string
         Clock _aiClock; // AI clock to avoid too fast AIs (runtime...)
+        bool _isCameraShaking = false;
+        Clock _CamShakeClock;
     };
 }
 

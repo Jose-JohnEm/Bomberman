@@ -57,8 +57,12 @@ void Engine::Core::run(void)
                 _graphical->setMap(_game->getMap(_graphical->getMapSizeAndType().first));
                 _game->setPlayers(_graphical->getPlayersData());
             }
+            if (_game->isCameraShaking())
+                _graphical->cameraShake();
             if (!_isPaused)
+            {
                 _game->updateGame();
+            }
             if (!_game->isGameOver() && !endGame()) {
                 _graphical->setScores(_game->getScores());
                 _graphical->updateGameInfos(_game->getEntities());

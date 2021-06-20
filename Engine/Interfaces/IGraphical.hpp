@@ -241,6 +241,12 @@ public:
      * @param playerControls A vector containing all the player controls as a string
      */
     virtual void setPlayerControls(const std::vector<std::string> &playerControls) = 0;
+
+    /**
+     * @brief Shake the camera
+     *
+     */
+    virtual void cameraShake(void) = 0;
 };
 
 #endif /* !IGRAPHICAL_HPP_ */
