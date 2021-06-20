@@ -162,7 +162,7 @@ void XRay::cameraShake(void)
         _cameraShakeFrame -= 0.55f;
     if (_cameraShakeFrame < 0)
         _cameraShakeFrame = 11;
-    _camera.setPosition(Raylib::Vector3({_camera.getCStruct().position.x, _yCameraAxis + static_cast<float>((cos(_cameraShakeFrame) * 0.2/* * _cameraShakeFrame * 0.02f*/)), _camera.getCStruct().position.z}));
+    _camera.setPosition(Raylib::Vector3(_camera.getCStruct().position.x, _yCameraAxis + static_cast<float>((cos(_cameraShakeFrame) * 0.2)), _camera.getCStruct().position.z));
     //_camera.updateCamera();
 }
 
