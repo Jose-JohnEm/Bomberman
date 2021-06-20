@@ -5,7 +5,7 @@
 ** Timing
 */
 
-#include "../../../Engine/Exception/Exception.hpp"
+#include "Exception/Exception.hpp"
 
 #include "Timing.hpp"
 

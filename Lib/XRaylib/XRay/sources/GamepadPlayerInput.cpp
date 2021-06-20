@@ -6,7 +6,7 @@
 */
 
 #include "GamepadPlayerInput.hpp"
-#include "../../../Engine/Exception/Exception.hpp"
+#include "Exception/Exception.hpp"
 
 GamepadPlayerInput::GamepadPlayerInput(size_t pos)
 {

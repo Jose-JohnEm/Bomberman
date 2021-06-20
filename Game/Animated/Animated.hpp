@@ -9,10 +9,10 @@
 #define ANIMATED_HPP_
 
 #include "Interfaces/IEntity.hpp"
-#include "../Lib/XRaylib/Raylib/Vector3/Vector3.hpp"
-#include "../Lib/XRaylib/Raylib/Sound/Sound.hpp"
-#include "../Lib/XRaylib/Raylib/Drawing/Drawing.hpp"
-#include "../Lib/XRaylib/Raylib/Texture/Texture.hpp"
+#include "Vector3/Vector3.hpp"
+#include "Sound/Sound.hpp"
+#include "Drawing/Drawing.hpp"
+#include "Texture/Texture.hpp"
 #include <string>
 #include <filesystem>
 #include <cmath>

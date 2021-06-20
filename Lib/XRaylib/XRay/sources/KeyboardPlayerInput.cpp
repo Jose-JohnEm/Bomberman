@@ -6,7 +6,7 @@
 */
 
 #include "KeyboardPlayerInput.hpp"
-#include "../../../Engine/Exception/Exception.hpp"
+#include "Exception/Exception.hpp"
 
 KeyboardPlayerInput::KeyboardPlayerInput()
 {

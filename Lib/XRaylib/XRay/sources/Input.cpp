@@ -6,7 +6,7 @@
 */
 
 #include "Input.hpp"
-#include "../../../Engine/Exception/Exception.hpp"
+#include "Exception/Exception.hpp"
 Input::Input()
 {
     _inputs[UP] = 1;

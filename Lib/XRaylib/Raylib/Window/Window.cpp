@@ -6,7 +6,7 @@
 */
 
 #include "Window.hpp"
-#include "../../../Engine/Exception/Exception.hpp"
+#include "Exception/Exception.hpp"
 
 
 Raylib::Window::Window(const int &width, const int &height, const std::string &title, const bool &lateInit)

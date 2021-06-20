@@ -6,7 +6,7 @@
 */
 
 #include "Rectangle.hpp"
-#include "../../../Engine/Exception/Exception.hpp"
+#include "Exception/Exception.hpp"
 
 Raylib::Rectangle::Rectangle(float x, float y, float width, float height)
         : _rectangle({x, y, width, height})

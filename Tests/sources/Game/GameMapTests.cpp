@@ -6,7 +6,7 @@
 */
 
 #include <gtest/gtest.h>
-#include "../Game/Map/Map.hpp"
+#include "Map/Map.hpp"
 
 TEST(MapTest, pass)
 {

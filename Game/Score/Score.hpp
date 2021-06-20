@@ -12,8 +12,8 @@
 #include <numeric>
 #include <string>
 #include <functional>
-#include "../Player/Player.hpp"
-#include "../includes/Settings.hpp"
+#include "Player/Player.hpp"
+#include "includes/Settings.hpp"
 
 namespace Game
 {

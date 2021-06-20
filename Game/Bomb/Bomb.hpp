@@ -8,8 +8,8 @@
 #ifndef BOMB_HPP_
 #define BOMB_HPP_
 
-#include "../Animated/Animated.hpp"
-#include "../Player/Player.hpp"
+#include "Animated/Animated.hpp"
+#include "Player/Player.hpp"
 
 namespace Game
 {
