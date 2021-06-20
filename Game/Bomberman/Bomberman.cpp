@@ -11,6 +11,10 @@ Game::Bomberman::Bomberman(void)
         : _gameName{"Bomberman"}, _gameOver{false}
 {
     std::srand(static_cast<unsigned>(time(0)));
+    for (size_t z = 0; z < 4; z++) {
+        _playersStats.push_back({{"", "0"}, {"", "0"}, {"", "0"}, {"", "0"}});
+        _scores.push_back({"", "0"});
+    }
 }
 
 Game::Bomberman::~Bomberman(void)
@@ -24,7 +28,8 @@ void Game::Bomberman::initEntities()
     float scale;
     int dic_index = 0;
 
-    _entities.clear();
+    if (!_isALoad)
+        _entities.clear();
 
     // Push back floor and borders
     _entities.push_back(std::shared_ptr<IEntity>(new Game::Floor(Raylib::Vector3((y-1)/2, (y+1)/2, -1), _mapType, y-2, y-1, 1.0f)));
@@ -36,7 +41,7 @@ void Game::Bomberman::initEntities()
     for (const std::string &line : _map) {
         x = 0;
         for (const char &c : line) {
-            if ((c == 'H' || c == 'A') && dic_index < _players.size())
+            if (!_isALoad && (c == 'H' || c == 'A') && dic_index < _players.size())
             {
                 if (c == 'H')
                     _entities.push_back(std::shared_ptr<IEntity>(new Game::Human(_players[dic_index].name, dic_index, {x, y, 0}, _players[dic_index].obj, _players[dic_index].texture, _players[dic_index].animations, _players[dic_index].scalable, _players[dic_index].color)));
@@ -260,8 +265,8 @@ std::vector<T*> Game::Bomberman::getEntitiesData(void) const
         if (dynamic_cast<T*>(entity.get()))
         {
             entities.push_back(dynamic_cast<T*>(entity.get()));
+            i++;
         }
-        i++;
     }
     std::cout << "Found " << i << " Players";
     return entities;
@@ -370,14 +375,15 @@ void Game::Bomberman::restart(void)
     // Reset Scores
     // TODO: TO IMPLEMENT
     _reinit = 0;
+    _isALoad = false;
     _map.clear();
     getMap(y);
-/*    for (size_t i = 0; i < _scores.size(); i++) {
-        _scores[i].second = "0";
-        for (size_t j = 0; j < _playersStats[i].size(); j++)
-            _playersStats[i][j].second = "0";
+    _scores.clear();
+    _playersStats.clear();
+    for (size_t z = 0; z < 4; z++) {
+        _playersStats.push_back({{"", "0"}, {"", "0"}, {"", "0"}, {"", "0"}});
+        _scores.push_back({"", "0"});
     }
-*/
     // Reset Entities
 }
 
@@ -415,6 +421,7 @@ void Game::Bomberman::loadGame(const std::string &backupFilePath)
     // Parse data
     Game::Save load(".backups/" + backupFilePath);
 
+    _isALoad = true;
     // Load players
     std::vector<std::shared_ptr<Game::Player>> players = load.getPlayers();
     for (const std::shared_ptr<Game::Player> &player : players)
