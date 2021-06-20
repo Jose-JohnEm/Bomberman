@@ -561,6 +561,11 @@ public:
      */
     void cameraShake() override;
 
+    /**
+     * @brief Displaying the scores in end scenes
+     */
+    void displayEndScores();
+
 private:
     Raylib::Window _window;                     // Game window
 

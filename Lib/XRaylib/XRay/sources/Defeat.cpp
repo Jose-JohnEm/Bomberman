@@ -52,6 +52,7 @@ void XRay::displayDefeatScene()
     (mouseIsInBox(createBox<size_t>(380, 330, 380+375, 330+65)) ? _resources.at(HOMEHOVER) : _resources.at(HOME))->drawTexture(380, 330);
     (mouseIsInBox(createBox<size_t>(380, 440, 380+375, 440+65)) ? _resources.at(RESTARTHOVER) : _resources.at(Resources::RESTART))->drawTexture(380, 440);
     _resources.at(RANKING)->drawTexture(1030, 350);
+    displayEndScores();
     displayMouse();
     endDrawing();
 

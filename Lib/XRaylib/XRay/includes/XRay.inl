@@ -233,3 +233,15 @@ inline void XRay::setPlayerControls(const std::vector<std::string> &playerContro
         }
     }
 }
+
+inline void XRay::displayEndScores()
+{
+    size_t i = 0;
+
+    std::sort(_scores.begin(), _scores.end(), [] (std::pair<std::string, std::string> a, std::pair<std::string, std::string> b){return std::stoi(a.second) > std::stoi(b.second);});
+    for (const auto &score : _scores) {
+        Raylib::Text::drawText("PLAYER " + score.first + " - SCORE " + score.second, 1150, 520 + i, 30, Raylib::Color::Black());
+        i+=120;
+    }
+
+}

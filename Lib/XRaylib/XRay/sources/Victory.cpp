@@ -73,13 +73,13 @@ void XRay::displayVictoryScene()
         (mouseIsInBox(createBox<float>(380, 660, 380+375, 660+65)) ? _resources.at(NEXTLEVELHOVER) : _resources.at(Resources::NEXTLEVEL))->drawTexture(380, 660);
     }
     _resources.at(RANKING)->drawTexture(1030, 350);
+    displayEndScores();
     displayMouse();
     endDrawing();
 
     // Call function that check click on button
     goToAnotherSceneFromVictory();
 }
-
 
 // STANDARD EXCEPTION CLASS detection according to type of exceptions if one exists.
 // catch
