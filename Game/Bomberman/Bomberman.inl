@@ -12,7 +12,14 @@ inline void Game::Bomberman::setMapType(const std::size_t &mapType)
 
 inline const std::vector<std::pair<std::string, std::string>> &Game::Bomberman::getScores(void) const
 {
-    return _scores;
+    std::vector<std::pair<std::string, std::string>> res;
+    std::vector<Game::Player *> players = getEntitiesData<Game::Player>();
+
+    for (Game::Player *p : players)
+    {
+        res.push_back({p->getName(), std::to_string(Score(_settings, p).getScore())});
+    }
+    return res;
 }
 
 inline const std::vector<std::shared_ptr<IEntity>> &Game::Bomberman::getEntities(void) const
@@ -22,7 +29,22 @@ inline const std::vector<std::shared_ptr<IEntity>> &Game::Bomberman::getEntities
 
 inline const std::vector<std::vector<std::pair<std::string, std::string>>> &Game::Bomberman::getPlayersStats(void) const
 {
-    return _playersStats;
+    std::vector<std::vector<std::pair<std::string, std::string>>> res;
+    std::vector<Game::Player *> players = getEntitiesData<Game::Player>();
+    std::vector<std::pair<std::string, std::string>> pData;
+
+    for (Game::Player *p : players)
+    {
+        pData.push_back({"SPEED", std::to_string(p->getPowerUps()[P_SKATE])});
+        pData.push_back({"FIRE", std::to_string(p->getPowerUps()[P_FIRE])});
+        pData.push_back({"BOMB", std::to_string(p->getPowerUps()[P_BOMB])});
+
+        std::cout << p->getName() << std::endl;
+
+        res.push_back(pData);
+        pData.clear();
+    }
+    return res;
 }
 
 inline bool Game::Bomberman::isGameOver(void) const

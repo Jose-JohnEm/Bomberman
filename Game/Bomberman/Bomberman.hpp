@@ -21,6 +21,7 @@
 #include "AI/ArtificialIntelligence.hpp"
 #include "AI/Astar.hpp"
 #include "CFunctions.hpp"
+#include "Score/Score.hpp"
 
 namespace Game
 {
