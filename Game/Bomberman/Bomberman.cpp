@@ -115,7 +115,7 @@ void Game::Bomberman::eraseEntitiesOnBomb(const std::pair<int, int> &pos)
     }
 }
 
-void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<int, int> pos)
+void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<int, int> pos, Game::Bomb &bomb)
 {
     char current = _map[pos.second][pos.first];
 
@@ -129,8 +129,10 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
         current = _map[pos.second][pos.first + i];
         if (current == 'W' || current == 'X' || current == 'E')
             break;
-        if (current == 'M') {
+        if (current == 'M')
+        {
             _map[pos.second][pos.first + i] = c;
+            bomb.increasePlayerWall();
             eraseEntitiesOnBomb({pos.first + i, pos.second});
             break;
         }
@@ -141,8 +143,10 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
         current = _map[pos.second][pos.first - i];
         if (current == 'W' || current == 'X' || current == 'E')
             break;
-        if (current == 'M') {
+        if (current == 'M')
+        {
             _map[pos.second][pos.first - i] = c;
+            bomb.increasePlayerWall();
             eraseEntitiesOnBomb({pos.first - i, pos.second});
             break;
         }
@@ -153,8 +157,10 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
         current = _map[pos.second + i][pos.first];
         if (current == 'W' || current == 'X' || current == 'E')
             break;
-        if (current == 'M') {
+        if (current == 'M')
+        {
             _map[pos.second + i][pos.first] = c;
+            bomb.increasePlayerWall();
             eraseEntitiesOnBomb({pos.first, pos.second + i});
             break;
         }
@@ -167,6 +173,7 @@ void Game::Bomberman::setCharOnRadius(const char &c, const int &rad, std::pair<i
             break;
         if (current == 'M') {
             _map[pos.second - i][pos.first] = c;
+            bomb.increasePlayerWall();
             eraseEntitiesOnBomb({pos.first, pos.second - i});
             break;
         }
@@ -187,7 +194,7 @@ void Game::Bomberman::bombExplosion(Game::Bomb &bomb, const size_t &index)
     else if (bomb.isExploding())
     {
         rad = bomb.makeExplode();
-        setCharOnRadius('X', rad, pos);
+        setCharOnRadius('X', rad, pos, bomb);
         bomb.setBombzone(_map);
         for (int y = 0;  y < _map.size(); y++)
         {

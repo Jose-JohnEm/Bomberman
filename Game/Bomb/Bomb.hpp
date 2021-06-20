@@ -88,6 +88,12 @@ namespace Game
          */
         void setPlayers(std::vector<std::shared_ptr<Game::Player>> players);
 
+        /**
+         * @brief Increase the walls breaked value to the player owner of the bomb
+         *
+         */
+        void increasePlayerWall();
+
     private:
         Clock clock;
         bool _explosing;
