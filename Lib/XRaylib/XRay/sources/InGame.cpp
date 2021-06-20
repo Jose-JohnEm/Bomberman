@@ -140,13 +140,17 @@ void XRay::checkEndScenario(void)
     while (i < _gameInfos.size() && _gameInfos[i]->getType().compare("Human") != 0)
         i++;
     if (_gameSettings[7] == 1) {
-        _musics.at(MSC_GAME)->stop();
+        if (_musics.at(MSC_GAME)->isPlaying())
+            _musics.at(MSC_GAME)->stop();
         if (_gameInfos[i]->getShouldDisplay())
             displayVictoryScene();
         else
             displayDefeatScene();
-    } else
+    } else {
+        if (_musics.at(MSC_GAME)->isPlaying())
+            _musics.at(MSC_GAME)->stop();
         displayVictoryScene();
+    }
 }
 
 void XRay::displayInGameScene(void)

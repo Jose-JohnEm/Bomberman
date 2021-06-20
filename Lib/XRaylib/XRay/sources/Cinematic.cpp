@@ -34,6 +34,11 @@ void XRay::displayCinematic(const std::string &cinematicPathDirectory, const siz
         _sfx.at(SFX_OPENNING)->play();
     if (!_musics.at(MSC_BOMBERMAN)->isPlaying() && cinematicPathDirectory == "intro2")
         playMusic(MSC_BOMBERMAN);
+    if (!_sfx.at(SFX_COUNTDOWN)->isPlaying() && cinematicPathDirectory == "readygo") {
+        if (_musics.at(MSC_BOMBERMAN)->isPlaying())
+            _musics.at(MSC_BOMBERMAN)->stop();
+        _sfx.at(SFX_COUNTDOWN)->play();
+    }
 
     while (i < filesNumber && !(i < hideSkip && Raylib::Mouse::isButtonPressed(0) && mouseIsInBox(createBox<size_t>(1760, 950, 1883, 1005)))) {
 

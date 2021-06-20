@@ -30,7 +30,7 @@ inline void Game::Save::writePlayersInfos(std::ofstream &os) const
             << "player " << id << " name " << player->getName() << std::endl
             << "player " << id << " controls " << ((player->getType().compare("AI") == 0) ? "NONE" : _playerControls[id]) << std::endl
             << "player " << id << " scalable " << player->getScalable() << std::endl
-            << "player " << id << " positions " << positions.x << "," << (_map.getMap().size() - positions.y) << "," << positions.z << std::endl
+            << "player " << id << " positions " << positions.x << "," << (_map.getMap().size() - positions.y) /*positions.y*/ << "," << positions.z << std::endl
             << "player " << id << " powerups "
             << "skate:" << powerups[P_SKATE]
             << ",bomb:" << powerups[P_BOMB]
