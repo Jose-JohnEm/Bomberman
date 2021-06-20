@@ -89,6 +89,7 @@ void Game::ArtificialIntelligence::run(void) const
                 case 1:
                     if (action.compare("dropBomb"))
                     {
+                        action = (CFunctions::generateRandomInteger(10) < 3) ? "dropBomb" : action;
                         _playerActionsFunc(AI.getID(), action);
                     }
                     break;
