@@ -20,14 +20,31 @@ std::string XRay::getTimeInFormat(void)
 
 void XRay::drawPlayersHead(size_t i, size_t x, size_t y)
 {
-    if (_userNames[i] == "Yellow")
+    _resources.at(CLOCKBAR)->drawTexture(_panelPos[i].first + 100, _panelPos[i].second + 70);
+    if (_userNames[i] == "Yellow") {
         _resources.at(YELLOWBOMBERMAN)->drawTexture(x, y);
-    if (_userNames[i] == "Red")
+        Raylib::Text::drawText(_scores[i].second, _panelPos[i].first + 150, _panelPos[i].second + 76, 50, Raylib::Color::Yellow());
+        if (_playersStats[i][3].second == "0")
+            Raylib::Rectangle::drawRectangle(_panelPos[i].first, _panelPos[i].second - 230, 360, 400, Raylib::Color::fade(Raylib::Color::Yellow(), 0.4f));
+    }
+    if (_userNames[i] == "Red") {
         _resources.at(REDBOMBERMAN)->drawTexture(x, y);
-    if (_userNames[i] == "Blue")
+        Raylib::Text::drawText(_scores[i].second, _panelPos[i].first + 150, _panelPos[i].second + 76, 50, Raylib::Color::Red());
+        if (_playersStats[i][3].second == "0")
+            Raylib::Rectangle::drawRectangle(_panelPos[i].first, _panelPos[i].second - 230, 360, 400, Raylib::Color::fade(Raylib::Color::Red(), 0.4f));
+    }
+    if (_userNames[i] == "Blue") {
         _resources.at(BLUEBOMBERMAN)->drawTexture(x, y);
-    if (_userNames[i] == "Green")
+        Raylib::Text::drawText(_scores[i].second, _panelPos[i].first + 150, _panelPos[i].second + 76, 50, Raylib::Color::Blue());
+        if (_playersStats[i][3].second == "0")
+            Raylib::Rectangle::drawRectangle(_panelPos[i].first, _panelPos[i].second - 230, 360, 400, Raylib::Color::fade(Raylib::Color::Blue(), 0.4f));
+    }
+    if (_userNames[i] == "Green") {
         _resources.at(GREENBOMBERMAN)->drawTexture(x, y);
+        Raylib::Text::drawText(_scores[i].second, _panelPos[i].first + 150, _panelPos[i].second + 76, 50, Raylib::Color::Green());
+        if (_playersStats[i][3].second == "0")
+            Raylib::Rectangle::drawRectangle(_panelPos[i].first, _panelPos[i].second - 230, 360, 400, Raylib::Color::fade(Raylib::Color::Green(), 0.4f));
+    }
 }
 
 void XRay::displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &_panelPos)
