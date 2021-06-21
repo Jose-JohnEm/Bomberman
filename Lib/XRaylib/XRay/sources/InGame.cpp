@@ -73,7 +73,7 @@ void XRay::displayPlayersPanels(std::vector<std::pair<size_t, size_t>> &_panelPo
         drawPlayersHead(u, _panelPos.at(u).first-10, _panelPos.at(u).second-180);
     }
     _resources.at(CLOCKBAR)->drawTexture(600, 0);
-    _resources.at(CLOCKBAR)->drawTexture(1200, 0, ((_gameSettings[4] < 10 && _gameSettings[4] % 2 == 0) ? Raylib::Color::Red() : Raylib::Color::White()));
+    _resources.at(CLOCKBAR)->drawTexture(1200, 0, ((_gameSettings[4] <= 10 && _gameSettings[4] % 2 == 0) ? Raylib::Color::Red() : Raylib::Color::White()));
     Raylib::Text::drawText(std::to_string(_gameSettings[2]), 720, 15, 60, Raylib::Color::White());
     Raylib::Text::drawText(getTimeInFormat(), 1245, 15, 60, Raylib::Color::White());
 }
