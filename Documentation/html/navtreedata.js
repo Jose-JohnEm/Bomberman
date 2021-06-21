@@ -25,21 +25,53 @@
 var NAVTREE =
 [
   [ "Bomberman", "index.html", [
-    [ "README", "md__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html", [
-      [ "Indie Studio - Time to go cross-platform", "md__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md0", null ],
-      [ "Subject", "md__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md1", [
-        [ "Nao Marvin", "md__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md2", null ],
-        [ "Prerequisites", "md__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md3", [
-          [ "Resources", "md__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md4", null ]
+    [ "characters", "md_characters.html", [
+      [ "Indie Studio - Time to go cross-platform", "md_characters.html#autotoc_md0", null ],
+      [ "Chararter List", "md_characters.html#autotoc_md1", [
+        [ "RED", "md_characters.html#autotoc_md2", null ],
+        [ "BLUE", "md_characters.html#autotoc_md3", null ],
+        [ "YELLOW", "md_characters.html#autotoc_md4", null ],
+        [ "GREEN", "md_characters.html#autotoc_md5", null ]
+      ] ]
+    ] ],
+    [ "history", "md_history.html", [
+      [ "Indie Studio - Time to go cross-platform", "md_history.html#autotoc_md6", null ],
+      [ "Story", "md_history.html#autotoc_md7", null ]
+    ] ],
+    [ "howToPlay", "md_how_to_play.html", [
+      [ "Indie Studio - Time to go cross-platform", "md_how_to_play.html#autotoc_md8", null ],
+      [ "HOW TO PLAY", "md_how_to_play.html#autotoc_md9", [
+        [ "AIM", "md_how_to_play.html#autotoc_md10", [
+          [ "With keyboards", "md_how_to_play.html#autotoc_md11", null ],
+          [ "With mouse", "md_how_to_play.html#autotoc_md12", null ],
+          [ "With a controler", "md_how_to_play.html#autotoc_md13", null ]
+        ] ]
+      ] ]
+    ] ],
+    [ "maps", "md_maps.html", [
+      [ "Indie Studio - Time to go cross-platform", "md_maps.html#autotoc_md14", null ],
+      [ "Maps List", "md_maps.html#autotoc_md15", [
+        [ "EARTH KINGDOM", "md_maps.html#autotoc_md16", null ],
+        [ "STONE WORLD", "md_maps.html#autotoc_md17", null ],
+        [ "CIVIL WARSHIP BASE", "md_maps.html#autotoc_md18", null ],
+        [ "ICE NEBULA NEXUS", "md_maps.html#autotoc_md19", null ]
+      ] ]
+    ] ],
+    [ "README", "md__c___users_jonat__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html", [
+      [ "Indie Studio - Time to go cross-platform", "md__c___users_jonat__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md20", null ],
+      [ "Subject", "md__c___users_jonat__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md21", [
+        [ "Nao Marvin", "md__c___users_jonat__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md22", null ],
+        [ "Prerequisites", "md__c___users_jonat__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md23", [
+          [ "Resources", "md__c___users_jonat__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md24", null ]
         ] ],
-        [ "Compiling", "md__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md5", null ],
-        [ "Usage", "md__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md6", null ],
-        [ "GAME", "md__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md7", [
-          [ "BOMBERMAN", "md__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md8", null ]
+        [ "Compiling", "md__c___users_jonat__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md25", null ],
+        [ "Usage", "md__c___users_jonat__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md26", null ],
+        [ "GAME", "md__c___users_jonat__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md27", [
+          [ "BOMBERMAN", "md__c___users_jonat__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md28", null ]
         ] ],
-        [ "TESTS", "md__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md9", null ],
-        [ "DOCUMENTATION", "md__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md10", [
-          [ "XRay", "md__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md11", null ]
+        [ "TESTS", "md__c___users_jonat__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md29", null ],
+        [ "DOCUMENTATION", "md__c___users_jonat__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md30", [
+          [ "XRay", "md__c___users_jonat__documents__git_hub__b__y_e_p_400__l_y_n_4_1_indiestudio_lucas_guichard__r_e_a_d_m_e.html#autotoc_md31", null ]
         ] ]
       ] ]
     ] ],
@@ -79,7 +111,7 @@ var NAVTREEINDEX =
 "class_game_1_1_bomb.html#aa43c100b9cbeb4eccb9b34ff8927ce55",
 "class_i_graphical.html#ad690bef29f3bbb0c5500a75a1fce2ff2",
 "class_raylib_1_1_music.html#af8d32ffa4d878729d762ff0cf3a2079e",
-"dir_b0a7cae33c38f96ea20b24f93d53a092.html"
+"dir_a46947a79cd3d4fcf0e05b6a31f7bf13.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
