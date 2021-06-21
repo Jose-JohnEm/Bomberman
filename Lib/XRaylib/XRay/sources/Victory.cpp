@@ -60,6 +60,8 @@ void XRay::displayVictoryScene()
     // Set scene
     _scene = VICTORY;
 
+    if (_musics.at(MSC_GAME)->isPlaying())
+        _musics.at(MSC_GAME)->stop();
     //play wee sound
     if (!_sfx.at(SFX_WEEE)->isPlaying())
         _sfx.at(SFX_WEEE)->play();

@@ -43,6 +43,8 @@ void XRay::displayDefeatScene()
     // Set scene
     _scene = DEFEAT;
 
+    if (_musics.at(MSC_GAME)->isPlaying())
+        _musics.at(MSC_GAME)->stop();
     if (!_sfx.at(SFX_DEFEAT)->isPlaying())
         _sfx.at(SFX_DEFEAT)->play();
 
