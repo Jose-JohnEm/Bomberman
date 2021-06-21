@@ -23,7 +23,7 @@ void XRay::fadeThisScene(Scene toFade)
     if (_transitionManager[toFade].first) {
         Raylib::Rectangle::drawRectangle(0, 0, 1920, 1080, Raylib::Color::fade(Raylib::Color::Black(), transAlpha));
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
-        transAlpha -= 0.05f;
+        transAlpha -= 0.02f;
         if (transAlpha < -0.01f) {
             _transitionManager[toFade].first = false;
             transAlpha = 0.0f;
@@ -31,7 +31,7 @@ void XRay::fadeThisScene(Scene toFade)
     } else if (_transitionManager[toFade].second) {
         Raylib::Rectangle::drawRectangle(0, 0, 1920, 1080, Raylib::Color::fade(Raylib::Color::Black(), transAlpha));
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
-        transAlpha += 0.05f;
+        transAlpha += 0.02f;
         if (transAlpha > 1.01f) {
             _transitionManager[toFade].second = false;
             transAlpha = 1.0f;

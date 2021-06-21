@@ -49,6 +49,7 @@ void XRay::displayGameModeScene(void)
         displayPlayerChoiceScene();
     } else if (goLoadGame && Raylib::Mouse::isButtonPressed(0)) {
         _sfx.at(SFX_NOCK)->play();
+        displayCinematic("loadingbar", 0, 0);
         displayLoadGameScene();
     }
 }

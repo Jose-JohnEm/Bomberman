@@ -17,6 +17,7 @@ void XRay::loadThisBackup(const std::string &_pathToBackupFile)
     } catch (const std::exception &exception) {
         std::cerr << exception.what() << std::endl;
         throw std::logic_error("ERROR: Wrong backup file syntax");
+        _scene = LOAD_GAME;
     }
 }
 

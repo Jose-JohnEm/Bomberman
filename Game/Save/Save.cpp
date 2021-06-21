@@ -117,31 +117,31 @@ void Game::Save::parsePlayers(const std::vector<std::string> &playersInfos)
     switch (std::stoi(playersInfos[1])) {
         case 0:
             if (!firstIsParse) {
-                _players[0]->setID(std::stoi(playersInfos[1]));
+                _players.at(0)->setID(std::stoi(playersInfos[1]));
                 firstIsParse = true;
             }
-            parsePlayer(_players[0], playersInfos);
+            parsePlayer(_players.at(0), playersInfos);
             break;
         case 1:
             if (!secondIsParse) {
-                _players[1]->setID(std::stoi(playersInfos[1]));
+                _players.at(1)->setID(std::stoi(playersInfos[1]));
                 secondIsParse = true;
             }
-            parsePlayer(_players[1], playersInfos);
+            parsePlayer(_players.at(1), playersInfos);
             break;
         case 2:
             if (!thirdIsParse) {
-                _players[2]->setID(std::stoi(playersInfos[1]));
+                _players.at(2)->setID(std::stoi(playersInfos[1]));
                 thirdIsParse = true;
             }
-            parsePlayer(_players[2], playersInfos);
+            parsePlayer(_players.at(2), playersInfos);
             break;
         case 3:
             if (!fourthIsParse) {
-                _players[3]->setID(std::stoi(playersInfos[1]));
+                _players.at(3)->setID(std::stoi(playersInfos[1]));
                 fourthIsParse = true;
             }
-            parsePlayer(_players[3], playersInfos);
+            parsePlayer(_players.at(3), playersInfos);
             break;
         default:
             throw std::invalid_argument("ERROR: Invalid player ID");
